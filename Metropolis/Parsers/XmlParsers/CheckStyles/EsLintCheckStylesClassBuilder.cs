@@ -5,13 +5,13 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles
 {
     public class EsLintCheckStylesClassBuilder : BaseCheckStylesClassBuilder
     {
-        private static readonly ICheckStylesMemberParser[] MemberParsers =
+        private static readonly ICheckStylesMemberParser[] EsLintMemberParsers =
         {
             new EsLintComplexityParser(), new EsLintNumberOfStatmentsParser(), new EsLintNumberOfParametersParser(),
             new EsLintDefaultCaseParser(), new EsLintCaseNoFallThroughParser()
         };
 
-        public EsLintCheckStylesClassBuilder() : base(null, MemberParsers)
+        public EsLintCheckStylesClassBuilder() : base(null, EsLintMemberParsers)
         {
         }
     }

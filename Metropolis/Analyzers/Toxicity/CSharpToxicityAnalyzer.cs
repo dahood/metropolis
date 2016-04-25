@@ -2,6 +2,9 @@
 
 namespace Metropolis.Analyzers.Toxicity
 {
+    /// <summary>
+    /// Developed by Richard and Jonathan while performing numerous code reviews for .NET projects
+    /// </summary>
     public class CSharpToxicityAnalyzer : ToxicityAnalyzer
     {
         //class level thresholds
@@ -12,7 +15,7 @@ namespace Metropolis.Analyzers.Toxicity
         private const int ThresholdNumberOfMethods = 20;
         // method level thresholds
         private const int ThresholdMethodLength = 30;
-        private const int thresholdCyclomaticComplexity = 20;
+        private const int thresholdCyclomaticComplexity = 20; //higher for C# than Java due to LINQ
 
         public override ToxicityScore CalculateToxicity(Class classToScore)
         {

@@ -2,6 +2,8 @@
 using System.Xml.Linq;
 using Metropolis.Domain;
 using Metropolis.Extensions;
+using Metropolis.Analyzers.Toxicity;
+using System;
 
 namespace Metropolis.Parsers.XmlParsers.CheckStyles
 {
@@ -35,7 +37,12 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles
                            group m by m.Name into cls
                            select classBuilder.Build(cls.Key, cls.ToList())).ToList();
 
-            return new CodeBase(new CodeGraph(classes));
+            if (classBuilder.GetType() == typeof(PuppyCrawlCheckStylesClassBuilder))
+                return new JavaToxicityAnalyzer().Analyze(classes);
+            if (classBuilder.GetType() == typeof(EsLintCheckStylesClassBuilder))
+                return new JavascriptToxicityAnalyzer().Analyze(classes);
+
+            throw new ApplicationException("No analyzer setup for this type of code");
         }
         
         private static CheckStylesItem BuildItem(XElement node)

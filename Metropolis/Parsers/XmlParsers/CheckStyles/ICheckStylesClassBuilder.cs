@@ -15,7 +15,6 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles
     {
         protected readonly IEnumerable<ICheckStylesClassParser> ClassParsers;
         protected readonly IEnumerable<ICheckStylesMemberParser> MemberParsers;
-        
 
         protected BaseCheckStylesClassBuilder(IEnumerable<ICheckStylesClassParser> classParsers,
             IEnumerable<ICheckStylesMemberParser> memberParsers)
