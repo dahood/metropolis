@@ -3,7 +3,7 @@ using Metropolis.Extensions;
 
 namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint
 {
-    public class EsLintNumberOfStatmentsParser : MemberParserBase
+    public class EsLintNumberOfStatmentsParser : CheckStyleBaseParser, ICheckStylesMemberParser
     {
         public override string Source => EslintSources.MemberNumberOfStatements;
 
@@ -11,7 +11,7 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsL
         {
         }
 
-        public override void Parse(Member member, CheckStylesItem item)
+        public void Parse(Member member, CheckStylesItem item)
         {
             member.LinesOfCode = Parser.Split(item.Message)[1].AsInt();
         }

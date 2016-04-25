@@ -3,11 +3,11 @@ using Metropolis.Extensions;
 
 namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint
 {
-    public class EsLintNumberOfParametersParser : MemberParserBase
+    public class EsLintNumberOfParametersParser : CheckStyleBaseParser, ICheckStylesMemberParser
     {
         public override string Source => EslintSources.NumberOfParameters;
         
-        public override void Parse(Member member, CheckStylesItem item)
+        public void Parse(Member member, CheckStylesItem item)
         {
             member.NumberOfParameters = IntParser.Match(item.Message).Value.AsInt();
         }

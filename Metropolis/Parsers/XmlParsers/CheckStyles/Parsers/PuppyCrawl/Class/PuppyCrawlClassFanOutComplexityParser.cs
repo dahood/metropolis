@@ -3,13 +3,13 @@ using Metropolis.Extensions;
 
 namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl
 {
-    public class PuppyCrawlClassFanOutComplexityParser : MemberParserBase
+    public class PuppyCrawlClassFanOutComplexityParser : CheckStyleBaseParser, ICheckStylesClassParser
     {
         public override string Source => PuppyCrawlSources.ClassFanOutComplexity;
         
-        public override void Parse(Member member, CheckStylesItem item)
+        public void Parse(Class type, CheckStylesItem item)
         {
-            member.ClassFanOutComplexity= IntParser.Match(item.Message).Value.AsInt();
+            type.ClassFanOutComplexity= IntParser.Match(item.Message).Value.AsInt();
         }
     }
 }

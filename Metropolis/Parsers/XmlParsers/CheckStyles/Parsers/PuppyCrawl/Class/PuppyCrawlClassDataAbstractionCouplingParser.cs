@@ -3,13 +3,13 @@ using Metropolis.Extensions;
 
 namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl
 {
-    public class PuppyCrawlClassDataAbstractionCouplingParser : MemberParserBase
+    public class PuppyCrawlClassDataAbstractionCouplingParser : CheckStyleBaseParser, ICheckStylesClassParser
     {
         public override string Source => PuppyCrawlSources.ClassDataAbstractionCoupling;
         
-        public override void Parse(Member member, CheckStylesItem item)
+        public void Parse(Class type, CheckStylesItem item)
         {
-            member.ClassDataAbstractionCoupling= IntParser.Match(item.Message).Value.AsInt();
+            type.ClassDataAbstractionCoupling = IntParser.Match(item.Message).Value.AsInt();
         }
     }
 }

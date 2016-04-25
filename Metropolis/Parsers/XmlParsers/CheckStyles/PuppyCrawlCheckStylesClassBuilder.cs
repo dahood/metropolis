@@ -5,19 +5,21 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles
 {
     public class PuppyCrawlCheckStylesClassBuilder : BaseCheckStylesClassBuilder
     {
-        private static readonly ICheckStylesMemberParser[] MemberParsers =
-        {
-            new PuppyCrawlComplexityParser(), new PuppyCrawlLinesOfCodeParser(), new PuppyCrawlNumberOfParametersParser(),
-            new PuppyCrawlDefaultCaseParser(), new PuppyCrawlBooleanExpressionComplexityParser(), new PupyyCrawlNestedTryDepthParser(),
-            new PupyyCrawlNestedIfDepthParser(), new PuppyCrawlAnonymousInnerClassLenthParser(),
+        private static readonly ICheckStylesClassParser[] ClassParsers =
+        { 
+            //Missing FileLengthCheck
+           new PuppyCrawlAnonymousInnerClassLenthParser(),
             new PuppyCrawlClassDataAbstractionCouplingParser()
         };
 
-        public PuppyCrawlCheckStylesClassBuilder() : base(MemberParsers)
+        private static readonly ICheckStylesMemberParser[] MemberParsers =
         {
-        }
+            new PuppyCrawlComplexityParser(), new PuppyCrawlMethodLengthParser(), new PuppyCrawlNumberOfParametersParser(),
+            new PuppyCrawlDefaultCaseParser(), new PuppyCrawlBooleanExpressionComplexityParser(), new PupyyCrawlNestedTryDepthParser(),
+            new PupyyCrawlNestedIfDepthParser(), 
+        };
 
-        public PuppyCrawlCheckStylesClassBuilder(params ICheckStylesMemberParser[] parsers) : base(parsers)
+        public PuppyCrawlCheckStylesClassBuilder() : base(ClassParsers, MemberParsers)
         {
         }
     }

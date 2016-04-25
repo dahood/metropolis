@@ -3,7 +3,7 @@
     public static class PuppyCrawlSources
     {
         public static string FanOutComplexity => "com.puppycrawl.tools.checkstyle.checks.metrics.ClassFanOutComplexityCheck";
-        public static string LinesOfCode => "com.puppycrawl.tools.checkstyle.checks.sizes.MethodLengthCheck";
+        public static string MethodLength => "com.puppycrawl.tools.checkstyle.checks.sizes.MethodLengthCheck";
         public static string NumberOfParameters => "com.puppycrawl.tools.checkstyle.checks.sizes.ParameterNumberCheck";
         public static string MissingSwitchDefault => "com.puppycrawl.tools.checkstyle.checks.coding.MissingSwitchDefaultCheck";
         public static string BooleanExpressionComplexity => "com.puppycrawl.tools.checkstyle.checks.metrics.BooleanExpressionComplexityCheck";

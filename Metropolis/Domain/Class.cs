@@ -57,7 +57,12 @@ namespace Metropolis.Domain
         public int DepthOfInheritance { get; set; }
         public int CyclomaticComplexity { get; set; }
         public int ClassCoupling { get; set; }
+        public int AnonymousInnerClassLenth { get; set; }
+        public int ClassFanOutComplexity { get; set; }
+        public int ClassDataAbstractionCoupling { get; set; }
+
         public double Toxicity { get; set; }
+
         public List<Member> Members { get; set; } = new List<Member>();
 
         public IEnumerable<ClassVersionInfo> Meta

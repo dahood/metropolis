@@ -22,9 +22,6 @@ namespace Metropolis.Domain
         public int BooleanExpressionComplexity { get; set; }
         public int NestedTryDepth { get; set; }
         public int NestedIfDepth { get; set; }
-        public int AnonymousInnerClassLenth { get; set; }
-        public int ClassFanOutComplexity { get; set; }
-        public int ClassDataAbstractionCoupling { get; set; }
 
         public override string ToString()
         {

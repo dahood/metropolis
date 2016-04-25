@@ -13,11 +13,15 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles
 
     public abstract class BaseCheckStylesClassBuilder : ICheckStylesClassBuilder
     {
-        protected readonly IEnumerable<ICheckStylesMemberParser> Parsers;
+        protected readonly IEnumerable<ICheckStylesClassParser> ClassParsers;
+        protected readonly IEnumerable<ICheckStylesMemberParser> MemberParsers;
+        
 
-        protected BaseCheckStylesClassBuilder(IEnumerable<ICheckStylesMemberParser> memberParsers)
+        protected BaseCheckStylesClassBuilder(IEnumerable<ICheckStylesClassParser> classParsers,
+            IEnumerable<ICheckStylesMemberParser> memberParsers)
         {
-            Parsers = memberParsers;
+            ClassParsers = classParsers;
+            MemberParsers = memberParsers;
         }
 
         public Class Build(string key, List<CheckStylesItem> items)
@@ -29,7 +33,7 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles
             var members = grouped.Select(each => {
                 var member = new Member("unknown", 0, 0, 0);
 
-                (from p in Parsers
+                (from p in MemberParsers
                  join item in each.Metrics
                    on p.Source equals item.Source
                  select new { Parser = p, Item = item }
@@ -38,7 +42,19 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles
                 return member;
             }).ToList();
 
-            return ParseClass(key, members);
+            var type = ParseClass(key, members);
+
+            //add class level metrics
+            grouped.ForEach(each => {
+
+                (from p in ClassParsers
+                 join item in each.Metrics
+                   on p.Source equals item.Source
+                 select new { Parser = p, Item = item }
+                ).ForEach(e => e.Parser.Parse(type, e.Item));
+            });
+
+            return type;
         }
 
         private static Class ParseClass(string key, IEnumerable<Member> members)

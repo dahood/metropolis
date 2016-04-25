@@ -3,11 +3,11 @@ using Metropolis.Extensions;
 
 namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl
 {
-    public class PupyyCrawlNestedIfDepthParser : MemberParserBase
+    public class PupyyCrawlNestedIfDepthParser : CheckStyleBaseParser, ICheckStylesMemberParser
     {
         public override string Source => PuppyCrawlSources.NestedIfDepth;
         
-        public override void Parse(Member member, CheckStylesItem item)
+        public void Parse(Member member, CheckStylesItem item)
         {
             member.NestedIfDepth = IntParser.Match(item.Message).Value.AsInt();
         }
