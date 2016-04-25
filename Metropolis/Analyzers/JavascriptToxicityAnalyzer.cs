@@ -1,18 +1,41 @@
-﻿using System.Collections.Generic;
-using Metropolis.Analyzers.Toxicity;
+﻿using Metropolis.Analyzers.Toxicity;
 using Metropolis.Domain;
 
 namespace Metropolis.Analyzers
 {
-    class JavascriptToxicityAnalyzer : ICodebaseAnalyzer
+    public class JavascriptToxicityAnalyzer : ToxicityAnalyzer
     {
-        public CodeBase Analyze(List<Class> toAnalyze)
+        // Ecma file level thresholds
+        private const int ThresholdLinesOfCode = 500;
+        private const int ThresholdNumberOfMethods = 20;
+        // Function level thresholds
+        private const int ThresholdMethodLength = 30;
+        private const int thresholdCyclomaticComplexity = 10;
+
+        public override ToxicityScore CalculateToxicity(Class classToScore)
         {
-            foreach (var c in toAnalyze)
+            // Class Level Toxicity
+            var linesOfCode = ComputeToxicity(classToScore.LinesOfCode, ThresholdLinesOfCode);
+            var numberOfMethods = ComputeToxicity(classToScore.Members.Count, ThresholdNumberOfMethods);
+
+            double cyclomaticComplexity = 0;
+            // Method Level Toxicity
+            foreach (var method in classToScore.Members)
             {
-                c.Toxicity = new JavascriptToxicityScore(c).Toxicity;
+                cyclomaticComplexity += ComputeToxicity(method.CylomaticComplexity, thresholdCyclomaticComplexity);
+                linesOfCode += ComputeToxicity(method.LinesOfCode, ThresholdMethodLength);
             }
-            return new CodeBase(new CodeGraph(toAnalyze));
+
+            // Rationalize
+            var score = new ToxicityScore();
+            score.LinesOfCode = Rationalize(linesOfCode);
+            score.NumberOfMethods = Rationalize(numberOfMethods);
+            score.CyclomaticComplexity = Rationalize(cyclomaticComplexity);
+
+            score.Toxicity = score.LinesOfCode + score.NumberOfMethods +
+                             score.CyclomaticComplexity;
+
+            return score;
         }
     }
 }
