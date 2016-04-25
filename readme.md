@@ -4,7 +4,7 @@ Metropolis is a code visualization aid to help in review and analysis. It create
 
 ## How to Install
 
-Grab the latest [MSI installer](https://bitbucket.org/jmccracken/metropolis/downloads/Metropolis.msi). Currently only support Windows sorry no [WPF on Mono yet](http://www.mono-project.com/docs/gui/wpf/).
+Grab the latest [MSI installer](https://github.com/dahood/metropolis/raw/master/publish/Metropolis.msi). Currently only support Windows sorry no [WPF on Mono yet](http://www.mono-project.com/docs/gui/wpf/).
 
 
 # User Guide
