@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Metropolis.Domain;
 using Metropolis.Analyzers.Toxicity;
 
-namespace Metropolis.Analyzers
+namespace Metropolis.Analyzers.Toxicity
 {
     public abstract class ToxicityAnalyzer : ICodebaseAnalyzer
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Metropolis.Analyzers;
 using Metropolis.Domain;
+using Metropolis.Analyzers.Toxicity;
 
 namespace Metropolis.Parsers.CsvParsers
 {

@@ -2,10 +2,10 @@
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using Metropolis.Analyzers;
 using Metropolis.Domain;
 using Metropolis.Extensions;
 using Metropolis.Parsers.XmlParsers.MetricHandlers;
+using Metropolis.Analyzers.Toxicity;
 
 namespace Metropolis.Parsers.XmlParsers
 {

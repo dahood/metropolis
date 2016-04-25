@@ -1,28 +1,21 @@
 ﻿using Metropolis.Analyzers.Toxicity;
 using Metropolis.Domain;
 
-namespace Metropolis.Analyzers
+namespace Metropolis.Analyzers.Toxicity
 {
-    public class JavaToxicityAnalyzer : ToxicityAnalyzer
+    public class JavascriptToxicityAnalyzer : ToxicityAnalyzer
     {
-        //class level thresholds
+        // Ecma file level thresholds
         private const int ThresholdLinesOfCode = 500;
-        private const int ThresholdClassCoupling = 30;
-        private const int ThresholdDepthOfInheritance = 3;
-        private const int DepthOfInheritanceFactor = 5; // Increase the effect on toxicity when this rule is violated
         private const int ThresholdNumberOfMethods = 20;
-        // method level thresholds
+        // Function level thresholds
         private const int ThresholdMethodLength = 30;
-        private const int thresholdCyclomaticComplexity = 15;
+        private const int thresholdCyclomaticComplexity = 10;
 
         public override ToxicityScore CalculateToxicity(Class classToScore)
         {
-            //TODO: replace with CheckStyle data sources...there are more than C#
-
             // Class Level Toxicity
             var linesOfCode = ComputeToxicity(classToScore.LinesOfCode, ThresholdLinesOfCode);
-            var classCoupling = ComputeToxicity(classToScore.ClassCoupling, ThresholdClassCoupling);
-            var depthOfInheritance = ComputeToxicity(classToScore.DepthOfInheritance, ThresholdDepthOfInheritance);
             var numberOfMethods = ComputeToxicity(classToScore.Members.Count, ThresholdNumberOfMethods);
 
             double cyclomaticComplexity = 0;
@@ -36,13 +29,10 @@ namespace Metropolis.Analyzers
             // Rationalize
             var score = new ToxicityScore();
             score.LinesOfCode = Rationalize(linesOfCode);
-            score.ClassCoupling = Rationalize(classCoupling);
-            score.DepthOfInheritance = Rationalize(depthOfInheritance * DepthOfInheritanceFactor);
             score.NumberOfMethods = Rationalize(numberOfMethods);
             score.CyclomaticComplexity = Rationalize(cyclomaticComplexity);
 
-            score.Toxicity = score.LinesOfCode + score.ClassCoupling +
-                             score.DepthOfInheritance + score.NumberOfMethods +
+            score.Toxicity = score.LinesOfCode + score.NumberOfMethods +
                              score.CyclomaticComplexity;
 
             return score;

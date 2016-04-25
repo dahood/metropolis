@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using Metropolis.Analyzers.Toxicity;
+﻿using Metropolis.Analyzers.Toxicity;
 using Metropolis.Domain;
-using System;
 
-namespace Metropolis.Analyzers
+namespace Metropolis.Analyzers.Toxicity
 {
-    public class CSharpToxicityAnalyzer : ToxicityAnalyzer
+    public class JavaToxicityAnalyzer : ToxicityAnalyzer
     {
         //class level thresholds
         private const int ThresholdLinesOfCode = 500;
@@ -15,10 +13,12 @@ namespace Metropolis.Analyzers
         private const int ThresholdNumberOfMethods = 20;
         // method level thresholds
         private const int ThresholdMethodLength = 30;
-        private const int thresholdCyclomaticComplexity = 20;
+        private const int thresholdCyclomaticComplexity = 15;
 
         public override ToxicityScore CalculateToxicity(Class classToScore)
         {
+            //TODO: replace with CheckStyle data sources...there are more than C#
+
             // Class Level Toxicity
             var linesOfCode = ComputeToxicity(classToScore.LinesOfCode, ThresholdLinesOfCode);
             var classCoupling = ComputeToxicity(classToScore.ClassCoupling, ThresholdClassCoupling);

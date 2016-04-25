@@ -1,5 +1,4 @@
 using System;
-using Metropolis.Analyzers;
 using Metropolis.Camera;
 using Metropolis.Domain;
 using Metropolis.Persistence;
@@ -9,6 +8,7 @@ using CsvHelper;
 using System.IO;
 using Metropolis.Parsers.XmlParsers;
 using Metropolis.Parsers.XmlParsers.CheckStyles;
+using Metropolis.Analyzers.Toxicity;
 
 namespace Metropolis
 {

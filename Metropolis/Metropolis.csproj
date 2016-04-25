@@ -67,11 +67,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Analyzers\CSharpToxicityAnalyzer.cs" />
-    <Compile Include="Analyzers\JavascriptToxicityAnalyzer.cs" />
+    <Compile Include="Analyzers\Toxicity\CSharpToxicityAnalyzer.cs" />
+    <Compile Include="Analyzers\Toxicity\JavascriptToxicityAnalyzer.cs" />
     <Compile Include="Analyzers\ICodebaseAnalyzer.cs" />
-    <Compile Include="Analyzers\JavaToxicityAnalyzer.cs" />
-    <Compile Include="Analyzers\ToxicityAnalyzer.cs" />
+    <Compile Include="Analyzers\Toxicity\JavaToxicityAnalyzer.cs" />
+    <Compile Include="Analyzers\Toxicity\ToxicityAnalyzer.cs" />
     <Compile Include="Domain\Camera\CameraMovement.cs" />
     <Compile Include="ClassInformationFacade.cs" />
     <Compile Include="Domain\Class.cs" />
