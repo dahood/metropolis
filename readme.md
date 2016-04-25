@@ -74,4 +74,6 @@ Metropolis is licensed under BSD (see LICENSE).
 Metropolis depends on:
 
 * CSVHelper (Dual licensing under MS-PL and Apache 2.0) - http://joshclose.github.io/CsvHelper/
-* Newtonsoft.JSON (The MIT License). - https://github.com/JamesNK/Newtonsoft.Json*
+* Newtonsoft.JSON (The MIT License). - https://github.com/JamesNK/Newtonsoft.Json
+* ESLint (JQuery Foundation) - https://github.com/eslint/eslint
+* Checkstyle (GNU LGPL 2.1) - https://github.com/checkstyle/checkstyle
