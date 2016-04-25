@@ -23,11 +23,12 @@ namespace Metropolis.Analyzers.Toxicity
             var numberOfMethods = ComputeToxicity(classToScore.Members.Count, ThresholdNumberOfMethods);
 
             double cyclomaticComplexity = 0;
+            double methodLength = 0;
             // Method Level Toxicity
             foreach (var method in classToScore.Members)
             {
                 cyclomaticComplexity += ComputeToxicity(method.CylomaticComplexity, thresholdCyclomaticComplexity);
-                linesOfCode += ComputeToxicity(method.LinesOfCode, ThresholdMethodLength);
+                methodLength += ComputeToxicity(method.LinesOfCode, ThresholdMethodLength);
             }
 
             // Rationalize
@@ -35,12 +36,13 @@ namespace Metropolis.Analyzers.Toxicity
             score.LinesOfCode = Rationalize(linesOfCode);
             score.ClassCoupling = Rationalize(classCoupling);
             score.DepthOfInheritance = Rationalize(depthOfInheritance * DepthOfInheritanceFactor);
+
             score.NumberOfMethods = Rationalize(numberOfMethods);
+            score.MethodLength = Rationalize(methodLength);
             score.CyclomaticComplexity = Rationalize(cyclomaticComplexity);
 
-            score.Toxicity = score.LinesOfCode + score.ClassCoupling +
-                             score.DepthOfInheritance + score.NumberOfMethods +
-                             score.CyclomaticComplexity;
+            score.Toxicity = score.LinesOfCode + score.ClassCoupling + score.DepthOfInheritance + 
+                             score.NumberOfMethods + score.MethodLength + score.CyclomaticComplexity;
 
             return score;
         }
