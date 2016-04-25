@@ -235,6 +235,12 @@ namespace Metropolis
             searchText.Text = string.Empty;
         }
 
+        private void RunCSharpAnalzer(object sender, RoutedEventArgs e)
+        {
+            workspaceProvider.RunCSharpToxicity();
+            DisplayWorkspaceDetails();
+        }
+
         private void RunJavaAnalzer(object sender, RoutedEventArgs e)
         {
             workspaceProvider.RunJavaToxicity();

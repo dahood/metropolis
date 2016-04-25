@@ -8,7 +8,7 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsL
     {
         private readonly Regex nameRegex = new Regex("'",RegexOptions.IgnorePatternWhitespace|RegexOptions.Compiled);
 
-        public override string Source => "eslint.rules.complexity";
+        public override string Source => EslintSources.Complexity;
 
         public EsLintComplexityParser() : base(IntRegex)
         {

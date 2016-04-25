@@ -16,7 +16,8 @@ namespace Test.Metropolis.Parsers.CsvParsers
 
             var codeBase = ParseUsingData(new[] { Heading, line });
 
-            var expected = new Class(@"C:\projects\shaw-commerce\j2ee-apps\shaw.ear\shaw.war\builder\src\js\shaw", "0.init.js") {LinesOfCode = 1733};
+            var expected = new Class(@"C:\projects\shaw-commerce\j2ee-apps\shaw.ear\shaw.war\builder\src\js\shaw", "0.init.js")
+                                { LinesOfCode = 1733};
 
             AssertHasOneClassEqualTo(expected, codeBase);
         }

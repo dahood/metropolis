@@ -84,6 +84,7 @@
     <Compile Include="Domain\Project.cs" />
     <Compile Include="Domain\ProjectAssembler.cs" />
     <Compile Include="Analyzers\Toxicity\ToxicityScore.cs" />
+    <Compile Include="Domain\RepositorySourceType.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="Parsers\CsvParsers\MetricsReloadedMethodParser.cs" />
     <Compile Include="Parsers\CsvParsers\TypeConverters\Sloc\SourceLinesOfCodeClassConverter.cs" />
     <Compile Include="Parsers\CsvParsers\TypeConverters\Sloc\SourceLinesOfCodeNamespaceConverter.cs" />
+    <Compile Include="Parsers\XmlParsers\CheckStyles\CheckStylesMemberParsers\EsLint\EslintSources.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\CheckStylesMemberParsers\PuppyCrawl\PuppyCrawlAnonymousInnerClassLenthParser.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\CheckStylesMemberParsers\PuppyCrawl\PuppyCrawlBooleanExpressionComplexityParser.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\CheckStylesMemberParsers\PuppyCrawl\PuppyCrawlClassDataAbstractionCouplingParser.cs" />
@@ -129,6 +131,7 @@
     <Compile Include="Parsers\XmlParsers\CheckStyles\CheckStylesMemberParsers\PuppyCrawl\PuppyCrawlDefaultCaseParser.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\CheckStylesMemberParsers\PuppyCrawl\PuppyCrawlLinesOfCodeParser.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\CheckStylesMemberParsers\PuppyCrawl\PuppyCrawlNumberOfParametersParser.cs" />
+    <Compile Include="Parsers\XmlParsers\CheckStyles\CheckStylesMemberParsers\PuppyCrawl\PuppyCrawlSources.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\CheckStylesMemberParsers\PuppyCrawl\PupyyCrawlNestedIfDepthParser.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\CheckStylesMemberParsers\PuppyCrawl\PupyyCrawlNestedTryDepthParser.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\EsLintCheckStylesClassBuilder.cs" />
@@ -151,7 +154,6 @@
     <Compile Include="Parsers\XmlParsers\MetricHandlers\DepthOfInheritanceParser.cs" />
     <Compile Include="Parsers\XmlParsers\MetricHandlers\IJavaMetricParser.cs" />
     <Compile Include="Parsers\XmlParsers\MetricHandlers\MethodLineParser.cs" />
-    <Compile Include="Parsers\XmlParsers\MetricItem.cs" />
     <Compile Include="Parsers\XmlParsers\XmlClassParser.cs" />
     <Compile Include="Utilities\Clock.cs" />
     <Compile Include="WorkspaceProvider.cs" />

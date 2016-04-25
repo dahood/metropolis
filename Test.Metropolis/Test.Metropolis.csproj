@@ -62,11 +62,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Analyzers\ToxicityAnalyzerTest.cs" />
+    <Compile Include="Domain\ClassTest.cs" />
+    <Compile Include="Domain\CodeBaseTest.cs" />
     <Compile Include="Domain\CodeGraphTest.cs" />
     <Compile Include="Domain\ProjectAssemblerTest.cs" />
     <Compile Include="Domain\SerializableTests.cs" />
+    <Compile Include="Extensions\DateTimeExtensionsTest.cs" />
+    <Compile Include="Extensions\DictionaryExtensionsTest.cs" />
+    <Compile Include="Extensions\EnumExtensionsTest.cs" />
     <Compile Include="Extensions\LinqExtenstionsTest.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\StringExtensionsTest.cs" />
+    <Compile Include="Extensions\XmlExtensionsTest.cs" />
     <Compile Include="Fixtures\CodeGraphFixture.cs" />
     <Compile Include="Models\LinearScaleTest.cs" />
     <Compile Include="Parsers\CheckStyles\CheckStylesMemberParser\CheckStylesBaseTest.cs" />
@@ -77,11 +84,16 @@
     <Compile Include="Parsers\CsvParsers\MetricsReloadedMethodParserTest.cs" />
     <Compile Include="Parsers\CsvParsers\SourceLinesOfCodeClassParserTest.cs" />
     <Compile Include="Parsers\CsvParsers\TypeConverters\CsvTypeConverterTests.cs" />
+    <Compile Include="Parsers\CsvParsers\VisualStudioMetricsParserTest.cs" />
     <Compile Include="Parsers\JavaMetricsHelper.cs" />
     <Compile Include="Parsers\TestToxicityParser.cs" />
     <Compile Include="Parsers\XmlClassParserTest.cs" />
     <Compile Include="Persistence\ProjectRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Validate.cs" />
+    <Compile Include="Utilities\Validation.cs" />
+    <Compile Include="Utilities\ValidationException.cs" />
+    <Compile Include="Utilities\ValidationExtension.cs" />
     <Compile Include="WaitCursor.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -97,7 +109,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Parsers\XmlParsers\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

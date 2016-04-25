@@ -5,7 +5,8 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsL
 {
     public class EsLintNumberOfStatmentsParser : MemberParserBase
     {
-        public override string Source => "eslint.rules.max-statements";
+        public override string Source => EslintSources.MemberNumberOfStatements;
+
         public EsLintNumberOfStatmentsParser() : base("[()]")
         {
         }

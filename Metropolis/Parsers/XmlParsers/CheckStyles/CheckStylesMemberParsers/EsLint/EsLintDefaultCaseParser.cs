@@ -4,7 +4,7 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsL
 {
     public class EsLintDefaultCaseParser : MemberParserBase
     {
-        public override string Source => "eslint.rules.default-case";
+        public override string Source => EslintSources.DefaultCase;
         
         public override void Parse(Member member, CheckStylesItem item)
         {

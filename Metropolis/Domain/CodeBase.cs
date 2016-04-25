@@ -6,6 +6,7 @@ namespace Metropolis.Domain
     public class CodeBase
     {
         public string Name { get; set; }
+        public RepositorySourceType SourceType { get; set; }
         public CodeGraph Graph { get; }
         public List<Class> AllClasses => Graph.AllClasses;
 
@@ -13,10 +14,11 @@ namespace Metropolis.Domain
         {
         }
 
-        public CodeBase(string name, CodeGraph graph)
+        public CodeBase(string name, CodeGraph graph, RepositorySourceType sourceType = RepositorySourceType.CSharp)
         {
             Name = name;
             Graph = graph;
+            SourceType = sourceType;
         }
 
         public void Enrich(CodeGraph enricher)

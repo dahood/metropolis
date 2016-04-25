@@ -1,7 +1,6 @@
 ﻿using CsvHelper.Configuration;
 using Metropolis.Parsers.CsvParsers.TypeConverters;
 using Metropolis.Parsers.CsvParsers.TypeConverters.Checkstyles;
-using Metropolis.Parsers.CsvParsers.TypeConverters.MetricsReloaded;
 
 namespace Metropolis.Parsers.CsvParsers
 {

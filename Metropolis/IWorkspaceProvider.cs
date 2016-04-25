@@ -15,6 +15,7 @@ namespace Metropolis
         void LoadEclipseMetrics2();
         void LoadMetricsReloadedMethods();
         void LoadMetricsReloadedClasses();
+        void RunCSharpToxicity();
         void RunJavaToxicity();
         void RunJavascriptToxicity();
         void RunCsvExport();

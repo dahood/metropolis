@@ -6,7 +6,7 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.Pup
 {
     public class PuppyCrawlNumberOfParametersParser : MemberParserBase
     {
-        public override string Source => "com.puppycrawl.tools.checkstyle.checks.sizes.ParameterNumberCheck";
+        public override string Source => PuppyCrawlSources.NumberOfParameters;
 
         public PuppyCrawlNumberOfParametersParser() : base("[found|)]")
         {

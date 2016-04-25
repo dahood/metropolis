@@ -5,7 +5,7 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.Pup
 {
     public class PupyyCrawlNestedIfDepthParser : MemberParserBase
     {
-        public override string Source => "com.puppycrawl.tools.checkstyle.checks.coding.NestedIfDepth";
+        public override string Source => PuppyCrawlSources.NestedIfDepth;
         
         public override void Parse(Member member, CheckStylesItem item)
         {

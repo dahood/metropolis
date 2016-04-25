@@ -5,7 +5,7 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.Pup
 {
     public class PuppyCrawlBooleanExpressionComplexityParser : MemberParserBase
     {
-        public override string Source => "com.puppycrawl.tools.checkstyle.checks.metrics.BooleanExpressionComplexityCheck";
+        public override string Source => PuppyCrawlSources.BooleanExpressionComplexity;
         
         public override void Parse(Member member, CheckStylesItem item)
         {

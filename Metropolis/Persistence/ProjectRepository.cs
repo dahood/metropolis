@@ -13,6 +13,7 @@ namespace Metropolis.Persistence
         {
             var project = ProjectAssembler.Assemble(codebase.Graph);
             project.Name = codebase.Name;
+            project.SourceCodeLanguage = codebase.SourceType.ToString();
             var json = JsonConvert.SerializeObject(project);
             File.WriteAllText(fileName, json);
         }
@@ -38,7 +39,8 @@ namespace Metropolis.Persistence
         private static CodeBase CreateCodeBase(string json)
         {
             var project = JsonConvert.DeserializeObject<Project>(json);
-            return new CodeBase(project.Name, ProjectAssembler.Disassemble(project));
+            var sourceType = (RepositorySourceType) Enum.Parse(typeof(RepositorySourceType), project.SourceCodeLanguage);
+            return new CodeBase(project.Name, ProjectAssembler.Disassemble(project), sourceType);
         }
 
         public CodeBase LoadDefault()

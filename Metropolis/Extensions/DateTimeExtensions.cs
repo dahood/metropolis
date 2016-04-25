@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Metropolis.Extensions
 {
@@ -11,6 +7,13 @@ namespace Metropolis.Extensions
         public static DateTime TruncateMilliseconds(this DateTime dateTime)
         {
             return dateTime.AddTicks(-(dateTime.Ticks%TimeSpan.TicksPerSecond));
+        }
+
+        public static bool EqualsWithin(this DateTime date1, DateTime date2, double withinMillis)
+        {
+            var result = date1 - date2;
+
+            return (Math.Abs(result.TotalMilliseconds) < withinMillis);
         }
     }
 }

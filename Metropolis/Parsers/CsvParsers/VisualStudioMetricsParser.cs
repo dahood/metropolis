@@ -16,13 +16,12 @@ namespace Metropolis.Parsers.CsvParsers
 
             var visualStudioCsvLineItems = lines as VisualStudioCsvLineItem[] ?? lines.ToArray();
             var allTypes = visualStudioCsvLineItems.Where(x => x.Scope == "Type");
-
-            // ReSharper disable once LoopCanBeConvertedToQuery
+            
             foreach (var type in allTypes)
             {
                 var methodsOfType = CollectMethods(visualStudioCsvLineItems, type).ToList();
 
-                var classToAdd = new Class(type.Namespace, type.Type, methodsOfType.Count(), 
+                var classToAdd = new Class(type.Namespace, type.Type, methodsOfType.Count, 
                     type.LinesOfCode, type.CyclomaticComplexity, type.DepthOfInheritance, type.ClassCoupling);
 
                 classToAdd.AddMember(methodsOfType.Select(x =>

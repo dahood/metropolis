@@ -1,40 +1,53 @@
 Scope,Project,Namespace,Type,Member,Maintainability Index,Cyclomatic Complexity,Depth of Inheritance,Class Coupling,Lines of Code
-Project,Metropolis (Debug), , , ,84,355,9,144,597
-Namespace,Metropolis (Debug),Metropolis, , ,90,61,9,61,112
+Project,Metropolis (Debug), , , ,84,868,9,299,1316
+Namespace,Metropolis (Debug),Metropolis, , ,91,137,9,97,199
 Type,Metropolis (Debug),Metropolis,App, ,100,1,3,1,1
 Member,Metropolis (Debug),Metropolis,App,App(),100,1,,1,1
-Type,Metropolis (Debug),Metropolis,Canvas, ,76,38,9,46,82
+Type,Metropolis (Debug),Metropolis,Canvas, ,81,46,9,56,97
 Member,Metropolis (Debug),Metropolis,Canvas,"AboutMetropolis(object, RoutedEventArgs) : void",92,1,,2,1
-Member,Metropolis (Debug),Metropolis,Canvas,Canvas(),57,2,,12,15
+Member,Metropolis (Debug),Metropolis,Canvas,Canvas(),61,1,,9,12
 Member,Metropolis (Debug),Metropolis,Canvas,"ChangeCameraSettings(object, RoutedPropertyChangedEventArgs<double>) : void",88,1,,4,1
+Member,Metropolis (Debug),Metropolis,Canvas,ChangeLayout(AbstractLayout) : void,81,1,,1,3
+Member,Metropolis (Debug),Metropolis,Canvas,"clearSearchButton_Click(object, RoutedEventArgs) : void",95,1,,2,1
+Member,Metropolis (Debug),Metropolis,Canvas,DisplayWorkspaceDetails() : void,68,1,,5,5
 Member,Metropolis (Debug),Metropolis,Canvas,GetCamera() : PerspectiveCamera,87,1,,2,2
-Member,Metropolis (Debug),Metropolis,Canvas,GetFileName(string) : string,77,2,,4,3
 Member,Metropolis (Debug),Metropolis,Canvas,"HandleMouseWheel(object, MouseWheelEventArgs) : void",81,2,,4,2
-Member,Metropolis (Debug),Metropolis,Canvas,HookupEventHandlers() : void,79,1,,5,3
+Member,Metropolis (Debug),Metropolis,Canvas,HookupEventHandlers() : void,87,1,,2,2
+Member,Metropolis (Debug),Metropolis,Canvas,InitializeModel() : void,82,1,,3,2
 Member,Metropolis (Debug),Metropolis,Canvas,Layout.get() : AbstractLayout,98,1,,1,1
-Member,Metropolis (Debug),Metropolis,Canvas,"LoadProject(object, RoutedEventArgs) : void",85,2,,2,2
-Member,Metropolis (Debug),Metropolis,Canvas,LoadProject(string) : void,67,1,,5,6
-Member,Metropolis (Debug),Metropolis,Canvas,"LoadToxicity(object, RoutedEventArgs) : void",78,2,,3,3
-Member,Metropolis (Debug),Metropolis,Canvas,"LoadVisualStudioMetrics(object, RoutedEventArgs) : void",78,2,,3,3
+Member,Metropolis (Debug),Metropolis,Canvas,ListenForLayoutChanges() : void,69,4,,7,6
+Member,Metropolis (Debug),Metropolis,Canvas,"LoadCheckStyles(object, RoutedEventArgs) : void",89,1,,2,2
+Member,Metropolis (Debug),Metropolis,Canvas,LoadDefaultProject() : void,89,1,,1,2
+Member,Metropolis (Debug),Metropolis,Canvas,"LoadEclipseMetrics2(object, RoutedEventArgs) : void",89,1,,2,2
+Member,Metropolis (Debug),Metropolis,Canvas,"LoadEsLintCheckStyles(object, RoutedEventArgs) : void",89,1,,2,2
+Member,Metropolis (Debug),Metropolis,Canvas,"LoadMetricsReloadedClasses(object, RoutedEventArgs) : void",89,1,,2,2
+Member,Metropolis (Debug),Metropolis,Canvas,"LoadMetricsReloadedMethods(object, RoutedEventArgs) : void",89,1,,2,2
+Member,Metropolis (Debug),Metropolis,Canvas,"LoadProject(object, RoutedEventArgs) : void",89,1,,2,2
+Member,Metropolis (Debug),Metropolis,Canvas,"LoadSourceLinesOfCode(object, RoutedEventArgs) : void",73,1,,7,4
+Member,Metropolis (Debug),Metropolis,Canvas,"LoadToxicity(object, RoutedEventArgs) : void",89,1,,2,2
+Member,Metropolis (Debug),Metropolis,Canvas,"LoadVisualStudioMetrics(object, RoutedEventArgs) : void",89,1,,2,2
 Member,Metropolis (Debug),Metropolis,Canvas,Model.get() : Model3DGroup,98,1,,1,1
-Member,Metropolis (Debug),Metropolis,Canvas,"NewProject(object, RoutedEventArgs) : void",84,1,,4,2
+Member,Metropolis (Debug),Metropolis,Canvas,"NewProject(object, RoutedEventArgs) : void",83,1,,2,3
 Member,Metropolis (Debug),Metropolis,Canvas,"NewVersion(object, RoutedEventArgs) : void",95,1,,2,1
-Member,Metropolis (Debug),Metropolis,Canvas,"OpenFile(Action<string>, string) : void",71,3,,2,6
-Member,Metropolis (Debug),Metropolis,Canvas,"Parse(IClassParser, string) : void",70,2,,2,6
-Member,Metropolis (Debug),Metropolis,Canvas,Renderlayout() : void,76,2,,4,4
+Member,Metropolis (Debug),Metropolis,Canvas,Renderlayout() : void,75,2,,4,4
 Member,Metropolis (Debug),Metropolis,Canvas,"ResetCamera(object, RoutedEventArgs) : void",89,1,,2,2
-Member,Metropolis (Debug),Metropolis,Canvas,"SaveProject(object, RoutedEventArgs) : void",66,3,,9,7
-Member,Metropolis (Debug),Metropolis,Canvas,SetClassInformation(string) : void,95,1,,1,1
+Member,Metropolis (Debug),Metropolis,Canvas,"RunCSharpAnalzer(object, RoutedEventArgs) : void",89,1,,2,2
+Member,Metropolis (Debug),Metropolis,Canvas,"RunCsvExport(object, RoutedEventArgs) : void",98,1,,2,1
+Member,Metropolis (Debug),Metropolis,Canvas,"RunJavaAnalzer(object, RoutedEventArgs) : void",89,1,,2,2
+Member,Metropolis (Debug),Metropolis,Canvas,"RunJavascriptAnalzer(object, RoutedEventArgs) : void",89,1,,2,2
+Member,Metropolis (Debug),Metropolis,Canvas,"SaveProject(object, RoutedEventArgs) : void",92,1,,3,1
+Member,Metropolis (Debug),Metropolis,Canvas,"searchSuggestions_SelectionChanged(object, SelectionChangedEventArgs) : void",79,2,,5,3
+Member,Metropolis (Debug),Metropolis,Canvas,"searchText_TextChanged(object, TextChangedEventArgs) : void",65,3,,11,7
+Member,Metropolis (Debug),Metropolis,Canvas,SetClassInformation(string) : void,84,1,,4,2
 Member,Metropolis (Debug),Metropolis,Canvas,SetSliders() : void,76,1,,2,4
-Member,Metropolis (Debug),Metropolis,Canvas,"ShowCityLayout(object, RoutedEventArgs) : void",86,1,,3,2
-Member,Metropolis (Debug),Metropolis,Canvas,"ShowSquareLayout(object, RoutedEventArgs) : void",86,1,,3,2
 Member,Metropolis (Debug),Metropolis,Canvas,"Shutdown(object, RoutedEventArgs) : void",100,1,,2,1
 Member,Metropolis (Debug),Metropolis,Canvas,ViewPort.get() : Viewport3D,98,1,,1,1
-Type,Metropolis (Debug),Metropolis,ClassInformationFacade, ,75,6,1,13,16
+Type,Metropolis (Debug),Metropolis,ClassInformationFacade, ,75,7,1,14,19
 Member,Metropolis (Debug),Metropolis,ClassInformationFacade,ClassInformationFacade(IDisplayClassInformation),77,1,,3,4
 Member,Metropolis (Debug),Metropolis,ClassInformationFacade,ClearDisplay() : void,86,1,,2,2
 Member,Metropolis (Debug),Metropolis,ClassInformationFacade,Display(GeometryModel3D) : void,69,1,,6,4
 Member,Metropolis (Debug),Metropolis,ClassInformationFacade,"Display(object, MouseButtonEventArgs) : void",71,2,,7,5
+Member,Metropolis (Debug),Metropolis,ClassInformationFacade,DisplayClass(Class) : void,79,1,,5,3
 Member,Metropolis (Debug),Metropolis,ClassInformationFacade,Initialize() : void,94,1,,2,1
 Type,Metropolis (Debug),Metropolis,EmptyHighlight, ,95,4,1,3,3
 Member,Metropolis (Debug),Metropolis,EmptyHighlight,EmptyHighlight(),100,1,,0,1
@@ -55,42 +68,95 @@ Member,Metropolis (Debug),Metropolis,IDisplayClassInformation,ViewPort.get() : V
 Type,Metropolis (Debug),Metropolis,IHighlightModel, ,100,2,0,1,0
 Member,Metropolis (Debug),Metropolis,IHighlightModel,Reset() : void,100,1,,0,0
 Member,Metropolis (Debug),Metropolis,IHighlightModel,Swap(GeometryModel3D) : IHighlightModel,100,1,,1,0
-Namespace,Metropolis (Debug),Metropolis.Analyzers, , ,86,18,1,10,33
-Type,Metropolis (Debug),Metropolis.Analyzers,CSharpToxicityAnalyzer, ,81,3,1,8,5
-Member,Metropolis (Debug),Metropolis.Analyzers,CSharpToxicityAnalyzer,Analyze(List<Class>) : CodeBase,73,2,,7,4
+Type,Metropolis (Debug),Metropolis,ISceneProvider, ,100,9,0,5,0
+Member,Metropolis (Debug),Metropolis,ISceneProvider,GetCamera() : PerspectiveCamera,100,1,,1,0
+Member,Metropolis (Debug),Metropolis,ISceneProvider,Model.get() : Model3DGroup,100,1,,1,0
+Member,Metropolis (Debug),Metropolis,ISceneProvider,MouseLeftButtonDown.add(MouseButtonEventHandler) : void,100,1,,1,0
+Member,Metropolis (Debug),Metropolis,ISceneProvider,MouseLeftButtonDown.remove(MouseButtonEventHandler) : void,100,1,,1,0
+Member,Metropolis (Debug),Metropolis,ISceneProvider,MouseLeftButtonUp.add(MouseButtonEventHandler) : void,100,1,,1,0
+Member,Metropolis (Debug),Metropolis,ISceneProvider,MouseLeftButtonUp.remove(MouseButtonEventHandler) : void,100,1,,1,0
+Member,Metropolis (Debug),Metropolis,ISceneProvider,MouseMove.add(MouseEventHandler) : void,100,1,,1,0
+Member,Metropolis (Debug),Metropolis,ISceneProvider,MouseMove.remove(MouseEventHandler) : void,100,1,,1,0
+Member,Metropolis (Debug),Metropolis,ISceneProvider,ViewPort.get() : Viewport3D,100,1,,1,0
+Type,Metropolis (Debug),Metropolis,IWorkspaceProvider, ,100,18,0,2,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,Create() : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,Load() : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,Load(string) : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,LoadCheckStyles() : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,LoadDefault() : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,LoadEclipseMetrics2() : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,LoadEsLintCheckStyles() : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,LoadMetricsReloadedClasses() : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,LoadMetricsReloadedMethods() : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,LoadSourceLinesOfCode(FileInclusion) : void,100,1,,1,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,LoadToxicity() : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,LoadVisualStudioMetrics() : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,RunCSharpToxicity() : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,RunCsvExport() : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,RunJavascriptToxicity() : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,RunJavaToxicity() : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,Save(string) : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IWorkspaceProvider,Workspace.get() : CodeBase,100,1,,1,0
+Type,Metropolis (Debug),Metropolis,WorkspaceProvider, ,76,40,1,30,69
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,Create() : void,92,1,,3,1
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,GetFileName(string) : string,77,2,,4,3
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,Load() : void,94,1,,1,1
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,Load(string) : void,92,1,,1,1
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,LoadCheckStyles() : void,78,2,,2,3
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,LoadDefault() : void,94,1,,1,1
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,LoadEclipseMetrics2() : void,78,2,,2,3
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,LoadEsLintCheckStyles() : void,78,2,,2,3
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,LoadMetricsReloadedClasses() : void,78,2,,2,3
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,LoadMetricsReloadedMethods() : void,78,2,,2,3
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,LoadSourceLinesOfCode(FileInclusion) : void,71,2,,5,5
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,LoadToxicity() : void,78,2,,2,3
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,LoadVisualStudioMetrics() : void,78,2,,2,3
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,"OpenFile(Action<string>, string) : void",71,3,,2,6
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,"Parse(IClassParser, string) : void",72,2,,2,5
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,RunCSharpToxicity() : void,82,1,,2,2
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,RunCsvExport() : void,62,4,,12,9
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,RunJavascriptToxicity() : void,82,1,,2,2
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,RunJavaToxicity() : void,82,1,,2,2
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,Save(string) : void,66,3,,7,7
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,Workspace.get() : CodeBase,98,1,,1,1
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,Workspace.set(CodeBase) : void,95,1,,1,1
+Member,Metropolis (Debug),Metropolis,WorkspaceProvider,WorkspaceProvider(),92,1,,1,1
+Namespace,Metropolis (Debug),Metropolis.Analyzers, , ,86,10,1,11,15
+Type,Metropolis (Debug),Metropolis.Analyzers,CSharpToxicityAnalyzer, ,81,3,1,9,5
+Member,Metropolis (Debug),Metropolis.Analyzers,CSharpToxicityAnalyzer,Analyze(List<Class>) : CodeBase,73,2,,8,4
 Member,Metropolis (Debug),Metropolis.Analyzers,CSharpToxicityAnalyzer,CSharpToxicityAnalyzer(),100,1,,0,1
 Type,Metropolis (Debug),Metropolis.Analyzers,ICodebaseAnalyzer, ,100,1,0,3,0
 Member,Metropolis (Debug),Metropolis.Analyzers,ICodebaseAnalyzer,Analyze(List<Class>) : CodeBase,100,1,,3,0
-Type,Metropolis (Debug),Metropolis.Analyzers,SimpleAnalyzer, ,85,2,1,5,4
-Member,Metropolis (Debug),Metropolis.Analyzers,SimpleAnalyzer,Analyze(List<Class>) : CodeBase,79,1,,4,3
-Member,Metropolis (Debug),Metropolis.Analyzers,SimpleAnalyzer,SimpleAnalyzer(),100,1,,0,1
-Type,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore, ,80,12,1,6,24
-Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,Caculate() : void,62,2,,5,8
-Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,ClassCoupling.get() : int,94,1,,0,1
-Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,"ComputeToxicity(int, int) : int",79,1,,1,3
-Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,CyclomaticComplexity.get() : int,94,1,,0,1
-Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,DepthOfInheritance.get() : int,92,1,,0,1
-Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,LinesOfCode.get() : int,94,1,,0,1
-Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,NumberOfMethods.get() : int,94,1,,0,1
-Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,Rationalize(double) : int,78,2,,1,4
-Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,Toxicity.get() : int,88,1,,0,1
-Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,ToxicityScore(Class),82,1,,1,3
-Namespace,Metropolis (Debug),Metropolis.Camera, , ,85,32,1,24,47
+Type,Metropolis (Debug),Metropolis.Analyzers,JavascriptToxicityAnalyzer, ,81,3,1,9,5
+Member,Metropolis (Debug),Metropolis.Analyzers,JavascriptToxicityAnalyzer,Analyze(List<Class>) : CodeBase,73,2,,8,4
+Member,Metropolis (Debug),Metropolis.Analyzers,JavascriptToxicityAnalyzer,JavascriptToxicityAnalyzer(),100,1,,0,1
+Type,Metropolis (Debug),Metropolis.Analyzers,JavaToxicityAnalyzer, ,81,3,1,9,5
+Member,Metropolis (Debug),Metropolis.Analyzers,JavaToxicityAnalyzer,Analyze(List<Class>) : CodeBase,73,2,,8,4
+Member,Metropolis (Debug),Metropolis.Analyzers,JavaToxicityAnalyzer,JavaToxicityAnalyzer(),100,1,,0,1
+Namespace,Metropolis (Debug),Metropolis.Analyzers.Toxicity, , ,91,15,2,7,26
+Type,Metropolis (Debug),Metropolis.Analyzers.Toxicity,CsharpToxicityScore, ,95,1,2,2,1
+Member,Metropolis (Debug),Metropolis.Analyzers.Toxicity,CsharpToxicityScore,CsharpToxicityScore(Class),95,1,,2,1
+Type,Metropolis (Debug),Metropolis.Analyzers.Toxicity,JavascriptToxicityScore, ,95,1,2,2,1
+Member,Metropolis (Debug),Metropolis.Analyzers.Toxicity,JavascriptToxicityScore,JavascriptToxicityScore(Class),95,1,,2,1
+Type,Metropolis (Debug),Metropolis.Analyzers.Toxicity,JavaToxicityScore, ,95,1,2,2,1
+Member,Metropolis (Debug),Metropolis.Analyzers.Toxicity,JavaToxicityScore,JavaToxicityScore(Class),95,1,,2,1
+Type,Metropolis (Debug),Metropolis.Analyzers.Toxicity,ToxicityScore, ,80,12,1,6,23
+Member,Metropolis (Debug),Metropolis.Analyzers.Toxicity,ToxicityScore,Calculate() : void,62,2,,5,8
+Member,Metropolis (Debug),Metropolis.Analyzers.Toxicity,ToxicityScore,ClassCoupling.get() : double,94,1,,0,1
+Member,Metropolis (Debug),Metropolis.Analyzers.Toxicity,ToxicityScore,"ComputeToxicity(int, int) : double",79,1,,1,3
+Member,Metropolis (Debug),Metropolis.Analyzers.Toxicity,ToxicityScore,CyclomaticComplexity.get() : double,94,1,,0,1
+Member,Metropolis (Debug),Metropolis.Analyzers.Toxicity,ToxicityScore,DepthOfInheritance.get() : double,92,1,,0,1
+Member,Metropolis (Debug),Metropolis.Analyzers.Toxicity,ToxicityScore,LinesOfCode.get() : double,94,1,,0,1
+Member,Metropolis (Debug),Metropolis.Analyzers.Toxicity,ToxicityScore,NumberOfMethods.get() : double,94,1,,0,1
+Member,Metropolis (Debug),Metropolis.Analyzers.Toxicity,ToxicityScore,Rationalize(double) : double,85,2,,1,2
+Member,Metropolis (Debug),Metropolis.Analyzers.Toxicity,ToxicityScore,Toxicity.get() : double,88,1,,0,1
+Member,Metropolis (Debug),Metropolis.Analyzers.Toxicity,ToxicityScore,"ToxicityScore(Class, int)",77,1,,1,4
+Namespace,Metropolis (Debug),Metropolis.Camera, , ,80,23,1,22,47
 Type,Metropolis (Debug),Metropolis.Camera,CameraMovement, ,76,4,1,4,12
 Member,Metropolis (Debug),Metropolis.Camera,CameraMovement,CameraMovement(ISceneProvider),72,1,,4,5
 Member,Metropolis (Debug),Metropolis.Camera,CameraMovement,ChangeFieldOfView(double) : double,87,1,,0,2
 Member,Metropolis (Debug),Metropolis.Camera,CameraMovement,"ChangePosition(double, double, double) : Point3D",80,1,,1,2
 Member,Metropolis (Debug),Metropolis.Camera,CameraMovement,"Update(double, double, double, double) : void",77,1,,3,3
-Type,Metropolis (Debug),Metropolis.Camera,ISceneProvider, ,100,9,0,5,0
-Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,GetCamera() : PerspectiveCamera,100,1,,1,0
-Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,Model.get() : Model3DGroup,100,1,,1,0
-Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,MouseLeftButtonDown.add(MouseButtonEventHandler) : void,100,1,,1,0
-Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,MouseLeftButtonDown.remove(MouseButtonEventHandler) : void,100,1,,1,0
-Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,MouseLeftButtonUp.add(MouseButtonEventHandler) : void,100,1,,1,0
-Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,MouseLeftButtonUp.remove(MouseButtonEventHandler) : void,100,1,,1,0
-Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,MouseMove.add(MouseEventHandler) : void,100,1,,1,0
-Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,MouseMove.remove(MouseEventHandler) : void,100,1,,1,0
-Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,ViewPort.get() : Viewport3D,100,1,,1,0
 Type,Metropolis (Debug),Metropolis.Camera,RotationalMovement, ,80,17,1,15,31
 Member,Metropolis (Debug),Metropolis.Camera,RotationalMovement,"CalculateXPositionChange(Point, double) : double",80,3,,2,2
 Member,Metropolis (Debug),Metropolis.Camera,RotationalMovement,"CalculateYPositionChange(Point, double) : double",80,3,,2,2
@@ -107,12 +173,15 @@ Member,Metropolis (Debug),Metropolis.Camera,RotationalMovement,ToString() : stri
 Type,Metropolis (Debug),Metropolis.Camera,WaitCursor, ,85,2,1,4,4
 Member,Metropolis (Debug),Metropolis.Camera,WaitCursor,Dispose() : void,98,1,,2,1
 Member,Metropolis (Debug),Metropolis.Camera,WaitCursor,WaitCursor(),80,1,,3,3
-Namespace,Metropolis (Debug),Metropolis.Domain, , ,90,125,1,20,162
-Type,Metropolis (Debug),Metropolis.Domain,Class, ,89,36,1,6,50
-Member,Metropolis (Debug),Metropolis.Domain,Class,AddMember(IEnumerable<Member>) : void,95,1,,3,1
+Namespace,Metropolis (Debug),Metropolis.Domain, , ,89,184,1,29,236
+Type,Metropolis (Debug),Metropolis.Domain,Class, ,81,46,1,11,73
+Member,Metropolis (Debug),Metropolis.Domain,Class,AddMember(IEnumerable<Member>) : void,94,1,,3,1
 Member,Metropolis (Debug),Metropolis.Domain,Class,AddMeta(IEnumerable<ClassVersionInfo>) : void,95,1,,3,1
 Member,Metropolis (Debug),Metropolis.Domain,Class,AddMeta(params ClassVersionInfo[]) : void,92,1,,2,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,Apply(Class) : void,62,3,,3,8
+Member,Metropolis (Debug),Metropolis.Domain,Class,ApplyMembers(IEnumerable<Member>) : void,84,1,,3,2
 Member,Metropolis (Debug),Metropolis.Domain,Class,"Class(string, string)",68,2,,3,6
+Member,Metropolis (Debug),Metropolis.Domain,Class,"Class(string, string, IEnumerable<Member>)",68,2,,5,6
 Member,Metropolis (Debug),Metropolis.Domain,Class,"Class(string, string, int, int, int)",77,1,,0,4
 Member,Metropolis (Debug),Metropolis.Domain,Class,"Class(string, string, int, int, int, int, int)",71,1,,0,6
 Member,Metropolis (Debug),Metropolis.Domain,Class,ClassCoupling.get() : int,98,1,,0,1
@@ -124,9 +193,12 @@ Member,Metropolis (Debug),Metropolis.Domain,Class,DepthOfInheritance.set(int) : 
 Member,Metropolis (Debug),Metropolis.Domain,Class,Equals(Class) : bool,81,2,,0,2
 Member,Metropolis (Debug),Metropolis.Domain,Class,Equals(object) : bool,72,4,,1,5
 Member,Metropolis (Debug),Metropolis.Domain,Class,GetHashCode() : int,81,3,,0,2
+Member,Metropolis (Debug),Metropolis.Domain,Class,GetMemberByName(string) : Member,73,2,,4,4
 Member,Metropolis (Debug),Metropolis.Domain,Class,LinesOfCode.get() : int,98,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,Class,LinesOfCode.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,Matches(Class) : bool,81,1,,0,2
 Member,Metropolis (Debug),Metropolis.Domain,Class,Members.get() : List<Member>,98,1,,2,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,Members.set(List<Member>) : void,95,1,,2,1
 Member,Metropolis (Debug),Metropolis.Domain,Class,Meta.get() : IEnumerable<ClassVersionInfo>,98,1,,3,1
 Member,Metropolis (Debug),Metropolis.Domain,Class,Meta.set(IEnumerable<ClassVersionInfo>) : void,92,1,,4,1
 Member,Metropolis (Debug),Metropolis.Domain,Class,Name.get() : string,98,1,,0,1
@@ -136,9 +208,9 @@ Member,Metropolis (Debug),Metropolis.Domain,Class,NumberOfMethods.get() : int,98
 Member,Metropolis (Debug),Metropolis.Domain,Class,NumberOfMethods.set(int) : void,95,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,Class,QualifiedName.get() : string,98,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,Class,ToString() : string,89,1,,0,2
-Member,Metropolis (Debug),Metropolis.Domain,Class,Toxicity.get() : int,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Domain,Class,Toxicity.set(int) : void,95,1,,0,1
-Type,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo, ,92,7,1,1,10
+Member,Metropolis (Debug),Metropolis.Domain,Class,Toxicity.get() : double,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,Toxicity.set(double) : void,95,1,,0,1
+Type,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo, ,92,7,1,2,10
 Member,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo,"ClassVersionInfo(string, string)",77,1,,1,4
 Member,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo,CommitMessage.get() : string,98,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo,CommitMessage.set(string) : void,95,1,,0,1
@@ -146,11 +218,12 @@ Member,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo,FileName.get() : st
 Member,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo,FileName.set(string) : void,95,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo,TimeStamp.get() : DateTime,98,1,,1,1
 Member,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo,TimeStamp.set(DateTime) : void,95,1,,1,1
-Type,Metropolis (Debug),Metropolis.Domain,CodeBase, ,88,17,1,10,20
+Type,Metropolis (Debug),Metropolis.Domain,CodeBase, ,81,24,1,13,28
 Member,Metropolis (Debug),Metropolis.Domain,CodeBase,AllClasses.get() : List<Class>,92,1,,3,1
 Member,Metropolis (Debug),Metropolis.Domain,CodeBase,AverageToxicity() : double,73,3,,4,4
-Member,Metropolis (Debug),Metropolis.Domain,CodeBase,CodeBase(CodeGraph),87,1,,1,2
-Member,Metropolis (Debug),Metropolis.Domain,CodeBase,"CodeBase(string, CodeGraph)",81,1,,1,3
+Member,Metropolis (Debug),Metropolis.Domain,CodeBase,"ByNamespace() : Dictionary<string, IEnumerable<Class>>",66,5,,8,6
+Member,Metropolis (Debug),Metropolis.Domain,CodeBase,CodeBase(CodeGraph),94,1,,1,1
+Member,Metropolis (Debug),Metropolis.Domain,CodeBase,"CodeBase(string, CodeGraph, RepositorySourceType)",77,1,,2,4
 Member,Metropolis (Debug),Metropolis.Domain,CodeBase,Enrich(CodeGraph) : void,94,1,,1,1
 Member,Metropolis (Debug),Metropolis.Domain,CodeBase,Enrich(IEnumerable<Class>) : void,77,3,,6,3
 Member,Metropolis (Debug),Metropolis.Domain,CodeBase,Graph.get() : CodeGraph,98,1,,1,1
@@ -158,43 +231,69 @@ Member,Metropolis (Debug),Metropolis.Domain,CodeBase,LinesOfCode.get() : int,81,
 Member,Metropolis (Debug),Metropolis.Domain,CodeBase,Name.get() : string,98,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,CodeBase,Name.set(string) : void,95,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,CodeBase,NumberOfTypes.get() : int,92,1,,1,1
-Type,Metropolis (Debug),Metropolis.Domain,CodeGraph, ,80,15,1,11,19
+Member,Metropolis (Debug),Metropolis.Domain,CodeBase,SourceType.get() : RepositorySourceType,98,1,,1,1
+Member,Metropolis (Debug),Metropolis.Domain,CodeBase,SourceType.set(RepositorySourceType) : void,95,1,,1,1
+Type,Metropolis (Debug),Metropolis.Domain,CodeGraph, ,80,17,1,12,20
 Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,AllClasses.get() : List<Class>,91,1,,4,1
 Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,AllNamespaces.get() : List<string>,92,1,,3,1
-Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,Apply(Class) : void,71,2,,3,5
+Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,Apply(Class) : void,68,2,,3,6
 Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,CodeGraph(IEnumerable<Class>),76,1,,4,4
 Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,Count.get() : int,94,1,,2,1
 Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,Initialize(IEnumerable<Class>) : void,78,3,,5,3
-Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,MaxLinesOfCode.get() : int,80,3,,5,2
-Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,MinLinesOfCode.get() : int,80,3,,5,2
-Type,Metropolis (Debug),Metropolis.Domain,Member, ,92,10,1,0,15
+Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,MaxLinesOfCode.get() : int,79,4,,6,2
+Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,MinLinesOfCode.get() : int,79,4,,6,2
+Type,Metropolis (Debug),Metropolis.Domain,Member, ,92,28,1,0,33
+Member,Metropolis (Debug),Metropolis.Domain,Member,AnonymousInnerClassLenth.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,AnonymousInnerClassLenth.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,BooleanExpressionComplexity.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,BooleanExpressionComplexity.set(int) : void,95,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,Member,ClassCoupling.get() : int,98,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,Member,ClassCoupling.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,ClassDataAbstractionCoupling.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,ClassDataAbstractionCoupling.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,ClassFanOutComplexity.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,ClassFanOutComplexity.set(int) : void,95,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,Member,CylomaticComplexity.get() : int,98,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,Member,CylomaticComplexity.set(int) : void,95,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,Member,LinesOfCode.get() : int,98,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,Member,LinesOfCode.set(int) : void,95,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,Member,"Member(string, int, int, int)",74,1,,0,5
+Member,Metropolis (Debug),Metropolis.Domain,Member,MissingDefaultCase.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,MissingDefaultCase.set(int) : void,95,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,Member,Name.get() : string,98,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,Member,Name.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,NestedIfDepth.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,NestedIfDepth.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,NestedTryDepth.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,NestedTryDepth.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,NoFallthrough.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,NoFallthrough.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,NumberOfParameters.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,NumberOfParameters.set(int) : void,95,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,Member,ToString() : string,89,1,,0,2
-Type,Metropolis (Debug),Metropolis.Domain,Project, ,94,5,1,2,5
+Type,Metropolis (Debug),Metropolis.Domain,Project, ,94,8,1,2,8
 Member,Metropolis (Debug),Metropolis.Domain,Project,Classes.get() : IEnumerable<SerializableClass>,98,1,,2,1
 Member,Metropolis (Debug),Metropolis.Domain,Project,Classes.set(IEnumerable<SerializableClass>) : void,95,1,,2,1
+Member,Metropolis (Debug),Metropolis.Domain,Project,MetropolisFileVersion.get() : int,98,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,Project,Name.get() : string,98,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,Project,Name.set(string) : void,95,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,Project,Project(),100,1,,0,1
-Type,Metropolis (Debug),Metropolis.Domain,ProjectAssembler, ,85,9,1,9,17
-Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Assemble(Class) : SerializableClass,77,1,,6,2
+Member,Metropolis (Debug),Metropolis.Domain,Project,SourceCodeLanguage.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Project,SourceCodeLanguage.set(string) : void,95,1,,0,1
+Type,Metropolis (Debug),Metropolis.Domain,ProjectAssembler, ,84,11,1,11,21
+Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Assemble(Class) : SerializableClass,76,1,,8,2
 Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Assemble(ClassVersionInfo) : SerializableClassVersionInfo,81,1,,2,2
 Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Assemble(CodeGraph) : Project,83,1,,2,2
 Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Assemble(IEnumerable<Class>) : IEnumerable<SerializableClass>,83,1,,5,2
+Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Assemble(Member) : SerializableMember,78,1,,2,2
 Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Disassemble(IEnumerable<SerializableClass>) : IEnumerable<Class>,83,1,,5,2
 Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Disassemble(Project) : CodeGraph,84,1,,2,2
-Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Disassemble(SerializableClass) : Class,77,1,,6,2
+Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Disassemble(SerializableClass) : Class,76,1,,8,2
 Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Disassemble(SerializableClassVersionInfo) : ClassVersionInfo,83,1,,2,2
+Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Disassemble(SerializableMember) : Member,79,1,,2,2
 Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,ProjectAssembler(),100,1,,0,1
-Type,Metropolis (Debug),Metropolis.Domain,SerializableClass, ,93,19,1,2,19
+Type,Metropolis (Debug),Metropolis.Domain,RepositorySourceType, ,100,0,1,0,0
+Type,Metropolis (Debug),Metropolis.Domain,SerializableClass, ,93,21,1,3,21
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,ClassCoupling.get() : int,98,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,ClassCoupling.set(int) : void,95,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,CyclomaticComplexity.get() : int,98,1,,0,1
@@ -203,6 +302,8 @@ Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,DepthOfInheritance
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,DepthOfInheritance.set(int) : void,95,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,LinesOfCode.get() : int,98,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,LinesOfCode.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,Members.get() : IEnumerable<SerializableMember>,98,1,,2,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,Members.set(IEnumerable<SerializableMember>) : void,95,1,,2,1
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,Meta.get() : IEnumerable<SerializableClassVersionInfo>,98,1,,2,1
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,Meta.set(IEnumerable<SerializableClassVersionInfo>) : void,95,1,,2,1
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,Name.get() : string,98,1,,0,1
@@ -212,8 +313,8 @@ Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,NameSpace.set(stri
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,NumberOfMethods.get() : int,98,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,NumberOfMethods.set(int) : void,95,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,SerializableClass(),100,1,,0,1
-Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,Toxicity.get() : int,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,Toxicity.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,Toxicity.get() : double,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,Toxicity.set(double) : void,95,1,,0,1
 Type,Metropolis (Debug),Metropolis.Domain,SerializableClassVersionInfo, ,94,7,1,1,7
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClassVersionInfo,CommitMessage.get() : string,98,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClassVersionInfo,CommitMessage.set(string) : void,95,1,,0,1
@@ -222,35 +323,108 @@ Member,Metropolis (Debug),Metropolis.Domain,SerializableClassVersionInfo,FileNam
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClassVersionInfo,SerializableClassVersionInfo(),100,1,,0,1
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClassVersionInfo,TimeStamp.get() : DateTime,98,1,,1,1
 Member,Metropolis (Debug),Metropolis.Domain,SerializableClassVersionInfo,TimeStamp.set(DateTime) : void,95,1,,1,1
-Namespace,Metropolis (Debug),Metropolis.Layout, , ,78,35,2,31,106
-Type,Metropolis (Debug),Metropolis.Layout,AbstractLayout, ,74,14,1,23,40
+Type,Metropolis (Debug),Metropolis.Domain,SerializableMember, ,93,15,1,0,15
+Member,Metropolis (Debug),Metropolis.Domain,SerializableMember,ClassCoupling.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableMember,ClassCoupling.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableMember,CylomaticComplexity.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableMember,CylomaticComplexity.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableMember,LinesOfCode.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableMember,LinesOfCode.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableMember,MissingDefaultCase.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableMember,MissingDefaultCase.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableMember,Name.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableMember,Name.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableMember,NoFallthrough.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableMember,NoFallthrough.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableMember,NumberOfParameters.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableMember,NumberOfParameters.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableMember,SerializableMember(),100,1,,0,1
+Namespace,Metropolis (Debug),Metropolis.Extensions, , ,79,65,2,41,112
+Type,Metropolis (Debug),Metropolis.Extensions,DateTimeExtensions, ,83,1,1,2,2
+Member,Metropolis (Debug),Metropolis.Extensions,DateTimeExtensions,TruncateMilliseconds(this DateTime) : DateTime,83,1,,2,2
+Type,Metropolis (Debug),Metropolis.Extensions,DictionaryExtensions, ,77,4,1,4,6
+Member,Metropolis (Debug),Metropolis.Extensions,DictionaryExtensions,"DoWhenItemFound<TKey, Target>(this IDictionary<TKey, Target>, TKey, Action<Target>) : void",82,2,,3,2
+Member,Metropolis (Debug),Metropolis.Extensions,DictionaryExtensions,"FindOrCreate<TKey, Target>(this IDictionary<TKey, Target>, TKey, Func<Target>) : Target",74,2,,3,4
+Type,Metropolis (Debug),Metropolis.Extensions,EnumerableExtensions, ,77,6,1,8,10
+Member,Metropolis (Debug),Metropolis.Extensions,EnumerableExtensions,"Append<T>(this T[], T[]) : T[]",73,1,,2,5
+Member,Metropolis (Debug),Metropolis.Extensions,EnumerableExtensions,"ForEach<T>(this IEnumerable<T>, Action<T>) : void",78,3,,6,3
+Member,Metropolis (Debug),Metropolis.Extensions,EnumerableExtensions,IsNotEmpty<T>(this IEnumerable<T>) : bool,84,2,,3,2
+Type,Metropolis (Debug),Metropolis.Extensions,EnumExtensions, ,71,41,1,26,68
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,GetDescription<T>(this T) : string,66,3,,8,6
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,GetEnumList<T>() : List<T>,79,1,,4,3
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,GetName<T>(this Enum) : string,85,1,,3,2
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,GetSortedList<T>() : IEnumerable<T>,71,4,,8,4
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,GetSortOrder(this Enum) : int,72,2,,6,4
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,IntValue(this Enum) : int,87,1,,3,2
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,ToEnum<T>(this int) : T,84,1,,4,2
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,ToEnum<T>(this long) : T,84,1,,4,2
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,ToEnum<T>(this string) : T,85,1,,4,2
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,ToEnumByDescription<T>(this string) : T,75,2,,3,4
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,ToEnumExact<T>(this IEnumerable<string>) : IEnumerable<T>,83,1,,5,2
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,ToEnumExact<T>(this string) : T,74,2,,5,4
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,"ToEnumExactOrDefault<T>(this string, T) : T",84,2,,2,2
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,ToEnumList<T>(this IEnumerable<string>) : IEnumerable<T>,81,3,,5,2
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,ToNullableEnumExact<T>(this string) : T?,82,2,,4,2
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,"TryParseFromDescription<T>(string, out T) : bool",52,10,,16,18
+Member,Metropolis (Debug),Metropolis.Extensions,EnumExtensions,"TryParseToEnumExact<T>(this string, out T) : bool",65,4,,11,7
+Type,Metropolis (Debug),Metropolis.Extensions,EnumOrderAttribute, ,95,3,2,2,3
+Member,Metropolis (Debug),Metropolis.Extensions,EnumOrderAttribute,EnumOrderAttribute(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Extensions,EnumOrderAttribute,Order.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Extensions,EnumOrderAttribute,Order.set(int) : void,95,1,,0,1
+Type,Metropolis (Debug),Metropolis.Extensions,LinqExtensions, ,65,2,1,5,7
+Member,Metropolis (Debug),Metropolis.Extensions,LinqExtensions,"Batch<T>(this IEnumerable<T>, int) : IEnumerable<IEnumerable<T>>",65,2,,5,7
+Type,Metropolis (Debug),Metropolis.Extensions,NumericExtensions, ,83,1,1,3,2
+Member,Metropolis (Debug),Metropolis.Extensions,NumericExtensions,"Max(this int, params int[]) : int",83,1,,3,2
+Type,Metropolis (Debug),Metropolis.Extensions,StringExtensions, ,83,4,1,3,8
+Member,Metropolis (Debug),Metropolis.Extensions,StringExtensions,AsInt(this string) : int,87,1,,1,2
+Member,Metropolis (Debug),Metropolis.Extensions,StringExtensions,"FormatWith(this string, params object[]) : string",81,1,,2,2
+Member,Metropolis (Debug),Metropolis.Extensions,StringExtensions,IsEmpty(this string) : bool,87,1,,1,2
+Member,Metropolis (Debug),Metropolis.Extensions,StringExtensions,RemoveWhitespace(this string) : string,85,1,,2,2
+Type,Metropolis (Debug),Metropolis.Extensions,XmlExtensions, ,76,3,1,7,6
+Member,Metropolis (Debug),Metropolis.Extensions,XmlExtensions,"AttributeValue(this XElement, string) : string",83,1,,4,2
+Member,Metropolis (Debug),Metropolis.Extensions,XmlExtensions,"HasAttribute(this XElement, string) : bool",73,2,,7,4
+Namespace,Metropolis (Debug),Metropolis.Layout, , ,75,63,2,43,151
+Type,Metropolis (Debug),Metropolis.Layout,AbstractLayout, ,68,24,1,32,72
 Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,AbstractLayout(),92,1,,3,1
 Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,AbstractLayout(),81,1,,4,2
+Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,CalculateWidthAndLength(int) : double[],49,7,,6,26
 Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,"CreateCube(double, double, int, Brush) : Model3D",65,1,,8,8
 Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,"CreateCube(double, double, int, int, Class) : Model3D",68,1,,6,6
-Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,"CreateRectangle(double, double, double, double, Brush) : Model3D",66,1,,8,7
 Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,LookupClass(Model3D) : Class,86,1,,3,2
+Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,LookupModel(Class) : Model3D,71,3,,6,5
 Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,"ModelCity(Model3DGroup, CodeBase) : void",100,1,,2,0
-Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,"RenderSquareBlock(Model3DGroup, CodeGraph, Point3D) : void",89,1,,3,1
-Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,"RenderSquareBlock(Model3DGroup, List<Class>, Point3D, int, int) : void",60,4,,6,9
+Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,"RenderRectangle(Model3DGroup, List<Class>, Point3D, int, int, double, double) : Rect3D",59,4,,7,10
+Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,"RenderRectangularBlock(Model3DGroup, IEnumerable<Class>, Point3D, int, int) : Rect3D",72,1,,7,4
+Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,"RenderSquareBlock(Model3DGroup, IEnumerable<Class>, Point3D, int, int) : Rect3D",72,1,,8,4
 Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,Reset(Model3DGroup) : void,85,1,,5,2
 Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,SetCityLights(Model3DGroup) : void,83,1,,4,2
-Type,Metropolis (Debug),Metropolis.Layout,GoldenRatioLayout, ,55,17,2,16,60
-Member,Metropolis (Debug),Metropolis.Layout,GoldenRatioLayout,CalculateRectangleRatios(int) : int[],48,7,,6,27
+Type,Metropolis (Debug),Metropolis.Layout,CityLayout, ,56,20,2,24,36
+Member,Metropolis (Debug),Metropolis.Layout,CityLayout,CityLayout(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Layout,CityLayout,"GeneratePlots(Dictionary<string, IEnumerable<Class>>) : IEnumerable<Plot>",51,14,,16,15
+Member,Metropolis (Debug),Metropolis.Layout,CityLayout,"ModelCity(Model3DGroup, CodeBase) : void",51,5,,15,20
+Type,Metropolis (Debug),Metropolis.Layout,GoldenRatioLayout, ,59,5,2,11,22
 Member,Metropolis (Debug),Metropolis.Layout,GoldenRatioLayout,GoldenRatioLayout(),100,1,,1,1
 Member,Metropolis (Debug),Metropolis.Layout,GoldenRatioLayout,"ModelCity(Model3DGroup, CodeBase) : void",50,4,,11,21
-Member,Metropolis (Debug),Metropolis.Layout,GoldenRatioLayout,"SetUpData(CodeBase) : Dictionary<string, List<Class>>",59,5,,10,11
 Type,Metropolis (Debug),Metropolis.Layout,MagnetoLayout, ,100,1,1,0,1
 Member,Metropolis (Debug),Metropolis.Layout,MagnetoLayout,MagnetoLayout(),100,1,,0,1
-Type,Metropolis (Debug),Metropolis.Layout,SquaredLayout, ,82,3,2,4,5
-Member,Metropolis (Debug),Metropolis.Layout,SquaredLayout,"ModelCity(Model3DGroup, CodeBase) : void",74,2,,4,4
+Type,Metropolis (Debug),Metropolis.Layout,Plot, ,88,10,1,4,15
+Member,Metropolis (Debug),Metropolis.Layout,Plot,"Adjust(Plot, double) : void",73,2,,2,3
+Member,Metropolis (Debug),Metropolis.Layout,Plot,Bounds.get() : Rect3D,98,1,,1,1
+Member,Metropolis (Debug),Metropolis.Layout,Plot,Bounds.set(Rect3D) : void,95,1,,1,1
+Member,Metropolis (Debug),Metropolis.Layout,Plot,Classes.get() : IEnumerable<Class>,98,1,,2,1
+Member,Metropolis (Debug),Metropolis.Layout,Plot,Name.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Layout,Plot,Plot(),90,1,,1,1
+Member,Metropolis (Debug),Metropolis.Layout,Plot,"Plot(string, IEnumerable<Class>, Rect3D)",77,1,,3,4
+Member,Metropolis (Debug),Metropolis.Layout,Plot,SizeZ.get() : double,91,1,,1,1
+Member,Metropolis (Debug),Metropolis.Layout,Plot,ToString() : string,84,1,,1,2
+Type,Metropolis (Debug),Metropolis.Layout,SquaredLayout, ,81,3,2,5,5
+Member,Metropolis (Debug),Metropolis.Layout,SquaredLayout,"ModelCity(Model3DGroup, CodeBase) : void",72,2,,5,4
 Member,Metropolis (Debug),Metropolis.Layout,SquaredLayout,SquaredLayout(),100,1,,1,1
-Namespace,Metropolis (Debug),Metropolis.Models, , ,77,18,1,9,39
-Type,Metropolis (Debug),Metropolis.Models,BrushFactory, ,68,13,1,2,29
+Namespace,Metropolis (Debug),Metropolis.Models, , ,78,12,1,9,27
+Type,Metropolis (Debug),Metropolis.Models,BrushFactory, ,72,7,1,2,17
 Member,Metropolis (Debug),Metropolis.Models,BrushFactory,BrushFactory(),100,1,,0,1
 Member,Metropolis (Debug),Metropolis.Models,BrushFactory,BrushFactory(),69,1,,2,6
-Member,Metropolis (Debug),Metropolis.Models,BrushFactory,GetBrushForScale(int) : Brush,63,6,,1,12
-Member,Metropolis (Debug),Metropolis.Models,BrushFactory,GetBrushForToxicity(int) : Brush,66,5,,1,10
+Member,Metropolis (Debug),Metropolis.Models,BrushFactory,GetBrushForToxicity(double) : Brush,65,5,,1,10
 Type,Metropolis (Debug),Metropolis.Models,BuildingFactory, ,80,4,1,8,8
 Member,Metropolis (Debug),Metropolis.Models,BuildingFactory,AssemblePoints() : Point3DCollection,78,1,,2,2
 Member,Metropolis (Debug),Metropolis.Models,BuildingFactory,BuildingFactory(),100,1,,0,1
@@ -258,66 +432,348 @@ Member,Metropolis (Debug),Metropolis.Models,BuildingFactory,CreateCube(Brush) : 
 Member,Metropolis (Debug),Metropolis.Models,BuildingFactory,CreateTrianglesForACube() : Int32Collection,86,1,,2,2
 Type,Metropolis (Debug),Metropolis.Models,LinearScale, ,82,1,1,0,2
 Member,Metropolis (Debug),Metropolis.Models,LinearScale,"Apply(int, int, int) : int",82,1,,0,2
-Namespace,Metropolis (Debug),Metropolis.Parsers, , ,78,63,3,36,89
-Type,Metropolis (Debug),Metropolis.Parsers,"ClassParser<T, TMapper>", ,80,5,1,13,8
-Member,Metropolis (Debug),Metropolis.Parsers,"ClassParser<T, TMapper>",ClassParser(),100,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,"ClassParser<T, TMapper>",Parse(string) : CodeBase,65,3,,11,7
-Member,Metropolis (Debug),Metropolis.Parsers,"ClassParser<T, TMapper>",ParseLines(IEnumerable<T>) : CodeBase,100,1,,2,0
+Namespace,Metropolis (Debug),Metropolis.Parsers, , ,100,1,0,1,0
 Type,Metropolis (Debug),Metropolis.Parsers,IClassParser, ,100,1,0,1,0
 Member,Metropolis (Debug),Metropolis.Parsers,IClassParser,Parse(string) : CodeBase,100,1,,1,0
-Type,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem, ,93,17,1,0,17
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,ClassCoupling.get() : int,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,ClassCoupling.set(int) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,CyclomaticComplexity.get() : int,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,CyclomaticComplexity.set(int) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,DepthOfInheritance.get() : int,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,DepthOfInheritance.set(int) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,LinesOfCode.get() : int,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,LinesOfCode.set(int) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,Namespace.get() : string,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,Namespace.set(string) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,NumberOfMethods.get() : int,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,NumberOfMethods.set(int) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,Toxicity.get() : int,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,Toxicity.set(int) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,ToxicityCsvLineItem(),100,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,Type.get() : string,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,Type.set(string) : void,95,1,,0,1
-Type,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItemClassMap, ,59,1,3,8,9
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItemClassMap,ToxicityCsvLineItemClassMap(),59,1,,8,9
-Type,Metropolis (Debug),Metropolis.Parsers,ToxicityParser, ,79,4,2,10,5
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityParser,ParseLines(IEnumerable<ToxicityCsvLineItem>) : CodeBase,70,3,,8,4
-Member,Metropolis (Debug),Metropolis.Parsers,ToxicityParser,ToxicityParser(),100,1,,3,1
-Type,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem, ,93,21,1,0,21
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,ClassCoupling.get() : int,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,ClassCoupling.set(int) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,CyclomaticComplexity.get() : int,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,CyclomaticComplexity.set(int) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,DepthOfInheritance.get() : int,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,DepthOfInheritance.set(int) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,LinesOfCode.get() : int,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,LinesOfCode.set(int) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,MaintainabilityIndex.get() : int,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,MaintainabilityIndex.set(int) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Member.get() : string,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Member.set(string) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Namespace.get() : string,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Namespace.set(string) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Project.get() : string,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Project.set(string) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Scope.get() : string,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Scope.set(string) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Type.get() : string,98,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Type.set(string) : void,95,1,,0,1
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,VisualStudioCsvLineItem(),100,1,,0,1
-Type,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItemClassMap, ,56,1,3,9,11
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItemClassMap,VisualStudioCsvLineItemClassMap(),56,1,,9,11
-Type,Metropolis (Debug),Metropolis.Parsers,VisualStudioMetricsParser, ,65,13,2,16,18
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioMetricsParser,"CollectMethods(IEnumerable<VisualStudioCsvLineItem>, VisualStudioCsvLineItem) : IEnumerable<VisualStudioCsvLineItem>",71,4,,5,4
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioMetricsParser,ParseLines(IEnumerable<VisualStudioCsvLineItem>) : CodeBase,55,8,,13,13
-Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioMetricsParser,VisualStudioMetricsParser(),100,1,,3,1
-Namespace,Metropolis (Debug),Metropolis.Persistence, , ,77,3,1,5,9
-Type,Metropolis (Debug),Metropolis.Persistence,ProjectRepository, ,77,3,1,5,9
-Member,Metropolis (Debug),Metropolis.Persistence,ProjectRepository,Load(string) : CodeBase,73,1,,5,4
+Namespace,Metropolis (Debug),Metropolis.Parsers.CsvParsers, , ,77,134,3,59,190
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,"CsvClassParser<T, TMapper>", ,81,7,1,13,12
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,"CsvClassParser<T, TMapper>",CsvClassParser(bool),89,1,,0,2
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,"CsvClassParser<T, TMapper>",HasHeaderRecord.get() : bool,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,"CsvClassParser<T, TMapper>",HasHeaderRecord.set(bool) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,"CsvClassParser<T, TMapper>",Parse(string) : CodeBase,63,3,,11,8
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,"CsvClassParser<T, TMapper>",ParseLines(IEnumerable<T>) : CodeBase,100,1,,2,0
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,FileInclusion, ,100,0,1,1,0
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassLineItem, ,93,13,1,0,13
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassLineItem,ClassCoupling.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassLineItem,ClassCoupling.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassLineItem,DepthOfInheritance.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassLineItem,DepthOfInheritance.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassLineItem,LinesOfCode.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassLineItem,LinesOfCode.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassLineItem,Member.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassLineItem,Member.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassLineItem,MetricsReloadedClassLineItem(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassLineItem,Namespace.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassLineItem,Namespace.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassLineItem,Type.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassLineItem,Type.set(string) : void,95,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassMap, ,63,1,3,12,6
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassMap,MetricsReloadedClassMap(),63,1,,12,6
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassParser, ,79,4,2,11,5
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassParser,MetricsReloadedClassParser(),98,1,,3,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedClassParser,ParseLines(IEnumerable<MetricsReloadedClassLineItem>) : CodeBase,70,3,,9,4
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodLineItem, ,93,15,1,0,15
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodLineItem,CyclomaticComplexity.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodLineItem,CyclomaticComplexity.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodLineItem,LinesOfCode.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodLineItem,LinesOfCode.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodLineItem,Member.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodLineItem,Member.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodLineItem,MetricsReloadedMethodLineItem(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodLineItem,Namespace.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodLineItem,Namespace.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodLineItem,NumberOfParameters.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodLineItem,NumberOfParameters.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodLineItem,Project.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodLineItem,Project.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodLineItem,Type.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodLineItem,Type.set(string) : void,95,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodMap, ,61,1,3,13,7
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodMap,MetricsReloadedMethodMap(),61,1,,13,7
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodParser, ,67,8,2,14,10
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodParser,MetricsReloadedMethodParser(),98,1,,3,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,MetricsReloadedMethodParser,ParseLines(IEnumerable<MetricsReloadedMethodLineItem>) : CodeBase,59,7,,12,9
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem, ,93,19,1,0,19
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,BlockCommentLoc.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,BlockCommentLoc.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,Class.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,Class.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,CommentLoc.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,CommentLoc.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,EmptyLoc.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,EmptyLoc.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,MixedLoc.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,MixedLoc.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,Namespace.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,Namespace.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,PhysicalLoc.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,PhysicalLoc.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,SingleLineCommentLoc.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,SingleLineCommentLoc.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,SourceLinesOfCodeLineItem(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,SourceLoc.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeLineItem,SourceLoc.set(int) : void,95,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeMap, ,57,1,3,12,10
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeMap,SourceLinesOfCodeMap(),57,1,,12,10
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeParser, ,80,8,2,14,13
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeParser,Inclusion.get() : FileInclusion,98,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeParser,Inclusion.set(FileInclusion) : void,95,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeParser,ParseLines(IEnumerable<SourceLinesOfCodeLineItem>) : CodeBase,62,4,,12,8
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeParser,SourceLinesOfCodeParser(),98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,SourceLinesOfCodeParser,SourceLinesOfCodeParser(FileInclusion),87,1,,4,2
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem, ,93,17,1,0,17
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,ClassCoupling.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,ClassCoupling.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,CyclomaticComplexity.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,CyclomaticComplexity.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,DepthOfInheritance.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,DepthOfInheritance.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,LinesOfCode.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,LinesOfCode.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,Namespace.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,Namespace.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,NumberOfMethods.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,NumberOfMethods.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,Toxicity.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,Toxicity.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,ToxicityCsvLineItem(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,Type.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItem,Type.set(string) : void,95,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItemClassMap, ,59,1,3,8,9
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityCsvLineItemClassMap,ToxicityCsvLineItemClassMap(),59,1,,8,9
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityParser, ,79,4,2,10,4
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityParser,ParseLines(IEnumerable<ToxicityCsvLineItem>) : CodeBase,73,3,,8,3
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,ToxicityParser,ToxicityParser(bool),98,1,,3,1
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem, ,93,21,1,0,21
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,ClassCoupling.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,ClassCoupling.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,CyclomaticComplexity.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,CyclomaticComplexity.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,DepthOfInheritance.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,DepthOfInheritance.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,LinesOfCode.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,LinesOfCode.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,MaintainabilityIndex.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,MaintainabilityIndex.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,Member.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,Member.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,Namespace.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,Namespace.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,Project.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,Project.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,Scope.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,Scope.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,Type.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,Type.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItem,VisualStudioCsvLineItem(),100,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItemClassMap, ,56,1,3,9,11
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioCsvLineItemClassMap,VisualStudioCsvLineItemClassMap(),56,1,,9,11
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioMetricsParser, ,65,13,2,16,18
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioMetricsParser,"CollectMethods(IEnumerable<VisualStudioCsvLineItem>, VisualStudioCsvLineItem) : IEnumerable<VisualStudioCsvLineItem>",71,4,,5,4
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioMetricsParser,ParseLines(IEnumerable<VisualStudioCsvLineItem>) : CodeBase,55,8,,13,13
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers,VisualStudioMetricsParser,VisualStudioMetricsParser(),98,1,,3,1
+Namespace,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters, , ,86,13,2,4,11
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters,BaseTypeConverter<T>, ,90,9,1,3,7
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters,BaseTypeConverter<T>,BaseTypeConverter(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters,BaseTypeConverter<T>,CanConvertFrom(Type) : bool,82,2,,1,2
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters,BaseTypeConverter<T>,CanConvertTo(Type) : bool,82,2,,1,2
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters,BaseTypeConverter<T>,"ConvertFromString(TypeConverterOptions, string) : object",100,1,,1,0
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters,BaseTypeConverter<T>,"ConvertToString(TypeConverterOptions, object) : string",84,3,,1,2
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters,IntTypeConverter, ,82,4,2,2,4
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters,IntTypeConverter,"ConvertFromString(TypeConverterOptions, string) : object",77,3,,1,3
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters,IntTypeConverter,IntTypeConverter(),100,1,,1,1
+Namespace,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.Checkstyles, , ,86,4,2,4,8
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.Checkstyles,CheckstylesClassConverter, ,91,2,2,3,3
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.Checkstyles,CheckstylesClassConverter,CheckstylesClassConverter(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.Checkstyles,CheckstylesClassConverter,"ConvertFromString(TypeConverterOptions, string) : object",83,1,,2,2
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.Checkstyles,CheckstylesNamespaceConverter, ,81,2,2,4,5
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.Checkstyles,CheckstylesNamespaceConverter,CheckstylesNamespaceConverter(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.Checkstyles,CheckstylesNamespaceConverter,"ConvertFromString(TypeConverterOptions, string) : object",73,1,,3,4
+Namespace,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.MetricsReloaded, , ,82,6,2,4,13
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.MetricsReloaded,CheckstylesMethodNamespaceConverter, ,81,2,2,4,5
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.MetricsReloaded,CheckstylesMethodNamespaceConverter,CheckstylesMethodNamespaceConverter(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.MetricsReloaded,CheckstylesMethodNamespaceConverter,"ConvertFromString(TypeConverterOptions, string) : object",73,1,,3,4
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.MetricsReloaded,MetricsReloadedMethodConverter, ,83,2,2,3,4
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.MetricsReloaded,MetricsReloadedMethodConverter,"ConvertFromString(TypeConverterOptions, string) : object",78,1,,2,3
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.MetricsReloaded,MetricsReloadedMethodConverter,MetricsReloadedMethodConverter(),100,1,,1,1
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.MetricsReloaded,MetricsReloadedTypeConverter, ,83,2,2,2,4
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.MetricsReloaded,MetricsReloadedTypeConverter,"ConvertFromString(TypeConverterOptions, string) : object",78,1,,1,3
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.MetricsReloaded,MetricsReloadedTypeConverter,MetricsReloadedTypeConverter(),100,1,,1,1
+Namespace,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.Sloc, , ,81,4,2,4,9
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.Sloc,SourceLinesOfCodeClassConverter, ,81,2,2,4,4
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.Sloc,SourceLinesOfCodeClassConverter,"ConvertFromString(TypeConverterOptions, string) : object",75,1,,3,3
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.Sloc,SourceLinesOfCodeClassConverter,SourceLinesOfCodeClassConverter(),100,1,,1,1
+Type,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.Sloc,SourceLinesOfCodeNamespaceConverter, ,81,2,2,4,5
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.Sloc,SourceLinesOfCodeNamespaceConverter,"ConvertFromString(TypeConverterOptions, string) : object",73,1,,3,4
+Member,Metropolis (Debug),Metropolis.Parsers.CsvParsers.TypeConverters.Sloc,SourceLinesOfCodeNamespaceConverter,SourceLinesOfCodeNamespaceConverter(),100,1,,1,1
+Namespace,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles, , ,85,49,2,47,63
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,BaseCheckStylesClassBuilder, ,61,15,1,18,27
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,BaseCheckStylesClassBuilder,BaseCheckStylesClassBuilder(IEnumerable<ICheckStylesMemberParser>),87,1,,2,2
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,BaseCheckStylesClassBuilder,"Build(string, List<CheckStylesItem>) : Class",50,13,,17,20
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,BaseCheckStylesClassBuilder,"ParseClass(string, IEnumerable<Member>) : Class",69,1,,5,5
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesItem, ,93,11,1,0,11
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesItem,CheckStylesItem(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesItem,Column.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesItem,Column.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesItem,Line.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesItem,Line.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesItem,Message.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesItem,Message.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesItem,Name.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesItem,Name.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesItem,Source.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesItem,Source.set(string) : void,95,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesParser, ,78,16,1,22,19
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesParser,BuildItem(XElement) : CheckStylesItem,78,1,,5,2
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesParser,CheckStylesParser(),95,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesParser,CheckStylesParser(ICheckStylesClassBuilder),87,1,,1,2
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesParser,EslintParser.get() : CheckStylesParser,92,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesParser,JavaCheckStylesParser.get() : CheckStylesParser,92,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesParser,Parse(string) : CodeBase,85,1,,2,2
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,CheckStylesParser,ParseXml(XElement) : CodeBase,57,10,,17,10
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,EsLintCheckStylesClassBuilder, ,89,3,2,7,3
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,EsLintCheckStylesClassBuilder,EsLintCheckStylesClassBuilder(),98,1,,2,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,EsLintCheckStylesClassBuilder,EsLintCheckStylesClassBuilder(),87,1,,6,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,EsLintCheckStylesClassBuilder,EsLintCheckStylesClassBuilder(params ICheckStylesMemberParser[]),98,1,,2,1
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,ICheckStylesClassBuilder, ,100,1,0,3,0
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,ICheckStylesClassBuilder,"Build(string, List<CheckStylesItem>) : Class",100,1,,3,0
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,PuppyCrawlCheckStylesClassBuilder, ,88,3,2,11,3
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,PuppyCrawlCheckStylesClassBuilder,PuppyCrawlCheckStylesClassBuilder(),98,1,,2,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,PuppyCrawlCheckStylesClassBuilder,PuppyCrawlCheckStylesClassBuilder(),85,1,,10,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles,PuppyCrawlCheckStylesClassBuilder,PuppyCrawlCheckStylesClassBuilder(params ICheckStylesMemberParser[]),98,1,,2,1
+Namespace,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers, , ,96,8,1,4,6
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers,ICheckStylesMemberParser, ,100,2,0,2,0
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers,ICheckStylesMemberParser,"Parse(Member, CheckStylesItem) : void",100,1,,2,0
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers,ICheckStylesMemberParser,Source.get() : string,100,1,,0,0
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers,MemberParserBase, ,93,6,1,4,6
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers,MemberParserBase,IntParser.get() : Regex,98,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers,MemberParserBase,MemberParserBase(),84,1,,1,2
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers,MemberParserBase,MemberParserBase(string),84,1,,1,2
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers,MemberParserBase,"Parse(Member, CheckStylesItem) : void",100,1,,2,0
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers,MemberParserBase,Parser.get() : Regex,98,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers,MemberParserBase,Source.get() : string,100,1,,0,0
+Namespace,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint, , ,91,15,2,6,17
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintCaseNoFallThroughParser, ,93,3,2,3,3
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintCaseNoFallThroughParser,EsLintCaseNoFallThroughParser(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintCaseNoFallThroughParser,"Parse(Member, CheckStylesItem) : void",92,1,,2,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintCaseNoFallThroughParser,Source.get() : string,98,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintComplexityParser, ,88,3,2,6,5
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintComplexityParser,EsLintComplexityParser(),84,1,,2,2
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintComplexityParser,"Parse(Member, CheckStylesItem) : void",80,1,,6,2
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintComplexityParser,Source.get() : string,98,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintDefaultCaseParser, ,93,3,2,3,3
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintDefaultCaseParser,EsLintDefaultCaseParser(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintDefaultCaseParser,"Parse(Member, CheckStylesItem) : void",92,1,,2,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintDefaultCaseParser,Source.get() : string,98,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintNumberOfParametersParser, ,91,3,2,6,3
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintNumberOfParametersParser,EsLintNumberOfParametersParser(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintNumberOfParametersParser,"Parse(Member, CheckStylesItem) : void",88,1,,6,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintNumberOfParametersParser,Source.get() : string,98,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintNumberOfStatmentsParser, ,91,3,2,5,3
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintNumberOfStatmentsParser,EsLintNumberOfStatmentsParser(),98,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintNumberOfStatmentsParser,"Parse(Member, CheckStylesItem) : void",88,1,,5,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint,EsLintNumberOfStatmentsParser,Source.get() : string,98,1,,0,1
+Namespace,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl, , ,91,30,2,6,32
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlAnonymousInnerClassLenthParser, ,91,3,2,6,3
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlAnonymousInnerClassLenthParser,"Parse(Member, CheckStylesItem) : void",88,1,,6,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlAnonymousInnerClassLenthParser,PuppyCrawlAnonymousInnerClassLenthParser(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlAnonymousInnerClassLenthParser,Source.get() : string,98,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlBooleanExpressionComplexityParser, ,91,3,2,6,3
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlBooleanExpressionComplexityParser,"Parse(Member, CheckStylesItem) : void",88,1,,6,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlBooleanExpressionComplexityParser,PuppyCrawlBooleanExpressionComplexityParser(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlBooleanExpressionComplexityParser,Source.get() : string,98,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlClassDataAbstractionCouplingParser, ,91,3,2,6,3
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlClassDataAbstractionCouplingParser,"Parse(Member, CheckStylesItem) : void",88,1,,6,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlClassDataAbstractionCouplingParser,PuppyCrawlClassDataAbstractionCouplingParser(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlClassDataAbstractionCouplingParser,Source.get() : string,98,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlClassFanOutComplexityParser, ,91,3,2,6,3
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlClassFanOutComplexityParser,"Parse(Member, CheckStylesItem) : void",88,1,,6,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlClassFanOutComplexityParser,PuppyCrawlClassFanOutComplexityParser(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlClassFanOutComplexityParser,Source.get() : string,98,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlComplexityParser, ,88,3,2,6,4
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlComplexityParser,"Parse(Member, CheckStylesItem) : void",79,1,,6,2
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlComplexityParser,PuppyCrawlComplexityParser(),98,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlComplexityParser,Source.get() : string,98,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlDefaultCaseParser, ,93,3,2,3,3
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlDefaultCaseParser,"Parse(Member, CheckStylesItem) : void",92,1,,2,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlDefaultCaseParser,PuppyCrawlDefaultCaseParser(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlDefaultCaseParser,Source.get() : string,98,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlLinesOfCodeParser, ,91,3,2,6,3
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlLinesOfCodeParser,"Parse(Member, CheckStylesItem) : void",88,1,,6,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlLinesOfCodeParser,PuppyCrawlLinesOfCodeParser(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlLinesOfCodeParser,Source.get() : string,98,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlNumberOfParametersParser, ,90,3,2,5,4
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlNumberOfParametersParser,"Parse(Member, CheckStylesItem) : void",81,1,,5,2
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlNumberOfParametersParser,PuppyCrawlNumberOfParametersParser(),98,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PuppyCrawlNumberOfParametersParser,Source.get() : string,98,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PupyyCrawlNestedIfDepthParser, ,91,3,2,6,3
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PupyyCrawlNestedIfDepthParser,"Parse(Member, CheckStylesItem) : void",88,1,,6,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PupyyCrawlNestedIfDepthParser,PupyyCrawlNestedIfDepthParser(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PupyyCrawlNestedIfDepthParser,Source.get() : string,98,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PupyyCrawlNestedTryDepthParser, ,91,3,2,6,3
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PupyyCrawlNestedTryDepthParser,"Parse(Member, CheckStylesItem) : void",88,1,,6,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PupyyCrawlNestedTryDepthParser,PupyyCrawlNestedTryDepthParser(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl,PupyyCrawlNestedTryDepthParser,Source.get() : string,98,1,,0,1
+Namespace,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers, , ,79,32,1,25,59
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,ClassAttributeParser, ,75,8,1,18,14
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,ClassAttributeParser,ClassAttributeParser(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,ClassAttributeParser,Id.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,ClassAttributeParser,Order.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,ClassAttributeParser,"Parse(XElement, Dictionary<string, Class>, XNamespace) : void",58,5,,17,11
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,CyclomaticComplexityParser, ,75,6,1,15,14
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,CyclomaticComplexityParser,CyclomaticComplexityParser(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,CyclomaticComplexityParser,Id.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,CyclomaticComplexityParser,Order.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,CyclomaticComplexityParser,"Parse(XElement, Dictionary<string, Class>, XNamespace) : void",59,3,,14,11
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,DepthOfInheritanceParser, ,75,6,1,15,15
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,DepthOfInheritanceParser,DepthOfInheritanceParser(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,DepthOfInheritanceParser,Id.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,DepthOfInheritanceParser,Order.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,DepthOfInheritanceParser,"Parse(XElement, Dictionary<string, Class>, XNamespace) : void",58,3,,14,12
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,IJavaMetricParser, ,100,3,0,4,0
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,IJavaMetricParser,Id.get() : string,100,1,,0,0
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,IJavaMetricParser,Order.get() : int,100,1,,0,0
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,IJavaMetricParser,"Parse(XElement, Dictionary<string, Class>, XNamespace) : void",100,1,,4,0
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,MethodLineParser, ,72,9,1,17,16
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,MethodLineParser,Id.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,MethodLineParser,MethodLineParser(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,MethodLineParser,Order.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParsers.MetricHandlers,MethodLineParser,"Parse(XElement, Dictionary<string, Class>, XNamespace) : void",56,6,,16,13
+Namespace,Metropolis (Debug),Metropolis.Parsers.XmlParxers, , ,82,23,1,27,35
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParxers,MetricItem, ,94,9,1,0,9
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParxers,MetricItem,MetricItem(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParxers,MetricItem,Name.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParxers,MetricItem,Name.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParxers,MetricItem,Package.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParxers,MetricItem,Package.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParxers,MetricItem,Source.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParxers,MetricItem,Source.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParxers,MetricItem,Value.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParxers,MetricItem,Value.set(string) : void,95,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers.XmlParxers,XmlClassParser, ,69,14,1,27,26
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParxers,XmlClassParser,Parse(string) : CodeBase,85,1,,2,2
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParxers,XmlClassParser,ParseText(string) : CodeBase,50,10,,20,20
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParxers,XmlClassParser,XmlClassParser(),98,1,,2,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParxers,XmlClassParser,XmlClassParser(),87,1,,7,1
+Member,Metropolis (Debug),Metropolis.Parsers.XmlParxers,XmlClassParser,XmlClassParser(IEnumerable<IJavaMetricParser>),87,1,,2,2
+Namespace,Metropolis (Debug),Metropolis.Persistence, , ,72,10,1,16,26
+Type,Metropolis (Debug),Metropolis.Persistence,ProjectRepository, ,72,10,1,16,26
+Member,Metropolis (Debug),Metropolis.Persistence,ProjectRepository,CreateCodeBase(string) : CodeBase,72,1,,7,4
+Member,Metropolis (Debug),Metropolis.Persistence,ProjectRepository,Load(string) : CodeBase,80,1,,2,3
+Member,Metropolis (Debug),Metropolis.Persistence,ProjectRepository,LoadDefault() : CodeBase,70,3,,6,5
 Member,Metropolis (Debug),Metropolis.Persistence,ProjectRepository,ProjectRepository(),100,1,,0,1
-Member,Metropolis (Debug),Metropolis.Persistence,ProjectRepository,"Save(CodeBase, string) : void",73,1,,5,4
+Member,Metropolis (Debug),Metropolis.Persistence,ProjectRepository,"Save(CodeBase, string) : void",70,1,,6,5
+Member,Metropolis (Debug),Metropolis.Persistence,ProjectRepository,VerifyVersionNumber(string) : void,64,3,,5,8
+Namespace,Metropolis (Debug),Metropolis.Utilities, , ,85,30,1,5,34
+Type,Metropolis (Debug),Metropolis.Utilities,Clock, ,91,8,1,3,7
+Member,Metropolis (Debug),Metropolis.Utilities,Clock,Clock(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Utilities,Clock,EndOfToday.get() : DateTime,92,1,,2,1
+Member,Metropolis (Debug),Metropolis.Utilities,Clock,Freeze() : void,92,1,,2,1
+Member,Metropolis (Debug),Metropolis.Utilities,Clock,Freeze(DateTime) : void,92,1,,2,1
+Member,Metropolis (Debug),Metropolis.Utilities,Clock,Now.get() : DateTime,90,2,,2,1
+Member,Metropolis (Debug),Metropolis.Utilities,Clock,Thaw() : void,100,1,,2,1
+Member,Metropolis (Debug),Metropolis.Utilities,Clock,Today.get() : DateTime,92,1,,2,1
+Type,Metropolis (Debug),Metropolis.Utilities,DateTimeUtilities, ,79,22,1,4,27
+Member,Metropolis (Debug),Metropolis.Utilities,DateTimeUtilities,"AreTimeEqual(DateTime, DateTime) : bool",80,3,,1,2
+Member,Metropolis (Debug),Metropolis.Utilities,DateTimeUtilities,"AreYearMonthDayEqual(DateTime, DateTime) : bool",80,3,,1,2
+Member,Metropolis (Debug),Metropolis.Utilities,DateTimeUtilities,AsDateTime(TimeSpan) : DateTime,76,1,,3,3
+Member,Metropolis (Debug),Metropolis.Utilities,DateTimeUtilities,AsTimeSpan(DateTime) : TimeSpan,82,1,,2,2
+Member,Metropolis (Debug),Metropolis.Utilities,DateTimeUtilities,"CloseEnough(DateTime, DateTime) : bool",83,2,,1,2
+Member,Metropolis (Debug),Metropolis.Utilities,DateTimeUtilities,"CloseEnough(DateTime?, DateTime?) : bool",81,3,,3,2
+Member,Metropolis (Debug),Metropolis.Utilities,DateTimeUtilities,EndOfMonth(DateTime) : DateTime,80,1,,1,2
+Member,Metropolis (Debug),Metropolis.Utilities,DateTimeUtilities,MakeEarly(DateTime) : DateTime,81,1,,1,2
+Member,Metropolis (Debug),Metropolis.Utilities,DateTimeUtilities,MakeLate(DateTime) : DateTime,81,1,,1,2
+Member,Metropolis (Debug),Metropolis.Utilities,DateTimeUtilities,MakeWithNoMilliseconds(DateTime) : DateTime,80,1,,1,2
+Member,Metropolis (Debug),Metropolis.Utilities,DateTimeUtilities,"Max(DateTime, DateTime) : DateTime",85,2,,1,2
+Member,Metropolis (Debug),Metropolis.Utilities,DateTimeUtilities,"Min(DateTime, DateTime) : DateTime",85,2,,1,2
+Member,Metropolis (Debug),Metropolis.Utilities,DateTimeUtilities,StartOfMonth(DateTime) : DateTime,82,1,,1,2

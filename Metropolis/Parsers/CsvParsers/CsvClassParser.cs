@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using CsvHelper;
 using Metropolis.Domain;
+using Metropolis.Parsers.XmlParsers;
 
 namespace Metropolis.Parsers.CsvParsers
 {

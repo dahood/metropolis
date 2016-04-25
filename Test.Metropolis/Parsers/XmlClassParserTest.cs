@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using FluentAssertions;
 using Metropolis.Domain;
-using Metropolis.Parsers.XmlParxers;
+using Metropolis.Parsers.XmlParsers;
 using Metropolis.Utilities;
 using NUnit.Framework;
 

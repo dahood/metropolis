@@ -22,75 +22,71 @@ namespace Test.Metropolis.Parsers.CheckStyles.CheckStylesMemberParser
         [Test]
         public void ShouldParseFunctionNameAndComplexity()
         {
-            ParserFor<PuppyCrawlComplexityParser>().Parse(Member, new CheckStylesItem { Message = ComplexityMessage, Line = 1, Column = 2});
-            Member.Name.Should().Be("1-2");
-            Member.CylomaticComplexity.Should().Be(13);
+            RunTest<PuppyCrawlComplexityParser>(ComplexityMessage, PuppyCrawlSources.FanOutComplexity, m =>
+                                                                    {
+                                                                        m.Name.Should().Be("1-2");
+                                                                        m.CylomaticComplexity.Should().Be(13);
+                                                                    }, 
+                                                                    new CheckStylesItem { Message = ComplexityMessage, Line = 1, Column = 2 });
         }
 
         [Test]
         public void ShouldParseLinesOfCode()
         {
-            ParserFor<PuppyCrawlLinesOfCodeParser>().Parse(Member, new CheckStylesItem { Message = LinesOfCodeMessage, Line = 1, Column = 2});
-            Member.LinesOfCode.Should().Be(66);
+            RunTest<PuppyCrawlLinesOfCodeParser>(LinesOfCodeMessage, PuppyCrawlSources.LinesOfCode, m => m.LinesOfCode.Should().Be(66));
         }
 
         [Test]
         public void ShouldParseNumberOfParameters()
         {
-            ParserFor<PuppyCrawlNumberOfParametersParser>().Parse(Member, new CheckStylesItem { Message = NumberOfParametersMessage, Line = 1, Column = 2});
-            Member.NumberOfParameters.Should().Be(123);
+            RunTest<PuppyCrawlNumberOfParametersParser>(NumberOfParametersMessage, PuppyCrawlSources.NumberOfParameters, 
+                                                        m => m.NumberOfParameters.Should().Be(123));
         }
 
         [Test]
         public void ShouldParseMissingSwitchDefaultCheck()
         {
-            var puppyCrawlDefaultCaseParser = ParserFor<PuppyCrawlDefaultCaseParser>();
-            var checkStylesItem = new CheckStylesItem { Message = NumberOfParametersMessage, Line = 1, Column = 2};
-            puppyCrawlDefaultCaseParser.Parse(Member, checkStylesItem);
-            puppyCrawlDefaultCaseParser.Parse(Member, checkStylesItem);
-            Member.MissingDefaultCase.Should().Be(2);
+            RunTest<PuppyCrawlDefaultCaseParser>("kaka", PuppyCrawlSources.MissingSwitchDefault, m => m.MissingDefaultCase.Should().Be(1));
         }
         
         [Test]
         public void ShouldParseBooleanExpressionComplexity()
         {
-            ParserFor<PuppyCrawlBooleanExpressionComplexityParser>().Parse(Member, new CheckStylesItem { Message = BooleanComplexityMessage, Line = 1, Column = 2 });
-            Member.BooleanExpressionComplexity.Should().Be(4);
+            RunTest<PuppyCrawlBooleanExpressionComplexityParser>(BooleanComplexityMessage, PuppyCrawlSources.BooleanExpressionComplexity,
+                                                                 m => m.BooleanExpressionComplexity.Should().Be(4));
         }
         
         [Test]
         public void ShouldParseNestedTryDepth()
         {
-            ParserFor<PupyyCrawlNestedTryDepthParser>().Parse(Member, new CheckStylesItem { Message = NestedTryDepthMessage, Line = 1, Column = 2 });
-            Member.NestedTryDepth.Should().Be(1);
+            RunTest<PupyyCrawlNestedTryDepthParser>(NestedTryDepthMessage, PuppyCrawlSources.NestedTryDepth, m => m.NestedTryDepth.Should().Be(1));
         }
         
         [Test]
         public void ShouldParseNestedIfDepth()
         {
-            ParserFor<PupyyCrawlNestedIfDepthParser>().Parse(Member, new CheckStylesItem { Message = NestedIfDepthMessage, Line = 1, Column = 2 });
-            Member.NestedIfDepth.Should().Be(5);
+            RunTest<PupyyCrawlNestedIfDepthParser>(NestedIfDepthMessage, PuppyCrawlSources.NestedIfDepth, m => m.NestedIfDepth.Should().Be(5));
         }
         
         [Test]
         public void ShouldParseAnonymousInnerClassLenthestedIfDepth()
         {
-            ParserFor<PuppyCrawlAnonymousInnerClassLenthParser>().Parse(Member, new CheckStylesItem { Message = AnonymousInnerClassLengthMessage, Line = 1, Column = 2 });
-            Member.AnonymousInnerClassLenth.Should().Be(19);
+            RunTest<PuppyCrawlAnonymousInnerClassLenthParser>(AnonymousInnerClassLengthMessage, PuppyCrawlSources.AnonymousInnerClassLength, 
+                                                              m => m.AnonymousInnerClassLenth.Should().Be(19));
         }
         
         [Test]
         public void ShouldParsePuppyCrawlClassFanOutComplexity()
         {
-            ParserFor<PuppyCrawlClassFanOutComplexityParser>().Parse(Member, new CheckStylesItem { Message = ClassFanOutComplexitymMessage, Line = 1, Column = 2 });
-            Member.ClassFanOutComplexity.Should().Be(11);
+            RunTest<PuppyCrawlClassFanOutComplexityParser>(ClassFanOutComplexitymMessage , PuppyCrawlSources.ClassFanOutComplexity,
+                                                              m => m.ClassFanOutComplexity.Should().Be(11));
         }
         
         [Test]
         public void ShouldParseClassDataAbstractionCoupling()
         {
-            ParserFor<PuppyCrawlClassDataAbstractionCouplingParser>().Parse(Member, new CheckStylesItem { Message = ClassDataAbstractionCouplingMessage, Line = 1, Column = 2 });
-            Member.ClassDataAbstractionCoupling.Should().Be(22);
+            RunTest<PuppyCrawlClassDataAbstractionCouplingParser>(ClassDataAbstractionCouplingMessage, PuppyCrawlSources.ClassDataAbstractionCoupling,
+                                                                  m => m.ClassDataAbstractionCoupling.Should().Be(22));
         }
     }
 }

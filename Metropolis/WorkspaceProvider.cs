@@ -2,13 +2,12 @@ using System;
 using Metropolis.Analyzers;
 using Metropolis.Camera;
 using Metropolis.Domain;
-using Metropolis.Parsers;
-using Metropolis.Parsers.XmlParxers;
 using Metropolis.Persistence;
 using Microsoft.Win32;
 using Metropolis.Parsers.CsvParsers;
 using CsvHelper;
 using System.IO;
+using Metropolis.Parsers.XmlParsers;
 using Metropolis.Parsers.XmlParsers.CheckStyles;
 
 namespace Metropolis
@@ -126,14 +125,23 @@ namespace Metropolis
                 Parse(parser, fileName);
             }, "Source LOC |*.csv");
         }
+        
+
+        public void RunCSharpToxicity()
+        {
+            Workspace.SourceType = RepositorySourceType.CSharp;
+            Workspace = new CSharpToxicityAnalyzer().Analyze(Workspace.AllClasses);
+        }
 
         public void RunJavaToxicity()
         {
+            Workspace.SourceType = RepositorySourceType.Java;
             Workspace = new JavaToxicityAnalyzer().Analyze(Workspace.AllClasses);
         }
 
         public void RunJavascriptToxicity()
         {
+            Workspace.SourceType = RepositorySourceType.ECMA;
             Workspace = new JavascriptToxicityAnalyzer().Analyze(Workspace.AllClasses);
         }
 

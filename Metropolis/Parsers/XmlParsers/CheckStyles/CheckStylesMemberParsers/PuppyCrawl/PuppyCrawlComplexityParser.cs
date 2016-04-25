@@ -1,11 +1,12 @@
 ﻿using Metropolis.Domain;
 using Metropolis.Extensions;
+using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint;
 
 namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl
 {
     public class PuppyCrawlComplexityParser : MemberParserBase
     {
-        public override string Source => "com.puppycrawl.tools.checkstyle.checks.metrics.ClassFanOutComplexityCheck";
+        public override string Source => PuppyCrawlSources.FanOutComplexity;
 
         public PuppyCrawlComplexityParser() : base(IntRegex)
         {

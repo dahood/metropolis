@@ -5,7 +5,7 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.Pup
 {
     public class PuppyCrawlClassDataAbstractionCouplingParser : MemberParserBase
     {
-        public override string Source => "com.puppycrawl.tools.checkstyle.checks.metrics.ClassDataAbstractionCouplingCheck";
+        public override string Source => PuppyCrawlSources.ClassDataAbstractionCoupling;
         
         public override void Parse(Member member, CheckStylesItem item)
         {

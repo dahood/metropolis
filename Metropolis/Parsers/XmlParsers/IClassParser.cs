@@ -1,6 +1,6 @@
 ﻿using Metropolis.Domain;
 
-namespace Metropolis.Parsers
+namespace Metropolis.Parsers.XmlParsers
 {
     public interface IClassParser
     {

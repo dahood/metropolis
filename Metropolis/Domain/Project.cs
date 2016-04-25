@@ -13,6 +13,7 @@ namespace Metropolis.Domain
         public int MetropolisFileVersion => SupportedVersion;
 
         public string Name { get;set; }
+        public string SourceCodeLanguage { get; set; }
         public IEnumerable<SerializableClass> Classes { get; set; }
     }
 

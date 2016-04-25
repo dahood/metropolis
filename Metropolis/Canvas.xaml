@@ -172,7 +172,7 @@
             <MenuItem Header="_Analyze">
                 <MenuItem Header="Javascript Toxicity" Click="RunJavascriptAnalzer" />
                 <MenuItem Header="Java Toxicity" Click="RunJavaAnalzer" />
-                <MenuItem Header=".Net Toxicity" />
+                <MenuItem Header="C# Toxicity" Click="RunCSharpAnalzer" />
             </MenuItem>
             <MenuItem Header="_Export">
                 <MenuItem Header="Export to CSV" Click="RunCsvExport"/>

@@ -4,7 +4,7 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.Pup
 {
     public class PuppyCrawlDefaultCaseParser : MemberParserBase
     {
-        public override string Source => "com.puppycrawl.tools.checkstyle.checks.coding.MissingSwitchDefaultCheck";
+        public override string Source => PuppyCrawlSources.MissingSwitchDefault;
         
         public override void Parse(Member member, CheckStylesItem item)
         {
