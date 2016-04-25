@@ -1,7 +1,8 @@
-﻿using Metropolis.Domain;
-using Metropolis.Extensions;
+﻿using Metropolis.Extensions;
+using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers;
+using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl;
 
-namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl
+namespace Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Member
 {
     public class PuppyCrawlComplexityParser : CheckStyleBaseParser, ICheckStylesMemberParser
     {
@@ -11,7 +12,7 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.Pup
         {
         }
 
-        public void Parse(Member member, CheckStylesItem item)
+        public void Parse(Domain.Member member, CheckStylesItem item)
         {
             member.Name = $"{item.Line}-{item.Column}";
             member.CylomaticComplexity = Parser.Match(item.Message).Value.AsInt();

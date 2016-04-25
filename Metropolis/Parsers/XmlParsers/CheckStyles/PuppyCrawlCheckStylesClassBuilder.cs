@@ -1,5 +1,7 @@
-using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers;
 using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl;
+using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers;
+using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Class;
+using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Member;
 
 namespace Metropolis.Parsers.XmlParsers.CheckStyles
 {

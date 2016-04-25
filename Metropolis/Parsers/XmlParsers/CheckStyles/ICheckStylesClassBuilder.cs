@@ -2,7 +2,7 @@
 using System.Linq;
 using Metropolis.Domain;
 using Metropolis.Extensions;
-using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers;
+using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers;
 
 namespace Metropolis.Parsers.XmlParsers.CheckStyles
 {

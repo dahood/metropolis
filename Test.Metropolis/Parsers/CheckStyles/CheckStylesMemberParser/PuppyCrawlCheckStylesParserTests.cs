@@ -1,6 +1,9 @@
 ﻿using FluentAssertions;
 using Metropolis.Parsers.XmlParsers.CheckStyles;
 using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl;
+using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl;
+using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Class;
+using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Member;
 using NUnit.Framework;
 
 namespace Test.Metropolis.Parsers.CheckStyles.CheckStylesMemberParser
@@ -22,7 +25,7 @@ namespace Test.Metropolis.Parsers.CheckStyles.CheckStylesMemberParser
         [Test]
         public void ShouldParseFunctionNameAndComplexity()
         {
-            RunTest<PuppyCrawlComplexityParser>(ComplexityMessage, PuppyCrawlSources.FanOutComplexity, m =>
+            RunMemberTest<PuppyCrawlComplexityParser>(ComplexityMessage, PuppyCrawlSources.FanOutComplexity, m =>
                                                                     {
                                                                         m.Name.Should().Be("1-2");
                                                                         m.CylomaticComplexity.Should().Be(13);
@@ -33,60 +36,60 @@ namespace Test.Metropolis.Parsers.CheckStyles.CheckStylesMemberParser
         [Test]
         public void ShouldParseLinesOfCode()
         {
-            RunTest<PuppyCrawlMethodLengthParser>(LinesOfCodeMessage, PuppyCrawlSources.MethodLength, m => m.LinesOfCode.Should().Be(66));
+            RunMemberTest<PuppyCrawlMethodLengthParser>(LinesOfCodeMessage, PuppyCrawlSources.MethodLength, m => m.LinesOfCode.Should().Be(66));
         }
 
         [Test]
         public void ShouldParseNumberOfParameters()
         {
-            RunTest<PuppyCrawlNumberOfParametersParser>(NumberOfParametersMessage, PuppyCrawlSources.NumberOfParameters, 
+            RunMemberTest<PuppyCrawlNumberOfParametersParser>(NumberOfParametersMessage, PuppyCrawlSources.NumberOfParameters, 
                                                         m => m.NumberOfParameters.Should().Be(123));
         }
 
         [Test]
         public void ShouldParseMissingSwitchDefaultCheck()
         {
-            RunTest<PuppyCrawlDefaultCaseParser>("kaka", PuppyCrawlSources.MissingSwitchDefault, m => m.MissingDefaultCase.Should().Be(1));
+            RunMemberTest<PuppyCrawlDefaultCaseParser>("kaka", PuppyCrawlSources.MissingSwitchDefault, m => m.MissingDefaultCase.Should().Be(1));
         }
         
         [Test]
         public void ShouldParseBooleanExpressionComplexity()
         {
-            RunTest<PuppyCrawlBooleanExpressionComplexityParser>(BooleanComplexityMessage, PuppyCrawlSources.BooleanExpressionComplexity,
+            RunMemberTest<PuppyCrawlBooleanExpressionComplexityParser>(BooleanComplexityMessage, PuppyCrawlSources.BooleanExpressionComplexity,
                                                                  m => m.BooleanExpressionComplexity.Should().Be(4));
         }
         
         [Test]
         public void ShouldParseNestedTryDepth()
         {
-            RunTest<PupyyCrawlNestedTryDepthParser>(NestedTryDepthMessage, PuppyCrawlSources.NestedTryDepth, m => m.NestedTryDepth.Should().Be(1));
+            RunMemberTest<PupyyCrawlNestedTryDepthParser>(NestedTryDepthMessage, PuppyCrawlSources.NestedTryDepth, m => m.NestedTryDepth.Should().Be(1));
         }
         
         [Test]
         public void ShouldParseNestedIfDepth()
         {
-            RunTest<PupyyCrawlNestedIfDepthParser>(NestedIfDepthMessage, PuppyCrawlSources.NestedIfDepth, m => m.NestedIfDepth.Should().Be(5));
+            RunMemberTest<PupyyCrawlNestedIfDepthParser>(NestedIfDepthMessage, PuppyCrawlSources.NestedIfDepth, m => m.NestedIfDepth.Should().Be(5));
         }
         
-        //[Test]
-        //public void ShouldParseAnonymousInnerClassLenthestedIfDepth()
-        //{
-        //    RunTest<PuppyCrawlAnonymousInnerClassLenthParser>(AnonymousInnerClassLengthMessage, PuppyCrawlSources.AnonymousInnerClassLength, 
-        //                                                      m => m.AnonymousInnerClassLenth.Should().Be(19));
-        //}
+        [Test]
+        public void ShouldParseAnonymousInnerClassLenthestedIfDepth()
+        {
+            RunClassTest<PuppyCrawlAnonymousInnerClassLenthParser>(AnonymousInnerClassLengthMessage, PuppyCrawlSources.AnonymousInnerClassLength, 
+                                                              m => m.AnonymousInnerClassLenth.Should().Be(19));
+        }
         
-        //[Test]
-        //public void ShouldParsePuppyCrawlClassFanOutComplexity()
-        //{
-        //    RunTest<PuppyCrawlClassFanOutComplexityParser>(ClassFanOutComplexitymMessage , PuppyCrawlSources.ClassFanOutComplexity,
-        //                                                      m => m.ClassFanOutComplexity.Should().Be(11));
-        //}
+        [Test]
+        public void ShouldParsePuppyCrawlClassFanOutComplexity()
+        {
+            RunClassTest<PuppyCrawlClassFanOutComplexityParser>(ClassFanOutComplexitymMessage , PuppyCrawlSources.ClassFanOutComplexity,
+                                                              m => m.ClassFanOutComplexity.Should().Be(11));
+        }
         
-        //[Test]
-        //public void ShouldParseClassDataAbstractionCoupling()
-        //{
-        //    RunTest<PuppyCrawlClassDataAbstractionCouplingParser>(ClassDataAbstractionCouplingMessage, PuppyCrawlSources.ClassDataAbstractionCoupling,
-        //                                                          m => m.ClassDataAbstractionCoupling.Should().Be(22));
-        //}
+        [Test]
+        public void ShouldParseClassDataAbstractionCoupling()
+        {
+            RunClassTest<PuppyCrawlClassDataAbstractionCouplingParser>(ClassDataAbstractionCouplingMessage, PuppyCrawlSources.ClassDataAbstractionCoupling,
+                                                                  m => m.ClassDataAbstractionCoupling.Should().Be(22));
+        }
     }
 }

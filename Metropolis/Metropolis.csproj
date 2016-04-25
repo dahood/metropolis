@@ -129,11 +129,11 @@
     <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Member\PuppyCrawlDefaultCaseParser.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Member\PuppyCrawlMethodLengthParser.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Member\PuppyCrawlNumberOfParametersParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Member\PuppyCrawlSources.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Member\PupyyCrawlNestedIfDepthParser.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Member\PupyyCrawlNestedTryDepthParser.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\EsLintCheckStylesClassBuilder.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\ICheckStylesClassParser.cs" />
+    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\PuppyCrawlSources.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\PuppyCrawlCheckStylesClassBuilder.cs" />
     <Compile Include="Parsers\XmlParsers\IClassParser.cs" />
     <Compile Include="Parsers\CsvParsers\ToxicityCsvLineItem.cs" />

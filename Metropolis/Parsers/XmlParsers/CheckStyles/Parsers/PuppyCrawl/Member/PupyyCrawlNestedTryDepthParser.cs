@@ -1,5 +1,7 @@
 using Metropolis.Domain;
 using Metropolis.Extensions;
+using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers;
+using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl;
 
 namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl
 {
