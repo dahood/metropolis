@@ -188,13 +188,13 @@ namespace Metropolis
 
         private void NewVersion(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://bitbucket.org/jmccracken/metropolis");
+            Process.Start("https://github.com/dahood/metropolis");
         }
 
         private void AboutMetropolis(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("\u00A9 Copyright 2016 - present, \n" +
-                "Jonathan McCracken and Richard Hurst All rights reserved.\n" +
+                "Jonathan McCracken, Richard Hurst, and Greg Cook All rights reserved.\n" +
                 "Metropolis is licensed under BSD (see LICENSE file for details)", "About Metropolis", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
