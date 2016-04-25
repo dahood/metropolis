@@ -1,0 +1,15 @@
+using Metropolis.Domain;
+using Metropolis.Extensions;
+
+namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl
+{
+    public class PupyyCrawlNestedIfDepthParser : MemberParserBase
+    {
+        public override string Source => "com.puppycrawl.tools.checkstyle.checks.coding.NestedIfDepth";
+        
+        public override void Parse(Member member, CheckStylesItem item)
+        {
+            member.NestedIfDepth = IntParser.Match(item.Message).Value.AsInt();
+        }
+    }
+}

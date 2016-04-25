@@ -1,0 +1,323 @@
+Scope,Project,Namespace,Type,Member,Maintainability Index,Cyclomatic Complexity,Depth of Inheritance,Class Coupling,Lines of Code
+Project,Metropolis (Debug), , , ,84,355,9,144,597
+Namespace,Metropolis (Debug),Metropolis, , ,90,61,9,61,112
+Type,Metropolis (Debug),Metropolis,App, ,100,1,3,1,1
+Member,Metropolis (Debug),Metropolis,App,App(),100,1,,1,1
+Type,Metropolis (Debug),Metropolis,Canvas, ,76,38,9,46,82
+Member,Metropolis (Debug),Metropolis,Canvas,"AboutMetropolis(object, RoutedEventArgs) : void",92,1,,2,1
+Member,Metropolis (Debug),Metropolis,Canvas,Canvas(),57,2,,12,15
+Member,Metropolis (Debug),Metropolis,Canvas,"ChangeCameraSettings(object, RoutedPropertyChangedEventArgs<double>) : void",88,1,,4,1
+Member,Metropolis (Debug),Metropolis,Canvas,GetCamera() : PerspectiveCamera,87,1,,2,2
+Member,Metropolis (Debug),Metropolis,Canvas,GetFileName(string) : string,77,2,,4,3
+Member,Metropolis (Debug),Metropolis,Canvas,"HandleMouseWheel(object, MouseWheelEventArgs) : void",81,2,,4,2
+Member,Metropolis (Debug),Metropolis,Canvas,HookupEventHandlers() : void,79,1,,5,3
+Member,Metropolis (Debug),Metropolis,Canvas,Layout.get() : AbstractLayout,98,1,,1,1
+Member,Metropolis (Debug),Metropolis,Canvas,"LoadProject(object, RoutedEventArgs) : void",85,2,,2,2
+Member,Metropolis (Debug),Metropolis,Canvas,LoadProject(string) : void,67,1,,5,6
+Member,Metropolis (Debug),Metropolis,Canvas,"LoadToxicity(object, RoutedEventArgs) : void",78,2,,3,3
+Member,Metropolis (Debug),Metropolis,Canvas,"LoadVisualStudioMetrics(object, RoutedEventArgs) : void",78,2,,3,3
+Member,Metropolis (Debug),Metropolis,Canvas,Model.get() : Model3DGroup,98,1,,1,1
+Member,Metropolis (Debug),Metropolis,Canvas,"NewProject(object, RoutedEventArgs) : void",84,1,,4,2
+Member,Metropolis (Debug),Metropolis,Canvas,"NewVersion(object, RoutedEventArgs) : void",95,1,,2,1
+Member,Metropolis (Debug),Metropolis,Canvas,"OpenFile(Action<string>, string) : void",71,3,,2,6
+Member,Metropolis (Debug),Metropolis,Canvas,"Parse(IClassParser, string) : void",70,2,,2,6
+Member,Metropolis (Debug),Metropolis,Canvas,Renderlayout() : void,76,2,,4,4
+Member,Metropolis (Debug),Metropolis,Canvas,"ResetCamera(object, RoutedEventArgs) : void",89,1,,2,2
+Member,Metropolis (Debug),Metropolis,Canvas,"SaveProject(object, RoutedEventArgs) : void",66,3,,9,7
+Member,Metropolis (Debug),Metropolis,Canvas,SetClassInformation(string) : void,95,1,,1,1
+Member,Metropolis (Debug),Metropolis,Canvas,SetSliders() : void,76,1,,2,4
+Member,Metropolis (Debug),Metropolis,Canvas,"ShowCityLayout(object, RoutedEventArgs) : void",86,1,,3,2
+Member,Metropolis (Debug),Metropolis,Canvas,"ShowSquareLayout(object, RoutedEventArgs) : void",86,1,,3,2
+Member,Metropolis (Debug),Metropolis,Canvas,"Shutdown(object, RoutedEventArgs) : void",100,1,,2,1
+Member,Metropolis (Debug),Metropolis,Canvas,ViewPort.get() : Viewport3D,98,1,,1,1
+Type,Metropolis (Debug),Metropolis,ClassInformationFacade, ,75,6,1,13,16
+Member,Metropolis (Debug),Metropolis,ClassInformationFacade,ClassInformationFacade(IDisplayClassInformation),77,1,,3,4
+Member,Metropolis (Debug),Metropolis,ClassInformationFacade,ClearDisplay() : void,86,1,,2,2
+Member,Metropolis (Debug),Metropolis,ClassInformationFacade,Display(GeometryModel3D) : void,69,1,,6,4
+Member,Metropolis (Debug),Metropolis,ClassInformationFacade,"Display(object, MouseButtonEventArgs) : void",71,2,,7,5
+Member,Metropolis (Debug),Metropolis,ClassInformationFacade,Initialize() : void,94,1,,2,1
+Type,Metropolis (Debug),Metropolis,EmptyHighlight, ,95,4,1,3,3
+Member,Metropolis (Debug),Metropolis,EmptyHighlight,EmptyHighlight(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis,EmptyHighlight,Reset() : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,EmptyHighlight,Swap(GeometryModel3D) : IHighlightModel,86,2,,3,2
+Type,Metropolis (Debug),Metropolis,HighlightModel, ,84,5,1,5,10
+Member,Metropolis (Debug),Metropolis,HighlightModel,HighlightModel(),92,1,,2,1
+Member,Metropolis (Debug),Metropolis,HighlightModel,HighlightModel(GeometryModel3D),82,1,,1,3
+Member,Metropolis (Debug),Metropolis,HighlightModel,Initialize() : void,84,1,,3,2
+Member,Metropolis (Debug),Metropolis,HighlightModel,Reset() : void,95,1,,2,1
+Member,Metropolis (Debug),Metropolis,HighlightModel,Swap(GeometryModel3D) : IHighlightModel,82,1,,2,3
+Type,Metropolis (Debug),Metropolis,IDisplayClassInformation, ,100,5,0,3,0
+Member,Metropolis (Debug),Metropolis,IDisplayClassInformation,Layout.get() : AbstractLayout,100,1,,1,0
+Member,Metropolis (Debug),Metropolis,IDisplayClassInformation,MouseRightButtonDown.add(MouseButtonEventHandler) : void,100,1,,1,0
+Member,Metropolis (Debug),Metropolis,IDisplayClassInformation,MouseRightButtonDown.remove(MouseButtonEventHandler) : void,100,1,,1,0
+Member,Metropolis (Debug),Metropolis,IDisplayClassInformation,SetClassInformation(string) : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IDisplayClassInformation,ViewPort.get() : Viewport3D,100,1,,1,0
+Type,Metropolis (Debug),Metropolis,IHighlightModel, ,100,2,0,1,0
+Member,Metropolis (Debug),Metropolis,IHighlightModel,Reset() : void,100,1,,0,0
+Member,Metropolis (Debug),Metropolis,IHighlightModel,Swap(GeometryModel3D) : IHighlightModel,100,1,,1,0
+Namespace,Metropolis (Debug),Metropolis.Analyzers, , ,86,18,1,10,33
+Type,Metropolis (Debug),Metropolis.Analyzers,CSharpToxicityAnalyzer, ,81,3,1,8,5
+Member,Metropolis (Debug),Metropolis.Analyzers,CSharpToxicityAnalyzer,Analyze(List<Class>) : CodeBase,73,2,,7,4
+Member,Metropolis (Debug),Metropolis.Analyzers,CSharpToxicityAnalyzer,CSharpToxicityAnalyzer(),100,1,,0,1
+Type,Metropolis (Debug),Metropolis.Analyzers,ICodebaseAnalyzer, ,100,1,0,3,0
+Member,Metropolis (Debug),Metropolis.Analyzers,ICodebaseAnalyzer,Analyze(List<Class>) : CodeBase,100,1,,3,0
+Type,Metropolis (Debug),Metropolis.Analyzers,SimpleAnalyzer, ,85,2,1,5,4
+Member,Metropolis (Debug),Metropolis.Analyzers,SimpleAnalyzer,Analyze(List<Class>) : CodeBase,79,1,,4,3
+Member,Metropolis (Debug),Metropolis.Analyzers,SimpleAnalyzer,SimpleAnalyzer(),100,1,,0,1
+Type,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore, ,80,12,1,6,24
+Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,Caculate() : void,62,2,,5,8
+Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,ClassCoupling.get() : int,94,1,,0,1
+Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,"ComputeToxicity(int, int) : int",79,1,,1,3
+Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,CyclomaticComplexity.get() : int,94,1,,0,1
+Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,DepthOfInheritance.get() : int,92,1,,0,1
+Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,LinesOfCode.get() : int,94,1,,0,1
+Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,NumberOfMethods.get() : int,94,1,,0,1
+Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,Rationalize(double) : int,78,2,,1,4
+Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,Toxicity.get() : int,88,1,,0,1
+Member,Metropolis (Debug),Metropolis.Analyzers,ToxicityScore,ToxicityScore(Class),82,1,,1,3
+Namespace,Metropolis (Debug),Metropolis.Camera, , ,85,32,1,24,47
+Type,Metropolis (Debug),Metropolis.Camera,CameraMovement, ,76,4,1,4,12
+Member,Metropolis (Debug),Metropolis.Camera,CameraMovement,CameraMovement(ISceneProvider),72,1,,4,5
+Member,Metropolis (Debug),Metropolis.Camera,CameraMovement,ChangeFieldOfView(double) : double,87,1,,0,2
+Member,Metropolis (Debug),Metropolis.Camera,CameraMovement,"ChangePosition(double, double, double) : Point3D",80,1,,1,2
+Member,Metropolis (Debug),Metropolis.Camera,CameraMovement,"Update(double, double, double, double) : void",77,1,,3,3
+Type,Metropolis (Debug),Metropolis.Camera,ISceneProvider, ,100,9,0,5,0
+Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,GetCamera() : PerspectiveCamera,100,1,,1,0
+Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,Model.get() : Model3DGroup,100,1,,1,0
+Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,MouseLeftButtonDown.add(MouseButtonEventHandler) : void,100,1,,1,0
+Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,MouseLeftButtonDown.remove(MouseButtonEventHandler) : void,100,1,,1,0
+Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,MouseLeftButtonUp.add(MouseButtonEventHandler) : void,100,1,,1,0
+Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,MouseLeftButtonUp.remove(MouseButtonEventHandler) : void,100,1,,1,0
+Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,MouseMove.add(MouseEventHandler) : void,100,1,,1,0
+Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,MouseMove.remove(MouseEventHandler) : void,100,1,,1,0
+Member,Metropolis (Debug),Metropolis.Camera,ISceneProvider,ViewPort.get() : Viewport3D,100,1,,1,0
+Type,Metropolis (Debug),Metropolis.Camera,RotationalMovement, ,80,17,1,15,31
+Member,Metropolis (Debug),Metropolis.Camera,RotationalMovement,"CalculateXPositionChange(Point, double) : double",80,3,,2,2
+Member,Metropolis (Debug),Metropolis.Camera,RotationalMovement,"CalculateYPositionChange(Point, double) : double",80,3,,2,2
+Member,Metropolis (Debug),Metropolis.Camera,RotationalMovement,"HandleMouseButtonDown(object, MouseButtonEventArgs) : void",84,1,,3,2
+Member,Metropolis (Debug),Metropolis.Camera,RotationalMovement,"HandleMouseMove(object, MouseEventArgs) : void",63,2,,7,8
+Member,Metropolis (Debug),Metropolis.Camera,RotationalMovement,"InactiveMouseMovements(object, MouseEventArgs) : void",98,1,,1,1
+Member,Metropolis (Debug),Metropolis.Camera,RotationalMovement,IsActive.get() : bool,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Camera,RotationalMovement,IsActive.set(bool) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Camera,RotationalMovement,ListenForEvents() : void,79,1,,3,3
+Member,Metropolis (Debug),Metropolis.Camera,RotationalMovement,Reset() : void,91,1,,1,2
+Member,Metropolis (Debug),Metropolis.Camera,RotationalMovement,Rotate() : void,77,1,,6,3
+Member,Metropolis (Debug),Metropolis.Camera,RotationalMovement,RotationalMovement(ISceneProvider),76,1,,3,4
+Member,Metropolis (Debug),Metropolis.Camera,RotationalMovement,ToString() : string,84,1,,1,2
+Type,Metropolis (Debug),Metropolis.Camera,WaitCursor, ,85,2,1,4,4
+Member,Metropolis (Debug),Metropolis.Camera,WaitCursor,Dispose() : void,98,1,,2,1
+Member,Metropolis (Debug),Metropolis.Camera,WaitCursor,WaitCursor(),80,1,,3,3
+Namespace,Metropolis (Debug),Metropolis.Domain, , ,90,125,1,20,162
+Type,Metropolis (Debug),Metropolis.Domain,Class, ,89,36,1,6,50
+Member,Metropolis (Debug),Metropolis.Domain,Class,AddMember(IEnumerable<Member>) : void,95,1,,3,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,AddMeta(IEnumerable<ClassVersionInfo>) : void,95,1,,3,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,AddMeta(params ClassVersionInfo[]) : void,92,1,,2,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,"Class(string, string)",68,2,,3,6
+Member,Metropolis (Debug),Metropolis.Domain,Class,"Class(string, string, int, int, int)",77,1,,0,4
+Member,Metropolis (Debug),Metropolis.Domain,Class,"Class(string, string, int, int, int, int, int)",71,1,,0,6
+Member,Metropolis (Debug),Metropolis.Domain,Class,ClassCoupling.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,ClassCoupling.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,CyclomaticComplexity.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,CyclomaticComplexity.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,DepthOfInheritance.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,DepthOfInheritance.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,Equals(Class) : bool,81,2,,0,2
+Member,Metropolis (Debug),Metropolis.Domain,Class,Equals(object) : bool,72,4,,1,5
+Member,Metropolis (Debug),Metropolis.Domain,Class,GetHashCode() : int,81,3,,0,2
+Member,Metropolis (Debug),Metropolis.Domain,Class,LinesOfCode.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,LinesOfCode.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,Members.get() : List<Member>,98,1,,2,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,Meta.get() : IEnumerable<ClassVersionInfo>,98,1,,3,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,Meta.set(IEnumerable<ClassVersionInfo>) : void,92,1,,4,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,Name.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,NameSpace.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,NamespaceDepth() : int,84,1,,0,2
+Member,Metropolis (Debug),Metropolis.Domain,Class,NumberOfMethods.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,NumberOfMethods.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,QualifiedName.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,ToString() : string,89,1,,0,2
+Member,Metropolis (Debug),Metropolis.Domain,Class,Toxicity.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Class,Toxicity.set(int) : void,95,1,,0,1
+Type,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo, ,92,7,1,1,10
+Member,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo,"ClassVersionInfo(string, string)",77,1,,1,4
+Member,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo,CommitMessage.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo,CommitMessage.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo,FileName.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo,FileName.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo,TimeStamp.get() : DateTime,98,1,,1,1
+Member,Metropolis (Debug),Metropolis.Domain,ClassVersionInfo,TimeStamp.set(DateTime) : void,95,1,,1,1
+Type,Metropolis (Debug),Metropolis.Domain,CodeBase, ,88,17,1,10,20
+Member,Metropolis (Debug),Metropolis.Domain,CodeBase,AllClasses.get() : List<Class>,92,1,,3,1
+Member,Metropolis (Debug),Metropolis.Domain,CodeBase,AverageToxicity() : double,73,3,,4,4
+Member,Metropolis (Debug),Metropolis.Domain,CodeBase,CodeBase(CodeGraph),87,1,,1,2
+Member,Metropolis (Debug),Metropolis.Domain,CodeBase,"CodeBase(string, CodeGraph)",81,1,,1,3
+Member,Metropolis (Debug),Metropolis.Domain,CodeBase,Enrich(CodeGraph) : void,94,1,,1,1
+Member,Metropolis (Debug),Metropolis.Domain,CodeBase,Enrich(IEnumerable<Class>) : void,77,3,,6,3
+Member,Metropolis (Debug),Metropolis.Domain,CodeBase,Graph.get() : CodeGraph,98,1,,1,1
+Member,Metropolis (Debug),Metropolis.Domain,CodeBase,LinesOfCode.get() : int,81,3,,4,2
+Member,Metropolis (Debug),Metropolis.Domain,CodeBase,Name.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,CodeBase,Name.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,CodeBase,NumberOfTypes.get() : int,92,1,,1,1
+Type,Metropolis (Debug),Metropolis.Domain,CodeGraph, ,80,15,1,11,19
+Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,AllClasses.get() : List<Class>,91,1,,4,1
+Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,AllNamespaces.get() : List<string>,92,1,,3,1
+Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,Apply(Class) : void,71,2,,3,5
+Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,CodeGraph(IEnumerable<Class>),76,1,,4,4
+Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,Count.get() : int,94,1,,2,1
+Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,Initialize(IEnumerable<Class>) : void,78,3,,5,3
+Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,MaxLinesOfCode.get() : int,80,3,,5,2
+Member,Metropolis (Debug),Metropolis.Domain,CodeGraph,MinLinesOfCode.get() : int,80,3,,5,2
+Type,Metropolis (Debug),Metropolis.Domain,Member, ,92,10,1,0,15
+Member,Metropolis (Debug),Metropolis.Domain,Member,ClassCoupling.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,ClassCoupling.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,CylomaticComplexity.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,CylomaticComplexity.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,LinesOfCode.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,LinesOfCode.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,"Member(string, int, int, int)",74,1,,0,5
+Member,Metropolis (Debug),Metropolis.Domain,Member,Name.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,Name.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Member,ToString() : string,89,1,,0,2
+Type,Metropolis (Debug),Metropolis.Domain,Project, ,94,5,1,2,5
+Member,Metropolis (Debug),Metropolis.Domain,Project,Classes.get() : IEnumerable<SerializableClass>,98,1,,2,1
+Member,Metropolis (Debug),Metropolis.Domain,Project,Classes.set(IEnumerable<SerializableClass>) : void,95,1,,2,1
+Member,Metropolis (Debug),Metropolis.Domain,Project,Name.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Project,Name.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,Project,Project(),100,1,,0,1
+Type,Metropolis (Debug),Metropolis.Domain,ProjectAssembler, ,85,9,1,9,17
+Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Assemble(Class) : SerializableClass,77,1,,6,2
+Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Assemble(ClassVersionInfo) : SerializableClassVersionInfo,81,1,,2,2
+Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Assemble(CodeGraph) : Project,83,1,,2,2
+Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Assemble(IEnumerable<Class>) : IEnumerable<SerializableClass>,83,1,,5,2
+Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Disassemble(IEnumerable<SerializableClass>) : IEnumerable<Class>,83,1,,5,2
+Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Disassemble(Project) : CodeGraph,84,1,,2,2
+Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Disassemble(SerializableClass) : Class,77,1,,6,2
+Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,Disassemble(SerializableClassVersionInfo) : ClassVersionInfo,83,1,,2,2
+Member,Metropolis (Debug),Metropolis.Domain,ProjectAssembler,ProjectAssembler(),100,1,,0,1
+Type,Metropolis (Debug),Metropolis.Domain,SerializableClass, ,93,19,1,2,19
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,ClassCoupling.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,ClassCoupling.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,CyclomaticComplexity.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,CyclomaticComplexity.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,DepthOfInheritance.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,DepthOfInheritance.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,LinesOfCode.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,LinesOfCode.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,Meta.get() : IEnumerable<SerializableClassVersionInfo>,98,1,,2,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,Meta.set(IEnumerable<SerializableClassVersionInfo>) : void,95,1,,2,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,Name.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,Name.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,NameSpace.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,NameSpace.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,NumberOfMethods.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,NumberOfMethods.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,SerializableClass(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,Toxicity.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClass,Toxicity.set(int) : void,95,1,,0,1
+Type,Metropolis (Debug),Metropolis.Domain,SerializableClassVersionInfo, ,94,7,1,1,7
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClassVersionInfo,CommitMessage.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClassVersionInfo,CommitMessage.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClassVersionInfo,FileName.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClassVersionInfo,FileName.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClassVersionInfo,SerializableClassVersionInfo(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClassVersionInfo,TimeStamp.get() : DateTime,98,1,,1,1
+Member,Metropolis (Debug),Metropolis.Domain,SerializableClassVersionInfo,TimeStamp.set(DateTime) : void,95,1,,1,1
+Namespace,Metropolis (Debug),Metropolis.Layout, , ,78,35,2,31,106
+Type,Metropolis (Debug),Metropolis.Layout,AbstractLayout, ,74,14,1,23,40
+Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,AbstractLayout(),92,1,,3,1
+Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,AbstractLayout(),81,1,,4,2
+Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,"CreateCube(double, double, int, Brush) : Model3D",65,1,,8,8
+Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,"CreateCube(double, double, int, int, Class) : Model3D",68,1,,6,6
+Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,"CreateRectangle(double, double, double, double, Brush) : Model3D",66,1,,8,7
+Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,LookupClass(Model3D) : Class,86,1,,3,2
+Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,"ModelCity(Model3DGroup, CodeBase) : void",100,1,,2,0
+Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,"RenderSquareBlock(Model3DGroup, CodeGraph, Point3D) : void",89,1,,3,1
+Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,"RenderSquareBlock(Model3DGroup, List<Class>, Point3D, int, int) : void",60,4,,6,9
+Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,Reset(Model3DGroup) : void,85,1,,5,2
+Member,Metropolis (Debug),Metropolis.Layout,AbstractLayout,SetCityLights(Model3DGroup) : void,83,1,,4,2
+Type,Metropolis (Debug),Metropolis.Layout,GoldenRatioLayout, ,55,17,2,16,60
+Member,Metropolis (Debug),Metropolis.Layout,GoldenRatioLayout,CalculateRectangleRatios(int) : int[],48,7,,6,27
+Member,Metropolis (Debug),Metropolis.Layout,GoldenRatioLayout,GoldenRatioLayout(),100,1,,1,1
+Member,Metropolis (Debug),Metropolis.Layout,GoldenRatioLayout,"ModelCity(Model3DGroup, CodeBase) : void",50,4,,11,21
+Member,Metropolis (Debug),Metropolis.Layout,GoldenRatioLayout,"SetUpData(CodeBase) : Dictionary<string, List<Class>>",59,5,,10,11
+Type,Metropolis (Debug),Metropolis.Layout,MagnetoLayout, ,100,1,1,0,1
+Member,Metropolis (Debug),Metropolis.Layout,MagnetoLayout,MagnetoLayout(),100,1,,0,1
+Type,Metropolis (Debug),Metropolis.Layout,SquaredLayout, ,82,3,2,4,5
+Member,Metropolis (Debug),Metropolis.Layout,SquaredLayout,"ModelCity(Model3DGroup, CodeBase) : void",74,2,,4,4
+Member,Metropolis (Debug),Metropolis.Layout,SquaredLayout,SquaredLayout(),100,1,,1,1
+Namespace,Metropolis (Debug),Metropolis.Models, , ,77,18,1,9,39
+Type,Metropolis (Debug),Metropolis.Models,BrushFactory, ,68,13,1,2,29
+Member,Metropolis (Debug),Metropolis.Models,BrushFactory,BrushFactory(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Models,BrushFactory,BrushFactory(),69,1,,2,6
+Member,Metropolis (Debug),Metropolis.Models,BrushFactory,GetBrushForScale(int) : Brush,63,6,,1,12
+Member,Metropolis (Debug),Metropolis.Models,BrushFactory,GetBrushForToxicity(int) : Brush,66,5,,1,10
+Type,Metropolis (Debug),Metropolis.Models,BuildingFactory, ,80,4,1,8,8
+Member,Metropolis (Debug),Metropolis.Models,BuildingFactory,AssemblePoints() : Point3DCollection,78,1,,2,2
+Member,Metropolis (Debug),Metropolis.Models,BuildingFactory,BuildingFactory(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Models,BuildingFactory,CreateCube(Brush) : GeometryModel3D,76,1,,4,3
+Member,Metropolis (Debug),Metropolis.Models,BuildingFactory,CreateTrianglesForACube() : Int32Collection,86,1,,2,2
+Type,Metropolis (Debug),Metropolis.Models,LinearScale, ,82,1,1,0,2
+Member,Metropolis (Debug),Metropolis.Models,LinearScale,"Apply(int, int, int) : int",82,1,,0,2
+Namespace,Metropolis (Debug),Metropolis.Parsers, , ,78,63,3,36,89
+Type,Metropolis (Debug),Metropolis.Parsers,"ClassParser<T, TMapper>", ,80,5,1,13,8
+Member,Metropolis (Debug),Metropolis.Parsers,"ClassParser<T, TMapper>",ClassParser(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,"ClassParser<T, TMapper>",Parse(string) : CodeBase,65,3,,11,7
+Member,Metropolis (Debug),Metropolis.Parsers,"ClassParser<T, TMapper>",ParseLines(IEnumerable<T>) : CodeBase,100,1,,2,0
+Type,Metropolis (Debug),Metropolis.Parsers,IClassParser, ,100,1,0,1,0
+Member,Metropolis (Debug),Metropolis.Parsers,IClassParser,Parse(string) : CodeBase,100,1,,1,0
+Type,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem, ,93,17,1,0,17
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,ClassCoupling.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,ClassCoupling.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,CyclomaticComplexity.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,CyclomaticComplexity.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,DepthOfInheritance.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,DepthOfInheritance.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,LinesOfCode.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,LinesOfCode.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,Namespace.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,Namespace.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,NumberOfMethods.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,NumberOfMethods.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,Toxicity.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,Toxicity.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,ToxicityCsvLineItem(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,Type.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItem,Type.set(string) : void,95,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItemClassMap, ,59,1,3,8,9
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityCsvLineItemClassMap,ToxicityCsvLineItemClassMap(),59,1,,8,9
+Type,Metropolis (Debug),Metropolis.Parsers,ToxicityParser, ,79,4,2,10,5
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityParser,ParseLines(IEnumerable<ToxicityCsvLineItem>) : CodeBase,70,3,,8,4
+Member,Metropolis (Debug),Metropolis.Parsers,ToxicityParser,ToxicityParser(),100,1,,3,1
+Type,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem, ,93,21,1,0,21
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,ClassCoupling.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,ClassCoupling.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,CyclomaticComplexity.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,CyclomaticComplexity.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,DepthOfInheritance.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,DepthOfInheritance.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,LinesOfCode.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,LinesOfCode.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,MaintainabilityIndex.get() : int,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,MaintainabilityIndex.set(int) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Member.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Member.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Namespace.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Namespace.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Project.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Project.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Scope.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Scope.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Type.get() : string,98,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,Type.set(string) : void,95,1,,0,1
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItem,VisualStudioCsvLineItem(),100,1,,0,1
+Type,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItemClassMap, ,56,1,3,9,11
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioCsvLineItemClassMap,VisualStudioCsvLineItemClassMap(),56,1,,9,11
+Type,Metropolis (Debug),Metropolis.Parsers,VisualStudioMetricsParser, ,65,13,2,16,18
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioMetricsParser,"CollectMethods(IEnumerable<VisualStudioCsvLineItem>, VisualStudioCsvLineItem) : IEnumerable<VisualStudioCsvLineItem>",71,4,,5,4
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioMetricsParser,ParseLines(IEnumerable<VisualStudioCsvLineItem>) : CodeBase,55,8,,13,13
+Member,Metropolis (Debug),Metropolis.Parsers,VisualStudioMetricsParser,VisualStudioMetricsParser(),100,1,,3,1
+Namespace,Metropolis (Debug),Metropolis.Persistence, , ,77,3,1,5,9
+Type,Metropolis (Debug),Metropolis.Persistence,ProjectRepository, ,77,3,1,5,9
+Member,Metropolis (Debug),Metropolis.Persistence,ProjectRepository,Load(string) : CodeBase,73,1,,5,4
+Member,Metropolis (Debug),Metropolis.Persistence,ProjectRepository,ProjectRepository(),100,1,,0,1
+Member,Metropolis (Debug),Metropolis.Persistence,ProjectRepository,"Save(CodeBase, string) : void",73,1,,5,4

@@ -1,0 +1,31 @@
+# Project Excludes
+dist/
+test-results/
+.idea
+
+# VS User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sln.iml
+
+# VS User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+
+# VS Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# VS cache/options directory
+.vs/
+# Uncomment if you have tasks that create the project's static files in wwwroot
+#wwwroot/
