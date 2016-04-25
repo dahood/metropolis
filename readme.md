@@ -33,41 +33,6 @@ java com.puppycrawl.tools.checkstyle.Main -c metropolis_checkstyle_metrics.xml -
 2. Navigate City, layouts... etc
 3. Enrich dataset (need logs to find duplicates)
 
-
-
-
-
-
-# Developer's Guide
-
-For the installer to work you need the Visual Studio Extension for 2015 installers - https://visualstudiogallery.msdn.microsoft.com/f1cc3f3e-c300-40a7-8797-c509fb8933b9
-
-
-## Components
-
-There are 4 components to Metropolis:
-
-1. Parsers - for data aquisition and parsing of information (enrich information with Analyzers)
-1. Analyzers - for calculating static properties (e.g. Toxicity, Code Ownership Distribution)
-1. Domain - representing the abstraction of a Codebase (e.g. Class, Namespace, ClassVersionInfo, CodeGraph)
-1. 3DModels - for projecting the properties of the Codebases
-
-### Parsers
-
-Impelement IClassParser. Each parser impelments IClassParser so that it can parse and aquire information. This information can then be passed onto one or more Analyzers to enrich the data.
-
-### Analyzers
-
-Implements ICodebaseAnalyzer. Perform more complex parsing logic or calculations (e.g. calculating toxicity involves taking the natural log of all the properties).
-
-### Domain
-
-Abstract aspects of soure code from a static analysis, source control, codebase test results (e.g. code coverage), and reusable software patterns (e.g. Repository pattern)
-
-### 3DModels
-
-This is where all the Model3D libraries are used. All Matrix Transformations and Layouts (e.g. SquaredLayout, MagnitoLayout).
-
 ## License
 
 Metropolis is licensed under BSD (see LICENSE). 
