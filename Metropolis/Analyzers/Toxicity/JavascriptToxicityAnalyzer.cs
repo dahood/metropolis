@@ -1,5 +1,4 @@
-﻿using Metropolis.Analyzers.Toxicity;
-using Metropolis.Domain;
+﻿using Metropolis.Domain;
 
 namespace Metropolis.Analyzers.Toxicity
 {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Metropolis.Domain;
-using Metropolis.Analyzers.Toxicity;
 
 namespace Metropolis.Analyzers.Toxicity
 {
