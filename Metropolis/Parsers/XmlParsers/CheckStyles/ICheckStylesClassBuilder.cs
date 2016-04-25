@@ -44,7 +44,7 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles
 
             var type = ParseClass(key, members);
 
-            //add class level metrics
+             //add class level metrics
             grouped.ForEach(each => {
 
                 (from p in ClassParsers
