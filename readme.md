@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/dahood/metropolis.svg?branch=master)](https://travis-ci.org/dahood/metropolis)
-
 # What is Metropolis?
 
 Metropolis is a code visualization aid to help in review and analysis. It creates 3D representations of modules of code and builds a cityscape  to help reviewers pin point areas of interest. It provides a 3D treemap which uses static code metrics, source control data, and other user data to pin point hotspots in the codebase that warrant more investigation (e.g. cyclomatic complexity, lines of code, number of touches in source control, etc).
