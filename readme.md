@@ -6,32 +6,10 @@ Metropolis is a code visualization aid to help in review and analysis. It create
 
 Grab the latest [MSI installer](https://github.com/dahood/metropolis/raw/master/publish/Metropolis.msi). Currently only support Windows sorry no [WPF on Mono yet](http://www.mono-project.com/docs/gui/wpf/).
 
+## How To ... do that
 
-# User Guide
+Learn more by visiting the [project wiki](https://github.com/dahood/metropolis/wiki)
 
-1. Collect Metrics
-* Java Metrics - 
-
-* checkstyle
-
-1. First make sure to download and install checkstyle-all-jar.jar into your CLASSPATH
-2. Run Checkstyle command below:
-
-```
-#!sh
-
-java com.puppycrawl.tools.checkstyle.Main -c metropolis_checkstyle_metrics.xml -f xml -o metropolis_import.xml src/folder
-```
-3. Import metropolis_import.xml into Metropolis
-
-* Eclipse + metrics2 plugin (http://metrics2.sourceforge.net/) - ideally wrap metrics2 JAR into a command line utility or directly into metropolis
-
-* IntelliJ?
-
-* C# Metrics - Visual Studio Metrics
-
-2. Navigate City, layouts... etc
-3. Enrich dataset (need logs to find duplicates)
 
 ## License
 
