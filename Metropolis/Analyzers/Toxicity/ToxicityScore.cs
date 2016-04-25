@@ -4,17 +4,17 @@
     {
         public double Toxicity { get; set; }
 
-        //Common All
-        public double LinesOfCode { get; set; }
+        //Common 
         public double NumberOfMethods { get; set; }
         public double MethodLength { get; set; }
         public double CyclomaticComplexity { get; set; }
-        public double ParameterNumber { get; set; }
-        public double NestedIfDepth { get; set; }
-        public double MissingSwitchDefault { get; set; }
 
-        // Common OO (Java/C#)
-        public double ClassCoupling { get; set; } //ClassFanOutComplexity by Java, VS metrics for C#
+        // Mostly Common (2 or more)
+        public double LinesOfCode { get; set; } // Class (Java/C#) or File (ECMA)
+        public double ParameterNumber { get; set; } // C# doesn't use this
+        public double NestedIfDepth { get; set; } // Java & ECMA only
+        public double MissingSwitchDefault { get; set; } // Java & ECMA only
+        public double ClassCoupling { get; set; } //ClassFanOutComplexity by Java, VS metrics for C#, Not used by ECMA
 
         //C#
         public double DepthOfInheritance { get; set; }

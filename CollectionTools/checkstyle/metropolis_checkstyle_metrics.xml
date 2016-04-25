@@ -14,28 +14,28 @@
 		<module name="MissingSwitchDefault"/>
 		<module name="BooleanExpressionComplexity"/>
 		<module name="NestedTryDepth">
-			<property name="max" value="0"/> <!-- Kept at 0 so parser can read all file lengths -->
+			<property name="max" value="-1"/> <!-- Kept at 0 so parser can read all file lengths -->
 		</module>
 		<module name="NestedIfDepth">
-			<property name="max" value="0"/> <!-- Kept at 0 so parser can read all file lengths -->
+			<property name="max" value="-1"/> <!-- Kept at 0 so parser can read all file lengths -->
 		</module>
 		<module name="AnonInnerLength">
-			<property name="max" value="0"/> <!-- Kept at 0 so parser can read all file lengths -->
+			<property name="max" value="-1"/> <!-- Kept at 0 so parser can read all file lengths -->
 		</module>
 		<module name="ParameterNumber">
-			<property name="max" value="0"/> <!-- Kept at 0 so parser can read all file lengths -->
+			<property name="max" value="-1"/> <!-- Kept at 0 so parser can read all file lengths -->
 		</module>
 		<module name="MethodLength">
-			<property name="max" value="0"/> <!-- Kept at 0 so parser can read all file lengths -->
+			<property name="max" value="-1"/> <!-- Kept at 0 so parser can read all file lengths -->
 		</module>
 		<module name="ClassFanOutComplexity">
-			<property name="max" value="0"/> <!-- Kept at 0 so parser can read all file lengths -->
+			<property name="max" value="-1"/> <!-- Kept at 0 so parser can read all file lengths -->
 		</module>
 		<module name="CyclomaticComplexity">
-			<property name="max" value="0"/> <!-- Kept at 0 so parser can read all file lengths -->
+			<property name="max" value="-1"/> <!-- Kept at 0 so parser can read all file lengths -->
 		</module>
 		<module name="ClassDataAbstractionCoupling">
-			<property name="max" value="0"/> <!-- Kept at 0 so parser can read all file lengths -->
+			<property name="max" value="-1"/> <!-- Kept at 0 so parser can read all file lengths -->
 		</module>
 	</module>
 </module>
