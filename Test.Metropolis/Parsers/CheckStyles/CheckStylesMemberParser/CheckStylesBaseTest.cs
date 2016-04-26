@@ -2,7 +2,7 @@
 using FluentAssertions;
 using Metropolis.Domain;
 using Metropolis.Parsers.XmlParsers.CheckStyles;
-using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers;
+using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers;
 using NUnit.Framework;
 
 namespace Test.Metropolis.Parsers.CheckStyles.CheckStylesMemberParser
@@ -19,20 +19,33 @@ namespace Test.Metropolis.Parsers.CheckStyles.CheckStylesMemberParser
             Member = new Member(string.Empty, 0, 0, 0);
         }
 
-        protected static T ParserFor<T>() where T : ICheckStylesMemberParser, new()
+        protected static T MemberParserFor<T>() where T : ICheckStylesMemberParser, new()
+        {
+            return new T();
+        }
+        protected static T ClassParserFor<T>() where T : ICheckStylesClassParser, new()
         {
             return new T();
         }
 
-        protected void RunTest<T>(string message, string expectedSource, Action<Member> action,
-             CheckStylesItem item = null) where T : ICheckStylesMemberParser, new()
+        protected void RunMemberTest<T>(string message, string expectedSource, Action<Member> action, CheckStylesItem item = null) where T : ICheckStylesMemberParser, new()
         {
             var checkStylesItem = item??new CheckStylesItem { Message = message };
-            var parser = ParserFor<T>();
+            var parser = MemberParserFor<T>();
             parser.Parse(Member, checkStylesItem);
 
             parser.Source.Should().Be(expectedSource);
             action(Member);
+        }
+
+        protected void RunClassTest<T>(string message, string expectedSource, Action<Class> action, CheckStylesItem item = null) where T : ICheckStylesClassParser, new()
+        {
+            var checkStylesItem = item??new CheckStylesItem { Message = message };
+            var parser = ClassParserFor<T>();
+            parser.Parse(ParentClass, checkStylesItem);
+
+            parser.Source.Should().Be(expectedSource);
+            action(ParentClass);
         }
     }
 }

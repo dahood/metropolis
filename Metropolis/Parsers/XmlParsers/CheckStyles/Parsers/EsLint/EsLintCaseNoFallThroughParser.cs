@@ -1,6 +1,7 @@
 using Metropolis.Domain;
+using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint;
 
-namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint
+namespace Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.EsLint
 {
     public class EsLintCaseNoFallThroughParser : CheckStyleBaseParser, ICheckStylesMemberParser
     {

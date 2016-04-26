@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint;
+using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.EsLint;
 using NUnit.Framework;
 
 namespace Test.Metropolis.Parsers.CheckStyles.CheckStylesMemberParser
@@ -16,7 +17,7 @@ namespace Test.Metropolis.Parsers.CheckStyles.CheckStylesMemberParser
         [Test]
         public void ShouldParseFunctionNameAndComplexity()
         {
-            RunTest<EsLintComplexityParser>(ComplexityMessage, EslintSources.Complexity, m =>
+            RunMemberTest<EsLintComplexityParser>(ComplexityMessage, EslintSources.Complexity, m =>
             {
                 m.Name.Should().Be("jqLiteAcceptsData");
                 m.CylomaticComplexity.Should().Be(3);
@@ -26,25 +27,25 @@ namespace Test.Metropolis.Parsers.CheckStyles.CheckStylesMemberParser
         [Test]
         public void CanParseNumberOfStatements()
         {
-            RunTest<EsLintNumberOfStatmentsParser>(StatementsMessage, EslintSources.MemberNumberOfStatements, m => m.LinesOfCode.Should().Be(17));
+            RunMemberTest<EsLintNumberOfStatmentsParser>(StatementsMessage, EslintSources.MemberNumberOfStatements, m => m.LinesOfCode.Should().Be(17));
         }
 
         [Test]
         public void CanParseNumberOfParameters()
         {
-            RunTest<EsLintNumberOfParametersParser>(ParametersMessage, EslintSources.NumberOfParameters, m => m.NumberOfParameters.Should().Be(2));
+            RunMemberTest<EsLintNumberOfParametersParser>(ParametersMessage, EslintSources.NumberOfParameters, m => m.NumberOfParameters.Should().Be(2));
         }
 
         [Test]
         public void CanParseDefaultCaseMissing()
         {
-            RunTest<EsLintDefaultCaseParser>(DefaultCaseMessage, EslintSources.DefaultCase, m => m.MissingDefaultCase.Should().Be(1));
+            RunMemberTest<EsLintDefaultCaseParser>(DefaultCaseMessage, EslintSources.DefaultCase, m => m.MissingDefaultCase.Should().Be(1));
         }
 
         [Test]
         public void CanParseNoFallthrough()
         {
-            RunTest<EsLintCaseNoFallThroughParser>(NofallthroughMessage, EslintSources.CaseNoFallThrough, m => m.NoFallthrough.Should().Be(1));
+            RunMemberTest<EsLintCaseNoFallThroughParser>(NofallthroughMessage, EslintSources.CaseNoFallThrough, m => m.NoFallthrough.Should().Be(1));
         }
     }
 }

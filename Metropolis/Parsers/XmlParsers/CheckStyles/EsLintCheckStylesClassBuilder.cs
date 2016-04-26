@@ -1,5 +1,7 @@
+using System.Linq;
 using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint;
-using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers;
+using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers;
+using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.EsLint;
 
 namespace Metropolis.Parsers.XmlParsers.CheckStyles
 {
@@ -10,9 +12,6 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles
             new EsLintComplexityParser(), new EsLintNumberOfStatmentsParser(), new EsLintNumberOfParametersParser(),
             new EsLintDefaultCaseParser(), new EsLintCaseNoFallThroughParser()
         };
-
-        public EsLintCheckStylesClassBuilder() : base(null, EsLintMemberParsers)
-        {
-        }
+        public EsLintCheckStylesClassBuilder() : base(null, EsLintMemberParsers) { }
     }
 }

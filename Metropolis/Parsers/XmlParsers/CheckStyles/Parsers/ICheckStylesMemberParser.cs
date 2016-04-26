@@ -1,6 +1,6 @@
 using Metropolis.Domain;
 
-namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers
+namespace Metropolis.Parsers.XmlParsers.CheckStyles.Parsers
 {
     public interface ICheckStylesMemberParser
     {

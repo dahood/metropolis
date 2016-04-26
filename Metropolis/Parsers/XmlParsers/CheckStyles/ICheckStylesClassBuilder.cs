@@ -2,7 +2,7 @@
 using System.Linq;
 using Metropolis.Domain;
 using Metropolis.Extensions;
-using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers;
+using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers;
 
 namespace Metropolis.Parsers.XmlParsers.CheckStyles
 {
@@ -16,8 +16,7 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles
         protected readonly IEnumerable<ICheckStylesClassParser> ClassParsers;
         protected readonly IEnumerable<ICheckStylesMemberParser> MemberParsers;
 
-        protected BaseCheckStylesClassBuilder(IEnumerable<ICheckStylesClassParser> classParsers,
-            IEnumerable<ICheckStylesMemberParser> memberParsers)
+        protected BaseCheckStylesClassBuilder(IEnumerable<ICheckStylesClassParser> classParsers, IEnumerable<ICheckStylesMemberParser> memberParsers)
         {
             ClassParsers = classParsers;
             MemberParsers = memberParsers;
@@ -43,7 +42,7 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles
 
             var type = ParseClass(key, members);
 
-            //add class level metrics
+             //add class level metrics
             grouped.ForEach(each => {
 
                 (from p in ClassParsers

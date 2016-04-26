@@ -1,7 +1,8 @@
-using Metropolis.Domain;
 using Metropolis.Extensions;
+using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers;
+using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl;
 
-namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl
+namespace Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Member
 {
     public class PuppyCrawlNumberOfParametersParser : CheckStyleBaseParser, ICheckStylesMemberParser
     {
@@ -12,7 +13,7 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.Pup
             
         }
         
-        public void Parse(Member member, CheckStylesItem item)
+        public void Parse(Domain.Member member, CheckStylesItem item)
         {
             var split = Parser.Split(item.Message);
             member.NumberOfParameters = split[split.Length-2].AsInt();
