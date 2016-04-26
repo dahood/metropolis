@@ -32,7 +32,7 @@ namespace Metropolis.Analyzers.Toxicity
             var numberOfMethods = ComputeToxicity(classToScore.Members.Count, ThresholdNumberOfMethods);
             var innerClassAnonymous = ComputeToxicity(classToScore.AnonymousInnerClassLenth, ThresholdAnonymousInnerClassLength);
             var classDataAbstractionCoupling = ComputeToxicity(classToScore.ClassDataAbstractionCoupling, ThresholdClassDataAbstractionCoupling);
-            var classFanOutComplexity = ComputeToxicity(classToScore.ClassCoupling, ThresholdClassFanOutComplexity);
+            var classFanOutComplexity = ComputeToxicity(classToScore.CyclomaticComplexity, ThresholdClassFanOutComplexity);
 
             // Method Level Toxicity
             double cyclomaticComplexity = 0;
@@ -61,7 +61,8 @@ namespace Metropolis.Analyzers.Toxicity
             score.NumberOfMethods = Rationalize(numberOfMethods);
             score.AnonInnerLength = Rationalize(innerClassAnonymous);
             // TODO: break this out to two distinct measures?
-            score.ClassCoupling = Rationalize(classDataAbstractionCoupling + classFanOutComplexity);
+            score.ClassDataAbstractionCoupling = Rationalize(classDataAbstractionCoupling);
+            score.ClassFanOutComplexity = Rationalize(classFanOutComplexity);
 
             // method level
             score.MethodLength = Rationalize(methodLength);

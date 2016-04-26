@@ -27,5 +27,6 @@
         
         // ECMA / Javascript
         public double SwitchNoFallThrough { get; set; }
+        public double ClassFanOutComplexity { get; internal set; }
     }
 }
