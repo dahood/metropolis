@@ -9,7 +9,9 @@ namespace Metropolis.Analyzers.Toxicity
         private const int ThresholdNumberOfMethods = 20;
         // Function level thresholds
         private const int ThresholdMethodLength = 30;
-        private const int thresholdCyclomaticComplexity = 10;
+        private const int ThresholdCyclomaticComplexity = 10;
+        private const int ThresholdNestedIfDepthy = 2;
+        private const int ThresholdNestedTryDepth = 1;
 
         public override ToxicityScore CalculateToxicity(Class classToScore)
         {
@@ -21,15 +23,17 @@ namespace Metropolis.Analyzers.Toxicity
             // Method Level Toxicity
             foreach (var method in classToScore.Members)
             {
-                cyclomaticComplexity += ComputeToxicity(method.CylomaticComplexity, thresholdCyclomaticComplexity);
+                cyclomaticComplexity += ComputeToxicity(method.CylomaticComplexity, ThresholdCyclomaticComplexity);
                 linesOfCode += ComputeToxicity(method.LinesOfCode, ThresholdMethodLength);
             }
 
             // Rationalize
-            var score = new ToxicityScore();
-            score.LinesOfCode = Rationalize(linesOfCode);
-            score.NumberOfMethods = Rationalize(numberOfMethods);
-            score.CyclomaticComplexity = Rationalize(cyclomaticComplexity);
+            var score = new ToxicityScore
+            {
+                LinesOfCode = Rationalize(linesOfCode),
+                NumberOfMethods = Rationalize(numberOfMethods),
+                CyclomaticComplexity = Rationalize(cyclomaticComplexity)
+            };
 
             score.Toxicity = score.LinesOfCode + score.NumberOfMethods +
                              score.CyclomaticComplexity;
