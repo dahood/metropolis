@@ -20,6 +20,7 @@ namespace Metropolis.Layout
             var namespaces = codeBase.ByNamespace();
             var plots = GeneratePlots(namespaces);
             var rows = plots.Batch((int)Math.Ceiling(Math.Sqrt(plots.Count())));
+            if (rows == null) return;
 
             var previous = Plot.Empty;
             var maxZ = 0d;

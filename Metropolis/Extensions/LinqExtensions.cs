@@ -9,6 +9,8 @@ namespace Metropolis.Extensions
         public static IEnumerable<IEnumerable<T>> Batch<T>(this IEnumerable<T> source, int batchSize)
         {
             var working = source.ToList();
+            if (working.Count == 0) return null;
+
             List<IEnumerable<T>> result = new List<IEnumerable<T>>(working.Count / batchSize + 1);
             for (int i = 0; i < working.Count; )
             {
