@@ -1,5 +1,4 @@
 using System.Linq;
-using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint;
 using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers;
 using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.EsLint;
 

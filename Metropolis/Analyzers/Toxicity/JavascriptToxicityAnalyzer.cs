@@ -27,7 +27,6 @@ namespace Metropolis.Analyzers.Toxicity
             var missingDefaultCase = 0d;
             var noFallThrough = 0d;
 
-
             double cyclomaticComplexity = 0;
             // Method Level Toxicity
             foreach (var method in classToScore.Members)
