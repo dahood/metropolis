@@ -12,6 +12,6 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles
             new EsLintComplexityParser(), new EsLintNumberOfStatmentsParser(), new EsLintNumberOfParametersParser(),
             new EsLintDefaultCaseParser(), new EsLintCaseNoFallThroughParser()
         };
-        public EsLintCheckStylesClassBuilder() : base(null, EsLintMemberParsers) { }
+        public EsLintCheckStylesClassBuilder() : base(Enumerable.Empty<ICheckStylesClassParser>(), EsLintMemberParsers) { }
     }
 }

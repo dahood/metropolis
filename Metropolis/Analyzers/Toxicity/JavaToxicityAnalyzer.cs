@@ -67,11 +67,11 @@ namespace Metropolis.Analyzers.Toxicity
             // method level
             score.MethodLength = Rationalize(methodLength);
             score.CyclomaticComplexity = Rationalize(cyclomaticComplexity);
-            score.MissingSwitchDefault = Rationalize(missingDefaultCase);
+            score.MissingDefaultCase = Rationalize(missingDefaultCase);
             score.BooleanExpressionComplexity = Rationalize(booleanComplexity);
 
             score.Toxicity = score.LinesOfCode + score.NumberOfMethods + score.ClassCoupling + score.AnonInnerLength +
-                             score.MethodLength + score.CyclomaticComplexity + score.MissingSwitchDefault + score.BooleanExpressionComplexity;
+                             score.MethodLength + score.CyclomaticComplexity + score.MissingDefaultCase + score.BooleanExpressionComplexity;
 
             return score;
         }
