@@ -20,6 +20,7 @@ namespace Metropolis.Analyzers.Toxicity
             // Class Level Toxicity
             var linesOfCode = ComputeToxicity(classToScore.LinesOfCode, ThresholdLinesOfCode);
             var numberOfMethods = ComputeToxicity(classToScore.Members.Count, ThresholdNumberOfMethods);
+            var methodLength = 0d;
             var numberOfParameters = 0d;
             var nestedIfDepth = 0d;
             var missingDefaultCase = 0d;
@@ -30,7 +31,7 @@ namespace Metropolis.Analyzers.Toxicity
             foreach (var method in classToScore.Members)
             {
                 cyclomaticComplexity += ComputeToxicity(method.CylomaticComplexity, ThresholdCyclomaticComplexity);
-                linesOfCode += ComputeToxicity(method.LinesOfCode, ThresholdMethodLength);
+                methodLength += ComputeToxicity(method.LinesOfCode, ThresholdMethodLength);
                 numberOfParameters += ComputeToxicity(method.NumberOfParameters, ThresholdNumberOfParameters);
                 nestedIfDepth += ComputeToxicity(method.NestedIfDepth, ThresholdNestedIfDepth);
                 missingDefaultCase += ComputeToxicity(method.MissingDefaultCase, ThresholdMissingDefaultCase);
@@ -42,6 +43,7 @@ namespace Metropolis.Analyzers.Toxicity
             {
                 LinesOfCode = Rationalize(linesOfCode),
                 NumberOfMethods = Rationalize(numberOfMethods),
+                MethodLength = Rationalize(methodLength),
                 CyclomaticComplexity = Rationalize(cyclomaticComplexity),
                 NumberOfParameters =  Rationalize(numberOfParameters),
                 NestedIfDepth = Rationalize(nestedIfDepth),
@@ -50,7 +52,7 @@ namespace Metropolis.Analyzers.Toxicity
             };
 
             score.Toxicity = score.LinesOfCode + score.NumberOfMethods +
-                             score.CyclomaticComplexity + score.NumberOfParameters +
+                             score.CyclomaticComplexity + score.NumberOfParameters + score.MethodLength +
                              score.NestedIfDepth + score.MissingDefaultCase + score.SwitchNoFallThrough;
 
             return score;
