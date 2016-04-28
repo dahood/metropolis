@@ -59,6 +59,7 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
+                Workspace.SourceType = RepositorySourceType.CSharp;
                 var parser = new ToxicityParser();
                 Parse(parser, fileName);
             }, "Toxicity|*.csv");
@@ -68,6 +69,7 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
+                Workspace.SourceType = RepositorySourceType.CSharp;
                 var parser = new VisualStudioMetricsParser();
                 Parse(parser, fileName);
             }, "VisualStudio Metrics|*.csv");
@@ -104,6 +106,7 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
+                Workspace.SourceType = RepositorySourceType.Java;
                 var parser = CheckStylesParser.JavaCheckStylesParser;
                 Parse(parser, fileName);
             }, "Checkstyles |*.xml");
@@ -113,6 +116,7 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
+                Workspace.SourceType = RepositorySourceType.ECMA;
                 var parser = CheckStylesParser.EslintParser;
                 Parse(parser, fileName);
             }, "Checkstyles |*.xml");

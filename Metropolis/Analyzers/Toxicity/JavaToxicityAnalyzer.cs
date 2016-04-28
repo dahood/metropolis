@@ -3,7 +3,7 @@
 namespace Metropolis.Analyzers.Toxicity
 {
     /// <summary>
-    /// Mostly taken from Erik Doernenberg's 2008 toxicity reloaded article 
+    /// Adapted from Erik Doernenberg's 2008 toxicity reloaded article 
     /// http://erik.doernenburg.com/2008/11/how-toxic-is-your-code/
     /// </summary>
     public class JavaToxicityAnalyzer : ToxicityAnalyzer
@@ -30,7 +30,7 @@ namespace Metropolis.Analyzers.Toxicity
             // Class Level Toxicity
             var linesOfCode = ComputeToxicity(classToScore.LinesOfCode, ThresholdLinesOfCode);
             var numberOfMethods = ComputeToxicity(classToScore.Members.Count, ThresholdNumberOfMethods);
-            var innerClassAnonymous = ComputeToxicity(classToScore.AnonymousInnerClassLenth, ThresholdAnonymousInnerClassLength);
+            var innerClassAnonymous = ComputeToxicity(classToScore.AnonymousInnerClassLength, ThresholdAnonymousInnerClassLength);
             var classDataAbstractionCoupling = ComputeToxicity(classToScore.ClassDataAbstractionCoupling, ThresholdClassDataAbstractionCoupling);
             var classFanOutComplexity = ComputeToxicity(classToScore.ClassFanOutComplexity, ThresholdClassFanOutComplexity);
 

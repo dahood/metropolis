@@ -55,12 +55,34 @@ namespace Metropolis
         {
             highlight = highlight.Swap(model);
             var type = provider.Layout.LookupClass(model);
-            var txt =
-                string.Format(
+            var txt = DisplayTextBasedOnRepositoryType(type);
+            
+            provider.SetClassInformation(txt);
+        }
+
+        private string DisplayTextBasedOnRepositoryType(Class type)
+        {
+            if (provider.SourceType == RepositorySourceType.CSharp)
+            {
+                return string.Format(
                     "Name: {1}{0}Lines Of Code {2}{0}Number Of Methods: {3}{0}Cyclomatic Complexity: {4}{0}Class Coupling: {5}{0}Depth of Inheritance: {6}{0}Toxicity: {7}{0}Namespace: {8}{0}",
                     Environment.NewLine, type.Name, type.LinesOfCode, type.NumberOfMethods, type.CyclomaticComplexity, type.ClassCoupling,
                     type.DepthOfInheritance, type.Toxicity, type.NameSpace);
-            provider.SetClassInformation(txt);
+            }
+            else if (provider.SourceType == RepositorySourceType.Java)
+            {
+                return string.Format(
+                    "Name: {1}{0}Lines Of Code {2}{0}Number Of Methods: {3}{0}Cyclomatic Complexity: {4}{0}ClassFanOut: {5}{0}ClassDataAbstractionCoupling: {6}{0}Anon Inner Classes: {7}{0}Depth of Inheritance: {8}{0}Toxicity: {9}{0}Package: {10}{0}",
+                    Environment.NewLine, type.Name, type.LinesOfCode, type.NumberOfMethods, type.CyclomaticComplexity, type.ClassFanOutComplexity, type.ClassDataAbstractionCoupling,
+                    type.AnonymousInnerClassLength, type.DepthOfInheritance, type.Toxicity, type.NameSpace);
+            }
+            else if (provider.SourceType == RepositorySourceType.ECMA)
+            {
+                return string.Format(
+                    "File Name: {1}{0}Lines Of Code {2}{0}Number Of Methods: {3}{0}Cyclomatic Complexity: {4}{0}Toxicity: {5}{0}Directory: {6}{0}",
+                    Environment.NewLine, type.Name, type.LinesOfCode, type.NumberOfMethods, type.CyclomaticComplexity, type.Toxicity, type.NameSpace);
+            }
+            return null;
         }
     }
 }

@@ -75,7 +75,7 @@ namespace Test.Metropolis.Parsers.CheckStyles.CheckStylesMemberParser
         public void ShouldParseAnonymousInnerClassLenthestedIfDepth()
         {
             RunClassTest<PuppyCrawlAnonymousInnerClassLenthParser>(AnonymousInnerClassLengthMessage, PuppyCrawlSources.AnonymousInnerClassLength, 
-                                                              m => m.AnonymousInnerClassLenth.Should().Be(19));
+                                                              m => m.AnonymousInnerClassLength.Should().Be(19));
         }
         
         [Test]

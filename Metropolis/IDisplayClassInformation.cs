@@ -1,6 +1,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using Metropolis.Layout;
+using Metropolis.Domain;
 
 namespace Metropolis
 {
@@ -8,6 +9,7 @@ namespace Metropolis
     {
         Viewport3D ViewPort { get; }
         AbstractLayout Layout { get; }
+        RepositorySourceType SourceType { get; }
         void SetClassInformation(string text);
         event MouseButtonEventHandler MouseRightButtonDown;
     }

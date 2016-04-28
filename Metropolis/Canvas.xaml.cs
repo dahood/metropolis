@@ -74,6 +74,8 @@ namespace Metropolis
         public Viewport3D ViewPort => viewPort;
         public Model3DGroup Model { get; } = new Model3DGroup();
 
+        public RepositorySourceType SourceType => workspaceProvider.Workspace.SourceType;
+
         public PerspectiveCamera GetCamera()
         {
             return (PerspectiveCamera)viewPort.Camera;

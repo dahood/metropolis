@@ -2,6 +2,9 @@
 
 namespace Metropolis.Analyzers.Toxicity
 {
+    /// <summary>
+    /// Developed by Greg and Jonathan when reviewing AngularJS codebases
+    /// </summary>
     public class JavascriptToxicityAnalyzer : ToxicityAnalyzer
     {
         // Ecma file level thresholds
