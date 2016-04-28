@@ -12,8 +12,7 @@ namespace Metropolis.Analyzers.Toxicity
         private const int ThresholdCyclomaticComplexity = 10;
         private const int ThresholdNumberOfParameters = 5;
         private const int ThresholdNestedIfDepth = 2;
-        private const int ThresholdNestedTryDepth = 1;
-        private const int ThresholdMissingDefaulCase = 0;
+        private const int ThresholdMissingDefaultCase = 0;
         private const int ThresholdNoFallthrough = 0;
 
         public override ToxicityScore CalculateToxicity(Class classToScore)
@@ -23,7 +22,6 @@ namespace Metropolis.Analyzers.Toxicity
             var numberOfMethods = ComputeToxicity(classToScore.Members.Count, ThresholdNumberOfMethods);
             var numberOfParameters = 0d;
             var nestedIfDepth = 0d;
-            var nestedTryDepth = 0d;
             var missingDefaultCase = 0d;
             var noFallThrough = 0d;
 
@@ -35,8 +33,7 @@ namespace Metropolis.Analyzers.Toxicity
                 linesOfCode += ComputeToxicity(method.LinesOfCode, ThresholdMethodLength);
                 numberOfParameters += ComputeToxicity(method.NumberOfParameters, ThresholdNumberOfParameters);
                 nestedIfDepth += ComputeToxicity(method.NestedIfDepth, ThresholdNestedIfDepth);
-                nestedTryDepth += ComputeToxicity(method.NestedTryDepth, ThresholdNestedTryDepth);
-                missingDefaultCase += ComputeToxicity(method.MissingDefaultCase, ThresholdMissingDefaulCase);
+                missingDefaultCase += ComputeToxicity(method.MissingDefaultCase, ThresholdMissingDefaultCase);
                 noFallThrough += ComputeToxicity(method.NoFallthrough, ThresholdNoFallthrough);
             }
 
@@ -48,15 +45,13 @@ namespace Metropolis.Analyzers.Toxicity
                 CyclomaticComplexity = Rationalize(cyclomaticComplexity),
                 NumberOfParameters =  Rationalize(numberOfParameters),
                 NestedIfDepth = Rationalize(nestedIfDepth),
-                NestedTryDepth = Rationalize(nestedTryDepth),
                 MissingDefaultCase = Rationalize(missingDefaultCase),
                 SwitchNoFallThrough = Rationalize(noFallThrough)
             };
 
             score.Toxicity = score.LinesOfCode + score.NumberOfMethods +
                              score.CyclomaticComplexity + score.NumberOfParameters +
-                             score.NestedIfDepth + score.NestedTryDepth +
-                             score.MissingDefaultCase + score.SwitchNoFallThrough;
+                             score.NestedIfDepth + score.MissingDefaultCase + score.SwitchNoFallThrough;
 
             return score;
         }
