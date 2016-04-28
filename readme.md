@@ -20,3 +20,5 @@ Metropolis depends on:
 * Newtonsoft.JSON (The MIT License). - https://github.com/JamesNK/Newtonsoft.Json
 * ESLint (JQuery Foundation) - https://github.com/eslint/eslint
 * Checkstyle (GNU LGPL 2.1) - https://github.com/checkstyle/checkstyle
+* D3 (BSD) - https://github.com/mbostock/d3
+* radar-chart-d3 (Apache 2.0) - https://github.com/alangrafu/radar-chart-d3
