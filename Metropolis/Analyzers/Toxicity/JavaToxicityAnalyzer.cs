@@ -32,7 +32,7 @@ namespace Metropolis.Analyzers.Toxicity
             var numberOfMethods = ComputeToxicity(classToScore.Members.Count, ThresholdNumberOfMethods);
             var innerClassAnonymous = ComputeToxicity(classToScore.AnonymousInnerClassLenth, ThresholdAnonymousInnerClassLength);
             var classDataAbstractionCoupling = ComputeToxicity(classToScore.ClassDataAbstractionCoupling, ThresholdClassDataAbstractionCoupling);
-            var classFanOutComplexity = ComputeToxicity(classToScore.CyclomaticComplexity, ThresholdClassFanOutComplexity);
+            var classFanOutComplexity = ComputeToxicity(classToScore.ClassFanOutComplexity, ThresholdClassFanOutComplexity);
 
             // Method Level Toxicity
             double cyclomaticComplexity = 0;
@@ -42,7 +42,7 @@ namespace Metropolis.Analyzers.Toxicity
             double nestedIfDepth = 0;
             double nestedTryDepth = 0;
             double parameterNumber = 0;
-            
+
             foreach (var method in classToScore.Members)
             {
                 cyclomaticComplexity += ComputeToxicity(method.CylomaticComplexity, thresholdCyclomaticComplexity);
@@ -55,23 +55,26 @@ namespace Metropolis.Analyzers.Toxicity
             }
 
             // Rationalize
-            var score = new ToxicityScore();
-            // class level
-            score.LinesOfCode = Rationalize(linesOfCode);
-            score.NumberOfMethods = Rationalize(numberOfMethods);
-            score.AnonInnerLength = Rationalize(innerClassAnonymous);
-            // TODO: break this out to two distinct measures?
-            score.ClassDataAbstractionCoupling = Rationalize(classDataAbstractionCoupling);
-            score.ClassFanOutComplexity = Rationalize(classFanOutComplexity);
+            var score = new ToxicityScore
+            {
+                // class level
+                LinesOfCode = Rationalize(linesOfCode),
+                NumberOfMethods = Rationalize(numberOfMethods),
+                AnonInnerLength = Rationalize(innerClassAnonymous),
+                ClassDataAbstractionCoupling = Rationalize(classDataAbstractionCoupling),
+                ClassFanOutComplexity = Rationalize(classFanOutComplexity),
 
-            // method level
-            score.MethodLength = Rationalize(methodLength);
-            score.CyclomaticComplexity = Rationalize(cyclomaticComplexity);
-            score.MissingDefaultCase = Rationalize(missingDefaultCase);
-            score.BooleanExpressionComplexity = Rationalize(booleanComplexity);
+                // method level
+                MethodLength = Rationalize(methodLength),
+                CyclomaticComplexity = Rationalize(cyclomaticComplexity),
+                MissingDefaultCase = Rationalize(missingDefaultCase),
+                BooleanExpressionComplexity = Rationalize(booleanComplexity),
+            };
 
-            score.Toxicity = score.LinesOfCode + score.NumberOfMethods + score.ClassCoupling + score.AnonInnerLength +
-                             score.MethodLength + score.CyclomaticComplexity + score.MissingDefaultCase + score.BooleanExpressionComplexity;
+            score.Toxicity = score.LinesOfCode + score.NumberOfMethods + 
+                score.ClassFanOutComplexity + score.AnonInnerLength +
+                score.MethodLength + score.CyclomaticComplexity +
+                score.MissingDefaultCase + score.BooleanExpressionComplexity;
 
             return score;
         }

@@ -9,9 +9,9 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles
     {
         private static readonly ICheckStylesClassParser[] PuppyCrawlClassParsers =
         { 
-            //Missing FileLengthCheck
            new PuppyCrawlAnonymousInnerClassLenthParser(),
-            new PuppyCrawlClassDataAbstractionCouplingParser()
+            new PuppyCrawlClassDataAbstractionCouplingParser(),
+            new PuppyCrawlClassFanOutComplexityParser()
         };
 
         private static readonly ICheckStylesMemberParser[] PuppyCrawlMemberParsers =
