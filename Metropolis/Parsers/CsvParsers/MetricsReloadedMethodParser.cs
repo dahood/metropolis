@@ -10,7 +10,7 @@ namespace Metropolis.Parsers.CsvParsers
         {            
         }
 
-        protected override CodeBase ParseLines(IEnumerable<MetricsReloadedMethodLineItem> lines)
+        protected override CodeBase ParseLines(IEnumerable<MetricsReloadedMethodLineItem> lines, string sourceBaseDirectory)
         {
             var organizedIntoClasses = lines.GroupBy(x => new {NameSpace = x.Namespace, Class = x.Type});
 

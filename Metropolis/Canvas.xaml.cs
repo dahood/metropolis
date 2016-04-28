@@ -130,15 +130,21 @@ namespace Metropolis
         private void DisplayWorkspaceDetails()
         {
             ProjectNameTextBox.Text = workspaceProvider.Workspace.Name;
+            SourceBaseDirectoryTextBox.Text = workspaceProvider.Workspace.SourceBaseDirectory;
             LocTextBlock.Text = workspaceProvider.Workspace.LinesOfCode.ToString("N0", CultureInfo.InvariantCulture);
             TypesTextBlock.Text = workspaceProvider.Workspace.NumberOfTypes.ToString("N0", CultureInfo.InvariantCulture);
             ToxicityTextBlock.Text = workspaceProvider.Workspace.AverageToxicity().ToString("N4", CultureInfo.InvariantCulture);
             Renderlayout();
         }
+        private void Project_Info_Changed(object sender, TextChangedEventArgs e)
+        {
+            workspaceProvider.Workspace.Name = ProjectNameTextBox.Text;
+            workspaceProvider.Workspace.SourceBaseDirectory = SourceBaseDirectoryTextBox.Text;
+        }
 
         private void SaveProject(object sender, RoutedEventArgs e)
         {
-            workspaceProvider.Save(ProjectNameTextBox.Text);
+            workspaceProvider.Save();
         }
 
         private void LoadToxicity(object sender, RoutedEventArgs e)

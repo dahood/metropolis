@@ -34,11 +34,11 @@ namespace Metropolis.Parsers.CsvParsers
 
         public FileInclusion Inclusion { get; private set; }
 
-        protected override CodeBase ParseLines(IEnumerable<SourceLinesOfCodeLineItem> lines)
+        protected override CodeBase ParseLines(IEnumerable<SourceLinesOfCodeLineItem> lines, string sourceBaseDirectory)
         {
             var inclusionExtension = Inclusion.GetDescription();
             var classes = lines.Where(x => x.Class.EndsWith(inclusionExtension)) 
-                               .Select(each => new Class(each.Namespace, each.Class) {LinesOfCode = each.PhysicalLoc})
+                               .Select(each => new Class(each.Namespace.TrimPath(sourceBaseDirectory), each.Class) {LinesOfCode = each.SourceLoc})
                                .ToList();
 
             return new CodeBase(new CodeGraph(classes));
@@ -47,6 +47,8 @@ namespace Metropolis.Parsers.CsvParsers
 
     public class SourceLinesOfCodeLineItem
     {
+//        Path,Physical,Source,Comment,Single-line comment, Block comment,Mixed,Empty
+//        angular.js\src\angular.bind.js,12,7,3,3,0,0,2
         public string Namespace { get; set; }
         public string Class { get; set; }
         public int PhysicalLoc { get; set; }

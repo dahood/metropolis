@@ -20,18 +20,18 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles
             this.classBuilder = classBuilder;
         }
 
-        public CodeBase Parse(string fileName)
+        public CodeBase Parse(string fileName, string sourceBaseDirectory)
         {
-            return ParseXml(XElement.Load(fileName));
+            return ParseXml(sourceBaseDirectory, XElement.Load(fileName));
         }
 
-        private CodeBase ParseXml(XElement xml)
+        private CodeBase ParseXml(string sourceBaseDirectory, XElement xml)
         {
             var nameSpace = xml.GetDefaultNamespace();
             var metrics = (from m in xml.Descendants(nameSpace + "file").Descendants(nameSpace + "error")
                            where m.AttributeValue("source").IsNotEmpty()
                            where m.HasAttribute("column")
-                           select BuildItem(m)).ToList();
+                           select BuildItem(m, sourceBaseDirectory)).ToList();
 
             var classes = (from m in metrics
                            group m by m.Name into cls
@@ -45,11 +45,11 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles
             throw new ApplicationException("No analyzer setup for this type of code");
         }
         
-        private static CheckStylesItem BuildItem(XElement node)
+        private static CheckStylesItem BuildItem(XElement node, string sourceBaseDirectory)
         {
             return new CheckStylesItem
             {
-                Name = node.Parent.AttributeValue("name"),
+                Name = node.Parent.AttributeValue("name").TrimPath(sourceBaseDirectory),
                 Line = node.AttributeValue("line").AsInt(),
                 Column = node.AttributeValue("column").AsInt(),
                 Message = node.AttributeValue("message"),

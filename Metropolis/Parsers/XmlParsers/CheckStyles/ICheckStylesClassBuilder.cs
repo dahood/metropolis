@@ -60,7 +60,7 @@ namespace Metropolis.Parsers.XmlParsers.CheckStyles
             var parts = key.Split('\\').ToList();
             var name = parts.Last();
             parts.RemoveRange(parts.Count - 1, 1);
-            return new Class(string.Join(".", parts), name, members);
+            return new Class(string.Join("\\", parts), name, members);
         }
     }
 }

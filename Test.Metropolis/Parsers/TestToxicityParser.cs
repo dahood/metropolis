@@ -16,7 +16,7 @@ namespace Test.Metropolis.Parsers
             var path = executingAssembly.CodeBase.Substring(0, executingAssembly.CodeBase.IndexOf("metropolis", StringComparison.CurrentCultureIgnoreCase));
             var fileName = new Uri(Path.Combine(path,@"metropolis\Metropolis\SampleFiles\aspnet-toxicity-input.csv")).LocalPath;
 
-            var results = new ToxicityParser(true).Parse(fileName);
+            var results = new ToxicityParser(true).Parse(fileName, "");
             Assert.That(results, Is.Not.Null);
             //TODO: assert something :)
         }

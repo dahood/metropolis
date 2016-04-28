@@ -17,7 +17,7 @@ namespace Metropolis.Parsers.CsvParsers
             this.HasHeaderRecord = hasHeaderRecord;
         }
 
-        public CodeBase Parse(string fileName)
+        public CodeBase Parse(string fileName, string sourceBaseDirectory)
         {
             using (TextReader reader = File.OpenText(fileName))
             {
@@ -27,7 +27,7 @@ namespace Metropolis.Parsers.CsvParsers
 
                 try
                 {
-                    return ParseLines(csv.GetRecords<T>().ToList());
+                    return ParseLines(csv.GetRecords<T>().ToList(), sourceBaseDirectory);
                 }
                 catch (CsvMissingFieldException fieldMissingException)
                 {
@@ -36,6 +36,6 @@ namespace Metropolis.Parsers.CsvParsers
             }
         }
 
-        protected abstract CodeBase ParseLines(IEnumerable<T> lines);
+        protected abstract CodeBase ParseLines(IEnumerable<T> lines, string sourceBaseDirectory);
     }
 }

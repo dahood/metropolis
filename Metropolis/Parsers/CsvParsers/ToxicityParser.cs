@@ -11,7 +11,7 @@ namespace Metropolis.Parsers.CsvParsers
         {
         }
 
-        protected override CodeBase ParseLines(IEnumerable<ToxicityCsvLineItem> lines)
+        protected override CodeBase ParseLines(IEnumerable<ToxicityCsvLineItem> lines, string sourceBaseDirectory)
         {
             return new CodeBase(
                 new CodeGraph(

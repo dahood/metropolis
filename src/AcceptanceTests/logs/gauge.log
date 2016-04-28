@@ -1,0 +1,31 @@
+08:56:29.504 Failed to start gauge API: Plugin 'csharp' not installed on following locations : [C:\Users\gcook\AppData\Roaming\gauge\plugins]
+08:57:00.363 Gathering metadata for csharp
+08:57:00.896 Downloading gauge-csharp-0.7.2.zip
+08:57:05.045 Installing plugin csharp 0.7.2
+08:57:05.896 Successfully installed plugin 'csharp'.
+08:57:11.672 Gathering metadata for java
+08:57:12.179 Downloading gauge-java-0.3.4-windows.x86_64.zip
+08:57:15.702 Installing plugin java 0.3.4
+08:57:15.972 Successfully installed plugin 'java'.
+08:57:19.299 Gathering metadata for javascript
+08:57:19.800 Failed to install plugin 'javascript'.
+Reason: Invalid plugin : Could not download javascript-install.json file. Error downloading file: https://downloads.getgauge.io/plugin/javascript?l=csharp&p=csharp,java&o=windows&a=amd64.
+404 Not Found
+08:57:28.865 Gathering metadata for js
+08:57:29.364 Downloading gauge-js-1.2.0.zip
+08:57:35.493 Installing plugin js 1.2.0
+08:57:43.144 Successfully installed plugin 'js'.
+08:58:38.688 Checking updates...
+Cannot locate a Project File in C:\projects\metropolis\src\AcceptanceTests
+Creating a Sandbox in: C:\projects\metropolis\src\AcceptanceTests\bin\Debug\
+16:01:29.766 Got a kill message. Killing runner.
+Creating a Sandbox in: C:\develop\metropolis\src\AcceptanceTests\bin\Debug\
+08:40:35.657 Got a kill message. Killing runner.
+Creating a Sandbox in: C:\projects\metropolis\src\AcceptanceTests\bin\Debug\
+08:41:48.310 Got a kill message. Killing runner.
+Creating a Sandbox in: C:\projects\metropolis\src\AcceptanceTests\bin\Debug\
+15:47:37.630 Got a kill message. Killing runner.
+Creating a Sandbox in: C:\projects\metropolis\src\AcceptanceTests\bin\Debug\
+08:35:57.875 Got a kill message. Killing runner.
+Creating a Sandbox in: C:\projects\metropolis\src\AcceptanceTests\bin\Debug\
+08:22:05.505 Got a kill message. Killing runner.

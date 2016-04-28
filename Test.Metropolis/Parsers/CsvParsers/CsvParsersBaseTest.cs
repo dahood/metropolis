@@ -31,7 +31,7 @@ namespace Test.Metropolis.Parsers.CsvParsers
         protected CodeBase ParseUsingData(string[] data)
         {
             CreateFileFrom(FileName, data);
-            return Parser.Parse(FileName);
+            return Parser.Parse(FileName, "");
         }
 
         protected static void CreateFileFrom(string file, IEnumerable<string> data)

@@ -23,7 +23,7 @@ namespace Metropolis
             Workspace = new CodeBase(new CodeGraph(new Class[0]));
         }
 
-        public void Save(string projectname)
+        public void Save()
         {
             var dialog = new SaveFileDialog
             {
@@ -34,7 +34,6 @@ namespace Metropolis
             {
                 using (new WaitCursor())
                 {
-                    Workspace.Name = projectname;
                     projectRepository.Save(Workspace, dialog.FileName);
                 }
             }
@@ -151,7 +150,7 @@ namespace Metropolis
 
         private void Parse(IClassParser parser, string fileName)
         {
-            var result = parser.Parse(fileName);
+            var result = parser.Parse(fileName, Workspace.SourceBaseDirectory);
             if (Workspace == null)
             {
                 Workspace = result;

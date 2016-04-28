@@ -49,7 +49,7 @@ namespace Metropolis.Persistence
             using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
             {
                 Debug.Assert(stream != null, "stream != null");
-                using (StreamReader reader = new StreamReader(stream))
+                using (var reader = new StreamReader(stream))
                 {
                     return CreateCodeBase(reader.ReadToEnd());
                 }

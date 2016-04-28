@@ -7,7 +7,7 @@ namespace Metropolis
     {
         CodeBase Workspace { get;  }
         void Create();
-        void Save(string projectname);
+        void Save();
         void Load();
         void Load(string fileName);
         void LoadToxicity();

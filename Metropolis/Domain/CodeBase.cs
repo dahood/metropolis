@@ -6,6 +6,7 @@ namespace Metropolis.Domain
     public class CodeBase
     {
         public string Name { get; set; }
+        public string SourceBaseDirectory { get; set; }
         public RepositorySourceType SourceType { get; set; }
         public CodeGraph Graph { get; }
         public List<Class> AllClasses => Graph.AllClasses;

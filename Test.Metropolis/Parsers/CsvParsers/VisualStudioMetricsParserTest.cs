@@ -91,7 +91,7 @@ namespace Test.Metropolis.Parsers.CsvParsers
     {
         public CodeBase TestParse(VisualStudioCsvLineItem[] lines)
         {
-            return ParseLines(lines);
+            return ParseLines(lines, "");
         }
     }
 }

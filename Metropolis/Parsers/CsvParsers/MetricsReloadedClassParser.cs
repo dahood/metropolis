@@ -10,7 +10,7 @@ namespace Metropolis.Parsers.CsvParsers
         {
         }
 
-        protected override CodeBase ParseLines(IEnumerable<MetricsReloadedClassLineItem> lines)
+        protected override CodeBase ParseLines(IEnumerable<MetricsReloadedClassLineItem> lines, string sourceBaseDirectory)
         {
             var classes = lines.Select(x => new Class(x.Namespace, x.Type, 0, x.LinesOfCode, 0 , x.DepthOfInheritance, x.ClassCoupling)).ToList();
             return new CodeBase(new CodeGraph(classes));

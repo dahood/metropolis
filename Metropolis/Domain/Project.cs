@@ -11,8 +11,8 @@ namespace Metropolis.Domain
         /// </summary>
         public const int SupportedVersion = 1;
         public int MetropolisFileVersion => SupportedVersion;
-
         public string Name { get;set; }
+        public string SourceBaseDirectory { get; set;  }
         public string SourceCodeLanguage { get; set; }
         public IEnumerable<SerializableClass> Classes { get; set; }
     }
@@ -29,7 +29,6 @@ namespace Metropolis.Domain
         public int CyclomaticComplexity { get; set; }
         public int DepthOfInheritance { get; set; }
         public double Toxicity { get; set; }
-
     }
 
     public class SerializableMember
