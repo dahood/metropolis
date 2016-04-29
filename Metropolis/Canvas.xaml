@@ -152,12 +152,8 @@
             <MenuItem Header="_Import">
                 <Separator />
                 <MenuItem Header="Java">
-                    <MenuItem Header="Load Eclipse Metrics 2" Click="LoadEclipseMetrics2"/>
                     <MenuItem Header="Load Checkstyles" Click="LoadCheckStyles"/>
                     <MenuItem Header="SLOC (.java)" Click="LoadSourceLinesOfCode"/>
-                    <Separator />
-                    <MenuItem Header="Load Metrics Reloaded (Classes)" Click="LoadMetricsReloadedClasses"/>
-                    <MenuItem Header="Load Metrics Reloaded (Methods)" Click="LoadMetricsReloadedMethods"/>
                 </MenuItem>
                 <MenuItem Header="ECMA / Javascript">
                     <MenuItem Header="Load Eslint Checkstyles" Click="LoadEsLintCheckStyles"/>

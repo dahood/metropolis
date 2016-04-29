@@ -73,33 +73,6 @@ namespace Metropolis
                 Parse(parser, fileName);
             }, "VisualStudio Metrics|*.csv");
         }
-
-        public void LoadEclipseMetrics2()
-        {
-            OpenFile(fileName =>
-            {
-                var parser = new XmlClassParser();
-                Parse(parser, fileName);
-            }, "EclipseMetrics2|*.xml");
-        }
-
-        public void LoadMetricsReloadedMethods()
-        {
-            OpenFile(fileName =>
-            {
-                var parser = new MetricsReloadedMethodParser();
-                Parse(parser, fileName);
-            }, "MetricsReloaded Methods|*.csv");
-        }
-
-        public void LoadMetricsReloadedClasses()
-        {
-            OpenFile(fileName =>
-            {
-                var parser = new MetricsReloadedClassParser();
-                Parse(parser, fileName);
-            }, "MetricsReloaded Class|*.csv");
-        }
         
         public void LoadCheckStyles()
         {

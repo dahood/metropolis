@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace Test.Metropolis.Parsers
+﻿namespace Test.Metropolis.Parsers
 {
     public class JavaMetricsHelper
     {

@@ -158,22 +158,7 @@ namespace Metropolis
             workspaceProvider.LoadVisualStudioMetrics();
             DisplayWorkspaceDetails();
         }
-        private void LoadEclipseMetrics2(object sender, RoutedEventArgs e)
-        {
-            workspaceProvider.LoadEclipseMetrics2();
-            DisplayWorkspaceDetails();
-        }
-        private void LoadMetricsReloadedMethods(object sender, RoutedEventArgs e)
-        {
-            workspaceProvider.LoadMetricsReloadedMethods();
-            DisplayWorkspaceDetails();
-        }
 
-        private void LoadMetricsReloadedClasses(object sender, RoutedEventArgs e)
-        {
-            workspaceProvider.LoadMetricsReloadedClasses();
-            DisplayWorkspaceDetails();
-        }
         private void LoadCheckStyles(object sender, RoutedEventArgs e)
         {
             workspaceProvider.LoadCheckStyles();
