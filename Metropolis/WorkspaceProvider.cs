@@ -160,9 +160,12 @@ namespace Metropolis
             {
                 using (new WaitCursor())
                 {
-                    var writer = new CsvWriter(new StreamWriter(dialog.FileName));
-                    writer.WriteHeader<Class>();
-                    Workspace.AllClasses.ForEach(x => writer.WriteRecord(x));
+                    using (var stream = new StreamWriter(dialog.FileName))
+                    {
+                        var writer = new CsvWriter(stream);
+                        writer.WriteHeader<Class>();
+                        Workspace.AllClasses.ForEach(x => writer.WriteRecord(x));
+                    }
                 }
             }
         }
