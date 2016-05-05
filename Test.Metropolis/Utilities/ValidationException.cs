@@ -60,7 +60,6 @@ namespace Test.Metropolis.Utilities
         public override string Message => InnerException?.Message ?? base.Message;
     }
 
-    [Serializable]
     public sealed class MultiException : ValidationException
     {
         private readonly ValidationException[] innerExceptions;

@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Metropolis.Domain;
+using Metropolis.Domain.Camera;
 using Metropolis.Extensions;
 using Metropolis.Parsers.CsvParsers;
 

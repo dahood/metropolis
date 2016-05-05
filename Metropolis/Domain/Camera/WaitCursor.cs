@@ -1,11 +1,12 @@
 using System;
 using System.Windows.Input;
 
-namespace Metropolis.Camera
+namespace Metropolis.Domain.Camera
 {
     public class WaitCursor : IDisposable
     {
         private readonly Cursor previousCursor;
+        private bool disposed;
 
         public WaitCursor()
         {
@@ -14,13 +15,20 @@ namespace Metropolis.Camera
             Mouse.OverrideCursor = Cursors.Wait;
         }
 
-        #region IDisposable Members
-
         public void Dispose()
         {
-            Mouse.OverrideCursor = previousCursor;
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
-        #endregion
+        private void Dispose(bool disposing)
+        {
+            if (disposed) return;
+            if (disposing)
+            {
+                Mouse.OverrideCursor = previousCursor;
+            }
+            disposed = true;
+        }
     }
 }

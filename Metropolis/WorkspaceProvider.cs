@@ -9,6 +9,7 @@ using System.IO;
 using Metropolis.Parsers.XmlParsers;
 using Metropolis.Parsers.XmlParsers.CheckStyles;
 using Metropolis.Analyzers.Toxicity;
+using Metropolis.Domain.Camera;
 
 namespace Metropolis
 {

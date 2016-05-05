@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
 using Metropolis.Domain;
 using Newtonsoft.Json;
@@ -48,7 +47,7 @@ namespace Metropolis.Persistence
             const string resourceName = "Metropolis.entity-framework-6.project";
             using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
             {
-                Debug.Assert(stream != null, "stream != null");
+                if (stream == null) throw new ApplicationException(resourceName+" not found");
                 using (var reader = new StreamReader(stream))
                 {
                     return CreateCodeBase(reader.ReadToEnd());

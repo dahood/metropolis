@@ -92,7 +92,6 @@
     <Compile Include="Utilities\Validation.cs" />
     <Compile Include="Utilities\ValidationException.cs" />
     <Compile Include="Utilities\ValidationExtension.cs" />
-    <Compile Include="WaitCursor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
