@@ -1,5 +1,4 @@
 using System;
-using Metropolis.Domain;
 using Microsoft.Win32;
 using CsvHelper;
 using System.IO;
@@ -8,14 +7,23 @@ using Metropolis.Api.Core.Domain;
 using Metropolis.Api.Core.Parsers.CsvParsers;
 using Metropolis.Api.Core.Parsers.XmlParsers;
 using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles;
-using Metropolis.Api.Core.Persistence;
+using Metropolis.Api.Service;
 using Metropolis.Domain.Camera;
 
 namespace Metropolis
 {
     public class WorkspaceProvider : IWorkspaceProvider
     {
-        private readonly ProjectRepository projectRepository = new ProjectRepository();
+        private readonly IMetropolisApi metropolisApi;
+
+        public WorkspaceProvider() : this(new MetropolisApi())
+        {
+        }
+
+        public WorkspaceProvider(IMetropolisApi metropolisApi)
+        {
+            this.metropolisApi = metropolisApi;
+        }
 
         public CodeBase Workspace { get; private set; }
 
@@ -31,12 +39,11 @@ namespace Metropolis
                 Filter = "Metropolis Project File (*.project)|*.project",
                 AddExtension = true
             };
-            if (dialog.ShowDialog().GetValueOrDefault(false))
+            if (!dialog.ShowDialog().GetValueOrDefault(false)) return;
+
+            using (new WaitCursor())
             {
-                using (new WaitCursor())
-                {
-                    projectRepository.Save(Workspace, dialog.FileName);
-                }
+                metropolisApi.Save(Workspace, dialog.FileName);
             }
         }
 
@@ -47,21 +54,20 @@ namespace Metropolis
 
         public void Load(string fileName)
         {
-            Workspace = projectRepository.Load(fileName);  
+            Workspace = metropolisApi.Load(fileName);  
         }
 
         public void LoadDefault()
         {
-            Workspace = projectRepository.LoadDefault();
+            Workspace = metropolisApi.LoadDefault();
         }
 
         public void LoadToxicity()
         {
             OpenFile(fileName =>
             {
-                Workspace.SourceType = RepositorySourceType.CSharp;
-                var parser = new ToxicityParser();
-                Parse(parser, fileName);
+                var result = metropolisApi.ParseToxicity(fileName, Workspace.SourceBaseDirectory);
+                EnrichWorkspace(result);
             }, "Toxicity|*.csv");
         }
 
@@ -69,9 +75,8 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
-                Workspace.SourceType = RepositorySourceType.CSharp;
-                var parser = new VisualStudioMetricsParser();
-                Parse(parser, fileName);
+                var result = metropolisApi.ParseVisualStudioMetrics(fileName, Workspace.SourceBaseDirectory);
+                EnrichWorkspace(result);
             }, "VisualStudio Metrics|*.csv");
         }
         
@@ -103,7 +108,6 @@ namespace Metropolis
             }, "Source LOC |*.csv");
         }
         
-
         public void RunCSharpToxicity()
         {
             Workspace.SourceType = RepositorySourceType.CSharp;
@@ -125,6 +129,11 @@ namespace Metropolis
         private void Parse(IClassParser parser, string fileName)
         {
             var result = parser.Parse(fileName, Workspace.SourceBaseDirectory);
+            EnrichWorkspace(result);
+        }
+
+        private void EnrichWorkspace(CodeBase result)
+        {
             if (Workspace == null)
             {
                 Workspace = result;

@@ -1,10 +1,13 @@
-﻿namespace Metropolis.Api.Service
+﻿using Metropolis.Api.Core.Domain;
+
+namespace Metropolis.Api.Service
 {
     public interface IMetropolisApi
     {
-    }
-
-    public class MetropolisApi : IMetropolisApi
-    {
+        void Save(CodeBase workspace, string fileName);
+        CodeBase Load(string fileName);
+        CodeBase LoadDefault();
+        CodeBase ParseToxicity(string fileName, string sourceBaseDirectory);
+        CodeBase ParseVisualStudioMetrics(string fileName, string sourceBaseDirectory);
     }
 }

@@ -49,5 +49,10 @@ namespace Metropolis.Api.Core.Domain
         {
             return Graph.AllNamespaces.ToDictionary(ns => ns, ns => AllClasses.Where(x => x.NameSpace == ns));
         }
+
+        public static CodeBase Empty()
+        {
+            return new CodeBase(new CodeGraph(new Class[0]));
+        }
     }
 }
