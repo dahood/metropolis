@@ -1,5 +1,4 @@
 using System;
-using Metropolis.Camera;
 using Metropolis.Domain;
 using Metropolis.Persistence;
 using Microsoft.Win32;

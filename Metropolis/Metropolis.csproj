@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Metropolis</RootNamespace>
     <AssemblyName>Metropolis</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -76,30 +77,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Analyzers\Toxicity\CSharpToxicityAnalyzer.cs" />
-    <Compile Include="Analyzers\Toxicity\JavascriptToxicityAnalyzer.cs" />
-    <Compile Include="Analyzers\ICodebaseAnalyzer.cs" />
-    <Compile Include="Analyzers\Toxicity\JavaToxicityAnalyzer.cs" />
-    <Compile Include="Analyzers\Toxicity\ToxicityAnalyzer.cs" />
-    <Compile Include="Domain\Camera\CameraMovement.cs" />
     <Compile Include="ClassInformationFacade.cs" />
-    <Compile Include="Domain\Class.cs" />
-    <Compile Include="Domain\ClassVersionInfo.cs" />
-    <Compile Include="Domain\CodeBase.cs" />
-    <Compile Include="Domain\CodeGraph.cs" />
-    <Compile Include="Domain\Member.cs" />
-    <Compile Include="Domain\Project.cs" />
-    <Compile Include="Domain\ProjectAssembler.cs" />
-    <Compile Include="Analyzers\Toxicity\ToxicityScore.cs" />
-    <Compile Include="Domain\RepositorySourceType.cs" />
-    <Compile Include="Extensions\DateTimeExtensions.cs" />
-    <Compile Include="Extensions\DictionaryExtensions.cs" />
-    <Compile Include="Extensions\EnumerableExtensions.cs" />
-    <Compile Include="Extensions\EnumExtensions.cs" />
-    <Compile Include="Extensions\LinqExtensions.cs" />
-    <Compile Include="Extensions\NumericExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Extensions\XmlExtensions.cs" />
+    <Compile Include="Domain\Camera\CameraMovement.cs" />
+    <Compile Include="Domain\Camera\RotationalMovement.cs" />
+    <Compile Include="Domain\Camera\WaitCursor.cs" />
     <Compile Include="IDisplayClassInformation.cs" />
     <Compile Include="ISceneProvider.cs" />
     <Compile Include="EmptyHighlight.cs" />
@@ -113,50 +94,6 @@
     <Compile Include="Layout\SquaredLayout.cs" />
     <Compile Include="Models\BrushFactory.cs" />
     <Compile Include="Models\LinearScale.cs" />
-    <Compile Include="Domain\Camera\RotationalMovement.cs" />
-    <Compile Include="Parsers\CsvParsers\SourceLinesOfCodeParser.cs" />
-    <Compile Include="Parsers\CsvParsers\TypeConverters\Checkstyles\CheckstylesClassConverter.cs" />
-    <Compile Include="Parsers\CsvParsers\TypeConverters\Checkstyles\CheckstylesNamespaceConverter.cs" />
-    <Compile Include="Parsers\CsvParsers\TypeConverters\IntTypeConverter.cs" />
-    <Compile Include="Parsers\CsvParsers\TypeConverters\BaseTypeConverter.cs" />
-    <Compile Include="Parsers\CsvParsers\CsvClassParser.cs" />
-    <Compile Include="Parsers\CsvParsers\TypeConverters\Sloc\SourceLinesOfCodeClassConverter.cs" />
-    <Compile Include="Parsers\CsvParsers\TypeConverters\Sloc\SourceLinesOfCodeNamespaceConverter.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\EsLint\EslintSources.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Class\PuppyCrawlAnonymousInnerClassLenthParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Member\PuppyCrawlBooleanExpressionComplexityParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Class\PuppyCrawlClassDataAbstractionCouplingParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Class\PuppyCrawlClassFanOutComplexityParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Member\PuppyCrawlComplexityParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Member\PuppyCrawlDefaultCaseParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Member\PuppyCrawlMethodLengthParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Member\PuppyCrawlNumberOfParametersParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Member\PupyyCrawlNestedIfDepthParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Member\PupyyCrawlNestedTryDepthParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\EsLintCheckStylesClassBuilder.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\ICheckStylesClassParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\PuppyCrawlSources.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\PuppyCrawlCheckStylesClassBuilder.cs" />
-    <Compile Include="Parsers\XmlParsers\IClassParser.cs" />
-    <Compile Include="Parsers\CsvParsers\ToxicityCsvLineItem.cs" />
-    <Compile Include="Parsers\CsvParsers\ToxicityParser.cs" />
-    <Compile Include="Domain\Camera\WaitCursor.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\EsLint\EsLintCaseNoFallThroughParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\EsLint\EsLintDefaultCaseParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\EsLint\EsLintNumberOfParametersParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\CheckStyleBaseParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\EsLint\EsLintNumberOfStatmentsParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\CheckStylesParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\ICheckStylesMemberParser.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\ICheckStylesClassBuilder.cs" />
-    <Compile Include="Parsers\XmlParsers\CheckStyles\Parsers\EsLint\EsLintComplexityParser.cs" />
-    <Compile Include="Parsers\XmlParsers\MetricHandlers\ClassAttributeParser.cs" />
-    <Compile Include="Parsers\XmlParsers\MetricHandlers\CyclomaticComplexityParser.cs" />
-    <Compile Include="Parsers\XmlParsers\MetricHandlers\DepthOfInheritanceParser.cs" />
-    <Compile Include="Parsers\XmlParsers\MetricHandlers\IJavaMetricParser.cs" />
-    <Compile Include="Parsers\XmlParsers\MetricHandlers\MethodLineParser.cs" />
-    <Compile Include="Parsers\XmlParsers\XmlClassParser.cs" />
-    <Compile Include="Utilities\Clock.cs" />
     <Compile Include="WorkspaceProvider.cs" />
     <Page Include="Canvas.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -173,9 +110,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Parsers\CsvParsers\VisualStudioCsvLineItem.cs" />
-    <Compile Include="Parsers\CsvParsers\VisualStudioMetricsParser.cs" />
-    <Compile Include="Persistence\ProjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -193,14 +127,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="entity-framework-6.project" />
-    <None Include="SampleFiles\aspnet-toxicity-input.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="SampleFiles\aspnet-toxicity-input.csv" />
     <Content Include="SampleFiles\entity-framework-6.csv" />
     <None Include="SampleFiles\git-log-file-touches.csv" />
     <None Include="SampleFiles\metropolis-code-coverage-with-tests.coveragexml">
@@ -217,7 +150,12 @@
   <ItemGroup>
     <None Include="Properties\logo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\src\Metropolis.Api\Metropolis.Api.csproj">
+      <Project>{d6edb7c6-34cd-4eb9-9579-8bb68514bec6}</Project>
+      <Name>Metropolis.Api</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

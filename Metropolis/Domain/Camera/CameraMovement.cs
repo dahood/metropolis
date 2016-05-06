@@ -1,6 +1,6 @@
 using System.Windows.Media.Media3D;
 
-namespace Metropolis.Camera
+namespace Metropolis.Domain.Camera
 {
     public class CameraMovement
     {
