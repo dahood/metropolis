@@ -1,6 +1,6 @@
-﻿using Metropolis.Domain;
+﻿using Metropolis.Api.Core.Domain;
 
-namespace Metropolis.Analyzers.Toxicity
+namespace Metropolis.Api.Core.Analyzers.Toxicity
 {
     /// <summary>
     /// Developed by Greg and Jonathan when reviewing AngularJS codebases

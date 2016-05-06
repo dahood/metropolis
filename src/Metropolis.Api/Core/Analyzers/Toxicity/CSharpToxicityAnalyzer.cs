@@ -1,6 +1,6 @@
-﻿using Metropolis.Domain;
+﻿using Metropolis.Api.Core.Domain;
 
-namespace Metropolis.Analyzers.Toxicity
+namespace Metropolis.Api.Core.Analyzers.Toxicity
 {
     /// <summary>
     /// Developed by Richard and Jonathan while performing numerous code reviews for .NET projects

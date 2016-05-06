@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Xml.Linq;
 
-namespace Metropolis.Extensions
+namespace Metropolis.Api.Extensions
 {
     public static class XmlExtensions
     {

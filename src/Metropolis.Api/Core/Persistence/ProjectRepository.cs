@@ -1,10 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
-using Metropolis.Domain;
+using Metropolis.Api.Core.Domain;
 using Newtonsoft.Json;
-using System;
 
-namespace Metropolis.Persistence
+namespace Metropolis.Api.Core.Persistence
 {
     public class ProjectRepository
     {

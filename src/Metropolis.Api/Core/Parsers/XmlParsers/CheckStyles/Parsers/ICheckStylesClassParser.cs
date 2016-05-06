@@ -1,7 +1,7 @@
 ﻿
-using Metropolis.Domain;
+using Metropolis.Api.Core.Domain;
 
-namespace Metropolis.Parsers.XmlParsers.CheckStyles
+namespace Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles.Parsers
 {
     public interface ICheckStylesClassParser
     {

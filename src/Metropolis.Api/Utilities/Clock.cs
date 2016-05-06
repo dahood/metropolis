@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Metropolis.Utilities
+namespace Metropolis.Api.Utilities
 {
     public class Clock
     {

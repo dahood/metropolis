@@ -1,5 +1,5 @@
-﻿using Metropolis.Analyzers;
-using Metropolis.Analyzers.Toxicity;
+﻿using Metropolis.Api.Core.Analyzers.Toxicity;
+using Metropolis.Api.Core.Domain;
 using Metropolis.Domain;
 using NUnit.Framework;
 

@@ -1,5 +1,5 @@
 using FluentAssertions;
-using Metropolis.Extensions;
+using Metropolis.Api.Extensions;
 using NUnit.Framework;
 
 namespace Test.Metropolis.Extensions

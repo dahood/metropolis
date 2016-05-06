@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
-using Metropolis.Extensions;
+using Metropolis.Api.Extensions;
 
 namespace Test.Metropolis.Extensions
 {

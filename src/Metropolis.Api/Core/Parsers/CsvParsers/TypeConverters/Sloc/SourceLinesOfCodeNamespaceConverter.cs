@@ -1,7 +1,7 @@
 using System.Linq;
 using CsvHelper.TypeConversion;
 
-namespace Metropolis.Parsers.CsvParsers.TypeConverters.Sloc
+namespace Metropolis.Api.Core.Parsers.CsvParsers.TypeConverters.Sloc
 {
     public class SourceLinesOfCodeNamespaceConverter : BaseTypeConverter<string>
     {

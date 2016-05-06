@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Metropolis.Domain
+namespace Metropolis.Api.Core.Domain
 {
     public class Project
     {

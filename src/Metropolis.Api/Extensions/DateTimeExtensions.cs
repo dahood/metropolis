@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Metropolis.Extensions
+namespace Metropolis.Api.Extensions
 {
     public static class DateTimeExtensions
     {

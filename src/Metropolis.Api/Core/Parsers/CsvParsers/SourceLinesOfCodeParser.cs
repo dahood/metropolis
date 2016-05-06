@@ -2,12 +2,12 @@
 using System.ComponentModel;
 using System.Linq;
 using CsvHelper.Configuration;
-using Metropolis.Domain;
-using Metropolis.Extensions;
-using Metropolis.Parsers.CsvParsers.TypeConverters;
-using Metropolis.Parsers.CsvParsers.TypeConverters.Sloc;
+using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Core.Parsers.CsvParsers.TypeConverters;
+using Metropolis.Api.Core.Parsers.CsvParsers.TypeConverters.Sloc;
+using Metropolis.Api.Extensions;
 
-namespace Metropolis.Parsers.CsvParsers
+namespace Metropolis.Api.Core.Parsers.CsvParsers
 {
     public enum FileInclusion
     {

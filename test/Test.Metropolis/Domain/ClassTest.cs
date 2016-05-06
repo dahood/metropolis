@@ -1,4 +1,5 @@
-﻿using Metropolis.Domain;
+﻿using Metropolis.Api.Core.Domain;
+using Metropolis.Domain;
 using NUnit.Framework;
 using Test.Metropolis.Utilities;
 

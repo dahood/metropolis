@@ -1,4 +1,4 @@
-﻿namespace Metropolis.Analyzers.Toxicity
+﻿namespace Metropolis.Api.Core.Analyzers.Toxicity
 {
     public class ToxicityScore
     {

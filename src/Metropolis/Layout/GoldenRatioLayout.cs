@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Media.Media3D;
+using Metropolis.Api.Core.Domain;
 using Metropolis.Domain;
 
 namespace Metropolis.Layout

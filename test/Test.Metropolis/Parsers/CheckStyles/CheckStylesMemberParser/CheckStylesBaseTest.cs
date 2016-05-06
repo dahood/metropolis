@@ -1,8 +1,9 @@
 ﻿using System;
 using FluentAssertions;
+using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles;
+using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles.Parsers;
 using Metropolis.Domain;
-using Metropolis.Parsers.XmlParsers.CheckStyles;
-using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers;
 using NUnit.Framework;
 
 namespace Test.Metropolis.Parsers.CheckStyles.CheckStylesMemberParser

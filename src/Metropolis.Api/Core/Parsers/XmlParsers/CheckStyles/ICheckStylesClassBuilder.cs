@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Metropolis.Domain;
-using Metropolis.Extensions;
-using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers;
+using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles.Parsers;
+using Metropolis.Api.Extensions;
 
-namespace Metropolis.Parsers.XmlParsers.CheckStyles
+namespace Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles
 {
     public interface ICheckStylesClassBuilder
     {

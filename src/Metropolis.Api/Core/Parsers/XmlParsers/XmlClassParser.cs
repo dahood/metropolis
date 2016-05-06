@@ -2,12 +2,12 @@
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using Metropolis.Domain;
-using Metropolis.Extensions;
-using Metropolis.Parsers.XmlParsers.MetricHandlers;
-using Metropolis.Analyzers.Toxicity;
+using Metropolis.Api.Core.Analyzers.Toxicity;
+using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Core.Parsers.XmlParsers.MetricHandlers;
+using Metropolis.Api.Extensions;
 
-namespace Metropolis.Parsers.XmlParsers
+namespace Metropolis.Api.Core.Parsers.XmlParsers
 {
     public class XmlClassParser : IClassParser
     {

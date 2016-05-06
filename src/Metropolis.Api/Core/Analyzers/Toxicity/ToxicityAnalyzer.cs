@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Metropolis.Domain;
+using Metropolis.Api.Core.Domain;
 
-namespace Metropolis.Analyzers.Toxicity
+namespace Metropolis.Api.Core.Analyzers.Toxicity
 {
     public abstract class ToxicityAnalyzer : ICodebaseAnalyzer
     {

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
+using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Core.Persistence;
 using Metropolis.Domain;
-using Metropolis.Persistence;
 using NUnit.Framework;
 using Test.Metropolis.Fixtures;
 

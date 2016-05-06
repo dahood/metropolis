@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Xml.Linq;
 using FluentAssertions;
-using Metropolis.Extensions;
+using Metropolis.Api.Extensions;
 using NUnit.Framework;
 
 namespace Test.Metropolis.Extensions

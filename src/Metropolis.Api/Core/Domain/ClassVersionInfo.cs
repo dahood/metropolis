@@ -1,7 +1,7 @@
 ﻿using System;
-using Metropolis.Utilities;
+using Metropolis.Api.Utilities;
 
-namespace Metropolis.Domain
+namespace Metropolis.Api.Core.Domain
 {
     public class ClassVersionInfo
     {

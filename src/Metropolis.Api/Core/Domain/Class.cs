@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using Metropolis.Extensions;
+using Metropolis.Api.Extensions;
 
-namespace Metropolis.Domain
+namespace Metropolis.Api.Core.Domain
 {
     public class Class
     {

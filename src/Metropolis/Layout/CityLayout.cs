@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Media.Media3D;
+using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Extensions;
 using Metropolis.Domain;
-using Metropolis.Extensions;
 
 namespace Metropolis.Layout
 {

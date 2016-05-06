@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using CsvHelper;
-using Metropolis.Domain;
-using Metropolis.Parsers.XmlParsers;
+using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Core.Parsers.XmlParsers;
 
-namespace Metropolis.Parsers.CsvParsers
+namespace Metropolis.Api.Core.Parsers.CsvParsers
 {
     public abstract class CsvClassParser<T, TMapper> : IClassParser
     {

@@ -2,9 +2,10 @@
 using System.IO;
 using System.Linq;
 using FluentAssertions;
+using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Core.Parsers.XmlParsers;
+using Metropolis.Api.Utilities;
 using Metropolis.Domain;
-using Metropolis.Parsers.XmlParsers;
-using Metropolis.Utilities;
 using NUnit.Framework;
 
 namespace Test.Metropolis.Parsers

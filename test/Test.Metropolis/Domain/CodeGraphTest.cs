@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Metropolis.Api.Core.Domain;
 using Metropolis.Domain;
-using Metropolis.Extensions;
 using Metropolis.Layout;
 using NUnit.Framework;
 using Test.Metropolis.Fixtures;

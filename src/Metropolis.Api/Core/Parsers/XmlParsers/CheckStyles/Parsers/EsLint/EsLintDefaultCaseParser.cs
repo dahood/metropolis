@@ -1,7 +1,6 @@
-using Metropolis.Domain;
-using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint;
+using Metropolis.Api.Core.Domain;
 
-namespace Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.EsLint
+namespace Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles.Parsers.EsLint
 {
     public class EsLintDefaultCaseParser : CheckStyleBaseParser, ICheckStylesMemberParser
     {

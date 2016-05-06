@@ -1,9 +1,8 @@
-using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl;
-using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers;
-using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Class;
-using Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Member;
+using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles.Parsers;
+using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Class;
+using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Member;
 
-namespace Metropolis.Parsers.XmlParsers.CheckStyles
+namespace Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles
 {
     public class PuppyCrawlCheckStylesClassBuilder : BaseCheckStylesClassBuilder
     {

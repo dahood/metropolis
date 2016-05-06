@@ -5,6 +5,7 @@ using System.Windows.Media.Media3D;
 using Metropolis.Domain;
 using Metropolis.Models;
 using System.Linq;
+using Metropolis.Api.Core.Domain;
 
 namespace Metropolis.Layout
 {

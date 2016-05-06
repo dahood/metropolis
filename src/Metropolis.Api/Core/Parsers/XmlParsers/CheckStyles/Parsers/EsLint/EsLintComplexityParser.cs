@@ -1,10 +1,8 @@
 ﻿using System.Text.RegularExpressions;
-using Metropolis.Domain;
-using Metropolis.Extensions;
-using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers;
-using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.EsLint;
+using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Extensions;
 
-namespace Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.EsLint
+namespace Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles.Parsers.EsLint
 {
     public class EsLintComplexityParser : CheckStyleBaseParser, ICheckStylesMemberParser
     {

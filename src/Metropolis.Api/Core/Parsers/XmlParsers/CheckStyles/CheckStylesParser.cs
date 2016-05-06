@@ -1,11 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Xml.Linq;
-using Metropolis.Domain;
-using Metropolis.Extensions;
-using Metropolis.Analyzers.Toxicity;
-using System;
+using Metropolis.Api.Core.Analyzers.Toxicity;
+using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Extensions;
 
-namespace Metropolis.Parsers.XmlParsers.CheckStyles
+namespace Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles
 {
     public class CheckStylesParser : IClassParser
     {

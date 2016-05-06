@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Metropolis.Extensions
+namespace Metropolis.Api.Extensions
 {
     public static class LinqExtensions
     {

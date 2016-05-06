@@ -1,8 +1,6 @@
-﻿using Metropolis.Extensions;
-using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers;
-using Metropolis.Parsers.XmlParsers.CheckStyles.CheckStylesMemberParsers.PuppyCrawl;
+﻿using Metropolis.Api.Extensions;
 
-namespace Metropolis.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Member
+namespace Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Member
 {
     public class PuppyCrawlComplexityParser : CheckStyleBaseParser, ICheckStylesMemberParser
     {

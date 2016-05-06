@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
-using Metropolis.Parsers.CsvParsers.TypeConverters;
-using Metropolis.Parsers.CsvParsers.TypeConverters.Sloc;
+using Metropolis.Api.Core.Parsers.CsvParsers.TypeConverters.Sloc;
 using NUnit.Framework;
 
 namespace Test.Metropolis.Parsers.CsvParsers.TypeConverters

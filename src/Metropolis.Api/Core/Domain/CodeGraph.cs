@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Metropolis.Domain
+namespace Metropolis.Api.Core.Domain
 {
     public class CodeGraph
     {

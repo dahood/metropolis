@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using FluentAssertions;
+using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Utilities;
 using Metropolis.Domain;
-using Metropolis.Utilities;
 using NUnit.Framework;
 using Test.Metropolis.Extensions;
 

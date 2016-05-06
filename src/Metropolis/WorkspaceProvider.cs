@@ -1,13 +1,14 @@
 using System;
 using Metropolis.Domain;
-using Metropolis.Persistence;
 using Microsoft.Win32;
-using Metropolis.Parsers.CsvParsers;
 using CsvHelper;
 using System.IO;
-using Metropolis.Parsers.XmlParsers;
-using Metropolis.Parsers.XmlParsers.CheckStyles;
-using Metropolis.Analyzers.Toxicity;
+using Metropolis.Api.Core.Analyzers.Toxicity;
+using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Core.Parsers.CsvParsers;
+using Metropolis.Api.Core.Parsers.XmlParsers;
+using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles;
+using Metropolis.Api.Core.Persistence;
 using Metropolis.Domain.Camera;
 
 namespace Metropolis

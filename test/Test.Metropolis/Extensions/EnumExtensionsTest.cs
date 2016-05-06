@@ -1,6 +1,6 @@
 using System;
 using FluentAssertions;
-using Metropolis.Extensions;
+using Metropolis.Api.Extensions;
 using NUnit.Framework;
 using Descr = System.ComponentModel.DescriptionAttribute;
 

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Metropolis.Domain
+﻿namespace Metropolis.Api.Core.Domain
 {
     public class Member
     {

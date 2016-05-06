@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Metropolis.Domain;
+using Metropolis.Api.Core.Domain;
 
-namespace Metropolis.Parsers.CsvParsers
+namespace Metropolis.Api.Core.Parsers.CsvParsers
 {
     //Data Aquisition
     public class ToxicityParser : CsvClassParser<ToxicityCsvLineItem, ToxicityCsvLineItemClassMap>

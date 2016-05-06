@@ -1,6 +1,7 @@
 ﻿using System.Linq;
+using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Core.Parsers.CsvParsers;
 using Metropolis.Domain;
-using Metropolis.Parsers.CsvParsers;
 using NUnit.Framework;
 using Test.Metropolis.Extensions;
 using Test.Metropolis.Utilities;

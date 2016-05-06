@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
-using Metropolis.Domain;
-using Metropolis.Extensions;
+using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Extensions;
 
-namespace Metropolis.Parsers.XmlParsers.MetricHandlers
+namespace Metropolis.Api.Core.Parsers.XmlParsers.MetricHandlers
 {
     public class ClassAttributeParser : IJavaMetricParser
     {

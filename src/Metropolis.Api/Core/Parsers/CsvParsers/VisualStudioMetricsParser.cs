@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Metropolis.Domain;
-using Metropolis.Analyzers.Toxicity;
+using Metropolis.Api.Core.Analyzers.Toxicity;
+using Metropolis.Api.Core.Domain;
 
-namespace Metropolis.Parsers.CsvParsers
+namespace Metropolis.Api.Core.Parsers.CsvParsers
 {
     public class VisualStudioMetricsParser : CsvClassParser<VisualStudioCsvLineItem, VisualStudioCsvLineItemClassMap>
     {
