@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Metropolis.Cli.Console")]
+[assembly: AssemblyTitle("Metropolis.Console")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Metropolis.Cli.Console")]
+[assembly: AssemblyProduct("Metropolis.Cli")]
 [assembly: AssemblyCopyright("Copyright © Jonathan McCracken, Greg Cook, and Richard Hurst 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

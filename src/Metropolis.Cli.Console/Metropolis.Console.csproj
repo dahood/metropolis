@@ -7,8 +7,8 @@
     <ProjectGuid>{C0D26BF3-1ED1-4A23-90B4-E62358616503}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Metropolis.Cli.Console</RootNamespace>
-    <AssemblyName>Metropolis.Cli.Console</AssemblyName>
+    <RootNamespace>Metropolis.Console</RootNamespace>
+    <AssemblyName>metro</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
