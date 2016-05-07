@@ -19,7 +19,7 @@ namespace Metropolis.Cli.Console
             System.Console.Write("Enter Source Type (java,javascript,csharp, default:csharp):");
             var sourceType = System.Console.ReadLine();
             }
-            System.Console.Write("Metropolis v0.0.1 - Command Usage: metropolis.exe -d c:\dev\metropolis -s csharp");
+            System.Console.Write(@"Metropolis v0.0.1 - Command Usage: metropolis.exe -d c:\dev\metropolis -s csharp");
             //TODO: hook this into Metropolis.API
 
             Environment.Exit(0);
