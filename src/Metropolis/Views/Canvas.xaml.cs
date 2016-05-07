@@ -10,6 +10,7 @@ using System.Windows.Media.Media3D;
 using Metropolis.Api.Core.Domain;
 using Metropolis.Api.Core.Parsers.CsvParsers;
 using Metropolis.Api.Extensions;
+using Metropolis.Api.Microservices;
 using Metropolis.Domain.Camera;
 using Metropolis.Layout;
 
@@ -30,7 +31,7 @@ namespace Metropolis.Views
             rotationalMovement = new RotationalMovement(this);
             cameraMovement = new CameraMovement(this);
             highlightedClass = new ClassInformationFacade(this);
-            workspaceProvider = new WorkspaceProvider();
+            workspaceProvider = new WorkspaceProvider(new CodebaseService());
 
             SetSliders();
 

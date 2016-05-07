@@ -7,22 +7,18 @@ using Metropolis.Api.Core.Domain;
 using Metropolis.Api.Core.Parsers.CsvParsers;
 using Metropolis.Api.Core.Parsers.XmlParsers;
 using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles;
-using Metropolis.Api.Service;
 using Metropolis.Domain.Camera;
+using Metropolis.Api.Microservices;
 
 namespace Metropolis
 {
     public class WorkspaceProvider : IWorkspaceProvider
     {
-        private readonly ICollectionService collectionService;
+        private readonly ICodebaseService codebaseService;
 
-        public WorkspaceProvider() : this(new CollectionService())
+        public WorkspaceProvider(ICodebaseService codebaseService)
         {
-        }
-
-        public WorkspaceProvider(ICollectionService collectionService)
-        {
-            this.collectionService = collectionService;
+            this.codebaseService = codebaseService;
         }
 
         public CodeBase Workspace { get; private set; }
@@ -43,7 +39,7 @@ namespace Metropolis
 
             using (new WaitCursor())
             {
-                collectionService.Save(Workspace, dialog.FileName);
+                codebaseService.Save(Workspace, dialog.FileName);
             }
         }
 
@@ -54,19 +50,19 @@ namespace Metropolis
 
         public void Load(string fileName)
         {
-            Workspace = collectionService.Load(fileName);  
+            Workspace = codebaseService.Load(fileName);  
         }
 
         public void LoadDefault()
         {
-            Workspace = collectionService.LoadDefault();
+            Workspace = codebaseService.LoadDefault();
         }
 
         public void LoadToxicity()
         {
             OpenFile(fileName =>
             {
-                var result = collectionService.ParseToxicity(fileName, Workspace.SourceBaseDirectory);
+                var result = codebaseService.ParseToxicity(fileName, Workspace.SourceBaseDirectory);
                 EnrichWorkspace(result);
             }, "Toxicity|*.csv");
         }
@@ -75,7 +71,7 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
-                var result = collectionService.ParseVisualStudioMetrics(fileName, Workspace.SourceBaseDirectory);
+                var result = codebaseService.ParseVisualStudioMetrics(fileName, Workspace.SourceBaseDirectory);
                 EnrichWorkspace(result);
             }, "VisualStudio Metrics|*.csv");
         }
