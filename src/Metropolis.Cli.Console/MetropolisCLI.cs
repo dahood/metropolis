@@ -13,7 +13,7 @@ namespace Metropolis.Console
     {
         static void Main(string[] args)
         {
-
+            // metro usage: metro.exe csharp c:\dev\metropolis
             try
             {
                 if (args.Length == 0)
