@@ -2,7 +2,6 @@
 using System.Linq;
 using FluentAssertions;
 using Metropolis.Api.Core.Domain;
-using Metropolis.Domain;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using Test.Metropolis.Extensions;

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using FluentAssertions;
 using Metropolis.Api.Core.Domain;
 using Metropolis.Api.Core.Parsers.XmlParsers;
-using Metropolis.Domain;
 using NUnit.Framework;
+using FluentAssertions;
+using System.Linq;
 
 namespace Test.Metropolis.Parsers.CsvParsers
 {
