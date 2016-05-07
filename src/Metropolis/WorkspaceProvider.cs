@@ -14,13 +14,13 @@ namespace Metropolis
 {
     public class WorkspaceProvider : IWorkspaceProvider
     {
-        private readonly IMetropolisApi metropolisApi;
+        private readonly ICodebaseService metropolisApi;
 
-        public WorkspaceProvider() : this(new MetropolisApi())
+        public WorkspaceProvider() : this(new CodebaseServiceApi())
         {
         }
 
-        public WorkspaceProvider(IMetropolisApi metropolisApi)
+        public WorkspaceProvider(ICodebaseService metropolisApi)
         {
             this.metropolisApi = metropolisApi;
         }
