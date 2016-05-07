@@ -1,5 +1,6 @@
 ﻿using Metropolis.Api.Core.Analyzers.Toxicity;
 using Metropolis.Api.Core.Domain;
+using Metropolis.Domain;
 using NUnit.Framework;
 
 namespace Test.Metropolis.Analyzers
@@ -16,12 +17,7 @@ namespace Test.Metropolis.Analyzers
             type.AddMember(new[] {new Member("Foo()", 1, 22, 1)});
 
             Assert.AreEqual(0.7, new CSharpToxicityAnalyzer().CalculateToxicity(type).Toxicity, Delta);
-        }  
-
-        //
-        // TEST of line endings fix for GIT
-        //
-
+        }
 
         [Test]
         public void Toxicity_On_Deep_Depth_of_Inheritance()
