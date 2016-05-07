@@ -11,7 +11,6 @@ using System.Text.RegularExpressions;
 using Metropolis.Api.Core.Domain;
 using Metropolis.Api.Core.Parsers.CsvParsers;
 using Metropolis.Api.Extensions;
-using Metropolis.Domain;
 using Metropolis.Domain.Camera;
 
 namespace Metropolis

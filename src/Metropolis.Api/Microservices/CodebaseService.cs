@@ -2,9 +2,9 @@
 using Metropolis.Api.Core.Parsers.CsvParsers;
 using Metropolis.Api.Core.Persistence;
 
-namespace Metropolis.Api.Service
+namespace Metropolis.Api.Microservices
 {
-    public class CodebaseServiceApi : ICodebaseService
+    public class CodebaseService : ICodebaseService
     {
         private readonly ProjectRepository projectRepository = new ProjectRepository();
 

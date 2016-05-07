@@ -1,6 +1,6 @@
 ﻿using Metropolis.Api.Core.Domain;
 
-namespace Metropolis.Api.Service
+namespace Metropolis.Api.Microservices
 {
     public interface ICodebaseService
     {
