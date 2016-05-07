@@ -91,7 +91,7 @@
     <Compile Include="Models\BrushFactory.cs" />
     <Compile Include="Models\LinearScale.cs" />
     <Compile Include="WorkspaceProvider.cs" />
-    <Page Include="Canvas.xaml">
+    <Page Include="Views\Canvas.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -100,7 +100,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\BuildingFactory.cs" />
-    <Compile Include="Canvas.xaml.cs">
+    <Compile Include="Views\Canvas.xaml.cs">
       <DependentUpon>Canvas.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>

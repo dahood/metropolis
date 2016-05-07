@@ -14,15 +14,15 @@ namespace Metropolis
 {
     public class WorkspaceProvider : IWorkspaceProvider
     {
-        private readonly IMetropolisApi metropolisApi;
+        private readonly ICollectionService collectionService;
 
-        public WorkspaceProvider() : this(new MetropolisApi())
+        public WorkspaceProvider() : this(new CollectionService())
         {
         }
 
-        public WorkspaceProvider(IMetropolisApi metropolisApi)
+        public WorkspaceProvider(ICollectionService collectionService)
         {
-            this.metropolisApi = metropolisApi;
+            this.collectionService = collectionService;
         }
 
         public CodeBase Workspace { get; private set; }
@@ -43,7 +43,7 @@ namespace Metropolis
 
             using (new WaitCursor())
             {
-                metropolisApi.Save(Workspace, dialog.FileName);
+                collectionService.Save(Workspace, dialog.FileName);
             }
         }
 
@@ -54,19 +54,19 @@ namespace Metropolis
 
         public void Load(string fileName)
         {
-            Workspace = metropolisApi.Load(fileName);  
+            Workspace = collectionService.Load(fileName);  
         }
 
         public void LoadDefault()
         {
-            Workspace = metropolisApi.LoadDefault();
+            Workspace = collectionService.LoadDefault();
         }
 
         public void LoadToxicity()
         {
             OpenFile(fileName =>
             {
-                var result = metropolisApi.ParseToxicity(fileName, Workspace.SourceBaseDirectory);
+                var result = collectionService.ParseToxicity(fileName, Workspace.SourceBaseDirectory);
                 EnrichWorkspace(result);
             }, "Toxicity|*.csv");
         }
@@ -75,7 +75,7 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
-                var result = metropolisApi.ParseVisualStudioMetrics(fileName, Workspace.SourceBaseDirectory);
+                var result = collectionService.ParseVisualStudioMetrics(fileName, Workspace.SourceBaseDirectory);
                 EnrichWorkspace(result);
             }, "VisualStudio Metrics|*.csv");
         }

@@ -1,4 +1,3 @@
-using Metropolis.Domain;
 using System;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -49,9 +48,7 @@ namespace Metropolis
                 Display((GeometryModel3D) result.ModelHit);
             }
         }
-
         
-
         private void Display(GeometryModel3D model)
         {
             highlight = highlight.Swap(model);

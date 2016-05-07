@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Metropolis v0.0.1"
 
-        Width="1200" Height="800" WindowStartupLocation="CenterScreen" Icon="Properties/logo.ico">
+        Width="1200" Height="800" WindowStartupLocation="CenterScreen" Icon="..\Properties/logo.ico">
 
     <Window.Resources>
         <Style x:Key="ScrollBarTrackThumb"

@@ -4,7 +4,7 @@ using Metropolis.Api.Core.Persistence;
 
 namespace Metropolis.Api.Service
 {
-    public class MetropolisApi : IMetropolisApi
+    public class CollectionService : ICollectionService
     {
         private readonly ProjectRepository projectRepository = new ProjectRepository();
 

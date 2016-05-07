@@ -2,7 +2,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Metropolis.Api.Core.Domain;
 using Metropolis.Layout;
-using Metropolis.Domain;
 
 namespace Metropolis
 {
