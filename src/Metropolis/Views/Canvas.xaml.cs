@@ -1,20 +1,19 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
-using Metropolis.Layout;
-using System.Diagnostics;
-using System.Linq;
-using System.Text.RegularExpressions;
 using Metropolis.Api.Core.Domain;
 using Metropolis.Api.Core.Parsers.CsvParsers;
 using Metropolis.Api.Extensions;
-using Metropolis.Domain;
 using Metropolis.Domain.Camera;
+using Metropolis.Layout;
 
-namespace Metropolis
+namespace Metropolis.Views
 {
     public partial class Canvas : ISceneProvider, IDisplayClassInformation
     {
@@ -250,6 +249,18 @@ namespace Metropolis
         private void RunCsvExport(object sender, RoutedEventArgs e)
         {
             workspaceProvider.RunCsvExport();
+        }
+
+        private void RunWizard(object sender, RoutedEventArgs e)
+        {
+            var wizard = new GatherAnalysisWizard();
+            try
+            {
+                wizard.ShowDialog();
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

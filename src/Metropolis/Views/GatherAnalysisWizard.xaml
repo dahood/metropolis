@@ -1,0 +1,49 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Metropolis.Views"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        x:Class="Metropolis.Views.GatherAnalysisWizard"
+        Title="GatherAnalysisWizard" Height="267.688" Width="556.131" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Resources>
+            <x:Array x:Key="projectTypes" Type="system:String">
+                <system:String>C#</system:String>
+                <system:String>ECMA6</system:String>
+                <system:String>Java</system:String>
+                <system:String>JavaScript</system:String>
+            </x:Array>
+        </Grid.Resources>
+        <xctk:Wizard CanCancel="True" Margin="10,5,0.333,4.556" Cancel="WizardCancelled" Finish="WizardFinished">
+            <xctk:WizardPage x:Name="IntroPage" Title="Metropolois Analysis" Description="Please tell us about your project..." 
+                             NextPage="{Binding ElementName=Page1}"/>
+            <xctk:WizardPage x:Name="Page1" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                             PageType="Interior"
+                             Description="Where can we find your source code?" 
+                             NextPage="{Binding ElementName=Page2}" PreviousPage="{Binding ElementName=IntroPage}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85"  />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Project Type:</Label>
+                    <ComboBox Grid.Row="0" Grid.Column="1" Name="ProjectTypeCombo" Margin="2" Width="60"
+                              HorizontalAlignment="Left" ItemsSource="{StaticResource projectTypes}" />
+                    
+                    <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Source Folder:</Label>
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="SourceTextBox" VerticalAlignment="Center" HorizontalAlignment="Left" Width="300" 
+                             BorderBrush="White" SelectionBrush="White" TextAlignment="Right" Cursor=""/>
+                    
+                </Grid>
+            </xctk:WizardPage>
+            <xctk:WizardPage x:Name="Page2"  Content="Thank you!" Margin="2" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch"
+                             PreviousPage="{Binding ElementName=Page1}" CanFinish="True">
+            </xctk:WizardPage>
+        </xctk:Wizard>
+    </Grid>
+</Window>
