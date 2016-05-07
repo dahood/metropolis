@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Metropolis.Cli.Console")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Shaw Communications Inc.")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Metropolis.Cli.Console")]
-[assembly: AssemblyCopyright("Copyright © Shaw Communications Inc. 2016")]
+[assembly: AssemblyCopyright("Copyright © Jonathan McCracken, Greg Cook, and Richard Hurst 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

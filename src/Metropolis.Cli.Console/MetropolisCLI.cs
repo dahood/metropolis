@@ -1,9 +1,13 @@
-﻿namespace Metropolis.Cli.Console
+﻿using System;
+
+namespace Metropolis.Cli.Console
 {
     /// <summary>
-    /// Command line interface to hook up to build agents like Teamcity
+    /// The metro command line interface to Metropolis analysis for easy hook up to build agents like Teamcity
+    /// 
+    /// Export can be transformed by reporting by taking an output of JSON and a few prepared reports (html, with d3 perhaps?)
     /// </summary>
-    class Metropolis
+    class MetropolisCLI
     {
         static void Main(string[] args)
         {
@@ -17,6 +21,8 @@
             }
             System.Console.Write("Metropolis v0.0.1 - Command Usage: metropolis.exe -d c:\dev\metropolis -s csharp");
             //TODO: hook this into Metropolis.API
+
+            Environment.Exit(0);
         }
     }
 }
