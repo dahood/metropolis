@@ -17,7 +17,7 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "src\Installer\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.Api", "src\Metropolis.Api\Metropolis.Api.csproj", "{D6EDB7C6-34CD-4EB9-9579-8BB68514BEC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.Cli.Console", "src\Metropolis.Cli.Console\Metropolis.Cli.Console.csproj", "{C0D26BF3-1ED1-4A23-90B4-E62358616503}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.Console", "src\Metropolis.Cli.Console\Metropolis.Console.csproj", "{C0D26BF3-1ED1-4A23-90B4-E62358616503}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
