@@ -5,7 +5,8 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         x:Class="Metropolis.Views.GatherAnalysisWizard"
-        Title="GatherAnalysisWizard" Height="267.688" Width="556.131" WindowStartupLocation="CenterScreen">
+        Title="GatherAnalysisWizard" Height="267.688" Width="600" WindowStartupLocation="CenterScreen"
+    >
     <Grid>
         <Grid.Resources>
             <x:Array x:Key="projectTypes" Type="system:String">
@@ -30,7 +31,7 @@
                     <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Project Name:</Label>
                     <TextBox Grid.Row="0" Grid.Column="1" x:Name="ProjectNameTextBox" 
                              Text="{Binding Path=ProjectName}"
-                             VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" 
+                             VerticalAlignment="Center" HorizontalAlignment="Left" Width="120" 
                              BorderBrush="White" SelectionBrush="White" Cursor=""/>
                 </Grid>
             </xctk:WizardPage>
@@ -42,19 +43,30 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="85"  />
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="130"  />
+                        <ColumnDefinition Width="*"  />
+                        <ColumnDefinition Width="30"  />
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Project Type:</Label>
-                    <ComboBox Grid.Row="0" Grid.Column="1" Name="ProjectTypeCombo" Margin="2" Width="60"
-                              HorizontalAlignment="Left" ItemsSource="{StaticResource projectTypes}" />
-                    
-                    <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Source Folder:</Label>
-                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="SourceTextBox" VerticalAlignment="Center" HorizontalAlignment="Left" Width="300" 
+
+                    <!-- Row 1 details -->
+                    <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">C# Source Directory:</Label>
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="CSharpSourceDirectoryTextBox" 
+                             Text="{Binding Path=CSharpSourceDirectory}"
+                             VerticalAlignment="Center" HorizontalAlignment="Stretch" 
                              BorderBrush="White" SelectionBrush="White" Cursor=""/>
-                    
+                    <Button Grid.Row="0" Grid.Column="2" Width="20" Margin="5" Content="..." Click="OnCSharpFindDirectory"/>
+
+                    <!-- Row 2 details -->
+                    <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Java Source Directory:</Label>
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="JavaSourceDirectoryTextBox"
+                             Text="{Binding Path=JavaSourceDirectory}"
+                             VerticalAlignment="Center" HorizontalAlignment="Stretch" 
+                             BorderBrush="White" SelectionBrush="White" Cursor=""/>
+                    <Button Grid.Row="1" Grid.Column="2" Width="20" Margin="5" Content="..." Click="OnJavaFindDirectory"/>
+
                 </Grid>
             </xctk:WizardPage>
             <xctk:WizardPage x:Name="Page2"  Content="Thank you!" Margin="2" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch"

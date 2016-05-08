@@ -156,7 +156,6 @@
                 <Separator />
                 <MenuItem Header="Analysis Wizard" Click="RunWizard"/>
                 <Separator />
-                <Separator />
                 <MenuItem Header="Java">
                     <MenuItem Header="Load Checkstyles" Click="LoadCheckStyles"/>
                     <MenuItem Header="SLOC (.java)" Click="LoadSourceLinesOfCode"/>

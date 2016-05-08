@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using Metropolis.Api.Models;
+using System.Windows.Forms;
+using Metropolis.Api.Extensions;
 
 namespace Metropolis.Views
 {
@@ -26,6 +28,29 @@ namespace Metropolis.Views
         {
             var data = ProjectDetails;
             Close();
+        }
+
+        private void OnCSharpFindDirectory(object sender, RoutedEventArgs e)
+        {
+            var sourceDirectory = GetSourceDirectory("C#");
+            if (sourceDirectory.IsNotEmpty())
+                ProjectDetails.CSharpSourceDirectory= sourceDirectory;
+        }
+
+        private void OnJavaFindDirectory(object sender, RoutedEventArgs e)
+        {
+            var sourceDirectory = GetSourceDirectory("Java");
+            if (sourceDirectory.IsNotEmpty())
+                ProjectDetails.JavaSourceDirectory = sourceDirectory;
+        }
+
+        private static string GetSourceDirectory(string type)
+        {
+            var dialog = new FolderBrowserDialog {Description = $"Locate {type} Source Directory"};
+            var result = dialog.ShowDialog();
+            return result == System.Windows.Forms.DialogResult.OK
+                ? dialog.SelectedPath
+                : string.Empty;
         }
     }
 }
