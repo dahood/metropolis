@@ -30,7 +30,7 @@
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Project Name:</Label>
                     <TextBox Grid.Row="0" Grid.Column="1" x:Name="ProjectNameTextBox" 
-                             Text="{Binding Path=ProjectName}"
+                             Text="{Binding Path=ProjectName, Mode=TwoWay}"
                              VerticalAlignment="Center" HorizontalAlignment="Left" Width="120" 
                              BorderBrush="White" SelectionBrush="White" Cursor=""/>
                 </Grid>
@@ -54,7 +54,7 @@
                     <!-- Row 1 details -->
                     <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">C# Source Directory:</Label>
                     <TextBox Grid.Row="0" Grid.Column="1" x:Name="CSharpSourceDirectoryTextBox" 
-                             Text="{Binding Path=CSharpSourceDirectory}"
+                             Text="{Binding Path=CSharpSourceDirectory, Mode=TwoWay}"
                              VerticalAlignment="Center" HorizontalAlignment="Stretch" 
                              BorderBrush="White" SelectionBrush="White" Cursor=""/>
                     <Button Grid.Row="0" Grid.Column="2" Width="20" Margin="5" Content="..." Click="OnCSharpFindDirectory"/>
@@ -62,10 +62,18 @@
                     <!-- Row 2 details -->
                     <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Java Source Directory:</Label>
                     <TextBox Grid.Row="1" Grid.Column="1" x:Name="JavaSourceDirectoryTextBox"
-                             Text="{Binding Path=JavaSourceDirectory}"
+                             Text="{Binding Path=JavaSourceDirectory, Mode=TwoWay}"
                              VerticalAlignment="Center" HorizontalAlignment="Stretch" 
                              BorderBrush="White" SelectionBrush="White" Cursor=""/>
                     <Button Grid.Row="1" Grid.Column="2" Width="20" Margin="5" Content="..." Click="OnJavaFindDirectory"/>
+                    
+                    <!-- Row 3 details -->
+                    <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Ecma6/JS Source Directory:</Label>
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="Ecma6SourceDiredtoryTextBox"
+                             Text="{Binding Path=Ecma6SourceDiredtory, Mode=TwoWay}"
+                             VerticalAlignment="Center" HorizontalAlignment="Stretch" 
+                             BorderBrush="White" SelectionBrush="White" Cursor=""/>
+                    <Button Grid.Row="2" Grid.Column="2" Width="20" Margin="5" Content="..." Click="OnEcma6FindDirectory"/>
 
                 </Grid>
             </xctk:WizardPage>

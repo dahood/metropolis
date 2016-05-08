@@ -16,7 +16,7 @@ namespace Metropolis.Views
         {
             InitializeComponent();
             ProjectDetails = new ProjectDetails();
-            this.DataContext = ProjectDetails;
+            DataContext = ProjectDetails;
         }
         
         private void WizardCancelled(object sender, RoutedEventArgs e)
@@ -42,6 +42,12 @@ namespace Metropolis.Views
             var sourceDirectory = GetSourceDirectory("Java");
             if (sourceDirectory.IsNotEmpty())
                 ProjectDetails.JavaSourceDirectory = sourceDirectory;
+        }
+        private void OnEcma6FindDirectory(object sender, RoutedEventArgs e)
+        {
+            var sourceDirectory = GetSourceDirectory("Ecma6/Javascript");
+            if (sourceDirectory.IsNotEmpty())
+                ProjectDetails.Ecma6SourceDiredtory = sourceDirectory;
         }
 
         private static string GetSourceDirectory(string type)

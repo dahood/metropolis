@@ -113,6 +113,8 @@
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="Extensions\NumericExtensions.cs" />
+    <Compile Include="Extensions\PropertyChangedEventHandlerExtensions.cs" />
+    <Compile Include="Extensions\ReflectionUtility.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Models\ProjectDetails.cs" />
