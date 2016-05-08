@@ -115,6 +115,7 @@
     <Compile Include="Extensions\NumericExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
+    <Compile Include="Models\ProjectDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Microservices\ICodebaseService.cs" />
     <Compile Include="Microservices\CodebaseService.cs" />

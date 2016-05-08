@@ -17,7 +17,23 @@
         </Grid.Resources>
         <xctk:Wizard CanCancel="True" Margin="10,5,0.333,4.556" Cancel="WizardCancelled" Finish="WizardFinished">
             <xctk:WizardPage x:Name="IntroPage" Title="Metropolois Analysis" Description="Please tell us about your project..." 
-                             NextPage="{Binding ElementName=Page1}"/>
+                             NextPage="{Binding ElementName=Page1}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85"  />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Project Name:</Label>
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="ProjectNameTextBox" 
+                             Text="{Binding Path=ProjectName}"
+                             VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" 
+                             BorderBrush="White" SelectionBrush="White" Cursor=""/>
+                </Grid>
+            </xctk:WizardPage>
             <xctk:WizardPage x:Name="Page1" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                              PageType="Interior"
                              Description="Where can we find your source code?" 
@@ -37,7 +53,7 @@
                     
                     <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Source Folder:</Label>
                     <TextBox Grid.Row="1" Grid.Column="1" x:Name="SourceTextBox" VerticalAlignment="Center" HorizontalAlignment="Left" Width="300" 
-                             BorderBrush="White" SelectionBrush="White" TextAlignment="Right" Cursor=""/>
+                             BorderBrush="White" SelectionBrush="White" Cursor=""/>
                     
                 </Grid>
             </xctk:WizardPage>
