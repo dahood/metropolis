@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.Api", "src\Metro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.Console", "src\Metropolis.Cli.Console\Metropolis.Console.csproj", "{C0D26BF3-1ED1-4A23-90B4-E62358616503}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.Common", "Metropolis.Common\Metropolis.Common.csproj", "{867E868A-B77F-42DD-BD08-83BBADF9E847}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{C0D26BF3-1ED1-4A23-90B4-E62358616503}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0D26BF3-1ED1-4A23-90B4-E62358616503}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0D26BF3-1ED1-4A23-90B4-E62358616503}.Release|Any CPU.Build.0 = Release|Any CPU
+		{867E868A-B77F-42DD-BD08-83BBADF9E847}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{867E868A-B77F-42DD-BD08-83BBADF9E847}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{867E868A-B77F-42DD-BD08-83BBADF9E847}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{867E868A-B77F-42DD-BD08-83BBADF9E847}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
