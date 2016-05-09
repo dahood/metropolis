@@ -817,7 +817,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Metropolis"
         "ProductCode" = "8:{9EA56704-77DA-472F-A6B5-729D61A6D807}"
-        "PackageCode" = "8:{4BC1725D-24E2-4E01-8213-B3142D553B45}"
+        "PackageCode" = "8:{4F82D77D-11DA-449A-A8E0-1DE7364ED54B}"
         "UpgradeCode" = "8:{3067D947-49DD-4846-ADE0-72D92AABB628}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -948,7 +948,7 @@
             "Target" = "8:_CB7E9558A9074738BA90FE4C9DD06B6A"
             "Folder" = "8:_5F171C710FF64114A4E0EE47A12C9381"
             "WorkingFolder" = "8:_4554DCAC90654E52A3CBFD6481D46E2E"
-            "Icon" = "8:"
+            "Icon" = "8:_DA6EC740BB7F469E8EF6503D432AF313"
             "Feature" = "8:"
             }
         }
