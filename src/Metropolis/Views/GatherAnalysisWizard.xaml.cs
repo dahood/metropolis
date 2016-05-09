@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using Metropolis.Api.Models;
 using System.Windows.Forms;
 using Metropolis.Api.Extensions;
+using Metropolis.Common.Models;
 
 namespace Metropolis.Views
 {

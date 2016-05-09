@@ -62,7 +62,6 @@
     <Compile Include="Core\Domain\Member.cs" />
     <Compile Include="Core\Domain\Project.cs" />
     <Compile Include="Core\Domain\ProjectAssembler.cs" />
-    <Compile Include="Core\Domain\RepositorySourceType.cs" />
     <Compile Include="Core\Parsers\CsvParsers\CsvClassParser.cs" />
     <Compile Include="Core\Parsers\CsvParsers\SourceLinesOfCodeParser.cs" />
     <Compile Include="Core\Parsers\CsvParsers\ToxicityCsvLineItem.cs" />
@@ -75,6 +74,7 @@
     <Compile Include="Core\Parsers\CsvParsers\TypeConverters\Sloc\SourceLinesOfCodeNamespaceConverter.cs" />
     <Compile Include="Core\Parsers\CsvParsers\VisualStudioCsvLineItem.cs" />
     <Compile Include="Core\Parsers\CsvParsers\VisualStudioMetricsParser.cs" />
+    <Compile Include="Core\Parsers\IClassParser.cs" />
     <Compile Include="Core\Parsers\XmlParsers\CheckStyles\CheckStylesParser.cs" />
     <Compile Include="Core\Parsers\XmlParsers\CheckStyles\EsLintCheckStylesClassBuilder.cs" />
     <Compile Include="Core\Parsers\XmlParsers\CheckStyles\ICheckStylesClassBuilder.cs" />
@@ -99,7 +99,6 @@
     <Compile Include="Core\Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\Member\PupyyCrawlNestedTryDepthParser.cs" />
     <Compile Include="Core\Parsers\XmlParsers\CheckStyles\Parsers\PuppyCrawl\PuppyCrawlSources.cs" />
     <Compile Include="Core\Parsers\XmlParsers\CheckStyles\PuppyCrawlCheckStylesClassBuilder.cs" />
-    <Compile Include="Core\Parsers\XmlParsers\IClassParser.cs" />
     <Compile Include="Core\Parsers\XmlParsers\MetricHandlers\ClassAttributeParser.cs" />
     <Compile Include="Core\Parsers\XmlParsers\MetricHandlers\CyclomaticComplexityParser.cs" />
     <Compile Include="Core\Parsers\XmlParsers\MetricHandlers\DepthOfInheritanceParser.cs" />
@@ -117,7 +116,8 @@
     <Compile Include="Extensions\ReflectionUtility.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
-    <Compile Include="Models\ProjectDetails.cs" />
+    <Compile Include="Microservices\IProjectService.cs" />
+    <Compile Include="Microservices\ProjectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Microservices\ICodebaseService.cs" />
     <Compile Include="Microservices\CodebaseService.cs" />
@@ -126,6 +126,12 @@
   <ItemGroup>
     <EmbeddedResource Include="entity-framework-6.project" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Metropolis.Common\Metropolis.Common.csproj">
+      <Project>{867e868a-b77f-42dd-bd08-83bbadf9e847}</Project>
+      <Name>Metropolis.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

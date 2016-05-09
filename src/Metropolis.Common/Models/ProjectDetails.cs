@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Metropolis.Api.Extensions;
+using Metropolis.Common.Extensions;
 
-namespace Metropolis.Api.Models
+namespace Metropolis.Common.Models
 {
     public class ProjectDetails : INotifyPropertyChanged
     {
@@ -10,6 +9,8 @@ namespace Metropolis.Api.Models
         private string cSharpSourceDirectory;
         private string javaSourceDirectory;
         private string ecma6SourceDiredtory;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public string ProjectName
         {
@@ -51,12 +52,9 @@ namespace Metropolis.Api.Models
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged(string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         }
     }
 }

@@ -4,21 +4,25 @@ using CsvHelper;
 using System.IO;
 using Metropolis.Api.Core.Analyzers.Toxicity;
 using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Core.Parsers;
 using Metropolis.Api.Core.Parsers.CsvParsers;
 using Metropolis.Api.Core.Parsers.XmlParsers;
 using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles;
 using Metropolis.Domain.Camera;
 using Metropolis.Api.Microservices;
+using Metropolis.Common;
 
 namespace Metropolis
 {
     public class WorkspaceProvider : IWorkspaceProvider
     {
         private readonly ICodebaseService codebaseService;
+        private readonly IProjectService projectService;
 
-        public WorkspaceProvider(ICodebaseService codebaseService)
+        public WorkspaceProvider(ICodebaseService codebaseService, IProjectService projectService)
         {
             this.codebaseService = codebaseService;
+            this.projectService = projectService;
         }
 
         public CodeBase Workspace { get; private set; }
@@ -62,7 +66,7 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
-                var result = codebaseService.ParseToxicity(fileName, Workspace.SourceBaseDirectory);
+                var result = codebaseService.Get(fileName, ParseType.RichardToxicity, Workspace.SourceBaseDirectory);
                 EnrichWorkspace(result);
             }, "Toxicity|*.csv");
         }
@@ -71,7 +75,7 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
-                var result = codebaseService.ParseVisualStudioMetrics(fileName, Workspace.SourceBaseDirectory);
+                var result = codebaseService.Get(fileName, ParseType.VisualStudio, Workspace.SourceBaseDirectory);
                 EnrichWorkspace(result);
             }, "VisualStudio Metrics|*.csv");
         }
@@ -81,7 +85,7 @@ namespace Metropolis
             OpenFile(fileName =>
             {
                 Workspace.SourceType = RepositorySourceType.Java;
-                var parser = CheckStylesParser.JavaCheckStylesParser;
+                var parser = CheckStylesParser.PuppyCrawlParser;
                 Parse(parser, fileName);
             }, "Checkstyles |*.xml");
         }

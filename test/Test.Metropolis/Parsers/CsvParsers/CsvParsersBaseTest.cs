@@ -6,6 +6,7 @@ using Metropolis.Api.Core.Parsers.XmlParsers;
 using NUnit.Framework;
 using FluentAssertions;
 using System.Linq;
+using Metropolis.Api.Core.Parsers;
 
 namespace Test.Metropolis.Parsers.CsvParsers
 {

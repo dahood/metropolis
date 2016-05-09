@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Metropolis.Common;
 
 namespace Metropolis.Api.Core.Domain
 {
@@ -36,12 +37,11 @@ namespace Metropolis.Api.Core.Domain
         }
 
         public int NumberOfTypes => Graph.Count;
-
         public int LinesOfCode => AllClasses.Sum(c => c.LinesOfCode);
 
         public double AverageToxicity()
         {
-            double sum = AllClasses.Sum(c => c.Toxicity);
+            var sum = AllClasses.Sum(c => c.Toxicity);
             return sum / NumberOfTypes;
         }
 

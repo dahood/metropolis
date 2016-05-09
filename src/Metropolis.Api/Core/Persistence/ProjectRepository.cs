@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using Metropolis.Api.Core.Domain;
+using Metropolis.Common;
 using Newtonsoft.Json;
 
 namespace Metropolis.Api.Core.Persistence

@@ -11,9 +11,8 @@ namespace Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles
     {
         private readonly ICheckStylesClassBuilder classBuilder;
 
-        public CheckStylesParser() : this(new EsLintCheckStylesClassBuilder())
-        { 
-        }
+        public static CheckStylesParser EslintParser => new CheckStylesParser(new EsLintCheckStylesClassBuilder());
+        public static CheckStylesParser PuppyCrawlParser => new CheckStylesParser(new PuppyCrawlCheckStylesClassBuilder());
 
         public CheckStylesParser(ICheckStylesClassBuilder classBuilder)
         {
@@ -57,8 +56,6 @@ namespace Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles
             };
         }
 
-        public static CheckStylesParser EslintParser => new CheckStylesParser(new EsLintCheckStylesClassBuilder());
-        public static CheckStylesParser JavaCheckStylesParser => new CheckStylesParser(new PuppyCrawlCheckStylesClassBuilder());
     }
 
     public class CheckStylesItem

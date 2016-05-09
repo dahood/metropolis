@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using FluentAssertions;
 using Metropolis.Api.Core.Domain;
-using Metropolis.Domain;
 using NUnit.Framework;
 
 namespace Test.Metropolis.Domain

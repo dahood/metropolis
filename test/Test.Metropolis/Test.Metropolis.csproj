@@ -98,6 +98,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Metropolis.Common\Metropolis.Common.csproj">
+      <Project>{867E868A-B77F-42DD-BD08-83BBADF9E847}</Project>
+      <Name>Metropolis.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Metropolis\Metropolis.csproj">
       <Project>{b90da606-dd50-4859-adf0-eabba51a57b1}</Project>
       <Name>Metropolis</Name>
