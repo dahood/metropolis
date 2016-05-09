@@ -6,14 +6,18 @@ Metropolis is a code visualization aid to help in review and analysis. It create
 
 Grab the latest [MSI installer](https://github.com/dahood/metropolis/raw/master/publish/Metropolis.msi). Currently only support Windows sorry no [WPF on Mono yet](http://www.mono-project.com/docs/gui/wpf/).
 
-## How To ... do that
+## User Guide
+
+[User Guide Wiki](https://github.com/dahood/metropolis/wiki/User-Guide) - contains info on how to get started after install
+
+## How to anything else...
 
 Learn more by visiting the [project wiki](https://github.com/dahood/metropolis/wiki)
 
-
 ## License
 
-Metropolis is licensed under BSD (see LICENSE). 
+Metropolis is licensed under BSD (see LICENSE).
+
 Metropolis depends on:
 
 * CSVHelper (Dual licensing under MS-PL and Apache 2.0) - http://joshclose.github.io/CsvHelper/
@@ -22,3 +26,4 @@ Metropolis depends on:
 * Checkstyle (GNU LGPL 2.1) - https://github.com/checkstyle/checkstyle
 * D3 (BSD) - https://github.com/mbostock/d3
 * radar-chart-d3 (Apache 2.0) - https://github.com/alangrafu/radar-chart-d3
+* WPF Extended Toolking (Ms-PL) - http://wpftoolkit.codeplex.com/license
