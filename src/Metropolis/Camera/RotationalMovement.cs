@@ -2,7 +2,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
 
-namespace Metropolis.Domain.Camera
+namespace Metropolis.Camera
 {
     public class RotationalMovement
     {
@@ -40,7 +40,7 @@ namespace Metropolis.Domain.Camera
         private void HandleMouseMove(object sender, MouseEventArgs e)
         {
             if (!IsActive) return;
-            
+
             var currentPosition = e.GetPosition(null);
 
             var aY = CalculateYPositionChange(currentPosition, provider.ViewPort.ActualWidth);
@@ -56,14 +56,16 @@ namespace Metropolis.Domain.Camera
 
         private double CalculateXPositionChange(Point currentPosition, double height)
         {
-            return Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl) 
-                ? 0 : -180*(currentPosition.Y - initialPosition.Y)/height;
+            return Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)
+                ? 0
+                : -180*(currentPosition.Y - initialPosition.Y)/height;
         }
 
         private double CalculateYPositionChange(Point currentPosition, double width)
         {
-            return Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift) 
-                ? 0 : 180*(currentPosition.X - initialPosition.X)/width;
+            return Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift)
+                ? 0
+                : 180*(currentPosition.X - initialPosition.X)/width;
         }
 
         private void Rotate()

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
-using Metropolis.Domain;
-using Metropolis.Models;
-using System.Linq;
 using Metropolis.Api.Core.Domain;
+using Metropolis.Models;
 
 namespace Metropolis.Layout
 {
@@ -13,7 +12,7 @@ namespace Metropolis.Layout
     {
         protected const double Spacer = 2;
         private const double GoldenRatio = 1.618033988;
-        
+
         private static readonly AmbientLight DefaultAmbientLight = new AmbientLight(Colors.DarkGray);
         private static readonly DirectionalLight DefaultDirectionalLight = new DirectionalLight(Colors.White, new Vector3D(1, 1, -1));
         private readonly Dictionary<Model3D, Class> modelClassXRef = new Dictionary<Model3D, Class>();
@@ -39,7 +38,7 @@ namespace Metropolis.Layout
 
         internal Model3D LookupModel(Class src)
         {
-            foreach(var item in modelClassXRef)
+            foreach (var item in modelClassXRef)
             {
                 if (item.Value.Equals(src))
                     return item.Key;
@@ -50,7 +49,7 @@ namespace Metropolis.Layout
         protected Rect3D RenderSquareBlock(Model3DGroup cityScape, IEnumerable<Class> classes, Point3D center, int minHeight, int maxHeight)
         {
             var list = classes.ToList();
-            var blocksFromCenter = Math.Sqrt(list.Count) / 2d;
+            var blocksFromCenter = Math.Sqrt(list.Count)/2d;
             return RenderRectangle(cityScape, list, center, minHeight, maxHeight, blocksFromCenter, blocksFromCenter);
         }
 
@@ -63,10 +62,16 @@ namespace Metropolis.Layout
 
         protected static double[] CalculateWidthAndLength(int numberOfElements)
         {
-            var width = Math.Sqrt(GoldenRatio * numberOfElements);
-            var length = Math.Sqrt(1 / GoldenRatio * numberOfElements);
+            var width = Math.Sqrt(GoldenRatio*numberOfElements);
+            var length = Math.Sqrt(1/GoldenRatio*numberOfElements);
 
-            var rects = new List<double[]> { new[] { width + 1, length }, new[] { width, length + 1 }, new[] { width - 1, length + 1 }, new[] { width + 1, length + 1 } };
+            var rects = new List<double[]>
+            {
+                new[] {width + 1, length},
+                new[] {width, length + 1},
+                new[] {width - 1, length + 1},
+                new[] {width + 1, length + 1}
+            };
 
             return rects.Where(x => x[0]*x[1] >= numberOfElements)
                 .Where(x => x[0]/x[1] >= 1 && x[0]/x[1] < 2)
@@ -74,19 +79,20 @@ namespace Metropolis.Layout
                 .First();
         }
 
-        protected Rect3D RenderRectangle(Model3DGroup cityScape, List<Class> classes, Point3D center, int minHeight, int maxHeight, double width, double length)
+        protected Rect3D RenderRectangle(Model3DGroup cityScape, List<Class> classes, Point3D center, int minHeight, int maxHeight, double width,
+            double length)
         {
             var counter = 0;
-            
+
 
             var zOffset = center.Z - width;
             for (var column = 0 - width; column < width; column++)
             {
-                var currentX = center.X + Spacer * column;
+                var currentX = center.X + Spacer*column;
                 for (var row = 0 - length; row < length; row++)
                 {
                     if (counter >= classes.Count) break;
-                    var currentZ = zOffset + Spacer * row;
+                    var currentZ = zOffset + Spacer*row;
                     cityScape.Children.Add(CreateCube(currentX, currentZ, minHeight, maxHeight, classes[counter++]));
                 }
             }
@@ -108,14 +114,12 @@ namespace Metropolis.Layout
             var perfectCube = BuildingFactory.CreateCube(brush);
 
             var transformGroup = new Transform3DGroup();
-            var verticalTransformOffset = scaleOfheight / 2d;
+            var verticalTransformOffset = scaleOfheight/2d;
             transformGroup.Children.Add(new ScaleTransform3D(1, scaleOfheight, 1));
             transformGroup.Children.Add(new TranslateTransform3D(x, verticalTransformOffset, z));
 
             perfectCube.Transform = transformGroup;
             return perfectCube;
         }
-
-        
     }
 }

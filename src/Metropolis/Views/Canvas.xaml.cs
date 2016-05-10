@@ -11,8 +11,8 @@ using Metropolis.Api.Core.Domain;
 using Metropolis.Api.Core.Parsers.CsvParsers;
 using Metropolis.Api.Extensions;
 using Metropolis.Api.Microservices;
+using Metropolis.Camera;
 using Metropolis.Common;
-using Metropolis.Domain.Camera;
 using Metropolis.Layout;
 
 namespace Metropolis.Views
@@ -258,8 +258,9 @@ namespace Metropolis.Views
             {
                 wizard.ShowDialog();
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                throw new ApplicationException(exception.Message, exception);
             }
         }
     }

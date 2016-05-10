@@ -1,12 +1,12 @@
 using System.Windows.Media.Media3D;
 
-namespace Metropolis.Domain.Camera
+namespace Metropolis.Camera
 {
     public class CameraMovement
     {
-        private readonly ISceneProvider provider;
-        private readonly Point3D position;
         private readonly double fieldOfView;
+        private readonly Point3D position;
+        private readonly ISceneProvider provider;
 
         public CameraMovement(ISceneProvider provider)
         {

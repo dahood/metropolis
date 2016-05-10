@@ -99,9 +99,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ClassInformationFacade.cs" />
-    <Compile Include="Domain\Camera\CameraMovement.cs" />
-    <Compile Include="Domain\Camera\RotationalMovement.cs" />
-    <Compile Include="Domain\Camera\WaitCursor.cs" />
+    <Compile Include="Camera\CameraMovement.cs" />
+    <Compile Include="Camera\RotationalMovement.cs" />
+    <Compile Include="Camera\WaitCursor.cs" />
     <Compile Include="IDisplayClassInformation.cs" />
     <Compile Include="ISceneProvider.cs" />
     <Compile Include="EmptyHighlight.cs" />

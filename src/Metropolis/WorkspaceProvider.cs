@@ -8,8 +8,8 @@ using Metropolis.Api.Core.Parsers;
 using Metropolis.Api.Core.Parsers.CsvParsers;
 using Metropolis.Api.Core.Parsers.XmlParsers;
 using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles;
-using Metropolis.Domain.Camera;
 using Metropolis.Api.Microservices;
+using Metropolis.Camera;
 using Metropolis.Common;
 
 namespace Metropolis
