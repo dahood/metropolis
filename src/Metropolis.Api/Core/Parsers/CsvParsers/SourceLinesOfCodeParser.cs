@@ -34,11 +34,11 @@ namespace Metropolis.Api.Core.Parsers.CsvParsers
 
         public FileInclusion Inclusion { get; private set; }
 
-        protected override CodeBase ParseLines(IEnumerable<SourceLinesOfCodeLineItem> lines, string sourceBaseDirectory)
+        protected override CodeBase ParseLines(IEnumerable<SourceLinesOfCodeLineItem> lines)
         {
             var inclusionExtension = Inclusion.GetDescription();
             var classes = lines.Where(x => x.Class.EndsWith(inclusionExtension)) 
-                               .Select(each => new Class(each.Namespace.TrimPath(sourceBaseDirectory), each.Class) {LinesOfCode = each.SourceLoc})
+                               .Select(each => new Class(each.Namespace, each.Class) {LinesOfCode = each.SourceLoc})
                                .ToList();
 
             return new CodeBase(new CodeGraph(classes));

@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using CsvHelper;
 using Metropolis.Api.Core.Domain;
-using Metropolis.Api.Core.Parsers.XmlParsers;
 
 namespace Metropolis.Api.Core.Parsers.CsvParsers
 {
@@ -17,7 +16,7 @@ namespace Metropolis.Api.Core.Parsers.CsvParsers
             this.HasHeaderRecord = hasHeaderRecord;
         }
 
-        public CodeBase Parse(string fileName, string sourceBaseDirectory)
+        public CodeBase Parse(string fileName)
         {
             using (TextReader reader = File.OpenText(fileName))
             {
@@ -27,7 +26,7 @@ namespace Metropolis.Api.Core.Parsers.CsvParsers
 
                 try
                 {
-                    return ParseLines(csv.GetRecords<T>().ToList(), sourceBaseDirectory);
+                    return ParseLines(csv.GetRecords<T>().ToList());
                 }
                 catch (CsvMissingFieldException fieldMissingException)
                 {
@@ -36,6 +35,6 @@ namespace Metropolis.Api.Core.Parsers.CsvParsers
             }
         }
 
-        protected abstract CodeBase ParseLines(IEnumerable<T> lines, string sourceBaseDirectory);
+        protected abstract CodeBase ParseLines(IEnumerable<T> lines);
     }
 }

@@ -43,21 +43,21 @@ namespace Metropolis.Api.Microservices
 
         public CodeBase GetToxicity(string fileName, string sourceBaseDirectory)
         {
-            var result = new ToxicityParser().Parse(fileName, sourceBaseDirectory);
+            var result = new ToxicityParser().Parse(fileName);
             result.SourceType = RepositorySourceType.CSharp;
             return result;
         }
 
         public CodeBase GetVisualStudioMetrics(string fileName, string sourceBaseDirectory)
         {
-            var result = new VisualStudioMetricsParser().Parse(fileName, sourceBaseDirectory);
+            var result = new VisualStudioMetricsParser().Parse(fileName);
             result.SourceType = RepositorySourceType.CSharp;
             return result;
         }
 
         public CodeBase Get(string filename, ParseType parseType, string sourceBaseDirectory = null)
         {
-            var result = parseFactory[parseType]().Parse(filename, sourceBaseDirectory);
+            var result = parseFactory[parseType]().Parse(filename);
             return result;
         }
 

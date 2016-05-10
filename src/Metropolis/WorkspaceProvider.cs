@@ -128,7 +128,7 @@ namespace Metropolis
 
         private void Parse(IClassParser parser, string fileName)
         {
-            var result = parser.Parse(fileName, Workspace.SourceBaseDirectory);
+            var result = parser.Parse(fileName);
             EnrichWorkspace(result);
         }
 

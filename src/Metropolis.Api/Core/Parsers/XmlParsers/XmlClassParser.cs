@@ -25,7 +25,7 @@ namespace Metropolis.Api.Core.Parsers.XmlParsers
             parsers = javaMetricHandlers;
         }
 
-        public CodeBase Parse(string fileName, string sourceBaseDirectory = "")
+        public CodeBase Parse(string fileName)
         {
             return ParseText(File.ReadAllText(fileName));
         }

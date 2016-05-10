@@ -138,7 +138,7 @@ namespace Metropolis.Api.Core.Domain
 
         private bool Matches(Class src)
         {
-            return NameSpace == src.NameSpace & Name == src.Name;
+            return QualifiedName == src.QualifiedName;
         }
     }
 }

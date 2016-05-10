@@ -10,7 +10,7 @@ namespace Metropolis.Api.Core.Parsers.CsvParsers
         public VisualStudioMetricsParser() : base(hasHeaderRecord: true)
         { }
 
-        protected override CodeBase ParseLines(IEnumerable<VisualStudioCsvLineItem> lines, string sourceBaseDirectory="")
+        protected override CodeBase ParseLines(IEnumerable<VisualStudioCsvLineItem> lines)
         {
             var results = new List<Class>();
 
