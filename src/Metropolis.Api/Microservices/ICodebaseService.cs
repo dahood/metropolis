@@ -7,7 +7,7 @@ namespace Metropolis.Api.Microservices
     {
         void Save(CodeBase workspace, string fileName);
         CodeBase Load(string projectFileName);
-        CodeBase Get(string filename, ParseType parseType, string sourceBaseDirectory = null);
         CodeBase LoadDefault();
+        CodeBase Get(string filename, ParseType parseType, string sourceBaseDirectory = null);
     }
 }

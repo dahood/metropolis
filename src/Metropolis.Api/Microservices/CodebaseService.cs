@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Metropolis.Api.Core.Domain;
 using Metropolis.Api.Core.Parsers;
 using Metropolis.Api.Core.Parsers.CsvParsers;
-using Metropolis.Api.Core.Parsers.XmlParsers;
 using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles;
 using Metropolis.Api.Core.Persistence;
 using Metropolis.Common;
@@ -24,8 +23,7 @@ namespace Metropolis.Api.Microservices
             {ParseType.SlocCS,          () => new SourceLinesOfCodeParser(FileInclusion.CSharp) },
             {ParseType.SlocJava,        () => new SourceLinesOfCodeParser(FileInclusion.Java) },
         };
-
-
+        
         public void Save(CodeBase workspace, string fileName)
         {
             projectRepository.Save(workspace, fileName);
@@ -36,7 +34,7 @@ namespace Metropolis.Api.Microservices
             return projectRepository.Load(projectFileName);
         }
 
-        public CodeBase GetDefault()
+        public CodeBase LoadDefault()
         {
             return projectRepository.LoadDefault();
         }
@@ -57,13 +55,7 @@ namespace Metropolis.Api.Microservices
 
         public CodeBase Get(string filename, ParseType parseType, string sourceBaseDirectory = null)
         {
-            var result = parseFactory[parseType]().Parse(filename);
-            return result;
-        }
-
-        public CodeBase LoadDefault()
-        {
-            return projectRepository.LoadDefault();
+            return parseFactory[parseType]().Parse(filename);
         }
     }
 }
