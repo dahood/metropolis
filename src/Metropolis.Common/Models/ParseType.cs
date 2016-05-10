@@ -1,4 +1,4 @@
-﻿namespace Metropolis.Common
+﻿namespace Metropolis.Common.Models
 {
     public enum ParseType
     {
@@ -6,8 +6,8 @@
         VisualStudio,
         PuppyCrawler,
         EsLint,
-        SlocCS,
-        SlocJS,
+        SlocCSharp,
+        SlocJavaScript,
         SlocJava
     }
 }

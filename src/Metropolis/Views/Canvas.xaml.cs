@@ -13,6 +13,7 @@ using Metropolis.Api.Extensions;
 using Metropolis.Api.Microservices;
 using Metropolis.Camera;
 using Metropolis.Common;
+using Metropolis.Common.Models;
 using Metropolis.Layout;
 
 namespace Metropolis.Views

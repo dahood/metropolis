@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Metropolis.Common;
+using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Core.Domain
 {

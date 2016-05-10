@@ -4,6 +4,7 @@ using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using Metropolis.Api.Core.Domain;
 using Metropolis.Common;
+using Metropolis.Common.Models;
 
 namespace Metropolis
 {

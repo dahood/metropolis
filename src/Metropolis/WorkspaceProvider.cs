@@ -11,6 +11,7 @@ using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles;
 using Metropolis.Api.Microservices;
 using Metropolis.Camera;
 using Metropolis.Common;
+using Metropolis.Common.Models;
 
 namespace Metropolis
 {

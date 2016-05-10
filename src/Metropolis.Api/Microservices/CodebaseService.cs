@@ -6,6 +6,7 @@ using Metropolis.Api.Core.Parsers.CsvParsers;
 using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles;
 using Metropolis.Api.Core.Persistence;
 using Metropolis.Common;
+using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Microservices
 {
@@ -19,8 +20,8 @@ namespace Metropolis.Api.Microservices
             {ParseType.RichardToxicity, () => new ToxicityParser()},
             {ParseType.PuppyCrawler,    () => CheckStylesParser.PuppyCrawlParser },
             {ParseType.EsLint,          () => CheckStylesParser.EslintParser },
-            {ParseType.SlocJS,          () => new SourceLinesOfCodeParser(FileInclusion.Js) },
-            {ParseType.SlocCS,          () => new SourceLinesOfCodeParser(FileInclusion.CSharp) },
+            {ParseType.SlocJavaScript,          () => new SourceLinesOfCodeParser(FileInclusion.Js) },
+            {ParseType.SlocCSharp,          () => new SourceLinesOfCodeParser(FileInclusion.CSharp) },
             {ParseType.SlocJava,        () => new SourceLinesOfCodeParser(FileInclusion.Java) },
         };
         
