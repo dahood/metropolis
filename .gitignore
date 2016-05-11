@@ -1,4 +1,8 @@
+# Stupid gulp-nunit-runner exclude
+TestResult.xml
+
 # Project Excludes
+build/
 dist/
 test-results/
 .idea

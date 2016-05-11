@@ -1,0 +1,18 @@
+<html>
+<div id="chartContainer">
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.2.0.min.js"></script>
+  <script type="text/javascript">
+    var svg = dimple.newSvg("#chartContainer", 1200, 800);
+    d3.tsv("http://localhost:8080/metropolis_export_filtered.tsv", function (data) {
+      var myChart = new dimple.chart(svg, data);
+      myChart.setBounds(60, 30, 1200, 600)
+      var x = myChart.addCategoryAxis("x", "Name");
+      x.addOrderRule("Toxicity", true);
+      myChart.addMeasureAxis("y", "Toxicity");
+      myChart.addSeries(null, dimple.plot.bar);
+      myChart.draw();
+    });
+  </script>
+</div>
+</html>
