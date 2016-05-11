@@ -1,4 +1,5 @@
 # Project Excludes
+build/
 dist/
 test-results/
 .idea
