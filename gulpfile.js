@@ -16,9 +16,13 @@ gulp.task('compile', shell.task([
 gulp.task('test', function () {
     return gulp.src(['build\\*.Test.dll'], {read: false})
         .pipe(nunit({
-            executable: 'packages\\NUnit.ConsoleRunner.3.2.1\\tools\\nunit3-console.exe',
-            result: 'build\\TestResults.xml',
-            workers: maxThreads
+        	noresult: true, //TODO: Fix this
+            result: 'build\\Foo.xml',
+            err: 'build\\NUnitErrors.txt',
+            teamcity: false,
+            nologo: true,
+            workers: maxThreads,
+            executable: 'packages\\NUnit.ConsoleRunner.3.2.1\\tools\\nunit3-console.exe'
         }));
 });
 
