@@ -16,7 +16,7 @@ namespace Metropolis.Api.Core.Parsers.CsvParsers
             return new CodeBase(
                 new CodeGraph(
                 lines.Select(
-                    line => new Class(line.Namespace, line.Type, line.NumberOfMethods, line.LinesOfCode, line.Toxicity)).ToList()));
+                    line => new Instance(line.Namespace, line.Type, line.NumberOfMethods, line.LinesOfCode, line.Toxicity)).ToList()));
         }
     }
 }

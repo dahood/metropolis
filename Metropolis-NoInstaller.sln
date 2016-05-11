@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis", "src\Metropolis\Metropolis.csproj", "{B90DA606-DD50-4859-ADF0-EABBA51A57B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.Test", "test\Metropolis.Test\Metropolis.Test.csproj", "{8CB43BB9-3E40-4A5F-84D3-342BFA2EE05A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{94A29043-E93C-4445-9FC3-832DE772A29D}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.Api", "src\Metropolis.Api\Metropolis.Api.csproj", "{D6EDB7C6-34CD-4EB9-9579-8BB68514BEC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.Console", "src\Metropolis.Cli.Console\Metropolis.Console.csproj", "{C0D26BF3-1ED1-4A23-90B4-E62358616503}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.Common", "src\Metropolis.Common\Metropolis.Common.csproj", "{867E868A-B77F-42DD-BD08-83BBADF9E847}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B90DA606-DD50-4859-ADF0-EABBA51A57B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B90DA606-DD50-4859-ADF0-EABBA51A57B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B90DA606-DD50-4859-ADF0-EABBA51A57B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B90DA606-DD50-4859-ADF0-EABBA51A57B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CB43BB9-3E40-4A5F-84D3-342BFA2EE05A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CB43BB9-3E40-4A5F-84D3-342BFA2EE05A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CB43BB9-3E40-4A5F-84D3-342BFA2EE05A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CB43BB9-3E40-4A5F-84D3-342BFA2EE05A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B820BD6-D1B0-4C47-BC82-914FFB64C211}.Debug|Any CPU.ActiveCfg = Debug
+		{5B820BD6-D1B0-4C47-BC82-914FFB64C211}.Release|Any CPU.ActiveCfg = Release
+		{D6EDB7C6-34CD-4EB9-9579-8BB68514BEC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6EDB7C6-34CD-4EB9-9579-8BB68514BEC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6EDB7C6-34CD-4EB9-9579-8BB68514BEC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6EDB7C6-34CD-4EB9-9579-8BB68514BEC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0D26BF3-1ED1-4A23-90B4-E62358616503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0D26BF3-1ED1-4A23-90B4-E62358616503}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0D26BF3-1ED1-4A23-90B4-E62358616503}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0D26BF3-1ED1-4A23-90B4-E62358616503}.Release|Any CPU.Build.0 = Release|Any CPU
+		{867E868A-B77F-42DD-BD08-83BBADF9E847}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{867E868A-B77F-42DD-BD08-83BBADF9E847}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{867E868A-B77F-42DD-BD08-83BBADF9E847}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{867E868A-B77F-42DD-BD08-83BBADF9E847}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

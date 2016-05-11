@@ -12,7 +12,7 @@ namespace Metropolis.Api.Core.Parsers.CsvParsers
 
         protected override CodeBase ParseLines(IEnumerable<VisualStudioCsvLineItem> lines)
         {
-            var results = new List<Class>();
+            var results = new List<Instance>();
 
             var visualStudioCsvLineItems = lines as VisualStudioCsvLineItem[] ?? lines.ToArray();
             var allTypes = visualStudioCsvLineItems.Where(x => x.Scope == "Type");
@@ -21,7 +21,7 @@ namespace Metropolis.Api.Core.Parsers.CsvParsers
             {
                 var methodsOfType = CollectMethods(visualStudioCsvLineItems, type).ToList();
 
-                var classToAdd = new Class(type.Namespace, type.Type, methodsOfType.Count, 
+                var classToAdd = new Instance(type.Namespace, type.Type, methodsOfType.Count, 
                     type.LinesOfCode, type.CyclomaticComplexity, type.DepthOfInheritance, type.ClassCoupling);
 
                 classToAdd.AddMember(methodsOfType.Select(x =>

@@ -15,34 +15,36 @@ namespace Metropolis.Api.Core.Analyzers.Toxicity
         private const int ThresholdNumberOfMethods = 20;
         // method level thresholds
         private const int ThresholdMethodLength = 30;
-        private const int thresholdCyclomaticComplexity = 20; //higher for C# than Java due to LINQ
+        private const int ThresholdCyclomaticComplexity = 20; //higher for C# than Java due to LINQ
 
-        public override ToxicityScore CalculateToxicity(Class classToScore)
+        public override ToxicityScore CalculateToxicity(Instance instanceToScore)
         {
             // Class Level Toxicity
-            var linesOfCode = ComputeToxicity(classToScore.LinesOfCode, ThresholdLinesOfCode);
-            var classCoupling = ComputeToxicity(classToScore.ClassCoupling, ThresholdClassCoupling);
-            var depthOfInheritance = ComputeToxicity(classToScore.DepthOfInheritance, ThresholdDepthOfInheritance);
-            var numberOfMethods = ComputeToxicity(classToScore.Members.Count, ThresholdNumberOfMethods);
+            var linesOfCode = ComputeToxicity(instanceToScore.LinesOfCode, ThresholdLinesOfCode);
+            var classCoupling = ComputeToxicity(instanceToScore.ClassCoupling, ThresholdClassCoupling);
+            var depthOfInheritance = ComputeToxicity(instanceToScore.DepthOfInheritance, ThresholdDepthOfInheritance);
+            var numberOfMethods = ComputeToxicity(instanceToScore.Members.Count, ThresholdNumberOfMethods);
 
             double cyclomaticComplexity = 0;
             double methodLength = 0;
             // Method Level Toxicity
-            foreach (var method in classToScore.Members)
+            foreach (var method in instanceToScore.Members)
             {
-                cyclomaticComplexity += ComputeToxicity(method.CylomaticComplexity, thresholdCyclomaticComplexity);
+                cyclomaticComplexity += ComputeToxicity(method.CylomaticComplexity, ThresholdCyclomaticComplexity);
                 methodLength += ComputeToxicity(method.LinesOfCode, ThresholdMethodLength);
             }
 
             // Rationalize
-            var score = new ToxicityScore();
-            score.LinesOfCode = Rationalize(linesOfCode);
-            score.ClassCoupling = Rationalize(classCoupling);
-            score.DepthOfInheritance = Rationalize(depthOfInheritance * DepthOfInheritanceFactor);
+            var score = new ToxicityScore
+            {
+                LinesOfCode = Rationalize(linesOfCode),
+                ClassCoupling = Rationalize(classCoupling),
+                DepthOfInheritance = Rationalize(depthOfInheritance*DepthOfInheritanceFactor),
+                NumberOfMethods = Rationalize(numberOfMethods),
+                MethodLength = Rationalize(methodLength),
+                CyclomaticComplexity = Rationalize(cyclomaticComplexity)
+            };
 
-            score.NumberOfMethods = Rationalize(numberOfMethods);
-            score.MethodLength = Rationalize(methodLength);
-            score.CyclomaticComplexity = Rationalize(cyclomaticComplexity);
 
             score.Toxicity = score.LinesOfCode + score.ClassCoupling + score.DepthOfInheritance + 
                              score.NumberOfMethods + score.MethodLength + score.CyclomaticComplexity;

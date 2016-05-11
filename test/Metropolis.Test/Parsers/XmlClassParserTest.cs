@@ -72,12 +72,12 @@ namespace Metropolis.Test.Parsers
             actualClass.LinesOfCode.Should().Be(JavaMetricsHelper.NOF + JavaMetricsHelper.MLOC); 
         }
          
-        private static Class AssertResultIsNotNullAndWithOneClass(CodeBase result)
+        private static Instance AssertResultIsNotNullAndWithOneClass(CodeBase result)
         {
             result.Should().NotBeNull();
-            result.AllClasses.Count.Should().Be(1);
+            result.AllInstances.Count.Should().Be(1);
 
-            return result.AllClasses.First();
+            return result.AllInstances.First();
         }
     }
 }

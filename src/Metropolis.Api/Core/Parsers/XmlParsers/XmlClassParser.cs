@@ -34,7 +34,7 @@ namespace Metropolis.Api.Core.Parsers.XmlParsers
         {
             var elements = XElement.Parse(text);
             var nameSpace = elements.GetDefaultNamespace();
-            var classMap  = new Dictionary<string, Class>();
+            var classMap  = new Dictionary<string, Instance>();
 
             var toDoList = (from m in elements.Elements(nameSpace + "Metric")
                             join p in parsers on m.Attribute("id").Value equals p.Id

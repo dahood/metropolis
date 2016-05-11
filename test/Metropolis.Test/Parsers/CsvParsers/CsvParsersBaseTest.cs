@@ -46,13 +46,13 @@ namespace Metropolis.Test.Parsers.CsvParsers
         }
 
         //Custom Assertions
-        protected static Class AssertHasOneClassEqualTo(Class expected, CodeBase codeBase)
+        protected static Instance AssertHasOneClassEqualTo(Instance expected, CodeBase codeBase)
         {
             expected.Should().NotBeNull();
             codeBase.Should().NotBeNull();
-            codeBase.AllClasses.Count.Should().Be(1);
+            codeBase.AllInstances.Count.Should().Be(1);
 
-            var actual = codeBase.AllClasses.First();
+            var actual = codeBase.AllInstances.First();
 
             actual.NameSpace.Should().Be(expected.NameSpace);
             actual.Name.Should().Be(expected.Name);
@@ -64,7 +64,7 @@ namespace Metropolis.Test.Parsers.CsvParsers
             return actual;
         }
 
-        protected void AssertHasOneMemberEqualTo(Class actual, Member expected)
+        protected void AssertHasOneMemberEqualTo(Instance actual, Member expected)
         {
             actual.Should().NotBeNull();
             expected.Should().NotBeNull();

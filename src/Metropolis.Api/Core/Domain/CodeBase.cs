@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Metropolis.Common;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Core.Domain
@@ -11,7 +10,7 @@ namespace Metropolis.Api.Core.Domain
         public string SourceBaseDirectory { get; set; }
         public RepositorySourceType SourceType { get; set; }
         public CodeGraph Graph { get; }
-        public List<Class> AllClasses => Graph.AllClasses;
+        public List<Instance> AllInstances => Graph.AllInstances;
 
         public CodeBase(CodeGraph graph) : this(string.Empty, graph)
         {
@@ -26,34 +25,34 @@ namespace Metropolis.Api.Core.Domain
 
         public void Enrich(CodeGraph enricher)
         {
-            Enrich(enricher.AllClasses);
+            Enrich(enricher.AllInstances);
         }
 
-        public void Enrich(IEnumerable<Class> classes)
+        public void Enrich(IEnumerable<Instance> instances)
         {
-            foreach (var c in classes)
+            foreach (var c in instances)
             {
                 Graph.Apply(c);
             }
         }
 
         public int NumberOfTypes => Graph.Count;
-        public int LinesOfCode => AllClasses.Sum(c => c.LinesOfCode);
+        public int LinesOfCode => AllInstances.Sum(c => c.LinesOfCode);
 
         public double AverageToxicity()
         {
-            var sum = AllClasses.Sum(c => c.Toxicity);
+            var sum = AllInstances.Sum(c => c.Toxicity);
             return sum / NumberOfTypes;
         }
 
-        public Dictionary<string, IEnumerable<Class>> ByNamespace()
+        public Dictionary<string, IEnumerable<Instance>> ByNamespace()
         {
-            return Graph.AllNamespaces.ToDictionary(ns => ns, ns => AllClasses.Where(x => x.NameSpace == ns));
+            return Graph.AllNamespaces.ToDictionary(ns => ns, ns => AllInstances.Where(x => x.NameSpace == ns));
         }
 
         public static CodeBase Empty()
         {
-            return new CodeBase(new CodeGraph(new Class[0]));
+            return new CodeBase(new CodeGraph(new Instance[0]));
         }
     }
 }

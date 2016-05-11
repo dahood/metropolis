@@ -5,12 +5,12 @@ using NUnit.Framework;
 namespace Metropolis.Test.Domain
 {
     [TestFixture]
-    public class ClassTest
+    public class InstanceTest
     {
         [Test]
         public void ConstructWithValues()
         {
-            var cls = new Class("ns", "name");
+            var cls = new Instance("ns", "name");
             Validate.Begin().IsNotNull(cls, "class")
                             .IsEqual(cls.NameSpace, "ns", "namespace")
                             .IsEqual(cls.Name, "name", "name")
@@ -22,7 +22,7 @@ namespace Metropolis.Test.Domain
         public void ConstructWithMembers()
         {
             var mbr = new Member("store", 1, 1, 1);
-            var cls = new Class("ns", "name", new [] {mbr});
+            var cls = new Instance("ns", "name", new [] {mbr});
 
             Validate.Begin().IsNotNull(cls, "class")
                             .IsEqual(1, cls.Members.Count, "mbr count")
@@ -35,11 +35,11 @@ namespace Metropolis.Test.Domain
         public void Apply_NoMembersToApply()
         {
             var mbr = new Member("store", 1, 1, 1);
-            var cls = new Class("ns", "name", new[] {mbr})
+            var cls = new Instance("ns", "name", new[] {mbr})
                         {LinesOfCode = 1, DepthOfInheritance = 1, CyclomaticComplexity = 1,
                          ClassCoupling = 1, NumberOfMethods = 1};
 
-            var toApply = new Class(cls.NameSpace, cls.Name, 2, 3, 4, 5, 6);
+            var toApply = new Instance(cls.NameSpace, cls.Name, 2, 3, 4, 5, 6);
 
             cls.Apply(toApply);
 
@@ -57,11 +57,11 @@ namespace Metropolis.Test.Domain
         public void Apply_MembersToApply()
         {
             var mbr = new Member("store", 1, 1, 1);
-            var cls = new Class("ns", "name", new[] {mbr})
+            var cls = new Instance("ns", "name", new[] {mbr})
                         {LinesOfCode = 1, DepthOfInheritance = 3, CyclomaticComplexity = 1,
                          ClassCoupling = 1, NumberOfMethods = 2};
 
-            var toApply = new Class("ns", "name", new[] {mbr})
+            var toApply = new Instance("ns", "name", new[] {mbr})
                         {LinesOfCode = 2, DepthOfInheritance = 2, CyclomaticComplexity = 2,
                          ClassCoupling = 2, NumberOfMethods = 2};
             
@@ -77,11 +77,11 @@ namespace Metropolis.Test.Domain
         public void Apply_NoMatchOnNamespace()
         {
             var mbr = new Member("store", 1, 1, 1);
-            var cls = new Class("ns", "name", new[] {mbr})
+            var cls = new Instance("ns", "name", new[] {mbr})
                         {LinesOfCode = 1, DepthOfInheritance = 3, CyclomaticComplexity = 1,
                          ClassCoupling = 1, NumberOfMethods = 2};
 
-            var toApply = new Class("ns1", "name", new[] {mbr})
+            var toApply = new Instance("ns1", "name", new[] {mbr})
                         {LinesOfCode = 2, DepthOfInheritance = 2, CyclomaticComplexity = 2,
                          ClassCoupling = 2, NumberOfMethods = 2};
             
@@ -101,11 +101,11 @@ namespace Metropolis.Test.Domain
         public void Apply_NoMatchOnName()
         {
             var mbr = new Member("store", 1, 1, 1);
-            var cls = new Class("ns", "name", new[] {mbr})
+            var cls = new Instance("ns", "name", new[] {mbr})
                         {LinesOfCode = 1, DepthOfInheritance = 3, CyclomaticComplexity = 1,
                          ClassCoupling = 1, NumberOfMethods = 2};
 
-            var toApply = new Class("ns", "namexxx", new[] {mbr})
+            var toApply = new Instance("ns", "namexxx", new[] {mbr})
                         {LinesOfCode = 2, DepthOfInheritance = 2, CyclomaticComplexity = 2,
                          ClassCoupling = 2, NumberOfMethods = 2};
             

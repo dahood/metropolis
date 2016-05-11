@@ -8,6 +8,6 @@ namespace Metropolis.Api.Core.Parsers.XmlParsers.MetricHandlers
     {
         string Id { get; }
         int Order { get; }
-        void Parse(XElement metric, Dictionary<string, Class> classMap, XNamespace nameSpace);
+        void Parse(XElement metric, Dictionary<string, Instance> classMap, XNamespace nameSpace);
     }
 }

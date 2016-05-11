@@ -10,7 +10,7 @@ namespace Metropolis.Api.Core.Parsers.XmlParsers.MetricHandlers
         public int Order => 4;
         public string Id => "VG";
 
-        public void Parse(XElement metric, Dictionary<string, Class> classMap, XNamespace nameSpace)
+        public void Parse(XElement metric, Dictionary<string, Instance> classMap, XNamespace nameSpace)
         {
             metric.Descendants(nameSpace + "Values")
                   .Descendants(nameSpace + "Value")

@@ -5,15 +5,15 @@ namespace Metropolis.Api.Core.Domain
 {
     public class CodeGraph
     {
-        private readonly Dictionary<string, Class> map = new Dictionary<string, Class>();
+        private readonly Dictionary<string, Instance> map = new Dictionary<string, Instance>();
         private readonly HashSet<string> namespaces = new HashSet<string>();
 
-        public CodeGraph(IEnumerable<Class> classes)
+        public CodeGraph(IEnumerable<Instance> classes)
         {
             Initialize(classes);
         }
 
-        public List<Class> AllClasses => map.Values.ToList();
+        public List<Instance> AllInstances => map.Values.ToList();
 
         public List<string> AllNamespaces => namespaces.ToList();
         public int Count => map.Count;
@@ -22,7 +22,7 @@ namespace Metropolis.Api.Core.Domain
 
         public int MinLinesOfCode => map.Values.Count != 0 ? map.Values.Min(c => c.LinesOfCode) : 0;
 
-        public void Initialize(IEnumerable<Class> list)
+        public void Initialize(IEnumerable<Instance> list)
         {
             foreach (var type in list)
             {
@@ -30,9 +30,9 @@ namespace Metropolis.Api.Core.Domain
             }
         }
 
-        public void Apply(Class src)
+        public void Apply(Instance src)
         {
-            Class c;
+            Instance c;
             if (map.TryGetValue(src.QualifiedName, out c))
             {
                 c.AddMeta(src.Meta);

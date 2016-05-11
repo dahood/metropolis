@@ -6,18 +6,15 @@ namespace Metropolis.Api.Core.Analyzers.Toxicity
 {
     public abstract class ToxicityAnalyzer : ICodebaseAnalyzer
     {
-        public CodeBase Analyze(List<Class> toAnalyze)
+        public CodeBase Analyze(List<Instance> toAnalyze)
         {
             // TODO:  PLINQ doesn't speed this up... probably using this incorrectly
             //toAnalyze.AsParallel().ForAll(x => x.Toxicity = CalculateToxicity(x).Toxicity);
-            foreach (var c in toAnalyze)
-            {
-                c.Toxicity = CalculateToxicity(c).Toxicity;
-            }
+            toAnalyze.ForEach(c => c.Toxicity = CalculateToxicity(c).Toxicity);
             return new CodeBase(new CodeGraph(toAnalyze));
         }
 
-        public abstract ToxicityScore CalculateToxicity(Class classToScore);
+        public abstract ToxicityScore CalculateToxicity(Instance instanceToScore);
 
         protected static double ComputeToxicity(int measure, int threshold)
         {
