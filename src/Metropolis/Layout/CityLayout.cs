@@ -41,7 +41,7 @@ namespace Metropolis.Layout
             }
         }
 
-        private static IEnumerable<Plot> GeneratePlots(Dictionary<string, IEnumerable<Class>> namespaces)
+        private static IEnumerable<Plot> GeneratePlots(Dictionary<string, IEnumerable<Instance>> namespaces)
         {
             var result = new List<Plot>(namespaces.Count);
 
@@ -67,7 +67,7 @@ namespace Metropolis.Layout
     {
         public static readonly Plot Empty = new Plot(string.Empty, null, Rect3D.Empty);
 
-        public Plot(string name, IEnumerable<Class> classes, Rect3D bounds)
+        public Plot(string name, IEnumerable<Instance> classes, Rect3D bounds)
         {
             Name = name;
             Classes = classes;
@@ -76,7 +76,7 @@ namespace Metropolis.Layout
 
         public string Name { get; }
 
-        public IEnumerable<Class> Classes { get; }
+        public IEnumerable<Instance> Classes { get; }
 
         public Rect3D Bounds { get; private set; }
         public double SizeZ => Bounds.SizeZ * 2;

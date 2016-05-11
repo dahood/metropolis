@@ -18,11 +18,11 @@ namespace Metropolis.Api.Core.Analyzers.Toxicity
         private const int ThresholdMissingDefaultCase = 0;
         private const int ThresholdNoFallthrough = 0;
 
-        public override ToxicityScore CalculateToxicity(Class classToScore)
+        public override ToxicityScore CalculateToxicity(Instance instanceToScore)
         {
             // Class Level Toxicity
-            var linesOfCode = ComputeToxicity(classToScore.LinesOfCode, ThresholdLinesOfCode);
-            var numberOfMethods = ComputeToxicity(classToScore.Members.Count, ThresholdNumberOfMethods);
+            var linesOfCode = ComputeToxicity(instanceToScore.LinesOfCode, ThresholdLinesOfCode);
+            var numberOfMethods = ComputeToxicity(instanceToScore.Members.Count, ThresholdNumberOfMethods);
             var methodLength = 0d;
             var numberOfParameters = 0d;
             var nestedIfDepth = 0d;
@@ -31,7 +31,7 @@ namespace Metropolis.Api.Core.Analyzers.Toxicity
 
             double cyclomaticComplexity = 0;
             // Method Level Toxicity
-            foreach (var method in classToScore.Members)
+            foreach (var method in instanceToScore.Members)
             {
                 cyclomaticComplexity += ComputeToxicity(method.CylomaticComplexity, ThresholdCyclomaticComplexity);
                 methodLength += ComputeToxicity(method.LinesOfCode, ThresholdMethodLength);

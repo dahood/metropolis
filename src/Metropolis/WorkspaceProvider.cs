@@ -30,7 +30,7 @@ namespace Metropolis
 
         public void Create()
         {
-            Workspace = new CodeBase(new CodeGraph(new Class[0]));
+            Workspace = new CodeBase(new CodeGraph(new Instance[0]));
         }
 
         public void Save()
@@ -112,19 +112,19 @@ namespace Metropolis
         public void RunCSharpToxicity()
         {
             Workspace.SourceType = RepositorySourceType.CSharp;
-            Workspace = new CSharpToxicityAnalyzer().Analyze(Workspace.AllClasses);
+            Workspace = new CSharpToxicityAnalyzer().Analyze(Workspace.AllInstances);
         }
 
         public void RunJavaToxicity()
         {
             Workspace.SourceType = RepositorySourceType.Java;
-            Workspace = new JavaToxicityAnalyzer().Analyze(Workspace.AllClasses);
+            Workspace = new JavaToxicityAnalyzer().Analyze(Workspace.AllInstances);
         }
 
         public void RunJavascriptToxicity()
         {
             Workspace.SourceType = RepositorySourceType.ECMA;
-            Workspace = new JavascriptToxicityAnalyzer().Analyze(Workspace.AllClasses);
+            Workspace = new JavascriptToxicityAnalyzer().Analyze(Workspace.AllInstances);
         }
 
         private void Parse(IClassParser parser, string fileName)
@@ -141,7 +141,7 @@ namespace Metropolis
             }
             else
             {
-                Workspace.Enrich(result.AllClasses);
+                Workspace.Enrich(result.AllInstances);
             }
         }
 
@@ -174,8 +174,8 @@ namespace Metropolis
                     using (var stream = new StreamWriter(dialog.FileName))
                     {
                         var writer = new CsvWriter(stream);
-                        writer.WriteHeader<Class>();
-                        Workspace.AllClasses.ForEach(x => writer.WriteRecord(x));
+                        writer.WriteHeader<Instance>();
+                        Workspace.AllInstances.ForEach(x => writer.WriteRecord(x));
                     }
                 }
             }

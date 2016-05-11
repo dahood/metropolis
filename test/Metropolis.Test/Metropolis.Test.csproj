@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Analyzers\ToxicityAnalyzerTest.cs" />
-    <Compile Include="Domain\ClassTest.cs" />
+    <Compile Include="Domain\InstanceTest.cs" />
     <Compile Include="Domain\CodeBaseTest.cs" />
     <Compile Include="Domain\CodeGraphTest.cs" />
     <Compile Include="Domain\ProjectAssemblerTest.cs" />

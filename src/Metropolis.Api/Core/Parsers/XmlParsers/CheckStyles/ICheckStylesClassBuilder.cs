@@ -8,7 +8,7 @@ namespace Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles
 {
     public interface ICheckStylesClassBuilder
     {
-        Class Build(string key, List<CheckStylesItem> cls);
+        Instance Build(string key, List<CheckStylesItem> cls);
     }
 
     public abstract class BaseCheckStylesClassBuilder : ICheckStylesClassBuilder
@@ -22,7 +22,7 @@ namespace Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles
             MemberParsers = memberParsers;
         }
 
-        public Class Build(string key, List<CheckStylesItem> items)
+        public Instance Build(string key, List<CheckStylesItem> items)
         {
             var grouped = (from item in items
                            group item by new { Line = item.Line, Column = item.Column } into grp
@@ -55,12 +55,12 @@ namespace Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles
             return type;
         }
 
-        private static Class ParseClass(string key, IEnumerable<Member> members)
+        private static Instance ParseClass(string key, IEnumerable<Member> members)
         {
             var parts = key.Split('\\').ToList();
             var name = parts.Last();
             parts.RemoveRange(parts.Count - 1, 1);
-            return new Class(string.Join("\\", parts), name, members);
+            return new Instance(string.Join("\\", parts), name, members);
         }
     }
 }

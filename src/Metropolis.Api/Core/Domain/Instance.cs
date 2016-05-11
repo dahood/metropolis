@@ -4,25 +4,26 @@ using Metropolis.Api.Extensions;
 
 namespace Metropolis.Api.Core.Domain
 {
-    public class Class
+    public class Instance
     {
-        private List<ClassVersionInfo> meta = new List<ClassVersionInfo>();
+        private List<InstanceVersionInfo> meta = new List<InstanceVersionInfo>();
 
-        public Class(string nameSpace, string name)
+        public Instance(string nameSpace, string name)
         {
             NameSpace = nameSpace;
             Name = name;
             QualifiedName = string.IsNullOrEmpty(NameSpace) ? Name : $"{NameSpace}.{Name}";
         }
 
-        public Class(string nameSpace, string name, int numberOfMethods, int linesOfCode, int toxicity) : this(nameSpace, name)
+        public Instance(string nameSpace, string name, int numberOfMethods, int linesOfCode, int toxicity)
+            : this(nameSpace, name)
         {
             NumberOfMethods = numberOfMethods;
             LinesOfCode = linesOfCode;
             Toxicity = toxicity;
         }
 
-        public Class(string nameSpace, string name, int numberOfMethods, int linesOfCode, int cyclomaticComplexity,
+        public Instance(string nameSpace, string name, int numberOfMethods, int linesOfCode, int cyclomaticComplexity,
             int depthOfInheritance, int classCoupling) : this(nameSpace, name)
         {
             NumberOfMethods = numberOfMethods;
@@ -32,21 +33,20 @@ namespace Metropolis.Api.Core.Domain
             ClassCoupling = classCoupling;
         }
 
-        public Class(string nameSpace, string name, IEnumerable<Member> members) : this(nameSpace, name)
+        public Instance(string nameSpace, string name, IEnumerable<Member> members) : this(nameSpace, name)
         {
             ApplyMembers(members);
-            members.ForEach(x =>
+            Members.ForEach(x =>
             {
                 LinesOfCode += x.LinesOfCode;
                 CyclomaticComplexity += x.CylomaticComplexity;
             });
-            NumberOfMethods = members.Count();
+            NumberOfMethods = Members.Count;
         }
 
         private void ApplyMembers(IEnumerable<Member> toAdd)
         {
-            Members = new List<Member>();
-            Members.AddRange(toAdd);
+            Members = new List<Member>(toAdd);
         }
 
         public string NameSpace { get; }
@@ -65,7 +65,7 @@ namespace Metropolis.Api.Core.Domain
 
         public List<Member> Members { get; set; } = new List<Member>();
 
-        public IEnumerable<ClassVersionInfo> Meta
+        public IEnumerable<InstanceVersionInfo> Meta
         {
             get { return meta; }
             set { meta = value.ToList(); }
@@ -81,7 +81,7 @@ namespace Metropolis.Api.Core.Domain
             return QualifiedName;
         }
 
-        protected bool Equals(Class other)
+        protected bool Equals(Instance other)
         {
             return string.Equals(NameSpace, other.NameSpace) && string.Equals(Name, other.Name);
         }
@@ -91,7 +91,7 @@ namespace Metropolis.Api.Core.Domain
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((Class) obj);
+            return Equals((Instance) obj);
         }
 
         public override int GetHashCode()
@@ -112,17 +112,17 @@ namespace Metropolis.Api.Core.Domain
             return Members.SingleOrDefault(x => x.Name == name);
         }
 
-        public void AddMeta(IEnumerable<ClassVersionInfo> toAdd)
+        public void AddMeta(IEnumerable<InstanceVersionInfo> toAdd)
         {
             meta.AddRange(toAdd);
         }
 
-        public void AddMeta(params ClassVersionInfo[] toAdd)
+        public void AddMeta(params InstanceVersionInfo[] toAdd)
         {
             AddMeta(toAdd.ToList());
         }
 
-        public void Apply(Class src)
+        public void Apply(Instance src)
         {
             if (!Matches(src)) return;
 
@@ -136,7 +136,7 @@ namespace Metropolis.Api.Core.Domain
                 ApplyMembers(src.Members);
         }
 
-        private bool Matches(Class src)
+        private bool Matches(Instance src)
         {
             return QualifiedName == src.QualifiedName;
         }

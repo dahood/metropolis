@@ -7,7 +7,7 @@ namespace Metropolis.Api.Core.Domain
     {
         public static Project Assemble(CodeGraph graph)
         {
-            return new Project {Classes = Assemble(graph.AllClasses)};
+            return new Project {Classes = Assemble(graph.AllInstances)};
         }
 
         public static CodeGraph Disassemble(Project project)
@@ -15,14 +15,14 @@ namespace Metropolis.Api.Core.Domain
             return new CodeGraph(Disassemble(project.Classes));
         }
 
-        private static IEnumerable<Class> Disassemble(IEnumerable<SerializableClass> classes)
+        private static IEnumerable<Instance> Disassemble(IEnumerable<SerializableClass> classes)
         {
             return classes.Select(Disassemble);
         }
 
-        private static Class Disassemble(SerializableClass src)
+        private static Instance Disassemble(SerializableClass src)
         {
-            return new Class(src.NameSpace, src.Name)
+            return new Instance(src.NameSpace, src.Name)
             {
                 LinesOfCode = src.LinesOfCode,
                 NumberOfMethods = src.NumberOfMethods,
@@ -45,17 +45,17 @@ namespace Metropolis.Api.Core.Domain
             };
         }
 
-        private static ClassVersionInfo Disassemble(SerializableClassVersionInfo i)
+        private static InstanceVersionInfo Disassemble(SerializableClassVersionInfo i)
         {
-            return new ClassVersionInfo(i.FileName, i.CommitMessage);
+            return new InstanceVersionInfo(i.FileName, i.CommitMessage);
         }
 
-        private static IEnumerable<SerializableClass> Assemble(IEnumerable<Class> classes)
+        private static IEnumerable<SerializableClass> Assemble(IEnumerable<Instance> classes)
         {
             return classes.Select(Assemble);
         }
 
-        private static SerializableClass Assemble(Class src)
+        private static SerializableClass Assemble(Instance src)
         {
             return new SerializableClass
             {
@@ -72,7 +72,7 @@ namespace Metropolis.Api.Core.Domain
             };
         }
 
-        private static SerializableClassVersionInfo Assemble(ClassVersionInfo src)
+        private static SerializableClassVersionInfo Assemble(InstanceVersionInfo src)
         {
             return new SerializableClassVersionInfo
             {

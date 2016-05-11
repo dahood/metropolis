@@ -38,7 +38,7 @@ namespace Metropolis.Api.Core.Parsers.CsvParsers
         {
             var inclusionExtension = Inclusion.GetDescription();
             var classes = lines.Where(x => x.Class.EndsWith(inclusionExtension)) 
-                               .Select(each => new Class(each.Namespace, each.Class) {LinesOfCode = each.SourceLoc})
+                               .Select(each => new Instance(each.Namespace, each.Class) {LinesOfCode = each.SourceLoc})
                                .ToList();
 
             return new CodeBase(new CodeGraph(classes));

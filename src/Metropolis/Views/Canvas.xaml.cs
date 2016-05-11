@@ -210,7 +210,7 @@ namespace Metropolis.Views
             {
                 var searchQuery = searchText.Text;
                 searchSuggestions.DisplayMemberPath = "Name";
-                searchSuggestions.ItemsSource = workspaceProvider.Workspace.AllClasses.Where(
+                searchSuggestions.ItemsSource = workspaceProvider.Workspace.AllInstances.Where(
                         x => x.QualifiedName.IndexOf(searchQuery, StringComparison.CurrentCultureIgnoreCase) >= 0);
             }
             searchSuggestions.Items.Refresh();
@@ -218,7 +218,7 @@ namespace Metropolis.Views
 
         private void searchSuggestions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedClass = (Class)searchSuggestions.SelectedItem;
+            var selectedClass = (Instance)searchSuggestions.SelectedItem;
             if (selectedClass != null)
                 highlightedClass.DisplayClass(selectedClass);
         }

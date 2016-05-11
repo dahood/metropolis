@@ -27,7 +27,7 @@ namespace Metropolis.Test.Parsers.CsvParsers
             var actual = parser.TestParse(new[] {typ});
 
             Validate.Begin().IsNotNull(actual, "actual")
-                            .IsEqual(actual.AllClasses.Count, 1, "class Count")
+                            .IsEqual(actual.AllInstances.Count, 1, "class Count")
                             .Check()
                             .IsEqual(actual.LinesOfCode, 1, "loc")
                             .IsEqual(actual.NumberOfTypes, 1, "# Types")
@@ -43,14 +43,14 @@ namespace Metropolis.Test.Parsers.CsvParsers
 
             var actual = parser.TestParse(new[] {typ, mbr});
 
-            Validate.Begin().IsNotNull(actual, "actual").IsEqual(actual.AllClasses.Count, 1, "class Count").Check()
+            Validate.Begin().IsNotNull(actual, "actual").IsEqual(actual.AllInstances.Count, 1, "class Count").Check()
                             .IsEqual(actual.LinesOfCode, 1, "loc")
                             .IsEqual(actual.NumberOfTypes, 1, "# Types")
                             .IsEqual(actual.AverageToxicity(), 0, "avg toxicity")
                             .Check();
 
 
-            var cls = actual.AllClasses.First();
+            var cls = actual.AllInstances.First();
             Validate.Begin()
                     .IsNotNull(cls, "cls")
                     .IsEqual(cls.Members.Count, 1, "# members")

@@ -9,32 +9,32 @@ namespace Metropolis.Test.Fixtures
         {
             get
             {
-                var listOfClasses = new List<Class>();
-                listOfClasses.AddRange(new List<Class> { CodeBase });
-                listOfClasses.AddRange(new List<Class> { Canvas });
+                var listOfClasses = new List<Instance>();
+                listOfClasses.AddRange(new List<Instance> { CodeBase });
+                listOfClasses.AddRange(new List<Instance> { Canvas });
 
                 var codeGraph = new CodeGraph(listOfClasses);
 
                 return codeGraph;
             }
         }
-        public static Class CodeBase
+        public static Instance CodeBase
         {
             get
             {
-                var classOne = new Class("Metropolis.Domain", "CodeBase", 5, 200, 6);
+                var classOne = new Instance("Metropolis.Domain", "CodeBase", 5, 200, 6);
 
-                classOne.AddMeta(new ClassVersionInfo("CodeBase.cs", "commit message 1"));
+                classOne.AddMeta(new InstanceVersionInfo("CodeBase.cs", "commit message 1"));
 
                 return classOne;
             }
         }
 
-        public static Class Canvas
+        public static Instance Canvas
         {
             get
             {
-                var classOne = new Class("Metropolis", "Canvas", 5, 300, 10);
+                var classOne = new Instance("Metropolis", "Canvas", 5, 300, 10);
 
                 var members = new[]
                 {
@@ -42,7 +42,7 @@ namespace Metropolis.Test.Fixtures
                 };
                 classOne.AddMember(members);
 
-                classOne.AddMeta(new ClassVersionInfo("Canvas.cs", "commit message 2"));
+                classOne.AddMeta(new InstanceVersionInfo("Canvas.cs", "commit message 2"));
 
                 return classOne;
             }

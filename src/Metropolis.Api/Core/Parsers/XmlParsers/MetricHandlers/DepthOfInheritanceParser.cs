@@ -9,7 +9,7 @@ namespace Metropolis.Api.Core.Parsers.XmlParsers.MetricHandlers
     {
         public int Order => 1;
         public string Id => "DIT";
-        public void Parse(XElement metric, Dictionary<string, Class> classMap, XNamespace nameSpace)
+        public void Parse(XElement metric, Dictionary<string, Instance> classMap, XNamespace nameSpace)
         {
             metric.Descendants(nameSpace + "Values")
                   .Descendants(nameSpace + "Value")
@@ -18,7 +18,7 @@ namespace Metropolis.Api.Core.Parsers.XmlParsers.MetricHandlers
                       var package = each.AttributeValue("package");
                       var name = each.AttributeValue("name");
                       var depthOfInheritance = each.AttributeValue("value").AsInt();
-                      var found = classMap.FindOrCreate(each.AttributeValue("name"), () => new Class(package, name) {DepthOfInheritance = depthOfInheritance});
+                      var found = classMap.FindOrCreate(each.AttributeValue("name"), () => new Instance(package, name) {DepthOfInheritance = depthOfInheritance});
 
                       found.DepthOfInheritance = depthOfInheritance;
                   });

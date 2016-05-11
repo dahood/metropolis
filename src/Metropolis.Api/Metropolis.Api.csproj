@@ -55,8 +55,8 @@
     <Compile Include="Core\Analyzers\Toxicity\JavaToxicityAnalyzer.cs" />
     <Compile Include="Core\Analyzers\Toxicity\ToxicityAnalyzer.cs" />
     <Compile Include="Core\Analyzers\Toxicity\ToxicityScore.cs" />
-    <Compile Include="Core\Domain\Class.cs" />
-    <Compile Include="Core\Domain\ClassVersionInfo.cs" />
+    <Compile Include="Core\Domain\Instance.cs" />
+    <Compile Include="Core\Domain\InstanceVersionInfo.cs" />
     <Compile Include="Core\Domain\CodeBase.cs" />
     <Compile Include="Core\Domain\CodeGraph.cs" />
     <Compile Include="Core\Domain\Member.cs" />

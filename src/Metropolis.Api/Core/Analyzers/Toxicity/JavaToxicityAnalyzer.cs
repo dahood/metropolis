@@ -17,7 +17,7 @@ namespace Metropolis.Api.Core.Analyzers.Toxicity
 
         // method level thresholds
         private const int ThresholdMethodLength = 30;
-        private const int thresholdCyclomaticComplexity = 15;
+        private const int ThresholdCyclomaticComplexity = 15;
         private const int ThresholdDefaultCase = 0; //not acceptable to miss a default: - could cause unexpected bug
         private const int ThresholdBooleanComplexity = 3;
         private const int ThresholdNestedIfDepth = 3;
@@ -25,14 +25,14 @@ namespace Metropolis.Api.Core.Analyzers.Toxicity
         private const int ThresholdParameterNumber = 6;
 
 
-        public override ToxicityScore CalculateToxicity(Class classToScore)
+        public override ToxicityScore CalculateToxicity(Instance instanceToScore)
         {
             // Class Level Toxicity
-            var linesOfCode = ComputeToxicity(classToScore.LinesOfCode, ThresholdLinesOfCode);
-            var numberOfMethods = ComputeToxicity(classToScore.Members.Count, ThresholdNumberOfMethods);
-            var innerClassAnonymous = ComputeToxicity(classToScore.AnonymousInnerClassLength, ThresholdAnonymousInnerClassLength);
-            var classDataAbstractionCoupling = ComputeToxicity(classToScore.ClassDataAbstractionCoupling, ThresholdClassDataAbstractionCoupling);
-            var classFanOutComplexity = ComputeToxicity(classToScore.ClassFanOutComplexity, ThresholdClassFanOutComplexity);
+            var linesOfCode = ComputeToxicity(instanceToScore.LinesOfCode, ThresholdLinesOfCode);
+            var numberOfMethods = ComputeToxicity(instanceToScore.Members.Count, ThresholdNumberOfMethods);
+            var innerClassAnonymous = ComputeToxicity(instanceToScore.AnonymousInnerClassLength, ThresholdAnonymousInnerClassLength);
+            var classDataAbstractionCoupling = ComputeToxicity(instanceToScore.ClassDataAbstractionCoupling, ThresholdClassDataAbstractionCoupling);
+            var classFanOutComplexity = ComputeToxicity(instanceToScore.ClassFanOutComplexity, ThresholdClassFanOutComplexity);
 
             // Method Level Toxicity
             double cyclomaticComplexity = 0;
@@ -43,9 +43,9 @@ namespace Metropolis.Api.Core.Analyzers.Toxicity
             double nestedTryDepth = 0;
             double parameterNumber = 0;
 
-            foreach (var method in classToScore.Members)
+            foreach (var method in instanceToScore.Members)
             {
-                cyclomaticComplexity += ComputeToxicity(method.CylomaticComplexity, thresholdCyclomaticComplexity);
+                cyclomaticComplexity += ComputeToxicity(method.CylomaticComplexity, ThresholdCyclomaticComplexity);
                 methodLength += ComputeToxicity(method.LinesOfCode, ThresholdMethodLength);
                 missingDefaultCase += ComputeToxicity(method.MissingDefaultCase, ThresholdDefaultCase);
                 booleanComplexity += ComputeToxicity(method.BooleanExpressionComplexity, ThresholdBooleanComplexity);

@@ -25,7 +25,7 @@ namespace Metropolis
             highlight.Reset();
         }
 
-        public void DisplayClass(Class src)
+        public void DisplayClass(Instance src)
         {
             ClearDisplay();
             var model = provider.Layout.LookupModel(src);
@@ -60,7 +60,7 @@ namespace Metropolis
             provider.SetClassInformation(txt);
         }
 
-        private string DisplayTextBasedOnRepositoryType(Class type)
+        private string DisplayTextBasedOnRepositoryType(Instance type)
         {
             if (provider.SourceType == RepositorySourceType.CSharp)
             {

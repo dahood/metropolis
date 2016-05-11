@@ -3,9 +3,9 @@ using Metropolis.Api.Utilities;
 
 namespace Metropolis.Api.Core.Domain
 {
-    public class ClassVersionInfo
+    public class InstanceVersionInfo
     {
-        public ClassVersionInfo(string fileName, string commitMessage)
+        public InstanceVersionInfo(string fileName, string commitMessage)
         {
             FileName = fileName;
             CommitMessage = commitMessage;

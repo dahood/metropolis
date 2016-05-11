@@ -15,7 +15,7 @@ namespace Metropolis.Layout
 
         private static readonly AmbientLight DefaultAmbientLight = new AmbientLight(Colors.DarkGray);
         private static readonly DirectionalLight DefaultDirectionalLight = new DirectionalLight(Colors.White, new Vector3D(1, 1, -1));
-        private readonly Dictionary<Model3D, Class> modelClassXRef = new Dictionary<Model3D, Class>();
+        private readonly Dictionary<Model3D, Instance> modelClassXRef = new Dictionary<Model3D, Instance>();
 
         public abstract void ModelCity(Model3DGroup model, CodeBase workspaceCodebase);
 
@@ -31,12 +31,12 @@ namespace Metropolis.Layout
             cityScape.Children.Add(DefaultDirectionalLight);
         }
 
-        public Class LookupClass(Model3D modelHit)
+        public Instance LookupClass(Model3D modelHit)
         {
             return modelClassXRef[modelHit];
         }
 
-        internal Model3D LookupModel(Class src)
+        internal Model3D LookupModel(Instance src)
         {
             foreach (var item in modelClassXRef)
             {
@@ -46,14 +46,14 @@ namespace Metropolis.Layout
             return null;
         }
 
-        protected Rect3D RenderSquareBlock(Model3DGroup cityScape, IEnumerable<Class> classes, Point3D center, int minHeight, int maxHeight)
+        protected Rect3D RenderSquareBlock(Model3DGroup cityScape, IEnumerable<Instance> classes, Point3D center, int minHeight, int maxHeight)
         {
             var list = classes.ToList();
             var blocksFromCenter = Math.Sqrt(list.Count)/2d;
             return RenderRectangle(cityScape, list, center, minHeight, maxHeight, blocksFromCenter, blocksFromCenter);
         }
 
-        protected Rect3D RenderRectangularBlock(Model3DGroup cityScape, IEnumerable<Class> classes, Point3D center, int minHeight, int maxHeight)
+        protected Rect3D RenderRectangularBlock(Model3DGroup cityScape, IEnumerable<Instance> classes, Point3D center, int minHeight, int maxHeight)
         {
             var list = classes.ToList();
             var rectangleDimensions = CalculateWidthAndLength(list.Count);
@@ -79,7 +79,7 @@ namespace Metropolis.Layout
                 .First();
         }
 
-        protected Rect3D RenderRectangle(Model3DGroup cityScape, List<Class> classes, Point3D center, int minHeight, int maxHeight, double width,
+        protected Rect3D RenderRectangle(Model3DGroup cityScape, List<Instance> classes, Point3D center, int minHeight, int maxHeight, double width,
             double length)
         {
             var counter = 0;
@@ -99,7 +99,7 @@ namespace Metropolis.Layout
             return new Rect3D(center, new Size3D(width, 0, length));
         }
 
-        private Model3D CreateCube(double x, double z, int minHeight, int maxHeight, Class c)
+        private Model3D CreateCube(double x, double z, int minHeight, int maxHeight, Instance c)
         {
             var color = BrushFactory.GetBrushForToxicity(c.Toxicity);
             var scaledHeight = LinearScale.Apply(c.LinesOfCode, minHeight, maxHeight);

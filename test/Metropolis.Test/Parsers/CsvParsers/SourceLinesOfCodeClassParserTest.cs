@@ -16,7 +16,7 @@ namespace Metropolis.Test.Parsers.CsvParsers
 
             var codeBase = ParseUsingData(new[] { Heading, line });
 
-            var expected = new Class(@"C:\projects\shaw-commerce\j2ee-apps\shaw.ear\shaw.war\builder\src\js\shaw", "0.init.js")
+            var expected = new Instance(@"C:\projects\shaw-commerce\j2ee-apps\shaw.ear\shaw.war\builder\src\js\shaw", "0.init.js")
                                 { LinesOfCode = 1102};
 
             AssertHasOneClassEqualTo(expected, codeBase);

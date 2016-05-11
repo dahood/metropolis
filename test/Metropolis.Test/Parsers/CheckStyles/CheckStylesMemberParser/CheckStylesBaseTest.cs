@@ -9,13 +9,13 @@ namespace Metropolis.Test.Parsers.CheckStyles.CheckStylesMemberParser
 {
     public abstract class CheckStylesBaseTest
     {
-        protected Class ParentClass;
+        protected Instance ParentInstance;
         protected Member Member;
 
         [SetUp]
         public void SetUp()
         {
-            ParentClass = new Class("ShoppingCart", "ShoppingCart");
+            ParentInstance = new Instance("ShoppingCart", "ShoppingCart");
             Member = new Member(string.Empty, 0, 0, 0);
         }
 
@@ -38,14 +38,14 @@ namespace Metropolis.Test.Parsers.CheckStyles.CheckStylesMemberParser
             action(Member);
         }
 
-        protected void RunClassTest<T>(string message, string expectedSource, Action<Class> action, CheckStylesItem item = null) where T : ICheckStylesClassParser, new()
+        protected void RunClassTest<T>(string message, string expectedSource, Action<Instance> action, CheckStylesItem item = null) where T : ICheckStylesClassParser, new()
         {
             var checkStylesItem = item??new CheckStylesItem { Message = message };
             var parser = ClassParserFor<T>();
-            parser.Parse(ParentClass, checkStylesItem);
+            parser.Parse(ParentInstance, checkStylesItem);
 
             parser.Source.Should().Be(expectedSource);
-            action(ParentClass);
+            action(ParentInstance);
         }
     }
 }

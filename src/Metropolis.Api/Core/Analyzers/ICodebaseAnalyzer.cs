@@ -9,6 +9,6 @@ namespace Metropolis.Api.Core.Analyzers
     /// </summary>
     internal interface ICodebaseAnalyzer
     {
-        CodeBase Analyze(List<Class> toAnalyze);
+        CodeBase Analyze(List<Instance> toAnalyze);
     }
 }
