@@ -13,8 +13,21 @@ namespace Metropolis.Test.Persistence
         [SetUp]
         public void Setup()
         {
+            RemoveFile("sample.project");
             codebase = new CodeBase(CodeGraphFixture.Metropolis);
             projectRepository = new ProjectRepository();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            RemoveFile("sample.project");
+        }
+
+        private void RemoveFile(string testfile)
+        {
+            if (File.Exists(testfile))
+                File.Delete(testfile);
         }
 
         private CodeBase codebase;
