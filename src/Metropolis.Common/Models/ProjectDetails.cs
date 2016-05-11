@@ -8,7 +8,7 @@ namespace Metropolis.Common.Models
         private string projectName;
         private string cSharpSourceDirectory;
         private string javaSourceDirectory;
-        private string ecma6SourceDiredtory;
+        private string ecmaSourceDirectory;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -42,13 +42,13 @@ namespace Metropolis.Common.Models
             }
         }
 
-        public string Ecma6SourceDiredtory
+        public string EcmaSourceDirectory
         {
-            get { return ecma6SourceDiredtory; }
+            get { return ecmaSourceDirectory; }
             set
             {
-                ecma6SourceDiredtory = value;
-                PropertyChanged.Notify(this, x => x.Ecma6SourceDiredtory);
+                ecmaSourceDirectory = value;
+                PropertyChanged.Notify(this, x => x.EcmaSourceDirectory);
             }
         }
 

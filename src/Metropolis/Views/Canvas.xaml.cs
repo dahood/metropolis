@@ -12,7 +12,6 @@ using Metropolis.Api.Core.Parsers.CsvParsers;
 using Metropolis.Api.Extensions;
 using Metropolis.Api.Microservices;
 using Metropolis.Camera;
-using Metropolis.Common;
 using Metropolis.Common.Models;
 using Metropolis.Layout;
 
@@ -255,14 +254,11 @@ namespace Metropolis.Views
         private void RunWizard(object sender, RoutedEventArgs e)
         {
             var wizard = new GatherAnalysisWizard();
-            try
-            {
-                wizard.ShowDialog();
-            }
-            catch (Exception exception)
-            {
-                throw new ApplicationException(exception.Message, exception);
-            }
+            var result = wizard.ShowDialog()??false;
+
+            if (!result) return;
+
+            var projectModel = wizard.ProjectDetails;
         }
     }
 }

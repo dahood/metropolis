@@ -21,11 +21,13 @@ namespace Metropolis.Views
         
         private void WizardCancelled(object sender, RoutedEventArgs e)
         {
+            DialogResult = false;
             Close();
         }
 
         private void WizardFinished(object sender, RoutedEventArgs e)
         {
+            DialogResult = true;
             var data = ProjectDetails;
             Close();
         }
@@ -43,11 +45,11 @@ namespace Metropolis.Views
             if (sourceDirectory.IsNotEmpty())
                 ProjectDetails.JavaSourceDirectory = sourceDirectory;
         }
-        private void OnEcma6FindDirectory(object sender, RoutedEventArgs e)
+        private void OnEcmaFindDirectory(object sender, RoutedEventArgs e)
         {
             var sourceDirectory = GetSourceDirectory("Ecma6/Javascript");
             if (sourceDirectory.IsNotEmpty())
-                ProjectDetails.Ecma6SourceDiredtory = sourceDirectory;
+                ProjectDetails.EcmaSourceDirectory = sourceDirectory;
         }
 
         private static string GetSourceDirectory(string type)
@@ -57,6 +59,18 @@ namespace Metropolis.Views
             return result == System.Windows.Forms.DialogResult.OK
                 ? dialog.SelectedPath
                 : string.Empty;
+        }
+
+        private void OnCancel(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            Close();
+        }
+
+        private void OnProceed(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+            Close();
         }
     }
 }

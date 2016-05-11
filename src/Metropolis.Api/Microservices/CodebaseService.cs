@@ -5,7 +5,6 @@ using Metropolis.Api.Core.Parsers;
 using Metropolis.Api.Core.Parsers.CsvParsers;
 using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles;
 using Metropolis.Api.Core.Persistence;
-using Metropolis.Common;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Microservices
@@ -16,13 +15,13 @@ namespace Metropolis.Api.Microservices
 
         private readonly Dictionary<ParseType, Func<IClassParser>> parseFactory = new Dictionary<ParseType, Func<IClassParser>>
         {
-            {ParseType.VisualStudio,    () => new VisualStudioMetricsParser()},
+            {ParseType.VisualStudio, () => new VisualStudioMetricsParser()},
             {ParseType.RichardToxicity, () => new ToxicityParser()},
-            {ParseType.PuppyCrawler,    () => CheckStylesParser.PuppyCrawlParser },
-            {ParseType.EsLint,          () => CheckStylesParser.EslintParser },
-            {ParseType.SlocJavaScript,          () => new SourceLinesOfCodeParser(FileInclusion.Js) },
-            {ParseType.SlocCSharp,          () => new SourceLinesOfCodeParser(FileInclusion.CSharp) },
-            {ParseType.SlocJava,        () => new SourceLinesOfCodeParser(FileInclusion.Java) },
+            {ParseType.PuppyCrawler, () => CheckStylesParser.PuppyCrawlParser},
+            {ParseType.EsLint, () => CheckStylesParser.EslintParser},
+            {ParseType.SlocJavaScript, () => new SourceLinesOfCodeParser(FileInclusion.Js)},
+            {ParseType.SlocCSharp, () => new SourceLinesOfCodeParser(FileInclusion.CSharp)},
+            {ParseType.SlocJava, () => new SourceLinesOfCodeParser(FileInclusion.Java)},
         };
         
         public void Save(CodeBase workspace, string fileName)
