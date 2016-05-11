@@ -8,25 +8,54 @@ namespace Metropolis.Test.Extensions
 {
     public enum FavoriteSport
     {
-        [Descr("Puck Bunnies")]
-        [EnumOrder(Order = 2)]
-        Hockey = 1,
+        [Descr("Puck Bunnies")] [EnumOrder(Order = 2)] Hockey = 1,
 
-        [Descr("Convicts")]
-        [EnumOrder(Order = 1)]
-        Football = 2,
+        [Descr("Convicts")] [EnumOrder(Order = 1)] Football = 2,
 
-        [Descr("Roid Rage")]
-        [EnumOrder(Order = 4)]
-        Baseball = 3,
+        [Descr("Roid Rage")] [EnumOrder(Order = 4)] Baseball = 3,
 
-        [EnumOrder(Order = 3)]
-        Soccer
-    };
+        [EnumOrder(Order = 3)] Soccer
+    }
 
     [TestFixture]
     public class EnumExtensionsTest
     {
+        [Test]
+        public void GetDescription()
+        {
+            FavoriteSport.Hockey.GetDescription().Should().Be("Puck Bunnies");
+            Assert.Throws<ArgumentException>(() => 1.GetDescription());
+        }
+
+        [Test]
+        public void GetEnumList()
+        {
+            new[] {"Hockey", "Football"}.ToEnumList<FavoriteSport>()
+                .Should().Contain(new[] {FavoriteSport.Hockey, FavoriteSport.Football});
+        }
+
+        [Test]
+        public void GetName()
+        {
+            FavoriteSport.Hockey.GetName<FavoriteSport>().Should().Be("Hockey");
+        }
+
+        [Test]
+        public void GetSortedList()
+        {
+            EnumExtensions.GetSortedList<FavoriteSport>()
+                .Should()
+                .Contain(new[]
+                {FavoriteSport.Football, FavoriteSport.Hockey, FavoriteSport.Soccer, FavoriteSport.Baseball});
+        }
+
+        [Test]
+        public void GetSortOrder()
+        {
+            FavoriteSport.Hockey.GetSortOrder().Should().Be(2);
+            FavoriteSport.Football.GetSortOrder().Should().Be(1);
+        }
+
         [Test]
         public void IntValue()
         {
@@ -39,44 +68,6 @@ namespace Metropolis.Test.Extensions
             1.ToEnum<FavoriteSport>().Should().Be(FavoriteSport.Hockey);
             1L.ToEnum<FavoriteSport>().Should().Be(FavoriteSport.Hockey);
             "Hockey".ToEnum<FavoriteSport>().Should().Be(FavoriteSport.Hockey);
-        }
-
-        [Test]
-        public void ToEnumExact_String()
-        {
-            var sports = "Hockey".ToEnumExact<FavoriteSport>();
-            sports.Should().Be(FavoriteSport.Hockey);
-        }
-
-        [Test]
-        public void ToEnumExact_ShouldFail()
-        {
-            Assert.Throws<ArgumentException>(() => "kaka".ToEnumExact<FavoriteSport>());
-        }
-
-        [Test]
-        public void ToEnumExact_String_Collection()
-        {
-            var sports = new[] {"Hockey", "Soccer"}.ToEnumExact<FavoriteSport>();
-            sports.Should().Contain(new[] {FavoriteSport.Hockey, FavoriteSport.Soccer});
-        }
-
-        [Test]
-        public void ToEnumExactOrDefault()
-        {
-            "kaka".ToEnumExactOrDefault(FavoriteSport.Baseball)
-                  .Should().Be(FavoriteSport.Baseball);
-
-            "Football".ToEnumExactOrDefault(FavoriteSport.Baseball)
-                  .Should().Be(FavoriteSport.Football);
-        }
-
-        [Test]
-        public void ToNullableEnumExact()
-        {
-            "".ToNullableEnumExact<FavoriteSport>().Should().BeNull();
-
-            "Hockey".ToNullableEnumExact<FavoriteSport>().Should().Be(FavoriteSport.Hockey);
         }
 
         [Test]
@@ -93,44 +84,50 @@ namespace Metropolis.Test.Extensions
         }
 
         [Test]
-        public void GetDescription()
+        public void ToEnumExact_ShouldFail()
         {
-            FavoriteSport.Hockey.GetDescription().Should().Be("Puck Bunnies");
-            Assert.Throws<ArgumentException>(() => 1.GetDescription());
+            Assert.Throws<ArgumentException>(() => "kaka".ToEnumExact<FavoriteSport>());
         }
 
         [Test]
-        public void GetEnumList()
+        public void ToEnumExact_String()
         {
-            new[] {"Hockey","Football"}.ToEnumList<FavoriteSport>()
-                .Should().Contain(new[] {FavoriteSport.Hockey, FavoriteSport.Football});
+            var sports = "Hockey".ToEnumExact<FavoriteSport>();
+            sports.Should().Be(FavoriteSport.Hockey);
+        }
+
+        [Test]
+        public void ToEnumExact_String_Collection()
+        {
+            var sports = new[] {"Hockey", "Soccer"}.ToEnumExact<FavoriteSport>();
+            sports.Should().Contain(new[] {FavoriteSport.Hockey, FavoriteSport.Soccer});
+        }
+
+        [Test]
+        public void ToEnumExactOrDefault()
+        {
+            "kaka".ToEnumExactOrDefault(FavoriteSport.Baseball)
+                .Should().Be(FavoriteSport.Baseball);
+
+            "Football".ToEnumExactOrDefault(FavoriteSport.Baseball)
+                .Should().Be(FavoriteSport.Football);
         }
 
         [Test]
         public void ToEnumList()
         {
             EnumExtensions.GetEnumList<FavoriteSport>()
-                .Should().Contain(new[] {FavoriteSport.Hockey, FavoriteSport.Baseball, FavoriteSport.Football, FavoriteSport.Soccer});
+                .Should()
+                .Contain(new[]
+                {FavoriteSport.Hockey, FavoriteSport.Baseball, FavoriteSport.Football, FavoriteSport.Soccer});
         }
 
         [Test]
-        public void GetSortedList()
+        public void ToNullableEnumExact()
         {
-            EnumExtensions.GetSortedList<FavoriteSport>()
-                .Should().Contain(new[] {FavoriteSport.Football, FavoriteSport.Hockey, FavoriteSport.Soccer, FavoriteSport.Baseball});
-        }
+            "".ToNullableEnumExact<FavoriteSport>().Should().BeNull();
 
-        [Test]
-        public void GetSortOrder()
-        {
-            FavoriteSport.Hockey.GetSortOrder().Should().Be(2);
-            FavoriteSport.Football.GetSortOrder().Should().Be(1);
-        }
-
-        [Test]
-        public void GetName()
-        {
-            FavoriteSport.Hockey.GetName<FavoriteSport>().Should().Be("Hockey");
+            "Hockey".ToNullableEnumExact<FavoriteSport>().Should().Be(FavoriteSport.Hockey);
         }
     }
 }

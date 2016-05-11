@@ -8,7 +8,6 @@ namespace Metropolis.Test.Extensions
     [TestFixture]
     public class DateTimeExtensionsTest
     {
-
         [Test]
         public void ShouldCompareTwoDates()
         {

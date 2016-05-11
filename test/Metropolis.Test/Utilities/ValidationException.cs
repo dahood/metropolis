@@ -15,8 +15,6 @@ namespace Metropolis.Test.Utilities
 
     public class ValidationException : Exception
     {
-        internal ValidationSeverity Severity { get; set; }
-
         public ValidationException(string message)
             : base(message)
         {
@@ -37,15 +35,19 @@ namespace Metropolis.Test.Utilities
         {
         }
 
+        internal ValidationSeverity Severity { get; set; }
+
+        public bool IsError => Equals(ValidationSeverity.Error, Severity);
+
+        public bool IsWarning => Equals(ValidationSeverity.Warning, Severity);
+
+        public override string Message => InnerException?.Message ?? base.Message;
+
         public ValidationException Warning()
         {
             Severity = ValidationSeverity.Warning;
             return this;
         }
-
-        public bool IsError => Equals(ValidationSeverity.Error, Severity);
-
-        public bool IsWarning => Equals(ValidationSeverity.Warning, Severity);
 
         public static ValidationException IsRequired(string message)
         {
@@ -56,8 +58,6 @@ namespace Metropolis.Test.Utilities
         {
             return new ValidationException(string.Format(format, args));
         }
-
-        public override string Message => InnerException?.Message ?? base.Message;
     }
 
     public sealed class MultiException : ValidationException
@@ -72,7 +72,7 @@ namespace Metropolis.Test.Utilities
         public MultiException(string message, ValidationException innerException)
             : base(message, innerException)
         {
-            innerExceptions = new[] { innerException };
+            innerExceptions = new[] {innerException};
         }
 
         public MultiException(IEnumerable<ValidationException> innerExceptions)

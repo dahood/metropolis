@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Metropolis.Test.Analyzers
 {
     [TestFixture]
-    public class ToxicityAnalyzerTest 
+    public class ToxicityAnalyzerTest
     {
         private const double Delta = 0.1;
 

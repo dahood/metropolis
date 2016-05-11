@@ -10,22 +10,23 @@ namespace Metropolis.Test.Domain
     [TestFixture]
     public class ProjectAssemblerTest
     {
-        private Instance sourceInstance;
-        private Member sourceMember;
-        private InstanceVersionInfo sourceVersionInfo;
-
         [SetUp]
         public void SetUp()
         {
             Clock.Freeze();
             sourceVersionInfo = new InstanceVersionInfo("info.txt", "commit");
-            sourceMember = new Member("mbr", 1, 2, 3) {MissingDefaultCase = 4, NoFallthrough = 5, NumberOfParameters = 6};
+            sourceMember = new Member("mbr", 1, 2, 3)
+            {
+                MissingDefaultCase = 4,
+                NoFallthrough = 5,
+                NumberOfParameters = 6
+            };
             sourceInstance = new Instance("ns", "String", 1, 2, 3, 4, 5)
-                                {
-                                    Toxicity = 6,
-                                    Meta = new [] {sourceVersionInfo},
-                                    Members = new List<Member> {sourceMember}
-                                };
+            {
+                Toxicity = 6,
+                Meta = new[] {sourceVersionInfo},
+                Members = new List<Member> {sourceMember}
+            };
         }
 
         [TearDown]
@@ -34,10 +35,14 @@ namespace Metropolis.Test.Domain
             Clock.Thaw();
         }
 
+        private Instance sourceInstance;
+        private Member sourceMember;
+        private InstanceVersionInfo sourceVersionInfo;
+
         [Test]
         public void CanSerializeCodeGraph()
         {
-            var source = new CodeGraph(new [] {sourceInstance});
+            var source = new CodeGraph(new[] {sourceInstance});
             var project = ProjectAssembler.Assemble(source);
 
             project.Should().NotBeNull();

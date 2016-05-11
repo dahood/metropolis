@@ -9,8 +9,8 @@ namespace Metropolis.Test.Parsers.CheckStyles.CheckStylesMemberParser
 {
     public abstract class CheckStylesBaseTest
     {
-        protected Instance ParentInstance;
         protected Member Member;
+        protected Instance ParentInstance;
 
         [SetUp]
         public void SetUp()
@@ -23,14 +23,16 @@ namespace Metropolis.Test.Parsers.CheckStyles.CheckStylesMemberParser
         {
             return new T();
         }
+
         protected static T ClassParserFor<T>() where T : ICheckStylesClassParser, new()
         {
             return new T();
         }
 
-        protected void RunMemberTest<T>(string message, string expectedSource, Action<Member> action, CheckStylesItem item = null) where T : ICheckStylesMemberParser, new()
+        protected void RunMemberTest<T>(string message, string expectedSource, Action<Member> action,
+            CheckStylesItem item = null) where T : ICheckStylesMemberParser, new()
         {
-            var checkStylesItem = item??new CheckStylesItem { Message = message };
+            var checkStylesItem = item ?? new CheckStylesItem {Message = message};
             var parser = MemberParserFor<T>();
             parser.Parse(Member, checkStylesItem);
 
@@ -38,9 +40,10 @@ namespace Metropolis.Test.Parsers.CheckStyles.CheckStylesMemberParser
             action(Member);
         }
 
-        protected void RunClassTest<T>(string message, string expectedSource, Action<Instance> action, CheckStylesItem item = null) where T : ICheckStylesClassParser, new()
+        protected void RunClassTest<T>(string message, string expectedSource, Action<Instance> action,
+            CheckStylesItem item = null) where T : ICheckStylesClassParser, new()
         {
-            var checkStylesItem = item??new CheckStylesItem { Message = message };
+            var checkStylesItem = item ?? new CheckStylesItem {Message = message};
             var parser = ClassParserFor<T>();
             parser.Parse(ParentInstance, checkStylesItem);
 

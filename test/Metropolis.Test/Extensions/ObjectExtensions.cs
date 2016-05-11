@@ -9,20 +9,18 @@ using Metropolis.Api.Extensions;
 
 namespace Metropolis.Test.Extensions
 {
-
     public static class ObjectExtensions
     {
         /// <summary>
-        /// Creates a deep copy of object by serializing to memory stream.
-        /// 
+        ///     Creates a deep copy of object by serializing to memory stream.
         /// </summary>
-        /// <param name="obj"/>
+        /// <param name="obj" />
         public static T DeepClone<T>(this T obj) where T : class
         {
             if (obj == null)
                 return default(T);
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            using (MemoryStream memoryStream = new MemoryStream())
+            var binaryFormatter = new BinaryFormatter();
+            using (var memoryStream = new MemoryStream())
             {
                 binaryFormatter.Serialize(memoryStream, obj);
                 memoryStream.Seek(0L, SeekOrigin.Begin);
@@ -40,10 +38,12 @@ namespace Metropolis.Test.Extensions
             return result;
         }
 
-        public static bool ReflectionEquals(object o1, object o2, List<object> objectsAlreadyCompared, bool throwException,
+        public static bool ReflectionEquals(object o1, object o2, List<object> objectsAlreadyCompared,
+            bool throwException,
             params Type[] attributeTypesOnPropertiesToIgnore)
         {
-            if (ListContainsReference(objectsAlreadyCompared, o1) || ListContainsReference(objectsAlreadyCompared, o2)) return true;
+            if (ListContainsReference(objectsAlreadyCompared, o1) || ListContainsReference(objectsAlreadyCompared, o2))
+                return true;
             objectsAlreadyCompared.AddRange(new[] {o1, o2});
 
             if (ReferenceEquals(o1, o2)) return true;
@@ -88,8 +88,9 @@ namespace Metropolis.Test.Extensions
                     if (throwException)
                         throw new ArgumentException(
                             string.Format(
-                                "Property {0} - Objects:\n{1}\nvs\n{2}:\nOne is null while the other isn't:\n{3}\n vs \n{4}".FormatWith(x.Name, o1, o2,
-                                    o1Value.Stringify(), o2Value.Stringify())));
+                                "Property {0} - Objects:\n{1}\nvs\n{2}:\nOne is null while the other isn't:\n{3}\n vs \n{4}"
+                                    .FormatWith(x.Name, o1, o2,
+                                        o1Value.Stringify(), o2Value.Stringify())));
                     return o2Value == null;
                 }
                 if (o1Value is DateTime)
@@ -101,12 +102,15 @@ namespace Metropolis.Test.Extensions
                 var result = o1Value is ValueType
                     ? o1Value.Equals(o2Value)
                     : ReferenceEquals(o1Value, o2Value) || o1Value.Equals(o2Value) ||
-                      ReflectionEquals(o1Value, o2Value, objectsAlreadyCompared, throwException, attributeTypesOnPropertiesToIgnore);
+                      ReflectionEquals(o1Value, o2Value, objectsAlreadyCompared, throwException,
+                          attributeTypesOnPropertiesToIgnore);
 
                 if (!result && throwException)
                     throw new ArgumentException(
-                        string.Format("Values not equal for property {0} of objects\n{1}\nand\n{2}\n:\n{3}\n vs \n{4}".FormatWith(x.Name, o1, o2,
-                            o1Value.Stringify(), o2Value.Stringify())));
+                        string.Format(
+                            "Values not equal for property {0} of objects\n{1}\nand\n{2}\n:\n{3}\n vs \n{4}".FormatWith(
+                                x.Name, o1, o2,
+                                o1Value.Stringify(), o2Value.Stringify())));
                 return result;
             });
         }
@@ -139,7 +143,8 @@ namespace Metropolis.Test.Extensions
             return objects.Any(o => ReferenceEquals(o, o1));
         }
 
-        private static bool CollectionEquals(IEnumerable o1Value, IEnumerable o2Value, List<object> objectsAlreadyCompared, bool throwException,
+        private static bool CollectionEquals(IEnumerable o1Value, IEnumerable o2Value,
+            List<object> objectsAlreadyCompared, bool throwException,
             Type[] attributeTypesOnPropertiesToIgnore)
         {
             if (o1Value == null) return o2Value == null;
@@ -157,7 +162,8 @@ namespace Metropolis.Test.Extensions
                     attributeTypesOnPropertiesToIgnore))
                     continue;
                 if (throwException)
-                    throw new ArgumentException(string.Format("Objects inside IEnumerable not equal:\n{0}\nvs\n{1}", o1Value, o2Value));
+                    throw new ArgumentException(string.Format("Objects inside IEnumerable not equal:\n{0}\nvs\n{1}",
+                        o1Value, o2Value));
                 return false;
             }
             return true;

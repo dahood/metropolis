@@ -2,11 +2,6 @@
 {
     public class JavaMetricsHelper
     {
-        public static int VG => 194;
-        public static int DIT => 9;
-        public static int MLOC => 266;
-        public static int NOF => 3;
-
         private const string Xml =
             @"<?xml version='1.0' encoding='UTF-8'?>
 <Metrics scope = 'hibernate-core' type='Project' date='2016-03-25' xmlns='http://metrics.sourceforge.net/2003/Metrics-First-Flat'>'
@@ -33,13 +28,18 @@
  </Metric>
 </Metrics>";
 
+        public static int VG => 194;
+        public static int DIT => 9;
+        public static int MLOC => 266;
+        public static int NOF => 3;
+
 
         public static string GetXml()
         {
             return Xml.Replace("{VG}", VG.ToString())
-                      .Replace("{DIT}", DIT.ToString())
-                      .Replace("{MLOC}",MLOC.ToString())
-                      .Replace("{NOF}", NOF.ToString());
+                .Replace("{DIT}", DIT.ToString())
+                .Replace("{MLOC}", MLOC.ToString())
+                .Replace("{NOF}", NOF.ToString());
         }
     }
 }

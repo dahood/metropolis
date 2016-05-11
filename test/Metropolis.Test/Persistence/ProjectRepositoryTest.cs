@@ -32,7 +32,7 @@ namespace Metropolis.Test.Persistence
 
         private CodeBase codebase;
         private ProjectRepository projectRepository;
-        
+
         [Test]
         public void Should_Load_Default_Project_From_JSON()
         {

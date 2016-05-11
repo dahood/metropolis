@@ -38,7 +38,7 @@ namespace Metropolis.Test.Utilities
 
         public string PrettyPrint()
         {
-            StringBuilder builder = new StringBuilder();
+            var builder = new StringBuilder();
             exceptions.ForEach(each => builder.AppendLine(each.Message));
             return builder.ToString().TrimEnd('\n', '\r');
         }

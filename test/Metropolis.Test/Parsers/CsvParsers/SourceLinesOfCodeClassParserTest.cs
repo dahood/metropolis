@@ -12,12 +12,14 @@ namespace Metropolis.Test.Parsers.CsvParsers
         [Test]
         public void Can_Parse()
         {
-            const string line = @"C:\projects\shaw-commerce\j2ee-apps\shaw.ear\shaw.war\builder\src\js\shaw\0.init.js,1733,1102,440,178,262,10,205";
+            const string line =
+                @"C:\projects\shaw-commerce\j2ee-apps\shaw.ear\shaw.war\builder\src\js\shaw\0.init.js,1733,1102,440,178,262,10,205";
 
-            var codeBase = ParseUsingData(new[] { Heading, line });
+            var codeBase = ParseUsingData(new[] {Heading, line});
 
-            var expected = new Instance(@"C:\projects\shaw-commerce\j2ee-apps\shaw.ear\shaw.war\builder\src\js\shaw", "0.init.js")
-                                { LinesOfCode = 1102};
+            var expected = new Instance(@"C:\projects\shaw-commerce\j2ee-apps\shaw.ear\shaw.war\builder\src\js\shaw",
+                "0.init.js")
+            {LinesOfCode = 1102};
 
             AssertHasOneClassEqualTo(expected, codeBase);
         }

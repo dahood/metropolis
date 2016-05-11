@@ -55,7 +55,8 @@ namespace Metropolis.Test.Utilities
                 : validation;
         }
 
-        public static Validation IsNotNull<T>(this Validation validation, T? theObject, string paramName) where T : struct
+        public static Validation IsNotNull<T>(this Validation validation, T? theObject, string paramName)
+            where T : struct
         {
             return theObject == null ? validation.AddException(ValidationException.IsRequired(paramName)) : validation;
         }
@@ -83,8 +84,9 @@ namespace Metropolis.Test.Utilities
 
         public static Validation IsNotEmpty<T>(this Validation validation, IEnumerable<T> theList, string paramName)
         {
-            return (theList == null || !theList.Any())
-                ? validation.AddException(ValidationException.FormattedError("{0} is not expected to be empty", paramName))
+            return theList == null || !theList.Any()
+                ? validation.AddException(ValidationException.FormattedError("{0} is not expected to be empty",
+                    paramName))
                 : validation;
         }
 
@@ -97,7 +99,7 @@ namespace Metropolis.Test.Utilities
 
         public static Validation IsEmpty<T>(this Validation validation, IEnumerable<T> theItems, string paramName)
         {
-            return (theItems != null && theItems.Any())
+            return theItems != null && theItems.Any()
                 ? validation.AddException(ValidationException.FormattedError("{0} should be Empty", paramName))
                 : validation;
         }
@@ -109,7 +111,8 @@ namespace Metropolis.Test.Utilities
                 : validation;
         }
 
-        public static Validation GreaterThan(this Validation validation, DateTime? theObject, DateTime? comparison, string paramName)
+        public static Validation GreaterThan(this Validation validation, DateTime? theObject, DateTime? comparison,
+            string paramName)
         {
             if (!theObject.HasValue || !comparison.HasValue) return validation;
             return theObject.Value.CompareTo(comparison.Value) > 0
@@ -117,39 +120,44 @@ namespace Metropolis.Test.Utilities
                 : validation.AddException(new ValidationException(paramName));
         }
 
-        public static Validation GreaterThan<T>(this Validation validation, T theObject, T comparison, string paramName) where T : IComparable<T>
+        public static Validation GreaterThan<T>(this Validation validation, T theObject, T comparison, string paramName)
+            where T : IComparable<T>
         {
             return theObject.CompareTo(comparison) > 0
                 ? validation
                 : validation.AddException(new ValidationException(paramName));
         }
 
-        public static Validation GreaterThanOrEqual(this Validation validation, DateTime? theObject, DateTime? comparison, string paramName)
+        public static Validation GreaterThanOrEqual(this Validation validation, DateTime? theObject,
+            DateTime? comparison, string paramName)
         {
             if (!theObject.HasValue || !comparison.HasValue) return validation;
             return GreaterThanOrEqual(validation, theObject.Value, comparison.Value, paramName);
         }
 
-        public static Validation Between(this Validation validation, int lowerLimit, int upperLimit, int comparison, string paramName)
+        public static Validation Between(this Validation validation, int lowerLimit, int upperLimit, int comparison,
+            string paramName)
         {
-            return (comparison < lowerLimit || comparison > upperLimit)
+            return comparison < lowerLimit || comparison > upperLimit
                 ? validation.AddException(
                     new ValidationException($"{paramName} is not within the range {lowerLimit} to {upperLimit}"))
                 : validation;
         }
 
-        public static Validation GreaterThanOrEqual<T>(this Validation validation, T theObject, T comparison, string paramName) where T : IComparable
+        public static Validation GreaterThanOrEqual<T>(this Validation validation, T theObject, T comparison,
+            string paramName) where T : IComparable
         {
             return theObject.CompareTo(comparison) >= 0
                 ? validation
                 : validation.AddException(new ValidationException(paramName));
         }
 
-        public static Validation ValidateDependantFields(this Validation validation, string theObject, string theDependantObject, string paramName,
+        public static Validation ValidateDependantFields(this Validation validation, string theObject,
+            string theDependantObject, string paramName,
             string dependantParamNames)
         {
-            bool hasValue = !string.IsNullOrEmpty(theObject);
-            bool hasDependant = !string.IsNullOrEmpty(theDependantObject);
+            var hasValue = !string.IsNullOrEmpty(theObject);
+            var hasDependant = !string.IsNullOrEmpty(theDependantObject);
 
             if (hasValue && !hasDependant)
                 return validation.AddException(ValidationException.IsRequired(dependantParamNames));
@@ -185,7 +193,8 @@ namespace Metropolis.Test.Utilities
             return validation;
         }
 
-        public static Validation Contains<T>(this Validation validation, IEnumerable<T> items, T criteria, string message)
+        public static Validation Contains<T>(this Validation validation, IEnumerable<T> items, T criteria,
+            string message)
         {
             return items.Any(x => Equals(x, criteria))
                 ? validation

@@ -14,18 +14,19 @@ namespace Metropolis.Test.Extensions
         {
             var element = XDocument.Parse("<xml><class name='Name'/></xml>");
             var found = (from m in element.Descendants()
-                         where m.HasAttribute("name")
-                         select m.AttributeValue("name")).ToList();
+                where m.HasAttribute("name")
+                select m.AttributeValue("name")).ToList();
             found.Count.Should().Be(1);
             found.First().Should().Be("Name");
         }
+
         [Test]
         public void HasAttribute()
         {
             var element = XDocument.Parse("<xml><class name='Name'/></xml>");
             var found = (from m in element.Descendants()
-                         where m.HasAttribute("name")
-                         select m).ToList();
+                where m.HasAttribute("name")
+                select m).ToList();
             found.Should().NotBeEmpty();
         }
 
@@ -34,8 +35,8 @@ namespace Metropolis.Test.Extensions
         {
             var element = XDocument.Parse("<xml><class kaka='Name'/></xml>");
             var found = (from m in element.Descendants()
-                         where m.HasAttribute("name")
-                         select m).ToList();
+                where m.HasAttribute("name")
+                select m).ToList();
             found.Should().BeEmpty();
         }
     }

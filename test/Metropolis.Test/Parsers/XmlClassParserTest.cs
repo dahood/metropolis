@@ -12,8 +12,6 @@ namespace Metropolis.Test.Parsers
     [TestFixture]
     public class XmlClassParserTest
     {
-        private string fileName;
-
         [SetUp]
         public void SetUp()
         {
@@ -27,6 +25,36 @@ namespace Metropolis.Test.Parsers
         {
             if (File.Exists(fileName))
                 File.Delete(fileName);
+        }
+
+        private string fileName;
+
+        private static Instance AssertResultIsNotNullAndWithOneClass(CodeBase result)
+        {
+            result.Should().NotBeNull();
+            result.AllInstances.Count.Should().Be(1);
+
+            return result.AllInstances.First();
+        }
+
+        [Test]
+        public void Should_Parse_ClassAttributes_To_Makeup_Lines_of_Code()
+        {
+            var result = new XmlClassParser().Parse(fileName);
+
+            var actualClass = AssertResultIsNotNullAndWithOneClass(result);
+            actualClass.LinesOfCode.Should().Be(JavaMetricsHelper.NOF + JavaMetricsHelper.MLOC);
+        }
+
+        [Test]
+        public void Should_Parse_CyclomaticComplexity()
+        {
+            var result = new XmlClassParser().Parse(fileName);
+
+            var actualClass = AssertResultIsNotNullAndWithOneClass(result);
+
+            actualClass.Members.Count.Should().Be(1);
+            actualClass.Members.First().CylomaticComplexity.Should().Be(JavaMetricsHelper.VG);
         }
 
         [Test]
@@ -50,34 +78,6 @@ namespace Metropolis.Test.Parsers
 
             actualClass.Members.Count.Should().Be(1);
             actualClass.Members.First().LinesOfCode.Should().Be(JavaMetricsHelper.MLOC);
-        }
-
-        [Test]
-        public void Should_Parse_CyclomaticComplexity()
-        {
-            var result = new XmlClassParser().Parse(fileName);
-
-            var actualClass = AssertResultIsNotNullAndWithOneClass(result);
-
-            actualClass.Members.Count.Should().Be(1);
-            actualClass.Members.First().CylomaticComplexity.Should().Be(JavaMetricsHelper.VG);
-        }
-
-        [Test]
-        public void Should_Parse_ClassAttributes_To_Makeup_Lines_of_Code()
-        {
-            var result = new XmlClassParser().Parse(fileName);
-
-            var actualClass = AssertResultIsNotNullAndWithOneClass(result);
-            actualClass.LinesOfCode.Should().Be(JavaMetricsHelper.NOF + JavaMetricsHelper.MLOC); 
-        }
-         
-        private static Instance AssertResultIsNotNullAndWithOneClass(CodeBase result)
-        {
-            result.Should().NotBeNull();
-            result.AllInstances.Count.Should().Be(1);
-
-            return result.AllInstances.First();
         }
     }
 }

@@ -11,14 +11,14 @@ namespace Metropolis.Test.Parsers.CsvParsers
 {
     public abstract class CsvParsersBaseTest<T> where T : IClassParser, new()
     {
-        protected T Parser;
         protected string FileName;
+        protected T Parser;
 
         [SetUp]
         public void SetUp()
         {
             Parser = new T();
-            FileName = $"{typeof(T).Name}.{DateTime.Now.ToString("yyyy-MM-ddTHH-mm-ss")}.csv";
+            FileName = $"{typeof (T).Name}.{DateTime.Now.ToString("yyyy-MM-ddTHH-mm-ss")}.csv";
             CleanFile(FileName);
         }
 

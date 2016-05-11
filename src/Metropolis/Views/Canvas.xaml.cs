@@ -17,11 +17,11 @@ using Metropolis.Layout;
 
 namespace Metropolis.Views
 {
-    public partial class Canvas : ISceneProvider, IDisplayClassInformation
+    public partial class Canvas : ISceneProvider, IDisplayInstanceInformation
     {
         private readonly RotationalMovement rotationalMovement;
         private readonly CameraMovement cameraMovement;
-        private readonly ClassInformationFacade highlightedClass;
+        private readonly InstanceInformationFacade highlightedInstance;
         private readonly IWorkspaceProvider workspaceProvider;
 
         private AbstractLayout layout = new SquaredLayout();
@@ -31,7 +31,7 @@ namespace Metropolis.Views
             InitializeComponent();
             rotationalMovement = new RotationalMovement(this);
             cameraMovement = new CameraMovement(this);
-            highlightedClass = new ClassInformationFacade(this);
+            highlightedInstance = new InstanceInformationFacade(this);
             workspaceProvider = new WorkspaceProvider(new CodebaseService(), new ProjectService());
 
             SetSliders();
@@ -111,7 +111,7 @@ namespace Metropolis.Views
 
         private void Renderlayout()
         {
-            highlightedClass.ClearDisplay();
+            highlightedInstance.ClearDisplay();
             using (new WaitCursor())
                 layout.ModelCity(Model, workspaceProvider.Workspace);
         }
@@ -220,7 +220,7 @@ namespace Metropolis.Views
         {
             var selectedClass = (Instance)searchSuggestions.SelectedItem;
             if (selectedClass != null)
-                highlightedClass.DisplayClass(selectedClass);
+                highlightedInstance.DisplayClass(selectedClass);
         }
 
         private void clearSearchButton_Click(object sender, RoutedEventArgs e)

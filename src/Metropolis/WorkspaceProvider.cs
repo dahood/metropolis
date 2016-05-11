@@ -1,17 +1,15 @@
 using System;
-using Microsoft.Win32;
-using CsvHelper;
 using System.IO;
+using CsvHelper;
 using Metropolis.Api.Core.Analyzers.Toxicity;
 using Metropolis.Api.Core.Domain;
 using Metropolis.Api.Core.Parsers;
 using Metropolis.Api.Core.Parsers.CsvParsers;
-using Metropolis.Api.Core.Parsers.XmlParsers;
 using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles;
 using Metropolis.Api.Microservices;
 using Metropolis.Camera;
-using Metropolis.Common;
 using Metropolis.Common.Models;
+using Microsoft.Win32;
 
 namespace Metropolis
 {
@@ -55,7 +53,7 @@ namespace Metropolis
 
         public void Load(string fileName)
         {
-            Workspace = codebaseService.Load(fileName);  
+            Workspace = codebaseService.Load(fileName);
         }
 
         public void LoadDefault()
@@ -80,7 +78,7 @@ namespace Metropolis
                 EnrichWorkspace(result);
             }, "VisualStudio Metrics|*.csv");
         }
-        
+
         public void LoadCheckStyles()
         {
             OpenFile(fileName =>
@@ -90,7 +88,7 @@ namespace Metropolis
                 Parse(parser, fileName);
             }, "Checkstyles |*.xml");
         }
-        
+
         public void LoadEsLintCheckStyles()
         {
             OpenFile(fileName =>
@@ -100,6 +98,7 @@ namespace Metropolis
                 Parse(parser, fileName);
             }, "Checkstyles |*.xml");
         }
+
         public void LoadSourceLinesOfCode(FileInclusion inclusion)
         {
             OpenFile(fileName =>
@@ -108,7 +107,7 @@ namespace Metropolis
                 Parse(parser, fileName);
             }, "Source LOC |*.csv");
         }
-        
+
         public void RunCSharpToxicity()
         {
             Workspace.SourceType = RepositorySourceType.CSharp;
@@ -125,6 +124,27 @@ namespace Metropolis
         {
             Workspace.SourceType = RepositorySourceType.ECMA;
             Workspace = new JavascriptToxicityAnalyzer().Analyze(Workspace.AllInstances);
+        }
+
+        public void RunCsvExport()
+        {
+            var dialog = new SaveFileDialog
+            {
+                Filter = "Metropolis CSV export (*.csv)|*.csv",
+                AddExtension = true
+            };
+            if (dialog.ShowDialog().GetValueOrDefault(false))
+            {
+                using (new WaitCursor())
+                {
+                    using (var stream = new StreamWriter(dialog.FileName))
+                    {
+                        var writer = new CsvWriter(stream);
+                        writer.WriteHeader<Instance>();
+                        Workspace.AllInstances.ForEach(x => writer.WriteRecord(x));
+                    }
+                }
+            }
         }
 
         private void Parse(IClassParser parser, string fileName)
@@ -154,31 +174,11 @@ namespace Metropolis
                 fileAction(fileName);
             }
         }
+
         private static string GetFileName(string filter)
         {
-            var dialog = new OpenFileDialog { Filter = filter };
+            var dialog = new OpenFileDialog {Filter = filter};
             return dialog.ShowDialog().GetValueOrDefault(false) ? dialog.FileName : null;
-        }
-
-        public void RunCsvExport()
-        {
-            var dialog = new SaveFileDialog
-            {
-                Filter = "Metropolis CSV export (*.csv)|*.csv",
-                AddExtension = true
-            };
-            if (dialog.ShowDialog().GetValueOrDefault(false))
-            {
-                using (new WaitCursor())
-                {
-                    using (var stream = new StreamWriter(dialog.FileName))
-                    {
-                        var writer = new CsvWriter(stream);
-                        writer.WriteHeader<Instance>();
-                        Workspace.AllInstances.ForEach(x => writer.WriteRecord(x));
-                    }
-                }
-            }
         }
     }
 }

@@ -10,14 +10,15 @@ namespace Metropolis.Test.Fixtures
             get
             {
                 var listOfClasses = new List<Instance>();
-                listOfClasses.AddRange(new List<Instance> { CodeBase });
-                listOfClasses.AddRange(new List<Instance> { Canvas });
+                listOfClasses.AddRange(new List<Instance> {CodeBase});
+                listOfClasses.AddRange(new List<Instance> {Canvas});
 
                 var codeGraph = new CodeGraph(listOfClasses);
 
                 return codeGraph;
             }
         }
+
         public static Instance CodeBase
         {
             get
@@ -38,7 +39,7 @@ namespace Metropolis.Test.Fixtures
 
                 var members = new[]
                 {
-                    new Member("Foo()", 31,0,0)
+                    new Member("Foo()", 31, 0, 0)
                 };
                 classOne.AddMember(members);
 

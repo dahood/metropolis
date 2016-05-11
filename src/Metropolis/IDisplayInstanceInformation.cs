@@ -7,7 +7,7 @@ using Metropolis.Layout;
 
 namespace Metropolis
 {
-    public interface IDisplayClassInformation
+    public interface IDisplayInstanceInformation
     {
         Viewport3D ViewPort { get; }
         AbstractLayout Layout { get; }

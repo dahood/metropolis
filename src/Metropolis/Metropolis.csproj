@@ -74,11 +74,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ClassInformationFacade.cs" />
+    <Compile Include="InstanceInformationFacade.cs" />
     <Compile Include="Camera\CameraMovement.cs" />
     <Compile Include="Camera\RotationalMovement.cs" />
     <Compile Include="Camera\WaitCursor.cs" />
-    <Compile Include="IDisplayClassInformation.cs" />
+    <Compile Include="IDisplayInstanceInformation.cs" />
     <Compile Include="ISceneProvider.cs" />
     <Compile Include="EmptyHighlight.cs" />
     <Compile Include="HighlightModel.cs" />
