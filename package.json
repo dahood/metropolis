@@ -3,9 +3,7 @@
   "version": "0.0.1",
   "description": "Codebase visualization tool",
   "main": "gulpfile.js",
-  "directories": {
-    "test": "test"
-  },
+  "files": [ "create-shortcut.ps1", "dist" ],
   "dependencies": {},
   "devDependencies": {
     "del": "^2.2.0",
@@ -14,6 +12,7 @@
     "gulp-shell": "^0.5.2"
   },
   "scripts": {
+    "postinstall": "PowerShell.exe -File create-shortcut.ps1",
     "test": "test"
   },
   "repository": {
