@@ -13,6 +13,7 @@
   },
   "scripts": {
     "postinstall": "PowerShell.exe -File create-shortcut.ps1",
+    "preuninstall": "del %HOMEPATH%\\Desktop\\Metropolis.lnk",
     "test": "test"
   },
   "repository": {
