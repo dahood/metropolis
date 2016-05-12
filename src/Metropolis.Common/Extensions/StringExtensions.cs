@@ -38,6 +38,11 @@ namespace Metropolis.Common.Extensions
             return string.IsNullOrWhiteSpace(value);
         }
 
+        public static bool IsNotEmpty(this string value)
+        {
+            return !string.IsNullOrWhiteSpace(value);
+        }
+
         public static string RemoveWhitespace(this string value)
         {
             return Regex.Replace(value, @"\s+", "");

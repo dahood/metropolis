@@ -7,13 +7,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
-using Metropolis.Api.Core.Domain;
-using Metropolis.Api.Core.Parsers.CsvParsers;
+using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
 using Metropolis.Api.Microservices;
+using Metropolis.Api.Parsers.CsvParsers;
 using Metropolis.Camera;
 using Metropolis.Common.Models;
 using Metropolis.Layout;
+using Metropolis.ViewModels;
 
 namespace Metropolis.Views
 {
@@ -257,9 +258,20 @@ namespace Metropolis.Views
             var result = wizard.ShowDialog()??false;
 
             if (!result) return;
-
-            workspaceProvider.Analyze(wizard.ProjectDetails);
+          
+            workspaceProvider.Analyze(BuildArguments(wizard.ProjectDetails) );
             DisplayWorkspaceDetails();
+        }
+
+        private static MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)
+        {
+            return new MetricsCommandArguments
+            {
+                ProjectName =projectDetails.ProjectName,
+                RepositorySourcetype = projectDetails.RepositorySourcetype,
+                MetricsOutputDirectory = projectDetails.MetricsOutputDirectory,
+                SourceDirectory = projectDetails.SourceDirectory
+            };
         }
     }
 }

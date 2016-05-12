@@ -2,7 +2,7 @@ using System;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
-using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Domain;
 using Metropolis.Common.Models;
 
 namespace Metropolis

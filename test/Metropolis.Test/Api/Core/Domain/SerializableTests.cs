@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using FluentAssertions;
-using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Domain;
 using Metropolis.Test.Extensions;
 using Newtonsoft.Json;
 using NUnit.Framework;

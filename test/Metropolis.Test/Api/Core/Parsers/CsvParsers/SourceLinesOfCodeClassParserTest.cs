@@ -1,5 +1,5 @@
-﻿using Metropolis.Api.Core.Domain;
-using Metropolis.Api.Core.Parsers.CsvParsers;
+﻿using Metropolis.Api.Domain;
+using Metropolis.Api.Parsers.CsvParsers;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Core.Parsers.CsvParsers

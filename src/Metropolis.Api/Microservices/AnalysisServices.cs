@@ -1,4 +1,4 @@
-﻿using Metropolis.Api.Core.Domain;
+﻿using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
 using Metropolis.Api.Microservices.Tasks;
 using Metropolis.Common.Models;
@@ -20,10 +20,10 @@ namespace Metropolis.Api.Microservices
             this.codebaseService = codebaseService;
         }
 
-        public CodeBase Analyze(ProjectDetails details)
+        public CodeBase Analyze(MetricsCommandArguments details)
         {
             var command = metricsTaskFactory.CommandFor(details.RepositorySourcetype);
-            var metrics = command.Run(details.ProjectName, details.SourceDirectory, details.MetricsOutputDirectory);
+            var metrics = command.Run(details);
 
             var codeBase = CodeBase.Empty();
             metrics.ForEach(x =>

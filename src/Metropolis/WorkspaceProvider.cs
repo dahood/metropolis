@@ -1,12 +1,12 @@
 using System;
 using System.IO;
 using CsvHelper;
-using Metropolis.Api.Core.Analyzers.Toxicity;
-using Metropolis.Api.Core.Domain;
-using Metropolis.Api.Core.Parsers;
-using Metropolis.Api.Core.Parsers.CsvParsers;
-using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles;
+using Metropolis.Api.Analyzers.Toxicity;
+using Metropolis.Api.Domain;
 using Metropolis.Api.Microservices;
+using Metropolis.Api.Parsers;
+using Metropolis.Api.Parsers.CsvParsers;
+using Metropolis.Api.Parsers.XmlParsers.CheckStyles;
 using Metropolis.Camera;
 using Metropolis.Common.Models;
 using Microsoft.Win32;
@@ -110,10 +110,10 @@ namespace Metropolis
             }, "Source LOC |*.csv");
         }
 
-        public void Analyze(ProjectDetails projectDetails)
+        public void Analyze(MetricsCommandArguments metricsCommandArguments)
         {
-            Workspace.SourceType = projectDetails.RepositorySourcetype;
-            Workspace = analysisService.Analyze(projectDetails);
+            Workspace.SourceType = metricsCommandArguments.RepositorySourcetype;
+            Workspace = analysisService.Analyze(metricsCommandArguments);
         }
 
         public void RunCSharpToxicity()

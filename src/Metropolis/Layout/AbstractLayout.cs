@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
-using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Domain;
 using Metropolis.Models;
 
 namespace Metropolis.Layout

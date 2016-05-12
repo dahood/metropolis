@@ -1,4 +1,4 @@
-﻿using Metropolis.Api.Core.Domain;
+﻿using Metropolis.Api.Domain;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Microservices

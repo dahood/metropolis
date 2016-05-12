@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Domain;
 
 namespace Metropolis.Test.Fixtures
 {

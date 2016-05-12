@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using FluentAssertions;
-using Metropolis.Api.Core.Domain;
-using Metropolis.Api.Core.Parsers;
+using Metropolis.Api.Domain;
+using Metropolis.Api.Parsers;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Core.Parsers.CsvParsers

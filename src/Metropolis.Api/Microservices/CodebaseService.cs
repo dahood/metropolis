@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Metropolis.Api.Core.Domain;
-using Metropolis.Api.Core.Parsers;
-using Metropolis.Api.Core.Parsers.CsvParsers;
-using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles;
-using Metropolis.Api.Core.Persistence;
+using Metropolis.Api.Domain;
+using Metropolis.Api.Parsers;
+using Metropolis.Api.Parsers.CsvParsers;
+using Metropolis.Api.Parsers.XmlParsers.CheckStyles;
+using Metropolis.Api.Persistence;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Microservices

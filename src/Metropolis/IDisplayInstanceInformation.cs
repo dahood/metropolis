@@ -1,6 +1,5 @@
 using System.Windows.Controls;
 using System.Windows.Input;
-using Metropolis.Api.Core.Domain;
 using Metropolis.Common;
 using Metropolis.Common.Models;
 using Metropolis.Layout;

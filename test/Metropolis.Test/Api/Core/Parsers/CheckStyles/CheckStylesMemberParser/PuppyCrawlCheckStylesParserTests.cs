@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
-using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles;
-using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl;
-using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Class;
-using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Member;
+using Metropolis.Api.Parsers.XmlParsers.CheckStyles;
+using Metropolis.Api.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl;
+using Metropolis.Api.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Class;
+using Metropolis.Api.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Member;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Core.Parsers.CheckStyles.CheckStylesMemberParser

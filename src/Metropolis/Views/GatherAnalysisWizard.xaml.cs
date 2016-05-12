@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Forms;
 using Metropolis.Api.Extensions;
-using Metropolis.Common.Models;
+using Metropolis.ViewModels;
 
 namespace Metropolis.Views
 {
@@ -10,12 +10,12 @@ namespace Metropolis.Views
     /// </summary>
     public partial class GatherAnalysisWizard : Window
     {
-        public ProjectDetails ProjectDetails { get; }
+        public ProjectDetailsViewModel ProjectDetails { get; }
 
         public GatherAnalysisWizard()
         {
             InitializeComponent();
-            ProjectDetails = new ProjectDetails();
+            ProjectDetails = new ProjectDetailsViewModel();
             DataContext = ProjectDetails;
         }
       

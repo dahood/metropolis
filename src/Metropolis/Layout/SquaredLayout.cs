@@ -1,5 +1,5 @@
 ﻿using System.Windows.Media.Media3D;
-using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Domain;
 
 namespace Metropolis.Layout
 {

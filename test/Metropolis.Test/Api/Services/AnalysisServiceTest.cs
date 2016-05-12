@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Domain;
 using Metropolis.Api.Microservices;
 using Metropolis.Api.Microservices.Tasks;
 using Metropolis.Api.Microservices.Tasks.Commands;
@@ -15,7 +15,7 @@ namespace Metropolis.Test.Api.Services
         private Mock<IMetricsTaskFactory> metricsTaskFactory;
         private Mock<ICodebaseService> codebaseService;
         private Mock<IMetricsCommand> metricsCommand;
-        private ProjectDetails details;
+        private MetricsCommandArguments details;
 
         [SetUp]
         public void SetUp()
@@ -24,7 +24,7 @@ namespace Metropolis.Test.Api.Services
             codebaseService = CreateMock<ICodebaseService>();
             metricsCommand = CreateMock<IMetricsCommand>();
 
-            details = new ProjectDetails
+            details = new MetricsCommandArguments
             {
                 RepositorySourcetype = RepositorySourceType.Java,
                 ProjectName = "test",
@@ -42,8 +42,7 @@ namespace Metropolis.Test.Api.Services
             var result = new MetricsResult { MetricsFile = expectedMetricsFile, ParseType = ParseType.PuppyCrawler};
 
             metricsTaskFactory.Setup(x => x.CommandFor(RepositorySourceType.Java)).Returns(metricsCommand.Object);
-            metricsCommand.Setup(x => x.Run(details.ProjectName, details.SourceDirectory, details.MetricsOutputDirectory))
-                          .Returns(new[] { result});
+            metricsCommand.Setup(x => x.Run(details)).Returns(new[] { result});
 
             codebaseService.Setup(x => x.Get(expectedMetricsFile, ParseType.PuppyCrawler)).Returns(CodeBase.Empty);
 
@@ -63,8 +62,7 @@ namespace Metropolis.Test.Api.Services
             var slocResult = new MetricsResult { MetricsFile = slocMetricsFile, ParseType = ParseType.SlocJavaScript};
 
             metricsTaskFactory.Setup(x => x.CommandFor(RepositorySourceType.ECMA)).Returns(metricsCommand.Object);
-            metricsCommand.Setup(x => x.Run(details.ProjectName, details.SourceDirectory, details.MetricsOutputDirectory))
-                          .Returns(new[] { eslintResult, slocResult});
+            metricsCommand.Setup(x => x.Run(details)).Returns(new[] { eslintResult, slocResult});
 
             codebaseService.Setup(x => x.Get(eslintMetricsFile, ParseType.EsLint)).Returns(CodeBase.Empty);
             codebaseService.Setup(x => x.Get(slocMetricsFile  , ParseType.SlocJavaScript)).Returns(CodeBase.Empty);
