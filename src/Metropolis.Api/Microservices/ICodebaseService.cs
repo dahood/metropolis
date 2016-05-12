@@ -1,5 +1,4 @@
 ﻿using Metropolis.Api.Core.Domain;
-using Metropolis.Common;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Microservices
@@ -9,6 +8,6 @@ namespace Metropolis.Api.Microservices
         void Save(CodeBase workspace, string fileName);
         CodeBase Load(string projectFileName);
         CodeBase LoadDefault();
-        CodeBase Get(string filename, ParseType parseType, string sourceBaseDirectory = null);
+        CodeBase Get(string filename, ParseType parseType);
     }
 }

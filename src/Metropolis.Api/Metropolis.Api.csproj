@@ -123,10 +123,10 @@
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Microservices\AnalysisServices.cs" />
     <Compile Include="Microservices\IAnalysisService.cs" />
-    <Compile Include="Microservices\INodeCommand.cs" />
-    <Compile Include="Microservices\INodeCommandFactory.cs" />
     <Compile Include="Microservices\IProjectService.cs" />
     <Compile Include="Microservices\ProjectService.cs" />
+    <Compile Include="Microservices\Tasks\Commands\IMetricsCommand.cs" />
+    <Compile Include="Microservices\Tasks\IMetricsTaskFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Microservices\ICodebaseService.cs" />
     <Compile Include="Microservices\CodebaseService.cs" />

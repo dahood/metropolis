@@ -6,7 +6,6 @@ using Metropolis.Api.Core.Domain;
 using Metropolis.Api.Core.Parsers;
 using Metropolis.Api.Core.Parsers.CsvParsers;
 using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles;
-using Metropolis.Api.Extensions;
 using Metropolis.Api.Microservices;
 using Metropolis.Camera;
 using Metropolis.Common.Models;
@@ -68,7 +67,7 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
-                var result = codebaseService.Get(fileName, ParseType.RichardToxicity, Workspace.SourceBaseDirectory);
+                var result = codebaseService.Get(fileName, ParseType.RichardToxicity);
                 EnrichWorkspace(result);
             }, "Toxicity|*.csv");
         }
@@ -77,7 +76,7 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
-                var result = codebaseService.Get(fileName, ParseType.VisualStudio, Workspace.SourceBaseDirectory);
+                var result = codebaseService.Get(fileName, ParseType.VisualStudio);
                 EnrichWorkspace(result);
             }, "VisualStudio Metrics|*.csv");
         }

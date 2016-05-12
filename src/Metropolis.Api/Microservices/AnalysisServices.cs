@@ -1,31 +1,37 @@
-﻿using System;
-using Metropolis.Api.Core.Domain;
+﻿using Metropolis.Api.Core.Domain;
+using Metropolis.Api.Extensions;
+using Metropolis.Api.Microservices.Tasks;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Microservices
 {
     public class AnalysisServices : IAnalysisService
     {
-        private readonly INodeCommandFactory nodeCommandFactory;
+        private readonly IMetricsTaskFactory metricsTaskFactory;
         private readonly ICodebaseService codebaseService;
-
-        public AnalysisServices() : this(new NodeCommandFactory(), new CodebaseService())
+        
+        public AnalysisServices() : this(new MetricsTaskFactory(), new CodebaseService())
         {
-            
         }
 
-        public AnalysisServices(INodeCommandFactory nodeCommandFactory, ICodebaseService codebaseService)
+        public AnalysisServices(IMetricsTaskFactory metricsTaskFactory, ICodebaseService codebaseService)
         {
-            this.nodeCommandFactory = nodeCommandFactory;
+            this.metricsTaskFactory = metricsTaskFactory;
             this.codebaseService = codebaseService;
         }
 
         public CodeBase Analyze(ProjectDetails details)
         {
-            var nodeCommand = nodeCommandFactory.CommandFor(details.RepositorySourcetype);
-            nodeCommand.Run(details.SourceDirectory, details.MetricsOutputDirectory);
+            var command = metricsTaskFactory.CommandFor(details.RepositorySourcetype);
+            var metrics = command.Run(details.ProjectName, details.SourceDirectory, details.MetricsOutputDirectory);
 
-            throw new NotImplementedException();
+            var codeBase = CodeBase.Empty();
+            metrics.ForEach(x =>
+            {
+                var cb = codebaseService.Get(x.MetricsFile, x.ParseType);
+                codeBase.Enrich(new CodeGraph(cb.AllInstances));
+            });
+            return codeBase;
         }
     }
 }

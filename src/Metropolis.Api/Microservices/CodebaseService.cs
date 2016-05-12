@@ -53,7 +53,7 @@ namespace Metropolis.Api.Microservices
             return result;
         }
 
-        public CodeBase Get(string filename, ParseType parseType, string sourceBaseDirectory = null)
+        public CodeBase Get(string filename, ParseType parseType)
         {
             return parseFactory[parseType]().Parse(filename);
         }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Extensions\ReflectionUtility.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Models\MetricsResult.cs" />
     <Compile Include="Models\ProjectDetails.cs" />
     <Compile Include="Models\ParseType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

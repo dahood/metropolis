@@ -8,64 +8,64 @@
     <Window.Resources>
         <vc:RepositorySourceTypeConverter x:Key="SrcTypeConverter" />
     </Window.Resources>
-    <Grid x:Name="LayoutRoot" HorizontalAlignment="Left">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60"/>
-            <ColumnDefinition Width="160"/>
-            <ColumnDefinition Width="60"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="24"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="35"/>
-        </Grid.RowDefinitions>
-
-        <Grid Grid.ColumnSpan="4" Grid.Row="0" Grid.Column="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="79"/>
+    <StackPanel>
+        <Grid x:Name="LayoutRoot" HorizontalAlignment="Left">
+                 <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="160"/>
+                <ColumnDefinition Width="60"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
-            <Image Width="79" Height="79" Source="..\Images\Properties.ico" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />
-            <TextBlock Grid.Row="0" Grid.Column="1" Height="Auto" FontSize="20" Text="Project Properties"  />
-            <TextBlock Grid.Row="1" Grid.Column="1" Height="Auto" Width="600" HorizontalAlignment="Left" 
-                       Text="Use this window to tell us about your project so we can run the code analyzers for you..." TextWrapping="Wrap" VerticalAlignment="Top"/>
-        </Grid>
 
-        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Vertical" x:Name="ProjectDetailsPanel">
+            <Grid Grid.ColumnSpan="4" Grid.Row="0" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="79"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Image Width="79" Height="79" Source="..\Images\Properties.ico" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Height="Auto" FontSize="20" Text="Project Properties"  />
+                <TextBlock Grid.Row="1" Grid.Column="1" Height="Auto" Width="600" HorizontalAlignment="Left" 
+                           Text="Use this window to tell us about your project so we can run the code analyzers for you..." TextWrapping="Wrap" VerticalAlignment="Top"/>
+            </Grid>
+            </Grid>
+
+            <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Vertical" x:Name="ProjectDetailsPanel">
            
             <StackPanel x:Name="ProjectPanel" Orientation="Horizontal" Margin="0,5,0,0">
-                <TextBlock x:Name="ProjectNameLabel" Text="Project:" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,5,10,5"/>
+                <TextBlock x:Name="ProjectNameLabel" Text="Project:" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,5,10,5"/>
                 <TextBox  Cursor="IBeam" x:Name="ProjectTextBox" Width="150" MaxLength="10" MaxLines="1" 
-                          Text="{Binding Path=ProjectName}" TextWrapping="NoWrap" />
+                          Text="{Binding Path=ProjectName}" TextWrapping="NoWrap" Margin="10,2,2,2" />
             </StackPanel>
             <StackPanel x:Name="SourceTypePanel" Orientation="Horizontal" Margin="0,5,0,0">
-                <TextBlock x:Name="SourceTypeLabel" Text="Source Directory:" Width="90" VerticalAlignment="Center" Margin="5,5,10,5" />
+                <TextBlock x:Name="SourceTypeLabel" Text="Source Directory:" Width="200" VerticalAlignment="Center" Margin="5,5,10,5" />
                 <ComboBox x:Name="SourceTypeCombobox" ItemsSource="{Binding Path=SourceTypes}"
                           SelectedValue="{Binding RepositorySourcetype, Converter={StaticResource SrcTypeConverter}}"
-                          Width="90"   ></ComboBox>
+                          Width="90"   Margin="10,2,2,2" ></ComboBox>
             </StackPanel>
             <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,0">
-                <TextBlock x:Name="CSharpSourceLabel" Text="Source Directory:" Width="90" VerticalAlignment="Center" Margin="5,5,10,5" />
+                <TextBlock x:Name="CSharpSourceLabel" Text="Source Directory:" Width="200" VerticalAlignment="Center" Margin="5,5,10,5" />
                 <TextBox Cursor="IBeam" x:Name="CsharpDirectoryTextBox" Width="250" MaxLength="255" MaxLines="1" 
-                         Text="{Binding Path=SourceDirectory}" TextWrapping="NoWrap" />
+                         Text="{Binding Path=SourceDirectory}" TextWrapping="NoWrap"  Margin="10,2,2,2"/>
                 <Button Content="..." Click="OnCSharpFindDirectory" Width="25" Margin="10, 2, 2, 2"/>
             </StackPanel>
             <StackPanel x:Name="MetricsPanel" Orientation="Horizontal" Margin="0,5,0,0">
-                <TextBlock x:Name="MetricsOutputLabel" Text="Metrics Output Directory:" Width="90" VerticalAlignment="Center" Margin="5,5,10,5" />
+                <TextBlock x:Name="MetricsOutputLabel" Text="Metrics Output Directory:" Width="200" VerticalAlignment="Center" Margin="5,5,10,5" />
                 <TextBox Cursor="IBeam" x:Name="MetricsOutputTextBox" Width="250" MaxLength="255" MaxLines="1" 
-                         Text="{Binding Path=MetricsOutputDirectory}" TextWrapping="NoWrap" />
+                         Text="{Binding Path=MetricsOutputDirectory}" TextWrapping="NoWrap"  Margin="10,2,2,2"/>
                 <Button Content="..." Click="OnMetricsOutputDirectory" Width="25" Margin="10, 2, 2, 2"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,35,10,10">
             <Button Content="Cancel" x:Name="CancelButton" Click="OnCancel"  Width="75" />
             <Button Content="Run Analysis" x:Name="AnalyzeButton" Click="OnProceed"  Width="75"  Margin="5,0,0,0"/>
         </StackPanel>
-    </Grid>
+    </StackPanel>
 </Window>
