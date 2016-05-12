@@ -10,7 +10,7 @@ namespace Metropolis.Views
     /// </summary>
     public partial class GatherAnalysisWizard : Window
     {
-        public ProjectDetails ProjectDetails { get; private set; }
+        public ProjectDetails ProjectDetails { get; }
 
         public GatherAnalysisWizard()
         {
@@ -18,20 +18,7 @@ namespace Metropolis.Views
             ProjectDetails = new ProjectDetails();
             DataContext = ProjectDetails;
         }
-        
-        private void WizardCancelled(object sender, RoutedEventArgs e)
-        {
-            DialogResult = false;
-            Close();
-        }
-
-        private void WizardFinished(object sender, RoutedEventArgs e)
-        {
-            DialogResult = true;
-            var data = ProjectDetails;
-            Close();
-        }
-
+      
         private void OnCSharpFindDirectory(object sender, RoutedEventArgs e)
         {
             var sourceDirectory = GetSourceDirectory("C#");
@@ -39,17 +26,11 @@ namespace Metropolis.Views
                 ProjectDetails.CSharpSourceDirectory= sourceDirectory;
         }
 
-        private void OnJavaFindDirectory(object sender, RoutedEventArgs e)
+        private void OnMetricsOutputDirectory(object sender, RoutedEventArgs e)
         {
-            var sourceDirectory = GetSourceDirectory("Java");
+            var sourceDirectory = GetSourceDirectory("Metrics Output Folder");
             if (sourceDirectory.IsNotEmpty())
-                ProjectDetails.JavaSourceDirectory = sourceDirectory;
-        }
-        private void OnEcmaFindDirectory(object sender, RoutedEventArgs e)
-        {
-            var sourceDirectory = GetSourceDirectory("Ecma6/Javascript");
-            if (sourceDirectory.IsNotEmpty())
-                ProjectDetails.EcmaSourceDirectory = sourceDirectory;
+                ProjectDetails.MetricsOutputDirectory = sourceDirectory;
         }
 
         private static string GetSourceDirectory(string type)

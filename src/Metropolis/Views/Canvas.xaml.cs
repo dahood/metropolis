@@ -32,7 +32,7 @@ namespace Metropolis.Views
             rotationalMovement = new RotationalMovement(this);
             cameraMovement = new CameraMovement(this);
             highlightedInstance = new InstanceInformationFacade(this);
-            workspaceProvider = new WorkspaceProvider(new CodebaseService(), new ProjectService());
+            workspaceProvider = new WorkspaceProvider(new CodebaseService(), new ProjectService(), new AnalysisServices());
 
             SetSliders();
 
@@ -258,7 +258,8 @@ namespace Metropolis.Views
 
             if (!result) return;
 
-            var projectModel = wizard.ProjectDetails;
+            workspaceProvider.Analyze(wizard.ProjectDetails);
+            DisplayWorkspaceDetails();
         }
     }
 }

@@ -6,12 +6,21 @@ namespace Metropolis.Common.Models
     public class ProjectDetails : INotifyPropertyChanged
     {
         private string projectName;
+        private string repositorySourceType = RepositorySourceType.Java.ToString();  //for now
         private string cSharpSourceDirectory;
-        private string javaSourceDirectory;
-        private string ecmaSourceDirectory;
+        private string metricsOutputDirectory;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public string RepositorySourcetype
+        {
+            get { return repositorySourceType; }
+            set
+            {
+                repositorySourceType = value;
+                PropertyChanged.Notify(this, x => x.RepositorySourcetype);
+            }
+        }
         public string ProjectName
         {
             get { return projectName; }
@@ -32,23 +41,13 @@ namespace Metropolis.Common.Models
             }
         }
 
-        public string JavaSourceDirectory
+        public string MetricsOutputDirectory
         {
-            get { return javaSourceDirectory; }
+            get { return metricsOutputDirectory; }
             set
             {
-                javaSourceDirectory = value;
-                PropertyChanged.Notify(this, x => x.JavaSourceDirectory);
-            }
-        }
-
-        public string EcmaSourceDirectory
-        {
-            get { return ecmaSourceDirectory; }
-            set
-            {
-                ecmaSourceDirectory = value;
-                PropertyChanged.Notify(this, x => x.EcmaSourceDirectory);
+                metricsOutputDirectory = value;
+                PropertyChanged.Notify(this, x => x.MetricsOutputDirectory);
             }
         }
 

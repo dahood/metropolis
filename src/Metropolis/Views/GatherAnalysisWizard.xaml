@@ -46,17 +46,11 @@
                          Text="{Binding Path=CSharpSourceDirectory}" TextWrapping="NoWrap" />
                 <Button Content="..." Click="OnCSharpFindDirectory" Width="25" Margin="10, 2, 2, 2"/>
             </StackPanel>
-            <StackPanel x:Name="JavaPanel" Orientation="Horizontal" Margin="0,5,0,0">
-                <TextBlock x:Name="JavaSourceLabel" Text="Java Directory:" Width="90" VerticalAlignment="Center" Margin="5,5,10,5" />
-                <TextBox Cursor="IBeam" x:Name="JavaDirectoryTextBox" Width="250" MaxLength="255" MaxLines="1" 
-                         Text="{Binding Path=JavaSourceDirectory}" TextWrapping="NoWrap" />
-                <Button Content="..." Click="OnJavaFindDirectory" Width="25" Margin="10, 2, 2, 2"></Button>
-            </StackPanel>
-            <StackPanel x:Name="EcmaPanel" Orientation="Horizontal" Margin="0,5,0,0">
-                <TextBlock x:Name="EcmaSourceLabel" Text="Ecma Directory:" Width="90" VerticalAlignment="Center" Margin="5,5,10,5" />
-                <TextBox Cursor="IBeam" x:Name="EcmaDirectoryTextBox" Width="250" MaxLength="255" MaxLines="1" 
-                         Text="{Binding Path=EcmaSourceDirectory}" TextWrapping="NoWrap" />
-                <Button Content="..." Click="OnEcmaFindDirectory" Width="25" Margin="10, 2, 2, 2"></Button>
+            <StackPanel x:Name="MetricsPanel" Orientation="Horizontal" Margin="0,5,0,0">
+                <TextBlock x:Name="MetricsOutputLabel" Text="Metrics Output Directory:" Width="90" VerticalAlignment="Center" Margin="5,5,10,5" />
+                <TextBox Cursor="IBeam" x:Name="MetricsOutputTextBox" Width="250" MaxLength="255" MaxLines="1" 
+                         Text="{Binding Path=MetricsOutputDirectory}" TextWrapping="NoWrap" />
+                <Button Content="..." Click="OnMetricsOutputDirectory" Width="25" Margin="10, 2, 2, 2"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">

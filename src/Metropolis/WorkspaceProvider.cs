@@ -6,6 +6,7 @@ using Metropolis.Api.Core.Domain;
 using Metropolis.Api.Core.Parsers;
 using Metropolis.Api.Core.Parsers.CsvParsers;
 using Metropolis.Api.Core.Parsers.XmlParsers.CheckStyles;
+using Metropolis.Api.Extensions;
 using Metropolis.Api.Microservices;
 using Metropolis.Camera;
 using Metropolis.Common.Models;
@@ -17,11 +18,13 @@ namespace Metropolis
     {
         private readonly ICodebaseService codebaseService;
         private readonly IProjectService projectService;
+        private readonly IAnalysisService analysisService;
 
-        public WorkspaceProvider(ICodebaseService codebaseService, IProjectService projectService)
+        public WorkspaceProvider(ICodebaseService codebaseService, IProjectService projectService, IAnalysisService analysisService)
         {
             this.codebaseService = codebaseService;
             this.projectService = projectService;
+            this.analysisService = analysisService;
         }
 
         public CodeBase Workspace { get; private set; }
@@ -106,6 +109,12 @@ namespace Metropolis
                 var parser = new SourceLinesOfCodeParser(inclusion);
                 Parse(parser, fileName);
             }, "Source LOC |*.csv");
+        }
+
+        public void Analyze(ProjectDetails projectDetails)
+        {
+            Workspace.SourceType = projectDetails.RepositorySourcetype.ToEnumExact<RepositorySourceType>();
+            Workspace = analysisService.Analyze(projectDetails);
         }
 
         public void RunCSharpToxicity()

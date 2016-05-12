@@ -5,6 +5,6 @@ namespace Metropolis.Api.Microservices
 {
     public interface IAnalysisService
     {
-        CodeBase Analyze(ProjectDetails details);
+        CodeBase Analyze(ProjectDetails projectDetails);
     }
 }

@@ -1,5 +1,6 @@
 using Metropolis.Api.Core.Domain;
 using Metropolis.Api.Core.Parsers.CsvParsers;
+using Metropolis.Common.Models;
 
 namespace Metropolis
 {
@@ -20,5 +21,6 @@ namespace Metropolis
         void LoadEsLintCheckStyles();
         void LoadDefault();
         void LoadSourceLinesOfCode(FileInclusion js);
+        void Analyze(ProjectDetails projectDetails);
     }
 }
