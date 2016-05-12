@@ -1,7 +1,7 @@
 {
-  "name": "metropolis",
+  "name": "metropolis-core",
   "version": "0.0.1",
-  "description": "Codebase visualization tool",
+  "description": "Metropolis - a codebase visualization tool",
   "main": "gulpfile.js",
   "files": [ "create-shortcut.ps1", "dist" ],
   "dependencies": {},
