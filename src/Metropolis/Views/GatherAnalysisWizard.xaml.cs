@@ -2,13 +2,14 @@
 using System.Windows.Forms;
 using Metropolis.Api.Extensions;
 using Metropolis.ViewModels;
+using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace Metropolis.Views
 {
     /// <summary>
     /// Interaction logic for GatherAnalysisWizard.xaml
     /// </summary>
-    public partial class GatherAnalysisWizard : Window
+    public partial class GatherAnalysisWizard 
     {
         public ProjectDetailsViewModel ProjectDetails { get; }
 
@@ -52,6 +53,18 @@ namespace Metropolis.Views
         {
             DialogResult = true;
             Close();
+        }
+
+        private void OnLocateIgnoreFile(object sender, RoutedEventArgs e)
+        {
+            var file = GetFileName("");
+            if (file == null) return;
+            ProjectDetails.IgnoreFile = file;
+        }
+        private static string GetFileName(string filter)
+        {
+            var dialog = new OpenFileDialog { Filter = filter };
+            return dialog.ShowDialog().GetValueOrDefault(false) ? dialog.FileName : null;
         }
     }
 }

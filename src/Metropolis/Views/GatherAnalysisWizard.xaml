@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vc="clr-namespace:Metropolis.ValueConverters"
         x:Class="Metropolis.Views.GatherAnalysisWizard"
-        Title="Gather Analysis Wizard" Height="310.679" Width="600" WindowStartupLocation="CenterScreen"
+        Title="Gather Analysis Wizard" Height="348.179" Width="600" WindowStartupLocation="CenterScreen"
     >
     <Window.Resources>
         <vc:RepositorySourceTypeConverter x:Key="SrcTypeConverter" />
@@ -45,7 +45,7 @@
                           Text="{Binding Path=ProjectName}" TextWrapping="NoWrap" Margin="10,2,2,2" />
             </StackPanel>
             <StackPanel x:Name="SourceTypePanel" Orientation="Horizontal" Margin="0,5,0,0">
-                <TextBlock x:Name="SourceTypeLabel" Text="Source Directory:" Width="200" VerticalAlignment="Center" Margin="5,5,10,5" />
+                <TextBlock x:Name="SourceTypeLabel" Text="Source Type:" Width="200" VerticalAlignment="Center" Margin="5,5,10,5" />
                 <ComboBox x:Name="SourceTypeCombobox" ItemsSource="{Binding Path=SourceTypes}"
                           SelectedValue="{Binding RepositorySourcetype, Converter={StaticResource SrcTypeConverter}}"
                           Width="90"   Margin="10,2,2,2" ></ComboBox>
@@ -55,6 +55,12 @@
                 <TextBox Cursor="IBeam" x:Name="CsharpDirectoryTextBox" Width="250" MaxLength="255" MaxLines="1" 
                          Text="{Binding Path=SourceDirectory}" TextWrapping="NoWrap"  Margin="10,2,2,2"/>
                 <Button Content="..." Click="OnCSharpFindDirectory" Width="25" Margin="10, 2, 2, 2"/>
+            </StackPanel>
+            <StackPanel x:Name="IgnorePalen" Orientation="Horizontal" Margin="0,5,0,0">
+                <TextBlock x:Name="IgnoreLabel" Text="Ignore File:" Width="200" VerticalAlignment="Center" Margin="5,5,10,5" />
+                <TextBox Cursor="IBeam" x:Name="IgnoreTextBox" Width="250" MaxLength="255" MaxLines="1" 
+                         Text="{Binding Path=IgnoreFile}" TextWrapping="NoWrap"  Margin="10,2,2,2"/>
+                <Button Content="..." Click="OnLocateIgnoreFile" Width="25" Margin="10, 2, 2, 2"/>
             </StackPanel>
             <StackPanel x:Name="MetricsPanel" Orientation="Horizontal" Margin="0,5,0,0">
                 <TextBlock x:Name="MetricsOutputLabel" Text="Metrics Output Directory:" Width="200" VerticalAlignment="Center" Margin="5,5,10,5" />

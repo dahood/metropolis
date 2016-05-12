@@ -1,9 +1,9 @@
 ﻿using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
-using Metropolis.Api.Microservices.Tasks;
+using Metropolis.Api.Services.Tasks;
 using Metropolis.Common.Models;
 
-namespace Metropolis.Api.Microservices
+namespace Metropolis.Api.Services
 {
     public class AnalysisServices : IAnalysisService
     {

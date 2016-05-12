@@ -11,6 +11,7 @@ namespace Metropolis.ViewModels
         private string projectName;
         private RepositorySourceType repositorySourceType = RepositorySourceType.Java;  //for now
         private string sourceDirectory;
+        private string ignoreFile;
         private string metricsOutputDirectory;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -58,6 +59,16 @@ namespace Metropolis.ViewModels
         public bool IsValid => ProjectName.IsNotEmpty() &&
                                SourceDirectory.IsNotEmpty() &&
                                MetricsOutputDirectory.IsNotEmpty();
+
+        public string IgnoreFile
+        {
+            get { return ignoreFile; }
+            set
+            {
+                ignoreFile = value;
+                PropertyChanged.Notify(this, x => x.IgnoreFile);
+            }
+        }
 
         protected virtual void OnPropertyChanged(string propertyName = null)
         {

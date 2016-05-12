@@ -1,4 +1,4 @@
-﻿namespace Metropolis.Api.Microservices
+﻿namespace Metropolis.Api.Services
 {
     public interface IProjectService
     {

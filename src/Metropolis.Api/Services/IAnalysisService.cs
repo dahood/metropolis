@@ -1,7 +1,7 @@
 ﻿using Metropolis.Api.Domain;
 using Metropolis.Common.Models;
 
-namespace Metropolis.Api.Microservices
+namespace Metropolis.Api.Services
 {
     public interface IAnalysisService
     {

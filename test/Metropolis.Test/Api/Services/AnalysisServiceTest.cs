@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using Metropolis.Api.Domain;
-using Metropolis.Api.Microservices;
-using Metropolis.Api.Microservices.Tasks;
-using Metropolis.Api.Microservices.Tasks.Commands;
+using Metropolis.Api.Services;
+using Metropolis.Api.Services.Tasks;
+using Metropolis.Api.Services.Tasks.Commands;
 using Metropolis.Common.Models;
 using Moq;
 using NUnit.Framework;

@@ -7,7 +7,7 @@ using Metropolis.Api.Parsers.XmlParsers.CheckStyles;
 using Metropolis.Api.Persistence;
 using Metropolis.Common.Models;
 
-namespace Metropolis.Api.Microservices
+namespace Metropolis.Api.Services
 {
     public class CodebaseService : ICodebaseService
     {
