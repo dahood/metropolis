@@ -1,9 +1,12 @@
 {
   "name": "metropolis-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Metropolis - a codebase visualization tool",
   "main": "gulpfile.js",
-  "files": [ "create-shortcut.ps1", "dist" ],
+  "files": [
+    "create-shortcut.ps1",
+    "dist"
+  ],
   "dependencies": {},
   "devDependencies": {
     "del": "^2.2.0",
