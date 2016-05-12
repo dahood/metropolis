@@ -23,7 +23,7 @@ namespace Metropolis.Views
         {
             var sourceDirectory = GetSourceDirectory("C#");
             if (sourceDirectory.IsNotEmpty())
-                ProjectDetails.CSharpSourceDirectory= sourceDirectory;
+                ProjectDetails.SourceDirectory= sourceDirectory;
         }
 
         private void OnMetricsOutputDirectory(object sender, RoutedEventArgs e)

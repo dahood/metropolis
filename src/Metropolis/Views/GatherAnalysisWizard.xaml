@@ -1,9 +1,13 @@
 ﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vc="clr-namespace:Metropolis.ValueConverters"
         x:Class="Metropolis.Views.GatherAnalysisWizard"
         Title="Gather Analysis Wizard" Height="310.679" Width="600" WindowStartupLocation="CenterScreen"
     >
+    <Window.Resources>
+        <vc:RepositorySourceTypeConverter x:Key="SrcTypeConverter" />
+    </Window.Resources>
     <Grid x:Name="LayoutRoot" HorizontalAlignment="Left">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="60"/>
@@ -40,10 +44,16 @@
                 <TextBox  Cursor="IBeam" x:Name="ProjectTextBox" Width="150" MaxLength="10" MaxLines="1" 
                           Text="{Binding Path=ProjectName}" TextWrapping="NoWrap" />
             </StackPanel>
+            <StackPanel x:Name="SourceTypePanel" Orientation="Horizontal" Margin="0,5,0,0">
+                <TextBlock x:Name="SourceTypeLabel" Text="Source Directory:" Width="90" VerticalAlignment="Center" Margin="5,5,10,5" />
+                <ComboBox x:Name="SourceTypeCombobox" ItemsSource="{Binding Path=SourceTypes}"
+                          SelectedValue="{Binding RepositorySourcetype, Converter={StaticResource SrcTypeConverter}}"
+                          Width="90"   ></ComboBox>
+            </StackPanel>
             <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,0">
-                <TextBlock x:Name="CSharpSourceLabel" Text="C# Directory:" Width="90" VerticalAlignment="Center" Margin="5,5,10,5" />
+                <TextBlock x:Name="CSharpSourceLabel" Text="Source Directory:" Width="90" VerticalAlignment="Center" Margin="5,5,10,5" />
                 <TextBox Cursor="IBeam" x:Name="CsharpDirectoryTextBox" Width="250" MaxLength="255" MaxLines="1" 
-                         Text="{Binding Path=CSharpSourceDirectory}" TextWrapping="NoWrap" />
+                         Text="{Binding Path=SourceDirectory}" TextWrapping="NoWrap" />
                 <Button Content="..." Click="OnCSharpFindDirectory" Width="25" Margin="10, 2, 2, 2"/>
             </StackPanel>
             <StackPanel x:Name="MetricsPanel" Orientation="Horizontal" Margin="0,5,0,0">

@@ -113,7 +113,7 @@ namespace Metropolis
 
         public void Analyze(ProjectDetails projectDetails)
         {
-            Workspace.SourceType = projectDetails.RepositorySourcetype.ToEnumExact<RepositorySourceType>();
+            Workspace.SourceType = projectDetails.RepositorySourcetype;
             Workspace = analysisService.Analyze(projectDetails);
         }
 

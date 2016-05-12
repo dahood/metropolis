@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using Metropolis.Common.Extensions;
 
 namespace Metropolis.Common.Models
@@ -6,13 +8,15 @@ namespace Metropolis.Common.Models
     public class ProjectDetails : INotifyPropertyChanged
     {
         private string projectName;
-        private string repositorySourceType = RepositorySourceType.Java.ToString();  //for now
-        private string cSharpSourceDirectory;
+        private RepositorySourceType repositorySourceType = RepositorySourceType.Java;  //for now
+        private string sourceDirectory;
         private string metricsOutputDirectory;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string RepositorySourcetype
+        public IEnumerable<string> SourceTypes => Enum.GetNames(typeof(RepositorySourceType));
+
+        public RepositorySourceType RepositorySourcetype
         {
             get { return repositorySourceType; }
             set
@@ -31,13 +35,13 @@ namespace Metropolis.Common.Models
             }
         }
 
-        public string CSharpSourceDirectory
+        public string SourceDirectory
         {
-            get { return cSharpSourceDirectory; }
+            get { return sourceDirectory; }
             set
             {
-                cSharpSourceDirectory = value;
-                PropertyChanged.Notify(this, x => x.CSharpSourceDirectory);
+                sourceDirectory = value;
+                PropertyChanged.Notify(this, x => x.SourceDirectory);
             }
         }
 

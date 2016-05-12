@@ -91,6 +91,7 @@
     <Compile Include="Layout\SquaredLayout.cs" />
     <Compile Include="Models\BrushFactory.cs" />
     <Compile Include="Models\LinearScale.cs" />
+    <Compile Include="ValueConverters\RepositorySourceTypeConverter.cs" />
     <Compile Include="Views\GatherAnalysisWizard.xaml.cs">
       <DependentUpon>GatherAnalysisWizard.xaml</DependentUpon>
     </Compile>
