@@ -6,7 +6,7 @@ Metropolis is a code visualization aid to help in review and analysis. It create
 
 All the green and short buildings are good. The tall red ones need to be looked and reviewed to ensure things get better in those areas.
 
-![Image of a Cityscape of Metroplis Pre beta](example-metropolis.png)
+![Image of a Cityscape of Metroplis Pre beta](https://raw.githubusercontent.com/dahood/metropolis/master/example-metropolis.png)
 
 ## How to Install
 
