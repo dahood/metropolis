@@ -2,6 +2,12 @@
 
 Metropolis is a code visualization aid to help in review and analysis. It creates 3D representations of modules of code and builds a cityscape  to help reviewers pin point areas of interest. It provides a 3D treemap which uses static code metrics, source control data, and other user data to pin point hotspots in the codebase that warrant more investigation (e.g. cyclomatic complexity, lines of code, number of touches in source control, etc).
 
+## Example
+
+All the green and short buildings are good. The tall red ones need to be looked and reviewed to ensure things get better in those areas.
+
+![Image of a Cityscape of Metroplis Pre beta](example-metropolis.png)
+
 ## How to Install
 
 1. Install NodeJS on [Windows](https://nodejs.org/dist/v6.1.0/node-v6.1.0-x64.msi)
