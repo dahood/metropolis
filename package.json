@@ -1,11 +1,11 @@
 {
   "name": "metropolis-core",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Metropolis - a codebase visualization tool",
   "main": "gulpfile.js",
   "files": [
-    "create-shortcut.ps1",
-    "delete-shortcut.ps1",
+    "metro-install.ps1",
+    "metro-uninstall.ps1",
     "dist"
   ],
   "dependencies": {
@@ -19,8 +19,8 @@
     "gulp-shell": "^0.5.2"
   },
   "scripts": {
-    "postinstall": "PowerShell.exe -File create-shortcut.ps1",
-    "preuninstall": "PowerShell.exe -File delete-shortcut.ps1",
+    "postinstall": "PowerShell.exe -File metro-install.ps1",
+    "preuninstall": "PowerShell.exe -File metro-uninstall.ps1",
     "test": "gulp test"
   },
   "repository": {
