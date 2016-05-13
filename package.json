@@ -5,6 +5,7 @@
   "main": "gulpfile.js",
   "files": [
     "create-shortcut.ps1",
+    "delete-shortcut.ps1",
     "dist"
   ],
   "dependencies": {
@@ -19,8 +20,8 @@
   },
   "scripts": {
     "postinstall": "PowerShell.exe -File create-shortcut.ps1",
-    "preuninstall": "del %HOMEPATH%\\Desktop\\Metropolis.lnk",
-    "test": "test"
+    "preuninstall": "PowerShell.exe -File delete-shortcut.ps1",
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
