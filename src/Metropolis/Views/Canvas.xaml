@@ -179,6 +179,7 @@
                 <MenuItem Header="Export to CSV" Click="RunCsvExport"/>
             </MenuItem>
             <MenuItem Header="_Help">
+                <MenuItem Header="User Guide Wiki"  Click="UserGuide"></MenuItem>
                 <MenuItem Header="Check Latest Version" Click="NewVersion" />
                 <MenuItem Header="About Metropolis" Click="AboutMetropolis" />
             </MenuItem>
