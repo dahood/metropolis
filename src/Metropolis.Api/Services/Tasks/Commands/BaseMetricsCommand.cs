@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.CompilerServices;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services.Tasks.Commands
@@ -16,9 +17,13 @@ namespace Metropolis.Api.Services.Tasks.Commands
         {
             try
             {
-                var process = new Process {StartInfo = new ProcessStartInfo(command)};
+                var process = new Process
+                {
+                    StartInfo = new ProcessStartInfo($"cmd.exe {command}") { CreateNoWindow = false, }
+                };
                 process.Start();
                 process.WaitForExit();
+                process.CloseMainWindow();
             } catch (Exception e)
             {
                 //TODO: log this exception somewhere fancy 
