@@ -7,7 +7,10 @@
     "create-shortcut.ps1",
     "dist"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "eslint": "^2.9.0",
+    "sloc": "^0.1.10"
+  },
   "devDependencies": {
     "del": "^2.2.0",
     "gulp": "^3.9.1",
