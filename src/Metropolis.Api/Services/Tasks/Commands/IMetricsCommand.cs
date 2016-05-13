@@ -5,6 +5,6 @@ namespace Metropolis.Api.Services.Tasks.Commands
 {
     public interface IMetricsCommand
     {
-        IEnumerable<MetricsResult> Run(MetricsCommandArguments projectName);
+        IEnumerable<MetricsResult> Run(MetricsCommandArguments args);
     }
 }

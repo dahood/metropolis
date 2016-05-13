@@ -36,9 +36,9 @@ namespace Metropolis.Api.Parsers.XmlParsers.CheckStyles
                            group m by m.Name into cls
                            select classBuilder.Build(cls.Key, cls.ToList())).ToList();
 
-            if (classBuilder.GetType() == typeof(PuppyCrawlCheckStylesClassBuilder))
+            if (classBuilder is PuppyCrawlCheckStylesClassBuilder)
                 return new JavaToxicityAnalyzer().Analyze(classes);
-            if (classBuilder.GetType() == typeof(EsLintCheckStylesClassBuilder))
+            if (classBuilder is EsLintCheckStylesClassBuilder)
                 return new JavascriptToxicityAnalyzer().Analyze(classes);
 
             throw new ApplicationException("No analyzer setup for this type of code");

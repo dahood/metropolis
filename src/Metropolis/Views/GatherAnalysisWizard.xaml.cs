@@ -22,21 +22,21 @@ namespace Metropolis.Views
       
         private void OnCSharpFindDirectory(object sender, RoutedEventArgs e)
         {
-            var sourceDirectory = GetSourceDirectory("C#");
+            var sourceDirectory = GetSourceDirectory("C#", ProjectDetails.SourceDirectory);
             if (sourceDirectory.IsNotEmpty())
                 ProjectDetails.SourceDirectory= sourceDirectory;
         }
 
         private void OnMetricsOutputDirectory(object sender, RoutedEventArgs e)
         {
-            var sourceDirectory = GetSourceDirectory("Metrics Output Folder");
+            var sourceDirectory = GetSourceDirectory("Metrics Output Folder", ProjectDetails.MetricsOutputDirectory);
             if (sourceDirectory.IsNotEmpty())
                 ProjectDetails.MetricsOutputDirectory = sourceDirectory;
         }
 
-        private static string GetSourceDirectory(string type)
+        private static string GetSourceDirectory(string type, string initialDirectory)
         {
-            var dialog = new FolderBrowserDialog {Description = $"Locate {type} Source Directory"};
+            var dialog = new FolderBrowserDialog {Description = $"Locate {type} Source Directory", SelectedPath = initialDirectory};
             var result = dialog.ShowDialog();
             return result == System.Windows.Forms.DialogResult.OK
                 ? dialog.SelectedPath
