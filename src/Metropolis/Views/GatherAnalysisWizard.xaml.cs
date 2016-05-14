@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Forms;
 using Metropolis.Api.Extensions;
+using Metropolis.Camera;
 using Metropolis.ViewModels;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
@@ -51,8 +52,11 @@ namespace Metropolis.Views
 
         private void OnProceed(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
-            Close();
+            using (new WaitCursor())
+            {
+                DialogResult = true;
+                Close();
+            }
         }
 
         private void OnLocateIgnoreFile(object sender, RoutedEventArgs e)
@@ -61,9 +65,13 @@ namespace Metropolis.Views
             if (file == null) return;
             ProjectDetails.IgnoreFile = file;
         }
-        private static string GetFileName(string filter)
+        private string GetFileName(string filter)
         {
-            var dialog = new OpenFileDialog { Filter = filter };
+            var dialog = new OpenFileDialog
+            {
+                Filter = filter,
+                InitialDirectory = ProjectDetails.IgnoreFile.IsNotEmpty()? ProjectDetails.IgnoreFile : @"C:\\"
+            };
             return dialog.ShowDialog().GetValueOrDefault(false) ? dialog.FileName : null;
         }
     }

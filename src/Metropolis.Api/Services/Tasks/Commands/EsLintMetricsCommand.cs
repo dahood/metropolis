@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Metropolis.Api.Extensions;
 using Metropolis.Common.Models;
 
@@ -7,7 +8,7 @@ namespace Metropolis.Api.Services.Tasks.Commands
 {
     public class EsLintMetricsCommand : BaseMetricsCommand
     {
-        private const string EsLintCommand = @"eslint  -c {0}\.eslintrc.json {1}\**  -o {2} -f checkstyle --ignore-path {3}";
+        private const string EsLintCommand = @"eslint  -c '{0}\.eslintrc.json' '{1}\**'  -o '{2}' -f checkstyle --ignore-path '{3}'";
 
         public override string MetricsType => "Eslint";
         public override string Extension => ".xml";
@@ -16,9 +17,8 @@ namespace Metropolis.Api.Services.Tasks.Commands
         {
             var result = new MetricsResult {ParseType = ParseType.EsLint, MetricsFile = GetMetricsOutoutFile(args)};
             var cmd = EsLintCommand.FormatWith(Environment.CurrentDirectory, args.SourceDirectory, result.MetricsFile, args.IgnorePath);
-            ExecuteProcess(cmd);
+            SaveAndExecuteCommand(args, cmd);
             return new[] {result};
         }
-
     }
 }

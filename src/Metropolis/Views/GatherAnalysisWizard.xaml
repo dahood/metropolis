@@ -41,7 +41,7 @@
            
             <StackPanel x:Name="ProjectPanel" Orientation="Horizontal" Margin="0,5,0,0">
                 <TextBlock x:Name="ProjectNameLabel" Text="Project:" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,5,10,5"/>
-                <TextBox  Cursor="IBeam" x:Name="ProjectTextBox" Width="150" MaxLength="10" MaxLines="1" 
+                <TextBox  Cursor="IBeam" x:Name="ProjectTextBox" Width="150" MaxLength="50" MaxLines="1" 
                           Text="{Binding Path=ProjectName}" TextWrapping="NoWrap" Margin="10,2,2,2" />
             </StackPanel>
             <StackPanel x:Name="SourceTypePanel" Orientation="Horizontal" Margin="0,5,0,0">

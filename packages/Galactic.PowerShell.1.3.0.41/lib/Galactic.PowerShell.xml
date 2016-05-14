@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Galactic.PowerShell</name>
+    </assembly>
+    <members>
+        <member name="T:Galactic.PowerShell.IPowerShellScript">
+            <summary>
+            An interface for classes that implement PowerShell scripting functionality.
+            </summary>
+        </member>
+        <member name="P:Galactic.PowerShell.IPowerShellScript.Results">
+            <summary>
+            The results of the Powershell Script call.
+            </summary>
+        </member>
+        <member name="P:Galactic.PowerShell.IPowerShellScript.RunspacePool">
+            <summary>
+            A specific Runspace pool used to invoke pipelines for this PowerShell Script. (Optional)
+            </summary>
+        </member>
+        <member name="M:Galactic.PowerShell.IPowerShellScript.RunAsynchronously(System.String,Galactic.PowerShell.PowerShell.ProcessResults,System.Collections.Generic.Dictionary{System.String,System.Object},System.Management.Automation.PSDataCollection{System.String},System.Collections.Generic.KeyValuePair{System.String,System.Object}[])">
+            <summary>
+            Runs a PowerShell script/command asynchronously.
+            </summary>
+            <param name="commandText">The text of the command to run.</param>
+            <param name="callback">The callback function used to process the results of the asynchronous run.</param>
+            <param name="stateValues">[Optional] A collection of named state values that should be passed through the invocation to the callback function.</param>
+            <param name="input">[Optional] A collection of strings representing command-line input sent to the command/script during execution.</param>
+            <param name="parameterList">A dictionary of additional parameters to supply to the PowerShell script/command.</param>
+        </member>
+        <member name="M:Galactic.PowerShell.IPowerShellScript.RunSynchronously(System.String,System.Management.Automation.Runspaces.Runspace@,Galactic.EventLog.EventLog,System.Management.Automation.PSDataCollection{System.String},System.Collections.Generic.KeyValuePair{System.String,System.Object}[])">
+            <summary>
+            Runs a PowerShell command/script synchronously.
+            </summary>
+            <param name="commandText">The text of the command to run.</param>
+            <param name="runspace">An open PowerShell Runspace this script will use to invoke its pipeline.</param>
+            <param name="log">[Optional] The event log to log execptions to. May be null for no logging.</param>
+            <param name="input">[Optional] A collection of strings representing command-line input sent to the script during execution.</param>
+            <param name="parameterList">An array of key/value objects defining additional parameters to supply to the PowerShell script.</param>
+            <returns>A collection of PSObjects that are the result of the script/command run. Null if an error occurred while processing the command / script.</returns>
+        </member>
+        <member name="M:Galactic.PowerShell.IPowerShellScript.VerifyResultProperty(System.String,System.String)">
+            <summary>
+            Verifies that one of the results returned contains a property that matches the supplied value. 
+            </summary>
+            <param name="propertyName">The name of the property in the result object to verify.</param>
+            <param name="value">The value to match against.</param>
+            <returns>True if the property value matches the supplied value. False otherwise.</returns>
+        </member>
+        <member name="T:Galactic.PowerShell.PowerShell">
+            <summary>
+            A collection of helper methods for using PowerShell.
+            </summary>
+        </member>
+        <member name="F:Galactic.PowerShell.PowerShell.DEFAULT_APP_NAME">
+            <summary>
+            The default application name used when making a PowerShell connection.
+            </summary>
+        </member>
+        <member name="F:Galactic.PowerShell.PowerShell.DEFAULT_OPERATION_TIMEOUT_IN_SEC">
+            <summary>
+            The default length of time in seconds that a PowerShell operation has to complete before timing out.
+            </summary>
+        </member>
+        <member name="F:Galactic.PowerShell.PowerShell.DEFAULT_OPEN_TIMEOUT_IN_SEC">
+            <summary>
+            The default length of time in seconds that a PowerShell connection has to open a connection before timing out.
+            </summary>
+        </member>
+        <member name="F:Galactic.PowerShell.PowerShell.DEFAULT_PORT_NUMBER">
+            <summary>
+            The default port number used by PowerShell connections.
+            </summary>
+        </member>
+        <member name="F:Galactic.PowerShell.PowerShell.DEFAULT_PORT_NUMBER_SSL">
+            <summary>
+            The default port number used by SSL based PowerShell connections.
+            </summary>
+        </member>
+        <member name="F:Galactic.PowerShell.PowerShell.DEFAULT_SHELL_URI">
+            <summary>
+            The default shell URI used by PowerShell connections.
+            </summary>
+        </member>
+        <member name="F:Galactic.PowerShell.PowerShell.DEFAULT_MIN_RUNSPACES_IN_POOL">
+            <summary>
+            The default minimum number of runspaces initialized when a pool is created.
+            </summary>
+        </member>
+        <member name="F:Galactic.PowerShell.PowerShell.DEFAULT_MAX_RUNSPACES_IN_POOL">
+            <summary>
+            The default maximum number of runspaces a pool can grow to during it's lifetime.
+            </summary>
+        </member>
+        <member name="F:Galactic.PowerShell.PowerShell.PROCESS_RESULTS_CALLBACK">
+            <summary>
+            Defines the name of the ProcessResults callback delegate variable in the script state dictionary.
+            </summary>
+        </member>
+        <member name="T:Galactic.PowerShell.PowerShell.ProcessResults">
+            <summary>
+            Processes the results of a script invocation.
+            </summary>
+            <param name="stateValues">A collection of named state values that should are passed through the script invocation.</param>
+            <param name="results">A collection of the results returned from the script's execution.</param>
+        </member>
+        <member name="T:Galactic.PowerShell.PowerShell.PowerShellScriptState">
+            <summary>
+            Contains program state that can be passed through an asyncronous invocation of a PowerShell script.
+            </summary>
+        </member>
+        <member name="P:Galactic.PowerShell.PowerShell.PowerShellScriptState.Script">
+            <summary>
+            The PowerShell script object that originated the invocation.
+            </summary>
+        </member>
+        <member name="P:Galactic.PowerShell.PowerShell.PowerShellScriptState.StateVariables">
+            <summary>
+            A dictionary of variables that are attached to the state before script invocation.
+            </summary>
+        </member>
+        <member name="M:Galactic.PowerShell.PowerShell.PowerShellScriptState.#ctor(System.Management.Automation.PowerShell)">
+            <summary>
+            Creates a new PowerShell script state object, with the supplied originating script.
+            </summary>
+            <param name="script">The PowerShell object that originated the invocation.</param>
+        </member>
+        <member name="M:Galactic.PowerShell.PowerShell.LogException(System.Exception,Galactic.EventLog.EventLog)">
+            <summary>
+            Logs an exception to the event log.
+            </summary>
+            <param name="e">The exception to log.</param>
+            <param name="log">The event log to log the execption to.</param>
+            <returns>True if the exception was logged successfully. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.PowerShell.PowerShell.CreateRunspaceConnectionInfo(System.String,System.String,System.String,System.Management.Automation.PSCredential,System.Management.Automation.Runspaces.AuthenticationMechanism,System.String,System.Int32,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            Creates an object with the information necessary to create a connection for a Runspace or RunspacePool.
+            Note: computerName and connectionURI are mutually exclusive. If both are provided, the computerName parameter will be used.
+            computerName and connectionURI need only be supplied for remote connections. If neither are provided a configuration for a
+            local connection using all defaults will be created.
+            </summary>
+            <param name="computerName">[Optional] The hostname or FQDN of the computer to connect to. Defaults to null for a local connection.</param>
+            <param name="connectionURI">[Optional] The URI to the PowerShell service to connect with. Defaults to DEFAULT_SHELL_URI.</param>
+            <param name="shellURI">[Optional] The URI of the shell that is launched once the connection is made.</param>
+            <param name="credential">[Optional] The PowerShell credentials to use when making the connection. Defaults to null which does not provide implicit credentials for the connection.</param>
+            <param name="authMechanism">[Optional] The authentication mechanism employed when creating the connection. Defaults to null which uses the PowerShell default mechanism.</param>
+            <param name="appName">[Optional] The application name used when making the PowerShell connection. Defaults to DEFAULT_APP_NAME which is the default PowerShell application name used for connections.</param>
+            <param name="operationTimeoutInSec">[Optional] The time in seconds that a PowerShell connection will wait for an operation to complete before timing out. Defaults to DEFAULT_OPERATION_TIMEOUT_IN_SEC.</param>
+            <param name="openTimeoutInSec">[Optional] The time in seconds that a PowerShell connection will wait for a connection to be established before timing out. Defaults to DEFAULT_OPEN_TIMEOUT_IN_SEC.</param>
+            <param name="useSSL">[Optional] Whether to use SSL when creating the connection. Defaults to false.</param>
+            <param name="port">[Optional] The port number to use when making the connection. Defaults to the PowerShell default port number appropriate to the SSL state of the connection.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Galactic.PowerShell.PowerShell.RunAsynchronously(System.String,System.Management.Automation.Runspaces.RunspacePool@,Galactic.PowerShell.PowerShell.ProcessResults,Galactic.EventLog.EventLog,System.Management.Automation.PSDataCollection{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.KeyValuePair{System.String,System.Object}[])">
+            <summary>
+            Runs a PowerShell command/script asynchronously.
+            </summary>
+            <param name="commandText">The text of the command to run.</param>
+            <param name="pool">An open PowerShell Runspace pool this script will use to invoke its pipeline.</param>
+            <param name="callback">The callback function used to process the results of the asynchronous run.</param>
+            <param name="log">[Optional] The event log to log execptions to. May be null for no logging.</param>
+            <param name="input">[Optional] A collection of strings representing command-line input sent to the script during execution.</param>
+            <param name="stateValues">[Optional] A collection of named state values that should be passed through the invocation to the callback function.</param>
+            <param name="parameterList">An array of key/value objects defining additional parameters to supply to the PowerShell script.</param>
+            <returns>An WaitHandle object that can be used to determine when the scrip has completed execution. Null if an error occurred while processing the command / script.</returns>
+        </member>
+        <member name="M:Galactic.PowerShell.PowerShell.ProcessAsynchronousResults(System.IAsyncResult)">
+            <summary>
+            Processes the results from an asynchronous script call. Packages the results for forwarding to a ProcessResults() delegate callback.
+            </summary>
+            <param name="results">The results of the script's invocation.</param>
+        </member>
+        <member name="M:Galactic.PowerShell.PowerShell.RunSynchronously(System.String,System.Management.Automation.Runspaces.Runspace@,Galactic.EventLog.EventLog,System.Management.Automation.PSDataCollection{System.String},System.Collections.Generic.KeyValuePair{System.String,System.Object}[])">
+            <summary>
+            Runs a PowerShell command/script synchronously.
+            </summary>
+            <param name="commandText">The text of the command to run.</param>
+            <param name="runspace">An open PowerShell Runspace this script will use to invoke its pipeline.</param>
+            <param name="log">[Optional] The event log to log execptions to. May be null for no logging.</param>
+            <param name="input">[Optional] A collection of strings representing command-line input sent to the script during execution.</param>
+            <param name="parameterList">An array of key/value objects defining additional parameters to supply to the PowerShell script.</param>
+            <returns>A collection of PSObjects that are the result of the script/command run. Null if an error occurred while processing the command / script.</returns>
+        </member>
+        <member name="T:Galactic.PowerShell.PowerShellScript">
+            <summary>
+            A class that provides the ability to run and verify the results from
+            PowerShell scripts. Provides the ability to run the scripts both
+            synchronously and asynchronously.
+            </summary>
+        </member>
+        <member name="F:Galactic.PowerShell.PowerShellScript.results">
+            <summary>
+            The results of the Powershell Script call.
+            </summary>
+        </member>
+        <member name="P:Galactic.PowerShell.PowerShellScript.Log">
+            <summary>
+            The event log that will receive events from this logger.
+            </summary>
+        </member>
+        <member name="P:Galactic.PowerShell.PowerShellScript.Results">
+            <summary>
+            The results of the Powershell Script call.
+            </summary>
+        </member>
+        <member name="P:Galactic.PowerShell.PowerShellScript.RunspacePool">
+            <summary>
+            A specific Runspace pool used to invoke pipelines for this PowerShell Script. (Optional)
+            </summary>
+        </member>
+        <member name="M:Galactic.PowerShell.PowerShellScript.#ctor(Galactic.EventLog.EventLog,System.Management.Automation.Runspaces.RunspacePool)">
+            <summary>
+            Inititalizes the PowerShellScript environment.
+            </summary>
+            <param name="log">An event log to log exceptions to. May be null if no exception logging is desired.</param>
+            <param name="pool">A runspace pool for the scripting environment to use. May be null if a new Runspace pool is desired.</param>
+        </member>
+        <member name="M:Galactic.PowerShell.PowerShellScript.Dispose">
+            <summary>
+            Disposes of system resources opened by the script.
+            </summary>
+        </member>
+        <member name="M:Galactic.PowerShell.PowerShellScript.InitializeRunspacePool">
+            <summary>
+            Creates a new pool of Runspaces for this script to utilize.
+            </summary>
+        </member>
+        <member name="M:Galactic.PowerShell.PowerShellScript.LogException(System.Exception)">
+            <summary>
+            Logs an exception to the event log.
+            </summary>
+            <param name="e">The exception to log.</param>
+            <returns>True if the exception was logged successfully. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.PowerShell.PowerShellScript.RunAsynchronously(System.String,Galactic.PowerShell.PowerShell.ProcessResults,System.Collections.Generic.Dictionary{System.String,System.Object},System.Management.Automation.PSDataCollection{System.String},System.Collections.Generic.KeyValuePair{System.String,System.Object}[])">
+            <summary>
+            Runs a PowerShell script/command asynchronously.
+            </summary>
+            <param name="commandText">The text of the command to run.</param>
+            <param name="callback">The callback function used to process the results of the asynchronous run.</param>
+            <param name="stateValues">[Optional] A collection of named state values that should be passed through the invocation to the callback function.</param>
+            <param name="input">[Optional] A collection of strings representing command-line input sent to the command/script during execution.</param>
+            <param name="parameterList">A dictionary of additional parameters to supply to the PowerShell script/command.</param>
+        </member>
+        <member name="M:Galactic.PowerShell.PowerShellScript.RunSynchronously(System.String,System.Management.Automation.Runspaces.Runspace@,Galactic.EventLog.EventLog,System.Management.Automation.PSDataCollection{System.String},System.Collections.Generic.KeyValuePair{System.String,System.Object}[])">
+            <summary>
+            Runs a PowerShell command/script synchronously.
+            </summary>
+            <param name="commandText">The text of the command to run.</param>
+            <param name="runspace">An open PowerShell Runspace this script will use to invoke its pipeline.</param>
+            <param name="log">[Optional] The event log to log execptions to. May be null for no logging.</param>
+            <param name="input">[Optional] A collection of strings representing command-line input sent to the script during execution.</param>
+            <param name="parameterList">An array of key/value objects defining additional parameters to supply to the PowerShell script.</param>
+            <returns>A collection of PSObjects that are the result of the script/command run. Null if an error occurred while processing the command / script.</returns>
+        </member>
+        <member name="M:Galactic.PowerShell.PowerShellScript.VerifyResultProperty(System.String,System.String)">
+            <summary>
+            Verifies that one of the results returned contains a property that matches the supplied value. 
+            </summary>
+            <param name="propertyName">The name of the property in the result object to verify.</param>
+            <param name="value">The value to match against.</param>
+            <returns>True if the property value matches the supplied value. False otherwise.</returns>
+        </member>
+    </members>
+</doc>

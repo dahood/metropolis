@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Galactic.EventLog</name>
+    </assembly>
+    <members>
+        <member name="T:Galactic.EventLog.Event">
+            <summary>
+            Event contains the data necessary to log events for an application or service.
+            </summary>
+        </member>
+        <member name="T:Galactic.EventLog.Event.SeverityLevels">
+            <summary>
+            The possible severity levels of a logged event.
+            </summary>
+        </member>
+        <member name="F:Galactic.EventLog.Event.SeverityLevels.Information">
+            <summary>
+            Indicates that this event is informational in nature.
+            </summary>
+        </member>
+        <member name="F:Galactic.EventLog.Event.SeverityLevels.Warning">
+            <summary>
+            Indicates that this event contains a warning.
+            </summary>
+        </member>
+        <member name="F:Galactic.EventLog.Event.SeverityLevels.Error">
+            <summary>
+            Indicates that this event contains an error.
+            </summary>
+        </member>
+        <member name="F:Galactic.EventLog.Event.SeverityLevels.Unknown">
+            <summary>
+            Indicates that this event contains an unknown security level.
+            </summary>
+        </member>
+        <member name="P:Galactic.EventLog.Event.Category">
+            <summary>
+            A category that describes the nature of the event.
+            </summary>
+        </member>
+        <member name="P:Galactic.EventLog.Event.Date">
+            <summary>
+            The date and time that the event occurred.
+            </summary>
+        </member>
+        <member name="P:Galactic.EventLog.Event.Details">
+            <summary>
+            A detailed description of the event.
+            </summary>
+        </member>
+        <member name="P:Galactic.EventLog.Event.Severity">
+            <summary>
+            The severity of the event.
+            </summary>
+        </member>
+        <member name="P:Galactic.EventLog.Event.Source">
+            <summary>
+            An identifier for the application or service from which the event originated.
+            </summary>
+        </member>
+        <member name="M:Galactic.EventLog.Event.#ctor(System.String,System.DateTime,Galactic.EventLog.Event.SeverityLevels,System.String,System.String)">
+            <summary>
+            Constructs an Event given its source, date, severity, category, and details about the event.
+            </summary>
+            <param name="source">An identifier for the application or service from which the event originated.</param>
+            <param name="date">The date and time that the event occurred.</param>
+            <param name="severity">The severity of the event.</param>
+            <param name="category">A category that describes the nature of the event.</param>
+            <param name="details">A detailed description of the event.</param>
+        </member>
+        <member name="M:Galactic.EventLog.Event.CompareTo(Galactic.EventLog.Event)">
+            <summary>
+            Compares this Event to another based upon the date of the event.
+            </summary>
+            <param name="other">The other event to compare against.</param>
+            <returns>Less than zero if this event occurred before the other event.
+            Zero if the events occurred at the same time.
+            Greater than zero if this event occured after the other event.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Event.CompareTo(System.DateTime)">
+            <summary>
+            Compares this Event to a DateTime based upon the date of the event.
+            </summary>
+            <param name="date">The DateTime to compare against.</param>
+            <returns>Less than zero if this event occurred before the date supplied.
+            Zero if this event occurred at the same time as the date supplied.
+            Greater than zero if this event occured after the date supplied.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Event.GetSeverityLevelString(Galactic.EventLog.Event.SeverityLevels)">
+            <summary>
+            Gets a string representation of a provided severity level.
+            </summary>
+            <param name="severityLevel">The severity level to get a string representation of.</param>
+            <returns>The string representation of the severity level, or an empty string if unknown.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Event.GetSeverityLevel(System.String)">
+            <summary>
+            Gets the severity level, provided its name.
+            </summary>
+            <param name="name">The name of the severity level to get.</param>
+            <returns>The severity level belonging to the name provided, or SeverityLevels.Unknown if the name does not match a severity level.</returns>
+        </member>
+        <member name="T:Galactic.EventLog.EventLog">
+            <summary>
+            EventLog is an abstract base class for classes that log activity via various methods.
+            Examples of possible methods include: text file, SQL database, e-mail, etc.
+            </summary>
+        </member>
+        <member name="M:Galactic.EventLog.EventLog.Find(System.String,System.Nullable{Galactic.EventLog.Event.SeverityLevels},System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Finds events that match the filters provided.
+            See each parameter for information on how to filter the search.
+            </summary>
+            <param name="source">Searches for all events with sources that match the string provided. Returns events of all sources on a null or empty string.</param>
+            <param name="severity">Searches for events with the specified severity level. Returns events of all severity levels on null.</param>
+            <param name="category">Searches for events with categories that match the string provided. Returns events of all categories on a null or empty string.</param>
+            <param name="begin">Returns events with a date/time on or after the date/time supplied. Does not put a lower range on event dates on a null date/time.</param>
+            <param name="end">Returns events with a date/time on or before the date/time supplied. Does not put an upper range on event dates on a null date/time.</param>
+            <returns>A list of events sorted from earliest to latest that match the given search parameters.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.EventLog.Log(Galactic.EventLog.Event)">
+            <summary>
+            Logs the event to the event log.
+            </summary>
+            <param name="eventToLog">The event to log.</param>
+            <returns>True if the event was logged successfully. False otherwise.</returns>
+        </member>
+        <member name="T:Galactic.EventLog.IEventLog">
+            <summary>
+            An interface for classes that wish to implement functionality that allows them to be a catalog of application events.
+            </summary>
+        </member>
+        <member name="M:Galactic.EventLog.IEventLog.Find(System.String,System.Nullable{Galactic.EventLog.Event.SeverityLevels},System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Finds events that match the filters provided.
+            See each parameter for information on how to filter the search.
+            </summary>
+            <param name="source">Searches for all events with sources that match the string provided. Returns events of all sources on a null or empty string.</param>
+            <param name="severity">Searches for events with the specified severity level. Returns events of all severity levels on null.</param>
+            <param name="category">Searches for events with categories that match the string provided. Returns events of all categories on a null or empty string.</param>
+            <param name="begin">Returns events with a date/time on or after the date/time supplied. Does not put a lower range on event dates on a null date/time.</param>
+            <param name="end">Returns events with a date/time on or before the date/time supplied. Does not put an upper range on event dates on a null date/time.</param>
+            <returns>A list of events sorted from earliest to latest that match the given search parameters.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.IEventLog.Log(Galactic.EventLog.Event)">
+            <summary>
+            Logs the event to the event log.
+            </summary>
+            <param name="eventToLog">The event to log.</param>
+            <returns>True if the event was logged successfully. False otherwise.</returns>
+        </member>
+        <member name="T:Galactic.EventLog.IExceptionLogger">
+            <summary>
+            An interface for classes that whish log their exceptions to an event log.
+            </summary>
+        </member>
+        <member name="P:Galactic.EventLog.IExceptionLogger.Log">
+            <summary>
+            The event log that will receive events from this logger.
+            </summary>
+        </member>
+        <member name="M:Galactic.EventLog.IExceptionLogger.LogException(System.Exception)">
+            <summary>
+            Logs an exception to the event log.
+            </summary>
+            <param name="e">The exception to log.</param>
+            <returns>True if the exception was logged successfully. False otherwise.</returns>
+        </member>
+    </members>
+</doc>

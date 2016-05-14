@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Runtime.CompilerServices;
+using System.Management.Automation.Runspaces;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services.Tasks.Commands
@@ -13,17 +13,15 @@ namespace Metropolis.Api.Services.Tasks.Commands
         public abstract string MetricsType { get; }
         public abstract string Extension { get; }
 
-        protected void ExecuteProcess(string command)
+        protected void SaveAndExecuteCommand(MetricsCommandArguments args, string command)
         {
+            SaveMetricsCommand(args, command);
             try
             {
-                var process = new Process
-                {
-                    StartInfo = new ProcessStartInfo($"cmd.exe {command}") { CreateNoWindow = false, }
-                };
-                process.Start();
-                process.WaitForExit();
-                process.CloseMainWindow();
+                var rsf = RunspaceFactory.CreateRunspace();
+                rsf.Open();
+                var pipeline = rsf.CreatePipeline(command);
+                pipeline.Invoke();
             } catch (Exception e)
             {
                 //TODO: log this exception somewhere fancy 
@@ -31,9 +29,15 @@ namespace Metropolis.Api.Services.Tasks.Commands
             }
         }
 
+        protected void SaveMetricsCommand(MetricsCommandArguments args, string cmd)
+        {
+            var fileName = Path.Combine(args.MetricsOutputDirectory, $"{args.ProjectName}_{ MetricsType}_command.ps1");
+            File.WriteAllText(fileName, cmd);
+        }
+
         protected string GetMetricsOutoutFile(MetricsCommandArguments args)
         {
-            var fileName = $"{args.ProjectName}_{MetricsType}.{Extension}";
+            var fileName = $"{args.ProjectName}_{MetricsType}{Extension}".Replace(' ','_');
             return Path.Combine(args.MetricsOutputDirectory, fileName);
         }
     }
