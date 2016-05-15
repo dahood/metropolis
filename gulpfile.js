@@ -33,7 +33,8 @@ gulp.task('test', function () {
 
 gulp.task('dist', ['clean', 'compile'], function(){
 	return gulp.src(['build\\*.dll', 'build\\*.exe', 'build\\*.config',
-            'build\\CollectionSettings\\.eslintrc.json','build\\CollectionSettings\\metropolis_checkstyle_metrics.xml', 
+            // for esling, checkstyle, fxcop, etc that parsers use to automate the collection of metrics 
+            'build\\CollectionSettings\\*.*', 
 			'!build\\Metropolis.Test.dll','!build\\FluentAssertions.Core.dll', '!build\\FluentAssertions.dll', 
             '!build\\nunit.framework.dll', '!build\\Moq.dll'])
 		.pipe(gulp.dest('dist'));
