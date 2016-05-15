@@ -29,10 +29,11 @@ Learn more by visiting the [project wiki](https://github.com/dahood/metropolis/w
 
 Metropolis is licensed under BSD (see LICENSE).
 
-Metropolis depends on:
+Metropolis depends on the following open source software:
 
 * CSVHelper (Dual licensing under MS-PL and Apache 2.0) - http://joshclose.github.io/CsvHelper/
-* Newtonsoft.JSON (The MIT License). - https://github.com/JamesNK/Newtonsoft.Json
+* Newtonsoft.JSON (The MIT). - https://github.com/JamesNK/Newtonsoft.Json
+* Galatic Powershell & Event Log (MIT) - https://raw.githubusercontent.com/GalacticAPI/Galactic/master/LICENSE
 * ESLint (JQuery Foundation) - https://github.com/eslint/eslint
 * Checkstyle (GNU LGPL 2.1) - https://github.com/checkstyle/checkstyle
 * D3 (BSD) - https://github.com/mbostock/d3
