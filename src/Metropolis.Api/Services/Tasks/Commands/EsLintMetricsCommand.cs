@@ -18,7 +18,7 @@ namespace Metropolis.Api.Services.Tasks.Commands
             var result = new MetricsResult {ParseType = ParseType.EsLint, MetricsFile = GetMetricsOutoutFile(args)};
             var cmd = EsLintCommand.FormatWith(Environment.CurrentDirectory, args.SourceDirectory, result.MetricsFile);
             if (args.IgnorePath.IsNotEmpty())
-                string.Concat(cmd, IgnorePathPart.FormatWith(args.IgnorePath));
+                cmd = string.Concat(cmd, IgnorePathPart.FormatWith(args.IgnorePath));
             SaveAndExecuteCommand(args, cmd);
             return new[] {result};
         }
