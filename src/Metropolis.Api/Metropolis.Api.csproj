@@ -133,11 +133,11 @@
     <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="Extensions\NumericExtensions.cs" />
     <Compile Include="Extensions\PropertyChangedEventHandlerExtensions.cs" />
-    <Compile Include="Extensions\ReflectionUtility.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Services\AnalysisServices.cs" />
     <Compile Include="Services\IAnalysisService.cs" />
+    <Compile Include="Analyzers\IAnalyzerFactory.cs" />
     <Compile Include="Services\IProjectService.cs" />
     <Compile Include="Services\ProjectService.cs" />
     <Compile Include="Services\Tasks\Commands\BaseMetricsCommand.cs" />

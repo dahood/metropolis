@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Metropolis.Api.Analyzers;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Services;
 using Metropolis.Api.Services.Tasks;
@@ -16,6 +17,8 @@ namespace Metropolis.Test.Api.Services
         private Mock<ICodebaseService> codebaseService;
         private Mock<IMetricsCommand> metricsCommand;
         private MetricsCommandArguments details;
+        private Mock<IAnalyzerFactory> analyzerFactory;
+        private Mock<ICodebaseAnalyzer> analyzer;
 
         [SetUp]
         public void SetUp()
@@ -23,6 +26,8 @@ namespace Metropolis.Test.Api.Services
             metricsTaskFactory = CreateMock<IMetricsTaskFactory>();
             codebaseService = CreateMock<ICodebaseService>();
             metricsCommand = CreateMock<IMetricsCommand>();
+            analyzerFactory = CreateMock<IAnalyzerFactory>();
+            analyzer = CreateMock<ICodebaseAnalyzer>();
 
             details = new MetricsCommandArguments
             {
@@ -32,7 +37,7 @@ namespace Metropolis.Test.Api.Services
                 MetricsOutputDirectory = @"c:\myMetricsOutput"
             };
 
-            analysisServices = new AnalysisServices(metricsTaskFactory.Object, codebaseService.Object);
+            analysisServices = new AnalysisServices(metricsTaskFactory.Object, codebaseService.Object, analyzerFactory.Object);
         }
 
         [Test]
@@ -45,6 +50,8 @@ namespace Metropolis.Test.Api.Services
             metricsCommand.Setup(x => x.Run(details)).Returns(new[] { result});
 
             codebaseService.Setup(x => x.Get(expectedMetricsFile, ParseType.PuppyCrawler)).Returns(CodeBase.Empty);
+            analyzerFactory.Setup(x => x.For(RepositorySourceType.Java)).Returns(analyzer.Object);
+            analyzer.Setup(x => x.Analyze(CodeBase.Empty().AllInstances)).Returns(CodeBase.Empty);
 
             var results = analysisServices.Analyze(details);
             results.Should().NotBeNull();
@@ -66,6 +73,8 @@ namespace Metropolis.Test.Api.Services
 
             codebaseService.Setup(x => x.Get(eslintMetricsFile, ParseType.EsLint)).Returns(CodeBase.Empty);
             codebaseService.Setup(x => x.Get(slocMetricsFile  , ParseType.SlocEcma)).Returns(CodeBase.Empty);
+            analyzerFactory.Setup(x => x.For(RepositorySourceType.ECMA)).Returns(analyzer.Object);
+            analyzer.Setup(x => x.Analyze(CodeBase.Empty().AllInstances)).Returns(CodeBase.Empty);
 
             var results = analysisServices.Analyze(details);
             results.Should().NotBeNull();

@@ -7,7 +7,7 @@ namespace Metropolis.Api.Analyzers
     ///     Perform more complex parsing logic or calculations (e.g. calculating toxicity involves taking the natural log of
     ///     all the properties)
     /// </summary>
-    internal interface ICodebaseAnalyzer
+    public interface ICodebaseAnalyzer
     {
         CodeBase Analyze(List<Instance> toAnalyze);
     }

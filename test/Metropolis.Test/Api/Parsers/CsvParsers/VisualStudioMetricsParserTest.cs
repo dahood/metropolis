@@ -5,7 +5,7 @@ using Metropolis.Test.Extensions;
 using Metropolis.Test.Utilities;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Core.Parsers.CsvParsers
+namespace Metropolis.Test.Api.Parsers.CsvParsers
 {
     [TestFixture]
     public class VisualStudioMetricsParserTest

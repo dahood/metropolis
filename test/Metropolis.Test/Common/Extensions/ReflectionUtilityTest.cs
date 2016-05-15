@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Linq.Expressions;
 using FluentAssertions;
-using Metropolis.Api.Extensions;
+using Metropolis.Common.Extensions;
 using Metropolis.ViewModels;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Extensions
+namespace Metropolis.Test.Common.Extensions
 {
     [TestFixture]
     public class ReflectionUtilityTest

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
+using Metropolis.Common.Extensions;
 
 namespace Metropolis.Api.Extensions
 {
     public static class PropertyChangedEventHandlerExtensions
     {
-        public static void Notify<MODEL, T>(this PropertyChangedEventHandler target, MODEL sender, Expression<Func<MODEL, T>> expression)
+        public static void Notify<TModel, T>(this PropertyChangedEventHandler target, TModel sender, Expression<Func<TModel, T>> expression)
         {
             Notify(target, sender, expression.GetProperty().Name);
         }
