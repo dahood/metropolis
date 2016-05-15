@@ -5,7 +5,7 @@ using Metropolis.Api.Persistence;
 using Metropolis.Test.Fixtures;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Core.Persistence
+namespace Metropolis.Test.Api.Persistence
 {
     [TestFixture]
     public class ProjectRepositoryTest

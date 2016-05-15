@@ -141,16 +141,15 @@ namespace Metropolis
                 Filter = "Metropolis CSV export (*.csv)|*.csv",
                 AddExtension = true
             };
-            if (dialog.ShowDialog().GetValueOrDefault(false))
+            if (!dialog.ShowDialog().GetValueOrDefault(false)) return;
+
+            using (new WaitCursor())
             {
-                using (new WaitCursor())
+                using (var stream = new StreamWriter(dialog.FileName))
                 {
-                    using (var stream = new StreamWriter(dialog.FileName))
-                    {
-                        var writer = new CsvWriter(stream);
-                        writer.WriteHeader<Instance>();
-                        Workspace.AllInstances.ForEach(x => writer.WriteRecord(x));
-                    }
+                    var writer = new CsvWriter(stream);
+                    writer.WriteHeader<Instance>();
+                    Workspace.AllInstances.ForEach(x => writer.WriteRecord(x));
                 }
             }
         }

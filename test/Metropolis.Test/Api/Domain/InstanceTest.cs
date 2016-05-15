@@ -2,7 +2,7 @@
 using Metropolis.Test.Utilities;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Core.Domain
+namespace Metropolis.Test.Api.Domain
 {
     [TestFixture]
     public class InstanceTest

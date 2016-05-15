@@ -7,7 +7,7 @@ using Metropolis.Api.Domain;
 using Metropolis.Api.Parsers;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Core.Parsers.CsvParsers
+namespace Metropolis.Test.Api.Parsers.CsvParsers
 {
     public abstract class CsvParsersBaseTest<T> where T : IClassParser, new()
     {
