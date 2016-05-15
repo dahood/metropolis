@@ -4,7 +4,7 @@ using System.Reflection;
 using Metropolis.Api.Parsers.CsvParsers;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Core.Parsers
+namespace Metropolis.Test.Api.Parsers
 {
     [TestFixture]
     public class TestToxicityParser

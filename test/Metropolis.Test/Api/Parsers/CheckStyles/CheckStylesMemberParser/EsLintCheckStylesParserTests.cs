@@ -2,7 +2,7 @@
 using Metropolis.Api.Parsers.XmlParsers.CheckStyles.Parsers.EsLint;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Core.Parsers.CheckStyles.CheckStylesMemberParser
+namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
 {
     [TestFixture]
     public class EsLintCheckStylesParserTests : CheckStylesBaseTest

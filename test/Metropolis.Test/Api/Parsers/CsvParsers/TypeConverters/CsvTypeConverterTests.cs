@@ -2,7 +2,7 @@
 using Metropolis.Api.Parsers.CsvParsers.TypeConverters.Sloc;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Core.Parsers.CsvParsers.TypeConverters
+namespace Metropolis.Test.Api.Parsers.CsvParsers.TypeConverters
 {
     [TestFixture]
     public class CsvTypeConverterTests

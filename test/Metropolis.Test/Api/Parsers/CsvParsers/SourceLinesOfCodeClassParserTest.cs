@@ -2,7 +2,7 @@
 using Metropolis.Api.Parsers.CsvParsers;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Core.Parsers.CsvParsers
+namespace Metropolis.Test.Api.Parsers.CsvParsers
 {
     [TestFixture]
     public class SourceLinesOfCodeClassParserTest : CsvParsersBaseTest<SourceLinesOfCodeParser>

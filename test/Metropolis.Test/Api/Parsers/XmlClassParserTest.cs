@@ -5,7 +5,6 @@ using FluentAssertions;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Parsers.XmlParsers;
 using Metropolis.Api.Utilities;
-using Metropolis.Test.Api.Core.Parsers;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Parsers

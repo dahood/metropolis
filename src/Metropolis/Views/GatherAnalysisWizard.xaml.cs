@@ -52,11 +52,8 @@ namespace Metropolis.Views
 
         private void OnProceed(object sender, RoutedEventArgs e)
         {
-            using (new WaitCursor())
-            {
-                DialogResult = true;
-                Close();
-            }
+            DialogResult = true;
+            Close();
         }
 
         private void OnLocateIgnoreFile(object sender, RoutedEventArgs e)

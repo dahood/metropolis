@@ -246,9 +246,12 @@ namespace Metropolis.Views
             var result = wizard.ShowDialog()??false;
 
             if (!result) return;
-          
-            workspaceProvider.Analyze(BuildArguments(wizard.ProjectDetails) );
-            DisplayWorkspaceDetails();
+
+            using (new WaitCursor())
+            {
+                workspaceProvider.Analyze(BuildArguments(wizard.ProjectDetails));
+                DisplayWorkspaceDetails();
+            }
         }
 
         private static MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)

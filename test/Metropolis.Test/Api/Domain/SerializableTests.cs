@@ -6,7 +6,7 @@ using Metropolis.Test.Extensions;
 using Newtonsoft.Json;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Core.Domain
+namespace Metropolis.Test.Api.Domain
 {
     [TestFixture]
     public class SerializableTests

@@ -5,7 +5,7 @@ using Metropolis.Api.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Class;
 using Metropolis.Api.Parsers.XmlParsers.CheckStyles.Parsers.PuppyCrawl.Member;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Core.Parsers.CheckStyles.CheckStylesMemberParser
+namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
 {
     [TestFixture]
     public class PuppyCrawlCheckStylesParserTests : CheckStylesBaseTest

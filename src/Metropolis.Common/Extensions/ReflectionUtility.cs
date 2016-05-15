@@ -6,18 +6,18 @@ namespace Metropolis.Common.Extensions
 {
     public static class ReflectionUtility
     {
-        public static string GetPropertyName<MODEL, T>(this Expression<Func<MODEL, T>> expression)
+        public static string GetPropertyName<TModel, T>(this Expression<Func<TModel, T>> expression)
         {
             return expression.Body.ToString().TrimTo('.').TrimEnd(')');
         }
 
-        public static PropertyInfo GetProperty<MODEL, T>(this Expression<Func<MODEL, T>> expression)
+        public static PropertyInfo GetProperty<TModel, T>(this Expression<Func<TModel, T>> expression)
         {
-            MemberExpression memberExpression = getMemberExpression(expression);
+            MemberExpression memberExpression = GetMemberExpression(expression);
             return (PropertyInfo)memberExpression.Member;
         }
 
-        private static MemberExpression getMemberExpression<MODEL, T>(Expression<Func<MODEL, T>> expression, bool enforceCheck = true)
+        private static MemberExpression GetMemberExpression<TModel, T>(Expression<Func<TModel, T>> expression, bool enforceCheck = true)
         {
             MemberExpression memberExpression = null;
             if (expression.Body.NodeType == ExpressionType.Convert)

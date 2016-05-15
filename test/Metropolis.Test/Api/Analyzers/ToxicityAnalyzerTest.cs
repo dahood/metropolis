@@ -2,7 +2,7 @@
 using Metropolis.Api.Domain;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Core.Analyzers
+namespace Metropolis.Test.Api.Analyzers
 {
     [TestFixture]
     public class ToxicityAnalyzerTest

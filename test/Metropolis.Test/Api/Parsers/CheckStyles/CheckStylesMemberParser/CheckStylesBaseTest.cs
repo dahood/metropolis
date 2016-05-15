@@ -5,7 +5,7 @@ using Metropolis.Api.Parsers.XmlParsers.CheckStyles;
 using Metropolis.Api.Parsers.XmlParsers.CheckStyles.Parsers;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Core.Parsers.CheckStyles.CheckStylesMemberParser
+namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
 {
     public abstract class CheckStylesBaseTest
     {
