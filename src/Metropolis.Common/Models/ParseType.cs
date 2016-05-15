@@ -7,7 +7,7 @@
         PuppyCrawler,
         EsLint,
         SlocCSharp,
-        SlocJavaScript,
+        SlocEcma,
         SlocJava
     }
 }

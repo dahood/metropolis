@@ -93,6 +93,8 @@
     <Compile Include="Parsers\CsvParsers\VisualStudioCsvLineItem.cs" />
     <Compile Include="Parsers\CsvParsers\VisualStudioMetricsParser.cs" />
     <Compile Include="Parsers\IClassParser.cs" />
+    <Compile Include="Parsers\IMetricsParserFactory.cs" />
+    <Compile Include="Parsers\MetricsParserFactory.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\CheckStylesParser.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\EsLintCheckStylesClassBuilder.cs" />
     <Compile Include="Parsers\XmlParsers\CheckStyles\ICheckStylesClassBuilder.cs" />
@@ -151,6 +153,7 @@
     <Compile Include="Services\ICodebaseService.cs" />
     <Compile Include="Services\CodebaseService.cs" />
     <Compile Include="Utilities\Clock.cs" />
+    <Compile Include="Utilities\DateTimeUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CollectionSettings\metropolis_checkstyle_metrics.xml">

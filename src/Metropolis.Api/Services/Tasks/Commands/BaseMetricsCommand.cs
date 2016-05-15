@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Management.Automation.Runspaces;
 using Metropolis.Common.Models;
@@ -15,18 +14,24 @@ namespace Metropolis.Api.Services.Tasks.Commands
 
         protected void SaveAndExecuteCommand(MetricsCommandArguments args, string command)
         {
-            SaveMetricsCommand(args, command);
             try
             {
-                var rsf = RunspaceFactory.CreateRunspace();
-                rsf.Open();
-                var pipeline = rsf.CreatePipeline(command);
-                pipeline.Invoke();
-            } catch (Exception e)
+                SaveMetricsCommand(args, command);
+                InvokeCommand(command);
+            }
+            catch (Exception e)
             {
                 //TODO: log this exception somewhere fancy 
                 throw new ApplicationException("Error occurred trying to exeucte an external process", e);
             }
+        }
+
+        private static void InvokeCommand(string command)
+        {
+            var rsf = RunspaceFactory.CreateRunspace();
+            rsf.Open();
+            var pipeline = rsf.CreatePipeline(command);
+            pipeline.Invoke();
         }
 
         protected void SaveMetricsCommand(MetricsCommandArguments args, string cmd)

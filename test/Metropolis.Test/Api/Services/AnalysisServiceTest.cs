@@ -59,13 +59,13 @@ namespace Metropolis.Test.Api.Services
             var slocMetricsFile = $"{details.MetricsOutputDirectory}\\{details.ProjectName}_sloc.csv";
 
             var eslintResult = new MetricsResult { MetricsFile = eslintMetricsFile, ParseType = ParseType.EsLint};
-            var slocResult = new MetricsResult { MetricsFile = slocMetricsFile, ParseType = ParseType.SlocJavaScript};
+            var slocResult = new MetricsResult { MetricsFile = slocMetricsFile, ParseType = ParseType.SlocEcma};
 
             metricsTaskFactory.Setup(x => x.CommandFor(RepositorySourceType.ECMA)).Returns(metricsCommand.Object);
             metricsCommand.Setup(x => x.Run(details)).Returns(new[] { eslintResult, slocResult});
 
             codebaseService.Setup(x => x.Get(eslintMetricsFile, ParseType.EsLint)).Returns(CodeBase.Empty);
-            codebaseService.Setup(x => x.Get(slocMetricsFile  , ParseType.SlocJavaScript)).Returns(CodeBase.Empty);
+            codebaseService.Setup(x => x.Get(slocMetricsFile  , ParseType.SlocEcma)).Returns(CodeBase.Empty);
 
             var results = analysisServices.Analyze(details);
             results.Should().NotBeNull();

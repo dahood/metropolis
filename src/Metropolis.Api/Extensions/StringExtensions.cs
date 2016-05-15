@@ -10,12 +10,7 @@ namespace Metropolis.Api.Extensions
             var indexOf = str.IndexOf(c);
             return indexOf == -1 ? string.Empty : str.Substring(indexOf + 1);
         }
-
-        public static string FormatString(this string str, params object[] args)
-        {
-            return string.Format(str, args);
-        }
-
+        
         public static int AsInt(this string value)
         {
             return int.Parse(value);

@@ -9,5 +9,7 @@ namespace Metropolis.Api.Services
         CodeBase Load(string projectFileName);
         CodeBase LoadDefault();
         CodeBase Get(string filename, ParseType parseType);
+        CodeBase GetToxicity(string fileName);
+        CodeBase GetVisualStudioMetrics(string fileName);
     }
 }

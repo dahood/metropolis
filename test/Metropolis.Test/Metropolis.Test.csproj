@@ -72,9 +72,13 @@
     <Compile Include="Api\Domain\CodeGraphTest.cs" />
     <Compile Include="Api\Domain\ProjectAssemblerTest.cs" />
     <Compile Include="Api\Domain\SerializableTests.cs" />
+    <Compile Include="Api\Extensions\ReflectionUtilityTest.cs" />
+    <Compile Include="Api\Parsers\MetricsParserFactoryTest.cs" />
     <Compile Include="Api\Services\AnalysisServiceTest.cs" />
+    <Compile Include="Api\Services\CodeBaseServiceTest.cs" />
     <Compile Include="Api\Services\StrictMockBaseTest.cs" />
     <Compile Include="Api\Services\Tasks\MetricsTaskFactoryTest.cs" />
+    <Compile Include="Api\Utilities\ClockTest.cs" />
     <Compile Include="Extensions\DateTimeExtensionsTest.cs" />
     <Compile Include="Extensions\DictionaryExtensionsTest.cs" />
     <Compile Include="Extensions\EnumExtensionsTest.cs" />

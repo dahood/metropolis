@@ -6,14 +6,9 @@ namespace Metropolis.Api.Extensions
 {
     public static class ReflectionUtility
     {
-        public static string GetPropertyName<MODEL, T>(this Expression<Func<MODEL, T>> expression)
-        {
-            return expression.Body.ToString().TrimTo('.').TrimEnd(')');
-        }
-
         public static PropertyInfo GetProperty<MODEL, T>(this Expression<Func<MODEL, T>> expression)
         {
-            MemberExpression memberExpression = getMemberExpression(expression);
+            var memberExpression = getMemberExpression(expression);
             return (PropertyInfo)memberExpression.Member;
         }
 

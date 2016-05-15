@@ -7,7 +7,14 @@ using Newtonsoft.Json;
 
 namespace Metropolis.Api.Persistence
 {
-    public class ProjectRepository
+    public interface IProjectRepository
+    {
+        void Save(CodeBase codebase, string fileName = "C:\\dev\\sample.project");
+        CodeBase Load(string fileName);
+        CodeBase LoadDefault();
+    }
+
+    public class ProjectRepository : IProjectRepository
     {
         public void Save(CodeBase codebase, string fileName = "C:\\dev\\sample.project")
         {
@@ -22,6 +29,19 @@ namespace Metropolis.Api.Persistence
         {
             VerifyVersionNumber(fileName);
             return CreateCodeBase(File.ReadAllText(fileName));
+        }
+
+        public CodeBase LoadDefault()
+        {
+            const string resourceName = "Metropolis.Api.entity-framework-6.project";
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+            {
+                if (stream == null) throw new ApplicationException(resourceName + " not found");
+                using (var reader = new StreamReader(stream))
+                {
+                    return CreateCodeBase(reader.ReadToEnd());
+                }
+            }
         }
 
         private static void VerifyVersionNumber(string fileName)
@@ -41,19 +61,6 @@ namespace Metropolis.Api.Persistence
             var project = JsonConvert.DeserializeObject<Project>(json);
             var sourceType = (RepositorySourceType) Enum.Parse(typeof(RepositorySourceType), project.SourceCodeLanguage);
             return new CodeBase(project.Name, ProjectAssembler.Disassemble(project), sourceType);
-        }
-
-        public CodeBase LoadDefault()
-        {
-            const string resourceName = "Metropolis.Api.entity-framework-6.project";
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
-            {
-                if (stream == null) throw new ApplicationException(resourceName+" not found");
-                using (var reader = new StreamReader(stream))
-                {
-                    return CreateCodeBase(reader.ReadToEnd());
-                }
-            }
         }
     }
 }

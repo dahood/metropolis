@@ -4,7 +4,7 @@ namespace Metropolis.Api.Services.Tasks.Commands
 {
     public class EcmaMetricsCommand : CompositeMetricsCommand
     {
-        public EcmaMetricsCommand() : base(new List<IMetricsCommand>{ new EsLintMetricsCommand(), new SlocMetricsCommand()}, false)
+        public EcmaMetricsCommand() : base(new List<IMetricsCommand>{ new EsLintMetricsCommand(), new SlocMetricsCommand()}, true)
         {
         }
     }

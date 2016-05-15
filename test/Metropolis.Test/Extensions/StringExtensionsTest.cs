@@ -26,5 +26,17 @@ namespace Metropolis.Test.Extensions
             "k".IsEmpty().Should().BeFalse();
             ((string) null).IsEmpty().Should().BeTrue();
         }
+
+        [Test]
+        public void TrimTo()
+        {
+            "abcdef".TrimTo('d').Should().Be("ef");
+        }
+
+        [Test]
+        public void TrimPath()
+        {
+            @"c:\Folder1\Folder2\Folder3".TrimPath("Folder2").Should().Be(@"\Folder2\Folder3");
+        }
     }
 }

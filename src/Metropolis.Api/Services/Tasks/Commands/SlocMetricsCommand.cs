@@ -25,7 +25,7 @@ namespace Metropolis.Api.Services.Tasks.Commands
             switch (args.RepositorySourcetype)
             {
                 case RepositorySourceType.ECMA:
-                    return ParseType.SlocJavaScript;
+                    return ParseType.SlocEcma;
                 case RepositorySourceType.CSharp:
                     return ParseType.SlocCSharp;
                 case RepositorySourceType.Java:

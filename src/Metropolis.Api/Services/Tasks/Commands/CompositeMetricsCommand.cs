@@ -4,12 +4,12 @@ using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services.Tasks.Commands
 {
-    public class CompositeMetricsCommand : IMetricsCommand
+    public abstract class CompositeMetricsCommand : IMetricsCommand
     {
         private readonly IEnumerable<IMetricsCommand> commands;
         private readonly bool runParallel;
 
-        public CompositeMetricsCommand(IEnumerable<IMetricsCommand> commands, bool runParallel = true)
+        protected CompositeMetricsCommand(IEnumerable<IMetricsCommand> commands, bool runParallel = true)
         {
             this.commands = commands;
             this.runParallel = runParallel;

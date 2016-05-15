@@ -25,7 +25,7 @@ namespace Metropolis.Api.Parsers.CsvParsers
     {
         public SourceLinesOfCodeParser(FileInclusion inclusion = FileInclusion.Js) : base(true)
         {
-            this.Inclusion = inclusion;
+            Inclusion = inclusion;
         }
 
         public SourceLinesOfCodeParser() : this(FileInclusion.Js)
