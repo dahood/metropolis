@@ -8,22 +8,19 @@ namespace Metropolis.Api.Services.Tasks.Commands
 {
     public abstract class BaseMetricsCommand : IMetricsCommand
     {
-        public abstract string MetricsType { get; }
-        public abstract string Extension { get; }
-
         public IEnumerable<MetricsResult> Run(MetricsCommandArguments args)
         {
             var result = MetricResultFor(args);
             var command = PrepareCommand(args, result);
-
             SaveAndExecuteCommand(args, command);
-            return new[] {result};
+            return new[] { result };
         }
 
+        public abstract string MetricsType { get; }
+        public abstract string Extension { get; }
         protected abstract string PrepareCommand(MetricsCommandArguments args, MetricsResult result);
-
         protected abstract MetricsResult MetricResultFor(MetricsCommandArguments args);
-
+        
         protected void SaveAndExecuteCommand(MetricsCommandArguments args, string command)
         {
             try
