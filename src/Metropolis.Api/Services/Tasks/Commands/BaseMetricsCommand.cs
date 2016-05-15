@@ -8,9 +8,21 @@ namespace Metropolis.Api.Services.Tasks.Commands
 {
     public abstract class BaseMetricsCommand : IMetricsCommand
     {
-        public abstract IEnumerable<MetricsResult> Run(MetricsCommandArguments args);
         public abstract string MetricsType { get; }
         public abstract string Extension { get; }
+
+        public IEnumerable<MetricsResult> Run(MetricsCommandArguments args)
+        {
+            var result = MetricResultFor(args);
+            var command = PrepareCommand(args, result);
+
+            SaveAndExecuteCommand(args, command);
+            return new[] {result};
+        }
+
+        protected abstract string PrepareCommand(MetricsCommandArguments args, MetricsResult result);
+
+        protected abstract MetricsResult MetricResultFor(MetricsCommandArguments args);
 
         protected void SaveAndExecuteCommand(MetricsCommandArguments args, string command)
         {
@@ -25,13 +37,11 @@ namespace Metropolis.Api.Services.Tasks.Commands
                 throw new ApplicationException("Error occurred trying to exeucte an external process", e);
             }
         }
-
         private static void InvokeCommand(string command)
         {
             var rsf = RunspaceFactory.CreateRunspace();
             rsf.Open();
-            var pipeline = rsf.CreatePipeline(command);
-            pipeline.Invoke();
+            rsf.CreatePipeline(command).Invoke();
         }
 
         protected void SaveMetricsCommand(MetricsCommandArguments args, string cmd)

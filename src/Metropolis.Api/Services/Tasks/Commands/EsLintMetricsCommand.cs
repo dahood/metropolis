@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Metropolis.Api.Extensions;
 using Metropolis.Common.Models;
 
@@ -12,15 +11,20 @@ namespace Metropolis.Api.Services.Tasks.Commands
 
         public override string MetricsType => "Eslint";
         public override string Extension => ".xml";
-
-        public override IEnumerable<MetricsResult> Run(MetricsCommandArguments args)
+        
+        protected override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
         {
-            var result = new MetricsResult {ParseType = ParseType.EsLint, MetricsFile = GetMetricsOutoutFile(args)};
             var cmd = EsLintCommand.FormatWith(Environment.CurrentDirectory, args.SourceDirectory, result.MetricsFile);
+
             if (args.IgnorePath.IsNotEmpty())
                 cmd = string.Concat(cmd, IgnorePathPart.FormatWith(args.IgnorePath));
-            SaveAndExecuteCommand(args, cmd);
-            return new[] {result};
+
+            return cmd;
+        }
+
+        protected override MetricsResult MetricResultFor(MetricsCommandArguments args)
+        {
+            return new MetricsResult {ParseType = ParseType.EsLint, MetricsFile = GetMetricsOutoutFile(args)};
         }
     }
 }
