@@ -8,6 +8,13 @@ namespace Metropolis.Api.Services.Tasks.Commands
 {
     public abstract class BaseMetricsCommand : IMetricsCommand
     {
+        private readonly bool useNodePath;
+
+        protected BaseMetricsCommand(bool useNodePath)
+        {
+            this.useNodePath = useNodePath;
+        }
+
         public IEnumerable<MetricsResult> Run(MetricsCommandArguments args)
         {
             var result = MetricResultFor(args);
@@ -20,25 +27,19 @@ namespace Metropolis.Api.Services.Tasks.Commands
         public abstract string Extension { get; }
         protected abstract string PrepareCommand(MetricsCommandArguments args, MetricsResult result);
         protected abstract MetricsResult MetricResultFor(MetricsCommandArguments args);
-        
+
         protected void SaveAndExecuteCommand(MetricsCommandArguments args, string command)
         {
             try
             {
                 SaveMetricsCommand(args, command);
-                InvokeCommand(command);
+                InvokeCommand(command, useNodePath);
             }
             catch (Exception e)
             {
                 //TODO: log this exception somewhere fancy 
                 throw new ApplicationException("Error occurred trying to exeucte an external process", e);
             }
-        }
-        private static void InvokeCommand(string command)
-        {
-            var rsf = RunspaceFactory.CreateRunspace();
-            rsf.Open();
-            rsf.CreatePipeline(command).Invoke();
         }
 
         protected void SaveMetricsCommand(MetricsCommandArguments args, string cmd)
@@ -51,6 +52,28 @@ namespace Metropolis.Api.Services.Tasks.Commands
         {
             var fileName = $"{args.ProjectName}_{MetricsType}{Extension}".Replace(' ','_');
             return Path.Combine(args.MetricsOutputDirectory, fileName);
+        }
+
+
+        private static void InvokeCommand(string command, bool useNodePath)
+        {
+            using (var rs = RunspaceFactory.CreateRunspace())
+            {
+                rs.Open();
+                if (useNodePath)
+                    rs.CreatePipeline(GetNodeBinPath(rs) + command).Invoke();
+                else
+                    rs.CreatePipeline(command).Invoke();
+            }
+        }
+
+        private static string GetNodeBinPath(Runspace rs)
+        {
+            var currentPath = rs.SessionStateProxy.Path.CurrentLocation.Path;
+            if (currentPath.Contains("dist"))
+                return @"\..\node_modules\.bin\";
+            //src\Metropolis\bin\Debug
+            return @"..\..\..\..\node_modules\.bin\";
         }
     }
 }

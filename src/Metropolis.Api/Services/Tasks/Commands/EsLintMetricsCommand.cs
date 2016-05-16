@@ -11,7 +11,11 @@ namespace Metropolis.Api.Services.Tasks.Commands
 
         public override string MetricsType => "Eslint";
         public override string Extension => ".xml";
-        
+
+        public EsLintMetricsCommand() : base(true)
+        {
+        }
+
         protected override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
         {
             var cmd = EsLintCommand.FormatWith(Environment.CurrentDirectory, args.SourceDirectory, result.MetricsFile);
