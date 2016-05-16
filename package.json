@@ -9,8 +9,8 @@
     "dist"
   ],
   "dependencies": {
-    "eslint": ">=2.9.0",
-    "sloc": ">=0.1.10"
+    "eslint": "~2.9.0",
+    "sloc": "~0.1.10"
   },
   "devDependencies": {
     "del": "^2.2.0",
