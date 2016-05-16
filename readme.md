@@ -11,7 +11,7 @@ All the green and short buildings are good. The tall red ones need to be looked 
 For more information on code health please read Erik Doernenburg's awesome article on [How Toxic is Your Code?](http://erik.doernenburg.com/2008/11/how-toxic-is-your-code/). It explains toxicity scales and how they are calculated for Java.
 Toxicity is essentially a [Richter Scale](https://en.wikipedia.org/wiki/Richter_magnitude_scale) of code health. If your code has an average toxicity of higher than 0.5 in most language (C#, Java, Javascript/ECMA) then you probably need to invest more than usual in quality measures.
 
-![Image of a Cityscape of Metroplis Pre beta](https://raw.githubusercontent.com/dahood/metropolis/master/example-metropolis.png)
+![Cityscape of Metroplis](https://raw.githubusercontent.com/dahood/metropolis/master/example-metropolis.png =250x250)
 
 ## How to Install
 
