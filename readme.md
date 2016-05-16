@@ -4,7 +4,12 @@ Metropolis is a code visualization aid to help in review and analysis. It create
 
 ## Example
 
+Metropolis maps every code unit (for C# or Java this is a class, for Javascript this is a file) into a city building. The default is to create taller building based on lines of code and the color of that building based on how healthy the code is.
+
 All the green and short buildings are good. The tall red ones need to be looked and reviewed to ensure things get better in those areas.
+
+For more information on code health please read Erik Doernenburg's awesome article on [How Toxic is Your Code?](http://erik.doernenburg.com/2008/11/how-toxic-is-your-code/). It explains toxicity scales and how they are calculated for Java.
+Toxicity is essentially a [Richter Scale](https://en.wikipedia.org/wiki/Richter_magnitude_scale) of code health. If your code has an average toxicity of higher than 0.5 in most language (C#, Java, Javascript/ECMA) then you probably need to invest more than usual in quality measures.
 
 ![Image of a Cityscape of Metroplis Pre beta](https://raw.githubusercontent.com/dahood/metropolis/master/example-metropolis.png)
 
