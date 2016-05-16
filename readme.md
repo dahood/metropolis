@@ -8,6 +8,7 @@ Metropolis maps every code unit (for C# or Java this is a class, for Javascript 
 
 ### Example - Hibernate
 ![Cityscape of Hibernate](https://raw.githubusercontent.com/dahood/metropolis/master/example-metropolis.png)
+
 Hibernate has over 330,000 lines of code and an average toxicity of 1.335. You can see some areas are very good, but given the size and complexity of this project there are areas of concern highlighted in red. Using Metropolis's code inspector you can view these classes to review this code.
 
 For more information on code health please read Erik Doernenburg's awesome article on [How Toxic is Your Code?](http://erik.doernenburg.com/2008/11/how-toxic-is-your-code/). It explains toxicity scales and how they are calculated for Java.
