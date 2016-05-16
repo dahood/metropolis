@@ -35,9 +35,10 @@ gulp.task('dist', ['clean', 'compile'], function(){
 	return gulp.src(['build\\*.dll', 'build\\*.exe', 'build\\*.config',
             // for esling, checkstyle, fxcop, etc that parsers use to automate the collection of metrics 
             'build\\CollectionSettings\\*.*', 
-			'!build\\Metropolis.Test.dll','!build\\FluentAssertions.Core.dll', '!build\\FluentAssertions.dll', 
+            // exclude all these test files
+            '!build\\Metropolis.Test.dll','!build\\FluentAssertions.Core.dll', '!build\\FluentAssertions.dll', 
             '!build\\nunit.framework.dll', '!build\\Moq.dll'])
-		.pipe(gulp.dest('dist'));
+            .pipe(gulp.dest('dist'));
 });
 
 gulp.task('default', ['compile', 'test']);
