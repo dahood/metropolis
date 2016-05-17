@@ -75,8 +75,8 @@ namespace Metropolis.Api.Analyzers.Toxicity
             };
 
             score.Toxicity = score.LinesOfCode + score.NumberOfMethods + 
-                score.ClassFanOutComplexity + score.AnonInnerLength +
-                score.MethodLength + score.CyclomaticComplexity +
+                score.ClassFanOutComplexity + score.ClassDataAbstractionCoupling +
+                score.AnonInnerLength + score.MethodLength + score.CyclomaticComplexity +
                 score.MissingDefaultCase + score.BooleanExpressionComplexity +
                 score.NestedIfDepth + score.NestedTryDepth + score.ParameterNumber;
 

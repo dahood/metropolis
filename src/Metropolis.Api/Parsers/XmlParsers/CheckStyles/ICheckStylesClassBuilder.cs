@@ -25,7 +25,7 @@ namespace Metropolis.Api.Parsers.XmlParsers.CheckStyles
         public Instance Build(string key, List<CheckStylesItem> items)
         {
             var grouped = (from item in items
-                           group item by new { Line = item.Line, Column = item.Column } into grp
+                           group item by new {item.Line, item.Column } into grp
                            select new { grp.Key, Metrics = grp }).ToList();
 
             var members = grouped.Select(each => {
