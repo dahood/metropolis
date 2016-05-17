@@ -1,5 +1,4 @@
-﻿using System.Windows.Forms.VisualStyles;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Metropolis.Api.Parsers;
 using Metropolis.Api.Parsers.CsvParsers;
 using Metropolis.Api.Parsers.XmlParsers.CheckStyles;
