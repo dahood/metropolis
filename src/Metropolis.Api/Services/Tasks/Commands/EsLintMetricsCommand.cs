@@ -6,7 +6,7 @@ namespace Metropolis.Api.Services.Tasks.Commands
 {
     public class EsLintMetricsCommand : BaseMetricsCommand
     {
-        private const string EsLintCommand = @"eslint  -c '{0}\.eslintrc.json' '{1}\**'  -o '{2}' -f checkstyle ";
+        private const string EsLintCommand = @"eslint -c '{0}\.eslintrc.json' '{1}\**' -o '{2}' -f checkstyle";
         private const string IgnorePathPart = "  --ignore - path '{0}'";
 
         public override string MetricsType => "Eslint";

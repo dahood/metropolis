@@ -60,8 +60,9 @@ namespace Metropolis.Api.Services.Tasks.Commands
             using (var rs = RunspaceFactory.CreateRunspace())
             {
                 rs.Open();
+                var path = GetNodeBinPath(rs);
                 if (useNodePath)
-                    rs.CreatePipeline(GetNodeBinPath(rs) + command).Invoke();
+                    rs.CreatePipeline(path + command).Invoke();
                 else
                     rs.CreatePipeline(command).Invoke();
             }
@@ -70,9 +71,10 @@ namespace Metropolis.Api.Services.Tasks.Commands
         private static string GetNodeBinPath(Runspace rs)
         {
             var currentPath = rs.SessionStateProxy.Path.CurrentLocation.Path;
-            if (currentPath.Contains("dist"))
-                return @"\..\node_modules\.bin\";
-            //src\Metropolis\bin\Debug
+            // when installed via npm will show up under Desktop as current Path
+            if (currentPath.Contains("Desktop"))
+                return @"..\AppData\Roaming\npm\node_modules\metropolis-core\node_modules\.bin\";
+            //this is for if using debug 
             return @"..\..\..\..\node_modules\.bin\";
         }
     }
