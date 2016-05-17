@@ -6,7 +6,7 @@ namespace Metropolis.Api.Services.Tasks.Commands
 {
     /// <summary>
     ///     Java Checkstyle parser automation
-    ///     TODO: On view post this link: https://java.com/en/download/manual.jsp and then check if Java is installed or not
+    ///     TODO: check if Java is installed or not
     ///     For more info checkout: http://checkstyle.sourceforge.net/cmdline.html#Usage_by_Classpath_update
     /// </summary>
     public class JavaMetricsCommand : BaseMetricsCommand
