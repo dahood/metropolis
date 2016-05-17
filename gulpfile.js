@@ -35,7 +35,9 @@ gulp.task('dist', ['clean', 'compile'], function(){
 	return gulp.src(['build\\*.dll', 'build\\*.exe', 'build\\*.config',
             // for eslint, checkstyle, fxcop, etc that parsers use to automate the collection of metrics 
             'build\\CollectionSettings\\**',
-            'build\\CollectionSettings\\.eslintrc.json', 
+            'build\\CollectionSettings\\.eslintrc.json',
+            // include collection tooling
+            'build\\CollectionTools\\checkstyle\\*.jar',
             // exclude all these test files
             '!build\\Metropolis.Test.dll','!build\\FluentAssertions.Core.dll', '!build\\FluentAssertions.dll', 
             '!build\\nunit.framework.dll', '!build\\Moq.dll'])
