@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using Metropolis.Api.Extensions;
 using Metropolis.Common.Models;
 
@@ -18,7 +19,7 @@ namespace Metropolis.Api.Services.Tasks.Commands
 
         protected override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
         {
-            var cmd = EsLintCommand.FormatWith(Environment.CurrentDirectory, args.SourceDirectory, result.MetricsFile);
+            var cmd = EsLintCommand.FormatWith(AppDomain.CurrentDomain.BaseDirectory, args.SourceDirectory, result.MetricsFile);
 
             if (args.IgnorePath.IsNotEmpty())
                 cmd = string.Concat(cmd, IgnorePathPart.FormatWith(args.IgnorePath));
