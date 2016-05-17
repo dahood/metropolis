@@ -32,7 +32,7 @@ namespace Metropolis.Api.Parsers.CsvParsers
         {
         }
 
-        public FileInclusion Inclusion { get; private set; }
+        public FileInclusion Inclusion { get; }
 
         protected override CodeBase ParseLines(IEnumerable<SourceLinesOfCodeLineItem> lines)
         {
@@ -60,7 +60,7 @@ namespace Metropolis.Api.Parsers.CsvParsers
         public int EmptyLoc { get; set; }
     }
 
-    public class SourceLinesOfCodeMap : CsvClassMap<SourceLinesOfCodeLineItem>
+    public sealed class SourceLinesOfCodeMap : CsvClassMap<SourceLinesOfCodeLineItem>
     {
         public SourceLinesOfCodeMap()
         {

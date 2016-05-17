@@ -1,14 +1,13 @@
 ﻿using System.Windows;
 using System.Windows.Forms;
 using Metropolis.Api.Extensions;
-using Metropolis.Camera;
 using Metropolis.ViewModels;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace Metropolis.Views
 {
     /// <summary>
-    /// Interaction logic for GatherAnalysisWizard.xaml
+    /// Used to gather information so that automation can collect and import metrics into Metropolis
     /// </summary>
     public partial class GatherAnalysisWizard 
     {

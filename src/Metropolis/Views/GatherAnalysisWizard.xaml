@@ -37,7 +37,7 @@
             </Grid>
             </Grid>
 
-            <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Vertical" x:Name="ProjectDetailsPanel">
+            <StackPanel Orientation="Vertical" x:Name="ProjectDetailsPanel">
            
             <StackPanel x:Name="ProjectPanel" Orientation="Horizontal" Margin="0,5,0,0">
                 <TextBlock x:Name="ProjectNameLabel" Text="Project:" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,5,10,5"/>
@@ -69,7 +69,7 @@
                 <Button Content="..." Click="OnMetricsOutputDirectory" Width="25" Margin="10, 2, 2, 2"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,35,10,10">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,35,10,10">
             <Button Content="Cancel" x:Name="CancelButton" Click="OnCancel"  Width="75" />
             <Button Content="Run Analysis" x:Name="AnalyzeButton" 
                     Click="OnProceed"  Width="75"  Margin="5,0,0,0"/>

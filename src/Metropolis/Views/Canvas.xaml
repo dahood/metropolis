@@ -1,9 +1,6 @@
 ﻿<Window x:Class="Metropolis.Views.Canvas"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:system="clr-namespace:System;assembly=mscorlib"
-        xmlns:s="clr-namespace:System;assembly=mscorlib"
-        xmlns:local="clr-namespace:Metropolis"
         Title="Metropolis v0.0.1"
 
         Width="1200" Height="800" WindowStartupLocation="CenterScreen" Icon="..\Properties/logo.ico">

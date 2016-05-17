@@ -10,7 +10,11 @@ namespace Metropolis.Api.Services.Tasks.Commands
 
         public override string MetricsType => "Sloc";
         public override string Extension => ".csv";
-        
+
+        public SlocMetricsCommand() : base(true)
+        {
+        }
+
         protected override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
         {
             return SlocCommand.FormatWith(args.SourceDirectory, result.MetricsFile);
@@ -18,7 +22,7 @@ namespace Metropolis.Api.Services.Tasks.Commands
 
         protected override MetricsResult MetricResultFor(MetricsCommandArguments args)
         {
-            return new MetricsResult { ParseType = GetSLocType(args), MetricsFile = GetMetricsOutoutFile(args) };
+            return new MetricsResult {ParseType = GetSLocType(args), MetricsFile = GetMetricsOutoutFile(args)};
         }
 
         private static ParseType GetSLocType(MetricsCommandArguments args)
