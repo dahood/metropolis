@@ -18,8 +18,8 @@ Hibernate is an object relational mapping tool used to speed up development of a
 ## How to Install
 
 1. Install NodeJS on [Windows](https://nodejs.org/dist/v6.1.0/node-v6.1.0-x64.msi)
-2. Install npm package
-`npm install -g metropolis-core`
+1. `Set-ExecutionPolicy remotesigned` - sets powershell execution policy to allow installation
+1. `npm install -g metropolis-core` - installs through npm package globally (e.g. c:\users\jmccracken\appdata\roaming\node_modules\..) 
 
 Currently, Metropolis only support Windows sorry no [WPF on Mono yet](http://www.mono-project.com/docs/gui/wpf/). 
 We plan on supporting the command line interface using Mono.
