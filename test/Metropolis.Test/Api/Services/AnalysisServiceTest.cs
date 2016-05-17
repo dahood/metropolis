@@ -31,7 +31,7 @@ namespace Metropolis.Test.Api.Services
 
             details = new MetricsCommandArguments
             {
-                RepositorySourcetype = RepositorySourceType.Java,
+                RepositorySourceType = RepositorySourceType.Java,
                 ProjectName = "test",
                 SourceDirectory = @"c:\mySourceCode\JavaProject",
                 MetricsOutputDirectory = @"c:\myMetricsOutput"
@@ -60,7 +60,7 @@ namespace Metropolis.Test.Api.Services
         [Test]
         public void CanAnalyzeCodeBase_WithMultipleMetricsResults()
         {
-            details.RepositorySourcetype = RepositorySourceType.ECMA;
+            details.RepositorySourceType = RepositorySourceType.ECMA;
 
             var eslintMetricsFile = $"{details.MetricsOutputDirectory}\\{details.ProjectName}_eslint.xml";
             var slocMetricsFile = $"{details.MetricsOutputDirectory}\\{details.ProjectName}_sloc.csv";

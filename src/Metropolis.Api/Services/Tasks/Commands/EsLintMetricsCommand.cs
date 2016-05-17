@@ -9,8 +9,9 @@ namespace Metropolis.Api.Services.Tasks.Commands
         private const string EsLintCommand = @"eslint -c '{0}.eslintrc.json' '{1}\**' -o '{2}' -f checkstyle";
         private const string IgnorePathPart = "  --ignore - path '{0}'";
 
-        public override string MetricsType => "Eslint";
-        public override string Extension => ".xml";
+        protected override string MetricsType => "Eslint";
+        protected override string Extension => ".xml";
+        protected override ParseType ParseType => ParseType.EsLint;
 
         public EsLintMetricsCommand() : base(true)
         {
@@ -24,11 +25,6 @@ namespace Metropolis.Api.Services.Tasks.Commands
                 cmd = string.Concat(cmd, IgnorePathPart.FormatWith(args.IgnorePath));
 
             return cmd;
-        }
-
-        protected override MetricsResult MetricResultFor(MetricsCommandArguments args)
-        {
-            return new MetricsResult {ParseType = ParseType.EsLint, MetricsFile = GetMetricsOutoutFile(args)};
         }
     }
 }

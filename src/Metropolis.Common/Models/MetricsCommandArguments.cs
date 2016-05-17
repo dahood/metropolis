@@ -2,7 +2,7 @@
 {
     public class MetricsCommandArguments 
     {
-        public RepositorySourceType RepositorySourcetype { get; set; }
+        public RepositorySourceType RepositorySourceType { get; set; }
 
         public string ProjectName { get; set; }
 

@@ -23,12 +23,12 @@ namespace Metropolis.Api.Services.Tasks.Commands
             return new[] { result };
         }
 
-        public abstract string MetricsType { get; }
-        public abstract string Extension { get; }
+        protected abstract string MetricsType { get; }
+        protected abstract string Extension { get; }
+        protected abstract ParseType ParseType { get; }
         protected abstract string PrepareCommand(MetricsCommandArguments args, MetricsResult result);
-        protected abstract MetricsResult MetricResultFor(MetricsCommandArguments args);
 
-        protected void SaveAndExecuteCommand(MetricsCommandArguments args, string command)
+        private void SaveAndExecuteCommand(MetricsCommandArguments args, string command)
         {
             try
             {
@@ -42,13 +42,18 @@ namespace Metropolis.Api.Services.Tasks.Commands
             }
         }
 
-        protected void SaveMetricsCommand(MetricsCommandArguments args, string cmd)
+        private void SaveMetricsCommand(MetricsCommandArguments args, string cmd)
         {
             var fileName = Path.Combine(args.MetricsOutputDirectory, $"{args.ProjectName}_{ MetricsType}_command.ps1");
             File.WriteAllText(fileName, cmd);
         }
 
-        protected string GetMetricsOutoutFile(MetricsCommandArguments args)
+        private MetricsResult MetricResultFor(MetricsCommandArguments args)
+        {
+            return new MetricsResult { ParseType = ParseType, MetricsFile = GetOutputFile(args) };
+        }
+
+        private string GetOutputFile(MetricsCommandArguments args)
         {
             var fileName = $"{args.ProjectName}_{MetricsType}{Extension}".Replace(' ','_');
             return Path.Combine(args.MetricsOutputDirectory, fileName);

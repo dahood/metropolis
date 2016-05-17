@@ -25,7 +25,7 @@ namespace Metropolis.Api.Services
 
         public CodeBase Analyze(MetricsCommandArguments details)
         {
-            var command = metricsTaskFactory.CommandFor(details.RepositorySourcetype);
+            var command = metricsTaskFactory.CommandFor(details.RepositorySourceType);
             var metrics = command.Run(details);
 
             var codeBase = CodeBase.Empty();
@@ -35,7 +35,7 @@ namespace Metropolis.Api.Services
                 codeBase.Enrich(new CodeGraph(cb.AllInstances));
             });
 
-            return analyzerFactory.For(details.RepositorySourcetype).Analyze(codeBase.AllInstances);
+            return analyzerFactory.For(details.RepositorySourceType).Analyze(codeBase.AllInstances);
         }
     }
 }

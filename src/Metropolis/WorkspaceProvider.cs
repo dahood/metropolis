@@ -112,7 +112,7 @@ namespace Metropolis
 
         public void Analyze(MetricsCommandArguments metricsCommandArguments)
         {
-            Workspace.SourceType = metricsCommandArguments.RepositorySourcetype;
+            Workspace.SourceType = metricsCommandArguments.RepositorySourceType;
             Workspace = analysisService.Analyze(metricsCommandArguments);
         }
 
