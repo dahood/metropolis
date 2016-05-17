@@ -19,7 +19,7 @@ namespace Metropolis.Test.Api.Parsers
                 new Uri(Path.Combine(path, @"metropolis\src\Metropolis\SampleFiles\aspnet-toxicity-input.csv"))
                     .LocalPath;
 
-            var results = new ToxicityParser().Parse(fileName);
+            var results = new ToxicityParser(true).Parse(fileName);
             Assert.That(results, Is.Not.Null);
             //TODO: assert something :)
         }
