@@ -18,13 +18,13 @@ namespace Metropolis.ViewModels
 
         public IEnumerable<string> SourceTypes => new[] { "ECMA" };
 
-        public RepositorySourceType RepositorySourcetype
+        public RepositorySourceType RepositorySourceType
         {
             get { return repositorySourceType; }
             set
             {
                 repositorySourceType = value;
-                PropertyChanged.Notify(this, x => x.RepositorySourcetype);
+                PropertyChanged.Notify(this, x => x.RepositorySourceType);
             }
         }
         public string ProjectName

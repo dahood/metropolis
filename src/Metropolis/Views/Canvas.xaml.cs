@@ -259,7 +259,7 @@ namespace Metropolis.Views
             return new MetricsCommandArguments
             {
                 ProjectName =projectDetails.ProjectName,
-                RepositorySourcetype = projectDetails.RepositorySourcetype,
+                RepositorySourcetype = projectDetails.RepositorySourceType,
                 MetricsOutputDirectory = projectDetails.MetricsOutputDirectory,
                 IgnorePath = projectDetails.IgnoreFile,
                 SourceDirectory = projectDetails.SourceDirectory

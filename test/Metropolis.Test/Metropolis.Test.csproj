@@ -66,18 +66,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Analyzers\AnalyzeFactoryTest.cs" />
     <Compile Include="Api\Analyzers\ToxicityAnalyzerTest.cs" />
     <Compile Include="Api\Domain\InstanceTest.cs" />
     <Compile Include="Api\Domain\CodeBaseTest.cs" />
     <Compile Include="Api\Domain\CodeGraphTest.cs" />
     <Compile Include="Api\Domain\ProjectAssemblerTest.cs" />
     <Compile Include="Api\Domain\SerializableTests.cs" />
+    <Compile Include="Api\Parsers\CheckStyles\BaseCheckstylesParserTest.cs" />
+    <Compile Include="Api\Parsers\CheckStyles\CheckStylesParserTest.cs" />
     <Compile Include="Api\Parsers\MetricsParserFactoryTest.cs" />
     <Compile Include="Api\Services\AnalysisServiceTest.cs" />
     <Compile Include="Api\Services\CodeBaseServiceTest.cs" />
     <Compile Include="Api\Services\StrictMockBaseTest.cs" />
     <Compile Include="Api\Services\Tasks\MetricsTaskFactoryTest.cs" />
     <Compile Include="Api\Utilities\ClockTest.cs" />
+    <Compile Include="Common\Extensions\PropertyChangedEventTest.cs" />
     <Compile Include="Common\Extensions\ReflectionUtilityTest.cs" />
     <Compile Include="Extensions\DateTimeExtensionsTest.cs" />
     <Compile Include="Extensions\DictionaryExtensionsTest.cs" />
@@ -87,6 +91,7 @@
     <Compile Include="Extensions\StringExtensionsTest.cs" />
     <Compile Include="Extensions\XmlExtensionsTest.cs" />
     <Compile Include="Fixtures\CodeGraphFixture.cs" />
+    <Compile Include="Fixtures\MetricsDataFixture.cs" />
     <Compile Include="Models\LinearScaleTest.cs" />
     <Compile Include="Api\Parsers\CheckStyles\CheckStylesMemberParser\CheckStylesBaseTest.cs" />
     <Compile Include="Api\Parsers\CheckStyles\CheckStylesMemberParser\EsLintCheckStylesParserTests.cs" />
