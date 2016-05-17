@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="Metropolis.Views.EcmaCollectionPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Metropolis.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Width="550" Height="100">
+    <StackPanel>
+        <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,0">
+            <TextBlock x:Name="CSharpSourceLabel" Text="Source Directory:" Width="200" VerticalAlignment="Center" Margin="5,5,10,5" />
+            <TextBox Cursor="IBeam" x:Name="CsharpDirectoryTextBox" Width="250" MaxLength="255" MaxLines="1" 
+                             Text="{Binding Path=SourceDirectory}" TextWrapping="NoWrap"  Margin="10,2,2,2"/>
+            <Button Content="..." Click="OnCSharpFindDirectory" Width="25" Margin="10, 2, 2, 2"/>
+        </StackPanel>
+        <StackPanel x:Name="IgnorePanel" Orientation="Horizontal" Margin="0,5,0,0">
+            <TextBlock x:Name="IgnoreLabel" Text="Ignore File:" Width="200" VerticalAlignment="Center" Margin="5,5,10,5" />
+            <TextBox Cursor="IBeam" x:Name="IgnoreTextBox" Width="250" MaxLength="255" MaxLines="1" 
+                             Text="{Binding Path=IgnoreFile}" TextWrapping="NoWrap"  Margin="10,2,2,2"/>
+            <Button Content="..." Click="OnLocateIgnoreFile" Width="25" Margin="10, 2, 2, 2"/>
+        </StackPanel>
+        <StackPanel x:Name="MetricsPanel" Orientation="Horizontal" Margin="0,5,0,0">
+            <TextBlock x:Name="MetricsOutputLabel" Text="Metrics Output Directory:" Width="200" VerticalAlignment="Center" Margin="5,5,10,5" />
+            <TextBox Cursor="IBeam" x:Name="MetricsOutputTextBox" Width="250" MaxLength="255" MaxLines="1" 
+                             Text="{Binding Path=MetricsOutputDirectory}" TextWrapping="NoWrap"  Margin="10,2,2,2"/>
+            <Button Content="..." Click="OnMetricsOutputDirectory" Width="25" Margin="10, 2, 2, 2"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
