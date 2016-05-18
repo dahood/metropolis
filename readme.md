@@ -5,7 +5,6 @@ Metropolis is a code visualization aid to help in review and analysis.
 ## How to Install
 
 1. Install NodeJS on [Windows](https://nodejs.org/dist/v6.1.0/node-v6.1.0-x64.msi)
-1. `Set-ExecutionPolicy remotesigned` - sets powershell execution policy to allows this installation
 1. `npm install -g metropolis-core` - installs through npm package globally and puts a shortcut on your desktop 
 
 Currently, Metropolis only support Windows sorry no [WPF on Mono yet](http://www.mono-project.com/docs/gui/wpf/). 
