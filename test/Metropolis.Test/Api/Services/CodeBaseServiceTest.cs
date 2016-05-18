@@ -15,7 +15,7 @@ namespace Metropolis.Test.Api.Services
         private CodebaseService codebaseService;
         private Mock<IMetricsParserFactory> parserFactory;
         private Mock<IProjectRepository> repository;
-        private Mock<IClassParser> classParser;
+        private Mock<IInstanceReader> classParser;
 
         private const string FileName = @"C:\\myfolder\mycodebase.project";
         private readonly CodeBase workspace = CodeBase.Empty();
@@ -25,7 +25,7 @@ namespace Metropolis.Test.Api.Services
         {
             parserFactory = CreateMock<IMetricsParserFactory>();
             repository = CreateMock<IProjectRepository>();
-            classParser = CreateMock<IClassParser>();
+            classParser = CreateMock<IInstanceReader>();
 
             codebaseService = new CodebaseService(parserFactory.Object, repository.Object);
         }

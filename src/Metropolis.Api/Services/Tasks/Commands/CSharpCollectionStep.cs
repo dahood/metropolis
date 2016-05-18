@@ -3,7 +3,7 @@ using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services.Tasks.Commands
 {
-    public class CSharpMetricsCommand : IMetricsCommand
+    public class CSharpCollectionStep : ICollectionStep
     {
         public IEnumerable<MetricsResult> Run(MetricsCommandArguments projectName)
         {

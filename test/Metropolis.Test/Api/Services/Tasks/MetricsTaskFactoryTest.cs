@@ -23,7 +23,7 @@ namespace Metropolis.Test.Api.Services.Tasks
         {
             factory.CommandFor(RepositorySourceType.CSharp)
                    .Should().NotBeNull()
-                   .And.BeAssignableTo<CSharpMetricsCommand>();
+                   .And.BeAssignableTo<CSharpCollectionStep>();
         }
 
         [Test]
@@ -31,7 +31,7 @@ namespace Metropolis.Test.Api.Services.Tasks
         {
             factory.CommandFor(RepositorySourceType.Java)
                    .Should().NotBeNull()
-                   .And.BeAssignableTo<JavaMetricsCommand>();
+                   .And.BeAssignableTo<JavaCollectionStep>();
         }
 
         [Test]
@@ -39,7 +39,7 @@ namespace Metropolis.Test.Api.Services.Tasks
         {
             factory.CommandFor(RepositorySourceType.ECMA)
                    .Should().NotBeNull()
-                   .And.BeAssignableTo<EcmaMetricsCommand>();
+                   .And.BeAssignableTo<EcmaCollectionStep>();
         }
     }
 }

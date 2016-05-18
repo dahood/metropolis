@@ -4,7 +4,7 @@ using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services.Tasks.Commands
 {
-    public class EsLintMetricsCommand : BaseMetricsCommand
+    public class EsLintCollectionStep : BaseCollectionStep
     {
         private const string EsLintCommand = @"eslint -c '{0}.eslintrc.json' '{1}\**' -o '{2}' -f checkstyle";
         private const string IgnorePathPart = "  --ignore - path '{0}'";
@@ -13,7 +13,7 @@ namespace Metropolis.Api.Services.Tasks.Commands
         protected override string Extension => ".xml";
         protected override ParseType ParseType => ParseType.EsLint;
 
-        public EsLintMetricsCommand() : base(true)
+        public EsLintCollectionStep() : base(true)
         {
         }
 

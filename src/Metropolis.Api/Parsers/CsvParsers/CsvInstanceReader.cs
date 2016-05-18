@@ -7,11 +7,11 @@ using Metropolis.Api.Domain;
 
 namespace Metropolis.Api.Parsers.CsvParsers
 {
-    public abstract class CsvClassParser<T, TMapper> : IClassParser
+    public abstract class CsvInstanceReader<T, TMapper> : IInstanceReader
     {
         protected bool HasHeaderRecord { get; set; }
 
-        protected CsvClassParser(bool hasHeaderRecord = false)
+        protected CsvInstanceReader(bool hasHeaderRecord = false)
         {
             this.HasHeaderRecord = hasHeaderRecord;
         }

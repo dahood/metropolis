@@ -9,7 +9,7 @@ using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Parsers.CsvParsers
 {
-    public abstract class CsvParsersBaseTest<T> where T : IClassParser, new()
+    public abstract class CsvParsersBaseTest<T> where T : IInstanceReader, new()
     {
         protected string FileName;
         protected T Parser;

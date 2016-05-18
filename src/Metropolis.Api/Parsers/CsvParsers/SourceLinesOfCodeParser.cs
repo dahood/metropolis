@@ -21,7 +21,7 @@ namespace Metropolis.Api.Parsers.CsvParsers
         Java
     }
 
-    public class SourceLinesOfCodeParser : CsvClassParser<SourceLinesOfCodeLineItem, SourceLinesOfCodeMap>
+    public class SourceLinesOfCodeParser : CsvInstanceReader<SourceLinesOfCodeLineItem, SourceLinesOfCodeMap>
     {
         public SourceLinesOfCodeParser(FileInclusion inclusion = FileInclusion.Js) : base(true)
         {

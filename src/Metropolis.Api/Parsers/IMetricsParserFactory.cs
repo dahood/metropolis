@@ -4,6 +4,6 @@ namespace Metropolis.Api.Parsers
 {
     public interface IMetricsParserFactory
     {
-        IClassParser ParserFor(ParseType parseType);
+        IInstanceReader ParserFor(ParseType parseType);
     }
 }

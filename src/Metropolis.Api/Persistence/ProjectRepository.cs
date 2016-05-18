@@ -48,7 +48,7 @@ namespace Metropolis.Api.Persistence
         {
             using (var stream = File.OpenRead(fileName))
             {
-                byte[] versionHeader = new byte[100];
+                var versionHeader = new byte[100];
                 stream.Read(versionHeader, 0, 100);
                 var results = System.Text.Encoding.UTF8.GetString(versionHeader, 0, versionHeader.Length);
                 if (!results.Contains($"\"MetropolisFileVersion\":{Project.SupportedVersion}"))

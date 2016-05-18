@@ -40,7 +40,7 @@ namespace Metropolis.Test.Api.Parsers
         [Test]
         public void Should_Parse_ClassAttributes_To_Makeup_Lines_of_Code()
         {
-            var result = new XmlClassParser().Parse(fileName);
+            var result = new XmlInstanceReader().Parse(fileName);
 
             var actualClass = AssertResultIsNotNullAndWithOneClass(result);
             actualClass.LinesOfCode.Should().Be(JavaMetricsHelper.NOF + JavaMetricsHelper.MLOC);
@@ -49,7 +49,7 @@ namespace Metropolis.Test.Api.Parsers
         [Test]
         public void Should_Parse_CyclomaticComplexity()
         {
-            var result = new XmlClassParser().Parse(fileName);
+            var result = new XmlInstanceReader().Parse(fileName);
 
             var actualClass = AssertResultIsNotNullAndWithOneClass(result);
 
@@ -60,7 +60,7 @@ namespace Metropolis.Test.Api.Parsers
         [Test]
         public void Should_Parse_DepthOfInheritanceTree()
         {
-            var result = new XmlClassParser().Parse(fileName);
+            var result = new XmlInstanceReader().Parse(fileName);
 
             var actualClass = AssertResultIsNotNullAndWithOneClass(result);
 
@@ -72,7 +72,7 @@ namespace Metropolis.Test.Api.Parsers
         [Test]
         public void Should_Parse_MethodLinesOfCode()
         {
-            var result = new XmlClassParser().Parse(fileName);
+            var result = new XmlInstanceReader().Parse(fileName);
 
             var actualClass = AssertResultIsNotNullAndWithOneClass(result);
 

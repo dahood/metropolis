@@ -9,18 +9,18 @@ using Metropolis.Api.Parsers.XmlParsers.MetricHandlers;
 
 namespace Metropolis.Api.Parsers.XmlParsers
 {
-    public class XmlClassParser : IClassParser
+    public class XmlInstanceReader : IInstanceReader
     {
         private readonly IEnumerable<IJavaMetricParser> parsers;
 
         private static readonly IEnumerable<IJavaMetricParser> MetricParsers = new List<IJavaMetricParser>
             { new DepthOfInheritanceParser(), new MethodLineParser(), new ClassAttributeParser(), new CyclomaticComplexityParser()};
 
-        public XmlClassParser() : this(MetricParsers)
+        public XmlInstanceReader() : this(MetricParsers)
         {
         }
 
-        private XmlClassParser(IEnumerable<IJavaMetricParser> javaMetricHandlers)
+        private XmlInstanceReader(IEnumerable<IJavaMetricParser> javaMetricHandlers)
         {
             parsers = javaMetricHandlers;
         }

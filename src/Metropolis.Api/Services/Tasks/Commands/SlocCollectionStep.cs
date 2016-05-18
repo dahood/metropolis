@@ -6,11 +6,11 @@ namespace Metropolis.Api.Services.Tasks.Commands
     /// <summary>
     ///     Automation for Javascript/ECMA parsing
     /// </summary>
-    public class SlocMetricsCommand : BaseMetricsCommand
+    public class SlocCollectionStep : BaseCollectionStep
     {
         private const string SlocCommand = @"sloc '{0}' -d --format csv -> '{1}'";
 
-        public SlocMetricsCommand(ParseType parseType) : base(true)
+        public SlocCollectionStep(ParseType parseType) : base(true)
         {
             ParseType = parseType;
         }

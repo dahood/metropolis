@@ -154,7 +154,7 @@ namespace Metropolis
             }
         }
 
-        private void Parse(IClassParser parser, string fileName)
+        private void Parse(IInstanceReader parser, string fileName)
         {
             var result = parser.Parse(fileName);
             EnrichWorkspace(result);

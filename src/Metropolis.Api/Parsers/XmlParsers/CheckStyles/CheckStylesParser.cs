@@ -7,7 +7,7 @@ using Metropolis.Api.Extensions;
 
 namespace Metropolis.Api.Parsers.XmlParsers.CheckStyles
 {
-    public class CheckStylesParser : IClassParser
+    public class CheckStylesParser : IInstanceReader
     {
         private readonly ICheckStylesClassBuilder classBuilder;
 

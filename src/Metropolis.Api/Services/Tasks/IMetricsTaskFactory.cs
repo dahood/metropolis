@@ -7,20 +7,20 @@ namespace Metropolis.Api.Services.Tasks
 {
     public interface IMetricsTaskFactory
     {
-        IMetricsCommand CommandFor(RepositorySourceType repositorySourcetype);
+        ICollectionStep CommandFor(RepositorySourceType repositorySourcetype);
     }
 
     public class MetricsTaskFactory : IMetricsTaskFactory
     {
-        private readonly Dictionary<RepositorySourceType, Func<IMetricsCommand>> commandMap =
-            new Dictionary<RepositorySourceType, Func<IMetricsCommand>>
+        private readonly Dictionary<RepositorySourceType, Func<ICollectionStep>> commandMap =
+            new Dictionary<RepositorySourceType, Func<ICollectionStep>>
             {
-                {RepositorySourceType.CSharp, () => new CSharpMetricsCommand()},
-                {RepositorySourceType.Java, () => new JavaMetricsCommand()},
-                {RepositorySourceType.ECMA, () => new EcmaMetricsCommand()}
+                {RepositorySourceType.CSharp, () => new CSharpCollectionStep()},
+                {RepositorySourceType.Java, () => new JavaCollectionStep()},
+                {RepositorySourceType.ECMA, () => new EcmaCollectionStep()}
             };
 
-        public IMetricsCommand CommandFor(RepositorySourceType sourceType)
+        public ICollectionStep CommandFor(RepositorySourceType sourceType)
         {
             return commandMap[sourceType]();
         }

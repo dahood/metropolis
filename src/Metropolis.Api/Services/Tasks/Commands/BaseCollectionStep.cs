@@ -6,11 +6,11 @@ using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services.Tasks.Commands
 {
-    public abstract class BaseMetricsCommand : IMetricsCommand
+    public abstract class BaseCollectionStep : ICollectionStep
     {
         private readonly bool useNodePath;
 
-        protected BaseMetricsCommand(bool useNodePath)
+        protected BaseCollectionStep(bool useNodePath)
         {
             this.useNodePath = useNodePath;
         }

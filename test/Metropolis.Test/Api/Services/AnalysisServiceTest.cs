@@ -15,7 +15,7 @@ namespace Metropolis.Test.Api.Services
         private AnalysisServices analysisServices;
         private Mock<IMetricsTaskFactory> metricsTaskFactory;
         private Mock<ICodebaseService> codebaseService;
-        private Mock<IMetricsCommand> metricsCommand;
+        private Mock<ICollectionStep> metricsCommand;
         private MetricsCommandArguments details;
         private Mock<IAnalyzerFactory> analyzerFactory;
         private Mock<ICodebaseAnalyzer> analyzer;
@@ -25,7 +25,7 @@ namespace Metropolis.Test.Api.Services
         {
             metricsTaskFactory = CreateMock<IMetricsTaskFactory>();
             codebaseService = CreateMock<ICodebaseService>();
-            metricsCommand = CreateMock<IMetricsCommand>();
+            metricsCommand = CreateMock<ICollectionStep>();
             analyzerFactory = CreateMock<IAnalyzerFactory>();
             analyzer = CreateMock<ICodebaseAnalyzer>();
 

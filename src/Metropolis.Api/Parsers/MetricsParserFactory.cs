@@ -8,7 +8,7 @@ namespace Metropolis.Api.Parsers
 {
     public class MetricsParserFactory : IMetricsParserFactory
     {
-        private readonly Dictionary<ParseType, Func<IClassParser>> parseFactory = new Dictionary<ParseType, Func<IClassParser>>
+        private readonly Dictionary<ParseType, Func<IInstanceReader>> parseFactory = new Dictionary<ParseType, Func<IInstanceReader>>
         {
             {ParseType.VisualStudio, () => new VisualStudioMetricsParser()},
             {ParseType.RichardToxicity, () => new ToxicityParser()},
@@ -19,7 +19,7 @@ namespace Metropolis.Api.Parsers
             {ParseType.SlocJava, () => new SourceLinesOfCodeParser(FileInclusion.Java)},
         };
 
-        public IClassParser ParserFor(ParseType parseType)
+        public IInstanceReader ParserFor(ParseType parseType)
         {
             if (!parseFactory.ContainsKey(parseType))
                 throw new ApplicationException($"{parseType} is not a known metrics parser type");

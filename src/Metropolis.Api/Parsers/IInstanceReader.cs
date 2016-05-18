@@ -2,7 +2,7 @@ using Metropolis.Api.Domain;
 
 namespace Metropolis.Api.Parsers
 {
-    public interface IClassParser
+    public interface IInstanceReader
     {
         CodeBase Parse(string fileName);
     }
