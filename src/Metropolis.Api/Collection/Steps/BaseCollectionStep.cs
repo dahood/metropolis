@@ -78,7 +78,7 @@ namespace Metropolis.Api.Collection.Steps
             var currentPath = rs.SessionStateProxy.Path.CurrentLocation.Path;
             // when installed via npm will show up under Desktop as current Path
             if (currentPath.Contains("Desktop"))
-                return @"..\AppData\Roaming\npm\node_modules\metropolis-core\node_modules\.bin\";
+                return @"..\AppData\Roaming\npm\node_modules\metropolis\node_modules\.bin\";
             //this is for if using debug 
             return @"..\..\..\..\node_modules\.bin\";
         }
