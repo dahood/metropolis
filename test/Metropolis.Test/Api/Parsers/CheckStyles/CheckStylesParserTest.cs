@@ -11,7 +11,7 @@ namespace Metropolis.Test.Api.Parsers.CheckStyles
     [TestFixture]
     public class EslintCheckStylesParserTest : BaseCheckstylesParserTest
     {
-        protected override string FileName => $"eslint_checkstyles_fixture.xml";
+        protected override string FileName => "eslint_checkstyles_fixture.xml";
         protected override string CheckStylesFixture => MetricsDataFixture.CheckStylesReactFixture;
 
         protected override CheckStylesParser CreateParser()

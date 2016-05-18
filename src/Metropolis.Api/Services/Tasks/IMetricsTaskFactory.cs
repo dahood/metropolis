@@ -12,12 +12,12 @@ namespace Metropolis.Api.Services.Tasks
 
     public class MetricsTaskFactory : IMetricsTaskFactory
     {
-        private readonly Dictionary<RepositorySourceType, Func<IMetricsCommand>> commandMap = 
+        private readonly Dictionary<RepositorySourceType, Func<IMetricsCommand>> commandMap =
             new Dictionary<RepositorySourceType, Func<IMetricsCommand>>
             {
-                {RepositorySourceType.CSharp, () => new CSharpMetricsCommand() },
-                {RepositorySourceType.Java, () => new JavaMetricsCommand() },
-                {RepositorySourceType.ECMA, () => new EcmaMetricsCommand() }
+                {RepositorySourceType.CSharp, () => new CSharpMetricsCommand()},
+                {RepositorySourceType.Java, () => new JavaMetricsCommand()},
+                {RepositorySourceType.ECMA, () => new EcmaMetricsCommand()}
             };
 
         public IMetricsCommand CommandFor(RepositorySourceType sourceType)

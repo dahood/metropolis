@@ -5,18 +5,14 @@ using Metropolis.Common.Models;
 
 namespace Metropolis.ViewModels
 {
-
-    public class ProjectDetailsViewModel : INotifyPropertyChanged
+    public sealed class ProjectDetailsViewModel : INotifyPropertyChanged
     {
-        private string projectName = "Sample Project";
-        private RepositorySourceType repositorySourceType = RepositorySourceType.Java;  //for now
-        private string sourceDirectory;
         private string ignoreFile;
         private string metricsOutputDirectory;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public IEnumerable<string> SourceTypes => new[] { "ECMA" };
+        private string projectName = "Sample Project";
+        private RepositorySourceType repositorySourceType = RepositorySourceType.Java; //for now
+        private string sourceDirectory;
+        public IEnumerable<string> SourceTypes => new[] {"ECMA"};
 
         public RepositorySourceType RepositorySourceType
         {
@@ -27,6 +23,7 @@ namespace Metropolis.ViewModels
                 PropertyChanged.Notify(this, x => x.RepositorySourceType);
             }
         }
+
         public string ProjectName
         {
             get { return projectName; }
@@ -36,6 +33,7 @@ namespace Metropolis.ViewModels
                 PropertyChanged.Notify(this, x => x.ProjectName);
             }
         }
+
         public string SourceDirectory
         {
             get { return sourceDirectory; }
@@ -56,10 +54,6 @@ namespace Metropolis.ViewModels
             }
         }
 
-        public bool IsValid => ProjectName.IsNotEmpty() &&
-                               SourceDirectory.IsNotEmpty() &&
-                               MetricsOutputDirectory.IsNotEmpty();
-
         public string IgnoreFile
         {
             get { return ignoreFile; }
@@ -70,9 +64,6 @@ namespace Metropolis.ViewModels
             }
         }
 
-        protected virtual void OnPropertyChanged(string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

@@ -22,7 +22,7 @@ namespace Metropolis.Api.Domain
 
         public int MinLinesOfCode => map.Values.Count != 0 ? map.Values.Min(c => c.LinesOfCode) : 0;
 
-        public void Initialize(IEnumerable<Instance> list)
+        private void Initialize(IEnumerable<Instance> list)
         {
             foreach (var type in list)
             {

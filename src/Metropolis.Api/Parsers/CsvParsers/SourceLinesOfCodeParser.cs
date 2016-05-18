@@ -32,7 +32,7 @@ namespace Metropolis.Api.Parsers.CsvParsers
         {
         }
 
-        public FileInclusion Inclusion { get; }
+        private FileInclusion Inclusion { get; }
 
         protected override CodeBase ParseLines(IEnumerable<SourceLinesOfCodeLineItem> lines)
         {
