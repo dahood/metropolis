@@ -6,7 +6,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.PuppyCrawl.Membe
     {
         public override string Source => PuppyCrawlSources.BooleanExpressionComplexity;
         
-        public void Parse(Domain.Member member, CheckStylesItem item)
+        public void Read(Domain.Member member, CheckStylesItem item)
         {
             member.BooleanExpressionComplexity = IntParser.Match(item.Message).Value.AsInt();
         }

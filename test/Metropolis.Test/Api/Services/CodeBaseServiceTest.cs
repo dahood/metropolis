@@ -13,7 +13,7 @@ namespace Metropolis.Test.Api.Services
     public class CodeBaseServiceTest : StrictMockBaseTest
     {
         private CodebaseService codebaseService;
-        private Mock<IMetricsParserFactory> parserFactory;
+        private Mock<IMetricsReaderFactory> parserFactory;
         private Mock<IProjectRepository> repository;
         private Mock<IInstanceReader> classParser;
 
@@ -23,7 +23,7 @@ namespace Metropolis.Test.Api.Services
         [SetUp]
         public void SetUp()
         {
-            parserFactory = CreateMock<IMetricsParserFactory>();
+            parserFactory = CreateMock<IMetricsReaderFactory>();
             repository = CreateMock<IProjectRepository>();
             classParser = CreateMock<IInstanceReader>();
 
@@ -54,7 +54,7 @@ namespace Metropolis.Test.Api.Services
         [Test]
         public void GetToxicity()
         {
-            parserFactory.Setup(x => x.ParserFor(ParseType.RichardToxicity)).Returns(classParser.Object);
+            parserFactory.Setup(x => x.GetReader(ParseType.RichardToxicity)).Returns(classParser.Object);
             classParser.Setup(x => x.Parse(FileName)).Returns(workspace);
             codebaseService.GetToxicity(FileName).Should().BeSameAs(workspace);
         }
@@ -62,7 +62,7 @@ namespace Metropolis.Test.Api.Services
         [Test]
         public void GetVisualStudioMetrics()
         {
-            parserFactory.Setup(x => x.ParserFor(ParseType.VisualStudio)).Returns(classParser.Object);
+            parserFactory.Setup(x => x.GetReader(ParseType.VisualStudio)).Returns(classParser.Object);
             classParser.Setup(x => x.Parse(FileName)).Returns(workspace);
             codebaseService.GetVisualStudioMetrics(FileName).Should().BeSameAs(workspace);
         }
@@ -70,7 +70,7 @@ namespace Metropolis.Test.Api.Services
         [Test]
         public void Get()
         {
-            parserFactory.Setup(x => x.ParserFor(ParseType.EsLint)).Returns(classParser.Object);
+            parserFactory.Setup(x => x.GetReader(ParseType.EsLint)).Returns(classParser.Object);
             classParser.Setup(x => x.Parse(FileName)).Returns(workspace);
             codebaseService.Get(FileName, ParseType.EsLint).Should().BeSameAs(workspace);
         }

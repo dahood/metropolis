@@ -7,16 +7,16 @@ namespace Metropolis.Api.Services
 {
     public class CodebaseService : ICodebaseService
     {
-        private readonly IMetricsParserFactory parserFactory;
+        private readonly IMetricsReaderFactory readerFactory;
         private readonly IProjectRepository projectRepository;
         
-        public CodebaseService() : this(new MetricsParserFactory(), new ProjectRepository())
+        public CodebaseService() : this(new MetricsReaderFactory(), new ProjectRepository())
         {
         }
 
-        public CodebaseService(IMetricsParserFactory parserFactory, IProjectRepository repository)
+        public CodebaseService(IMetricsReaderFactory readerFactory, IProjectRepository repository)
         {
-            this.parserFactory = parserFactory;
+            this.readerFactory = readerFactory;
             projectRepository = repository;
         }
 
@@ -51,7 +51,7 @@ namespace Metropolis.Api.Services
 
         public CodeBase Get(string filename, ParseType parseType)
         {
-            return parserFactory.ParserFor(parseType).Parse(filename);
+            return readerFactory.GetReader(parseType).Parse(filename);
         }
     }
 }

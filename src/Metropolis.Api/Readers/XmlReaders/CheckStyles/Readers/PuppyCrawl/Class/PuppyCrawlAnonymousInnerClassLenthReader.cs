@@ -6,7 +6,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.PuppyCrawl.Class
     {
         public override string Source => PuppyCrawlSources.AnonymousInnerClassLength;
         
-        public void Parse(Domain.Instance type, CheckStylesItem item)
+        public void Read(Domain.Instance type, CheckStylesItem item)
         {
             type.AnonymousInnerClassLength = IntParser.Match(item.Message).Value.AsInt();
         }

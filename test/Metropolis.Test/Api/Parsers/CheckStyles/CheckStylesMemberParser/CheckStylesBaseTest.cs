@@ -34,7 +34,7 @@ namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
         {
             var checkStylesItem = item ?? new CheckStylesItem {Message = message};
             var parser = MemberParserFor<T>();
-            parser.Parse(Member, checkStylesItem);
+            parser.Read(Member, checkStylesItem);
 
             parser.Source.Should().Be(expectedSource);
             action(Member);
@@ -45,7 +45,7 @@ namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
         {
             var checkStylesItem = item ?? new CheckStylesItem {Message = message};
             var parser = ClassParserFor<T>();
-            parser.Parse(ParentInstance, checkStylesItem);
+            parser.Read(ParentInstance, checkStylesItem);
 
             parser.Source.Should().Be(expectedSource);
             action(ParentInstance);

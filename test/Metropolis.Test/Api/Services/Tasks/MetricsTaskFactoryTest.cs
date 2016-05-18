@@ -21,7 +21,7 @@ namespace Metropolis.Test.Api.Services.Tasks
         [Test]
         public void CanGetCSharpCommand()
         {
-            factory.CommandFor(RepositorySourceType.CSharp)
+            factory.GetStep(RepositorySourceType.CSharp)
                    .Should().NotBeNull()
                    .And.BeAssignableTo<CSharpCollectionStep>();
         }
@@ -29,7 +29,7 @@ namespace Metropolis.Test.Api.Services.Tasks
         [Test]
         public void CanGetJavaCommand()
         {
-            factory.CommandFor(RepositorySourceType.Java)
+            factory.GetStep(RepositorySourceType.Java)
                    .Should().NotBeNull()
                    .And.BeAssignableTo<JavaCollectionStep>();
         }
@@ -37,7 +37,7 @@ namespace Metropolis.Test.Api.Services.Tasks
         [Test]
         public void CanGetEcmaCommand()
         {
-            factory.CommandFor(RepositorySourceType.ECMA)
+            factory.GetStep(RepositorySourceType.ECMA)
                    .Should().NotBeNull()
                    .And.BeAssignableTo<EcmaCollectionStep>();
         }

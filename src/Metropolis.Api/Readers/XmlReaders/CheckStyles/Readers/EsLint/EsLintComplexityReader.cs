@@ -14,7 +14,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.EsLint
         {
         }
 
-        public void Parse(Member member, CheckStylesItem item)
+        public void Read(Member member, CheckStylesItem item)
         {
             member.Name = nameRegex.Split(item.Message)[1];
             member.CylomaticComplexity = Parser.Match(item.Message).Value.AsInt();

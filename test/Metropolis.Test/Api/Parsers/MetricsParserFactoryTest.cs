@@ -10,12 +10,12 @@ namespace Metropolis.Test.Api.Parsers
     [TestFixture]
     public class MetricsParserFactoryTest
     {
-        readonly MetricsParserFactory factory = new MetricsParserFactory();
+        readonly MetricsReaderFactory factory = new MetricsReaderFactory();
 
         [Test]
         public void VidualStudio()
         {
-            factory.ParserFor(ParseType.VisualStudio)
+            factory.GetReader(ParseType.VisualStudio)
                 .Should().NotBeNull()
                 .And.BeAssignableTo<VisualStudioMetricsReader>();
         }
@@ -23,7 +23,7 @@ namespace Metropolis.Test.Api.Parsers
         [Test]
         public void Toxicity()
         {
-            factory.ParserFor(ParseType.RichardToxicity)
+            factory.GetReader(ParseType.RichardToxicity)
                 .Should().NotBeNull()
                 .And.BeAssignableTo<ToxicityReader>();
         }
@@ -31,7 +31,7 @@ namespace Metropolis.Test.Api.Parsers
         [Test]
         public void PuppCrawler()
         {
-            factory.ParserFor(ParseType.PuppyCrawler)
+            factory.GetReader(ParseType.PuppyCrawler)
                 .Should().NotBeNull()
                 .And.BeAssignableTo<CheckStylesReader>();
         }
@@ -39,7 +39,7 @@ namespace Metropolis.Test.Api.Parsers
         [Test]
         public void Eslink()
         {
-            factory.ParserFor(ParseType.EsLint)
+            factory.GetReader(ParseType.EsLint)
                 .Should().NotBeNull()
                 .And.BeAssignableTo<CheckStylesReader>();
         }
@@ -47,7 +47,7 @@ namespace Metropolis.Test.Api.Parsers
         [Test]
         public void SlocECMA()
         {
-            factory.ParserFor(ParseType.SlocEcma)
+            factory.GetReader(ParseType.SlocEcma)
                    .Should().NotBeNull()
                    .And.BeAssignableTo<SourceLinesOfCodeReader>();
         }
@@ -55,7 +55,7 @@ namespace Metropolis.Test.Api.Parsers
         [Test]
         public void SlocCSharp()
         {
-            factory.ParserFor(ParseType.SlocCSharp)
+            factory.GetReader(ParseType.SlocCSharp)
                 .Should().NotBeNull()
                 .And.BeAssignableTo<SourceLinesOfCodeReader>();
         }
@@ -63,7 +63,7 @@ namespace Metropolis.Test.Api.Parsers
         [Test]
         public void SlocJava()
         {
-            factory.ParserFor(ParseType.SlocCSharp)
+            factory.GetReader(ParseType.SlocCSharp)
                 .Should().NotBeNull()
                 .And.BeAssignableTo<SourceLinesOfCodeReader>();
         }

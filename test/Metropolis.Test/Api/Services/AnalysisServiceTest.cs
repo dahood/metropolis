@@ -46,7 +46,7 @@ namespace Metropolis.Test.Api.Services
             var expectedMetricsFile = $"{details.MetricsOutputDirectory}\\{details.ProjectName}_CheckStyles.xml";
             var result = new MetricsResult { MetricsFile = expectedMetricsFile, ParseType = ParseType.PuppyCrawler};
 
-            metricsTaskFactory.Setup(x => x.CommandFor(RepositorySourceType.Java)).Returns(metricsCommand.Object);
+            metricsTaskFactory.Setup(x => x.GetStep(RepositorySourceType.Java)).Returns(metricsCommand.Object);
             metricsCommand.Setup(x => x.Run(details)).Returns(new[] { result});
 
             codebaseService.Setup(x => x.Get(expectedMetricsFile, ParseType.PuppyCrawler)).Returns(CodeBase.Empty);
@@ -68,7 +68,7 @@ namespace Metropolis.Test.Api.Services
             var eslintResult = new MetricsResult { MetricsFile = eslintMetricsFile, ParseType = ParseType.EsLint};
             var slocResult = new MetricsResult { MetricsFile = slocMetricsFile, ParseType = ParseType.SlocEcma};
 
-            metricsTaskFactory.Setup(x => x.CommandFor(RepositorySourceType.ECMA)).Returns(metricsCommand.Object);
+            metricsTaskFactory.Setup(x => x.GetStep(RepositorySourceType.ECMA)).Returns(metricsCommand.Object);
             metricsCommand.Setup(x => x.Run(details)).Returns(new[] { eslintResult, slocResult});
 
             codebaseService.Setup(x => x.Get(eslintMetricsFile, ParseType.EsLint)).Returns(CodeBase.Empty);

@@ -7,7 +7,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.EsLint
     {
         public override string Source => EslintSources.NumberOfParameters;
         
-        public void Parse(Member member, CheckStylesItem item)
+        public void Read(Member member, CheckStylesItem item)
         {
             member.NumberOfParameters = IntParser.Match(item.Message).Value.AsInt();
         }

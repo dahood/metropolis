@@ -10,7 +10,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.PuppyCrawl.Membe
         {
         }
 
-        public void Parse(Domain.Member member, CheckStylesItem item)
+        public void Read(Domain.Member member, CheckStylesItem item)
         {
             member.Name = $"{item.Line}-{item.Column}";
             member.CylomaticComplexity = Parser.Match(item.Message).Value.AsInt();

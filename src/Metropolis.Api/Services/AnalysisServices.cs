@@ -25,7 +25,7 @@ namespace Metropolis.Api.Services
 
         public CodeBase Analyze(MetricsCommandArguments details)
         {
-            var command = metricsStepFactory.CommandFor(details.RepositorySourceType);
+            var command = metricsStepFactory.GetStep(details.RepositorySourceType);
             var metrics = command.Run(details);
 
             var codeBase = CodeBase.Empty();

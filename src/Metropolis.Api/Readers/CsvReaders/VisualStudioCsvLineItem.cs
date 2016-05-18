@@ -18,8 +18,6 @@ namespace Metropolis.Api.Readers.CsvReaders
 
     public sealed class VisualStudioCsvLineItemClassMap : CsvClassMap<VisualStudioCsvLineItem>
     { 
-
-
         public VisualStudioCsvLineItemClassMap()
         {
             Map(m => m.Scope);

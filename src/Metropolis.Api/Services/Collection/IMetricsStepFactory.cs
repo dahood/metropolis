@@ -7,7 +7,7 @@ namespace Metropolis.Api.Services.Collection
 {
     public interface IMetricsStepFactory
     {
-        ICollectionStep CommandFor(RepositorySourceType repositorySourcetype);
+        ICollectionStep GetStep(RepositorySourceType repositorySourcetype);
     }
 
     public class MetricsStepFactory : IMetricsStepFactory
@@ -20,7 +20,7 @@ namespace Metropolis.Api.Services.Collection
                 {RepositorySourceType.ECMA, () => new EcmaCollectionStep()}
             };
 
-        public ICollectionStep CommandFor(RepositorySourceType sourceType)
+        public ICollectionStep GetStep(RepositorySourceType sourceType)
         {
             return commandMap[sourceType]();
         }

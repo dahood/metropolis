@@ -11,7 +11,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.EsLint
         {
         }
 
-        public void Parse(Member member, CheckStylesItem item)
+        public void Read(Member member, CheckStylesItem item)
         {
             member.LinesOfCode = Parser.Split(item.Message)[1].AsInt();
         }

@@ -6,9 +6,9 @@ using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Readers
 {
-    public class MetricsParserFactory : IMetricsParserFactory
+    public class MetricsReaderFactory : IMetricsReaderFactory
     {
-        private readonly Dictionary<ParseType, Func<IInstanceReader>> parseFactory = new Dictionary<ParseType, Func<IInstanceReader>>
+        private readonly Dictionary<ParseType, Func<IInstanceReader>> readerMap = new Dictionary<ParseType, Func<IInstanceReader>>
         {
             {ParseType.VisualStudio, () => new VisualStudioMetricsReader()},
             {ParseType.RichardToxicity, () => new ToxicityReader()},
@@ -19,11 +19,11 @@ namespace Metropolis.Api.Readers
             {ParseType.SlocJava, () => new SourceLinesOfCodeReader(FileInclusion.Java)},
         };
 
-        public IInstanceReader ParserFor(ParseType parseType)
+        public IInstanceReader GetReader(ParseType parseType)
         {
-            if (!parseFactory.ContainsKey(parseType))
+            if (!readerMap.ContainsKey(parseType))
                 throw new ApplicationException($"{parseType} is not a known metrics parser type");
-            return parseFactory[parseType]();
+            return readerMap[parseType]();
         }
     }
 }

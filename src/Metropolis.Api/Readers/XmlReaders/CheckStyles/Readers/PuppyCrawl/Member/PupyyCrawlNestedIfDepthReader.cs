@@ -6,7 +6,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.PuppyCrawl.Membe
     {
         public override string Source => PuppyCrawlSources.NestedIfDepth;
         
-        public void Parse(Domain.Member member, CheckStylesItem item)
+        public void Read(Domain.Member member, CheckStylesItem item)
         {
             member.NestedIfDepth = IntParser.Match(item.Message).Value.AsInt();
         }

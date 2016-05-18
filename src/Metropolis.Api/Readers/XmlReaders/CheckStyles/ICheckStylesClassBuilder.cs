@@ -35,7 +35,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
                  join item in each.Metrics
                    on p.Source equals item.Source
                  select new { Parser = p, Item = item }
-                ).ForEach(e => e.Parser.Parse(member, e.Item));
+                ).ForEach(e => e.Parser.Read(member, e.Item));
 
                 return member;
             }).ToList();
@@ -49,7 +49,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
                  join item in each.Metrics
                    on p.Source equals item.Source
                  select new { Parser = p, Item = item }
-                ).ForEach(e => e.Parser.Parse(type, e.Item));
+                ).ForEach(e => e.Parser.Read(type, e.Item));
             });
 
             return type;

@@ -4,7 +4,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.PuppyCrawl.Membe
     {
         public override string Source => PuppyCrawlSources.MissingSwitchDefault;
         
-        public void Parse(Domain.Member member, CheckStylesItem item)
+        public void Read(Domain.Member member, CheckStylesItem item)
         {
             member.MissingDefaultCase += 1;
         }
