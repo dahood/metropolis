@@ -54,7 +54,7 @@
             <StackPanel x:Name="CollectionPanel">
                 <views:EcmaCollectionPanel x:Name="EcmaScriptPanel" Visibility="Visible" />
                 <views:JavaCollectionPanel x:Name="JavaPanel" Visibility="Collapsed"/>
-                <views:JavaCollectionPanel x:Name="CSharpPanel" Visibility="Collapsed" />
+                <views:CsharpCollectionPanel x:Name="CSharpPanel" Visibility="Collapsed" />
             </StackPanel>
             
         </StackPanel>

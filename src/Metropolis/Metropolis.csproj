@@ -93,6 +93,9 @@
     <Compile Include="Models\LinearScale.cs" />
     <Compile Include="ValueConverters\RepositorySourceTypeConverter.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
+    <Compile Include="Views\CsharpCollectionPanel.xaml.cs">
+      <DependentUpon>CsharpCollectionPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\JavaCollectionPanel.xaml.cs">
       <DependentUpon>JavaCollectionPanel.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
       <DependentUpon>Canvas.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CsharpCollectionPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\JavaCollectionPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
