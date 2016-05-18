@@ -266,9 +266,9 @@ namespace Metropolis.Views
             };
         }
 
-        private void UserGuide(object sender, RoutedEventArgs e)
+        private void ProjectWiki(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/dahood/metropolis/wiki/User-Guide");
+            Process.Start("https://github.com/dahood/metropolis/wiki/Home");
         }
 
         private void NewVersion(object sender, RoutedEventArgs e)
