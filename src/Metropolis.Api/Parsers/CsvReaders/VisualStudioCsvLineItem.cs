@@ -1,6 +1,6 @@
 ﻿using CsvHelper.Configuration;
 
-namespace Metropolis.Api.Parsers.CsvParsers
+namespace Metropolis.Api.Parsers.CsvReaders
 {
     public class VisualStudioCsvLineItem
     {

@@ -3,7 +3,7 @@ using System.Linq;
 using Metropolis.Api.Analyzers.Toxicity;
 using Metropolis.Api.Domain;
 
-namespace Metropolis.Api.Parsers.CsvParsers
+namespace Metropolis.Api.Parsers.CsvReaders
 {
     public class VisualStudioMetricsReader : CsvInstanceReader<VisualStudioCsvLineItem, VisualStudioCsvLineItemClassMap>
     {

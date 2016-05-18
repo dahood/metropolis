@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using CsvHelper.TypeConversion;
 
-namespace Metropolis.Api.Parsers.CsvParsers.TypeConverters.Checkstyles
+namespace Metropolis.Api.Parsers.CsvReaders.TypeConverters.Checkstyles
 {
     public class CheckstylesClassConverter : BaseTypeConverter<string>
     {

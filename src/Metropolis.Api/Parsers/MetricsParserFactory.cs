@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Metropolis.Api.Parsers.CsvParsers;
+using Metropolis.Api.Parsers.CsvReaders;
 using Metropolis.Api.Parsers.XmlReaders.CheckStyles;
 using Metropolis.Common.Models;
 

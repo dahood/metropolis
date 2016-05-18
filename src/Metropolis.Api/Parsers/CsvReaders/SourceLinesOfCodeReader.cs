@@ -4,10 +4,10 @@ using System.Linq;
 using CsvHelper.Configuration;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
-using Metropolis.Api.Parsers.CsvParsers.TypeConverters;
-using Metropolis.Api.Parsers.CsvParsers.TypeConverters.Sloc;
+using Metropolis.Api.Parsers.CsvReaders.TypeConverters;
+using Metropolis.Api.Parsers.CsvReaders.TypeConverters.Sloc;
 
-namespace Metropolis.Api.Parsers.CsvParsers
+namespace Metropolis.Api.Parsers.CsvReaders
 {
     public enum FileInclusion
     {

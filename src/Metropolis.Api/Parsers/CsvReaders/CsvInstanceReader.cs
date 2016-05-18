@@ -5,7 +5,7 @@ using System.Linq;
 using CsvHelper;
 using Metropolis.Api.Domain;
 
-namespace Metropolis.Api.Parsers.CsvParsers
+namespace Metropolis.Api.Parsers.CsvReaders
 {
     public abstract class CsvInstanceReader<T, TMapper> : IInstanceReader
     {

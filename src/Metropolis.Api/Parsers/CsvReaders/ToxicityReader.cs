@@ -2,7 +2,7 @@
 using System.Linq;
 using Metropolis.Api.Domain;
 
-namespace Metropolis.Api.Parsers.CsvParsers
+namespace Metropolis.Api.Parsers.CsvReaders
 {
     //Data Aquisition
     public class ToxicityReader : CsvInstanceReader<ToxicityCsvLineItem, ToxicityCsvLineItemClassMap>

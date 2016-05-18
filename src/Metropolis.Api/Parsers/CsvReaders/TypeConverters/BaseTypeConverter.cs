@@ -1,7 +1,7 @@
 using System;
 using CsvHelper.TypeConversion;
 
-namespace Metropolis.Api.Parsers.CsvParsers.TypeConverters
+namespace Metropolis.Api.Parsers.CsvReaders.TypeConverters
 {
     public abstract class BaseTypeConverter<T> : ITypeConverter
     {
