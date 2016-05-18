@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Metropolis.Api.Parsers.CsvParsers;
-using Metropolis.Api.Parsers.XmlParsers.CheckStyles;
+using Metropolis.Api.Parsers.XmlReaders.CheckStyles;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Parsers

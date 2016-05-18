@@ -48,7 +48,7 @@
             <StackPanel x:Name="SourceTypePanel" Orientation="Horizontal" Margin="0,5,0,0">
                 <TextBlock x:Name="SourceTypeLabel" Text="Source Type:" Width="200" VerticalAlignment="Center" Margin="5,5,10,5" />
                 <ComboBox x:Name="SourceTypeCombobox" ItemsSource="{Binding Path=SourceTypes}"
-                          SelectedValue="{Binding RepositorySourceType, Converter={StaticResource SrcTypeConverter}}"
+                          SelectedValue="{Binding Path=RepositorySourceType, Converter={StaticResource SrcTypeConverter}}"
                           Width="90"   Margin="10,2,2,2" ></ComboBox>
             </StackPanel>
             <StackPanel x:Name="CollectionPanel">

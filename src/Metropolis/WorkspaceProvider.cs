@@ -5,7 +5,7 @@ using Metropolis.Api.Analyzers.Toxicity;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Parsers;
 using Metropolis.Api.Parsers.CsvParsers;
-using Metropolis.Api.Parsers.XmlParsers.CheckStyles;
+using Metropolis.Api.Parsers.XmlReaders.CheckStyles;
 using Metropolis.Api.Services;
 using Metropolis.Camera;
 using Metropolis.Common.Models;

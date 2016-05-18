@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Metropolis.Api.Parsers;
 using Metropolis.Api.Parsers.CsvParsers;
-using Metropolis.Api.Parsers.XmlParsers.CheckStyles;
+using Metropolis.Api.Parsers.XmlReaders.CheckStyles;
 using Metropolis.Common.Models;
 using NUnit.Framework;
 

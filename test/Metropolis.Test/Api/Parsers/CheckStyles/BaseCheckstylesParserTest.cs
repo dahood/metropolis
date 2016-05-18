@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using Metropolis.Api.Parsers.XmlParsers.CheckStyles;
+using Metropolis.Api.Parsers.XmlReaders.CheckStyles;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Parsers.CheckStyles

@@ -96,10 +96,10 @@
     <Compile Include="Api\Parsers\CheckStyles\CheckStylesMemberParser\CheckStylesBaseTest.cs" />
     <Compile Include="Api\Parsers\CheckStyles\CheckStylesMemberParser\EsLintCheckStylesParserTests.cs" />
     <Compile Include="Api\Parsers\CheckStyles\CheckStylesMemberParser\PuppyCrawlCheckStylesParserTests.cs" />
-    <Compile Include="Api\Parsers\CsvParsers\CsvParsersBaseTest.cs" />
-    <Compile Include="Api\Parsers\CsvParsers\SourceLinesOfCodeClassParserTest.cs" />
-    <Compile Include="Api\Parsers\CsvParsers\TypeConverters\CsvTypeConverterTests.cs" />
-    <Compile Include="Api\Parsers\CsvParsers\VisualStudioMetricsParserTest.cs" />
+    <Compile Include="Api\Parsers\CsvReaders\CsvParsersBaseTest.cs" />
+    <Compile Include="Api\Parsers\CsvReaders\SourceLinesOfCodeClassParserTest.cs" />
+    <Compile Include="Api\Parsers\CsvReaders\TypeConverters\CsvTypeConverterTests.cs" />
+    <Compile Include="Api\Parsers\CsvReaders\VisualStudioMetricsParserTest.cs" />
     <Compile Include="Api\Parsers\JavaMetricsHelper.cs" />
     <Compile Include="Api\Parsers\TestToxicityParser.cs" />
     <Compile Include="Api\Parsers\XmlClassParserTest.cs" />

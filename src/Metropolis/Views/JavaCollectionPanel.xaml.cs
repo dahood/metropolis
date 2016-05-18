@@ -17,7 +17,7 @@ namespace Metropolis.Views
             InitializeComponent();
         }
 
-        public ProjectDetailsViewModel ProjectDetails { get; }
+        public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel)DataContext;
 
         private void OnCSharpFindDirectory(object sender, RoutedEventArgs e)
         {
