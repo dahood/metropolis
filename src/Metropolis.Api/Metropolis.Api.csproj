@@ -153,13 +153,10 @@
     <Content Include="CollectionTools\checkstyle\checkstyle-6.17-all.jar">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CollectionTools\checkstyle\LICENSE.txt" />
-    <Content Include="CollectionTools\checkstyle\metropolis_checkstyle_metrics.xml" />
     <EmbeddedResource Include="entity-framework-6.project" />
     <Content Include="CollectionSettings\.eslintrc.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="CollectionTools\checkstyle\readme.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
