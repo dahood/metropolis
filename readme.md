@@ -1,6 +1,15 @@
 # What is Metropolis?
 
-Metropolis is a code visualization aid to help in review and analysis. It creates 3D representations of modules of code and builds a cityscape  to help reviewers pin point areas of interest. It provides a 3D treemap which uses static code metrics, source control data, and other user data to pin point hotspots in the codebase that warrant more investigation (e.g. cyclomatic complexity, lines of code, number of touches in source control, etc).
+Metropolis is a code visualization aid to help in review and analysis.
+
+## How to Install
+
+1. Install NodeJS on [Windows](https://nodejs.org/dist/v6.1.0/node-v6.1.0-x64.msi)
+1. `Set-ExecutionPolicy remotesigned` - sets powershell execution policy to allow installation
+1. `npm install -g metropolis-core` - installs through npm package globally (e.g. c:\users\jmccracken\appdata\roaming\node_modules\..) 
+
+Currently, Metropolis only support Windows sorry no [WPF on Mono yet](http://www.mono-project.com/docs/gui/wpf/). 
+We plan on supporting the command line interface using Mono.
 
 ## How it Works
 
@@ -14,23 +23,9 @@ Toxicity is essentially a [Richter Scale](https://en.wikipedia.org/wiki/Richter_
 
 Hibernate is an object relational mapping tool used to speed up development of applications. Hibernate has over 330,000 lines of code and an average toxicity of 1.335. You can see some areas are very good, but given the size and complexity of this project there are areas of concern highlighted in red. Using Metropolis's code inspector you can view these classes to review this code.
 
+## Getting Started
 
-## How to Install
-
-1. Install NodeJS on [Windows](https://nodejs.org/dist/v6.1.0/node-v6.1.0-x64.msi)
-1. `Set-ExecutionPolicy remotesigned` - sets powershell execution policy to allow installation
-1. `npm install -g metropolis-core` - installs through npm package globally (e.g. c:\users\jmccracken\appdata\roaming\node_modules\..) 
-
-Currently, Metropolis only support Windows sorry no [WPF on Mono yet](http://www.mono-project.com/docs/gui/wpf/). 
-We plan on supporting the command line interface using Mono.
-
-## User Guide
-
-[User Guide Wiki](https://github.com/dahood/metropolis/wiki/User-Guide) - contains info on how to get started after install
-
-## How to anything else...
-
-Learn more by visiting the [project wiki](https://github.com/dahood/metropolis/wiki)
+[Beginner's Guide](https://github.com/dahood/metropolis/wiki/Beginner's-Guide) is a good place to start as is the [Code Analysis Primer](https://github.com/dahood/metropolis/wiki/Code-Analysis-Primer).
 
 ## License
 
