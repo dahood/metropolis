@@ -9,7 +9,8 @@ Metropolis is a code visualization aid to help in review and analysis.
 1. `npm install -g metropolis-core` - installs through npm package globally (e.g. c:\users\jmccracken\appdata\roaming\node_modules\..) 
 
 Currently, Metropolis only support Windows sorry no [WPF on Mono yet](http://www.mono-project.com/docs/gui/wpf/). 
-We plan on supporting the command line interface using Mono.
+
+We plan on supporting the command line interface using Mono at some point in the near future.
 
 ## How it Works
 
