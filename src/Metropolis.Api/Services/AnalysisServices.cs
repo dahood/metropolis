@@ -1,31 +1,31 @@
 ﻿using Metropolis.Api.Analyzers;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
-using Metropolis.Api.Services.Tasks;
+using Metropolis.Api.Services.Collection;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services
 {
     public class AnalysisServices : IAnalysisService
     {
-        private readonly IMetricsTaskFactory metricsTaskFactory;
+        private readonly IMetricsStepFactory metricsStepFactory;
         private readonly IAnalyzerFactory analyzerFactory;
         private readonly ICodebaseService codebaseService;
         
-        public AnalysisServices() : this(new MetricsTaskFactory(), new CodebaseService(), new AnalyzerFactory())
+        public AnalysisServices() : this(new MetricsStepFactory(), new CodebaseService(), new AnalyzerFactory())
         {
         }
 
-        public AnalysisServices(IMetricsTaskFactory metricsTaskFactory, ICodebaseService codebaseService, IAnalyzerFactory analyzerFactory)
+        public AnalysisServices(IMetricsStepFactory metricsStepFactory, ICodebaseService codebaseService, IAnalyzerFactory analyzerFactory)
         {
-            this.metricsTaskFactory = metricsTaskFactory;
+            this.metricsStepFactory = metricsStepFactory;
             this.codebaseService = codebaseService;
             this.analyzerFactory = analyzerFactory;
         }
 
         public CodeBase Analyze(MetricsCommandArguments details)
         {
-            var command = metricsTaskFactory.CommandFor(details.RepositorySourceType);
+            var command = metricsStepFactory.CommandFor(details.RepositorySourceType);
             var metrics = command.Run(details);
 
             var codeBase = CodeBase.Empty();

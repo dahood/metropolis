@@ -4,7 +4,7 @@ using System.IO;
 using System.Management.Automation.Runspaces;
 using Metropolis.Common.Models;
 
-namespace Metropolis.Api.Services.Tasks.Commands
+namespace Metropolis.Api.Services.Collection.Steps
 {
     public abstract class BaseCollectionStep : ICollectionStep
     {

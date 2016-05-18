@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using FluentAssertions;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Persistence;
 using Metropolis.Test.Fixtures;
@@ -10,10 +11,14 @@ namespace Metropolis.Test.Api.Persistence
     [TestFixture]
     public class ProjectRepositoryTest
     {
+        private CodeBase codebase;
+        private ProjectRepository projectRepository;
+        private static string SampleProject => "sample.project";
+
         [SetUp]
         public void Setup()
         {
-            RemoveFile("sample.project");
+            RemoveFile(SampleProject);
             codebase = new CodeBase(CodeGraphFixture.Metropolis);
             projectRepository = new ProjectRepository();
         }
@@ -21,18 +26,9 @@ namespace Metropolis.Test.Api.Persistence
         [TearDown]
         public void TearDown()
         {
-            RemoveFile("sample.project");
+            RemoveFile(SampleProject);
         }
-
-        private void RemoveFile(string testfile)
-        {
-            if (File.Exists(testfile))
-                File.Delete(testfile);
-        }
-
-        private CodeBase codebase;
-        private ProjectRepository projectRepository;
-
+        
         [Test]
         public void Should_Load_Default_Project_From_JSON()
         {
@@ -43,9 +39,23 @@ namespace Metropolis.Test.Api.Persistence
         [Test]
         public void Should_Save_Project_To_JSON()
         {
-            var filePath = Path.Combine(Environment.CurrentDirectory, "sample.project");
+            var filePath = Path.Combine(Environment.CurrentDirectory, SampleProject);
             projectRepository.Save(codebase, filePath);
             //manual verification, eventually should have string comparision
+        }
+
+        [Test]
+        public void Should_Load_Saved_Project()
+        {
+            var filePath = Path.Combine(Environment.CurrentDirectory, SampleProject);
+            projectRepository.Save(codebase, filePath);
+            var loaded = projectRepository.Load(filePath);
+            loaded.Should().NotBeNull();
+        }
+        private static void RemoveFile(string testfile)
+        {
+            if (File.Exists(testfile))
+                File.Delete(testfile);
         }
     }
 }

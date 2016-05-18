@@ -2,8 +2,8 @@
 using Metropolis.Api.Analyzers;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Services;
-using Metropolis.Api.Services.Tasks;
-using Metropolis.Api.Services.Tasks.Commands;
+using Metropolis.Api.Services.Collection;
+using Metropolis.Api.Services.Collection.Steps;
 using Metropolis.Common.Models;
 using Moq;
 using NUnit.Framework;
@@ -13,7 +13,7 @@ namespace Metropolis.Test.Api.Services
     public class AnalysisServiceTest : StrictMockBaseTest
     {
         private AnalysisServices analysisServices;
-        private Mock<IMetricsTaskFactory> metricsTaskFactory;
+        private Mock<IMetricsStepFactory> metricsTaskFactory;
         private Mock<ICodebaseService> codebaseService;
         private Mock<ICollectionStep> metricsCommand;
         private MetricsCommandArguments details;
@@ -23,7 +23,7 @@ namespace Metropolis.Test.Api.Services
         [SetUp]
         public void SetUp()
         {
-            metricsTaskFactory = CreateMock<IMetricsTaskFactory>();
+            metricsTaskFactory = CreateMock<IMetricsStepFactory>();
             codebaseService = CreateMock<ICodebaseService>();
             metricsCommand = CreateMock<ICollectionStep>();
             analyzerFactory = CreateMock<IAnalyzerFactory>();

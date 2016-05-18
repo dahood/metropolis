@@ -17,10 +17,8 @@ namespace Metropolis.Api.Analyzers
                 return new CSharpToxicityAnalyzer();
             if (sourceType == RepositorySourceType.ECMA)
                 return new JavascriptToxicityAnalyzer();
-            if (sourceType == RepositorySourceType.Java)
-                return new JavaToxicityAnalyzer();
 
-            throw new ApplicationException($"no Toxicity analyzer known for type: {sourceType}");
+            return new JavaToxicityAnalyzer();
         }
     }
 }

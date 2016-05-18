@@ -2,7 +2,7 @@ using System;
 using Metropolis.Api.Extensions;
 using Metropolis.Common.Models;
 
-namespace Metropolis.Api.Services.Tasks.Commands
+namespace Metropolis.Api.Services.Collection.Steps
 {
     /// <summary>
     ///     Java Checkstyle parser automation

@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using Metropolis.Api.Services.Tasks;
-using Metropolis.Api.Services.Tasks.Commands;
+using Metropolis.Api.Services.Collection;
+using Metropolis.Api.Services.Collection.Steps;
 using Metropolis.Common.Models;
 using NUnit.Framework;
 
@@ -10,12 +10,12 @@ namespace Metropolis.Test.Api.Services.Tasks
 
     public class MetricsTaskFactoryTest
     {
-        private MetricsTaskFactory factory;
+        private MetricsStepFactory factory;
 
         [SetUp]
         public void SetUp()
         {
-            factory = new MetricsTaskFactory();
+            factory = new MetricsStepFactory();
         }
 
         [Test]

@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using Metropolis.Api.Services.Tasks.Commands;
+using Metropolis.Api.Services.Collection.Steps;
 using Metropolis.Common.Models;
 
-namespace Metropolis.Api.Services.Tasks
+namespace Metropolis.Api.Services.Collection
 {
-    public interface IMetricsTaskFactory
+    public interface IMetricsStepFactory
     {
         ICollectionStep CommandFor(RepositorySourceType repositorySourcetype);
     }
 
-    public class MetricsTaskFactory : IMetricsTaskFactory
+    public class MetricsStepFactory : IMetricsStepFactory
     {
         private readonly Dictionary<RepositorySourceType, Func<ICollectionStep>> commandMap =
             new Dictionary<RepositorySourceType, Func<ICollectionStep>>
