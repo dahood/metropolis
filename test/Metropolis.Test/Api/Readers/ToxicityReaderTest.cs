@@ -4,10 +4,10 @@ using System.Reflection;
 using Metropolis.Api.Readers.CsvReaders;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Parsers
+namespace Metropolis.Test.Api.Readers
 {
     [TestFixture]
-    public class TestToxicityParser
+    public class ToxicityReaderTest
     {
         [Test]
         public void Should_Parse_Line_Into_LineItem()

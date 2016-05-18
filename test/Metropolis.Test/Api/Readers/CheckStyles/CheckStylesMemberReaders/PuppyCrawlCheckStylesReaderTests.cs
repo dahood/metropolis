@@ -5,10 +5,10 @@ using Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.PuppyCrawl.Class;
 using Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.PuppyCrawl.Member;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
+namespace Metropolis.Test.Api.Readers.CheckStyles.CheckStylesMemberReaders
 {
     [TestFixture]
-    public class PuppyCrawlCheckStylesParserTests : CheckStylesBaseTest
+    public class PuppyCrawlCheckStylesReaderTests : CheckStylesBaseTest
     {
         private const string ComplexityMessage = "Class Fan-Out Complexity is 13 (max allowed is 0).";
         private const string LinesOfCodeMessage = "Method length is 66 lines (max allowed is 0).";

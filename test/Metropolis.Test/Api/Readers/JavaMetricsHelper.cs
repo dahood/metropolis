@@ -1,4 +1,4 @@
-﻿namespace Metropolis.Test.Api.Parsers
+﻿namespace Metropolis.Test.Api.Readers
 {
     public class JavaMetricsHelper
     {

@@ -4,11 +4,11 @@ using Metropolis.Api.Services.Collection.Steps;
 using Metropolis.Common.Models;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Services.Tasks
+namespace Metropolis.Test.Api.Services.Collection
 {
     [TestFixture]
 
-    public class MetricsTaskFactoryTest
+    public class MetricsStepFactoryTest
     {
         private MetricsStepFactory factory;
 

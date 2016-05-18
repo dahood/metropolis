@@ -3,9 +3,9 @@ using System.IO;
 using Metropolis.Api.Readers.XmlReaders.CheckStyles;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Parsers.CheckStyles
+namespace Metropolis.Test.Api.Readers.CheckStyles
 {
-    public abstract class BaseCheckstylesParserTest
+    public abstract class BaseCheckstylesReaderTest
     {
         protected CheckStylesReader Reader;
         protected abstract CheckStylesReader CreateParser();

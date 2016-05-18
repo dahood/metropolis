@@ -5,10 +5,10 @@ using Metropolis.Test.Extensions;
 using Metropolis.Test.Utilities;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Parsers.CsvReaders
+namespace Metropolis.Test.Api.Readers.CsvReaders
 {
     [TestFixture]
-    public class VisualStudioMetricsParserTest
+    public class VisualStudioMetricsReaderTest
     {
         [SetUp]
         public void SetUp()

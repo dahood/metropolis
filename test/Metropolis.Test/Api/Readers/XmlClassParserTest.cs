@@ -7,7 +7,7 @@ using Metropolis.Api.Readers.XmlReaders;
 using Metropolis.Api.Utilities;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Parsers
+namespace Metropolis.Test.Api.Readers
 {
     [TestFixture]
     public class XmlClassParserTest

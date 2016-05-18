@@ -7,7 +7,7 @@ using Metropolis.Api.Domain;
 using Metropolis.Api.Readers;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Parsers.CsvReaders
+namespace Metropolis.Test.Api.Readers.CsvReaders
 {
     public abstract class CsvParsersBaseTest<T> where T : IInstanceReader, new()
     {

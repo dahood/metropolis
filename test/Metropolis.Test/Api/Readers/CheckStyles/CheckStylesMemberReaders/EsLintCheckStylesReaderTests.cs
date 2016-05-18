@@ -2,10 +2,10 @@
 using Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.EsLint;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
+namespace Metropolis.Test.Api.Readers.CheckStyles.CheckStylesMemberReaders
 {
     [TestFixture]
-    public class EsLintCheckStylesParserTests : CheckStylesBaseTest
+    public class EsLintCheckStylesReaderTests : CheckStylesBaseTest
     {
         private const string ComplexityMessage = "Function 'jqLiteAcceptsData' has a complexity of 3. (complexity)";
 

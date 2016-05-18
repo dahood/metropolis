@@ -5,10 +5,10 @@ using Metropolis.Api.Readers.XmlReaders.CheckStyles;
 using Metropolis.Common.Models;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Parsers
+namespace Metropolis.Test.Api.Readers
 {
     [TestFixture]
-    public class MetricsParserFactoryTest
+    public class MetricsReaderFactoryTest
     {
         readonly MetricsReaderFactory factory = new MetricsReaderFactory();
 

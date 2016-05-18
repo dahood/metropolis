@@ -6,10 +6,10 @@ using Metropolis.Test.Fixtures;
 using Metropolis.Test.Utilities;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Parsers.CheckStyles
+namespace Metropolis.Test.Api.Readers.CheckStyles
 {
     [TestFixture]
-    public class EslintCheckStylesParserTest : BaseCheckstylesParserTest
+    public class EslintCheckStylesReaderTest : BaseCheckstylesReaderTest
     {
         protected override string FileName => "eslint_checkstyles_fixture.xml";
         protected override string CheckStylesFixture => MetricsDataFixture.CheckStylesReactFixture;

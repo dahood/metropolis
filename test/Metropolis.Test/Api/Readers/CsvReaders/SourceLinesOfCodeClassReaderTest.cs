@@ -2,10 +2,10 @@
 using Metropolis.Api.Readers.CsvReaders;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Parsers.CsvReaders
+namespace Metropolis.Test.Api.Readers.CsvReaders
 {
     [TestFixture]
-    public class SourceLinesOfCodeClassParserTest : CsvParsersBaseTest<SourceLinesOfCodeReader>
+    public class SourceLinesOfCodeClassReaderTest : CsvParsersBaseTest<SourceLinesOfCodeReader>
     {
         private const string Heading = "Path,Physical,Source,Comment,Single-line comment,Block comment,Mixed,Empty";
 
