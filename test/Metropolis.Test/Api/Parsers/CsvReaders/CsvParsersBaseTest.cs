@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using FluentAssertions;
 using Metropolis.Api.Domain;
-using Metropolis.Api.Parsers;
+using Metropolis.Api.Readers;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Parsers.CsvReaders

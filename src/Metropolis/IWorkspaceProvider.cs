@@ -1,5 +1,5 @@
 using Metropolis.Api.Domain;
-using Metropolis.Api.Parsers.CsvReaders;
+using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Common.Models;
 
 namespace Metropolis

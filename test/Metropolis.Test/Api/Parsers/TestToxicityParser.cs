@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
-using Metropolis.Api.Parsers.CsvReaders;
+using Metropolis.Api.Readers.CsvReaders;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Parsers

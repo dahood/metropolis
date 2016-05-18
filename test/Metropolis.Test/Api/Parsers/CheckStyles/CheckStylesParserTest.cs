@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using FluentAssertions;
 using Metropolis.Api.Domain;
-using Metropolis.Api.Parsers.XmlReaders.CheckStyles;
+using Metropolis.Api.Readers.XmlReaders.CheckStyles;
 using Metropolis.Test.Fixtures;
 using Metropolis.Test.Utilities;
 using NUnit.Framework;

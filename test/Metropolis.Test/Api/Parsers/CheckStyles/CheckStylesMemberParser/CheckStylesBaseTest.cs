@@ -1,8 +1,8 @@
 ﻿using System;
 using FluentAssertions;
 using Metropolis.Api.Domain;
-using Metropolis.Api.Parsers.XmlReaders.CheckStyles;
-using Metropolis.Api.Parsers.XmlReaders.CheckStyles.Readers;
+using Metropolis.Api.Readers.XmlReaders.CheckStyles;
+using Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
@@ -19,18 +19,18 @@ namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
             Member = new Member(string.Empty, 0, 0, 0);
         }
 
-        protected static T MemberParserFor<T>() where T : ICheckStylesMemberParser, new()
+        protected static T MemberParserFor<T>() where T : ICheckStylesMemberReader, new()
         {
             return new T();
         }
 
-        protected static T ClassParserFor<T>() where T : ICheckStylesClassParser, new()
+        protected static T ClassParserFor<T>() where T : ICheckStylesClassReader, new()
         {
             return new T();
         }
 
         protected void RunMemberTest<T>(string message, string expectedSource, Action<Member> action,
-            CheckStylesItem item = null) where T : ICheckStylesMemberParser, new()
+            CheckStylesItem item = null) where T : ICheckStylesMemberReader, new()
         {
             var checkStylesItem = item ?? new CheckStylesItem {Message = message};
             var parser = MemberParserFor<T>();
@@ -41,7 +41,7 @@ namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
         }
 
         protected void RunClassTest<T>(string message, string expectedSource, Action<Instance> action,
-            CheckStylesItem item = null) where T : ICheckStylesClassParser, new()
+            CheckStylesItem item = null) where T : ICheckStylesClassReader, new()
         {
             var checkStylesItem = item ?? new CheckStylesItem {Message = message};
             var parser = ClassParserFor<T>();
