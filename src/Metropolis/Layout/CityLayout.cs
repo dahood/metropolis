@@ -83,7 +83,7 @@ namespace Metropolis.Layout
 
         public void Adjust(Plot previous, double zOffset)
         {
-            var l = this.Bounds.Location;
+            var l = Bounds.Location;
             var newX = previous.Bounds.IsEmpty ? l.X : previous.Bounds.X + previous.Bounds.SizeX + Bounds.SizeX + 2;
             Bounds = new Rect3D(new Point3D(newX, 0, zOffset), Bounds.Size);
         }

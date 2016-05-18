@@ -9,11 +9,11 @@ namespace Metropolis.Api.Readers.CsvReaders
 {
     public abstract class CsvInstanceReader<T, TMapper> : IInstanceReader
     {
-        protected bool HasHeaderRecord { get; set; }
+        protected bool HasHeaderRecord { get; }
 
         protected CsvInstanceReader(bool hasHeaderRecord = false)
         {
-            this.HasHeaderRecord = hasHeaderRecord;
+            HasHeaderRecord = hasHeaderRecord;
         }
 
         public CodeBase Parse(string fileName)
