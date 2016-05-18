@@ -1,1 +1,0 @@
-java com.puppycrawl.tools.checkstyle.Main -cp 'C:/Dev/metropolis/src/Metropolis.Api/CollectionTools/checkstyle/*;' -c 'c:\dev\metropolis\src\Metropolis.Api\CollectionTools\checkstyle\metropolis_checkstyle_metrics.xml' -f xml -o 'c:\dev\results\metropolis_import.xml' 'C:\Dev\jruby\core\src\main\java'
