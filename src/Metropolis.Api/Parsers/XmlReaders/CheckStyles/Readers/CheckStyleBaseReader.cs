@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers
+namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Readers
 {
     public abstract class CheckStyleBaseReader
     {

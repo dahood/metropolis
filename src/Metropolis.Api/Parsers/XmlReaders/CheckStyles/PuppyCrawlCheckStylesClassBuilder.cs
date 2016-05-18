@@ -1,6 +1,6 @@
-using Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers;
-using Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.PuppyCrawl.Class;
-using Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.PuppyCrawl.Member;
+using Metropolis.Api.Parsers.XmlReaders.CheckStyles.Readers;
+using Metropolis.Api.Parsers.XmlReaders.CheckStyles.Readers.PuppyCrawl.Class;
+using Metropolis.Api.Parsers.XmlReaders.CheckStyles.Readers.PuppyCrawl.Member;
 
 namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles
 {

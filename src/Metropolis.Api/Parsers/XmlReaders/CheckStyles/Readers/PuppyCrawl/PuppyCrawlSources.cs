@@ -1,4 +1,4 @@
-﻿namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.PuppyCrawl
+﻿namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Readers.PuppyCrawl
 {
     public static class PuppyCrawlSources
     {

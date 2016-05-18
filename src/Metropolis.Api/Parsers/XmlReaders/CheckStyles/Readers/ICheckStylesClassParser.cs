@@ -1,7 +1,7 @@
 ﻿
 using Metropolis.Api.Domain;
 
-namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers
+namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Readers
 {
     public interface ICheckStylesClassParser
     {

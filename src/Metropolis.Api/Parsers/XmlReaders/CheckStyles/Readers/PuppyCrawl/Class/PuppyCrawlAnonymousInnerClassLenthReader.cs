@@ -1,6 +1,6 @@
 using Metropolis.Api.Extensions;
 
-namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.PuppyCrawl.Class
+namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Readers.PuppyCrawl.Class
 {
     public class PuppyCrawlAnonymousInnerClassLenthReader : CheckStyleBaseReader, ICheckStylesClassParser
     {

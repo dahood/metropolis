@@ -1,7 +1,7 @@
 ﻿using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
 
-namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.EsLint
+namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Readers.EsLint
 {
     public class EsLintNumberOfStatmentsReader : CheckStyleBaseReader, ICheckStylesMemberParser
     {

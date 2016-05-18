@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.EsLint;
+using Metropolis.Api.Parsers.XmlReaders.CheckStyles.Readers.EsLint;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser

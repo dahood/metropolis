@@ -1,6 +1,6 @@
 using System.Linq;
-using Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers;
-using Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.EsLint;
+using Metropolis.Api.Parsers.XmlReaders.CheckStyles.Readers;
+using Metropolis.Api.Parsers.XmlReaders.CheckStyles.Readers.EsLint;
 
 namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles
 {

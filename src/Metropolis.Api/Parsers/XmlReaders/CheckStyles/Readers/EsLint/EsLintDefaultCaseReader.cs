@@ -1,6 +1,6 @@
 using Metropolis.Api.Domain;
 
-namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.EsLint
+namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Readers.EsLint
 {
     public class EsLintDefaultCaseReader : CheckStyleBaseReader, ICheckStylesMemberParser
     {

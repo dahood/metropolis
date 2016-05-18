@@ -1,4 +1,4 @@
-﻿namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.EsLint
+﻿namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Readers.EsLint
 {
     public static class EslintSources
     {
