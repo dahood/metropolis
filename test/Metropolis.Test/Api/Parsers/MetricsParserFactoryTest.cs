@@ -17,7 +17,7 @@ namespace Metropolis.Test.Api.Parsers
         {
             factory.ParserFor(ParseType.VisualStudio)
                 .Should().NotBeNull()
-                .And.BeAssignableTo<VisualStudioMetricsParser>();
+                .And.BeAssignableTo<VisualStudioMetricsReader>();
         }
 
         [Test]
@@ -25,7 +25,7 @@ namespace Metropolis.Test.Api.Parsers
         {
             factory.ParserFor(ParseType.RichardToxicity)
                 .Should().NotBeNull()
-                .And.BeAssignableTo<ToxicityParser>();
+                .And.BeAssignableTo<ToxicityReader>();
         }
 
         [Test]
@@ -33,7 +33,7 @@ namespace Metropolis.Test.Api.Parsers
         {
             factory.ParserFor(ParseType.PuppyCrawler)
                 .Should().NotBeNull()
-                .And.BeAssignableTo<CheckStylesParser>();
+                .And.BeAssignableTo<CheckStylesReader>();
         }
 
         [Test]
@@ -41,7 +41,7 @@ namespace Metropolis.Test.Api.Parsers
         {
             factory.ParserFor(ParseType.EsLint)
                 .Should().NotBeNull()
-                .And.BeAssignableTo<CheckStylesParser>();
+                .And.BeAssignableTo<CheckStylesReader>();
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace Metropolis.Test.Api.Parsers
         {
             factory.ParserFor(ParseType.SlocEcma)
                    .Should().NotBeNull()
-                   .And.BeAssignableTo<SourceLinesOfCodeParser>();
+                   .And.BeAssignableTo<SourceLinesOfCodeReader>();
         }
 
         [Test]
@@ -57,7 +57,7 @@ namespace Metropolis.Test.Api.Parsers
         {
             factory.ParserFor(ParseType.SlocCSharp)
                 .Should().NotBeNull()
-                .And.BeAssignableTo<SourceLinesOfCodeParser>();
+                .And.BeAssignableTo<SourceLinesOfCodeReader>();
         }
 
         [Test]
@@ -65,7 +65,7 @@ namespace Metropolis.Test.Api.Parsers
         {
             factory.ParserFor(ParseType.SlocCSharp)
                 .Should().NotBeNull()
-                .And.BeAssignableTo<SourceLinesOfCodeParser>();
+                .And.BeAssignableTo<SourceLinesOfCodeReader>();
         }
     }
 }

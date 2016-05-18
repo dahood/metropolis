@@ -14,15 +14,15 @@ namespace Metropolis.Test.Api.Parsers.CheckStyles
         protected override string FileName => "eslint_checkstyles_fixture.xml";
         protected override string CheckStylesFixture => MetricsDataFixture.CheckStylesReactFixture;
 
-        protected override CheckStylesParser CreateParser()
+        protected override CheckStylesReader CreateParser()
         {
-            return CheckStylesParser.EslintParser;
+            return CheckStylesReader.EslintReader;
         }
 
         [Test]
         public void CanParse()
         {
-            var result = Parser.Parse(FileName);
+            var result = Reader.Parse(FileName);
             result.Should().NotBeNull();
 
             result.AllInstances.Count.Should().Be(2);

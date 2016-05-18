@@ -1,6 +1,6 @@
 namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.PuppyCrawl.Member
 {
-    public class PuppyCrawlDefaultCaseParser : CheckStyleBaseParser, ICheckStylesMemberParser
+    public class PuppyCrawlDefaultCaseReader : CheckStyleBaseReader, ICheckStylesMemberParser
     {
         public override string Source => PuppyCrawlSources.MissingSwitchDefault;
         

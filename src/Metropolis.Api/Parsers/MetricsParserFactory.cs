@@ -10,13 +10,13 @@ namespace Metropolis.Api.Parsers
     {
         private readonly Dictionary<ParseType, Func<IInstanceReader>> parseFactory = new Dictionary<ParseType, Func<IInstanceReader>>
         {
-            {ParseType.VisualStudio, () => new VisualStudioMetricsParser()},
-            {ParseType.RichardToxicity, () => new ToxicityParser()},
-            {ParseType.PuppyCrawler, () => CheckStylesParser.PuppyCrawlParser},
-            {ParseType.EsLint, () => CheckStylesParser.EslintParser},
-            {ParseType.SlocEcma, () => new SourceLinesOfCodeParser(FileInclusion.Js)},
-            {ParseType.SlocCSharp, () => new SourceLinesOfCodeParser(FileInclusion.CSharp)},
-            {ParseType.SlocJava, () => new SourceLinesOfCodeParser(FileInclusion.Java)},
+            {ParseType.VisualStudio, () => new VisualStudioMetricsReader()},
+            {ParseType.RichardToxicity, () => new ToxicityReader()},
+            {ParseType.PuppyCrawler, () => CheckStylesReader.PuppyCrawlReader},
+            {ParseType.EsLint, () => CheckStylesReader.EslintReader},
+            {ParseType.SlocEcma, () => new SourceLinesOfCodeReader(FileInclusion.Js)},
+            {ParseType.SlocCSharp, () => new SourceLinesOfCodeReader(FileInclusion.CSharp)},
+            {ParseType.SlocJava, () => new SourceLinesOfCodeReader(FileInclusion.Java)},
         };
 
         public IInstanceReader ParserFor(ParseType parseType)

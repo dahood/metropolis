@@ -8,8 +8,8 @@ namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles
     {
         private static readonly ICheckStylesMemberParser[] EsLintMemberParsers =
         {
-            new EsLintComplexityParser(), new EsLintNumberOfStatmentsParser(), new EsLintNumberOfParametersParser(),
-            new EsLintDefaultCaseParser(), new EsLintCaseNoFallThroughParser()
+            new EsLintComplexityReader(), new EsLintNumberOfStatmentsReader(), new EsLintNumberOfParametersReader(),
+            new EsLintDefaultCaseReader(), new EsLintCaseNoFallThroughReader()
         };
         public EsLintCheckStylesClassBuilder() : base(Enumerable.Empty<ICheckStylesClassParser>(), EsLintMemberParsers) { }
     }

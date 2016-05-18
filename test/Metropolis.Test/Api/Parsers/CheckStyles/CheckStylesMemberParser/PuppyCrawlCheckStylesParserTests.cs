@@ -28,7 +28,7 @@ namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
         [Test]
         public void ShouldParseAnonymousInnerClassLenthestedIfDepth()
         {
-            RunClassTest<PuppyCrawlAnonymousInnerClassLenthParser>(AnonymousInnerClassLengthMessage,
+            RunClassTest<PuppyCrawlAnonymousInnerClassLenthReader>(AnonymousInnerClassLengthMessage,
                 PuppyCrawlSources.AnonymousInnerClassLength,
                 m => m.AnonymousInnerClassLength.Should().Be(19));
         }
@@ -36,7 +36,7 @@ namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
         [Test]
         public void ShouldParseBooleanExpressionComplexity()
         {
-            RunMemberTest<PuppyCrawlBooleanExpressionComplexityParser>(BooleanComplexityMessage,
+            RunMemberTest<PuppyCrawlBooleanExpressionComplexityReader>(BooleanComplexityMessage,
                 PuppyCrawlSources.BooleanExpressionComplexity,
                 m => m.BooleanExpressionComplexity.Should().Be(4));
         }
@@ -44,7 +44,7 @@ namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
         [Test]
         public void ShouldParseClassDataAbstractionCoupling()
         {
-            RunClassTest<PuppyCrawlClassDataAbstractionCouplingParser>(ClassDataAbstractionCouplingMessage,
+            RunClassTest<PuppyCrawlClassDataAbstractionCouplingReader>(ClassDataAbstractionCouplingMessage,
                 PuppyCrawlSources.ClassDataAbstractionCoupling,
                 m => m.ClassDataAbstractionCoupling.Should().Be(22));
         }
@@ -52,7 +52,7 @@ namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
         [Test]
         public void ShouldParseFunctionNameAndComplexity()
         {
-            RunMemberTest<PuppyCrawlComplexityParser>(ComplexityMessage, PuppyCrawlSources.FanOutComplexity, m =>
+            RunMemberTest<PuppyCrawlComplexityReader>(ComplexityMessage, PuppyCrawlSources.FanOutComplexity, m =>
             {
                 m.Name.Should().Be("1-2");
                 m.CylomaticComplexity.Should().Be(13);
@@ -63,35 +63,35 @@ namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
         [Test]
         public void ShouldParseLinesOfCode()
         {
-            RunMemberTest<PuppyCrawlMethodLengthParser>(LinesOfCodeMessage, PuppyCrawlSources.MethodLength,
+            RunMemberTest<PuppyCrawlMethodLengthReader>(LinesOfCodeMessage, PuppyCrawlSources.MethodLength,
                 m => m.LinesOfCode.Should().Be(66));
         }
 
         [Test]
         public void ShouldParseMissingSwitchDefaultCheck()
         {
-            RunMemberTest<PuppyCrawlDefaultCaseParser>("kaka", PuppyCrawlSources.MissingSwitchDefault,
+            RunMemberTest<PuppyCrawlDefaultCaseReader>("kaka", PuppyCrawlSources.MissingSwitchDefault,
                 m => m.MissingDefaultCase.Should().Be(1));
         }
 
         [Test]
         public void ShouldParseNestedIfDepth()
         {
-            RunMemberTest<PupyyCrawlNestedIfDepthParser>(NestedIfDepthMessage, PuppyCrawlSources.NestedIfDepth,
+            RunMemberTest<PupyyCrawlNestedIfDepthReader>(NestedIfDepthMessage, PuppyCrawlSources.NestedIfDepth,
                 m => m.NestedIfDepth.Should().Be(5));
         }
 
         [Test]
         public void ShouldParseNestedTryDepth()
         {
-            RunMemberTest<PupyyCrawlNestedTryDepthParser>(NestedTryDepthMessage, PuppyCrawlSources.NestedTryDepth,
+            RunMemberTest<PupyyCrawlNestedTryDepthReader>(NestedTryDepthMessage, PuppyCrawlSources.NestedTryDepth,
                 m => m.NestedTryDepth.Should().Be(1));
         }
 
         [Test]
         public void ShouldParseNumberOfParameters()
         {
-            RunMemberTest<PuppyCrawlNumberOfParametersParser>(NumberOfParametersMessage,
+            RunMemberTest<PuppyCrawlNumberOfParametersReader>(NumberOfParametersMessage,
                 PuppyCrawlSources.NumberOfParameters,
                 m => m.NumberOfParameters.Should().Be(123));
         }
@@ -99,7 +99,7 @@ namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
         [Test]
         public void ShouldParsePuppyCrawlClassFanOutComplexity()
         {
-            RunClassTest<PuppyCrawlClassFanOutComplexityParser>(ClassFanOutComplexitymMessage,
+            RunClassTest<PuppyCrawlClassFanOutComplexityReader>(ClassFanOutComplexitymMessage,
                 PuppyCrawlSources.ClassFanOutComplexity,
                 m => m.ClassFanOutComplexity.Should().Be(11));
         }

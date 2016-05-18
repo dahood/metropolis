@@ -11,16 +11,16 @@ namespace Metropolis.Api.Parsers.XmlReaders
 {
     public class XmlInstanceReader : IInstanceReader
     {
-        private readonly IEnumerable<IJavaMetricParser> parsers;
+        private readonly IEnumerable<IJavaMetricReader> parsers;
 
-        private static readonly IEnumerable<IJavaMetricParser> MetricParsers = new List<IJavaMetricParser>
-            { new DepthOfInheritanceParser(), new MethodLineParser(), new ClassAttributeParser(), new CyclomaticComplexityParser()};
+        private static readonly IEnumerable<IJavaMetricReader> MetricParsers = new List<IJavaMetricReader>
+            { new DepthOfInheritanceReader(), new MethodLineReader(), new ClassAttributeReader(), new CyclomaticComplexityReader()};
 
         public XmlInstanceReader() : this(MetricParsers)
         {
         }
 
-        private XmlInstanceReader(IEnumerable<IJavaMetricParser> javaMetricHandlers)
+        private XmlInstanceReader(IEnumerable<IJavaMetricReader> javaMetricHandlers)
         {
             parsers = javaMetricHandlers;
         }

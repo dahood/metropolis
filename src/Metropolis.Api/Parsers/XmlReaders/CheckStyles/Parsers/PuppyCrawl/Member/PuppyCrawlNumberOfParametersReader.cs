@@ -2,11 +2,11 @@ using Metropolis.Api.Extensions;
 
 namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.PuppyCrawl.Member
 {
-    public class PuppyCrawlNumberOfParametersParser : CheckStyleBaseParser, ICheckStylesMemberParser
+    public class PuppyCrawlNumberOfParametersReader : CheckStyleBaseReader, ICheckStylesMemberParser
     {
         public override string Source => PuppyCrawlSources.NumberOfParameters;
 
-        public PuppyCrawlNumberOfParametersParser() : base("[found|)]")
+        public PuppyCrawlNumberOfParametersReader() : base("[found|)]")
         {
             
         }

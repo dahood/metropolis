@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Xml.Linq;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
 
 namespace Metropolis.Api.Parsers.XmlReaders.MetricHandlers
 {
-    public class ClassAttributeParser : IJavaMetricParser
+    public class CyclomaticComplexityReader : IJavaMetricReader
     {
-        public int Order => 3;
-        public string Id => "NOF";
+        public int Order => 4;
+        public string Id => "VG";
 
         public void Parse(XElement metric, Dictionary<string, Instance> classMap, XNamespace nameSpace)
         {
@@ -18,9 +17,10 @@ namespace Metropolis.Api.Parsers.XmlReaders.MetricHandlers
                   .ForEach(each =>
                   {
                       var className = each.AttributeValue("source").Replace(".java", "").Replace(".java", "");
-                      var numberOfFields = each.AttributeValue("value").AsInt();
+                      var methodName = each.AttributeValue("name");
+                      var cyclomaticComplexity = each.AttributeValue("value").AsInt();
 
-                      classMap.DoWhenItemFound(className, item => item.LinesOfCode = item.Members.Sum(x => x.LinesOfCode) + numberOfFields);
+                      classMap.DoWhenItemFound(className, item => item.GetMemberByName(methodName).CylomaticComplexity = cyclomaticComplexity);
                   });
         }
     }

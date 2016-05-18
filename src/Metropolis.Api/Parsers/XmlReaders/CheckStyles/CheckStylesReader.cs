@@ -7,14 +7,14 @@ using Metropolis.Api.Extensions;
 
 namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles
 {
-    public class CheckStylesParser : IInstanceReader
+    public class CheckStylesReader : IInstanceReader
     {
         private readonly ICheckStylesClassBuilder classBuilder;
 
-        public static CheckStylesParser EslintParser => new CheckStylesParser(new EsLintCheckStylesClassBuilder());
-        public static CheckStylesParser PuppyCrawlParser => new CheckStylesParser(new PuppyCrawlCheckStylesClassBuilder());
+        public static CheckStylesReader EslintReader => new CheckStylesReader(new EsLintCheckStylesClassBuilder());
+        public static CheckStylesReader PuppyCrawlReader => new CheckStylesReader(new PuppyCrawlCheckStylesClassBuilder());
 
-        public CheckStylesParser(ICheckStylesClassBuilder classBuilder)
+        public CheckStylesReader(ICheckStylesClassBuilder classBuilder)
         {
             this.classBuilder = classBuilder;
         }

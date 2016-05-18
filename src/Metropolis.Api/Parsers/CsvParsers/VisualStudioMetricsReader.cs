@@ -5,9 +5,9 @@ using Metropolis.Api.Domain;
 
 namespace Metropolis.Api.Parsers.CsvParsers
 {
-    public class VisualStudioMetricsParser : CsvInstanceReader<VisualStudioCsvLineItem, VisualStudioCsvLineItemClassMap>
+    public class VisualStudioMetricsReader : CsvInstanceReader<VisualStudioCsvLineItem, VisualStudioCsvLineItemClassMap>
     {
-        public VisualStudioMetricsParser() : base(hasHeaderRecord: true)
+        public VisualStudioMetricsReader() : base(hasHeaderRecord: true)
         { }
 
         protected override CodeBase ParseLines(IEnumerable<VisualStudioCsvLineItem> lines)

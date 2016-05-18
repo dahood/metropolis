@@ -4,13 +4,13 @@ using Metropolis.Api.Extensions;
 
 namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.EsLint
 {
-    public class EsLintComplexityParser : CheckStyleBaseParser, ICheckStylesMemberParser
+    public class EsLintComplexityReader : CheckStyleBaseReader, ICheckStylesMemberParser
     {
         private readonly Regex nameRegex = new Regex("'",RegexOptions.IgnorePatternWhitespace|RegexOptions.Compiled);
 
         public override string Source => EslintSources.Complexity;
 
-        public EsLintComplexityParser() : base(IntRegex)
+        public EsLintComplexityReader() : base(IntRegex)
         {
         }
 

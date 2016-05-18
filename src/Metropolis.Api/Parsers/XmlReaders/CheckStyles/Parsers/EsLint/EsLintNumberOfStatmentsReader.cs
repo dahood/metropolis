@@ -3,11 +3,11 @@ using Metropolis.Api.Extensions;
 
 namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.EsLint
 {
-    public class EsLintNumberOfStatmentsParser : CheckStyleBaseParser, ICheckStylesMemberParser
+    public class EsLintNumberOfStatmentsReader : CheckStyleBaseReader, ICheckStylesMemberParser
     {
         public override string Source => EslintSources.MemberNumberOfStatements;
 
-        public EsLintNumberOfStatmentsParser() : base("[()]")
+        public EsLintNumberOfStatmentsReader() : base("[()]")
         {
         }
 

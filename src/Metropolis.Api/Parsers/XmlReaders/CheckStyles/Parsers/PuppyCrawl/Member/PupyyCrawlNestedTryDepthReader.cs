@@ -2,7 +2,7 @@ using Metropolis.Api.Extensions;
 
 namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.PuppyCrawl.Member
 {
-    public class PupyyCrawlNestedTryDepthParser : CheckStyleBaseParser, ICheckStylesMemberParser
+    public class PupyyCrawlNestedTryDepthReader : CheckStyleBaseReader, ICheckStylesMemberParser
     {
         public override string Source => PuppyCrawlSources.NestedTryDepth;
         

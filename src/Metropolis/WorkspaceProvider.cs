@@ -86,7 +86,7 @@ namespace Metropolis
             OpenFile(fileName =>
             {
                 Workspace.SourceType = RepositorySourceType.Java;
-                var parser = CheckStylesParser.PuppyCrawlParser;
+                var parser = CheckStylesReader.PuppyCrawlReader;
                 Parse(parser, fileName);
             }, "Checkstyles |*.xml");
         }
@@ -96,7 +96,7 @@ namespace Metropolis
             OpenFile(fileName =>
             {
                 Workspace.SourceType = RepositorySourceType.ECMA;
-                var parser = CheckStylesParser.EslintParser;
+                var parser = CheckStylesReader.EslintReader;
                 Parse(parser, fileName);
             }, "Checkstyles |*.xml");
         }
@@ -105,7 +105,7 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
-                var parser = new SourceLinesOfCodeParser(inclusion);
+                var parser = new SourceLinesOfCodeReader(inclusion);
                 Parse(parser, fileName);
             }, "Source LOC |*.csv");
         }

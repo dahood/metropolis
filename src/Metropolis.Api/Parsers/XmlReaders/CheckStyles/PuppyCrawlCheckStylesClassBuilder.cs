@@ -8,16 +8,16 @@ namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles
     {
         private static readonly ICheckStylesClassParser[] PuppyCrawlClassParsers =
         { 
-           new PuppyCrawlAnonymousInnerClassLenthParser(),
-            new PuppyCrawlClassDataAbstractionCouplingParser(),
-            new PuppyCrawlClassFanOutComplexityParser()
+           new PuppyCrawlAnonymousInnerClassLenthReader(),
+            new PuppyCrawlClassDataAbstractionCouplingReader(),
+            new PuppyCrawlClassFanOutComplexityReader()
         };
 
         private static readonly ICheckStylesMemberParser[] PuppyCrawlMemberParsers =
         {
-            new PuppyCrawlComplexityParser(), new PuppyCrawlMethodLengthParser(), new PuppyCrawlNumberOfParametersParser(),
-            new PuppyCrawlDefaultCaseParser(), new PuppyCrawlBooleanExpressionComplexityParser(), new PupyyCrawlNestedTryDepthParser(),
-            new PupyyCrawlNestedIfDepthParser(), 
+            new PuppyCrawlComplexityReader(), new PuppyCrawlMethodLengthReader(), new PuppyCrawlNumberOfParametersReader(),
+            new PuppyCrawlDefaultCaseReader(), new PuppyCrawlBooleanExpressionComplexityReader(), new PupyyCrawlNestedTryDepthReader(),
+            new PupyyCrawlNestedIfDepthReader(), 
         };
 
         public PuppyCrawlCheckStylesClassBuilder() : base(PuppyCrawlClassParsers, PuppyCrawlMemberParsers) {}

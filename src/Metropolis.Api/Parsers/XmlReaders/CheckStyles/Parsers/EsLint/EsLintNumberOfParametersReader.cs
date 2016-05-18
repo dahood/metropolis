@@ -3,7 +3,7 @@ using Metropolis.Api.Extensions;
 
 namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.EsLint
 {
-    public class EsLintNumberOfParametersParser : CheckStyleBaseParser, ICheckStylesMemberParser
+    public class EsLintNumberOfParametersReader : CheckStyleBaseReader, ICheckStylesMemberParser
     {
         public override string Source => EslintSources.NumberOfParameters;
         

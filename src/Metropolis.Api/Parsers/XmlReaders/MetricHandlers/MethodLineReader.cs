@@ -6,7 +6,7 @@ using Metropolis.Api.Extensions;
 
 namespace Metropolis.Api.Parsers.XmlReaders.MetricHandlers
 {
-    public class MethodLineParser : IJavaMetricParser
+    public class MethodLineReader : IJavaMetricReader
     {
         public int Order => 2;
         public string Id => "MLOC";

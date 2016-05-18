@@ -4,7 +4,7 @@ using Metropolis.Api.Domain;
 
 namespace Metropolis.Api.Parsers.XmlReaders.MetricHandlers
 {
-    public interface IJavaMetricParser
+    public interface IJavaMetricReader
     {
         string Id { get; }
         int Order { get; }

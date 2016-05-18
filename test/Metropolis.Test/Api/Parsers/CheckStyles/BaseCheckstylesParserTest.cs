@@ -7,8 +7,8 @@ namespace Metropolis.Test.Api.Parsers.CheckStyles
 {
     public abstract class BaseCheckstylesParserTest
     {
-        protected CheckStylesParser Parser;
-        protected abstract CheckStylesParser CreateParser();
+        protected CheckStylesReader Reader;
+        protected abstract CheckStylesReader CreateParser();
         protected abstract string FileName { get; }
         protected abstract string CheckStylesFixture { get; }
         private string checkstylesFileName;
@@ -17,7 +17,7 @@ namespace Metropolis.Test.Api.Parsers.CheckStyles
         public void SetUp()
         {
             checkstylesFileName = $"{Path.Combine(Environment.CurrentDirectory, FileName)}";
-            Parser = CreateParser();
+            Reader = CreateParser();
             RemoveFile(checkstylesFileName);
             File.WriteAllText(checkstylesFileName, CheckStylesFixture);
         }

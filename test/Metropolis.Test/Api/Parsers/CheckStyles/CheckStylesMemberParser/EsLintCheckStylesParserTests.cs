@@ -21,35 +21,35 @@ namespace Metropolis.Test.Api.Parsers.CheckStyles.CheckStylesMemberParser
         [Test]
         public void CanParseDefaultCaseMissing()
         {
-            RunMemberTest<EsLintDefaultCaseParser>(DefaultCaseMessage, EslintSources.DefaultCase,
+            RunMemberTest<EsLintDefaultCaseReader>(DefaultCaseMessage, EslintSources.DefaultCase,
                 m => m.MissingDefaultCase.Should().Be(1));
         }
 
         [Test]
         public void CanParseNoFallthrough()
         {
-            RunMemberTest<EsLintCaseNoFallThroughParser>(NofallthroughMessage, EslintSources.CaseNoFallThrough,
+            RunMemberTest<EsLintCaseNoFallThroughReader>(NofallthroughMessage, EslintSources.CaseNoFallThrough,
                 m => m.NoFallthrough.Should().Be(1));
         }
 
         [Test]
         public void CanParseNumberOfParameters()
         {
-            RunMemberTest<EsLintNumberOfParametersParser>(ParametersMessage, EslintSources.NumberOfParameters,
+            RunMemberTest<EsLintNumberOfParametersReader>(ParametersMessage, EslintSources.NumberOfParameters,
                 m => m.NumberOfParameters.Should().Be(2));
         }
 
         [Test]
         public void CanParseNumberOfStatements()
         {
-            RunMemberTest<EsLintNumberOfStatmentsParser>(StatementsMessage, EslintSources.MemberNumberOfStatements,
+            RunMemberTest<EsLintNumberOfStatmentsReader>(StatementsMessage, EslintSources.MemberNumberOfStatements,
                 m => m.LinesOfCode.Should().Be(17));
         }
 
         [Test]
         public void ShouldParseFunctionNameAndComplexity()
         {
-            RunMemberTest<EsLintComplexityParser>(ComplexityMessage, EslintSources.Complexity, m =>
+            RunMemberTest<EsLintComplexityReader>(ComplexityMessage, EslintSources.Complexity, m =>
             {
                 m.Name.Should().Be("jqLiteAcceptsData");
                 m.CylomaticComplexity.Should().Be(3);

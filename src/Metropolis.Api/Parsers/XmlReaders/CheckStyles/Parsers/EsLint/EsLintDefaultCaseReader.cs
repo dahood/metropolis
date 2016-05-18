@@ -2,7 +2,7 @@ using Metropolis.Api.Domain;
 
 namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.EsLint
 {
-    public class EsLintDefaultCaseParser : CheckStyleBaseParser, ICheckStylesMemberParser
+    public class EsLintDefaultCaseReader : CheckStyleBaseReader, ICheckStylesMemberParser
     {
         public override string Source => EslintSources.DefaultCase;
         

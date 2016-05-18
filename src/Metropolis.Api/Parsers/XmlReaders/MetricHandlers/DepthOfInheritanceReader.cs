@@ -5,7 +5,7 @@ using Metropolis.Api.Extensions;
 
 namespace Metropolis.Api.Parsers.XmlReaders.MetricHandlers
 {
-    public class DepthOfInheritanceParser : IJavaMetricParser
+    public class DepthOfInheritanceReader : IJavaMetricReader
     {
         public int Order => 1;
         public string Id => "DIT";

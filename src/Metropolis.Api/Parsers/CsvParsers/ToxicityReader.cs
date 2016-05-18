@@ -5,9 +5,9 @@ using Metropolis.Api.Domain;
 namespace Metropolis.Api.Parsers.CsvParsers
 {
     //Data Aquisition
-    public class ToxicityParser : CsvInstanceReader<ToxicityCsvLineItem, ToxicityCsvLineItemClassMap>
+    public class ToxicityReader : CsvInstanceReader<ToxicityCsvLineItem, ToxicityCsvLineItemClassMap>
     {
-        public ToxicityParser(bool hasHeaderRecord = true) : base(hasHeaderRecord)
+        public ToxicityReader(bool hasHeaderRecord = true) : base(hasHeaderRecord)
         {
         }
 

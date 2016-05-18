@@ -2,7 +2,7 @@ using Metropolis.Api.Extensions;
 
 namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.PuppyCrawl.Class
 {
-    public class PuppyCrawlClassDataAbstractionCouplingParser : CheckStyleBaseParser, ICheckStylesClassParser
+    public class PuppyCrawlClassDataAbstractionCouplingReader : CheckStyleBaseReader, ICheckStylesClassParser
     {
         public override string Source => PuppyCrawlSources.ClassDataAbstractionCoupling;
         

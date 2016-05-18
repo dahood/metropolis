@@ -2,11 +2,11 @@
 
 namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers.PuppyCrawl.Member
 {
-    public class PuppyCrawlComplexityParser : CheckStyleBaseParser, ICheckStylesMemberParser
+    public class PuppyCrawlComplexityReader : CheckStyleBaseReader, ICheckStylesMemberParser
     {
         public override string Source => PuppyCrawlSources.FanOutComplexity;
 
-        public PuppyCrawlComplexityParser() : base(IntRegex)
+        public PuppyCrawlComplexityReader() : base(IntRegex)
         {
         }
 

@@ -13,10 +13,10 @@ namespace Metropolis.Test.Api.Parsers.CsvReaders
         [SetUp]
         public void SetUp()
         {
-            parser = new VisualStudioMetricsParserDouble();
+            reader = new VisualStudioMetricsReaderDouble();
         }
 
-        private VisualStudioMetricsParserDouble parser;
+        private VisualStudioMetricsReaderDouble reader;
 
         private static VisualStudioCsvLineItem MakeType(string type, string ns = "ns", int loc = 0, int cyclo = 0,
             int dit = 0, int cc = 0)
@@ -54,7 +54,7 @@ namespace Metropolis.Test.Api.Parsers.CsvReaders
         {
             var typ = MakeType("Clock", loc: 1, dit: 2, cyclo: 3, cc: 4);
 
-            var actual = parser.TestParse(new[] {typ});
+            var actual = reader.TestParse(new[] {typ});
 
             Validate.Begin().IsNotNull(actual, "actual")
                 .IsEqual(actual.AllInstances.Count, 1, "class Count")
@@ -71,7 +71,7 @@ namespace Metropolis.Test.Api.Parsers.CsvReaders
             var typ = MakeType("Clock", loc: 1, dit: 2, cyclo: 3, cc: 4);
             var mbr = MakeMember("Today()");
 
-            var actual = parser.TestParse(new[] {typ, mbr});
+            var actual = reader.TestParse(new[] {typ, mbr});
 
             Validate.Begin().IsNotNull(actual, "actual").IsEqual(actual.AllInstances.Count, 1, "class Count").Check()
                 .IsEqual(actual.LinesOfCode, 1, "loc")
@@ -92,7 +92,7 @@ namespace Metropolis.Test.Api.Parsers.CsvReaders
         }
     }
 
-    public class VisualStudioMetricsParserDouble : VisualStudioMetricsParser
+    public class VisualStudioMetricsReaderDouble : VisualStudioMetricsReader
     {
         public CodeBase TestParse(VisualStudioCsvLineItem[] lines)
         {

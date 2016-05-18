@@ -2,7 +2,7 @@
 
 namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers
 {
-    public abstract class CheckStyleBaseParser
+    public abstract class CheckStyleBaseReader
     {
         protected const string IntRegex = @"\d+";
         public abstract string Source { get; }
@@ -10,12 +10,12 @@ namespace Metropolis.Api.Parsers.XmlReaders.CheckStyles.Parsers
         protected Regex Parser { get; }
         protected Regex IntParser { get; }
 
-        protected CheckStyleBaseParser()
+        protected CheckStyleBaseReader()
         {
             IntParser = new Regex(IntRegex, RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
         }
 
-        protected CheckStyleBaseParser(string regexPattern) : this()
+        protected CheckStyleBaseReader(string regexPattern) : this()
         {
             Parser = new Regex(regexPattern, RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
         }
