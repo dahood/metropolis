@@ -1,9 +1,9 @@
 ﻿using FluentAssertions;
 using Metropolis.Api.Analyzers;
+using Metropolis.Api.Collection;
+using Metropolis.Api.Collection.Steps;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Services;
-using Metropolis.Api.Services.Collection;
-using Metropolis.Api.Services.Collection.Steps;
 using Metropolis.Common.Models;
 using Moq;
 using NUnit.Framework;

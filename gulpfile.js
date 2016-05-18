@@ -18,7 +18,7 @@ gulp.task('compile', shell.task([
   '\"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /p:OutDir=' + buildPath + ' /maxcpucount:' + maxThreads
 ]))
 
-gulp.task('test', function () {
+gulp.task('test', ['compile'], function () {
     return gulp.src(['build\\*.Test.dll'], {read: false})
         .pipe(nunit({
         	noresult: true, //TODO: Fix this
@@ -31,17 +31,17 @@ gulp.task('test', function () {
         }));
 });
 
-gulp.task('dist', ['clean', 'compile'], function(){
+gulp.task('dist', ['compile', 'clean'], function(){
 	return gulp.src(['build\\*.dll', 'build\\*.exe', 'build\\*.config',
             // for eslint, checkstyle, fxcop, etc that parsers use to automate the collection of metrics 
-            'build\\CollectionSettings\\**',
-            'build\\CollectionSettings\\.eslintrc.json',
+            'build\\Collection\\Settings\\**',
+            'build\\Collection\\Settings\\.eslintrc.json',
             // include collection tooling
-            'build\\CollectionTools\\checkstyle\\*.jar',
+            'build\\Collection\\Bin\\*.jar',
             // exclude all these test files
             '!build\\Metropolis.Test.dll','!build\\FluentAssertions.Core.dll', '!build\\FluentAssertions.dll', 
             '!build\\nunit.framework.dll', '!build\\Moq.dll'])
             .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['compile', 'test']);
+gulp.task('default', ['test', 'compile']);

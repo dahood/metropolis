@@ -64,6 +64,15 @@
     <Compile Include="Analyzers\Toxicity\JavaToxicityAnalyzer.cs" />
     <Compile Include="Analyzers\Toxicity\ToxicityAnalyzer.cs" />
     <Compile Include="Analyzers\Toxicity\ToxicityScore.cs" />
+    <Compile Include="Collection\IMetricsStepFactory.cs" />
+    <Compile Include="Collection\Steps\BaseCollectionStep.cs" />
+    <Compile Include="Collection\Steps\CompositeCollectionStep.cs" />
+    <Compile Include="Collection\Steps\CSharpCollectionStep.cs" />
+    <Compile Include="Collection\Steps\EcmaCollectionStep.cs" />
+    <Compile Include="Collection\Steps\EsLintCollectionStep.cs" />
+    <Compile Include="Collection\Steps\ICollectionStep.cs" />
+    <Compile Include="Collection\Steps\JavaCollectionStep.cs" />
+    <Compile Include="Collection\Steps\SlocCollectionStep.cs" />
     <Compile Include="Domain\Instance.cs" />
     <Compile Include="Domain\InstanceVersionInfo.cs" />
     <Compile Include="Domain\CodeBase.cs" />
@@ -131,15 +140,6 @@
     <Compile Include="Analyzers\IAnalyzerFactory.cs" />
     <Compile Include="Services\IProjectService.cs" />
     <Compile Include="Services\ProjectService.cs" />
-    <Compile Include="Services\Collection\Steps\BaseCollectionStep.cs" />
-    <Compile Include="Services\Collection\Steps\CompositeCollectionStep.cs" />
-    <Compile Include="Services\Collection\Steps\CSharpCollectionStep.cs" />
-    <Compile Include="Services\Collection\Steps\EcmaCollectionStep.cs" />
-    <Compile Include="Services\Collection\Steps\EsLintCollectionStep.cs" />
-    <Compile Include="Services\Collection\Steps\ICollectionStep.cs" />
-    <Compile Include="Services\Collection\Steps\JavaCollectionStep.cs" />
-    <Compile Include="Services\Collection\Steps\SlocCollectionStep.cs" />
-    <Compile Include="Services\Collection\IMetricsStepFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ICodebaseService.cs" />
     <Compile Include="Services\CodebaseService.cs" />
@@ -147,14 +147,14 @@
     <Compile Include="Utilities\DateTimeUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CollectionSettings\metropolis_checkstyle_metrics.xml">
+    <Content Include="Collection\Settings\metropolis_checkstyle_metrics.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CollectionTools\checkstyle\checkstyle-6.17-all.jar">
+    <Content Include="Collection\Bin\checkstyle-6.17-all.jar">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="entity-framework-6.project" />
-    <Content Include="CollectionSettings\.eslintrc.json">
+    <Content Include="Collection\Settings\.eslintrc.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />

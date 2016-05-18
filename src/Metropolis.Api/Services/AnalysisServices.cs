@@ -1,7 +1,7 @@
 ﻿using Metropolis.Api.Analyzers;
+using Metropolis.Api.Collection;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
-using Metropolis.Api.Services.Collection;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services

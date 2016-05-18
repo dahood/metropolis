@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using Metropolis.Api.Services.Collection;
-using Metropolis.Api.Services.Collection.Steps;
+using Metropolis.Api.Collection;
+using Metropolis.Api.Collection.Steps;
 using Metropolis.Common.Models;
 using NUnit.Framework;
 
