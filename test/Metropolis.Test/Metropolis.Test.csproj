@@ -80,6 +80,7 @@
     <Compile Include="Api\Readers\MetricsReaderFactoryTest.cs" />
     <Compile Include="Api\Services\AnalysisServiceTest.cs" />
     <Compile Include="Api\Services\CodeBaseServiceTest.cs" />
+    <Compile Include="Api\Services\Collection\Steps\SlocCollectionStepTest.cs" />
     <Compile Include="Api\Services\StrictMockBaseTest.cs" />
     <Compile Include="Api\Services\Collection\MetricsStepFactoryTest.cs" />
     <Compile Include="Api\Utilities\ClockTest.cs" />

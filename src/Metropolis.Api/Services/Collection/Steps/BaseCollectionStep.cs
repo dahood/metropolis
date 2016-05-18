@@ -48,19 +48,19 @@ namespace Metropolis.Api.Services.Collection.Steps
             File.WriteAllText(fileName, cmd);
         }
 
-        private MetricsResult MetricResultFor(MetricsCommandArguments args)
+        protected virtual MetricsResult MetricResultFor(MetricsCommandArguments args)
         {
             return new MetricsResult { ParseType = ParseType, MetricsFile = GetOutputFile(args) };
         }
 
-        private string GetOutputFile(MetricsCommandArguments args)
+        protected string GetOutputFile(MetricsCommandArguments args)
         {
             var fileName = $"{args.ProjectName}_{MetricsType}{Extension}".Replace(' ','_');
             return Path.Combine(args.MetricsOutputDirectory, fileName);
         }
 
 
-        private static void InvokeCommand(string command, bool useNodePath)
+        protected virtual void InvokeCommand(string command, bool useNodePath)
         {
             using (var rs = RunspaceFactory.CreateRunspace())
             {
