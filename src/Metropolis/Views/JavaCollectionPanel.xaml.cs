@@ -44,19 +44,17 @@ namespace Metropolis.Views
 
         private void OnLocateIgnoreFile(object sender, RoutedEventArgs e)
         {
-            var file = GetFileName("");
+            var file = GetFileName();
             if (file == null) return;
             ProjectDetails.IgnoreFile = file;
         }
-
-        private string GetFileName(string filter)
+        private string GetFileName()
         {
-            var dialog = new OpenFileDialog
-            {
-                Filter = filter,
-                InitialDirectory = ProjectDetails.IgnoreFile.IsNotEmpty() ? ProjectDetails.IgnoreFile : @"C:\\"
-            };
-            return dialog.ShowDialog().GetValueOrDefault(false) ? dialog.FileName : null;
+            var dialog = new OpenFileDialog();
+            dialog.ShowDialog();
+            if (dialog.FileName != string.Empty)
+                return dialog.FileName;
+            return null;
         }
     }
 }
