@@ -4,15 +4,14 @@ using Metropolis.Api.Extensions;
 using Metropolis.ViewModels;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
-namespace Metropolis.Views
+namespace Metropolis.Views.UserControls
 {
     /// <summary>
-    ///     Panel just for collection of Java metrics
-    ///     - Must install Java for this to work
+    ///     Panel just for collection of ECMA/Javascript metrics
     /// </summary>
-    public partial class JavaCollectionPanel
+    public partial class EcmaCollectionPanel
     {
-        public JavaCollectionPanel()
+        public EcmaCollectionPanel()
         {
             InitializeComponent();
         }
@@ -44,17 +43,15 @@ namespace Metropolis.Views
 
         private void OnLocateIgnoreFile(object sender, RoutedEventArgs e)
         {
-            var file = GetFileName();
+            var file = GetFileName(ProjectDetails.IgnoreFile);
             if (file == null) return;
             ProjectDetails.IgnoreFile = file;
         }
-        private string GetFileName()
+        private static string GetFileName(string initialFile = null)
         {
-            var dialog = new OpenFileDialog();
+            var dialog = new OpenFileDialog {FileName = initialFile};
             dialog.ShowDialog();
-            if (dialog.FileName != string.Empty)
-                return dialog.FileName;
-            return null;
+            return dialog.FileName != string.Empty ? dialog.FileName : null;
         }
     }
 }

@@ -4,14 +4,15 @@ using Metropolis.Api.Extensions;
 using Metropolis.ViewModels;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
-namespace Metropolis.Views
+namespace Metropolis.Views.UserControls
 {
     /// <summary>
-    ///     Panel just for collection of ECMA/Javascript metrics
+    ///     Panel just for collection of CSharp metrics
+    ///     - Must install Visual Studio & Metrics Powertools for VS for this to work
     /// </summary>
-    public partial class EcmaCollectionPanel
+    public partial class CsharpCollectionPanel
     {
-        public EcmaCollectionPanel()
+        public CsharpCollectionPanel()
         {
             InitializeComponent();
         }
@@ -43,15 +44,17 @@ namespace Metropolis.Views
 
         private void OnLocateIgnoreFile(object sender, RoutedEventArgs e)
         {
-            var file = GetFileName(ProjectDetails.IgnoreFile);
+            var file = GetFileName();
             if (file == null) return;
             ProjectDetails.IgnoreFile = file;
         }
-        private static string GetFileName(string initialFile = null)
+        private string GetFileName()
         {
-            var dialog = new OpenFileDialog {FileName = initialFile};
+            var dialog = new OpenFileDialog();
             dialog.ShowDialog();
-            return dialog.FileName != string.Empty ? dialog.FileName : null;
+            if (dialog.FileName != string.Empty)
+                return dialog.FileName;
+            return null;
         }
     }
 }

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vc="clr-namespace:Metropolis.ValueConverters"
         xmlns:views="clr-namespace:Metropolis.Views"
+        xmlns:userControls="clr-namespace:Metropolis.Views.UserControls"
         x:Class="Metropolis.Views.GatherAnalysisWizard"
         Title="Gather Analysis Wizard" Height="348.179" Width="600" WindowStartupLocation="CenterScreen"
     >
@@ -52,9 +53,9 @@
                           Width="90"   Margin="10,2,2,2" ></ComboBox>
             </StackPanel>
             <StackPanel x:Name="CollectionPanel">
-                <views:EcmaCollectionPanel x:Name="EcmaScriptPanel" Visibility="Visible" />
-                <views:JavaCollectionPanel x:Name="JavaPanel" Visibility="Collapsed"/>
-                <views:CsharpCollectionPanel x:Name="CSharpPanel" Visibility="Collapsed" />
+                <userControls:EcmaCollectionPanel x:Name="EcmaScriptPanel" Visibility="Visible" />
+                <userControls:JavaCollectionPanel x:Name="JavaPanel" Visibility="Collapsed"/>
+                <userControls:CsharpCollectionPanel x:Name="CSharpPanel" Visibility="Collapsed" />
             </StackPanel>
             
         </StackPanel>

@@ -4,15 +4,15 @@ using Metropolis.Api.Extensions;
 using Metropolis.ViewModels;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
-namespace Metropolis.Views
+namespace Metropolis.Views.UserControls
 {
     /// <summary>
-    ///     Panel just for collection of CSharp metrics
-    ///     - Must install Visual Studio & Metrics Powertools for VS for this to work
+    ///     Panel just for collection of Java metrics
+    ///     - Must install Java for this to work
     /// </summary>
-    public partial class CsharpCollectionPanel
+    public partial class JavaCollectionPanel
     {
-        public CsharpCollectionPanel()
+        public JavaCollectionPanel()
         {
             InitializeComponent();
         }
