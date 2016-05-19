@@ -5,12 +5,7 @@ using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Collection
 {
-    public interface IMetricsStepFactory
-    {
-        ICollectionStep GetStep(RepositorySourceType repositorySourcetype);
-    }
-
-    public class MetricsStepFactory : IMetricsStepFactory
+    public class CollectionStepFactory : ICollectionStepFactory
     {
         private readonly Dictionary<RepositorySourceType, Func<ICollectionStep>> commandMap =
             new Dictionary<RepositorySourceType, Func<ICollectionStep>>

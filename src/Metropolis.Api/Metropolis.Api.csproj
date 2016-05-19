@@ -64,7 +64,8 @@
     <Compile Include="Analyzers\Toxicity\JavaToxicityAnalyzer.cs" />
     <Compile Include="Analyzers\Toxicity\ToxicityAnalyzer.cs" />
     <Compile Include="Analyzers\Toxicity\ToxicityScore.cs" />
-    <Compile Include="Collection\IMetricsStepFactory.cs" />
+    <Compile Include="Collection\ICollectionStepFactory.cs" />
+    <Compile Include="Collection\CollectionStepFactory.cs" />
     <Compile Include="Collection\Steps\BaseCollectionStep.cs" />
     <Compile Include="Collection\Steps\CompositeCollectionStep.cs" />
     <Compile Include="Collection\Steps\CSharpCollectionStep.cs" />

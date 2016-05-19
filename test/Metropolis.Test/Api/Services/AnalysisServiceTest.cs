@@ -13,7 +13,7 @@ namespace Metropolis.Test.Api.Services
     public class AnalysisServiceTest : StrictMockBaseTest
     {
         private AnalysisServices analysisServices;
-        private Mock<IMetricsStepFactory> metricsTaskFactory;
+        private Mock<ICollectionStepFactory> metricsTaskFactory;
         private Mock<ICodebaseService> codebaseService;
         private Mock<ICollectionStep> metricsCommand;
         private MetricsCommandArguments details;
@@ -23,7 +23,7 @@ namespace Metropolis.Test.Api.Services
         [SetUp]
         public void SetUp()
         {
-            metricsTaskFactory = CreateMock<IMetricsStepFactory>();
+            metricsTaskFactory = CreateMock<ICollectionStepFactory>();
             codebaseService = CreateMock<ICodebaseService>();
             metricsCommand = CreateMock<ICollectionStep>();
             analyzerFactory = CreateMock<IAnalyzerFactory>();

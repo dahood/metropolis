@@ -8,24 +8,24 @@ namespace Metropolis.Api.Services
 {
     public class AnalysisServices : IAnalysisService
     {
-        private readonly IMetricsStepFactory metricsStepFactory;
+        private readonly ICollectionStepFactory collectionStepFactory;
         private readonly IAnalyzerFactory analyzerFactory;
         private readonly ICodebaseService codebaseService;
         
-        public AnalysisServices() : this(new MetricsStepFactory(), new CodebaseService(), new AnalyzerFactory())
+        public AnalysisServices() : this(new CollectionStepFactory(), new CodebaseService(), new AnalyzerFactory())
         {
         }
 
-        public AnalysisServices(IMetricsStepFactory metricsStepFactory, ICodebaseService codebaseService, IAnalyzerFactory analyzerFactory)
+        public AnalysisServices(ICollectionStepFactory collectionStepFactory, ICodebaseService codebaseService, IAnalyzerFactory analyzerFactory)
         {
-            this.metricsStepFactory = metricsStepFactory;
+            this.collectionStepFactory = collectionStepFactory;
             this.codebaseService = codebaseService;
             this.analyzerFactory = analyzerFactory;
         }
 
         public CodeBase Analyze(MetricsCommandArguments details)
         {
-            var command = metricsStepFactory.GetStep(details.RepositorySourceType);
+            var command = collectionStepFactory.GetStep(details.RepositorySourceType);
             var metrics = command.Run(details);
 
             var codeBase = CodeBase.Empty();

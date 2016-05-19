@@ -10,12 +10,12 @@ namespace Metropolis.Test.Api.Services.Collection
 
     public class MetricsStepFactoryTest
     {
-        private MetricsStepFactory factory;
+        private CollectionStepFactory factory;
 
         [SetUp]
         public void SetUp()
         {
-            factory = new MetricsStepFactory();
+            factory = new CollectionStepFactory();
         }
 
         [Test]
