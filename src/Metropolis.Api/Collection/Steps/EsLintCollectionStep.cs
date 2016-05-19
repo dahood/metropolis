@@ -7,7 +7,7 @@ namespace Metropolis.Api.Collection.Steps
     public class EsLintCollectionStep : BaseCollectionStep
     {
         private const string EsLintCommand = @"eslint -c '{0}.eslintrc.json' '{1}\**' -o '{2}' -f checkstyle";
-        private const string IgnorePathPart = "  --ignore - path '{0}'";
+        private const string IgnorePathPart = " --ignore-path '{0}'";
 
         public override string MetricsType => "Eslint";
         public override string Extension => ".xml";

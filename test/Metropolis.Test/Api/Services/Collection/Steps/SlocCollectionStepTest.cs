@@ -32,6 +32,5 @@ namespace Metropolis.Test.Api.Services.Collection.Steps
 
             command.Should().Be(expected);
         }
-
     }
 }
