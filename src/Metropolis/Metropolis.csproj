@@ -93,8 +93,8 @@
     <Compile Include="Models\LinearScale.cs" />
     <Compile Include="ValueConverters\RepositorySourceTypeConverter.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
-    <Compile Include="Views\GatherAnalysisWizard.xaml.cs">
-      <DependentUpon>GatherAnalysisWizard.xaml</DependentUpon>
+    <Compile Include="Views\MetroBot.xaml.cs">
+      <DependentUpon>MetroBot.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\CsharpCollectionPanel.xaml.cs">
       <DependentUpon>CsharpCollectionPanel.xaml</DependentUpon>
@@ -119,7 +119,7 @@
       <DependentUpon>Canvas.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\GatherAnalysisWizard.xaml">
+    <Page Include="Views\MetroBot.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

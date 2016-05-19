@@ -4,13 +4,14 @@ using Metropolis.ViewModels;
 namespace Metropolis.Views
 {
     /// <summary>
-    /// Used to gather information so that automation can collect and import metrics into Metropolis
+    /// Metrobot is amazing... it can collect all the metrics you need from all the tools in the world....
+    /// Currently the world is only Checkstyle, Eslint, and Sloc...but one day Metrobot will collect metrics for the entire world
     /// </summary>
-    public partial class GatherAnalysisWizard 
+    public partial class MetroBot 
     {
         public ProjectDetailsViewModel ProjectDetails { get; }
 
-        public GatherAnalysisWizard()
+        public MetroBot()
         {
             InitializeComponent();
             ProjectDetails = new ProjectDetailsViewModel();

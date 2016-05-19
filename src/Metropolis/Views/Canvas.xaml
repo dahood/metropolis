@@ -146,12 +146,16 @@
                 <MenuItem Header="Open" Click="LoadProject"/>
                 <MenuItem Header="Save" Click="SaveProject"/>
                 <Separator />
+                <MenuItem Header="Import Data and Code Metrics" Click="StartMetroBot"/>
+                <MenuItem Header="Export to CSV" Click="RunCsvExport"/>
                 <Separator />
                 <MenuItem Header="Exit" Click="Shutdown"/>
             </MenuItem>
-            <MenuItem Header="_Import">
+            <MenuItem Header="_Advanced">
                 <Separator />
-                <MenuItem Header="Analysis Wizard" Click="RunWizard"/>
+                <MenuItem Header="For Advanced Users Only, please use File > Import" FontWeight="DemiBold"/>
+                <Separator />
+                <MenuItem Header="Manual Import (no Metrobot)" FontStyle="Italic" />
                 <Separator />
                 <MenuItem Header="Java">
                     <MenuItem Header="Load Checkstyles" Click="LoadCheckStyles"/>
@@ -166,14 +170,12 @@
                     <MenuItem Header="Load Toxicity" Click="LoadToxicity"/>
                     <MenuItem Header="SLOC (.cs)" Click="LoadSourceLinesOfCode"/>
                 </MenuItem>
-            </MenuItem>
-            <MenuItem Header="_Analyze">
+                <Separator />
+                <MenuItem Header="Calculate Toxicity Scores" FontStyle="Italic" />
+                <Separator />
                 <MenuItem Header="Javascript Toxicity" Click="RunJavascriptAnalzer" />
                 <MenuItem Header="Java Toxicity" Click="RunJavaAnalzer" />
                 <MenuItem Header="C# Toxicity" Click="RunCSharpAnalzer" />
-            </MenuItem>
-            <MenuItem Header="_Export">
-                <MenuItem Header="Export to CSV" Click="RunCsvExport"/>
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="Project Wiki"  Click="ProjectWiki"></MenuItem>

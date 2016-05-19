@@ -240,16 +240,16 @@ namespace Metropolis.Views
             workspaceProvider.RunCsvExport();
         }
 
-        private void RunWizard(object sender, RoutedEventArgs e)
+        private void StartMetroBot(object sender, RoutedEventArgs e)
         {
-            var wizard = new GatherAnalysisWizard();
-            var result = wizard.ShowDialog()??false;
+            var metroBot = new MetroBot();
+            var result = metroBot.ShowDialog()??false;
 
             if (!result) return;
 
             using (new WaitCursor())
             {
-                workspaceProvider.Analyze(BuildArguments(wizard.ProjectDetails));
+                workspaceProvider.Analyze(BuildArguments(metroBot.ProjectDetails));
                 DisplayWorkspaceDetails();
             }
         }

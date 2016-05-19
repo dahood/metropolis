@@ -4,7 +4,7 @@
         xmlns:vc="clr-namespace:Metropolis.ValueConverters"
         xmlns:views="clr-namespace:Metropolis.Views"
         xmlns:userControls="clr-namespace:Metropolis.Views.UserControls"
-        x:Class="Metropolis.Views.GatherAnalysisWizard"
+        x:Class="Metropolis.Views.MetroBot"
         Title="Gather Analysis Wizard" Height="348.179" Width="600" WindowStartupLocation="CenterScreen"
     >
     <Window.Resources>
