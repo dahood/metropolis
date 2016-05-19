@@ -23,10 +23,10 @@ namespace Metropolis.Api.Collection.Steps
             return new[] { result };
         }
 
-        protected abstract string MetricsType { get; }
-        protected abstract string Extension { get; }
-        protected abstract ParseType ParseType { get; }
-        protected abstract string PrepareCommand(MetricsCommandArguments args, MetricsResult result);
+        public abstract string MetricsType { get; }
+        public abstract string Extension { get; }
+        public abstract ParseType ParseType { get; }
+        public abstract string PrepareCommand(MetricsCommandArguments args, MetricsResult result);
 
         private void SaveAndExecuteCommand(MetricsCommandArguments args, string command)
         {

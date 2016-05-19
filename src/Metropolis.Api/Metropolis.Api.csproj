@@ -147,10 +147,10 @@
     <Compile Include="Utilities\DateTimeUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Collection\Settings\metropolis_checkstyle_metrics.xml">
+    <Content Include="Collection\Bin\checkstyle-6.18-all.jar">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Collection\Bin\checkstyle-6.17-all.jar">
+    <Content Include="Collection\Settings\metropolis_checkstyle_metrics.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="entity-framework-6.project" />

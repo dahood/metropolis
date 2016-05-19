@@ -9,15 +9,15 @@ namespace Metropolis.Api.Collection.Steps
         private const string EsLintCommand = @"eslint -c '{0}.eslintrc.json' '{1}\**' -o '{2}' -f checkstyle";
         private const string IgnorePathPart = "  --ignore - path '{0}'";
 
-        protected override string MetricsType => "Eslint";
-        protected override string Extension => ".xml";
-        protected override ParseType ParseType => ParseType.EsLint;
+        public override string MetricsType => "Eslint";
+        public override string Extension => ".xml";
+        public override ParseType ParseType => ParseType.EsLint;
 
         public EsLintCollectionStep() : base(true)
         {
         }
 
-        protected override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
+        public override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
         {
             var cmd = EsLintCommand.FormatWith(AppDomain.CurrentDomain.BaseDirectory, args.SourceDirectory, result.MetricsFile);
 

@@ -1,31 +1,37 @@
-﻿using Metropolis.Api.Collection.Steps;
+﻿using FluentAssertions;
+using Metropolis.Api.Collection.Steps;
 using Metropolis.Common.Models;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Services.Collection.Steps
 {
     [TestFixture]
-    public class SlocCollectionStepTest
+    public class SlocCollectionStepTest : CollectionBaseTest
     {
-        private SlocStepTestDouble step;
+        private SlocCollectionStep step;      
 
         [SetUp]
-        public void SetUp()
+        public void BeforeEachTest()
         {
-            step = new SlocStepTestDouble(ParseType.EsLint);
-        }
-        
-    }
-
-    public class SlocStepTestDouble : SlocCollectionStep
-    {
-        public SlocStepTestDouble(ParseType parseType) : base(parseType)
-        {
+            step = new SlocCollectionStep(ParseType.EsLint);
         }
 
-        public string TestPrepareCommand(MetricsCommandArguments args, MetricsResult result)
+        [Test]
+        public void HasCorrectSettings()
         {
-            return PrepareCommand(args, result);
+            step.Extension.Should().Be(".csv");
+            step.MetricsType.Should().Be("Sloc");
+            step.ParseType.Should().Be(ParseType.EsLint);
         }
+
+        [Test]
+        public void CanParseCommand()
+        {
+            string expected = $"sloc '{Args.SourceDirectory}' -d --format csv -> '{Result.MetricsFile}'";
+            var command = step.PrepareCommand(Args, Result);
+
+            command.Should().Be(expected);
+        }
+
     }
 }

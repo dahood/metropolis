@@ -15,11 +15,11 @@ namespace Metropolis.Api.Collection.Steps
             ParseType = parseType;
         }
 
-        protected override string MetricsType => "Sloc";
-        protected override string Extension => ".csv";
-        protected override ParseType ParseType { get; }
+        public override string MetricsType => "Sloc";
+        public override string Extension => ".csv";
+        public override ParseType ParseType { get; }
 
-        protected override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
+        public override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
         {
             return SlocCommand.FormatWith(args.SourceDirectory, result.MetricsFile);
         }

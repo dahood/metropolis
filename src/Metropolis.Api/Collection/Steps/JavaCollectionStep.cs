@@ -17,11 +17,11 @@ namespace Metropolis.Api.Collection.Steps
         {
         }
 
-        protected override string MetricsType => "Java Checkstyle";
-        protected override string Extension => ".xml";
-        protected override ParseType ParseType => ParseType.PuppyCrawler;
+        public override string MetricsType => "Java Checkstyle";
+        public override string Extension => ".xml";
+        public override ParseType ParseType => ParseType.PuppyCrawler;
 
-        protected override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
+        public override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
         {
             var cmd = CheckstyleCommand.FormatWith(
                 AppDomain.CurrentDomain.BaseDirectory + "*.jar", // include all jars into the class path
