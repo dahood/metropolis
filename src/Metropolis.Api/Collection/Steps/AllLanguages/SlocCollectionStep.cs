@@ -1,7 +1,7 @@
 using Metropolis.Api.Extensions;
 using Metropolis.Common.Models;
 
-namespace Metropolis.Api.Collection.Steps
+namespace Metropolis.Api.Collection.Steps.AllLanguages
 {
     /// <summary>
     ///     Automation for Javascript/ECMA parsing

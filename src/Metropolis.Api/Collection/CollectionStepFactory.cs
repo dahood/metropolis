@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Metropolis.Api.Collection.Steps;
+using Metropolis.Api.Collection.Steps.CSharp;
+using Metropolis.Api.Collection.Steps.ECMA;
+using Metropolis.Api.Collection.Steps.Java;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Collection
@@ -10,8 +13,8 @@ namespace Metropolis.Api.Collection
         private readonly Dictionary<RepositorySourceType, Func<ICollectionStep>> commandMap =
             new Dictionary<RepositorySourceType, Func<ICollectionStep>>
             {
-                {RepositorySourceType.CSharp, () => new CSharpCollectionStep()},
-                {RepositorySourceType.Java, () => new JavaCollectionStep()},
+                {RepositorySourceType.CSharp, () => new CSharpVisualStudioCollectionStep()},
+                {RepositorySourceType.Java, () => new PuppyCrawlerCheckstyleCollectionStep()},
                 {RepositorySourceType.ECMA, () => new EcmaCollectionStep()}
             };
 

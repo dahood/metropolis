@@ -1,6 +1,7 @@
 ﻿using System;
 using FluentAssertions;
 using Metropolis.Api.Collection.Steps;
+using Metropolis.Api.Collection.Steps.ECMA;
 using Metropolis.Common.Models;
 using NUnit.Framework;
 

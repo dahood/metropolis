@@ -2,7 +2,7 @@ using System;
 using Metropolis.Api.Extensions;
 using Metropolis.Common.Models;
 
-namespace Metropolis.Api.Collection.Steps
+namespace Metropolis.Api.Collection.Steps.ECMA
 {
     public class EsLintCollectionStep : BaseCollectionStep
     {

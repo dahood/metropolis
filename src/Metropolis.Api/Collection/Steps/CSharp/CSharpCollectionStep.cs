@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using Metropolis.Common.Models;
 
-namespace Metropolis.Api.Collection.Steps
+namespace Metropolis.Api.Collection.Steps.CSharp
 {
-    public class CSharpCollectionStep : ICollectionStep
+    public class CSharpVisualStudioCollectionStep : ICollectionStep
     {
         public IEnumerable<MetricsResult> Run(MetricsCommandArguments projectName)
         {

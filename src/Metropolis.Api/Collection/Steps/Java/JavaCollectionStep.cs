@@ -2,18 +2,18 @@ using System;
 using Metropolis.Api.Extensions;
 using Metropolis.Common.Models;
 
-namespace Metropolis.Api.Collection.Steps
+namespace Metropolis.Api.Collection.Steps.Java
 {
     /// <summary>
     ///     Java Checkstyle parser automation
     ///     TODO: check if Java is installed or not
     ///     For more info checkout: http://checkstyle.sourceforge.net/cmdline.html#Usage_by_Classpath_update
     /// </summary>
-    public class JavaCollectionStep : BaseCollectionStep
+    public class PuppyCrawlerCheckstyleCollectionStep : BaseCollectionStep
     {
         private const string CheckstyleCommand = @"java -cp {0} com.puppycrawl.tools.checkstyle.Main -c {1} -f xml -o {2} {3}";
 
-        public JavaCollectionStep() : base(false)
+        public PuppyCrawlerCheckstyleCollectionStep() : base(false)
         {
         }
 

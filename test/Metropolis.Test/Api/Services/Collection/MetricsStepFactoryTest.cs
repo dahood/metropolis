@@ -1,6 +1,9 @@
 ﻿using FluentAssertions;
 using Metropolis.Api.Collection;
 using Metropolis.Api.Collection.Steps;
+using Metropolis.Api.Collection.Steps.CSharp;
+using Metropolis.Api.Collection.Steps.ECMA;
+using Metropolis.Api.Collection.Steps.Java;
 using Metropolis.Common.Models;
 using NUnit.Framework;
 
@@ -23,7 +26,7 @@ namespace Metropolis.Test.Api.Services.Collection
         {
             factory.GetStep(RepositorySourceType.CSharp)
                    .Should().NotBeNull()
-                   .And.BeAssignableTo<CSharpCollectionStep>();
+                   .And.BeAssignableTo<CSharpVisualStudioCollectionStep>();
         }
 
         [Test]
@@ -31,7 +34,7 @@ namespace Metropolis.Test.Api.Services.Collection
         {
             factory.GetStep(RepositorySourceType.Java)
                    .Should().NotBeNull()
-                   .And.BeAssignableTo<JavaCollectionStep>();
+                   .And.BeAssignableTo<PuppyCrawlerCheckstyleCollectionStep>();
         }
 
         [Test]
