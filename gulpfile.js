@@ -37,7 +37,7 @@ gulp.task('dist', ['compile', 'clean'], function(){
             'build\\Collection\\Settings\\**',
             'build\\Collection\\Settings\\.eslintrc.json',
             // include collection tooling
-            'build\\Collection\\Bin\\*.jar',
+            'build\\Collection\\Binaries\\*.jar',
             // exclude all these test files
             '!build\\Metropolis.Test.dll','!build\\FluentAssertions.Core.dll', '!build\\FluentAssertions.dll', 
             '!build\\nunit.framework.dll', '!build\\Moq.dll'])

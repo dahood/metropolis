@@ -147,7 +147,7 @@
     <Compile Include="Utilities\DateTimeUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Collection\Bin\checkstyle-6.18-all.jar">
+    <Content Include="Collection\Binaries\checkstyle-6.18-all.jar">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Collection\Settings\metropolis_checkstyle_metrics.xml">
