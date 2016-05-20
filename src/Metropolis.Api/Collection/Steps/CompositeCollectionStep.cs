@@ -4,12 +4,12 @@ using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Collection.Steps
 {
-    public abstract class CompositeCollectionStep : ICollectionStep
+    public class CompositeCollectionStep : ICollectionStep
     {
         private readonly IEnumerable<ICollectionStep> commands;
         private readonly bool runParallel;
 
-        protected CompositeCollectionStep(IEnumerable<ICollectionStep> commands, bool runParallel = true)
+        public CompositeCollectionStep(IEnumerable<ICollectionStep> commands, bool runParallel = true)
         {
             this.commands = commands;
             this.runParallel = runParallel;

@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using FluentAssertions;
-using Metropolis.Api.Collection.Steps;
 using Metropolis.Common.Models;
 using Metropolis.Test.TestHelpers;
 using Metropolis.Test.Utilities;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Services.Collection.Steps
+namespace Metropolis.Test.Api.Services.Collection.Steps.AllLanguages
 {
     [TestFixture]
     public class BaseCollectionStepTest 
@@ -62,28 +61,6 @@ namespace Metropolis.Test.Api.Services.Collection.Steps
         {
             step.RunFailingCommand();
             Assert.Throws<ApplicationException>(() => results = step.Run(args));
-        }
-    }
-
-    public class CollectionStepForTesting : BaseCollectionStep
-    {
-        private bool runBadCommand;
-
-        public CollectionStepForTesting() : base(false)
-        {
-        }
-
-        public override string MetricsType => "Test";
-        public override string Extension => ".xml";
-        public override ParseType ParseType => ParseType.VisualStudio;
-        public override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
-        {
-            return runBadCommand? "this should fail" : $"dir | Out-File '{result.MetricsFile}'";
-        }
-
-        public void RunFailingCommand()
-        {
-            runBadCommand = true;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Metropolis.Api.Collection.Steps.Java
     /// </summary>
     public class PuppyCrawlerCheckstyleCollectionStep : BaseCollectionStep
     {
-        private const string CheckstyleCommand = @"java -cp {0} com.puppycrawl.tools.checkstyle.Main -c {1} -f xml -o {2} {3}";
+        public const string CheckstyleCommand = @"java -cp {0} com.puppycrawl.tools.checkstyle.Main -c {1} -f xml -o {2} {3}";
 
         public PuppyCrawlerCheckstyleCollectionStep() : base(false)
         {
