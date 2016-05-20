@@ -132,7 +132,7 @@ namespace Metropolis.Api.Domain
             ClassCoupling = ClassCoupling.Max(src.ClassCoupling);
             NumberOfMethods = NumberOfMethods.Max(src.NumberOfMethods);
 
-            if (src.Members.IsNotEmpty())
+            if (src.Members.HasValues())
                 ApplyMembers(src.Members);
         }
 

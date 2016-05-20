@@ -1,4 +1,4 @@
-using Metropolis.Api.Extensions;
+using Metropolis.Common.Extensions;
 
 namespace Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.PuppyCrawl.Class
 {

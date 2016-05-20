@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using Metropolis.Api.Domain;
-using Metropolis.Api.Extensions;
+using Metropolis.Common.Extensions;
 
 namespace Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.EsLint
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using FluentAssertions;
 using Metropolis.Api.Collection.Steps.Java;
-using Metropolis.Api.Extensions;
+using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 using NUnit.Framework;
 

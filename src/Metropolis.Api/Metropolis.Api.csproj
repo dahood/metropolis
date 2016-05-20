@@ -134,7 +134,6 @@
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="Extensions\NumericExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="Services\AnalysisServices.cs" />
     <Compile Include="Services\IAnalysisService.cs" />

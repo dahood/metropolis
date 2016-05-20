@@ -93,12 +93,12 @@
     <Compile Include="Api\Utilities\DateTimeExtensionTests.cs" />
     <Compile Include="Common\Extensions\PropertyChangedEventTest.cs" />
     <Compile Include="Common\Extensions\ReflectionUtilityTest.cs" />
+    <Compile Include="Common\Extensions\StringExtensionsTest.cs" />
     <Compile Include="Extensions\DateTimeExtensionsTest.cs" />
     <Compile Include="Extensions\DictionaryExtensionsTest.cs" />
     <Compile Include="Extensions\EnumExtensionsTest.cs" />
     <Compile Include="Extensions\LinqExtenstionsTest.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
-    <Compile Include="Extensions\StringExtensionsTest.cs" />
     <Compile Include="Extensions\XmlExtensionsTest.cs" />
     <Compile Include="Fixtures\CodeGraphFixture.cs" />
     <Compile Include="Fixtures\MetricsDataFixture.cs" />

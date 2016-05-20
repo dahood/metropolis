@@ -18,5 +18,11 @@ namespace Metropolis.Test.Common.Extensions
             property.Should().NotBeNull();
             property.Name.Should().Be("ProjectName");
         }
+        [Test]
+        public void GetPropertyName()
+        {
+            Expression<Func<ProjectDetailsViewModel, string>> expression = model => model.ProjectName;
+            expression.GetPropertyName().Should().Be("ProjectName");
+        }
     }
 }

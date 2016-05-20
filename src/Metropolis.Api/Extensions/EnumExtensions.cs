@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using Metropolis.Common.Extensions;
 
 namespace Metropolis.Api.Extensions
 {

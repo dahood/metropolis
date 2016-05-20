@@ -1,6 +1,6 @@
 using System;
-using Metropolis.Api.Extensions;
 using Metropolis.Common.Models;
+using Metropolis.Common.Extensions;
 
 namespace Metropolis.Api.Collection.Steps.ECMA
 {

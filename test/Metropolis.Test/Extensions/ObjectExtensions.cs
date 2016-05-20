@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using Metropolis.Api.Extensions;
+using Metropolis.Common.Extensions;
 
 namespace Metropolis.Test.Extensions
 {
@@ -108,9 +109,8 @@ namespace Metropolis.Test.Extensions
                 if (!result && throwException)
                     throw new ArgumentException(
                         string.Format(
-                            "Values not equal for property {0} of objects\n{1}\nand\n{2}\n:\n{3}\n vs \n{4}".FormatWith(
                                 x.Name, o1, o2,
-                                o1Value.Stringify(), o2Value.Stringify())));
+                                o1Value.Stringify(), o2Value.Stringify()));
                 return result;
             });
         }

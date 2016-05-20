@@ -4,6 +4,7 @@ using System.Xml.Linq;
 using Metropolis.Api.Analyzers.Toxicity;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
+using Metropolis.Common.Extensions;
 
 namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
 {

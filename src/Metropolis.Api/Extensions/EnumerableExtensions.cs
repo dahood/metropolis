@@ -13,7 +13,7 @@ namespace Metropolis.Api.Extensions
                 action(item);
             }
         }
-        public static bool IsNotEmpty<T>(this IEnumerable<T> items)
+        public static bool HasValues<T>(this IEnumerable<T> items)
         {
             return items != null && items.Any();
         }

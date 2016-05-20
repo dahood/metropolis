@@ -1,5 +1,5 @@
 using System;
-using Metropolis.Api.Extensions;
+using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Collection.Steps.Java
