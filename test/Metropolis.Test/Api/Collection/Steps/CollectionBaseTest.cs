@@ -1,7 +1,7 @@
 ﻿using Metropolis.Common.Models;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Services.Collection.Steps
+namespace Metropolis.Test.Api.Collection.Steps
 {
     public abstract class CollectionBaseTest
     {

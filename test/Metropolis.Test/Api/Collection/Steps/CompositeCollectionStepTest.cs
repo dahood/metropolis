@@ -2,10 +2,11 @@
 using FluentAssertions;
 using Metropolis.Api.Collection.Steps;
 using Metropolis.Common.Models;
+using Metropolis.Test.Api.Services;
 using Moq;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Services.Collection.Steps
+namespace Metropolis.Test.Api.Collection.Steps
 {
     [TestFixture]
     public class CompositeCollectionStepTest : StrictMockBaseTest

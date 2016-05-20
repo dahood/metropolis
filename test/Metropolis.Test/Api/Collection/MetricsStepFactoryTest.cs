@@ -1,13 +1,12 @@
 ﻿using FluentAssertions;
 using Metropolis.Api.Collection;
-using Metropolis.Api.Collection.Steps;
 using Metropolis.Api.Collection.Steps.CSharp;
 using Metropolis.Api.Collection.Steps.ECMA;
 using Metropolis.Api.Collection.Steps.Java;
 using Metropolis.Common.Models;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Services.Collection
+namespace Metropolis.Test.Api.Collection
 {
     [TestFixture]
 

@@ -1,7 +1,7 @@
 using Metropolis.Api.Collection.Steps;
 using Metropolis.Common.Models;
 
-namespace Metropolis.Test.Api.Services.Collection.Steps.AllLanguages
+namespace Metropolis.Test.Api.Collection.Steps.AllLanguages
 {
     public class CollectionStepForTesting : BaseCollectionStep
     {

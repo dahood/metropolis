@@ -8,7 +8,7 @@ using Metropolis.Test.TestHelpers;
 using Metropolis.Test.Utilities;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Services.Collection.Steps.AllLanguages
+namespace Metropolis.Test.Api.Collection.Steps.AllLanguages
 {
     [TestFixture]
     public class BaseCollectionStepTest 

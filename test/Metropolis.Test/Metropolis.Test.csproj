@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
@@ -80,15 +82,15 @@
     <Compile Include="Api\Readers\MetricsReaderFactoryTest.cs" />
     <Compile Include="Api\Services\AnalysisServiceTest.cs" />
     <Compile Include="Api\Services\CodeBaseServiceTest.cs" />
-    <Compile Include="Api\Services\Collection\Steps\AllLanguages\BaseCollectionStepTest.cs" />
-    <Compile Include="Api\Services\Collection\Steps\AllLanguages\CollectionStepForTesting.cs" />
-    <Compile Include="Api\Services\Collection\Steps\CollectionBaseTest.cs" />
-    <Compile Include="Api\Services\Collection\Steps\CompositeCollectionStepTest.cs" />
-    <Compile Include="Api\Services\Collection\Steps\ECMA\EslintCollectionStepTest.cs" />
-    <Compile Include="Api\Services\Collection\Steps\AllLanguages\SlocCollectionStepTest.cs" />
-    <Compile Include="Api\Services\Collection\Steps\Java\JavaCollectionStepTest.cs" />
+    <Compile Include="Api\Collection\Steps\AllLanguages\BaseCollectionStepTest.cs" />
+    <Compile Include="Api\Collection\Steps\AllLanguages\CollectionStepForTesting.cs" />
+    <Compile Include="Api\Collection\Steps\CollectionBaseTest.cs" />
+    <Compile Include="Api\Collection\Steps\CompositeCollectionStepTest.cs" />
+    <Compile Include="Api\Collection\Steps\ECMA\EslintCollectionStepTest.cs" />
+    <Compile Include="Api\Collection\Steps\AllLanguages\SlocCollectionStepTest.cs" />
+    <Compile Include="Api\Collection\Steps\Java\JavaCollectionStepTest.cs" />
     <Compile Include="Api\Services\StrictMockBaseTest.cs" />
-    <Compile Include="Api\Services\Collection\MetricsStepFactoryTest.cs" />
+    <Compile Include="Api\Collection\MetricsStepFactoryTest.cs" />
     <Compile Include="Api\Utilities\ClockTest.cs" />
     <Compile Include="Api\Utilities\DateTimeExtensionTests.cs" />
     <Compile Include="Common\Extensions\PropertyChangedEventTest.cs" />
@@ -142,7 +144,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Api\Services\Collection\Steps\CSharp\" />
+    <Folder Include="Api\Collection\Steps\CSharp\" />
     <Folder Include="Presentation\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
