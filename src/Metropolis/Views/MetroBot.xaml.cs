@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
+using Metropolis.Common.Models;
 using Metropolis.ViewModels;
 
 namespace Metropolis.Views
@@ -28,6 +31,31 @@ namespace Metropolis.Views
         {
             DialogResult = true;
             Close();
+        }
+
+        private void SourceCodeSelected(object sender, SelectionChangedEventArgs e)
+        {
+            var selection = (RepositorySourceType)Enum.Parse(typeof(RepositorySourceType), SourceTypeCombobox.SelectedItem.ToString());
+            switch (selection)
+            {
+                case RepositorySourceType.CSharp:
+                    CSharpPanel.Visibility = Visibility.Visible;
+                    JavaPanel.Visibility = Visibility.Collapsed;
+                    EcmaScriptPanel.Visibility = Visibility.Collapsed;
+                    break;
+                case RepositorySourceType.Java:
+                    CSharpPanel.Visibility = Visibility.Collapsed;
+                    JavaPanel.Visibility = Visibility.Visible;
+                    EcmaScriptPanel.Visibility = Visibility.Collapsed;
+                    break;
+                case RepositorySourceType.ECMA:
+                    CSharpPanel.Visibility = Visibility.Collapsed;
+                    JavaPanel.Visibility = Visibility.Collapsed;
+                    EcmaScriptPanel.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    throw new ApplicationException("Unsupported RepositorySourceType: " + sender);
+            }
         }
     }
 }

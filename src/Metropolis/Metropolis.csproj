@@ -165,6 +165,7 @@
     <AppDesigner Include="Properties\" />
     <None Include="SampleFiles\aspnet-toxicity-input.csv" />
     <Resource Include="Images\Properties.ico" />
+    <Resource Include="Images\mariabeauty.jpg" />
     <Content Include="SampleFiles\entity-framework-6.csv" />
     <None Include="SampleFiles\git-log-file-touches.csv" />
     <None Include="SampleFiles\metropolis-code-coverage-with-tests.coveragexml">

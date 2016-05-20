@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" Width="546.112" Height="165.007">
+             mc:Ignorable="d" Width="546.112" Height="150">
     <StackPanel>
         <StackPanel x:Name="Info">
             <TextBlock TextWrapping="Wrap">You need to download and install Visual Studio 2015 Community, Professional, or Enterprise.<LineBreak/>
@@ -19,12 +19,7 @@
         		Text="{Binding SourceDirectory}" TextWrapping="NoWrap"  Margin="10,2,2,2"/>
             <Button Content="..." Click="OnCSharpFindDirectory" Width="25" Margin="10, 2, 2, 2"/>
         </StackPanel>
-        <StackPanel x:Name="IgnorePanel" Orientation="Horizontal" Margin="0,5,0,0">
-            <TextBlock x:Name="IgnoreLabel" Text="Ignore File:" Width="200" VerticalAlignment="Center" Margin="5,5,10,5" />
-            <TextBox Cursor="IBeam" x:Name="IgnoreTextBox" Width="250" MaxLength="255" MaxLines="1" 
-                             Text="{Binding Path=IgnoreFile}" TextWrapping="NoWrap"  Margin="10,2,2,2"/>
-            <Button Content="..." Click="OnLocateIgnoreFile" Width="25" Margin="10, 2, 2, 2"/>
-        </StackPanel>
+        <StackPanel x:Name="IgnorePanel" Orientation="Horizontal" Margin="0,5,0,0"/>
         <StackPanel x:Name="MetricsPanel" Orientation="Horizontal" Margin="0,5,0,0">
             <TextBlock x:Name="MetricsOutputLabel" Text="Metrics Output Directory:" Width="200" VerticalAlignment="Center" Margin="5,5,10,5" />
             <TextBox Cursor="IBeam" x:Name="MetricsOutputTextBox" Width="250" MaxLength="255" MaxLines="1" 
