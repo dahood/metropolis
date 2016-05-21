@@ -5,7 +5,7 @@
         xmlns:views="clr-namespace:Metropolis.Views"
         xmlns:userControls="clr-namespace:Metropolis.Views.UserControls"
         x:Class="Metropolis.Views.MetroBot"
-        Title="MetroBot - Import Data and Code Metrics" Height="380" Width="600" WindowStartupLocation="CenterScreen"
+        Title="MetroBot - Import Data and Code Metrics" Height="433.926" Width="600" WindowStartupLocation="CenterScreen"
     >
     <Window.Resources>
         <vc:RepositorySourceTypeConverter x:Key="SrcTypeConverter" />
@@ -59,12 +59,10 @@
                     <userControls:CsharpCollectionPanel x:Name="CSharpPanel" Visibility="Collapsed" />
                 </StackPanel>
             </Border>
-
         </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,5,10,10">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,5,10,10">
             <Button Content="Cancel" x:Name="CancelButton" Click="OnCancel"  Width="75" />
-            <Button Content="Run Analysis" x:Name="AnalyzeButton" 
-                    Click="OnProceed"  Width="75"  Margin="5,0,0,0"/>
+            <Button Content="Run Analysis" x:Name="AnalyzeButton" Click="OnProceed"  Width="75"  Margin="5,0,0,0"/>
         </StackPanel>
     </StackPanel>
     

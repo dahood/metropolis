@@ -49,5 +49,18 @@ namespace Metropolis.Views.UserControls
 
             System.Diagnostics.Process.Start(link.NavigateUri.ToString());
         }
+
+        private void OnLocateIgnoreFile(object sender, RoutedEventArgs e)
+        {
+            var file = GetFileName(ProjectDetails.IgnoreFile);
+            if (file == null) return;
+            ProjectDetails.IgnoreFile = file;
+        }
+        private static string GetFileName(string initialFile = null)
+        {
+            var dialog = new OpenFileDialog { FileName = initialFile };
+            dialog.ShowDialog();
+            return dialog.FileName != string.Empty ? dialog.FileName : null;
+        }
     }
 }
