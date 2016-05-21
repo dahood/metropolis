@@ -41,20 +41,5 @@ namespace Metropolis.Views.UserControls
                 ? dialog.SelectedPath
                 : string.Empty;
         }
-
-        private void OnLocateIgnoreFile(object sender, RoutedEventArgs e)
-        {
-            var file = GetFileName();
-            if (file == null) return;
-            ProjectDetails.IgnoreFile = file;
-        }
-        private string GetFileName()
-        {
-            var dialog = new OpenFileDialog();
-            dialog.ShowDialog();
-            if (dialog.FileName != string.Empty)
-                return dialog.FileName;
-            return null;
-        }
     }
 }

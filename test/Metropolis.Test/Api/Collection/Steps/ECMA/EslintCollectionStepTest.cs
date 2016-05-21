@@ -4,7 +4,7 @@ using Metropolis.Api.Collection.Steps.ECMA;
 using Metropolis.Common.Models;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Services.Collection.Steps.ECMA
+namespace Metropolis.Test.Api.Collection.Steps.ECMA
 {
     [TestFixture]
     public class EslintCollectionStepTest : CollectionBaseTest

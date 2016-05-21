@@ -5,7 +5,7 @@ using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Services.Collection.Steps.Java
+namespace Metropolis.Test.Api.Collection.Steps.Java
 {
     [TestFixture]
     public class JavaCollectionStepTest : CollectionBaseTest
@@ -30,8 +30,8 @@ namespace Metropolis.Test.Api.Services.Collection.Steps.Java
         public void CanParseCommand()
         {
             var expected = PuppyCrawlerCheckstyleCollectionStep.CheckstyleCommand
-                                              .FormatWith(AppDomain.CurrentDomain.BaseDirectory + "*.jar", // include all jars into the class path
-                                                          AppDomain.CurrentDomain.BaseDirectory + "metropolis_checkstyle_metrics.xml",
+                                              .FormatWith(Environment.CurrentDirectory + @"\Collection\Binaries\checkstyle-6.18-all.jar", // include all jars into the class path
+                                                          Environment.CurrentDirectory + @"\Collection\Settings\metropolis_checkstyle_metrics.xml",
                                                           Result.MetricsFile, Args.SourceDirectory);
             
             var command = step.PrepareCommand(Args, Result);

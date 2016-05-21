@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 
@@ -24,13 +25,14 @@ namespace Metropolis.Api.Collection.Steps.Java
         public override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
         {
             var cmd = CheckstyleCommand.FormatWith(
-                AppDomain.CurrentDomain.BaseDirectory + "*.jar", // include all jars into the class path
-                AppDomain.CurrentDomain.BaseDirectory + "metropolis_checkstyle_metrics.xml", // metropolis collection settings for checkstyle
+                LocateBinaries("checkstyle-6.18-all.jar"), // include all jars into the class path
+                LocateSettings("metropolis_checkstyle_metrics.xml"), // metropolis collection settings for checkstyle
                 result.MetricsFile, // output xml file
                 args.SourceDirectory // source directory to scan
                 );
 
             return cmd;
         }
+
     }
 }

@@ -3,7 +3,7 @@ using Metropolis.Api.Collection.Steps.AllLanguages;
 using Metropolis.Common.Models;
 using NUnit.Framework;
 
-namespace Metropolis.Test.Api.Services.Collection.Steps.AllLanguages
+namespace Metropolis.Test.Api.Collection.Steps.AllLanguages
 {
     [TestFixture]
     public class SlocCollectionStepTest : CollectionBaseTest

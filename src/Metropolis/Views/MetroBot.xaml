@@ -5,7 +5,7 @@
         xmlns:views="clr-namespace:Metropolis.Views"
         xmlns:userControls="clr-namespace:Metropolis.Views.UserControls"
         x:Class="Metropolis.Views.MetroBot"
-        Title="Gather Analysis Wizard" Height="348.179" Width="600" WindowStartupLocation="CenterScreen"
+        Title="MetroBot - Import Data and Code Metrics" Height="380" Width="600" WindowStartupLocation="CenterScreen"
     >
     <Window.Resources>
         <vc:RepositorySourceTypeConverter x:Key="SrcTypeConverter" />
@@ -32,37 +32,40 @@
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
-                <Image Width="79" Height="79" Source="..\Images\Properties.ico" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />
-                <TextBlock Grid.Row="0" Grid.Column="1" Height="Auto" FontSize="20" Text="Project Properties"  />
+                <Image Margin="5,5,5,5" Width="79" Height="79" Source="..\Images\mariabeauty.jpg" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Height="Auto" FontSize="20" Text="Import Data and Code Metrics"  />
                 <TextBlock Grid.Row="1" Grid.Column="1" Height="Auto" Width="600" HorizontalAlignment="Left" 
-                           Text="Use this window to tell us about your project so we can run the code analyzers for you..." TextWrapping="Wrap" VerticalAlignment="Top"/>
+                           Text="Hi I'm metrobot, I can collect information for you and run collection tools like eslint, checkstyles, and visual studio metrics." TextWrapping="Wrap" VerticalAlignment="Top"/>
             </Grid>
             </Grid>
 
             <StackPanel Orientation="Vertical" x:Name="ProjectDetailsPanel">
            
             <StackPanel x:Name="ProjectPanel" Orientation="Horizontal" Margin="0,5,0,0">
-                <TextBlock x:Name="ProjectNameLabel" Text="Project:" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,5,10,5"/>
+                <TextBlock x:Name="ProjectNameLabel" Text="Project Name:" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,5,10,5"/>
                 <TextBox  Cursor="IBeam" x:Name="ProjectTextBox" Width="150" MaxLength="50" MaxLines="1" 
                           Text="{Binding Path=ProjectName}" TextWrapping="NoWrap" Margin="10,2,2,2" />
             </StackPanel>
-            <StackPanel x:Name="SourceTypePanel" Orientation="Horizontal" Margin="0,5,0,0">
-                <TextBlock x:Name="SourceTypeLabel" Text="Source Type:" Width="200" VerticalAlignment="Center" Margin="5,5,10,5" />
+            <StackPanel x:Name="SourceTypePanel" Orientation="Horizontal" Margin="0,5,0,10">
+                <TextBlock x:Name="SourceTypeLabel" Text="Source Code Type:" Width="200" VerticalAlignment="Center" Margin="5,5,10,5" />
                 <ComboBox x:Name="SourceTypeCombobox" ItemsSource="{Binding Path=SourceTypes}"
                           SelectedValue="{Binding Path=RepositorySourceType, Converter={StaticResource SrcTypeConverter}}"
-                          Width="90"   Margin="10,2,2,2" ></ComboBox>
+                          Width="90"   Margin="10,2,2,2" SelectionChanged="SourceCodeSelected" ></ComboBox>
             </StackPanel>
-            <StackPanel x:Name="CollectionPanel">
-                <userControls:EcmaCollectionPanel x:Name="EcmaScriptPanel" Visibility="Visible" />
-                <userControls:JavaCollectionPanel x:Name="JavaPanel" Visibility="Collapsed"/>
-                <userControls:CsharpCollectionPanel x:Name="CSharpPanel" Visibility="Collapsed" />
-            </StackPanel>
-            
+            <Border BorderThickness="2" BorderBrush="LightGray" >
+                <StackPanel x:Name="CollectionPanel">
+                    <userControls:EcmaCollectionPanel x:Name="EcmaScriptPanel" Visibility="Visible" />
+                    <userControls:JavaCollectionPanel x:Name="JavaPanel" Visibility="Collapsed"/>
+                    <userControls:CsharpCollectionPanel x:Name="CSharpPanel" Visibility="Collapsed" />
+                </StackPanel>
+            </Border>
+
         </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,35,10,10">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,5,10,10">
             <Button Content="Cancel" x:Name="CancelButton" Click="OnCancel"  Width="75" />
             <Button Content="Run Analysis" x:Name="AnalyzeButton" 
                     Click="OnProceed"  Width="75"  Margin="5,0,0,0"/>
         </StackPanel>
     </StackPanel>
+    
 </Window>
