@@ -3,6 +3,7 @@ using System.Windows.Documents;
 using System.Windows.Forms;
 using Metropolis.Common.Extensions;
 using Metropolis.ViewModels;
+using Microsoft.Win32;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace Metropolis.Views.UserControls
@@ -49,6 +50,12 @@ namespace Metropolis.Views.UserControls
             if (link == null) return;
 
             System.Diagnostics.Process.Start(link.NavigateUri.ToString());
+        }
+
+        private void HideShowInfoBox(object sender, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        {
+            var key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\JavaSoft\\Java Runtime Environment");
+            Info.Visibility = key != null ? Visibility.Collapsed : Visibility.Visible;
         }
     }
 }
