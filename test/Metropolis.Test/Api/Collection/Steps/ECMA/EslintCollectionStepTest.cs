@@ -30,7 +30,7 @@ namespace Metropolis.Test.Api.Collection.Steps.ECMA
         {
             var expected = $"eslint -c '{AppDomain.CurrentDomain.BaseDirectory}.eslintrc.json' '{Args.SourceDirectory}\\**' "+
                            $"-o '{Result.MetricsFile}' -f checkstyle" +
-                           $" --ignore-path '{Args.IgnorePath}'";
+                           $" --ignore-path '{Args.IgnoreFile}'";
 
             var command = step.PrepareCommand(Args, Result);
 
@@ -40,7 +40,7 @@ namespace Metropolis.Test.Api.Collection.Steps.ECMA
         [Test]
         public void CanParseCommand_NoIgnoreFile()
         {
-            Args.IgnorePath = string.Empty; //no ignore path in this example
+            Args.IgnoreFile = string.Empty; //no ignore path in this example
 
             var expected = $"eslint -c '{AppDomain.CurrentDomain.BaseDirectory}.eslintrc.json' '{Args.SourceDirectory}\\**' "+
                            $"-o '{Result.MetricsFile}' -f checkstyle";

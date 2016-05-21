@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Api.Readers.XmlReaders.CheckStyles;
+using Metropolis.Api.Readers.XmlReaders.FxCop;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Readers
@@ -17,6 +18,7 @@ namespace Metropolis.Api.Readers
             {ParseType.SlocEcma, () => new SourceLinesOfCodeReader(FileInclusion.Js)},
             {ParseType.SlocCSharp, () => new SourceLinesOfCodeReader(FileInclusion.CSharp)},
             {ParseType.SlocJava, () => new SourceLinesOfCodeReader(FileInclusion.Java)},
+            {ParseType.FxCop,  () => new FxCopMetricsReader()}
         };
 
         public IInstanceReader GetReader(ParseType parseType)

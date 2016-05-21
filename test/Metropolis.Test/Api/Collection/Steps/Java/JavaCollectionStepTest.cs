@@ -1,8 +1,10 @@
 ﻿using System;
 using FluentAssertions;
+using Metropolis.Api.Collection.PowerShell;
 using Metropolis.Api.Collection.Steps.Java;
 using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
+using Moq;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Collection.Steps.Java
@@ -11,11 +13,19 @@ namespace Metropolis.Test.Api.Collection.Steps.Java
     public class JavaCollectionStepTest : CollectionBaseTest
     {
         private PuppyCrawlerCheckstyleCollectionStep step;
+        private Mock<IRunPowerShell> powerShell;
+        private string expectedCommand;
 
         [SetUp]
         public void BeforeEachTest()
         {
-            step = new PuppyCrawlerCheckstyleCollectionStep();
+            powerShell = CreateMock<IRunPowerShell>();
+            step = new PuppyCrawlerCheckstyleCollectionStep(powerShell.Object);
+
+            expectedCommand = PuppyCrawlerCheckstyleCollectionStep.CheckstyleCommand
+                                              .FormatWith(Environment.CurrentDirectory + @"\Collection\Binaries\checkstyle-6.18-all.jar", // include all jars into the class path
+                                                          Environment.CurrentDirectory + @"\Collection\Settings\metropolis_checkstyle_metrics.xml",
+                                                          Result.MetricsFile, Args.SourceDirectory);
         }
 
         [Test]
@@ -29,14 +39,8 @@ namespace Metropolis.Test.Api.Collection.Steps.Java
         [Test]
         public void CanParseCommand()
         {
-            var expected = PuppyCrawlerCheckstyleCollectionStep.CheckstyleCommand
-                                              .FormatWith(Environment.CurrentDirectory + @"\Collection\Binaries\checkstyle-6.18-all.jar", // include all jars into the class path
-                                                          Environment.CurrentDirectory + @"\Collection\Settings\metropolis_checkstyle_metrics.xml",
-                                                          Result.MetricsFile, Args.SourceDirectory);
-            
             var command = step.PrepareCommand(Args, Result);
-
-            command.Should().Be(expected);
+            command.Should().Be(expectedCommand);
         }
     }
 }

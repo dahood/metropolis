@@ -7,7 +7,7 @@
         public string ProjectName { get; set; }
 
         public string SourceDirectory { get; set; }
-        public string IgnorePath { get; set; }
+        public string IgnoreFile { get; set; }
 
         public string MetricsOutputDirectory { get; set; }
     }

@@ -1,3 +1,4 @@
+using Metropolis.Api.Collection.PowerShell;
 using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 
@@ -10,7 +11,7 @@ namespace Metropolis.Api.Collection.Steps.AllLanguages
     {
         private const string SlocCommand = @"sloc '{0}' -d --format csv -> '{1}'";
 
-        public SlocCollectionStep(ParseType parseType) : base(true)
+        public SlocCollectionStep(ParseType parseType) : base(new RunPowerShell(), true)
         {
             ParseType = parseType;
         }

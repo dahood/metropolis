@@ -1,4 +1,5 @@
 using System;
+using Metropolis.Api.Collection.PowerShell;
 using Metropolis.Common.Models;
 using Metropolis.Common.Extensions;
 
@@ -13,7 +14,7 @@ namespace Metropolis.Api.Collection.Steps.ECMA
         public override string Extension => ".xml";
         public override ParseType ParseType => ParseType.EsLint;
 
-        public EsLintCollectionStep() : base(true)
+        public EsLintCollectionStep() : base(new RunPowerShell(), true)
         {
         }
 
@@ -21,8 +22,8 @@ namespace Metropolis.Api.Collection.Steps.ECMA
         {
             var cmd = EsLintCommand.FormatWith(AppDomain.CurrentDomain.BaseDirectory, args.SourceDirectory, result.MetricsFile);
 
-            if (args.IgnorePath.IsNotEmpty())
-                cmd = string.Concat(cmd, IgnorePathPart.FormatWith(args.IgnorePath));
+            if (args.IgnoreFile.IsNotEmpty())
+                cmd = string.Concat(cmd, IgnorePathPart.FormatWith(args.IgnoreFile));
 
             return cmd;
         }

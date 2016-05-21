@@ -1,3 +1,4 @@
+using Metropolis.Api.Collection.PowerShell;
 using Metropolis.Api.Collection.Steps;
 using Metropolis.Common.Models;
 
@@ -7,7 +8,7 @@ namespace Metropolis.Test.Api.Collection.Steps.AllLanguages
     {
         private bool runBadCommand;
 
-        public CollectionStepForTesting() : base(false)
+        public CollectionStepForTesting() : base(new RunPowerShell(), false)
         {
         }
 

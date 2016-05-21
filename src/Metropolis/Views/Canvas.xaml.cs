@@ -261,7 +261,7 @@ namespace Metropolis.Views
                 ProjectName =projectDetails.ProjectName,
                 RepositorySourceType = projectDetails.RepositorySourceType,
                 MetricsOutputDirectory = projectDetails.MetricsOutputDirectory,
-                IgnorePath = projectDetails.IgnoreFile,
+                IgnoreFile = projectDetails.IgnoreFile,
                 SourceDirectory = projectDetails.SourceDirectory
             };
         }

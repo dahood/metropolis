@@ -1,9 +1,11 @@
-﻿using Metropolis.Common.Models;
+﻿using System;
+using Metropolis.Common.Models;
+using Metropolis.Test.Api.Services;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Collection.Steps
 {
-    public abstract class CollectionBaseTest
+    public abstract class CollectionBaseTest : StrictMockBaseTest
     {
         protected MetricsCommandArguments Args;
         protected MetricsResult Result;
@@ -13,9 +15,9 @@ namespace Metropolis.Test.Api.Collection.Steps
         {
             Args = new MetricsCommandArguments
             {
-                IgnorePath = @"C:\ignore",
+                IgnoreFile = @"C:\ignore",
                 ProjectName = "Test",
-                MetricsOutputDirectory = @"c:\output",
+                MetricsOutputDirectory = $"{Environment.CurrentDirectory}",
                 SourceDirectory = @"C:\Source",
                 RepositorySourceType = RepositorySourceType.ECMA
             };

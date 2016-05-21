@@ -1,17 +1,27 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Collection.Steps.CSharp
 {
     public class CSharpVisualStudioCollectionStep : ICollectionStep
     {
-        const  string commandTemplate = @"&'C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\FxCop\FxCopCmd.exe'/f:'{0}'  /o:'{1}' ";
-        const string rulesScriptletTemplate = @"/r:'{0}' ";
+        private readonly ICollectAssemblies assemblyCollection;
+        private readonly ICSharpMetricsTask metricsTask;
+
+        public CSharpVisualStudioCollectionStep() : this(new CollectAssemblies(), new CSharpMetricsTask())
+        {
+        }
+
+        public CSharpVisualStudioCollectionStep(ICollectAssemblies assemblyCollection, ICSharpMetricsTask metricsTask)
+        {
+            this.assemblyCollection = assemblyCollection;
+            this.metricsTask = metricsTask;
+        }
         
         public IEnumerable<MetricsResult> Run(MetricsCommandArguments args)
         {
-            throw new NotImplementedException();
+            return assemblyCollection.GatherAssemblies(args).Select(each => metricsTask.Run(args, each)).ToList();
         }
     }
 }

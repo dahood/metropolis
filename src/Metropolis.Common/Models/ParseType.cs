@@ -4,6 +4,7 @@
     {
         RichardToxicity,
         VisualStudio,
+        FxCop,
         PuppyCrawler,
         EsLint,
         SlocCSharp,

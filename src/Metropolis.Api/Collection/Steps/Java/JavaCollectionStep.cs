@@ -1,5 +1,4 @@
-using System;
-using System.IO;
+using Metropolis.Api.Collection.PowerShell;
 using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 
@@ -14,7 +13,11 @@ namespace Metropolis.Api.Collection.Steps.Java
     {
         public const string CheckstyleCommand = @"java -cp {0} com.puppycrawl.tools.checkstyle.Main -c {1} -f xml -o {2} {3}";
 
-        public PuppyCrawlerCheckstyleCollectionStep() : base(false)
+        public PuppyCrawlerCheckstyleCollectionStep() : this(new RunPowerShell())
+        {
+        }
+
+        public PuppyCrawlerCheckstyleCollectionStep(IRunPowerShell powerShell) : base(powerShell, useNodePath: false) //never use node path as this command doesn't invoke a node module
         {
         }
 
@@ -33,6 +36,5 @@ namespace Metropolis.Api.Collection.Steps.Java
 
             return cmd;
         }
-
     }
 }
