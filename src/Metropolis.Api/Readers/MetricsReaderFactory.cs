@@ -9,7 +9,7 @@ namespace Metropolis.Api.Readers
 {
     public class MetricsReaderFactory : IMetricsReaderFactory
     {
-        private readonly Dictionary<ParseType, Func<IInstanceReader>> readerMap = new Dictionary<ParseType, Func<IInstanceReader>>
+        private static readonly Dictionary<ParseType, Func<IInstanceReader>> mapDefinitions = new Dictionary<ParseType, Func<IInstanceReader>>
         {
             {ParseType.VisualStudio, () => new VisualStudioMetricsReader()},
             {ParseType.RichardToxicity, () => new ToxicityReader()},
@@ -20,6 +20,19 @@ namespace Metropolis.Api.Readers
             {ParseType.SlocJava, () => new SourceLinesOfCodeReader(FileInclusion.Java)},
             {ParseType.FxCop,  () => new FxCopMetricsReader()}
         };
+
+        private readonly Dictionary<ParseType, Func<IInstanceReader>> readerMap;
+
+        public MetricsReaderFactory() : this(mapDefinitions)
+        {
+            
+        }
+
+        public MetricsReaderFactory(Dictionary<ParseType, Func<IInstanceReader>> readerMap)
+        {
+            this.readerMap = readerMap;
+        }
+
 
         public IInstanceReader GetReader(ParseType parseType)
         {

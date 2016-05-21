@@ -1,7 +1,10 @@
-﻿using FluentAssertions;
+﻿using System;
+using System.Collections.Generic;
+using FluentAssertions;
 using Metropolis.Api.Readers;
 using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Api.Readers.XmlReaders.CheckStyles;
+using Metropolis.Api.Readers.XmlReaders.FxCop;
 using Metropolis.Common.Models;
 using NUnit.Framework;
 
@@ -63,9 +66,27 @@ namespace Metropolis.Test.Api.Readers
         [Test]
         public void SlocJava()
         {
-            factory.GetReader(ParseType.SlocCSharp)
+            factory.GetReader(ParseType.SlocJava)
                 .Should().NotBeNull()
                 .And.BeAssignableTo<SourceLinesOfCodeReader>();
         }
+
+        [Test]
+        public void SlocFxCop()
+        {
+            factory.GetReader(ParseType.FxCop)
+                .Should().NotBeNull()
+                .And.BeAssignableTo<FxCopMetricsReader>();
+        }
+
+        [Test]
+        public void ShouldThrowExceptionWhenNotMapped()
+        {
+            var factoryWithMissingMapping = new MetricsReaderFactory(new Dictionary<ParseType, Func<IInstanceReader>>
+                                                    {{ParseType.FxCop, () => new FxCopMetricsReader()}});
+
+            Assert.Throws<ApplicationException>(() => factoryWithMissingMapping.GetReader(ParseType.EsLint));
+        }
+
     }
 }
