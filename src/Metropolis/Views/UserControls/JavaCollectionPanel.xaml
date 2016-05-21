@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" Width="549.568" Height="150">
+             mc:Ignorable="d" Width="549.568" Height="150" IsVisibleChanged="HideShowInfoBox">
     <StackPanel>
         <StackPanel x:Name="Info">
-            <TextBlock>You need to download and install Java in order for CheckStyle works. 
+            <TextBlock><Bold>WARNING:</Bold>You need to download and install Java in order for CheckStyle works. 
                 <Hyperlink NavigateUri="https://java.com/en/download/manual.jsp" Click="NavigateToSite" > Download Here</Hyperlink>
             </TextBlock>
 
