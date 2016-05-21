@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" Width="546.112" Height="200">
+             mc:Ignorable="d" Width="546.112" Height="200" IsVisibleChanged="HideShowInfoBox">
     <StackPanel>
         <StackPanel x:Name="Info">
             <TextBlock FontStyle="Italic" FontWeight="DemiBold" TextWrapping="Wrap" Margin="0,0,0,5" >This feature is currently under development and not functional.</TextBlock>
-            <TextBlock TextWrapping="Wrap">You need to download and install Visual Studio 2015 Community, Professional, or Enterprise.<LineBreak/>
+            <TextBlock x:Name="InfoVisualStudio" TextWrapping="Wrap"><Bold>WARNING:</Bold>You need to install Visual Studio 2015 Community, Professional, or Enterprise.<LineBreak/>
                 <Hyperlink NavigateUri="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx" Click="NavigateToSite"> Download Here</Hyperlink>
             </TextBlock>
-            <TextBlock>You need to download and install Visual Studio Code Metrics Powertool for Visual Studio 2015. <LineBreak/>
+            <TextBlock x:Name="InfoPowerTools" TextWrapping="Wrap"><Bold>WARNING:</Bold>You need to install Visual Studio Code Metrics Powertool for Visual Studio 2015. <LineBreak/>
                 <Hyperlink NavigateUri="https://www.microsoft.com/en-us/download/details.aspx?id=48213" Click="NavigateToSite"> Download Here</Hyperlink>
             </TextBlock>
         </StackPanel>
