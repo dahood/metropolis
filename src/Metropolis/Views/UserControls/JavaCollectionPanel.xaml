@@ -7,7 +7,7 @@
     <StackPanel>
         <StackPanel x:Name="Info">
             <TextBlock>You need to download and install Java in order for CheckStyle works. 
-                <Hyperlink NavigateUri="https://java.com/en/download/manual.jsp"> Download Here</Hyperlink>
+                <Hyperlink NavigateUri="https://java.com/en/download/manual.jsp" Click="NavigateToSite" > Download Here</Hyperlink>
             </TextBlock>
 
         </StackPanel>

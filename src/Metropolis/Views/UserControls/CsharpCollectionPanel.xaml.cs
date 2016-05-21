@@ -1,8 +1,8 @@
 ﻿using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using Metropolis.Common.Extensions;
 using Metropolis.ViewModels;
-using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace Metropolis.Views.UserControls
 {
@@ -40,6 +40,14 @@ namespace Metropolis.Views.UserControls
             return result == DialogResult.OK
                 ? dialog.SelectedPath
                 : string.Empty;
+        }
+
+        private void NavigateToSite(object sender, RoutedEventArgs e)
+        {
+            var link = sender as Hyperlink;
+            if (link == null) return;
+
+            System.Diagnostics.Process.Start(link.NavigateUri.ToString());
         }
     }
 }

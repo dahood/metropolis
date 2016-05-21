@@ -7,10 +7,10 @@
     <StackPanel>
         <StackPanel x:Name="Info">
             <TextBlock TextWrapping="Wrap">You need to download and install Visual Studio 2015 Community, Professional, or Enterprise.<LineBreak/>
-                <Hyperlink NavigateUri="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx"> Download Here</Hyperlink>
+                <Hyperlink NavigateUri="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx" Click="NavigateToSite"> Download Here</Hyperlink>
             </TextBlock>
             <TextBlock>You need to download and install Visual Studio Code Metrics Powertool for Visual Studio 2015. <LineBreak/>
-                <Hyperlink NavigateUri="https://www.microsoft.com/en-us/download/details.aspx?id=48213"> Download Here</Hyperlink>
+                <Hyperlink NavigateUri="https://www.microsoft.com/en-us/download/details.aspx?id=48213" Click="NavigateToSite"> Download Here</Hyperlink>
             </TextBlock>
         </StackPanel>
         <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,0">
