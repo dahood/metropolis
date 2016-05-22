@@ -1,6 +1,6 @@
 ## What is Metropolis?
 
-Metropolis helps in code review and analysis.
+Metropolis is a code review and analysis tool that will help you highlight areas of interest or concern. Read the **How it Works** section for more details.
 
 ## How to Install
 
