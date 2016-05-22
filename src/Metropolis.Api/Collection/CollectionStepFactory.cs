@@ -13,7 +13,7 @@ namespace Metropolis.Api.Collection
         private readonly Dictionary<RepositorySourceType, Func<ICollectionStep>> commandMap =
             new Dictionary<RepositorySourceType, Func<ICollectionStep>>
             {
-                {RepositorySourceType.CSharp, () => new CSharpVisualStudioCollectionStep()},
+                {RepositorySourceType.CSharp, () => new VisualStudioPowerToolsFxCopCollectionStep()},
                 {RepositorySourceType.Java, () => new PuppyCrawlerCheckstyleCollectionStep()},
                 {RepositorySourceType.ECMA, () => new EcmaCollectionStep()}
             };

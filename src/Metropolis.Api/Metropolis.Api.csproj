@@ -81,7 +81,7 @@
     <Compile Include="Collection\Steps\ECMA\EcmaCollectionStep.cs" />
     <Compile Include="Collection\Steps\ECMA\EsLintCollectionStep.cs" />
     <Compile Include="Collection\Steps\ICollectionStep.cs" />
-    <Compile Include="Collection\Steps\Java\JavaCollectionStep.cs" />
+    <Compile Include="Collection\Steps\Java\PuppyCrawlerCheckstyleCollectionStep.cs" />
     <Compile Include="Domain\Instance.cs" />
     <Compile Include="Domain\InstanceVersionInfo.cs" />
     <Compile Include="Domain\CodeBase.cs" />
