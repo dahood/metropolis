@@ -1,17 +1,19 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using Metropolis.Common.Extensions;
 using Metropolis.ViewModels;
-using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
-namespace Metropolis.Views.UserControls
+namespace Metropolis.Views.UserControls.StepPanels
 {
     /// <summary>
-    ///     Panel just for collection of ECMA/Javascript metrics
+    ///     Panel just for collection of CSharp metrics
+    ///     - Must install Visual Studio & Metrics Powertools for VS for this to work
     /// </summary>
-    public partial class EcmaCollectionPanel
+    public partial class CsharpCollectionPanel
     {
-        public EcmaCollectionPanel()
+        public CsharpCollectionPanel()
         {
             InitializeComponent();
         }
@@ -41,6 +43,14 @@ namespace Metropolis.Views.UserControls
                 : string.Empty;
         }
 
+        private void NavigateToSite(object sender, RoutedEventArgs e)
+        {
+            var link = sender as Hyperlink;
+            if (link == null) return;
+
+            System.Diagnostics.Process.Start(link.NavigateUri.ToString());
+        }
+
         private void OnLocateIgnoreFile(object sender, RoutedEventArgs e)
         {
             var file = GetFileName(ProjectDetails.IgnoreFile);
@@ -49,9 +59,20 @@ namespace Metropolis.Views.UserControls
         }
         private static string GetFileName(string initialFile = null)
         {
-            var dialog = new OpenFileDialog {FileName = initialFile};
+            var dialog = new OpenFileDialog { FileName = initialFile };
             dialog.ShowDialog();
             return dialog.FileName != string.Empty ? dialog.FileName : null;
+        }
+
+        private void HideShowInfoBox(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            //TODO: Scan all possible directories? e.g. DriveInfo.GetDrives().Where(x => x.IsReady == true)
+
+            var vsInstallDirectory = Directory.Exists(@"C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE");
+            var metricsInstallDirectory = Directory.Exists(@"C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\FxCop");
+
+            if (vsInstallDirectory) InfoVisualStudio.Visibility = Visibility.Collapsed;
+            if (metricsInstallDirectory) InfoPowerTools.Visibility = Visibility.Collapsed;
         }
     }
 }

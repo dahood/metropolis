@@ -6,7 +6,7 @@ using Metropolis.ViewModels;
 using Microsoft.Win32;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
-namespace Metropolis.Views.UserControls
+namespace Metropolis.Views.UserControls.StepPanels
 {
     /// <summary>
     ///     Panel just for collection of Java metrics

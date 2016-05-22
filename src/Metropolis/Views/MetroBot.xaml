@@ -4,6 +4,7 @@
         xmlns:vc="clr-namespace:Metropolis.ValueConverters"
         xmlns:views="clr-namespace:Metropolis.Views"
         xmlns:userControls="clr-namespace:Metropolis.Views.UserControls"
+        xmlns:stepPanels="clr-namespace:Metropolis.Views.UserControls.StepPanels"
         x:Class="Metropolis.Views.MetroBot"
         Title="MetroBot - Import Data and Code Metrics" Height="433.926" Width="600" WindowStartupLocation="CenterScreen"
     >
@@ -54,9 +55,9 @@
             </StackPanel>
             <Border BorderThickness="2" BorderBrush="LightGray" >
                 <StackPanel x:Name="CollectionPanel">
-                    <userControls:EcmaCollectionPanel x:Name="EcmaScriptPanel" Visibility="Visible" />
-                    <userControls:JavaCollectionPanel x:Name="JavaPanel" Visibility="Collapsed"/>
-                    <userControls:CsharpCollectionPanel x:Name="CSharpPanel" Visibility="Collapsed" />
+                    <stepPanels:EcmaCollectionPanel x:Name="EcmaScriptPanel" Visibility="Visible" />
+                    <stepPanels:JavaCollectionPanel x:Name="JavaPanel" Visibility="Collapsed"/>
+                    <stepPanels:CsharpCollectionPanel x:Name="CSharpPanel" Visibility="Collapsed" />
                 </StackPanel>
             </Border>
         </StackPanel>

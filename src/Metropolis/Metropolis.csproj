@@ -99,13 +99,13 @@
     <Compile Include="Views\MetroBot.xaml.cs">
       <DependentUpon>MetroBot.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControls\CsharpCollectionPanel.xaml.cs">
+    <Compile Include="Views\UserControls\StepPanels\CsharpCollectionPanel.xaml.cs">
       <DependentUpon>CsharpCollectionPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControls\EcmaCollectionPanel.xaml.cs">
+    <Compile Include="Views\UserControls\StepPanels\EcmaCollectionPanel.xaml.cs">
       <DependentUpon>EcmaCollectionPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControls\JavaCollectionPanel.xaml.cs">
+    <Compile Include="Views\UserControls\StepPanels\JavaCollectionPanel.xaml.cs">
       <DependentUpon>JavaCollectionPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="WorkspaceProvider.cs" />
@@ -126,15 +126,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UserControls\CsharpCollectionPanel.xaml">
+    <Page Include="Views\UserControls\StepPanels\CsharpCollectionPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\UserControls\EcmaCollectionPanel.xaml">
+    <Page Include="Views\UserControls\StepPanels\EcmaCollectionPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\UserControls\JavaCollectionPanel.xaml">
+    <Page Include="Views\UserControls\StepPanels\JavaCollectionPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
