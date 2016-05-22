@@ -37,7 +37,7 @@ namespace Metropolis.Api.Collection.Steps.CSharp
         private string GetMetricsOutputFileName(MetricsCommandArguments args, string targetdll)
         {
             var assemblyName = fileSystem.GetFileName(targetdll).Replace(".dll", string.Empty);
-            return Path.Combine(args.MetricsOutputDirectory, $"{args.ProjectName}_{assemblyName}_metrics.dll");
+            return Path.Combine(args.MetricsOutputDirectory, $"{args.ProjectName}_{assemblyName}_metrics.xml");
         }
     }
 }

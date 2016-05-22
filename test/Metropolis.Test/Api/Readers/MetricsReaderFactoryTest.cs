@@ -87,6 +87,5 @@ namespace Metropolis.Test.Api.Readers
 
             Assert.Throws<ApplicationException>(() => factoryWithMissingMapping.GetReader(ParseType.EsLint));
         }
-
     }
 }

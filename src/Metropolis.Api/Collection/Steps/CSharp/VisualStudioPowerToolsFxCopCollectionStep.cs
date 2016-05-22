@@ -21,7 +21,9 @@ namespace Metropolis.Api.Collection.Steps.CSharp
         
         public IEnumerable<MetricsResult> Run(MetricsCommandArguments args)
         {
-            return assemblyCollection.GatherAssemblies(args).Select(each => metricsTask.Run(args, each)).ToList();
+            var results = new List<MetricsResult>();
+            assemblyCollection.GatherAssemblies(args).AsParallel().ForAll(x => results.Add(metricsTask.Run(args, x)));
+            return results;
         }
     }
 }
