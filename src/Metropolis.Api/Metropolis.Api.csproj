@@ -69,6 +69,7 @@
     <Compile Include="Collection\ICollectionStepFactory.cs" />
     <Compile Include="Collection\CollectionStepFactory.cs" />
     <Compile Include="Collection\PowerShell\IRunPowerShell.cs" />
+    <Compile Include="Collection\PowerShell\RunPowerShell.cs" />
     <Compile Include="Collection\Steps\AllLanguages\SlocCollectionStep.cs" />
     <Compile Include="Collection\Steps\BaseCollectionStep.cs" />
     <Compile Include="Collection\Steps\CompositeCollectionStep.cs" />

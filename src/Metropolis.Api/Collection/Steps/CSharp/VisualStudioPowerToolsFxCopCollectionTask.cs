@@ -9,7 +9,7 @@ namespace Metropolis.Api.Collection.Steps.CSharp
     public class FxCopCollectionTask : IFxCopCollectionTask
     {
         public const string CommandTemplate =
-            @"&'C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\FxCop\FxCopCmd.exe'/f:'{0}' /o:'{1}' ";
+            @"&'C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\FxCop\metrics.exe'/f:'{0}' /o:'{1}' ";
 
         private readonly IFileSystem fileSystem;
 
