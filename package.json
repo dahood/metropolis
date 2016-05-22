@@ -18,8 +18,8 @@
     "gulp-nunit-runner": "^0.5.2"
   },
   "scripts": {
-    "postinstall": "PowerShell.exe -ExecutionPolicy Bypass -File metro-install.ps1",
-    "preuninstall": "PowerShell.exe -ExecutionPolicy Bypass -File metro-uninstall.ps1",
+    "postinstall": "TYPE metro-install.ps1 | PowerShell.exe -noprofile -",
+    "preuninstall": "TYPE metro-uninstall.ps1 | PowerShell.exe -noprofile -",
     "test": "gulp test"
   },
   "repository": {
