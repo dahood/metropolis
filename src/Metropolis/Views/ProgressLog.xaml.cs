@@ -13,9 +13,9 @@ namespace Metropolis.Views
             InitializeComponent();
         }
 
-        private void CloseLog(object sender, RoutedEventArgs e)
+        private void HideLog(object sender, RoutedEventArgs e)
         {
-            Close();
+            Visibility = Visibility.Hidden;
         }
     }
 }

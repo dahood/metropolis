@@ -24,6 +24,7 @@ namespace Metropolis.Views
         private readonly CameraMovement cameraMovement;
         private readonly InstanceInformationFacade highlightedInstance;
         private readonly IWorkspaceProvider workspaceProvider;
+        private readonly ProgressLog progressLog;
 
         private AbstractLayout layout = new SquaredLayout();
 
@@ -34,6 +35,7 @@ namespace Metropolis.Views
             cameraMovement = new CameraMovement(this);
             highlightedInstance = new InstanceInformationFacade(this);
             workspaceProvider = new WorkspaceProvider(new CodebaseService(), new ProjectService(), new AnalysisServices());
+            progressLog = new ProgressLog();
 
             SetSliders();
 
@@ -249,15 +251,17 @@ namespace Metropolis.Views
 
             using (new WaitCursor())
             {
+                progressLog.Visibility = Visibility.Visible;
                 workspaceProvider.Analyze(BuildArguments(metroBot.ProjectDetails));
                 DisplayWorkspaceDetails();
+                progressLog.Visibility = Visibility.Hidden;
             }
+            
         }
 
         private void ViewProgressLog(object sender, RoutedEventArgs e)
         {
-            var progressLog = new ProgressLog();
-            progressLog.Show();
+            progressLog.Visibility = Visibility.Visible;
         }
 
         private static MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)

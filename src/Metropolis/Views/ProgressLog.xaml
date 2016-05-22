@@ -4,21 +4,29 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Metrobot Progress Log" Height="300" Width="300"  WindowStartupLocation="CenterScreen" Icon="..\Properties/logo.ico" ResizeMode="NoResize">
+        Title="Metrobot Progress Log" Height="300" Width="300"  
+        WindowStyle="None" Topmost="True"
+        WindowStartupLocation="CenterScreen" Icon="..\Properties/logo.ico" ResizeMode="NoResize">
+    <Border BorderThickness="2" BorderBrush="Blue">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="15"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" TextAlignment="Center" FontWeight="DemiBold">Metrobot is working at it please wait...</TextBlock>
+        <TextBlock Grid.Row="0" VerticalAlignment="Center" TextAlignment="Center" FontWeight="DemiBold">Metrobot is working at it please wait...</TextBlock>
         <ProgressBar Grid.Row="1" Minimum="0" Maximum="100" Name="StatusBar" IsIndeterminate="True" Height="20" Margin="30,5,30,5"/>
-        <TextBlock Grid.Row="2" Name="Log" Margin="0,5,0,5"/>
-        <Button Grid.Row="3" Name="Cancel" Content="Cancel" Width="70" Margin="0,5,0,5" Click="CloseLog" />
-    </Grid>
+        <TextBlock Grid.Row="2" Name="LogTextBlock" Margin="0,5,0,5"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="77,5,0,5" >
+                <Button Name="CancelButton" Content="Cancel" Margin="5,0,5,0" Width="70" />
+                <Button Name="HideButton" Content="Hide" Width="70" Margin="5,0,5,0" Click="HideLog" />
+            </StackPanel>
+               
+        </Grid>
+    </Border>
 </Window>
