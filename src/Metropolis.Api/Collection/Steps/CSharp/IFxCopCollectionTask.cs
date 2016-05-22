@@ -1,5 +1,4 @@
-﻿using System;
-using Metropolis.Common.Models;
+﻿using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Collection.Steps.CSharp
 {
