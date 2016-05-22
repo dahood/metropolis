@@ -102,9 +102,11 @@ namespace Metropolis.Api.Domain
             }
         }
 
-        public void AddMember(IEnumerable<Member> toadd)
+        public Instance AddMembers(IEnumerable<Member> toadd)
         {
             Members.AddRange(toadd);
+            NumberOfMethods = toadd.Count();
+            return this;
         }
 
         public Member GetMemberByName(string name)

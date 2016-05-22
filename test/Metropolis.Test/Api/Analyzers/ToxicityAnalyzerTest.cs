@@ -13,7 +13,7 @@ namespace Metropolis.Test.Api.Analyzers
         public void Toxicity_On_ComplexMethod()
         {
             var type = new Instance("Metropolis", "Canvas", 1, 1, 1, 1, 1);
-            type.AddMember(new[] {new Member("Foo()", 1, 22, 1)});
+            type.AddMembers(new[] {new Member("Foo()", 1, 22, 1)});
 
             Assert.AreEqual(0.7, new CSharpToxicityAnalyzer().CalculateToxicity(type).Toxicity, Delta);
         }
@@ -29,7 +29,7 @@ namespace Metropolis.Test.Api.Analyzers
         public void Toxicity_On_Good_Type()
         {
             var type = new Instance("Metropolis", "Canvas", 1, 1, 1, 1, 1);
-            type.AddMember(new[] {new Member("Foo()", 1, 1, 1)});
+            type.AddMembers(new[] {new Member("Foo()", 1, 1, 1)});
 
             Assert.AreEqual(0, new CSharpToxicityAnalyzer().CalculateToxicity(type).Toxicity);
         }
@@ -54,7 +54,7 @@ namespace Metropolis.Test.Api.Analyzers
             const int setting = 22;
             var type = new Instance("Metropolis", "Canvas", 1, 1, 1, 1, 1);
             for (var i = 0; i < setting; i++)
-                type.AddMember(new[] {new Member("Foo()", 1, 1, 1)});
+                type.AddMembers(new[] {new Member("Foo()", 1, 1, 1)});
 
             Assert.AreEqual(0.7, new CSharpToxicityAnalyzer().CalculateToxicity(type).Toxicity, Delta);
         }
@@ -63,7 +63,7 @@ namespace Metropolis.Test.Api.Analyzers
         public void Toxicity_On_LongMethod()
         {
             var type = new Instance("Metropolis", "Canvas", 1, 1, 1, 1, 1);
-            type.AddMember(new[] {new Member("Foo()", 32, 1, 1)});
+            type.AddMembers(new[] {new Member("Foo()", 32, 1, 1)});
 
             Assert.AreEqual(0.7, new CSharpToxicityAnalyzer().CalculateToxicity(type).Toxicity, Delta);
         }
@@ -72,7 +72,7 @@ namespace Metropolis.Test.Api.Analyzers
         public void Toxicity_On_VERY_ComplexMethod()
         {
             var type = new Instance("Metropolis", "Canvas", 1, 1, 1, 1, 1);
-            type.AddMember(new[] {new Member("Foo()", 1, 55, 1)});
+            type.AddMembers(new[] {new Member("Foo()", 1, 55, 1)});
 
             Assert.AreEqual(3.55, new CSharpToxicityAnalyzer().CalculateToxicity(type).Toxicity, Delta);
         }
@@ -104,7 +104,7 @@ namespace Metropolis.Test.Api.Analyzers
             const int setting = 80;
             var type = new Instance("Metropolis", "Canvas", 1, 1, 1, 1, 1);
             for (var i = 0; i < setting; i++)
-                type.AddMember(new[] {new Member("Foo()", 1, 1, 1)});
+                type.AddMembers(new[] {new Member("Foo()", 1, 1, 1)});
 
             Assert.AreEqual(4, new CSharpToxicityAnalyzer().CalculateToxicity(type).Toxicity, Delta);
         }
@@ -113,7 +113,7 @@ namespace Metropolis.Test.Api.Analyzers
         public void Toxicity_On_VERY_LongMethod()
         {
             var type = new Instance("Metropolis", "Canvas", 1, 1, 1, 1, 1);
-            type.AddMember(new[] {new Member("Foo()", 100, 0, 1)});
+            type.AddMembers(new[] {new Member("Foo()", 100, 0, 1)});
 
             Assert.AreEqual(4.2, new CSharpToxicityAnalyzer().CalculateToxicity(type).Toxicity, Delta);
         }

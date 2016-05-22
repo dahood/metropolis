@@ -41,7 +41,7 @@ namespace Metropolis.Test.Fixtures
                 {
                     new Member("Foo()", 31, 0, 0)
                 };
-                classOne.AddMember(members);
+                classOne.AddMembers(members);
 
                 classOne.AddMeta(new InstanceVersionInfo("Canvas.cs", "commit message 2"));
 

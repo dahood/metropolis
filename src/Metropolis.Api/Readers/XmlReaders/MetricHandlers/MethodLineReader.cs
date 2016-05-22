@@ -25,7 +25,7 @@ namespace Metropolis.Api.Readers.XmlReaders.MetricHandlers
                       classMap.DoWhenItemFound(className, item =>
                       {
                           if (item.Members.All(x => x.Name != methodName))
-                              item.AddMember(new [] {new Member(methodName, linesOfCode, 0, 0) });
+                              item.AddMembers(new [] {new Member(methodName, linesOfCode, 0, 0) });
                       });
                   });
         }

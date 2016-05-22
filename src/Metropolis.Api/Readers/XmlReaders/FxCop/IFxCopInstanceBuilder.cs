@@ -38,7 +38,7 @@ namespace Metropolis.Api.Readers.XmlReaders.FxCop
                                 GetMetricValue(metrics, "CyclomaticComplexity"),
                                 GetMetricValue(metrics, "DepthOfInheritance"),
                                 GetMetricValue(metrics, "ClassCoupling"))
-                        {  Members = members};
+                           .AddMembers(members);
         }
     }
 }

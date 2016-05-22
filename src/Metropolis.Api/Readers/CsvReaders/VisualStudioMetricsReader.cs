@@ -24,7 +24,7 @@ namespace Metropolis.Api.Readers.CsvReaders
                 var classToAdd = new Instance(type.Namespace, type.Type, methodsOfType.Count, 
                     type.LinesOfCode, type.CyclomaticComplexity, type.DepthOfInheritance, type.ClassCoupling);
 
-                classToAdd.AddMember(methodsOfType.Select(x =>
+                classToAdd.AddMembers(methodsOfType.Select(x =>
                         new Member(x.Member, x.LinesOfCode, x.CyclomaticComplexity, x.ClassCoupling)));
 
                 results.Add(classToAdd);

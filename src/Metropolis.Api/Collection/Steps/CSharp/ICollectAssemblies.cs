@@ -28,8 +28,9 @@ namespace Metropolis.Api.Collection.Steps.CSharp
         public IEnumerable<string> GatherAssemblies(MetricsCommandArguments args)
         {
             var assembliesToIgnore = ReadIgnoreFile(args.IgnoreFile);
-            return filesystem.GetFiles(args.SourceDirectory, "*.dll")
-                             .Where(file => assembliesToIgnore.All(ignore => ignore != file));
+            var toDoList =  filesystem.GetFiles(args.SourceDirectory, "*.dll")
+                                      .Where(file => !assembliesToIgnore.Any(file.EndsWith)).ToList();
+            return toDoList;
         } 
 
         private static IEnumerable<string> ReadIgnoreFile(string ignoreFile)
