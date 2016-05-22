@@ -15,9 +15,7 @@
   "devDependencies": {
     "del": "^2.2.0",
     "gulp": "^3.9.1",
-    "gulp-exec": "^2.1.2",
-    "gulp-nunit-runner": "^0.5.2",
-    "gulp-shell": "^0.5.2"
+    "gulp-nunit-runner": "^0.5.2"
   },
   "scripts": {
     "postinstall": "PowerShell.exe -ExecutionPolicy Bypass -File metro-install.ps1",

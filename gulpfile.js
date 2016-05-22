@@ -44,7 +44,18 @@ gulp.task('test', ['compile'], function () {
 // Collection Binaries (e.g. checkstyle .jar) for eslint, checkstyle, fxcop, etc that parsers 
 // use to automate the collection of metrics 
 
-gulp.task('dist', function() {
+
+gulp.task('dist', ['package','compile'],  function(cb) {
+    console.log('Please wait while npm trys to install your release candidate...');
+    childProcess('npm install . -g', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err)});
+    //Next step is npm version patch -m "patch notes" 
+    //Last step is npm publish
+});
+
+gulp.task('package', function() {
 	gulp.src(['build\\*.dll', 'build\\*.exe', 'build\\*.config',
         // exclude all these test files
         '!build\\Metropolis.Test.dll',
