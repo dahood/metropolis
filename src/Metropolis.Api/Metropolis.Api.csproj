@@ -77,6 +77,7 @@
     <Compile Include="Collection\Steps\CSharp\ICollectAssemblies.cs" />
     <Compile Include="Collection\Steps\CSharp\IFxCopCollectionTask.cs" />
     <Compile Include="Collection\Steps\CSharp\VisualStudioPowerToolsFxCopCollectionTask.cs" />
+    <Compile Include="Readers\XmlReaders\FxCop\BaseFxCopBuilder.cs" />
     <Compile Include="Readers\XmlReaders\FxCop\FxCopMetricsReader.cs" />
     <Compile Include="Readers\XmlReaders\FxCop\IFxCopInstanceBuilder.cs" />
     <Compile Include="Readers\XmlReaders\FxCop\IFxCopMemberBuilder.cs" />

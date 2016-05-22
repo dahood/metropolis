@@ -24,7 +24,6 @@ namespace Metropolis.Api.Readers.XmlReaders.FxCop
             this.fxCopMemberBuilder = fxCopMemberBuilder;
         }
 
-
         public Instance Build(XElement typeElement)
         {
             var members = (from m in typeElement.Descendants("Members").Descendants("Member")

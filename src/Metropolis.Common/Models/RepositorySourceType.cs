@@ -1,5 +1,5 @@
 ﻿namespace Metropolis.Common.Models
 {
-    public enum RepositorySourceType { CSharp, Java, ECMA   }
+    public enum RepositorySourceType { CSharp, Java, ECMA, FxCop  }
 }
 

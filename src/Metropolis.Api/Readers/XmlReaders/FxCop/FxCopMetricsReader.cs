@@ -28,7 +28,6 @@ namespace Metropolis.Api.Readers.XmlReaders.FxCop
         private CodeBase ParseXml(XElement xml)
         {
             var nameSpace = xml.GetDefaultNamespace();
-
             var instances = (from m in xml.Descendants(nameSpace + "Targets").Descendants(nameSpace + "Target")
                                         .Descendants(nameSpace + "Modules").Descendants(nameSpace + "Module")
                                         .Descendants(nameSpace + "Namespaces").Descendants(nameSpace + "Namespace")
@@ -36,7 +35,7 @@ namespace Metropolis.Api.Readers.XmlReaders.FxCop
                              where m.Parent.Parent.AttributeValue("Name").IsNotEmpty() 
                              select fxCopInstanceBuilder.Build(m)).ToList();
 
-            return new CodeBase("FxCop", new CodeGraph(instances), RepositorySourceType.CSharp);
+            return new CodeBase("FxCop", new CodeGraph(instances), RepositorySourceType.FxCop);
         }
     }
 }

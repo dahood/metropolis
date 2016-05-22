@@ -61,38 +61,6 @@
                         <Metric Name='LinesOfCode' Value='1' />
                       </Metrics>
                     </Member>
-                    <Member Name='Freeze(DateTime) : void'>
-                      <Metrics>
-                        <Metric Name='MaintainabilityIndex' Value='92' />
-                        <Metric Name='CyclomaticComplexity' Value='1' />
-                        <Metric Name='ClassCoupling' Value='2' />
-                        <Metric Name='LinesOfCode' Value='1' />
-                      </Metrics>
-                    </Member>
-                    <Member Name='Thaw() : void'>
-                      <Metrics>
-                        <Metric Name='MaintainabilityIndex' Value='100' />
-                        <Metric Name='CyclomaticComplexity' Value='1' />
-                        <Metric Name='ClassCoupling' Value='2' />
-                        <Metric Name='LinesOfCode' Value='1' />
-                      </Metrics>
-                    </Member>
-                    <Member Name='Now.get() : DateTime'>
-                      <Metrics>
-                        <Metric Name='MaintainabilityIndex' Value='82' />
-                        <Metric Name='CyclomaticComplexity' Value='2' />
-                        <Metric Name='ClassCoupling' Value='2' />
-                        <Metric Name='LinesOfCode' Value='2' />
-                      </Metrics>
-                    </Member>
-                    <Member Name='EndOfToday.get() : DateTime'>
-                      <Metrics>
-                        <Metric Name='MaintainabilityIndex' Value='92' />
-                        <Metric Name='CyclomaticComplexity' Value='1' />
-                        <Metric Name='ClassCoupling' Value='2' />
-                        <Metric Name='LinesOfCode' Value='1' />
-                      </Metrics>
-                    </Member>
                     <Member Name='Today.get() : DateTime'>
                       <Metrics>
                         <Metric Name='MaintainabilityIndex' Value='92' />
@@ -130,15 +98,7 @@
                         <Metric Name='ClassCoupling' Value='2' />
                         <Metric Name='LinesOfCode' Value='1' />
                       </Metrics>
-                    </Member>
-                    <Member Name='AnalysisServices(IMetricsTaskFactory, ICodebaseService)'>
-                      <Metrics>
-                        <Metric Name='MaintainabilityIndex' Value='84' />
-                        <Metric Name='CyclomaticComplexity' Value='1' />
-                        <Metric Name='ClassCoupling' Value='2' />
-                        <Metric Name='LinesOfCode' Value='2' />
-                      </Metrics>
-                    </Member>
+                    </Member>                  
                     <Member Name='Analyze(MetricsCommandArguments) : CodeBase'>
                       <Metrics>
                         <Metric Name='MaintainabilityIndex' Value='62' />
@@ -148,29 +108,9 @@
                       </Metrics>
                     </Member>
                   </Members>
-                </Type>               
-                <Type Name='IAnalysisService'>
-                  <Metrics>
-                    <Metric Name='MaintainabilityIndex' Value='100' />
-                    <Metric Name='CyclomaticComplexity' Value='1' />
-                    <Metric Name='ClassCoupling' Value='2' />
-                    <Metric Name='DepthOfInheritance' Value='0' />
-                    <Metric Name='LinesOfCode' Value='0' />
-                  </Metrics>
-                  <Members>
-                    <Member Name='Analyze(MetricsCommandArguments) : CodeBase'>
-                      <Metrics>
-                        <Metric Name='MaintainabilityIndex' Value='100' />
-                        <Metric Name='CyclomaticComplexity' Value='1' />
-                        <Metric Name='ClassCoupling' Value='2' />
-                        <Metric Name='LinesOfCode' Value='0' />
-                      </Metrics>
-                    </Member>
-                  </Members>
-                </Type>                               
+                </Type>                                                   
               </Types>
             </Namespace>
-
           </Namespaces>
         </Module>
       </Modules>

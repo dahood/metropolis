@@ -13,6 +13,11 @@ namespace Metropolis.Test.Common.Extensions
         {
             @"c:\Clock.cs".TrimTo('.').Should().Be("cs");
         }
+        [Test]
+        public void TrimOff()
+        {
+            @"Analyze(MetricsCommandArguments) : CodeBase".TrimOff('(').Should().Be("Analyze");
+        }
 
         [Test]
         public void FormatString()
