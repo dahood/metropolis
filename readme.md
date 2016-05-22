@@ -1,6 +1,6 @@
-# What is Metropolis?
+## What is Metropolis?
 
-Metropolis is a code visualization aid to help in review and analysis.
+Metropolis helps in code review and analysis. For more information read [How it Works][#How it Works].
 
 ## How to Install
 

@@ -1,7 +1,7 @@
 {
   "name": "metropolis",
   "version": "0.0.13",
-  "description": "Metropolis - a codebase visualization tool",
+  "description": "a code visualization tool",
   "main": "gulpfile.js",
   "files": [
     "metro-install.ps1",
