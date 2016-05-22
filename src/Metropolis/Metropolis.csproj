@@ -102,6 +102,9 @@
     <Compile Include="Views\ProgressLog.xaml.cs">
       <DependentUpon>ProgressLog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControls\Spinner.xaml.cs">
+      <DependentUpon>Spinner.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\StepPanels\CsharpCollectionPanel.xaml.cs">
       <DependentUpon>CsharpCollectionPanel.xaml</DependentUpon>
     </Compile>
@@ -130,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProgressLog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\Spinner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
