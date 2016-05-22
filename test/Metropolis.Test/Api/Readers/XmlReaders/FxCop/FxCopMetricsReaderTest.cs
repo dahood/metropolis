@@ -10,7 +10,6 @@ using Metropolis.Test.Fixtures;
 using Metropolis.Test.TestHelpers;
 using Metropolis.Test.Utilities;
 using NUnit.Framework;
-using NUnit.Framework.Api;
 
 namespace Metropolis.Test.Api.Readers.XmlReaders.FxCop
 {
