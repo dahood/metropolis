@@ -1,6 +1,6 @@
 ## What is Metropolis?
 
-Metropolis helps in code review and analysis. For more information read [How it Works][#How it Works].
+Metropolis helps in code review and analysis.
 
 ## How to Install
 
