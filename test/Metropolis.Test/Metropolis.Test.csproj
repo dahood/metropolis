@@ -82,6 +82,7 @@
     <Compile Include="Api\Readers\CheckStyles\CheckStylesReaderTest.cs" />
     <Compile Include="Api\Readers\CheckStyles\CheckstylesConverterTests.cs" />
     <Compile Include="Api\Readers\MetricsReaderFactoryTest.cs" />
+    <Compile Include="Api\Readers\XmlReaders\FxCop\FxCopMetricsReaderTest.cs" />
     <Compile Include="Api\Services\AnalysisServiceTest.cs" />
     <Compile Include="Api\Services\CodeBaseServiceTest.cs" />
     <Compile Include="Api\Collection\Steps\AllLanguages\BaseCollectionStepTest.cs" />

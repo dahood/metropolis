@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Metropolis.Api.Readers.XmlReaders.CheckStyles;
+using Metropolis.Test.TestHelpers;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Readers.CheckStyles
@@ -17,20 +18,17 @@ namespace Metropolis.Test.Api.Readers.CheckStyles
         public void SetUp()
         {
             checkstylesFileName = $"{Path.Combine(Environment.CurrentDirectory, FileName)}";
-            Reader = CreateParser();
-            RemoveFile(checkstylesFileName);
+            checkstylesFileName.RemoveFileIfExists();
             File.WriteAllText(checkstylesFileName, CheckStylesFixture);
+
+            Reader = CreateParser();
         }
 
         [TearDown]
         public void TearDown()
         {
-            RemoveFile(checkstylesFileName);
+            checkstylesFileName.RemoveFileIfExists();
         }
-
-        private static void RemoveFile(string fileName)
-        {
-            if (File.Exists(fileName)) File.Delete(fileName);
-        }
+        
     }
 }
