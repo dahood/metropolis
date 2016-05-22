@@ -72,6 +72,8 @@
     <Compile Include="Api\Analyzers\AnalyzeFactoryTest.cs" />
     <Compile Include="Api\Analyzers\ToxicityAnalyzerTest.cs" />
     <Compile Include="Api\Collection\Steps\CSharp\CollectAssembliesTest.cs" />
+    <Compile Include="Api\Collection\Steps\CSharp\FxCopCollectionTaskTest.cs" />
+    <Compile Include="Api\Collection\Steps\CSharp\VisualStudioCollectionStepsTest.cs" />
     <Compile Include="Api\Domain\InstanceTest.cs" />
     <Compile Include="Api\Domain\CodeBaseTest.cs" />
     <Compile Include="Api\Domain\CodeGraphTest.cs" />
