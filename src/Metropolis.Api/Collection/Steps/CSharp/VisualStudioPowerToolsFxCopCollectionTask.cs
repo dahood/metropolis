@@ -1,4 +1,3 @@
-﻿using System;
 using System.IO;
 using Metropolis.Api.Collection.PowerShell;
 using Metropolis.Api.Utilities;
@@ -7,23 +6,20 @@ using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Collection.Steps.CSharp
 {
-    public interface ICSharpMetricsTask
+    public class FxCopCollectionTask : IFxCopCollectionTask
     {
-        MetricsResult Run(MetricsCommandArguments args, string each);
-    }
+        public const string CommandTemplate =
+            @"&'C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\FxCop\FxCopCmd.exe'/f:'{0}' /o:'{1}' ";
 
-    public class CSharpMetricsTask : ICSharpMetricsTask
-    {
-        public const string CommandTemplate = @"&'C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\FxCop\FxCopCmd.exe'/f:'{0}' /o:'{1}' ";
-
-        private readonly IRunPowerShell powerShell;
         private readonly IFileSystem fileSystem;
 
-        public CSharpMetricsTask() : this(new RunPowerShell(), new FileSystem())
+        private readonly IRunPowerShell powerShell;
+
+        public FxCopCollectionTask() : this(new RunPowerShell(), new FileSystem())
         {
         }
 
-        public CSharpMetricsTask(IRunPowerShell powerShell, IFileSystem fileSystem)
+        public FxCopCollectionTask(IRunPowerShell powerShell, IFileSystem fileSystem)
         {
             this.powerShell = powerShell;
             this.fileSystem = fileSystem;
@@ -31,7 +27,7 @@ namespace Metropolis.Api.Collection.Steps.CSharp
 
         public MetricsResult Run(MetricsCommandArguments args, string targetdll)
         {
-            var result = new MetricsResult{ ParseType = ParseType.FxCop, MetricsFile = GetMetricsOutputFileName(args, targetdll) };
+            var result = new MetricsResult {ParseType = ParseType.FxCop, MetricsFile = GetMetricsOutputFileName(args, targetdll)};
             var command = CommandTemplate.FormatWith(targetdll, result.MetricsFile);
 
             powerShell.Invoke(command, false);
