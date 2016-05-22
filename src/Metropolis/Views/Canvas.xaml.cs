@@ -254,6 +254,12 @@ namespace Metropolis.Views
             }
         }
 
+        private void ViewProgressLog(object sender, RoutedEventArgs e)
+        {
+            var progressLog = new ProgressLog();
+            progressLog.Show();
+        }
+
         private static MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)
         {
             return new MetricsCommandArguments
@@ -279,8 +285,9 @@ namespace Metropolis.Views
         private void AboutMetropolis(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("\u00A9 Copyright 2016 - present, \n" +
-                "Jonathan McCracken, Richard Hurst, and Greg Cook All rights reserved.\n" +
-                "Metropolis is licensed under BSD (see LICENSE file for details)", "About Metropolis", MessageBoxButton.OK, MessageBoxImage.Information);
+                            "Jonathan McCracken, Richard Hurst, and Greg Cook All rights reserved.\n" +
+                            "Metropolis is licensed under BSD (see LICENSE file for details)", "About Metropolis", MessageBoxButton.OK,
+                MessageBoxImage.Information);
         }
     }
 }

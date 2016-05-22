@@ -155,6 +155,8 @@
                 <Separator />
                 <MenuItem Header="For Advanced Users Only, please use File > Import" FontWeight="DemiBold"/>
                 <Separator />
+                <MenuItem Header="View Metrobot Progress Log" Click="ViewProgressLog" />
+                <Separator />
                 <MenuItem Header="Manual Import (no Metrobot)" FontStyle="Italic" />
                 <Separator />
                 <MenuItem Header="Java">

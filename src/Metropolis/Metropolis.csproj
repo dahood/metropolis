@@ -99,6 +99,9 @@
     <Compile Include="Views\MetroBot.xaml.cs">
       <DependentUpon>MetroBot.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProgressLog.xaml.cs">
+      <DependentUpon>ProgressLog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\StepPanels\CsharpCollectionPanel.xaml.cs">
       <DependentUpon>CsharpCollectionPanel.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\MetroBot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProgressLog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
