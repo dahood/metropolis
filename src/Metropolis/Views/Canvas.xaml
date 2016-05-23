@@ -170,9 +170,7 @@
                 </RibbonGroup>
                 <RibbonGroup x:Name="HelpGroup" Header="Help">
                     <RibbonButton Label="Project Wiki" LargeImageSource="..\Images\Wiki.ico" Click="ProjectWiki"/>
-                    <RibbonButton Label="Check Latest Version" LargeImageSource="..\Images\NewVersion.png" Click="NewVersion" />
-                    <RibbonButton Label="About Metropolis" LargeImageSource="..\Images\infoabout.ico" Click="AboutMetropolis" />
-            </RibbonGroup>
+                </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Advanced" KeyTip="A" >
                 <RibbonGroup x:Name="InfoGroup">
@@ -193,6 +191,12 @@
                     <RibbonButton Label="Load Eslint Checkstyles" LargeImageSource="..\Images\CheckStyles.png"  Click="LoadEsLintCheckStyles"/>
                     <RibbonButton Label="SLOC (.js)" LargeImageSource="..\Images\LinesOfCode.png" Click="LoadSourceLinesOfCode"/>
                     <RibbonButton Label="Calculate Toxicity" LargeImageSource="..\Images\Toxic.png" Click="RunJavascriptAnalzer" />
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab Header="About" KeyTip="Z" >
+                <RibbonGroup x:Name="AboutGroup" Header="About">
+                    <RibbonButton Label="Check Latest Version" LargeImageSource="..\Images\NewVersion.png" Click="NewVersion" />
+                    <RibbonButton Label="About Metropolis" LargeImageSource="..\Images\infoabout.ico" Click="AboutMetropolis" />
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
