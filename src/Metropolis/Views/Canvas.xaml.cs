@@ -287,7 +287,8 @@ namespace Metropolis.Views
 
         private void NewVersion(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/dahood/metropolis");
+            //TODO: Potentially allow to check npm installed version versus what is on NPMJS.com
+            Process.Start("https://www.npmjs.com/package/metropolis");
         }
 
         private void AboutMetropolis(object sender, RoutedEventArgs e)
