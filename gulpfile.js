@@ -45,7 +45,7 @@ gulp.task('test', ['compile'], function () {
 // use to automate the collection of metrics 
 
 
-gulp.task('dist', ['package','compile'],  function(cb) {
+gulp.task('dist', ['package'],  function(cb) {
     console.log('Please wait while npm trys to install your release candidate...');
     childProcess('npm install . -g', function (err, stdout, stderr) {
         console.log(stdout);
@@ -55,8 +55,8 @@ gulp.task('dist', ['package','compile'],  function(cb) {
     //Last step is npm publish
 });
 
-gulp.task('package', function() {
-	gulp.src(['build\\*.dll', 'build\\*.exe', 'build\\*.config',
+gulp.task('package', ['package-collection-binaries', 'package-collection-settings', 'compile'], function() {
+	return gulp.src(['build\\*.dll', 'build\\*.exe', 'build\\*.config',
         // exclude all these test files
         '!build\\Metropolis.Test.dll',
         '!build\\FluentAssertions.Core.dll', 
@@ -64,11 +64,15 @@ gulp.task('package', function() {
         '!build\\nunit.framework.dll', 
         '!build\\Moq.dll'])
         .pipe(gulp.dest('dist'));
+});
 
-    gulp.src(['build\\Collection\\Settings\\**', 
-    	'build\\Collection\\Settings\\.eslintrc.json'])
-    	.pipe(gulp.dest('dist\\Collection\\Settings'));
+gulp.task('package-collection-settings', ['compile'], function() {
+    return gulp.src(['build\\Collection\\Settings\\**', 
+        'build\\Collection\\Settings\\.eslintrc.json'])
+        .pipe(gulp.dest('dist\\Collection\\Settings'));
+});
 
-    return gulp.src(['build\\Collection\\Binaries\\*.jar'])
-    	.pipe(gulp.dest('dist\\Collection\\Binaries'));
+gulp.task('package-collection-binaries', ['compile'], function() {
+     return gulp.src(['build\\Collection\\Binaries\\*.jar'])
+        .pipe(gulp.dest('dist\\Collection\\Binaries'));
 });
