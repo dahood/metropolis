@@ -1,28 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
+
 
 namespace Metropolis.Views.UserControls
 {
     /// <summary>
-    /// Interaction logic for Spinner.xaml
+    /// Simple Spinner to show that the metrobot is working hard to 
+    /// build your metrics for you
     /// </summary>
     public partial class Spinner : UserControl
     {
+        private static readonly Action EmptyDelegate = delegate { };
+
         public Spinner()
         {
             InitializeComponent();
         }
+
+        internal void Show()
+        {
+            Visibility = Visibility.Visible;
+            Refresh();
+        }
+        public void Hide()
+        {
+            Visibility = Visibility.Collapsed;
+            Refresh();
+        }
+
+        private void Refresh()
+        {
+            Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
+        }
+
     }
 }

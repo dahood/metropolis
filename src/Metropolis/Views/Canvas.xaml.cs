@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
+using System.Windows.Threading;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
 using Metropolis.Api.Readers.CsvReaders;
@@ -233,9 +234,12 @@ namespace Metropolis.Views
 
         private void RunJavascriptAnalzer(object sender, RoutedEventArgs e)
         {
+            Spinner.Show();
             workspaceProvider.RunJavascriptToxicity();
             DisplayWorkspaceDetails();
+            Spinner.Hide();
         }
+        
 
         private void RunCsvExport(object sender, RoutedEventArgs e)
         {
@@ -248,19 +252,19 @@ namespace Metropolis.Views
             var result = metroBot.ShowDialog()??false;
 
             if (!result) return;
-
+            Spinner.Show();
             using (new WaitCursor())
             {
-                progressLog.Visibility = Visibility.Visible;
                 workspaceProvider.Analyze(BuildArguments(metroBot.ProjectDetails));
                 DisplayWorkspaceDetails();
-                progressLog.Visibility = Visibility.Hidden;
             }
+            Spinner.Hide();
             
         }
 
         private void ViewProgressLog(object sender, RoutedEventArgs e)
         {
+            Spinner.Show();
             progressLog.Visibility = Visibility.Visible;
         }
 

@@ -1,6 +1,7 @@
 ﻿<Window x:Class="Metropolis.Views.Canvas"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:spinner="clr-namespace:Metropolis.Views.UserControls"
         Title="Metropolis v0.0.1"
 
         Width="1200" Height="800" WindowStartupLocation="CenterScreen" Icon="..\Properties/logo.ico">
@@ -186,7 +187,8 @@
             </MenuItem>
         </Menu>
 
-        <StackPanel DockPanel.Dock="Right" Margin="0,0,5,10" Width="220">
+        <StackPanel DockPanel.Dock="Right" Margin="0,0,5,10.5" Width="220" Height="744" VerticalAlignment="Bottom">
+            <spinner:Spinner x:Name="Spinner" Visibility="Collapsed" />
             <GroupBox>
                 <GroupBox.Header>
                     <Label>Layout</Label>
@@ -304,13 +306,13 @@
             </GroupBox>
         </StackPanel>
 
-       
+
         <Border Background="GhostWhite"  BorderBrush="Black" BorderThickness="1"  Padding="2" Margin="5,5,5,5">
             <Viewport3D Name="viewPort" Margin="0,0,0,0">
                 <Viewport3D.Camera>
                     <PerspectiveCamera UpDirection="0,1,0" Position="0,20,-150" LookDirection="0,0,1" FieldOfView="90" />
                 </Viewport3D.Camera>
             </Viewport3D>
-       </Border>
+        </Border>
     </DockPanel>
 </Window>
