@@ -304,14 +304,17 @@ namespace Metropolis.Views
 
         private void TakeScreenshot(object sender, RoutedEventArgs e)
         {
-            var renderTargetBitmap = new RenderTargetBitmap(800, 800, 96, 96, PixelFormats.Pbgra32);
+            var renderTargetBitmap = new RenderTargetBitmap((int) viewPort.ActualWidth, (int) viewPort.ActualHeight, 96, 96, PixelFormats.Pbgra32);
             renderTargetBitmap.Render(viewPort);
             var pngImage = new PngBitmapEncoder();
             pngImage.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
-            using (Stream fileStream = File.Create(Environment.CurrentDirectory + "metro-screenshot" + DateTime.Now.Ticks + ".png"))
+            var screenshotFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), 
+                "metro-screenshot" + DateTime.Now.Ticks + ".png");
+            using (Stream fileStream = File.Create(screenshotFileName))
             {
                 pngImage.Save(fileStream);
             }
+            Process.Start(screenshotFileName);
         }
     }
 }
