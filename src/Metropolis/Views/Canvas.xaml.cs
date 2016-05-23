@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Ribbon;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
-using System.Windows.Threading;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
 using Metropolis.Api.Readers.CsvReaders;
@@ -19,7 +19,7 @@ using Metropolis.ViewModels;
 
 namespace Metropolis.Views
 {
-    public partial class Canvas : ISceneProvider, IDisplayInstanceInformation
+    public partial class Canvas : RibbonWindow, ISceneProvider, IDisplayInstanceInformation
     {
         private readonly RotationalMovement rotationalMovement;
         private readonly CameraMovement cameraMovement;
@@ -176,7 +176,7 @@ namespace Metropolis.Views
 
         private void LoadSourceLinesOfCode(object sender, RoutedEventArgs e)
         {
-            var header = ((MenuItem) e.Source).Header;
+            var header = ((RibbonButton) e.Source).Label;
             var extension = new Regex("[()]").Split((string)header)[1];
 
             workspaceProvider.LoadSourceLinesOfCode(extension.ToEnumByDescription<FileInclusion>());

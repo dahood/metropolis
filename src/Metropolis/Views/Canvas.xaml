@@ -1,12 +1,11 @@
-﻿<Window x:Class="Metropolis.Views.Canvas"
+﻿<RibbonWindow x:Class="Metropolis.Views.Canvas"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:spinner="clr-namespace:Metropolis.Views.UserControls"
         Title="Metropolis v0.0.1"
+        Width="1200" Height="1000" WindowStartupLocation="CenterScreen" Icon="..\Properties/logo.ico">
 
-        Width="1200" Height="800" WindowStartupLocation="CenterScreen" Icon="..\Properties/logo.ico">
-
-    <Window.Resources>
+    <RibbonWindow.Resources>
         <Style x:Key="ScrollBarTrackThumb"
         TargetType="{x:Type Thumb}">
             <Setter Property="Template">
@@ -45,10 +44,8 @@
         <Style TargetType="{x:Type ScrollBar}">
             <Setter Property="Stylus.IsFlicksEnabled"
             Value="false" />
-            <Setter Property="Foreground"
-            Value="#ADABAB" />
-            <Setter Property="Background"
-            Value="Transparent" />
+            <Setter Property="Foreground" Value="#ADABAB" />
+            <Setter Property="Background" Value="Transparent" />
             <Setter Property="Width"
             Value="7" />
             <Setter Property="Template">
@@ -138,181 +135,195 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </Window.Resources>
+    </RibbonWindow.Resources>
 
-    <DockPanel LastChildFill="True">
-        <Menu IsMainMenu="True" DockPanel.Dock="Top">
-            <MenuItem Header="_File">
-                <MenuItem Header="New" Click="NewProject" />
-                <MenuItem Header="Open" Click="LoadProject"/>
-                <MenuItem Header="Save" Click="SaveProject"/>
-                <Separator />
-                <MenuItem Header="Import Data and Code Metrics" Click="StartMetroBot"/>
-                <MenuItem Header="Export to CSV" Click="RunCsvExport"/>
-                <Separator />
-                <MenuItem Header="Exit" Click="Shutdown"/>
-            </MenuItem>
-            <MenuItem Header="_Advanced">
-                <Separator />
-                <MenuItem Header="For Advanced Users Only, please use File > Import" FontWeight="DemiBold"/>
-                <Separator />
-                <MenuItem Header="View Metrobot Progress Log" Click="ViewProgressLog" />
-                <Separator />
-                <MenuItem Header="Manual Import (no Metrobot)" FontStyle="Italic" />
-                <Separator />
-                <MenuItem Header="Java">
-                    <MenuItem Header="Load Checkstyles" Click="LoadCheckStyles"/>
-                    <MenuItem Header="SLOC (.java)" Click="LoadSourceLinesOfCode"/>
-                </MenuItem>
-                <MenuItem Header="ECMA / Javascript">
-                    <MenuItem Header="Load Eslint Checkstyles" Click="LoadEsLintCheckStyles"/>
-                    <MenuItem Header="SLOC (.js)" Click="LoadSourceLinesOfCode"/>
-                </MenuItem>
-                <MenuItem Header=".NET">
-                    <MenuItem Header="Load Visual Studio Metrics" Click="LoadVisualStudioMetrics"/>
-                    <MenuItem Header="Load Toxicity" Click="LoadToxicity"/>
-                    <MenuItem Header="SLOC (.cs)" Click="LoadSourceLinesOfCode"/>
-                </MenuItem>
-                <Separator />
-                <MenuItem Header="Calculate Toxicity Scores" FontStyle="Italic" />
-                <Separator />
-                <MenuItem Header="Javascript Toxicity" Click="RunJavascriptAnalzer" />
-                <MenuItem Header="Java Toxicity" Click="RunJavaAnalzer" />
-                <MenuItem Header="C# Toxicity" Click="RunCSharpAnalzer" />
-            </MenuItem>
-            <MenuItem Header="_Help">
-                <MenuItem Header="Project Wiki"  Click="ProjectWiki"></MenuItem>
-                <MenuItem Header="Check Latest Version" Click="NewVersion" />
-                <MenuItem Header="About Metropolis" Click="AboutMetropolis" />
-            </MenuItem>
-        </Menu>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="144"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Ribbon x:Name="RibbonWin"  SelectedIndex="0" Grid.Row="0" VerticalAlignment="Stretch" Margin="0,0,-0.444,1" Grid.RowSpan="1">
+            <Ribbon.HelpPaneContent>
+                <RibbonButton SmallImageSource="..\Properties/logo.ico" />
+            </Ribbon.HelpPaneContent>
+            <Ribbon.QuickAccessToolBar>
+                <RibbonQuickAccessToolBar>
+                    <RibbonButton x:Name ="Open" SmallImageSource="..\Images\Project.ico" Click="LoadProject" ToolTip="Open Project" />
+                    <RibbonSeparator/>
+                    <RibbonButton x:Name ="Save" SmallImageSource="..\Images\SaveProject.ico" Click="SaveProject" ToolTip="Save Project" />
+                    <RibbonSeparator/>
+                    <RibbonButton x:Name ="Export" SmallImageSource="..\Images\csv-icon.jpg" Click="RunCsvExport" ToolTip="Export Project" />
+                    <RibbonSeparator/>
+                    <RibbonButton x:Name ="Exit" SmallImageSource="..\Images\Shutdown.ico" Click="Shutdown" ToolTip="Close Metropolis" />
+                </RibbonQuickAccessToolBar>
+            </Ribbon.QuickAccessToolBar>
+            <RibbonTab Header="Home" KeyTip="H" >
+                <RibbonGroup x:Name="ProjectGroup" Header="Project">
+                    <RibbonButton LargeImageSource="..\Images\NewProject.ico" Label="New Project" KeyTip="O" Click="NewProject"/>
+                    <RibbonButton LargeImageSource="..\Images\Project.ico" Label="Open Project" KeyTip="O" Click="LoadProject"/>
+                    <RibbonButton LargeImageSource="..\Images\SaveProject.ico" Label="Save Project" KeyTip="O" Click="SaveProject"/>
+                    <RibbonButton LargeImageSource="..\Images\csv-icon.jpg" Label="Export Project" KeyTip="O" Click="RunCsvExport"/>
+                </RibbonGroup>
+                <RibbonGroup x:Name="CollectionGroup" Header="Collection">
+                    <RibbonButton LargeImageSource="..\Images\metrics.jpg" Label="Code Metrics" KeyTip="O" Click="StartMetroBot"/>
+                </RibbonGroup>
+                <RibbonGroup x:Name="HelpGroup" Header="Help">
+                    <RibbonButton Label="Project Wiki" LargeImageSource="..\Images\Wiki.ico" Click="ProjectWiki"/>
+                    <RibbonButton Label="Check Latest Version" LargeImageSource="..\Images\NewVersion.png" Click="NewVersion" />
+                    <RibbonButton Label="About Metropolis" LargeImageSource="..\Images\infoabout.ico" Click="AboutMetropolis" />
+            </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab Header="Advanced" KeyTip="A" >
+                <RibbonGroup x:Name="InfoGroup">
+                    <RibbonButton Label="View Metrobot Progress Log" LargeImageSource="..\Images\ProgressGar.png" Click="ViewProgressLog" />
+                </RibbonGroup>
+                <RibbonGroup x:Name="JavaGroup" Header="Java">
+                    <RibbonButton Label="Load Checkstyles" LargeImageSource="..\Images\CheckStyles.png" Click="LoadCheckStyles"/>
+                    <RibbonButton Label="SLOC (.java)" LargeImageSource="..\Images\LinesOfCode.png" Click="LoadSourceLinesOfCode"/>
+                    <RibbonButton Label="Calculate Toxicity" LargeImageSource="..\Images\Toxic.png" Click="RunJavaAnalzer" />
+                </RibbonGroup>
+                <RibbonGroup x:Name="DotNetGroup" Header=".Net">
+                    <RibbonButton Label="Load Visual Studio Metrics" LargeImageSource="..\Images\CSharp.png" Click="LoadVisualStudioMetrics"/>
+                    <RibbonButton Label="Load Toxicity" LargeImageSource="..\Images\Analyze.png"  Click="LoadToxicity"/>
+                    <RibbonButton Label="SLOC (.cs)" LargeImageSource="..\Images\LinesOfCode.png" Click="LoadSourceLinesOfCode"/>
+                    <RibbonButton Label="Calculate Toxicity" LargeImageSource="..\Images\Toxic.png" Click="RunCSharpAnalzer" />
+                </RibbonGroup>
+                <RibbonGroup x:Name="ECMAGroup" Header="ECMA / Javascript">
+                    <RibbonButton Label="Load Eslint Checkstyles" LargeImageSource="..\Images\CheckStyles.png"  Click="LoadEsLintCheckStyles"/>
+                    <RibbonButton Label="SLOC (.js)" LargeImageSource="..\Images\LinesOfCode.png" Click="LoadSourceLinesOfCode"/>
+                    <RibbonButton Label="Calculate Toxicity" LargeImageSource="..\Images\Toxic.png" Click="RunJavascriptAnalzer" />
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
 
-        <StackPanel DockPanel.Dock="Right" Margin="0,0,5,10.5" Width="220" Height="744" VerticalAlignment="Bottom">
-            <spinner:Spinner x:Name="Spinner" Visibility="Collapsed" />
-            <GroupBox>
-                <GroupBox.Header>
-                    <Label>Layout</Label>
-                </GroupBox.Header>
-                <StackPanel Orientation="Horizontal">
-                    <RadioButton GroupName="layout" Name="Square" Margin="5,5,5,5" IsChecked="True">Square</RadioButton>
-                    <RadioButton GroupName="layout" Name="City" Margin="5,5,5,5">City</RadioButton>
-                    <RadioButton GroupName="layout" Name="GoldenRatio" Margin="5,5,5,5">Golden Ratio</RadioButton>
-                </StackPanel>
-            </GroupBox>
-            <GroupBox>
-                <GroupBox.Header>
-                    <Label>Camera Controls</Label>
-                </GroupBox.Header>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="35" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Row="0" Grid.Column="0">X</Label>
-                    <Slider Grid.Row="0" Grid.Column="1" x:Name="positionXSlider" Minimum="-200" Maximum="200" Ticks="1" VerticalAlignment="Center" 
-                        Background="#FF459E51" ValueChanged="ChangeCameraSettings" Margin="0,5,0,0" />
-
-                    <Label Grid.Row="1" Grid.Column="0">Y</Label>
-                    <Slider Grid.Row="1" Grid.Column="1" x:Name="positionYSlider" Minimum="-200" Maximum="200" Ticks="1" VerticalAlignment="Center"   
-                        ValueChanged="ChangeCameraSettings" Background="#FFBF379A" Margin="0,5,0,0" />
-
-                    <Label Grid.Row="2" Grid.Column="0">Z</Label>
-                    <Slider Grid.Row="2" Grid.Column="1" x:Name="positionZSlider" Minimum="-200" Maximum="200" Ticks="1" VerticalAlignment="Center" 
-                        ValueChanged="ChangeCameraSettings" Background="#FF334BB4" Margin="0,5,0,0" />
-
-                    <Label Grid.Row="3" Grid.Column="0">FOV</Label>
-                    <Slider Grid.Row="3" Grid.Column="1" x:Name="fieldOfViewZSlider" Minimum="-90" Maximum="90" Ticks="1" VerticalAlignment="Center" 
-                        ValueChanged="ChangeCameraSettings" Background="#FFC3DE19" Margin="0,5,0,0" />
-                    <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  x:Name="resetButton" Content="Reset" Click="ResetCamera" Margin="25,5,25,5" />
-                </Grid>
-            </GroupBox>
-            <GroupBox>
-                <GroupBox.Header>
-                    <Label>Codebase Metrics</Label>
-                </GroupBox.Header>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="85" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Project</Label>
-                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="ProjectNameTextBox" VerticalAlignment="Center" HorizontalAlignment="Right" Width="123" 
-                             BorderBrush="White" SelectionBrush="White" TextAlignment="Right" Cursor="" TextChanged="Project_Info_Changed"/>
-                    <Label Grid.Row="1" Grid.Column="0">LOC</Label>
-                    <TextBlock Grid.Row="1" Grid.Column="1" x:Name="LocTextBlock" HorizontalAlignment="Right"></TextBlock>
-                    <Label Grid.Row="2" Grid.Column="0">Types</Label>
-                    <TextBlock Grid.Row="2" Grid.Column="1" x:Name="TypesTextBlock" HorizontalAlignment="Right"></TextBlock>
-                    <Label Grid.Row="3" Grid.Column="0">Avg Toxicity</Label>
-                    <TextBlock Grid.Row="3" Grid.Column="1" x:Name="ToxicityTextBlock" HorizontalAlignment="Right"></TextBlock>
-                    <Label Grid.Row="4" Grid.Column="0">Coverage</Label>
-                    <TextBlock Grid.Row="4" Grid.Column="1" x:Name="CoverageTextBlock" HorizontalAlignment="Right"></TextBlock>
-                    <Label Grid.Row="5" Grid.Column="0">Duplicate</Label>
-                    <TextBlock Grid.Row="5" Grid.Column="1" x:Name="DuplicateTextBlock" HorizontalAlignment="Right"></TextBlock>
-                    <Label Grid.Row="6" Grid.Column="0">Violations</Label>
-                    <TextBlock Grid.Row="6" Grid.Column="1" x:Name="ViolationsTextBlock" HorizontalAlignment="Right"></TextBlock>
-                </Grid>
-            </GroupBox>
-            <GroupBox>
-                <GroupBox.Header>
-                    <Label>Search</Label>
-                </GroupBox.Header>
-                <StackPanel>
+        <DockPanel LastChildFill="True" Margin="0,142,-0.444,-0.111" Grid.RowSpan="2">
+            <StackPanel DockPanel.Dock="Right" Margin="0,0,5,10.5" Width="220" Height="744" VerticalAlignment="Bottom">
+                <spinner:Spinner x:Name="Spinner" Visibility="Collapsed" />
+                <GroupBox>
+                    <GroupBox.Header>
+                        <Label>Layout</Label>
+                    </GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton GroupName="layout" Name="Square" Margin="5,5,5,5" IsChecked="True">Square</RadioButton>
+                        <RadioButton GroupName="layout" Name="City" Margin="5,5,5,5">City</RadioButton>
+                        <RadioButton GroupName="layout" Name="GoldenRatio" Margin="5,5,5,5">Golden Ratio</RadioButton>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox>
+                    <GroupBox.Header>
+                        <Label>Camera Controls</Label>
+                    </GroupBox.Header>
                     <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="35" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="clearSearchButton" Grid.Row="0" Grid.Column="0" Content="X" Background="WhiteSmoke" BorderThickness="0" Click="clearSearchButton_Click" />
-                        <TextBox x:Name="searchText" Grid.Row="0" Grid.Column="1"
+
+                        <Label Grid.Row="0" Grid.Column="0">X</Label>
+                        <Slider Grid.Row="0" Grid.Column="1" x:Name="positionXSlider" Minimum="-200" Maximum="200" Ticks="1" VerticalAlignment="Center" 
+                        Background="#FF459E51" ValueChanged="ChangeCameraSettings" Margin="0,5,0,0" />
+
+                        <Label Grid.Row="1" Grid.Column="0">Y</Label>
+                        <Slider Grid.Row="1" Grid.Column="1" x:Name="positionYSlider" Minimum="-200" Maximum="200" Ticks="1" VerticalAlignment="Center"   
+                        ValueChanged="ChangeCameraSettings" Background="#FFBF379A" Margin="0,5,0,0" />
+
+                        <Label Grid.Row="2" Grid.Column="0">Z</Label>
+                        <Slider Grid.Row="2" Grid.Column="1" x:Name="positionZSlider" Minimum="-200" Maximum="200" Ticks="1" VerticalAlignment="Center" 
+                        ValueChanged="ChangeCameraSettings" Background="#FF334BB4" Margin="0,5,0,0" />
+
+                        <Label Grid.Row="3" Grid.Column="0">FOV</Label>
+                        <Slider Grid.Row="3" Grid.Column="1" x:Name="fieldOfViewZSlider" Minimum="-90" Maximum="90" Ticks="1" VerticalAlignment="Center" 
+                        ValueChanged="ChangeCameraSettings" Background="#FFC3DE19" Margin="0,5,0,0" />
+                        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  x:Name="resetButton" Content="Reset" Click="ResetCamera" Margin="25,5,25,5" />
+                    </Grid>
+                </GroupBox>
+                <GroupBox>
+                    <GroupBox.Header>
+                        <Label>Codebase Metrics</Label>
+                    </GroupBox.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="85" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Project</Label>
+                        <TextBox Grid.Row="0" Grid.Column="1" x:Name="ProjectNameTextBox" VerticalAlignment="Center" HorizontalAlignment="Right" Width="123" 
+                             BorderBrush="White" SelectionBrush="White" TextAlignment="Right" Cursor="" TextChanged="Project_Info_Changed"/>
+                        <Label Grid.Row="1" Grid.Column="0">LOC</Label>
+                        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="LocTextBlock" HorizontalAlignment="Right"></TextBlock>
+                        <Label Grid.Row="2" Grid.Column="0">Types</Label>
+                        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="TypesTextBlock" HorizontalAlignment="Right"></TextBlock>
+                        <Label Grid.Row="3" Grid.Column="0">Avg Toxicity</Label>
+                        <TextBlock Grid.Row="3" Grid.Column="1" x:Name="ToxicityTextBlock" HorizontalAlignment="Right"></TextBlock>
+                        <Label Grid.Row="4" Grid.Column="0">Coverage</Label>
+                        <TextBlock Grid.Row="4" Grid.Column="1" x:Name="CoverageTextBlock" HorizontalAlignment="Right"></TextBlock>
+                        <Label Grid.Row="5" Grid.Column="0">Duplicate</Label>
+                        <TextBlock Grid.Row="5" Grid.Column="1" x:Name="DuplicateTextBlock" HorizontalAlignment="Right"></TextBlock>
+                        <Label Grid.Row="6" Grid.Column="0">Violations</Label>
+                        <TextBlock Grid.Row="6" Grid.Column="1" x:Name="ViolationsTextBlock" HorizontalAlignment="Right"></TextBlock>
+                    </Grid>
+                </GroupBox>
+                <GroupBox>
+                    <GroupBox.Header>
+                        <Label>Search</Label>
+                    </GroupBox.Header>
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="15" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="clearSearchButton" Grid.Row="0" Grid.Column="0" Content="X" Background="WhiteSmoke" BorderThickness="0" Click="clearSearchButton_Click" />
+                            <TextBox x:Name="searchText" Grid.Row="0" Grid.Column="1"
                                  VerticalAlignment="Top" Margin="5,5,5,5" 
                                  TextChanged="searchText_TextChanged"/>
 
-                    </Grid>
-                    <ListBox x:Name="searchSuggestions" Margin="15,5,5,5" BorderThickness="0" MaxHeight="100" 
+                        </Grid>
+                        <ListBox x:Name="searchSuggestions" Margin="15,5,5,5" BorderThickness="0" MaxHeight="100" 
                              ScrollViewer.VerticalScrollBarVisibility="Auto"
                              SelectionChanged="searchSuggestions_SelectionChanged"
                              />
-                </StackPanel>
-            </GroupBox>
-            <GroupBox>
-                <GroupBox.Header>
-                    <Label>Code Inspector</Label>
-                </GroupBox.Header>
-                <RichTextBox x:Name="classNameTextBlock" VerticalAlignment="Top" Margin="5,5,5,5" IsReadOnly="True">
-                    <FlowDocument>
-                        <Paragraph Name="codeInspectorText" />
-                    </FlowDocument>
-                </RichTextBox>
-            </GroupBox>
-        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox>
+                    <GroupBox.Header>
+                        <Label>Code Inspector</Label>
+                    </GroupBox.Header>
+                    <RichTextBox x:Name="classNameTextBlock" VerticalAlignment="Top" Margin="5,5,5,5" IsReadOnly="True">
+                        <FlowDocument>
+                            <Paragraph Name="codeInspectorText" />
+                        </FlowDocument>
+                    </RichTextBox>
+                </GroupBox>
+            </StackPanel>
 
-
-        <Border Background="GhostWhite"  BorderBrush="Black" BorderThickness="1"  Padding="2" Margin="5,5,5,5">
-            <Viewport3D Name="viewPort" Margin="0,0,0,0">
-                <Viewport3D.Camera>
-                    <PerspectiveCamera UpDirection="0,1,0" Position="0,20,-150" LookDirection="0,0,1" FieldOfView="90" />
-                </Viewport3D.Camera>
-            </Viewport3D>
-        </Border>
-    </DockPanel>
-</Window>
+            <Border Background="GhostWhite"  BorderBrush="Black" BorderThickness="1"  Padding="2" Margin="5,5,5,5">
+                <Viewport3D Name="viewPort" Margin="0,0,0,0">
+                    <Viewport3D.Camera>
+                        <PerspectiveCamera UpDirection="0,1,0" Position="0,20,-150" LookDirection="0,0,1" FieldOfView="90" />
+                    </Viewport3D.Camera>
+                </Viewport3D>
+            </Border>
+        </DockPanel>
+    </Grid>
+</RibbonWindow>
