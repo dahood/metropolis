@@ -197,20 +197,20 @@ namespace Metropolis.Views
 
         private void searchText_TextChanged(object sender, TextChangedEventArgs e)
         {
-            searchSuggestions.ItemsSource = null;
+            SearchSuggestions.ItemsSource = null;
             if (searchText.Text.Length > 2)
             {
                 var searchQuery = searchText.Text;
-                searchSuggestions.DisplayMemberPath = "Name";
-                searchSuggestions.ItemsSource = workspaceProvider.Workspace.AllInstances.Where(
+                SearchSuggestions.DisplayMemberPath = "Name";
+                SearchSuggestions.ItemsSource = workspaceProvider.Workspace.AllInstances.Where(
                         x => x.QualifiedName.IndexOf(searchQuery, StringComparison.CurrentCultureIgnoreCase) >= 0);
             }
-            searchSuggestions.Items.Refresh();
+            SearchSuggestions.Items.Refresh();
         }
 
         private void searchSuggestions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedClass = (Instance)searchSuggestions.SelectedItem;
+            var selectedClass = (Instance)SearchSuggestions.SelectedItem;
             if (selectedClass != null)
                 highlightedInstance.DisplayClass(selectedClass);
         }

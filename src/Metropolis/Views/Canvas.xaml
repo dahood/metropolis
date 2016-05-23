@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:spinner="clr-namespace:Metropolis.Views.UserControls"
         Title="Metropolis v0.0.1"
-        Width="1200" Height="1000" WindowStartupLocation="CenterScreen" Icon="..\Properties/logo.ico">
+        Width="1200" Height="900" WindowStartupLocation="CenterScreen" Icon="..\Properties/logo.ico">
 
     <RibbonWindow.Resources>
         <Style x:Key="ScrollBarTrackThumb"
@@ -143,7 +143,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         
-        <Ribbon x:Name="RibbonWin"  SelectedIndex="0" Grid.Row="0" VerticalAlignment="Stretch" Margin="0,0,-0.444,1" Grid.RowSpan="1">
+        <Ribbon x:Name="RibbonWin" SelectedIndex="0" Grid.Row="0" VerticalAlignment="Stretch" Margin="0,0,-0.444,1">
             <Ribbon.HelpPaneContent>
                 <RibbonButton SmallImageSource="..\Properties/logo.ico" />
             </Ribbon.HelpPaneContent>
@@ -197,10 +197,15 @@
             </RibbonTab>
         </Ribbon>
 
-        <DockPanel LastChildFill="True" Margin="0,142,-0.444,-0.111" Grid.RowSpan="2">
-            <StackPanel DockPanel.Dock="Right" Margin="0,0,5,10.5" Width="220" Height="744" VerticalAlignment="Bottom">
-                <spinner:Spinner x:Name="Spinner" Visibility="Collapsed" />
-                <GroupBox>
+        <DockPanel LastChildFill="True" Margin="0,142,-0.444,-0.111" Grid.Row="0" Grid.RowSpan="2">
+            <StackPanel DockPanel.Dock="Right" Margin="0,0,5,10.5" Width="220" VerticalAlignment="Top">
+                <GroupBox Name="LoadingBox" Visibility="Collapsed"> <!-- TODO: Currently Hiding this since it's not working -->
+                    <GroupBox.Header>
+                        <Label>Loading...</Label>
+                    </GroupBox.Header>
+                    <spinner:Spinner x:Name="Spinner" Visibility="Collapsed" />
+                </GroupBox>
+                <GroupBox Name="LayoutBox">
                     <GroupBox.Header>
                         <Label>Layout</Label>
                     </GroupBox.Header>
@@ -210,7 +215,7 @@
                         <RadioButton GroupName="layout" Name="GoldenRatio" Margin="5,5,5,5">Golden Ratio</RadioButton>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox>
+                <GroupBox Name="CameraControlsBox">
                     <GroupBox.Header>
                         <Label>Camera Controls</Label>
                     </GroupBox.Header>
@@ -245,7 +250,7 @@
                         <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  x:Name="resetButton" Content="Reset" Click="ResetCamera" Margin="25,5,25,5" />
                     </Grid>
                 </GroupBox>
-                <GroupBox>
+                <GroupBox Name="CodeMetricsBox">
                     <GroupBox.Header>
                         <Label>Codebase Metrics</Label>
                     </GroupBox.Header>
@@ -283,7 +288,7 @@
                         <TextBlock Grid.Row="6" Grid.Column="1" x:Name="ViolationsTextBlock" HorizontalAlignment="Right"></TextBlock>
                     </Grid>
                 </GroupBox>
-                <GroupBox>
+                <GroupBox Name="SearchBox">
                     <GroupBox.Header>
                         <Label>Search</Label>
                     </GroupBox.Header>
@@ -293,23 +298,23 @@
                                 <ColumnDefinition Width="15" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="clearSearchButton" Grid.Row="0" Grid.Column="0" Content="X" Background="WhiteSmoke" BorderThickness="0" Click="clearSearchButton_Click" />
+                            <Button Grid.Row="0" Grid.Column="0" Content="X" Background="WhiteSmoke" BorderThickness="0" Click="clearSearchButton_Click" />
                             <TextBox x:Name="searchText" Grid.Row="0" Grid.Column="1"
                                  VerticalAlignment="Top" Margin="5,5,5,5" 
                                  TextChanged="searchText_TextChanged"/>
 
                         </Grid>
-                        <ListBox x:Name="searchSuggestions" Margin="15,5,5,5" BorderThickness="0" MaxHeight="100" 
+                        <ListBox x:Name="SearchSuggestions" Margin="15,5,5,5" BorderThickness="0" MaxHeight="100" 
                              ScrollViewer.VerticalScrollBarVisibility="Auto"
                              SelectionChanged="searchSuggestions_SelectionChanged"
                              />
                     </StackPanel>
                 </GroupBox>
-                <GroupBox>
+                <GroupBox Name="CodeInspectorBox">
                     <GroupBox.Header>
                         <Label>Code Inspector</Label>
                     </GroupBox.Header>
-                    <RichTextBox x:Name="classNameTextBlock" VerticalAlignment="Top" Margin="5,5,5,5" IsReadOnly="True">
+                    <RichTextBox x:Name="ClassNameTextBlock" VerticalAlignment="Top" Margin="5,5,5,5" IsReadOnly="True">
                         <FlowDocument>
                             <Paragraph Name="codeInspectorText" />
                         </FlowDocument>
