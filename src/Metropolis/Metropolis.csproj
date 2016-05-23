@@ -198,6 +198,7 @@
     <Resource Include="Images\LinesOfCode.png" />
     <Resource Include="Images\Analyze.png" />
     <Resource Include="Images\metropolis-1141609_960_720.png" />
+    <Resource Include="Images\camera_icon.png" />
     <Content Include="SampleFiles\entity-framework-6.csv" />
     <None Include="SampleFiles\git-log-file-touches.csv" />
     <None Include="SampleFiles\metropolis-code-coverage-with-tests.coveragexml">

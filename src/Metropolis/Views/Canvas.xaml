@@ -168,6 +168,9 @@
                 <RibbonGroup x:Name="CollectionGroup" Header="Collection">
                     <RibbonButton LargeImageSource="..\Images\metrics.jpg" Label="Code Metrics" KeyTip="O" Click="StartMetroBot"/>
                 </RibbonGroup>
+                <RibbonGroup x:Name="ScreenShotGroup" Header="Screenshots">
+                    <RibbonButton LargeImageSource="..\Images\camera_icon.png" Label="Take Screenshot" KeyTip="0" Click="TakeScreenshot" />
+                </RibbonGroup>
                 <RibbonGroup x:Name="HelpGroup" Header="Help">
                     <RibbonButton Label="Project Wiki" LargeImageSource="..\Images\Wiki.ico" Click="ProjectWiki"/>
                 </RibbonGroup>

@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Ribbon;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
@@ -297,6 +300,18 @@ namespace Metropolis.Views
                             "Jonathan McCracken, Richard Hurst, and Greg Cook All rights reserved.\n" +
                             "Metropolis is licensed under BSD (see LICENSE file for details)", "About Metropolis", MessageBoxButton.OK,
                 MessageBoxImage.Information);
+        }
+
+        private void TakeScreenshot(object sender, RoutedEventArgs e)
+        {
+            var renderTargetBitmap = new RenderTargetBitmap(800, 800, 96, 96, PixelFormats.Pbgra32);
+            renderTargetBitmap.Render(viewPort);
+            var pngImage = new PngBitmapEncoder();
+            pngImage.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
+            using (Stream fileStream = File.Create(Environment.CurrentDirectory + "metro-screenshot" + DateTime.Now.Ticks + ".png"))
+            {
+                pngImage.Save(fileStream);
+            }
         }
     }
 }
