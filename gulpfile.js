@@ -7,6 +7,7 @@ var nunit = require('gulp-nunit-runner');
 // Gulp Variables
 var buildPath = '%CD%\\build';
 var maxThreads = 8;
+var msBuildConfiguration = 'Debug'
 
 // Gulp Default
 
@@ -19,11 +20,13 @@ gulp.task('clean', function () {
 });
 
 gulp.task('compile', function (cb) {
-  childProcess('"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /p:OutDir=' 
-    	+ buildPath + ' /maxcpucount:' + maxThreads, function (err, stdout, stderr) {
-	    	console.log(stdout);
-	    	console.log(stderr);
-	    	cb(err);
+  var cmd = '"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /p:OutDir=' + 
+    buildPath + ';Configuration=' + msBuildConfiguration + ' /maxcpucount:' + maxThreads
+  //console.log(cmd);  
+  childProcess(cmd, function (err, stdout, stderr) {
+    	    	console.log(stdout);
+    	    	console.log(stderr);
+    	    	cb(err);
   			});
 });
 
@@ -55,7 +58,11 @@ gulp.task('dist', ['package'],  function(cb) {
     //Last step is npm publish
 });
 
-gulp.task('package', ['package-collection-binaries', 'package-collection-settings', 'compile'], function() {
+gulp.task('set-release', function(){
+    msBuildConfiguration = 'Release';
+});
+
+gulp.task('package', ['package-collection-binaries', 'package-collection-settings', 'compile', 'set-release'], function() {
 	return gulp.src(['build\\*.dll', 'build\\*.exe', 'build\\*.config',
         // exclude all these test files
         '!build\\Metropolis.Test.dll',
