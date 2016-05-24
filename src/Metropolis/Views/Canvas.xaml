@@ -149,11 +149,11 @@
             </Ribbon.HelpPaneContent>
             <Ribbon.QuickAccessToolBar>
                 <RibbonQuickAccessToolBar>
-                    <RibbonButton x:Name ="Open" SmallImageSource="..\Images\Project.ico" Click="LoadProject" ToolTip="Open Project" />
+                    <RibbonButton x:Name ="Open" SmallImageSource="..\Images\Project.ico" Click="LoadProject" ToolTip="Open" />
                     <RibbonSeparator/>
-                    <RibbonButton x:Name ="Save" SmallImageSource="..\Images\SaveProject.ico" Click="SaveProject" ToolTip="Save Project" />
+                    <RibbonButton x:Name ="Save" SmallImageSource="..\Images\SaveProject.ico" Click="SaveProject" ToolTip="Save" />
                     <RibbonSeparator/>
-                    <RibbonButton x:Name ="Export" SmallImageSource="..\Images\csv-icon.jpg" Click="RunCsvExport" ToolTip="Export Project" />
+                    <RibbonButton x:Name ="Export" SmallImageSource="..\Images\csv-icon.jpg" Click="RunCsvExport" ToolTip="Export" />
                     <RibbonSeparator/>
                     <RibbonButton x:Name ="Exit" SmallImageSource="..\Images\Shutdown.ico" Click="Shutdown" ToolTip="Close Metropolis" />
                 </RibbonQuickAccessToolBar>
@@ -171,12 +171,12 @@
             </Ribbon.ApplicationMenu>
             <RibbonTab Header="Home" KeyTip="H" >
                 <RibbonGroup x:Name="ProjectGroup" Header="Project">
-                    <RibbonButton LargeImageSource="..\Images\Project.ico" Label="Open Project" KeyTip="O" Click="LoadProject"/>
-                    <RibbonButton LargeImageSource="..\Images\SaveProject.ico" Label="Save Project" KeyTip="O" Click="SaveProject"/>
-                    <RibbonButton LargeImageSource="..\Images\csv-icon.jpg" Label="Export Project" KeyTip="O" Click="RunCsvExport"/>
+                    <RibbonButton LargeImageSource="..\Images\Project.ico" Label="Open" KeyTip="O" Click="LoadProject"/>
+                    <RibbonButton LargeImageSource="..\Images\SaveProject.ico" Label="Save" KeyTip="O" Click="SaveProject"/>
+                    <RibbonButton LargeImageSource="..\Images\csv-icon.jpg" Label="Export" KeyTip="O" Click="RunCsvExport"/>
                 </RibbonGroup>
                 <RibbonGroup x:Name="CollectionGroup" Header="Collection">
-                    <RibbonButton LargeImageSource="..\Images\metrics.png" Label="Code Metrics" KeyTip="O" Click="StartMetroBot"/>
+                    <RibbonButton LargeImageSource="..\Images\metrics.png" Label="Import Data and Code Metrics" KeyTip="O" Click="StartMetroBot"/>
                 </RibbonGroup>
                 <RibbonGroup x:Name="ScreenShotGroup" Header="Screenshots">
                     <RibbonButton LargeImageSource="..\Images\camera_icon.png" Label="Take Screenshot" KeyTip="0" Click="TakeScreenshot" />
