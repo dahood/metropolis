@@ -308,29 +308,7 @@ namespace Metropolis.Views
             var screenshotFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 "metro-screenshot" + DateTime.Now.Ticks + ".png");
             LowRezScreenshot(screenshotFileName);
-            //HighRezScreenshot(screenshotFileName);
             Process.Start(screenshotFileName);
-        }
-
-        private void HighRezScreenshot(string screenshotFileName)
-        {
-            var page = new DocumentPage(viewPort);
-            var width = page.Size.Width;
-            var height = page.Size.Height;
-            var maxWidth = Math.Round(21.0/2.54*96.0); // A4 width in pixels at 96 dpi
-            var maxHeight = Math.Round(29.7/2.54*96.0); // A4 height in pixels at 96 dpi
-            var scale = 1.0;
-            scale = Math.Min(scale, maxWidth/width);
-            scale = Math.Min(scale, maxHeight/height);
-
-            var containerVisual = new ContainerVisual {Transform = new ScaleTransform(scale, scale)};
-            containerVisual.Children.Add(page.Visual);
-
-            var bitmap = new RenderTargetBitmap(
-                (int) (width*scale), (int) (height*scale), 96, 96, PixelFormats.Default);
-
-            bitmap.Render(containerVisual);
-            SaveToPng(screenshotFileName, bitmap);
         }
 
         private void LowRezScreenshot(string screenshotFileName)
