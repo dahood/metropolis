@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Ribbon;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
@@ -197,20 +200,20 @@ namespace Metropolis.Views
 
         private void searchText_TextChanged(object sender, TextChangedEventArgs e)
         {
-            searchSuggestions.ItemsSource = null;
+            SearchSuggestions.ItemsSource = null;
             if (searchText.Text.Length > 2)
             {
                 var searchQuery = searchText.Text;
-                searchSuggestions.DisplayMemberPath = "Name";
-                searchSuggestions.ItemsSource = workspaceProvider.Workspace.AllInstances.Where(
+                SearchSuggestions.DisplayMemberPath = "Name";
+                SearchSuggestions.ItemsSource = workspaceProvider.Workspace.AllInstances.Where(
                         x => x.QualifiedName.IndexOf(searchQuery, StringComparison.CurrentCultureIgnoreCase) >= 0);
             }
-            searchSuggestions.Items.Refresh();
+            SearchSuggestions.Items.Refresh();
         }
 
         private void searchSuggestions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedClass = (Instance)searchSuggestions.SelectedItem;
+            var selectedClass = (Instance)SearchSuggestions.SelectedItem;
             if (selectedClass != null)
                 highlightedInstance.DisplayClass(selectedClass);
         }
@@ -287,7 +290,8 @@ namespace Metropolis.Views
 
         private void NewVersion(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/dahood/metropolis");
+            //TODO: Potentially allow to check npm installed version versus what is on NPMJS.com
+            Process.Start("https://www.npmjs.com/package/metropolis");
         }
 
         private void AboutMetropolis(object sender, RoutedEventArgs e)
@@ -296,6 +300,21 @@ namespace Metropolis.Views
                             "Jonathan McCracken, Richard Hurst, and Greg Cook All rights reserved.\n" +
                             "Metropolis is licensed under BSD (see LICENSE file for details)", "About Metropolis", MessageBoxButton.OK,
                 MessageBoxImage.Information);
+        }
+
+        private void TakeScreenshot(object sender, RoutedEventArgs e)
+        {
+            var renderTargetBitmap = new RenderTargetBitmap((int) viewPort.ActualWidth, (int) viewPort.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+            renderTargetBitmap.Render(viewPort);
+            var pngImage = new PngBitmapEncoder();
+            pngImage.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
+            var screenshotFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), 
+                "metro-screenshot" + DateTime.Now.Ticks + ".png");
+            using (Stream fileStream = File.Create(screenshotFileName))
+            {
+                pngImage.Save(fileStream);
+            }
+            Process.Start(screenshotFileName);
         }
     }
 }

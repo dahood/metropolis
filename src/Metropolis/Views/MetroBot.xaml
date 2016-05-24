@@ -31,7 +31,7 @@
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
-                <Image Margin="5,5,5,5" Width="79" Height="79" Source="..\Images\mariabeauty.jpg" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />
+                <Image Margin="5,5,5,5" Width="79" Height="79" Source="..\Images\metropolis-1141609_960_720.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />
                 <TextBlock Grid.Row="0" Grid.Column="1" Height="Auto" FontSize="20" Text="Import Data and Code Metrics"  />
                 <TextBlock Grid.Row="1" Grid.Column="1" Height="Auto" Width="516" HorizontalAlignment="Left" 
                            Text="Hi I'm metrobot, I can collect information for you and run collection tools like eslint, checkstyles, and visual studio metrics." TextWrapping="Wrap" VerticalAlignment="Top"/>
