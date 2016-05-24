@@ -162,6 +162,9 @@
                 <RibbonApplicationMenu SmallImageSource="..\Images\Home.ico">
                     <RibbonApplicationMenuItem Header="New"  ImageSource="..\Images/NewProject.ico" Click="NewProject"/>
                     <RibbonApplicationMenuItem Header="Open" ImageSource="../Images/Project.ico" Click="LoadProject"/>
+                    <RibbonSeparator/>
+                    <RibbonApplicationMenuItem Header="Code Metrics" ImageSource="../Images/metrics.png" Click="StartMetroBot"/>
+                    <RibbonSeparator/>
                     <RibbonApplicationMenuItem Header="Exit" ImageSource="../Images/Shutdown.ico" Click="Shutdown"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
@@ -173,7 +176,7 @@
                     <RibbonButton LargeImageSource="..\Images\csv-icon.jpg" Label="Export Project" KeyTip="O" Click="RunCsvExport"/>
                 </RibbonGroup>
                 <RibbonGroup x:Name="CollectionGroup" Header="Collection">
-                    <RibbonButton LargeImageSource="..\Images\metrics.jpg" Label="Code Metrics" KeyTip="O" Click="StartMetroBot"/>
+                    <RibbonButton LargeImageSource="..\Images\metrics.png" Label="Code Metrics" KeyTip="O" Click="StartMetroBot"/>
                 </RibbonGroup>
                 <RibbonGroup x:Name="ScreenShotGroup" Header="Screenshots">
                     <RibbonButton LargeImageSource="..\Images\camera_icon.png" Label="Take Screenshot" KeyTip="0" Click="TakeScreenshot" />
