@@ -7,7 +7,6 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Ribbon;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -305,21 +304,26 @@ namespace Metropolis.Views
 
         private void TakeScreenshot(object sender, RoutedEventArgs e)
         {
-            var screenshotFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                "metro-screenshot" + DateTime.Now.Ticks + ".png");
-            ScaleScreenshot(screenshotFileName);
-            Process.Start(screenshotFileName);
+            using (new WaitCursor())
+            {
+                var screenshotFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                    "metro-screenshot" + DateTime.Now.Ticks + ".png");
+                ScaleScreenshot(screenshotFileName);
+                Process.Start(screenshotFileName);
+            }
         }
 
         private void ScaleScreenshot(string screenshotFileName)
         {
-            const double scale = 600 / 96;
+            const double wpfDpi = 96; // screen only image quality
+            const double targetDpi = 600; // print quality images
+            const double scale = targetDpi / wpfDpi;
 
-            RenderTargetBitmap bitmap = new RenderTargetBitmap((int)(scale * (viewPort.ActualWidth + 1)),
-                                                               (int)(scale * (viewPort.ActualHeight + 1)),
-                                                               scale * 96,
-                                                               scale * 96, PixelFormats.Pbgra32);
-
+            var bitmap = new RenderTargetBitmap(
+                (int) (scale*(viewPort.ActualWidth + 1)),
+                (int) (scale*(viewPort.ActualHeight + 1)),
+                scale*96,
+                scale*96, PixelFormats.Pbgra32);
 
             bitmap.Render(viewPort);
             SaveToPng(screenshotFileName, bitmap);
