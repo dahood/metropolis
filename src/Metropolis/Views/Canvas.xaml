@@ -160,8 +160,9 @@
             </Ribbon.QuickAccessToolBar>
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu SmallImageSource="..\Images\Home.ico">
-                    <RibbonApplicationMenuItem Header="New"  ImageSource="..\Images/NewProject.ico" Click="NewProject"/>
                     <RibbonApplicationMenuItem Header="Open" ImageSource="../Images/Project.ico" Click="LoadProject"/>
+                    <RibbonSeparator/>
+                    <RibbonApplicationMenuItem Header="Clear Canvas"  ImageSource="..\Images/ClearCanvas.ico" Click="NewProject"/>
                     <RibbonSeparator/>
                     <RibbonApplicationMenuItem Header="Code Metrics" ImageSource="../Images/metrics.png" Click="StartMetroBot"/>
                     <RibbonSeparator/>
@@ -170,7 +171,6 @@
             </Ribbon.ApplicationMenu>
             <RibbonTab Header="Home" KeyTip="H" >
                 <RibbonGroup x:Name="ProjectGroup" Header="Project">
-                    <RibbonButton LargeImageSource="..\Images\NewProject.ico" Label="New Project" KeyTip="O" Click="NewProject"/>
                     <RibbonButton LargeImageSource="..\Images\Project.ico" Label="Open Project" KeyTip="O" Click="LoadProject"/>
                     <RibbonButton LargeImageSource="..\Images\SaveProject.ico" Label="Save Project" KeyTip="O" Click="SaveProject"/>
                     <RibbonButton LargeImageSource="..\Images\csv-icon.jpg" Label="Export Project" KeyTip="O" Click="RunCsvExport"/>
@@ -188,6 +188,7 @@
             <RibbonTab Header="Advanced" KeyTip="A" >
                 <RibbonGroup x:Name="InfoGroup">
                     <RibbonButton Label="View Metrobot Progress Log" LargeImageSource="..\Images\ProgressGar.png" Click="ViewProgressLog" />
+                    <RibbonButton LargeImageSource="..\Images\ClearCanvas.ico" Label="Clear Canvas" KeyTip="O" Click="NewProject"/>
                 </RibbonGroup>
                 <RibbonGroup x:Name="JavaGroup" Header="Java">
                     <RibbonButton Label="Load Checkstyles" LargeImageSource="..\Images\CheckStyles.png" Click="LoadCheckStyles"/>
@@ -201,7 +202,7 @@
                     <RibbonButton Label="Calculate Toxicity" LargeImageSource="..\Images\Toxic.png" Click="RunCSharpAnalzer" />
                 </RibbonGroup>
                 <RibbonGroup x:Name="ECMAGroup" Header="ECMA / Javascript">
-                    <RibbonButton Label="Load Eslint Checkstyles" LargeImageSource="..\Images\CheckStyles.png"  Click="LoadEsLintCheckStyles"/>
+                    <RibbonButton Label="Load Eslint Checkstyles" LargeImageSource="..\Images\EsLint.png"  Click="LoadEsLintCheckStyles"/>
                     <RibbonButton Label="SLOC (.js)" LargeImageSource="..\Images\LinesOfCode.png" Click="LoadSourceLinesOfCode"/>
                     <RibbonButton Label="Calculate Toxicity" LargeImageSource="..\Images\Toxic.png" Click="RunJavascriptAnalzer" />
                 </RibbonGroup>
