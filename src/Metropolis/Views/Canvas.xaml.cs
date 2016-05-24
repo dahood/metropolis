@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Ribbon;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -24,13 +25,11 @@ namespace Metropolis.Views
 {
     public partial class Canvas : RibbonWindow, ISceneProvider, IDisplayInstanceInformation
     {
-        private readonly RotationalMovement rotationalMovement;
         private readonly CameraMovement cameraMovement;
         private readonly InstanceInformationFacade highlightedInstance;
-        private readonly IWorkspaceProvider workspaceProvider;
         private readonly ProgressLog progressLog;
-
-        private AbstractLayout layout = new SquaredLayout();
+        private readonly RotationalMovement rotationalMovement;
+        private readonly IWorkspaceProvider workspaceProvider;
 
         public Canvas()
         {
@@ -48,9 +47,27 @@ namespace Metropolis.Views
             LoadDefaultProject();
         }
 
+        public AbstractLayout Layout { get; private set; } = new SquaredLayout();
+
+        public RepositorySourceType SourceType => workspaceProvider.Workspace.SourceType;
+
+        public void SetClassInformation(string text)
+        {
+            codeInspectorText.Inlines.Clear();
+            codeInspectorText.Inlines.Add(text);
+        }
+
+        public Viewport3D ViewPort => viewPort;
+        public Model3DGroup Model { get; } = new Model3DGroup();
+
+        public PerspectiveCamera GetCamera()
+        {
+            return (PerspectiveCamera) viewPort.Camera;
+        }
+
         private void InitializeModel()
         {
-            var modelVisual3D = new ModelVisual3D { Content = Model };
+            var modelVisual3D = new ModelVisual3D {Content = Model};
             viewPort.Children.Add(modelVisual3D);
         }
 
@@ -79,23 +96,6 @@ namespace Metropolis.Views
             e.Handled = true;
         }
 
-        public AbstractLayout Layout => layout;
-        public Viewport3D ViewPort => viewPort;
-        public Model3DGroup Model { get; } = new Model3DGroup();
-
-        public RepositorySourceType SourceType => workspaceProvider.Workspace.SourceType;
-
-        public PerspectiveCamera GetCamera()
-        {
-            return (PerspectiveCamera)viewPort.Camera;
-        }
-
-        public void SetClassInformation(string text)
-        {
-            codeInspectorText.Inlines.Clear();
-            codeInspectorText.Inlines.Add(text);
-        }
-
         private void ChangeCameraSettings(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             cameraMovement.Update(positionXSlider.Value, positionYSlider.Value, positionZSlider.Value,
@@ -120,7 +120,7 @@ namespace Metropolis.Views
         {
             highlightedInstance.ClearDisplay();
             using (new WaitCursor())
-                layout.ModelCity(Model, workspaceProvider.Workspace);
+                Layout.ModelCity(Model, workspaceProvider.Workspace);
         }
 
         private void NewProject(object sender, RoutedEventArgs e)
@@ -144,6 +144,7 @@ namespace Metropolis.Views
             ToxicityTextBlock.Text = workspaceProvider.Workspace.AverageToxicity().ToString("N4", CultureInfo.InvariantCulture);
             Renderlayout();
         }
+
         private void Project_Info_Changed(object sender, TextChangedEventArgs e)
         {
             workspaceProvider.Workspace.Name = ProjectNameTextBox.Text;
@@ -171,6 +172,7 @@ namespace Metropolis.Views
             workspaceProvider.LoadCheckStyles();
             DisplayWorkspaceDetails();
         }
+
         private void LoadEsLintCheckStyles(object sender, RoutedEventArgs e)
         {
             workspaceProvider.LoadEsLintCheckStyles();
@@ -180,7 +182,7 @@ namespace Metropolis.Views
         private void LoadSourceLinesOfCode(object sender, RoutedEventArgs e)
         {
             var header = ((RibbonButton) e.Source).Label;
-            var extension = new Regex("[()]").Split((string)header)[1];
+            var extension = new Regex("[()]").Split(header)[1];
 
             workspaceProvider.LoadSourceLinesOfCode(extension.ToEnumByDescription<FileInclusion>());
             DisplayWorkspaceDetails();
@@ -193,7 +195,7 @@ namespace Metropolis.Views
 
         private void ChangeLayout(AbstractLayout newLayout)
         {
-            layout = newLayout;
+            Layout = newLayout;
             Renderlayout();
             ResetCamera(null, null);
         }
@@ -206,14 +208,14 @@ namespace Metropolis.Views
                 var searchQuery = searchText.Text;
                 SearchSuggestions.DisplayMemberPath = "Name";
                 SearchSuggestions.ItemsSource = workspaceProvider.Workspace.AllInstances.Where(
-                        x => x.QualifiedName.IndexOf(searchQuery, StringComparison.CurrentCultureIgnoreCase) >= 0);
+                    x => x.QualifiedName.IndexOf(searchQuery, StringComparison.CurrentCultureIgnoreCase) >= 0);
             }
             SearchSuggestions.Items.Refresh();
         }
 
         private void searchSuggestions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedClass = (Instance)SearchSuggestions.SelectedItem;
+            var selectedClass = (Instance) SearchSuggestions.SelectedItem;
             if (selectedClass != null)
                 highlightedInstance.DisplayClass(selectedClass);
         }
@@ -242,7 +244,7 @@ namespace Metropolis.Views
             DisplayWorkspaceDetails();
             Spinner.Hide();
         }
-        
+
 
         private void RunCsvExport(object sender, RoutedEventArgs e)
         {
@@ -252,7 +254,7 @@ namespace Metropolis.Views
         private void StartMetroBot(object sender, RoutedEventArgs e)
         {
             var metroBot = new MetroBot();
-            var result = metroBot.ShowDialog()??false;
+            var result = metroBot.ShowDialog() ?? false;
 
             if (!result) return;
             Spinner.Show();
@@ -262,7 +264,6 @@ namespace Metropolis.Views
                 DisplayWorkspaceDetails();
             }
             Spinner.Hide();
-            
         }
 
         private void ViewProgressLog(object sender, RoutedEventArgs e)
@@ -275,7 +276,7 @@ namespace Metropolis.Views
         {
             return new MetricsCommandArguments
             {
-                ProjectName =projectDetails.ProjectName,
+                ProjectName = projectDetails.ProjectName,
                 RepositorySourceType = projectDetails.RepositorySourceType,
                 MetricsOutputDirectory = projectDetails.MetricsOutputDirectory,
                 IgnoreFile = projectDetails.IgnoreFile,
@@ -304,17 +305,52 @@ namespace Metropolis.Views
 
         private void TakeScreenshot(object sender, RoutedEventArgs e)
         {
-            var renderTargetBitmap = new RenderTargetBitmap((int) viewPort.ActualWidth, (int) viewPort.ActualHeight, 96, 96, PixelFormats.Pbgra32);
-            renderTargetBitmap.Render(viewPort);
+            var screenshotFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                "metro-screenshot" + DateTime.Now.Ticks + ".png");
+            LowRezScreenshot(screenshotFileName);
+            //HighRezScreenshot(screenshotFileName);
+            Process.Start(screenshotFileName);
+        }
+
+        private void HighRezScreenshot(string screenshotFileName)
+        {
+
+            var page = new DocumentPage(viewPort);
+            var width = page.Size.Width;
+            var height = page.Size.Height;
+            var maxWidth = Math.Round(21.0/2.54*96.0); // A4 width in pixels at 96 dpi
+            var maxHeight = Math.Round(29.7/2.54*96.0); // A4 height in pixels at 96 dpi
+            var scale = 1.0;
+            scale = Math.Min(scale, maxWidth/width);
+            scale = Math.Min(scale, maxHeight/height);
+
+            var containerVisual = new ContainerVisual();
+            containerVisual.Transform = new ScaleTransform(scale, scale);
+            containerVisual.Children.Add(page.Visual);
+
+            var bitmap = new RenderTargetBitmap(
+                (int) (width*scale), (int) (height*scale), 96, 96, PixelFormats.Default);
+
+            bitmap.Render(containerVisual);
+            SaveToPng(screenshotFileName, bitmap);
+        }
+
+        private void LowRezScreenshot(string screenshotFileName)
+        {
+            var bitmap = new RenderTargetBitmap((int) viewPort.ActualWidth, (int) viewPort.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+            bitmap.Render(viewPort);
+            SaveToPng(screenshotFileName, bitmap);
+        }
+
+        private static void SaveToPng(string screenshotFileName, RenderTargetBitmap renderTargetBitmap)
+        {
             var pngImage = new PngBitmapEncoder();
             pngImage.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
-            var screenshotFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), 
-                "metro-screenshot" + DateTime.Now.Ticks + ".png");
+
             using (Stream fileStream = File.Create(screenshotFileName))
             {
                 pngImage.Save(fileStream);
             }
-            Process.Start(screenshotFileName);
         }
     }
 }
