@@ -13,7 +13,7 @@ namespace Metropolis.Models
             var cube = new MeshGeometry3D
             {
                 Positions = AssemblePoints(),
-                TriangleIndices = CreateTrianglesForACube(),
+                TriangleIndices = CreateTrianglesForACube()
             };
 
             //TODO: Normals

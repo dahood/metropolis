@@ -162,8 +162,7 @@ namespace Metropolis.Test.Extensions
                     attributeTypesOnPropertiesToIgnore))
                     continue;
                 if (throwException)
-                    throw new ArgumentException(string.Format("Objects inside IEnumerable not equal:\n{0}\nvs\n{1}",
-                        o1Value, o2Value));
+                    throw new ArgumentException($"Objects inside IEnumerable not equal:\n{o1Value}\nvs\n{o2Value}");
                 return false;
             }
             return true;

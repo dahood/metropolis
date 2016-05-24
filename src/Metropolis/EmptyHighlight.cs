@@ -6,12 +6,11 @@ namespace Metropolis
     {
         public void Reset()
         {
-
         }
 
         public IHighlightModel Swap(GeometryModel3D model)
         {
-            return model == null ? (IHighlightModel)this :  new HighlightModel(model);
+            return model == null ? (IHighlightModel) this : new HighlightModel(model);
         }
     }
 }

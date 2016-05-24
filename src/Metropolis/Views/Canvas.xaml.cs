@@ -23,7 +23,7 @@ using Metropolis.ViewModels;
 
 namespace Metropolis.Views
 {
-    public partial class Canvas : RibbonWindow, ISceneProvider, IDisplayInstanceInformation
+    public partial class Canvas : ISceneProvider, IDisplayInstanceInformation
     {
         private readonly CameraMovement cameraMovement;
         private readonly InstanceInformationFacade highlightedInstance;
@@ -314,7 +314,6 @@ namespace Metropolis.Views
 
         private void HighRezScreenshot(string screenshotFileName)
         {
-
             var page = new DocumentPage(viewPort);
             var width = page.Size.Width;
             var height = page.Size.Height;
@@ -324,8 +323,7 @@ namespace Metropolis.Views
             scale = Math.Min(scale, maxWidth/width);
             scale = Math.Min(scale, maxHeight/height);
 
-            var containerVisual = new ContainerVisual();
-            containerVisual.Transform = new ScaleTransform(scale, scale);
+            var containerVisual = new ContainerVisual {Transform = new ScaleTransform(scale, scale)};
             containerVisual.Children.Add(page.Visual);
 
             var bitmap = new RenderTargetBitmap(

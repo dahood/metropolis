@@ -1,10 +1,10 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using Metropolis.Common.Extensions;
 using Metropolis.ViewModels;
 using Microsoft.Win32;
-using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace Metropolis.Views.UserControls.StepPanels
 {
@@ -19,7 +19,7 @@ namespace Metropolis.Views.UserControls.StepPanels
             InitializeComponent();
         }
 
-        public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel)DataContext;
+        public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel) DataContext;
 
         private void OnCSharpFindDirectory(object sender, RoutedEventArgs e)
         {
@@ -49,7 +49,7 @@ namespace Metropolis.Views.UserControls.StepPanels
             var link = sender as Hyperlink;
             if (link == null) return;
 
-            System.Diagnostics.Process.Start(link.NavigateUri.ToString());
+            Process.Start(link.NavigateUri.ToString());
         }
 
         private void HideShowInfoBox(object sender, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)

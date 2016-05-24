@@ -7,7 +7,7 @@
 
         public static int Apply(int toScale, int scaleMin, int scaleMax)
         {
-            return (Max - Min) * (toScale - scaleMin) / (scaleMax - scaleMin) + Min;
+            return (Max - Min)*(toScale - scaleMin)/(scaleMax - scaleMin) + Min;
         }
     }
 }

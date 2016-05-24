@@ -15,12 +15,6 @@ namespace Metropolis
             Initialize();
         }
 
-        private void Initialize()
-        {
-            material = model.Material;
-            model.Material = HighlightMaterial;
-        }
-
         public void Reset()
         {
             model.Material = material;
@@ -30,6 +24,12 @@ namespace Metropolis
         {
             Reset();
             return new HighlightModel(newModel);
+        }
+
+        private void Initialize()
+        {
+            material = model.Material;
+            model.Material = HighlightMaterial;
         }
     }
 }

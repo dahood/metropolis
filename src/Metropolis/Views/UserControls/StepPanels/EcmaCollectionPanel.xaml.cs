@@ -16,7 +16,7 @@ namespace Metropolis.Views.UserControls.StepPanels
             InitializeComponent();
         }
 
-        public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel)DataContext;
+        public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel) DataContext;
 
         private void OnCSharpFindDirectory(object sender, RoutedEventArgs e)
         {
@@ -47,6 +47,7 @@ namespace Metropolis.Views.UserControls.StepPanels
             if (file == null) return;
             ProjectDetails.IgnoreFile = file;
         }
+
         private static string GetFileName(string initialFile = null)
         {
             var dialog = new OpenFileDialog {FileName = initialFile};

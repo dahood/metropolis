@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.InteropServices;
 using FluentAssertions;
 using Metropolis.Api.Collection.Steps.CSharp;
 using Metropolis.Api.Utilities;

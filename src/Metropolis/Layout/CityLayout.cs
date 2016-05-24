@@ -19,7 +19,7 @@ namespace Metropolis.Layout
 
             var namespaces = codeBase.ByNamespace();
             var plots = GeneratePlots(namespaces);
-            var rows = plots.Batch((int)Math.Ceiling(Math.Sqrt(plots.Count())));
+            var rows = plots.Batch((int) Math.Ceiling(Math.Sqrt(plots.Count())));
             if (rows == null) return;
 
             var previous = Plot.Empty;
@@ -36,7 +36,7 @@ namespace Metropolis.Layout
                     maxZ = Math.Max(maxZ, previous.SizeZ);
                 }
                 previous = Plot.Empty;
-                totalZ -= (maxZ + Spacer);
+                totalZ -= maxZ + Spacer;
                 maxZ = 0;
             }
         }
@@ -48,8 +48,8 @@ namespace Metropolis.Layout
             result.AddRange(
                 from pair in namespaces
                 let d = Math.Ceiling(Math.Sqrt(pair.Value.Count()))
-                let c = d/2 
-                select new Plot(pair.Key, pair.Value, new Rect3D(new Point3D(c,0,c), new Size3D(d, 0, d))));
+                let c = d/2
+                select new Plot(pair.Key, pair.Value, new Rect3D(new Point3D(c, 0, c), new Size3D(d, 0, d))));
 
             result.Sort((left, right) =>
             {
@@ -57,7 +57,7 @@ namespace Metropolis.Layout
                 var y = right.Classes.Max(c => c.LinesOfCode);
                 if (x == y) return left.Classes.Count() - right.Classes.Count();
                 return x - y;
-            });    
+            });
 
             return result;
         }
@@ -79,7 +79,7 @@ namespace Metropolis.Layout
         public IEnumerable<Instance> Classes { get; }
 
         public Rect3D Bounds { get; private set; }
-        public double SizeZ => Bounds.SizeZ * 2;
+        public double SizeZ => Bounds.SizeZ*2;
 
         public void Adjust(Plot previous, double zOffset)
         {

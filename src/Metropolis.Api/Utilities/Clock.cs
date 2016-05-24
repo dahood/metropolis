@@ -23,9 +23,9 @@ namespace Metropolis.Api.Utilities
 
         public static DateTime Now => _frozenTime ?? DateTime.Now;
         
-        public static DateTime EndOfToday => DateTimeUtilities.MakeLate(Now);
+        public static DateTime EndOfToday => Now.MakeLate();
 
-        public static DateTime Today => DateTimeUtilities.MakeEarly(Now);
+        public static DateTime Today => Now.MakeEarly();
 
         public static DateTime MaxDateTime => DateTime.MaxValue;
         public static DateTime MinDateTime => DateTime.MinValue;

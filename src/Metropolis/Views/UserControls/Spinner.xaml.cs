@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Threading;
-
 
 namespace Metropolis.Views.UserControls
 {
     /// <summary>
-    /// Simple Spinner to show that the metrobot is working hard to 
-    /// build your metrics for you
+    ///     Simple Spinner to show that the metrobot is working hard to
+    ///     build your metrics for you
     /// </summary>
-    public partial class Spinner : UserControl
+    public partial class Spinner 
     {
         private static readonly Action EmptyDelegate = delegate { };
 
@@ -24,6 +22,7 @@ namespace Metropolis.Views.UserControls
             Visibility = Visibility.Visible;
             Refresh();
         }
+
         public void Hide()
         {
             Visibility = Visibility.Collapsed;
@@ -34,6 +33,5 @@ namespace Metropolis.Views.UserControls
         {
             Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
         }
-
     }
 }

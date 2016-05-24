@@ -91,11 +91,6 @@ namespace Metropolis.Test.Utilities
             this.innerExceptions = innerExceptions.ToArray();
         }
 
-        private MultiException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-        }
-
         public IEnumerable<Exception> InnerExceptions => innerExceptions;
 
         public override string Message

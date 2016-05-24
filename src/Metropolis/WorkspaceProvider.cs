@@ -15,9 +15,9 @@ namespace Metropolis
 {
     public class WorkspaceProvider : IWorkspaceProvider
     {
+        private readonly IAnalysisService analysisService;
         private readonly ICodebaseService codebaseService;
         private readonly IProjectService projectService;
-        private readonly IAnalysisService analysisService;
 
         public WorkspaceProvider(ICodebaseService codebaseService, IProjectService projectService, IAnalysisService analysisService)
         {

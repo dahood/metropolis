@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Forms;
@@ -18,7 +19,7 @@ namespace Metropolis.Views.UserControls.StepPanels
             InitializeComponent();
         }
 
-        public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel)DataContext;
+        public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel) DataContext;
 
         private void OnCSharpFindDirectory(object sender, RoutedEventArgs e)
         {
@@ -48,7 +49,7 @@ namespace Metropolis.Views.UserControls.StepPanels
             var link = sender as Hyperlink;
             if (link == null) return;
 
-            System.Diagnostics.Process.Start(link.NavigateUri.ToString());
+            Process.Start(link.NavigateUri.ToString());
         }
 
         private void OnLocateIgnoreFile(object sender, RoutedEventArgs e)
@@ -57,9 +58,10 @@ namespace Metropolis.Views.UserControls.StepPanels
             if (file == null) return;
             ProjectDetails.IgnoreFile = file;
         }
+
         private static string GetFileName(string initialFile = null)
         {
-            var dialog = new OpenFileDialog { FileName = initialFile };
+            var dialog = new OpenFileDialog {FileName = initialFile};
             dialog.ShowDialog();
             return dialog.FileName != string.Empty ? dialog.FileName : null;
         }
@@ -69,7 +71,8 @@ namespace Metropolis.Views.UserControls.StepPanels
             //TODO: Scan all possible directories? e.g. DriveInfo.GetDrives().Where(x => x.IsReady == true)
 
             var vsInstallDirectory = Directory.Exists(@"C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE");
-            var metricsInstallDirectory = Directory.Exists(@"C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\FxCop");
+            var metricsInstallDirectory =
+                Directory.Exists(@"C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\FxCop");
 
             if (vsInstallDirectory) InfoVisualStudio.Visibility = Visibility.Collapsed;
             if (metricsInstallDirectory) InfoPowerTools.Visibility = Visibility.Collapsed;

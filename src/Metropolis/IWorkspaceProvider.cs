@@ -6,7 +6,7 @@ namespace Metropolis
 {
     public interface IWorkspaceProvider
     {
-        CodeBase Workspace { get;  }
+        CodeBase Workspace { get; }
         void Create();
         void Save();
         void Load();

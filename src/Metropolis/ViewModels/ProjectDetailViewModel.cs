@@ -12,7 +12,7 @@ namespace Metropolis.ViewModels
         private string projectName = "Sample Project";
         private RepositorySourceType repositorySourceType = RepositorySourceType.Java; //for now
         private string sourceDirectory;
-        public IEnumerable<string> SourceTypes => new[] {"ECMA", "Java", "CSharp" };
+        public IEnumerable<string> SourceTypes => new[] {"ECMA", "Java", "CSharp"};
 
         public RepositorySourceType RepositorySourceType
         {

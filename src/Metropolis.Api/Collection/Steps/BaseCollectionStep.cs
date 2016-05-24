@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Management.Automation.Runspaces;
 using Metropolis.Api.Collection.PowerShell;
 using Metropolis.Common.Models;
 

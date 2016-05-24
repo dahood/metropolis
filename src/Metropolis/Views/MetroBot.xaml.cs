@@ -7,19 +7,20 @@ using Metropolis.ViewModels;
 namespace Metropolis.Views
 {
     /// <summary>
-    /// Metrobot is amazing... it can collect all the metrics you need from all the tools in the world....
-    /// Currently the world is only Checkstyle, Eslint, and Sloc...but one day Metrobot will collect metrics for the entire world
+    ///     Metrobot is amazing... it can collect all the metrics you need from all the tools in the world....
+    ///     Currently the world is only Checkstyle, Eslint, and Sloc...but one day Metrobot will collect metrics for the entire
+    ///     world
     /// </summary>
-    public partial class MetroBot 
+    public partial class MetroBot
     {
-        public ProjectDetailsViewModel ProjectDetails { get; }
-
         public MetroBot()
         {
             InitializeComponent();
             ProjectDetails = new ProjectDetailsViewModel();
             DataContext = ProjectDetails;
         }
+
+        public ProjectDetailsViewModel ProjectDetails { get; }
 
         private void OnCancel(object sender, RoutedEventArgs e)
         {
@@ -35,7 +36,7 @@ namespace Metropolis.Views
 
         private void SourceCodeSelected(object sender, SelectionChangedEventArgs e)
         {
-            var selection = (RepositorySourceType)Enum.Parse(typeof(RepositorySourceType), SourceTypeCombobox.SelectedItem.ToString());
+            var selection = (RepositorySourceType) Enum.Parse(typeof(RepositorySourceType), SourceTypeCombobox.SelectedItem.ToString());
             switch (selection)
             {
                 case RepositorySourceType.CSharp:

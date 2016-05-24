@@ -6,7 +6,7 @@ namespace Metropolis.Views
     ///     Progress Log contains the log of all the work metro bot is doing to bring in metrics, calculate toxicity, etc
     ///     TODO: Create journal system to log what is happening to Log.Content
     /// </summary>
-    public partial class ProgressLog : Window
+    public partial class ProgressLog
     {
         public ProgressLog()
         {

@@ -16,9 +16,9 @@ namespace Metropolis.Layout
             var minHeight = codeBase.Graph.MinLinesOfCode;
 
             var namespaces = codeBase.ByNamespace();
-            var squaredNamespaces = (int)Math.Sqrt(namespaces.Keys.Count);
+            var squaredNamespaces = (int) Math.Sqrt(namespaces.Keys.Count);
 
-            var offset = namespaces.Keys.Count * -Spacer / 2;
+            var offset = namespaces.Keys.Count*-Spacer/2;
             var namespaceCounter = 0;
             var arrayofClasses = namespaces.Values.ToArray();
             var origin = new Point3D(offset, 0, offset);
@@ -32,9 +32,9 @@ namespace Metropolis.Layout
                     namespaceCounter++;
                     var zOffeset = Math.Sqrt(listToRender.Count());
                     if (zOffeset > tallestX) tallestX = zOffeset;
-                    origin.Z += Math.Sqrt(listToRender.Count()) * Spacer;
+                    origin.Z += Math.Sqrt(listToRender.Count())*Spacer;
                 }
-                origin.X += tallestX * Spacer;
+                origin.X += tallestX*Spacer;
                 origin.Z = offset;
             }
         }

@@ -5,27 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:spinner="clr-namespace:Metropolis.Views.UserControls"
         mc:Ignorable="d"
-        Title="Metrobot Progress Log" Height="300" Width="300"  
+        Title="Metrobot Progress Log" Height="300" Width="300"
         WindowStyle="None" Topmost="True"
         WindowStartupLocation="CenterScreen" Icon="..\Properties/logo.ico" ResizeMode="NoResize">
     <Border BorderThickness="2" BorderBrush="Blue">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="*"/>
-            <RowDefinition Height="30"/>
-        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
 
             <spinner:Spinner Grid.Row="0" x:Name="Spinner" Visibility="Visible" />
-            <TextBlock Grid.Row="1" Name="LogTextBlock" Margin="0,5,0,5"/>
-            <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="77,5,0,5" >
+            <TextBlock Grid.Row="1" Name="LogTextBlock" Margin="0,5,0,5" />
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="77,5,0,5">
                 <Button Name="CancelButton" Content="Cancel" Margin="5,0,5,0" Width="70" />
                 <Button Name="HideButton" Content="Hide" Width="70" Margin="5,0,5,0" Click="HideLog" />
             </StackPanel>
-               
+
         </Grid>
     </Border>
 </Window>

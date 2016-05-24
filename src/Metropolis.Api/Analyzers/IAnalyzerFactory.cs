@@ -1,5 +1,4 @@
-﻿using System;
-using Metropolis.Api.Analyzers.Toxicity;
+﻿using Metropolis.Api.Analyzers.Toxicity;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Analyzers

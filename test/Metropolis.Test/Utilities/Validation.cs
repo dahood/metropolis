@@ -12,10 +12,7 @@ namespace Metropolis.Test.Utilities
             exceptions = new List<ValidationException>(1); // optimize for only having 1 exception
         }
 
-        public IEnumerable<ValidationException> Exceptions
-        {
-            get { return exceptions; }
-        }
+        public IEnumerable<ValidationException> Exceptions => exceptions;
 
         public IEnumerable<ValidationException> Errors
         {
