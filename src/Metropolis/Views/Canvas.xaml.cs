@@ -307,20 +307,27 @@ namespace Metropolis.Views
         {
             var screenshotFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 "metro-screenshot" + DateTime.Now.Ticks + ".png");
-            LowRezScreenshot(screenshotFileName);
+            ScaleScreenshot(screenshotFileName);
             Process.Start(screenshotFileName);
         }
 
-        private void LowRezScreenshot(string screenshotFileName)
+        private void ScaleScreenshot(string screenshotFileName)
         {
-            var bitmap = new RenderTargetBitmap((int) viewPort.ActualWidth, (int) viewPort.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+            const double scale = 600 / 96;
+
+            RenderTargetBitmap bitmap = new RenderTargetBitmap((int)(scale * (viewPort.ActualWidth + 1)),
+                                                               (int)(scale * (viewPort.ActualHeight + 1)),
+                                                               scale * 96,
+                                                               scale * 96, PixelFormats.Pbgra32);
+
+
             bitmap.Render(viewPort);
             SaveToPng(screenshotFileName, bitmap);
         }
 
         private static void SaveToPng(string screenshotFileName, RenderTargetBitmap renderTargetBitmap)
         {
-            var pngImage = new PngBitmapEncoder();
+            var pngImage = new PngBitmapEncoder {Interlace = PngInterlaceOption.Off};
             pngImage.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
 
             using (Stream fileStream = File.Create(screenshotFileName))
