@@ -37,8 +37,7 @@
             <Label Grid.Row="5" Grid.Column="0">Code Duplicates</Label>
             <TextBlock Grid.Row="5" Grid.Column="1" x:Name="DuplicateTextBlock" HorizontalAlignment="Right" />
             <Label Grid.Row="6" Grid.Column="0">Code Violations</Label>
-            <TextBlock Grid.Row="6" Grid.Column="1" x:Name="ViolationsTextBlock"
-                                   HorizontalAlignment="Right" />
+            <TextBlock Grid.Row="6" Grid.Column="1" x:Name="ViolationsTextBlock" HorizontalAlignment="Right" />
         </Grid>
     </Grid>
 </UserControl>

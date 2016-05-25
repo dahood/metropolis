@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Metropolis.Views.UserControls
 {
@@ -10,6 +11,7 @@ namespace Metropolis.Views.UserControls
         public CodeMetricsSummary()
         {
             InitializeComponent();
+            //Foreground = Brushes.White;
         }
 
         private void Project_Info_Changed(object sender, TextChangedEventArgs e)

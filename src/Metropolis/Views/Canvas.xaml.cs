@@ -308,12 +308,23 @@ namespace Metropolis.Views
             {
                 var screenshotFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                     "metro-screenshot" + DateTime.Now.Ticks + ".png");
-                ScaleScreenshot(screenshotFileName);
+                ScaleScreenshot(screenshotFileName, false);
                 Process.Start(screenshotFileName);
             }
         }
 
-        private void ScaleScreenshot(string screenshotFileName)
+        private void TakeScreenshotWithCaption(object sender, RoutedEventArgs e)
+        {
+            using (new WaitCursor())
+            {
+                var screenshotFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                    "metro-screenshot" + DateTime.Now.Ticks + ".png");
+                ScaleScreenshot(screenshotFileName, true);
+                Process.Start(screenshotFileName);
+            }
+        }
+
+        private void ScaleScreenshot(string screenshotFileName, bool withCaption)
         {
             const double wpfDpi = 96; // screen only image quality
             const double targetDpi = 600; // print quality images
@@ -326,8 +337,17 @@ namespace Metropolis.Views
                 scale*96, PixelFormats.Pbgra32);
 
             bitmap.Render(viewPort);
-            //bitmap.Render(CodeMetricsBox);
+            if (withCaption)
+                AddCaptionToScreenShot(bitmap);
             SaveToPng(screenshotFileName, bitmap);
+            
+        }
+
+        private void AddCaptionToScreenShot(RenderTargetBitmap bitmap)
+        {
+            CodeMetricsGrid.BorderBrush = Brushes.Black;
+            bitmap.Render(CodeMetricsGrid);
+            CodeMetricsGrid.BorderBrush = Brushes.White;
         }
 
         private static void SaveToPng(string screenshotFileName, RenderTargetBitmap renderTargetBitmap)

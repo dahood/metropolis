@@ -188,8 +188,10 @@
                                   KeyTip="O" Click="StartMetroBot" />
                 </RibbonGroup>
                 <RibbonGroup x:Name="ScreenShotGroup" Header="Screenshots">
-                    <RibbonButton LargeImageSource="..\Images\camera_icon.png" Label="Take Screenshot" KeyTip="0"
+                    <RibbonButton LargeImageSource="..\Images\camera_icon.png" Label="Simple Screenshot" KeyTip="0"
                                   Click="TakeScreenshot" />
+                    <RibbonButton LargeImageSource="..\Images\camera_icon_with_stuff.png" Label="Screenshot with Metrics" KeyTip="0"
+                                  Click="TakeScreenshotWithCaption" />
                 </RibbonGroup>
                 <RibbonGroup x:Name="HelpGroup" Header="Help">
                     <RibbonButton Label="Project Wiki" LargeImageSource="..\Images\Wiki.ico" Click="ProjectWiki" />
@@ -300,7 +302,8 @@
                     <GroupBox.Header>
                         <Label>Codebase Metrics</Label>
                     </GroupBox.Header>
-                    <Grid>
+                    <Border Name="CodeMetricsGrid" CornerRadius="25" Background="White" BorderThickness="1">
+                    <Grid Margin="5,5,5,5">
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
@@ -334,6 +337,7 @@
                         <TextBlock Grid.Row="6" Grid.Column="1" x:Name="ViolationsTextBlock"
                                    HorizontalAlignment="Right" />
                     </Grid>
+                    </Border>
                 </GroupBox>
                 <GroupBox Name="SearchBox">
                     <GroupBox.Header>

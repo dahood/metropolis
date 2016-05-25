@@ -208,6 +208,7 @@
     <Resource Include="Images\home.ico" />
     <Resource Include="Images\metrics.png" />
     <Resource Include="Images\EsLint.png" />
+    <Resource Include="Images\camera_icon_with_stuff.png" />
     <Content Include="SampleFiles\entity-framework-6.csv" />
     <None Include="SampleFiles\git-log-file-touches.csv" />
     <None Include="SampleFiles\metropolis-code-coverage-with-tests.coveragexml">
