@@ -5,7 +5,6 @@ Metropolis is a code review and analysis tool that will help you highlight areas
 ## How to Install
 
 1. Install NodeJS on [Windows](https://nodejs.org/dist/v6.1.0/node-v6.1.0-x64.msi)
-2. Run `Set-ExecutionPolicy remotesigned` in your powershell console
 1. `npm install -g metropolis` 
 
 Currently, Metropolis only support Windows sorry no [WPF on Mono yet](http://www.mono-project.com/docs/gui/wpf/). 
