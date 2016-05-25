@@ -326,6 +326,7 @@ namespace Metropolis.Views
                 scale*96, PixelFormats.Pbgra32);
 
             bitmap.Render(viewPort);
+            //bitmap.Render(CodeMetricsBox);
             SaveToPng(screenshotFileName, bitmap);
         }
 

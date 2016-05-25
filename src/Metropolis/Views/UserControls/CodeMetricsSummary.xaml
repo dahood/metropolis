@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Metropolis.Views.UserControls.CodeMetricsSummary"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="200" d:DesignWidth="200">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Project</Label>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="ProjectNameTextBox" VerticalAlignment="Center"
+                                 HorizontalAlignment="Right" Width="123"
+                                 BorderBrush="White" SelectionBrush="White" TextAlignment="Right" Cursor=""
+                                 TextChanged="Project_Info_Changed" />
+            <Label Grid.Row="1" Grid.Column="0">Lines of Code</Label>
+            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="LocTextBlock" HorizontalAlignment="Right" />
+            <Label Grid.Row="2" Grid.Column="0">Types</Label>
+            <TextBlock Grid.Row="2" Grid.Column="1" x:Name="TypesTextBlock" HorizontalAlignment="Right" />
+            <Label Grid.Row="3" Grid.Column="0">Average Toxicity</Label>
+            <TextBlock Grid.Row="3" Grid.Column="1" x:Name="ToxicityTextBlock" HorizontalAlignment="Right" />
+            <Label Grid.Row="4" Grid.Column="0">Code Coverage</Label>
+            <TextBlock Grid.Row="4" Grid.Column="1" x:Name="CoverageTextBlock" HorizontalAlignment="Right" />
+            <Label Grid.Row="5" Grid.Column="0">Code Duplicates</Label>
+            <TextBlock Grid.Row="5" Grid.Column="1" x:Name="DuplicateTextBlock" HorizontalAlignment="Right" />
+            <Label Grid.Row="6" Grid.Column="0">Code Violations</Label>
+            <TextBlock Grid.Row="6" Grid.Column="1" x:Name="ViolationsTextBlock"
+                                   HorizontalAlignment="Right" />
+        </Grid>
+    </Grid>
+</UserControl>
