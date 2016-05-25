@@ -5,7 +5,7 @@
     xmlns:stepPanels="clr-namespace:Metropolis.Views.UserControls.StepPanels"
     x:Class="Metropolis.Views.MetroBot"
     Title="MetroBot - Import Data and Code Metrics" Height="433.926" Width="600"
-    WindowStartupLocation="CenterScreen" Icon="..\Properties/logo.ico">
+    WindowStartupLocation="CenterScreen" Icon="..\Images/logo.ico">
     <Window.Resources>
         <vc:RepositorySourceTypeConverter x:Key="SrcTypeConverter" />
     </Window.Resources>

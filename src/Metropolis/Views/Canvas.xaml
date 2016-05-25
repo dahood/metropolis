@@ -3,7 +3,10 @@
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               xmlns:spinner="clr-namespace:Metropolis.Views.UserControls"
               Title="Metropolis v0.0.1"
-              Width="1200" Height="900" WindowStartupLocation="CenterScreen" Icon="..\Properties/logo.ico">
+              Height="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Height}" 
+              Width="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Width}"
+              WindowStartupLocation="CenterScreen"
+              Icon="..\Images/logo.ico">
 
     <RibbonWindow.Resources>
         <Style x:Key="ScrollBarTrackThumb"
@@ -145,7 +148,7 @@
 
         <Ribbon x:Name="RibbonWin" SelectedIndex="0" Grid.Row="0" VerticalAlignment="Stretch" Margin="0,0,-0.444,1">
             <Ribbon.HelpPaneContent>
-                <RibbonButton SmallImageSource="..\Properties/logo.ico" />
+                <RibbonButton SmallImageSource="..\Images/logo.ico" />
             </Ribbon.HelpPaneContent>
             <Ribbon.QuickAccessToolBar>
                 <RibbonQuickAccessToolBar>

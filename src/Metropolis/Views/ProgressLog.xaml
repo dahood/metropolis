@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Metrobot Progress Log" Height="300" Width="300"
         WindowStyle="None" Topmost="True"
-        WindowStartupLocation="CenterScreen" Icon="..\Properties/logo.ico" ResizeMode="NoResize">
+        WindowStartupLocation="CenterScreen" Icon="..\Images/logo.ico" ResizeMode="NoResize">
     <Border BorderThickness="2" BorderBrush="Blue">
         <Grid>
             <Grid.ColumnDefinitions>

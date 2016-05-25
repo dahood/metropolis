@@ -238,10 +238,12 @@ namespace Metropolis.Views
 
         private void RunJavascriptAnalzer(object sender, RoutedEventArgs e)
         {
-            Spinner.Show();
+            App.ShowLog();
+            //Spinner.Show();
             workspaceProvider.RunJavascriptToxicity();
             DisplayWorkspaceDetails();
-            Spinner.Hide();
+            //Spinner.Hide();
+            App.ShowLog();
         }
 
 
