@@ -21,7 +21,7 @@ Toxicity is essentially a [Richter Scale](https://en.wikipedia.org/wiki/Richter_
 ### Example - Hibernate
 <p align="center"><img alt="Cityscape of Hibernate" src="https://raw.githubusercontent.com/dahood/metropolis/master/example-metropolis.png"/></p>
 
-Hibernate is an object relational mapping tool used to speed up development of applications. Hibernate has over 330,000 lines of code and an average toxicity of 1.335. You can see some areas are very good, but given the size and complexity of this project there are areas of concern highlighted in red. Using Metropolis's code inspector you can view these classes to review this code.
+Hibernate is an object relational mapping tool used to speed up development of applications. Hibernate has over 338,052 lines of code and an average toxicity of 1.3681. You can see some areas are very good, but given the size and complexity of this project there are areas of concern highlighted in red. Using Metropolis's code inspector you can view these classes to review this code.
 
 ## Getting Started
 
