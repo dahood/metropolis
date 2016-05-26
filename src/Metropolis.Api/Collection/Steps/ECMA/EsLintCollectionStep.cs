@@ -14,7 +14,7 @@ namespace Metropolis.Api.Collection.Steps.ECMA
         public override string Extension => ".xml";
         public override ParseType ParseType => ParseType.EsLint;
 
-        public EsLintCollectionStep() : base(new RunPowerShell(), true)
+        public EsLintCollectionStep() : base(new RunPowerShell())
         {
         }
 

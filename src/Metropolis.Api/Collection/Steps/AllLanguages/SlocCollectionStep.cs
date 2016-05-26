@@ -11,7 +11,7 @@ namespace Metropolis.Api.Collection.Steps.AllLanguages
     {
         private const string SlocCommand = @"{0}sloc '{1}' -d --format csv -> '{2}'";
 
-        public SlocCollectionStep(ParseType parseType) : base(new RunPowerShell(), true)
+        public SlocCollectionStep(ParseType parseType) : base(new RunPowerShell())
         {
             ParseType = parseType;
         }

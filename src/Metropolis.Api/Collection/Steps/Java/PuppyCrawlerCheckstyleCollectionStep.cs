@@ -17,7 +17,7 @@ namespace Metropolis.Api.Collection.Steps.Java
         {
         }
 
-        public PuppyCrawlerCheckstyleCollectionStep(IRunPowerShell powerShell) : base(powerShell, useNodePath: false) //never use node path as this command doesn't invoke a node module
+        public PuppyCrawlerCheckstyleCollectionStep(IRunPowerShell powerShell) : base(powerShell)
         {
         }
 
