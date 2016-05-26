@@ -28,19 +28,8 @@ var margin = {top: 20, right: 20, bottom: 70, left: 40},
     width = 800 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
-var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
 
-var y = d3.scale.linear().range([height, 0]);
 
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom")
-    .ticks(100);
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .ticks(10);
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -51,7 +40,22 @@ var svg = d3.select("body").append("svg")
 
 d3.tsv("http://localhost:8080/metropolis_export_filtered.tsv", function(data) {
 	
+  var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
+  
   x.domain(data.map(function(d) { return d.Name; }));
+  
+  var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    .ticks(100);
+
+  var y = d3.scale.linear().range([height, 0]);
+
+  var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10);
+
   y.domain([0, d3.max(data, function(d) { return d.Toxicity; })]);
 
   svg.append("g")

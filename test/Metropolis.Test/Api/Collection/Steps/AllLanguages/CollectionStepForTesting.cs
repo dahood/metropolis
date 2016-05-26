@@ -8,7 +8,7 @@ namespace Metropolis.Test.Api.Collection.Steps.AllLanguages
     {
         private bool runBadCommand;
 
-        public CollectionStepForTesting() : base(new RunPowerShell(), false)
+        public CollectionStepForTesting() : base(new RunPowerShell())
         {
         }
 

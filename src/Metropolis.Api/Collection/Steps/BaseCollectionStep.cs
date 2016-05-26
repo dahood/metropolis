@@ -8,14 +8,16 @@ namespace Metropolis.Api.Collection.Steps
 {
     public abstract class BaseCollectionStep : ICollectionStep
     {
-        private readonly bool useNodePath;
         private readonly IRunPowerShell powerShell;
 
-        protected BaseCollectionStep(IRunPowerShell powerShell, bool useNodePath)
+        protected BaseCollectionStep(IRunPowerShell powerShell)
         {
-            this.useNodePath = useNodePath;
             this.powerShell = powerShell;
         }
+
+        public abstract string MetricsType { get; }
+        public abstract string Extension { get; }
+        public abstract ParseType ParseType { get; }
 
         public IEnumerable<MetricsResult> Run(MetricsCommandArguments args)
         {
@@ -25,9 +27,6 @@ namespace Metropolis.Api.Collection.Steps
             return new[] {result};
         }
 
-        public abstract string MetricsType { get; }
-        public abstract string Extension { get; }
-        public abstract ParseType ParseType { get; }
         public abstract string PrepareCommand(MetricsCommandArguments args, MetricsResult result);
 
         private void SaveAndExecuteCommand(MetricsCommandArguments args, string command)
@@ -35,7 +34,7 @@ namespace Metropolis.Api.Collection.Steps
             try
             {
                 SaveMetricsCommand(args, command);
-                InvokeCommand(command, useNodePath);
+                InvokeCommand(command);
             }
             catch (Exception e)
             {
@@ -50,7 +49,7 @@ namespace Metropolis.Api.Collection.Steps
             File.WriteAllText(fileName, cmd);
         }
 
-        protected virtual MetricsResult MetricResultFor(MetricsCommandArguments args)
+        protected MetricsResult MetricResultFor(MetricsCommandArguments args)
         {
             return new MetricsResult {ParseType = ParseType, MetricsFile = GetOutputFile(args)};
         }
@@ -61,12 +60,12 @@ namespace Metropolis.Api.Collection.Steps
             return Path.Combine(args.MetricsOutputDirectory, fileName);
         }
 
-        protected virtual void InvokeCommand(string command, bool useNodePath)
+        protected void InvokeCommand(string command)
         {
             powerShell.Invoke(command);
         }
 
-        public static  string LocateBinaries(string target)
+        public static string LocateBinaries(string target)
         {
             return Locate(@"Collection\Binaries\", target);
         }
