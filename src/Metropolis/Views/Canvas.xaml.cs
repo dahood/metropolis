@@ -377,8 +377,11 @@ namespace Metropolis.Views
         private void SetWindowSize(object sender, RoutedEventArgs e)
         {
             const double reductionFactor = 0.85;
-            Width = (int)SystemParameters.WorkArea.Width * reductionFactor;
-            Height = (int)SystemParameters.WorkArea.Height * reductionFactor;
+            var workArea = SystemParameters.WorkArea;
+            Width = (int)workArea.Width * reductionFactor;
+            Height = (int)workArea.Height * reductionFactor;
+            Top = (int)  (workArea.Width - Width) / 2;
+            Left = (int) (workArea.Height - Height) / 2;
         }
     }
 }
