@@ -6,7 +6,7 @@
               Height="800" 
               Width="1200"
               WindowStartupLocation="CenterScreen"
-              Icon="..\Images/logo.ico" Loaded="SetWindowSize">
+              Icon="..\Images/logo.ico" Loaded="SetWindowSize" Closed="Shutdown">
 
     <RibbonWindow.Resources>
         <Style x:Key="ScrollBarTrackThumb"
