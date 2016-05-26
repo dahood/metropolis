@@ -78,13 +78,9 @@ namespace Metropolis.Api.Collection.Steps
 
         private static string Locate(string collectionPath, string target)
         {
-#if DEBUG
             return Path.Combine(Environment.CurrentDirectory, collectionPath, target);
-#else
-            return Environment.CurrentDirectory;
-#endif
         }
-        
+
         public static string GetNodeBinPath()
         {
 #if DEBUG
