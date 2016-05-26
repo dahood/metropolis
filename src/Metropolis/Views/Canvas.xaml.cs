@@ -187,9 +187,9 @@ namespace Metropolis.Views
             DisplayWorkspaceDetails();
         }
 
-        private void Shutdown(object sender, RoutedEventArgs e)
+        private void Shutdown(object sender, EventArgs e)
         {
-            Close();
+            Application.Current.Shutdown();
         }
 
         private void ChangeLayout(AbstractLayout newLayout)
@@ -383,5 +383,7 @@ namespace Metropolis.Views
             Top = (int)  (workArea.Width - Width) / 2;
             Left = (int) (workArea.Height - Height) / 2;
         }
+
+        
     }
 }
