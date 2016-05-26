@@ -373,5 +373,12 @@ namespace Metropolis.Views
 
             toggleButons.Where(x => x != sender).ForEach(each => each.IsChecked = false);
         }
+
+        private void SetWindowSize(object sender, RoutedEventArgs e)
+        {
+            const double reductionFactor = 0.85;
+            Width = (int)SystemParameters.WorkArea.Width * reductionFactor;
+            Height = (int)SystemParameters.WorkArea.Height * reductionFactor;
+        }
     }
 }

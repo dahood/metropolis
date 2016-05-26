@@ -3,10 +3,10 @@
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               xmlns:spinner="clr-namespace:Metropolis.Views.UserControls"
               Title="Metropolis v0.0.1"
-              Height="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Height}" 
-              Width="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Width}"
+              Height="800" 
+              Width="1200"
               WindowStartupLocation="CenterScreen"
-              Icon="..\Images/logo.ico">
+              Icon="..\Images/logo.ico" Loaded="SetWindowSize">
 
     <RibbonWindow.Resources>
         <Style x:Key="ScrollBarTrackThumb"
