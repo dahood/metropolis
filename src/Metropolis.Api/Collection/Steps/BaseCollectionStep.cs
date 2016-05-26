@@ -63,15 +63,15 @@ namespace Metropolis.Api.Collection.Steps
 
         protected virtual void InvokeCommand(string command, bool useNodePath)
         {
-            powerShell.Invoke(command, useNodePath);
+            powerShell.Invoke(command);
         }
 
-        protected string LocateBinaries(string target)
+        public static  string LocateBinaries(string target)
         {
             return Locate(@"Collection\Binaries\", target);
         }
 
-        protected string LocateSettings(string target)
+        public static string LocateSettings(string target)
         {
             return Locate(@"Collection\Settings\", target);
         }
@@ -82,6 +82,15 @@ namespace Metropolis.Api.Collection.Steps
             return Path.Combine(Environment.CurrentDirectory, collectionPath, target);
 #else
             return Environment.CurrentDirectory;
+#endif
+        }
+        
+        public static string GetNodeBinPath()
+        {
+#if DEBUG
+            return @"..\..\..\..\node_modules\.bin\";
+#else
+            return @"..\node_modules\.bin\";
 #endif
         }
     }

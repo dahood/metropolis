@@ -27,7 +27,7 @@ namespace Metropolis.Test.Api.Collection.Steps.AllLanguages
         [Test]
         public void CanParseCommand()
         {
-            string expected = $"sloc '{Args.SourceDirectory}' -d --format csv -> '{Result.MetricsFile}'";
+            string expected = $@"{NodeModulesPath}sloc '{Args.SourceDirectory}' -d --format csv -> '{Result.MetricsFile}'";
             var command = step.PrepareCommand(Args, Result);
 
             command.Should().Be(expected);

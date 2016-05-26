@@ -7,7 +7,7 @@ namespace Metropolis.Api.Collection.Steps.ECMA
 {
     public class EsLintCollectionStep : BaseCollectionStep
     {
-        private const string EsLintCommand = @"eslint -c '{0}.eslintrc.json' '{1}\**' -o '{2}' -f checkstyle";
+        private const string EsLintCommand = @"{0}eslint -c '{1}.eslintrc.json' '{2}\**' -o '{3}' -f checkstyle";
         private const string IgnorePathPart = " --ignore-path '{0}'";
 
         public override string MetricsType => "Eslint";
@@ -20,7 +20,7 @@ namespace Metropolis.Api.Collection.Steps.ECMA
 
         public override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
         {
-            var cmd = EsLintCommand.FormatWith(AppDomain.CurrentDomain.BaseDirectory, args.SourceDirectory, result.MetricsFile);
+            var cmd = EsLintCommand.FormatWith(GetNodeBinPath(), AppDomain.CurrentDomain.BaseDirectory, args.SourceDirectory, result.MetricsFile);
 
             if (args.IgnoreFile.IsNotEmpty())
                 cmd = string.Concat(cmd, IgnorePathPart.FormatWith(args.IgnoreFile));

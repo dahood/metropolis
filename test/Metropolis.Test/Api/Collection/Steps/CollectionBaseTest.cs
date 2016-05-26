@@ -10,6 +10,12 @@ namespace Metropolis.Test.Api.Collection.Steps
         protected MetricsCommandArguments Args;
         protected MetricsResult Result;
 
+#if DEBUG
+        public const string NodeModulesPath =  @"..\..\..\..\node_modules\.bin\";
+#else
+        public const string NodeModulesPath =  @"..\node_modules\.bin\";
+#endif
+
         [SetUp]
         public void SetUp()
         {

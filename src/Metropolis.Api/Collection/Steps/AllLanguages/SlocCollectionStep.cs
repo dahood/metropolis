@@ -9,7 +9,7 @@ namespace Metropolis.Api.Collection.Steps.AllLanguages
     /// </summary>
     public class SlocCollectionStep : BaseCollectionStep
     {
-        private const string SlocCommand = @"sloc '{0}' -d --format csv -> '{1}'";
+        private const string SlocCommand = @"{0}sloc '{1}' -d --format csv -> '{2}'";
 
         public SlocCollectionStep(ParseType parseType) : base(new RunPowerShell(), true)
         {
@@ -22,7 +22,7 @@ namespace Metropolis.Api.Collection.Steps.AllLanguages
 
         public override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
         {
-            return SlocCommand.FormatWith(args.SourceDirectory, result.MetricsFile);
+            return SlocCommand.FormatWith(GetNodeBinPath(), args.SourceDirectory, result.MetricsFile);
         }
     }
 }

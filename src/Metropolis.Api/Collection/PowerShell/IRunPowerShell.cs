@@ -2,6 +2,6 @@
 {
     public interface IRunPowerShell
     {
-        void Invoke(string command, bool useNodePath);
+        void Invoke(string command);
     }
 }

@@ -45,7 +45,7 @@ namespace Metropolis.Test.Api.Collection.Steps.CSharp
         {
             var expectedCommand = FxCopCollectionTask.CommandTemplate.FormatWith(DllName, expectedResult.MetricsFile);
             fileSystem.Setup(x => x.GetFileName(DllName)).Returns("mydll");
-            powerShell.Setup(x => x.Invoke(expectedCommand, false));
+            powerShell.Setup(x => x.Invoke(expectedCommand));
             var result = task.Run(args, DllName);
 
             Validate.Begin()

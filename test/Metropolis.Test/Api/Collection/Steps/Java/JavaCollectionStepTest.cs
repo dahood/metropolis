@@ -1,6 +1,6 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Metropolis.Api.Collection.PowerShell;
+using Metropolis.Api.Collection.Steps;
 using Metropolis.Api.Collection.Steps.Java;
 using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
@@ -23,8 +23,8 @@ namespace Metropolis.Test.Api.Collection.Steps.Java
             step = new PuppyCrawlerCheckstyleCollectionStep(powerShell.Object);
 
             expectedCommand = PuppyCrawlerCheckstyleCollectionStep.CheckstyleCommand
-                                              .FormatWith(Environment.CurrentDirectory + @"\Collection\Binaries\checkstyle-6.18-all.jar", // include all jars into the class path
-                                                          Environment.CurrentDirectory + @"\Collection\Settings\metropolis_checkstyle_metrics.xml",
+                                              .FormatWith(BaseCollectionStep.LocateBinaries("checkstyle-6.18-all.jar"), 
+                                                          BaseCollectionStep.LocateSettings("metropolis_checkstyle_metrics.xml"),
                                                           Result.MetricsFile, Args.SourceDirectory);
         }
 

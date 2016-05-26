@@ -30,7 +30,7 @@ namespace Metropolis.Api.Collection.Steps.CSharp
             var result = new MetricsResult {ParseType = ParseType.FxCop, MetricsFile = GetMetricsOutputFileName(args, targetdll)};
             var command = CommandTemplate.FormatWith(targetdll, result.MetricsFile);
 
-            powerShell.Invoke(command, false);
+            powerShell.Invoke(command);
             return result;
         }
 
