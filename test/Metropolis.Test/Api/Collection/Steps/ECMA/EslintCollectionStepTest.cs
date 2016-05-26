@@ -1,5 +1,5 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
+using Metropolis.Api.Collection.Steps;
 using Metropolis.Api.Collection.Steps.ECMA;
 using Metropolis.Common.Models;
 using NUnit.Framework;
@@ -28,7 +28,7 @@ namespace Metropolis.Test.Api.Collection.Steps.ECMA
         [Test]
         public void CanParseCommand_WithIgnoreFile()
         {
-            var expected = $"{NodeModulesPath}eslint -c '{AppDomain.CurrentDomain.BaseDirectory}.eslintrc.json' '{Args.SourceDirectory}\\**' "+
+            var expected = $"{NodeModulesPath}eslint -c '{BaseCollectionStep.LocateSettings(".eslintrc.json")}' '{Args.SourceDirectory}\\**' "+
                            $"-o '{Result.MetricsFile}' -f checkstyle" +
                            $" --ignore-path '{Args.IgnoreFile}'";
 
@@ -42,7 +42,7 @@ namespace Metropolis.Test.Api.Collection.Steps.ECMA
         {
             Args.IgnoreFile = string.Empty; //no ignore path in this example
 
-            var expected = $"{NodeModulesPath}eslint -c '{AppDomain.CurrentDomain.BaseDirectory}.eslintrc.json' '{Args.SourceDirectory}\\**' "+
+            var expected = $"{NodeModulesPath}eslint -c '{BaseCollectionStep.LocateSettings(".eslintrc.json")}' '{Args.SourceDirectory}\\**' "+
                            $"-o '{Result.MetricsFile}' -f checkstyle";
 
             var command = step.PrepareCommand(Args, Result);
