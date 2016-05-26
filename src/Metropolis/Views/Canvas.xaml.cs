@@ -84,9 +84,9 @@ namespace Metropolis.Views
 
         private void ListenForLayoutChanges()
         {
-            Square.Checked += (sender, e) => { ChangeLayout(new SquaredLayout()); };
-            City.Checked += (sender1, e1) => { ChangeLayout(new CityLayout()); };
-            GoldenRatio.Checked += (sender2, e2) => { ChangeLayout(new GoldenRatioLayout()); };
+            SquareLayoutToggleButton.Checked += (sender, e) => { ChangeLayout(new SquaredLayout()); };
+            CityLayoutToggleButton.Checked += (sender1, e1) => { ChangeLayout(new CityLayout()); };
+            GoldenRatioLayoutToggleButton.Checked += (sender2, e2) => { ChangeLayout(new GoldenRatioLayout()); };
         }
 
         private void HandleMouseWheel(object sender, MouseWheelEventArgs e)
@@ -330,7 +330,7 @@ namespace Metropolis.Views
         {
             const double wpfDpi = 96; // screen only image quality
             const double targetDpi = 600; // print quality images
-            const double scale = targetDpi / wpfDpi;
+            const double scale = targetDpi/wpfDpi;
 
             var bitmap = new RenderTargetBitmap(
                 (int) (scale*(viewPort.ActualWidth + 1)),
@@ -342,7 +342,7 @@ namespace Metropolis.Views
             if (withCaption)
                 AddCaptionToScreenShot(bitmap);
             SaveToPng(screenshotFileName, bitmap);
-            
+
         }
 
         private void AddCaptionToScreenShot(RenderTargetBitmap bitmap)
@@ -361,6 +361,17 @@ namespace Metropolis.Views
             {
                 pngImage.Save(fileStream);
             }
+        }
+
+        private void ToggleLayout(object sender, RoutedEventArgs e)
+        {
+            var toggleButons = new[] {SquareLayoutToggleButton, CityLayoutToggleButton, GoldenRatioLayoutToggleButton};
+
+            var target = sender as RibbonToggleButton;
+            if (target == null) return;
+            target.IsChecked = true;
+
+            toggleButons.Where(x => x != sender).ForEach(each => each.IsChecked = false);
         }
     }
 }

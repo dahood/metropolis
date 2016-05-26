@@ -196,6 +196,11 @@
                     <RibbonButton LargeImageSource="..\Images\camera_icon_with_stuff.png" Label="Screenshot with Metrics" KeyTip="0"
                                   Click="TakeScreenshotWithCaption" />
                 </RibbonGroup>
+                <RibbonGroup x:Name="LayoutGroup" Header="Layout">
+                    <RibbonToggleButton x:Name="SquareLayoutToggleButton" Label="Square Layout" IsChecked="True" LargeImageSource="..\Images\SquareLayout.png" Click="ToggleLayout"/>
+                    <RibbonToggleButton x:Name="CityLayoutToggleButton" Label="City Layout" LargeImageSource="..\Images\CityLayout.png" Click="ToggleLayout"/>
+                    <RibbonToggleButton x:Name="GoldenRatioLayoutToggleButton" Label="Golden Ratio Layout" LargeImageSource="..\Images\GoldenRatioLayout.png" Click="ToggleLayout"/>
+                </RibbonGroup>
                 <RibbonGroup x:Name="HelpGroup" Header="Help">
                     <RibbonButton Label="Project Wiki" LargeImageSource="..\Images\Wiki.ico" Click="ProjectWiki" />
                 </RibbonGroup>
@@ -250,16 +255,6 @@
                         <Label>Loading...</Label>
                     </GroupBox.Header>
                     <spinner:Spinner x:Name="Spinner" Visibility="Collapsed" />
-                </GroupBox>
-                <GroupBox Name="LayoutBox">
-                    <GroupBox.Header>
-                        <Label>Layout</Label>
-                    </GroupBox.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <RadioButton GroupName="layout" Name="Square" Margin="5,5,5,5" IsChecked="True">Square</RadioButton>
-                        <RadioButton GroupName="layout" Name="City" Margin="5,5,5,5">City</RadioButton>
-                        <RadioButton GroupName="layout" Name="GoldenRatio" Margin="5,5,5,5">Golden Ratio</RadioButton>
-                    </StackPanel>
                 </GroupBox>
                 <GroupBox Name="CameraControlsBox">
                     <GroupBox.Header>
