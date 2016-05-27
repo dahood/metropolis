@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -374,7 +375,7 @@ namespace Metropolis.Views
             toggleButons.Where(x => x != sender).ForEach(each => each.IsChecked = false);
         }
 
-        private void SetWindowSize(object sender, RoutedEventArgs e)
+        private void SetWindowSizeAndVersionTitle(object sender, RoutedEventArgs e)
         {
             const double reductionFactor = 0.85;
             var workArea = SystemParameters.WorkArea;
@@ -382,6 +383,9 @@ namespace Metropolis.Views
             Height = (int)workArea.Height * reductionFactor;
             Top = (int)  (workArea.Width - Width) / 2;
             Left = (int) (workArea.Height - Height) / 2;
+
+            var versionNumber = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            Title = $"Metropolis version:{versionNumber}";
         }
 
         

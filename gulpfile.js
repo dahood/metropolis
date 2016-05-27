@@ -8,6 +8,7 @@ var nunit = require('gulp-nunit-runner');
 var buildPath = '%CD%\\build';
 var maxThreads = 8;
 var msBuildConfiguration = 'Release'
+var version = '0.0.1';
 
 // Gulp Default
 
@@ -19,9 +20,19 @@ gulp.task('clean', function () {
   return del(['dist','build']);
 });
 
+gulp.task('version', function(cb){
+    
+    childProcess('npm view metropolis version', function (err, stdout, stderr) {
+                output = stdout;
+                console.log(output);
+                console.log(stderr);
+                cb(err);
+            });
+});
+
 gulp.task('compile', function (cb) {
   var cmd = '"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /p:OutDir=' + 
-    buildPath + ';Configuration=' + msBuildConfiguration + ' /maxcpucount:' + maxThreads
+    buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=' + '1.0.0' + ' /maxcpucount:' + maxThreads
   //console.log(cmd);  
   console.log(msBuildConfiguration);
   childProcess(cmd, function (err, stdout, stderr) {
