@@ -21,7 +21,7 @@ namespace Metropolis
         private readonly ICodebaseService codebaseService;
         private readonly IProjectService projectService;
 
-        public string MetricsOutputFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metrics");
+        public string MetricsOutputFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis.Metrics");
 
         public WorkspaceProvider() : this(new CodebaseService(), new ProjectService(), new AnalysisServices(), new FileSystem())
         {
