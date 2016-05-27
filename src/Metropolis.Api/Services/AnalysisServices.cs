@@ -1,7 +1,10 @@
-﻿using Metropolis.Api.Analyzers;
+﻿using System;
+using System.IO;
+using Metropolis.Api.Analyzers;
 using Metropolis.Api.Collection;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
+using Metropolis.Api.Utilities;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services
@@ -11,25 +14,31 @@ namespace Metropolis.Api.Services
         private readonly ICollectionStepFactory collectionStepFactory;
         private readonly IAnalyzerFactory analyzerFactory;
         private readonly ICodebaseService codebaseService;
-        
-        public AnalysisServices() : this(new CollectionStepFactory(), new CodebaseService(), new AnalyzerFactory())
+
+        public static string MetricsOutputFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis.Metrics");
+
+        string IAnalysisService.MetricsOutputFolder => MetricsOutputFolder;
+
+        public AnalysisServices() : this(new CollectionStepFactory(), new CodebaseService(), new AnalyzerFactory(), new FileSystem())
         {
         }
 
-        public AnalysisServices(ICollectionStepFactory collectionStepFactory, ICodebaseService codebaseService, IAnalyzerFactory analyzerFactory)
+        public AnalysisServices(ICollectionStepFactory collectionStepFactory, ICodebaseService codebaseService, IAnalyzerFactory analyzerFactory, IFileSystem fileSystem)
         {
             this.collectionStepFactory = collectionStepFactory;
             this.codebaseService = codebaseService;
             this.analyzerFactory = analyzerFactory;
+            fileSystem.CreateFolder(MetricsOutputFolder);
         }
 
         public CodeBase Analyze(MetricsCommandArguments details)
         {
             var command = collectionStepFactory.GetStep(details.RepositorySourceType);
-            var metrics = command.Run(details);
+            details.MetricsOutputFolder = MetricsOutputFolder;
+            var metricsResults = command.Run(details);
 
             var codeBase = CodeBase.Empty();
-            metrics.ForEach(x =>
+            metricsResults.ForEach(x =>
             {
                 var cb = codebaseService.Get(x.MetricsFile, x.ParseType);
                 codeBase.Enrich(new CodeGraph(cb.AllInstances));

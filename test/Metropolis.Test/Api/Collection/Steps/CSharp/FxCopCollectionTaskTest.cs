@@ -18,7 +18,7 @@ namespace Metropolis.Test.Api.Collection.Steps.CSharp
         private Mock<IFileSystem> fileSystem;
         private readonly MetricsCommandArguments args = new MetricsCommandArguments
                                                             {
-                                                                MetricsOutputDirectory = @"c:\metrics",
+                                                                MetricsOutputFolder = @"c:\metrics",
                                                                 ProjectName = "test",
                                                                 RepositorySourceType = RepositorySourceType.FxCop,
                                                                 SourceDirectory = @"c:\source"

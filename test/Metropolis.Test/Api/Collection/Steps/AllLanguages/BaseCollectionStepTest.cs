@@ -25,10 +25,11 @@ namespace Metropolis.Test.Api.Collection.Steps.AllLanguages
             
             args = new MetricsCommandArguments
             {
-                ProjectName = "Test", IgnoreFile = null, MetricsOutputDirectory = $"{AppDomain.CurrentDomain.BaseDirectory}",
+                ProjectName = "Test", IgnoreFile = null,
+                MetricsOutputFolder = $"{AppDomain.CurrentDomain.BaseDirectory}",
                 RepositorySourceType  = RepositorySourceType.CSharp, SourceDirectory = $"{AppDomain.CurrentDomain.BaseDirectory}"
             };
-            expectedCommandFile = $"{args.MetricsOutputDirectory}\\{args.ProjectName}_{step.MetricsType}_command.ps1";
+            expectedCommandFile = $"{args.MetricsOutputFolder}\\{args.ProjectName}_{step.MetricsType}_command.ps1";
 
             expectedCommandFile.RemoveFileIfExists();
         }

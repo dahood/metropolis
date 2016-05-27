@@ -23,7 +23,7 @@ namespace Metropolis.Test.Api.Collection.Steps
             {
                 IgnoreFile = @"C:\ignore",
                 ProjectName = "Test",
-                MetricsOutputDirectory = $"{Environment.CurrentDirectory}",
+                MetricsOutputFolder = $"{Environment.CurrentDirectory}",
                 SourceDirectory = @"C:\Source",
                 RepositorySourceType = RepositorySourceType.ECMA
             };

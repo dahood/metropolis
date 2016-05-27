@@ -7,7 +7,6 @@ using Metropolis.Api.Readers;
 using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Api.Readers.XmlReaders.CheckStyles;
 using Metropolis.Api.Services;
-using Metropolis.Api.Utilities;
 using Metropolis.Camera;
 using Metropolis.Common.Models;
 using Metropolis.ViewModels;
@@ -21,21 +20,20 @@ namespace Metropolis
         private readonly ICodebaseService codebaseService;
         private readonly IProjectService projectService;
 
-        public string MetricsOutputFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis.Metrics");
 
-        public WorkspaceProvider() : this(new CodebaseService(), new ProjectService(), new AnalysisServices(), new FileSystem())
+        public WorkspaceProvider() : this(new CodebaseService(), new ProjectService(), new AnalysisServices())
         {
         }
 
-        public WorkspaceProvider(ICodebaseService codebaseService, IProjectService projectService, IAnalysisService analysisService, IFileSystem fileSystem)
+        public WorkspaceProvider(ICodebaseService codebaseService, IProjectService projectService, IAnalysisService analysisService)
         {
             this.codebaseService = codebaseService;
             this.projectService = projectService;
             this.analysisService = analysisService;
-            fileSystem.CreateFolder(MetricsOutputFolder);
         }
 
         public CodeBase Workspace { get; private set; }
+        public string MetricsOutputFolder => analysisService.MetricsOutputFolder;
 
         public void Create()
         {
@@ -131,7 +129,6 @@ namespace Metropolis
             {
                 ProjectName = projectDetails.ProjectName,
                 RepositorySourceType = projectDetails.RepositorySourceType,
-                MetricsOutputDirectory = MetricsOutputFolder,
                 IgnoreFile = projectDetails.IgnoreFile,
                 SourceDirectory = projectDetails.SourceDirectory
             };

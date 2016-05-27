@@ -45,7 +45,7 @@ namespace Metropolis.Api.Collection.Steps
 
         private void SaveMetricsCommand(MetricsCommandArguments args, string cmd)
         {
-            var fileName = Path.Combine(args.MetricsOutputDirectory, $"{args.ProjectName}_{MetricsType}_command.ps1");
+            var fileName = Path.Combine(args.MetricsOutputFolder, $"{args.ProjectName}_{MetricsType}_command.ps1");
             File.WriteAllText(fileName, cmd);
         }
 
@@ -57,7 +57,7 @@ namespace Metropolis.Api.Collection.Steps
         protected string GetOutputFile(MetricsCommandArguments args)
         {
             var fileName = $"{args.ProjectName}_{MetricsType}{Extension}".Replace(' ', '_');
-            return Path.Combine(args.MetricsOutputDirectory, fileName);
+            return Path.Combine(args.MetricsOutputFolder, fileName);
         }
 
         protected void InvokeCommand(string command)

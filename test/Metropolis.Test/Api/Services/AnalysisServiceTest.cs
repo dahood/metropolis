@@ -4,6 +4,7 @@ using Metropolis.Api.Collection;
 using Metropolis.Api.Collection.Steps;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Services;
+using Metropolis.Api.Utilities;
 using Metropolis.Common.Models;
 using Moq;
 using NUnit.Framework;
@@ -19,6 +20,7 @@ namespace Metropolis.Test.Api.Services
         private MetricsCommandArguments details;
         private Mock<IAnalyzerFactory> analyzerFactory;
         private Mock<ICodebaseAnalyzer> analyzer;
+        private Mock<IFileSystem> fileSystem;
 
         [SetUp]
         public void SetUp()
@@ -28,22 +30,25 @@ namespace Metropolis.Test.Api.Services
             metricsCommand = CreateMock<ICollectionStep>();
             analyzerFactory = CreateMock<IAnalyzerFactory>();
             analyzer = CreateMock<ICodebaseAnalyzer>();
+            fileSystem = CreateMock<IFileSystem>();
 
             details = new MetricsCommandArguments
             {
                 RepositorySourceType = RepositorySourceType.Java,
                 ProjectName = "test",
                 SourceDirectory = @"c:\mySourceCode\JavaProject",
-                MetricsOutputDirectory = @"c:\myMetricsOutput"
+                MetricsOutputFolder = @"c:\myMetricsOutput"
             };
 
-            analysisServices = new AnalysisServices(metricsTaskFactory.Object, codebaseService.Object, analyzerFactory.Object);
+            fileSystem.Setup(x => x.CreateFolder(AnalysisServices.MetricsOutputFolder));
+
+            analysisServices = new AnalysisServices(metricsTaskFactory.Object, codebaseService.Object, analyzerFactory.Object, fileSystem.Object);
         }
 
         [Test]
         public void CanAnalyzeCodeBase_WithSingleMetricsResult()
         {
-            var expectedMetricsFile = $"{details.MetricsOutputDirectory}\\{details.ProjectName}_CheckStyles.xml";
+            var expectedMetricsFile = $"{details.MetricsOutputFolder}\\{details.ProjectName}_CheckStyles.xml";
             var result = new MetricsResult { MetricsFile = expectedMetricsFile, ParseType = ParseType.PuppyCrawler};
 
             metricsTaskFactory.Setup(x => x.GetStep(RepositorySourceType.Java)).Returns(metricsCommand.Object);
@@ -62,8 +67,8 @@ namespace Metropolis.Test.Api.Services
         {
             details.RepositorySourceType = RepositorySourceType.ECMA;
 
-            var eslintMetricsFile = $"{details.MetricsOutputDirectory}\\{details.ProjectName}_eslint.xml";
-            var slocMetricsFile = $"{details.MetricsOutputDirectory}\\{details.ProjectName}_sloc.csv";
+            var eslintMetricsFile = $"{details.MetricsOutputFolder}\\{details.ProjectName}_eslint.xml";
+            var slocMetricsFile = $"{details.MetricsOutputFolder}\\{details.ProjectName}_sloc.csv";
 
             var eslintResult = new MetricsResult { MetricsFile = eslintMetricsFile, ParseType = ParseType.EsLint};
             var slocResult = new MetricsResult { MetricsFile = slocMetricsFile, ParseType = ParseType.SlocEcma};
