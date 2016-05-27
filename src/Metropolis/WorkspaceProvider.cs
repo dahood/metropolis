@@ -18,17 +18,14 @@ namespace Metropolis
     {
         private readonly IAnalysisService analysisService;
         private readonly ICodebaseService codebaseService;
-        private readonly IProjectService projectService;
 
-
-        public WorkspaceProvider() : this(new CodebaseService(), new ProjectService(), new AnalysisServices())
+        public WorkspaceProvider() : this(new CodebaseService(), new AnalysisServices())
         {
         }
 
-        public WorkspaceProvider(ICodebaseService codebaseService, IProjectService projectService, IAnalysisService analysisService)
+        private WorkspaceProvider(ICodebaseService codebaseService, IAnalysisService analysisService)
         {
             this.codebaseService = codebaseService;
-            this.projectService = projectService;
             this.analysisService = analysisService;
         }
 
