@@ -19,18 +19,16 @@ namespace Metropolis
     {
         private readonly IAnalysisService analysisService;
         private readonly ICodebaseService codebaseService;
-        private readonly IProjectService projectService;
 
         public string MetricsOutputFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis.Metrics");
 
-        public WorkspaceProvider() : this(new CodebaseService(), new ProjectService(), new AnalysisServices(), new FileSystem())
+        public WorkspaceProvider() : this(new CodebaseService(), new AnalysisServices(), new FileSystem())
         {
         }
 
-        public WorkspaceProvider(ICodebaseService codebaseService, IProjectService projectService, IAnalysisService analysisService, IFileSystem fileSystem)
+        private WorkspaceProvider(ICodebaseService codebaseService, IAnalysisService analysisService, IFileSystem fileSystem)
         {
             this.codebaseService = codebaseService;
-            this.projectService = projectService;
             this.analysisService = analysisService;
             fileSystem.CreateFolder(MetricsOutputFolder);
         }

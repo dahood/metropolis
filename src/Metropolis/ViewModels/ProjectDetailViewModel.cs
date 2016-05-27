@@ -8,7 +8,6 @@ namespace Metropolis.ViewModels
     public sealed class ProjectDetailsViewModel : INotifyPropertyChanged
     {
         private string ignoreFile;
-        private string metricsOutputDirectory;
         private string projectName = "Sample Project";
         private RepositorySourceType repositorySourceType = RepositorySourceType.Java; //for now
         private string sourceDirectory;
