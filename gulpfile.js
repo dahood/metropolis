@@ -8,7 +8,7 @@ var nunit = require('gulp-nunit-runner');
 var buildPath = '%CD%\\build';
 var maxThreads = 8;
 var msBuildConfiguration = 'Release'
-var version = '0.0.1'; //using package.json
+process.env.metroversion = '0.0.1'; //using package.json
 
 // Gulp Default
 
@@ -21,10 +21,10 @@ gulp.task('clean', function () {
 });
 
 gulp.task('version', function(cb){
-    
+    //childProcess('npm info metropolis version').stdout.on(version);
     childProcess('npm info metropolis version', function (err, stdout, stderr) {
-                version = stdout;
-                console.log('Version Number from package.json: ' + version);
+                process.env.metroversion = stdout;
+                console.log('Version Number from package.json: ' + process.env.metroversion);
                 console.log(stderr);
                 cb(err);
             });
@@ -32,11 +32,11 @@ gulp.task('version', function(cb){
 
 gulp.task('compile', function (cb) {
   var cmd = '"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /p:OutDir=' + 
-    buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=0.' + version + ' /maxcpucount:' + maxThreads;
+    buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=0.' + process.env.metroversion + ' /maxcpucount:' + maxThreads;
   childProcess(cmd, function (err, stdout, stderr) {
     	    	console.log(stdout);
                 console.log('MSBuild Release Configuration: ' + msBuildConfiguration);
-                console.log('Version Number: ' + version);
+                console.log('Version Number: ' + process.env.metroversion);
     	    	console.log(stderr);
     	    	cb(err);
   			});
