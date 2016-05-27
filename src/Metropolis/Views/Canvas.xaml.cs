@@ -343,7 +343,6 @@ namespace Metropolis.Views
             if (withCaption)
                 AddCaptionToScreenShot(bitmap);
             SaveToPng(screenshotFileName, bitmap);
-
         }
 
         private void AddCaptionToScreenShot(RenderTargetBitmap bitmap)
@@ -385,17 +384,16 @@ namespace Metropolis.Views
         {
             const double reductionFactor = 0.85;
             var workArea = SystemParameters.WorkArea;
-            Width = (int) workArea.Width*reductionFactor;
-            Height = (int) workArea.Height*reductionFactor;
-            Top = (int) (workArea.Width - Width)/2;
-            Left = (int) (workArea.Height - Height)/2;
+            Width = workArea.Width*reductionFactor;
+            Height = workArea.Height*reductionFactor;
+            Top = (workArea.Width - Width)/2;
+            Left = (workArea.Height - Height)/2;
         }
 
         private void SetVersion()
         {
             var version = Assembly.GetExecutingAssembly().GetName().Version;
-            var versionNumber = $"{version.Minor}.{version.Build}.{version.Revision}";
-            Title = $"Metropolis version:{versionNumber}";
+            Title = $"Metropolis beta v{version.Minor}.{version.Build}.{version.Revision}";
         }
     }
 }
