@@ -3,7 +3,7 @@ TestResult.xml
 
 # Project Excludes
 node_modules/
-build/
+/build
 dist/
 test-results/
 .idea
