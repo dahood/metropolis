@@ -22,9 +22,9 @@ gulp.task('clean', function () {
 
 gulp.task('version', function(cb){
     
-    childProcess('npm view metropolis version', function (err, stdout, stderr) {
+    childProcess('npm info metropolis version', function (err, stdout, stderr) {
                 output = stdout;
-                console.log(output);
+                console.log('Version Number from package.json: ' + output);
                 console.log(stderr);
                 cb(err);
             });
@@ -32,14 +32,15 @@ gulp.task('version', function(cb){
 
 gulp.task('compile', function (cb) {
   var cmd = '"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /p:OutDir=' + 
-    buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=' + '1.0.0' + ' /maxcpucount:' + maxThreads
-  //console.log(cmd);  
-  console.log(msBuildConfiguration);
+    buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=' + version + ' /maxcpucount:' + maxThreads;
   childProcess(cmd, function (err, stdout, stderr) {
     	    	console.log(stdout);
+                console.log('MSBuild Release Configuration: ' + msBuildConfiguration);
+                console.log('Version Number: ' + version);
     	    	console.log(stderr);
     	    	cb(err);
   			});
+  
 });
 
 gulp.task('test', ['compile'], function () {
