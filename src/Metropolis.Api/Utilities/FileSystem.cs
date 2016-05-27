@@ -14,5 +14,11 @@ namespace Metropolis.Api.Utilities
         {
             return Path.GetFileName(targetdll);
         }
+
+        public void CreateFolder(string folder)
+        {
+            if (Directory.Exists(folder)) return;
+            Directory.CreateDirectory(folder);
+        }
     }
 }

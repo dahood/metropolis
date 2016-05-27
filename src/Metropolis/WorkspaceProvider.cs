@@ -7,8 +7,10 @@ using Metropolis.Api.Readers;
 using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Api.Readers.XmlReaders.CheckStyles;
 using Metropolis.Api.Services;
+using Metropolis.Api.Utilities;
 using Metropolis.Camera;
 using Metropolis.Common.Models;
+using Metropolis.ViewModels;
 using Microsoft.Win32;
 
 namespace Metropolis
@@ -18,12 +20,21 @@ namespace Metropolis
         private readonly IAnalysisService analysisService;
         private readonly ICodebaseService codebaseService;
         private readonly IProjectService projectService;
+        private readonly IFileSystem fileSystem;
 
-        public WorkspaceProvider(ICodebaseService codebaseService, IProjectService projectService, IAnalysisService analysisService)
+        private readonly string metricsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metrics");
+
+        public WorkspaceProvider() : this(new CodebaseService(), new ProjectService(), new AnalysisServices(), new FileSystem())
+        {
+        }
+
+        public WorkspaceProvider(ICodebaseService codebaseService, IProjectService projectService, IAnalysisService analysisService, IFileSystem fileSystem)
         {
             this.codebaseService = codebaseService;
             this.projectService = projectService;
             this.analysisService = analysisService;
+            this.fileSystem = fileSystem;
+            fileSystem.CreateFolder(metricsFolder);
         }
 
         public CodeBase Workspace { get; private set; }
@@ -110,10 +121,22 @@ namespace Metropolis
             }, "Source LOC |*.csv");
         }
 
-        public void Analyze(MetricsCommandArguments metricsCommandArguments)
+        public void Analyze(ProjectDetailsViewModel viewModel)
         {
-            Workspace.SourceType = metricsCommandArguments.RepositorySourceType;
-            Workspace = analysisService.Analyze(metricsCommandArguments);
+            Workspace.SourceType = viewModel.RepositorySourceType;
+            Workspace = analysisService.Analyze(BuildArguments(viewModel));
+        }
+        
+        private MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)
+        {
+            return new MetricsCommandArguments
+            {
+                ProjectName = projectDetails.ProjectName,
+                RepositorySourceType = projectDetails.RepositorySourceType,
+                MetricsOutputDirectory = metricsFolder,
+                IgnoreFile = projectDetails.IgnoreFile,
+                SourceDirectory = projectDetails.SourceDirectory
+            };
         }
 
         public void RunCSharpToxicity()

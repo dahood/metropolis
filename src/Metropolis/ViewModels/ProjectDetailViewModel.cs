@@ -43,17 +43,7 @@ namespace Metropolis.ViewModels
                 PropertyChanged.Notify(this, x => x.SourceDirectory);
             }
         }
-
-        public string MetricsOutputDirectory
-        {
-            get { return metricsOutputDirectory; }
-            set
-            {
-                metricsOutputDirectory = value;
-                PropertyChanged.Notify(this, x => x.MetricsOutputDirectory);
-            }
-        }
-
+        
         public string IgnoreFile
         {
             get { return ignoreFile; }

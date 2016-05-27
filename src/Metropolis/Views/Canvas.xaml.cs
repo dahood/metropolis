@@ -15,11 +15,9 @@ using System.Windows.Media.Media3D;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
 using Metropolis.Api.Readers.CsvReaders;
-using Metropolis.Api.Services;
 using Metropolis.Camera;
 using Metropolis.Common.Models;
 using Metropolis.Layout;
-using Metropolis.ViewModels;
 
 namespace Metropolis.Views
 {
@@ -37,7 +35,7 @@ namespace Metropolis.Views
             rotationalMovement = new RotationalMovement(this);
             cameraMovement = new CameraMovement(this);
             highlightedInstance = new InstanceInformationFacade(this);
-            workspaceProvider = new WorkspaceProvider(new CodebaseService(), new ProjectService(), new AnalysisServices());
+            workspaceProvider = new WorkspaceProvider();
             progressLog = new ProgressLog();
 
             SetSliders();
@@ -262,7 +260,7 @@ namespace Metropolis.Views
             Spinner.Show();
             using (new WaitCursor())
             {
-                workspaceProvider.Analyze(BuildArguments(metroBot.ProjectDetails));
+                workspaceProvider.Analyze(metroBot.ProjectDetails);
                 DisplayWorkspaceDetails();
             }
             Spinner.Hide();
@@ -274,17 +272,6 @@ namespace Metropolis.Views
             progressLog.Visibility = Visibility.Visible;
         }
 
-        private static MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)
-        {
-            return new MetricsCommandArguments
-            {
-                ProjectName = projectDetails.ProjectName,
-                RepositorySourceType = projectDetails.RepositorySourceType,
-                MetricsOutputDirectory = projectDetails.MetricsOutputDirectory,
-                IgnoreFile = projectDetails.IgnoreFile,
-                SourceDirectory = projectDetails.SourceDirectory
-            };
-        }
 
         private void ProjectWiki(object sender, RoutedEventArgs e)
         {

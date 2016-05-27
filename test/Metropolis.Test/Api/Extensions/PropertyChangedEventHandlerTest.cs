@@ -39,13 +39,7 @@ namespace Metropolis.Test.Api.Extensions
         {
             ShouldNotify("IgnoreFile", x => x.IgnoreFile = "change me");
         }
-
-        [Test]
-        public void NotifiesOnMetricsOutputDirectory()
-        {
-            ShouldNotify("MetricsOutputDirectory", x => x.MetricsOutputDirectory = "change me");
-        }
-
+        
         [Test]
         public void NotifiesOnMetricsRepositorySourceType()
         {

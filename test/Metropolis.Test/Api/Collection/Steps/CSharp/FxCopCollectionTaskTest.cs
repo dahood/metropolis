@@ -41,7 +41,7 @@ namespace Metropolis.Test.Api.Collection.Steps.CSharp
         }
 
         [Test]
-        public void CanRunCOllectionTask()
+        public void CanRunCollectionTask()
         {
             var expectedCommand = FxCopCollectionTask.CommandTemplate.FormatWith(DllName, expectedResult.MetricsFile);
             fileSystem.Setup(x => x.GetFileName(DllName)).Returns("mydll");

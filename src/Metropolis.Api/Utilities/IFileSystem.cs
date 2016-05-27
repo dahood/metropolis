@@ -6,5 +6,6 @@ namespace Metropolis.Api.Utilities
     {
         IEnumerable<string> GetFiles(string sourceDirectory, string dll);
         string GetFileName(string targetdll);
+        void CreateFolder(string metricsFolder);
     }
 }

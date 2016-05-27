@@ -1,6 +1,7 @@
 using Metropolis.Api.Domain;
 using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Common.Models;
+using Metropolis.ViewModels;
 
 namespace Metropolis
 {
@@ -21,6 +22,6 @@ namespace Metropolis
         void LoadEsLintCheckStyles();
         void LoadDefault();
         void LoadSourceLinesOfCode(FileInclusion js);
-        void Analyze(MetricsCommandArguments metricsCommandArguments);
+        void Analyze(ProjectDetailsViewModel viewModel);
     }
 }

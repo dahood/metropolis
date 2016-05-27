@@ -42,13 +42,7 @@ namespace Metropolis.Test.Common.Extensions
         {
             RunTest("IgnoreFile", d => d.IgnoreFile = @"h:\ignore\me.ignore");
         }
-
-        [Test]
-        public void NotifyOnMetricsOutputDirectory()
-        {
-            RunTest("MetricsOutputDirectory", d => d.MetricsOutputDirectory = @"h:\output_dir");
-        }
-
+        
         private void RunTest(string expectedPropertyName, Action<ProjectDetailsViewModel> action)
         {
             viewModel.PropertyChanged += (s, e) =>
