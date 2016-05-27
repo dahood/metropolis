@@ -23,8 +23,8 @@ gulp.task('clean', function () {
 gulp.task('version', function(cb){
     
     childProcess('npm info metropolis version', function (err, stdout, stderr) {
-                output = stdout;
-                console.log('Version Number from package.json: ' + output);
+                version = stdout;
+                console.log('Version Number from package.json: ' + version);
                 console.log(stderr);
                 cb(err);
             });
@@ -59,8 +59,6 @@ gulp.task('test', ['compile'], function () {
 // Dist depends on both metropolis binaries, Collection Settings (e.g. checkstyle xml config), 
 // Collection Binaries (e.g. checkstyle .jar) for eslint, checkstyle, fxcop, etc that parsers 
 // use to automate the collection of metrics 
-
-
 gulp.task('dist', ['package'],  function(cb) {
     console.log('Please wait while npm trys to install your release candidate...');
     childProcess('npm install . -g', function (err, stdout, stderr) {
@@ -71,11 +69,9 @@ gulp.task('dist', ['package'],  function(cb) {
     //Last step is npm publish
 });
 
-gulp.task('set-release', function(){
-    msBuildConfiguration = 'Release';
-});
+gulp.task('dist-compile', ['compile','version']);
 
-gulp.task('package', ['package-collection-binaries', 'package-collection-settings', 'compile', 'set-release'], function() {
+gulp.task('package', ['package-collection-binaries', 'package-collection-settings', 'dist-compile',], function() {
 	return gulp.src(['build\\*.dll', 'build\\*.exe', 'build\\*.config',
         // exclude all these test files
         '!build\\Metropolis.Test.dll',
