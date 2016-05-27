@@ -209,8 +209,9 @@
                 <RibbonGroup x:Name="InfoGroup">
                     <RibbonButton Label="View Metrobot Progress Log" LargeImageSource="..\Images\ProgressGar.png"
                                   Click="ViewProgressLog" />
-                    <RibbonButton LargeImageSource="..\Images\ClearCanvas.ico" Label="Clear Canvas" KeyTip="O"
+                    <RibbonButton LargeImageSource="../Images/ClearCanvas.ico" Label="Clear Canvas" KeyTip="O"
                                   Click="NewProject" />
+                    <RibbonButton LargeImageSource="../Images/BrowseFolder.ico" Label="Metrics Folder" Click="ViewMetricsFolder"></RibbonButton>
                 </RibbonGroup>
                 <RibbonGroup x:Name="JavaGroup" Header="Java">
                     <RibbonButton Label="Load Checkstyles" LargeImageSource="..\Images\CheckStyles.png"

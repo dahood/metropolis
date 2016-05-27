@@ -382,5 +382,10 @@ namespace Metropolis.Views
             var version = Assembly.GetExecutingAssembly().GetName().Version;
             Title = $"Metropolis beta v{version.Minor}.{version.Build}.{version.Revision}";
         }
+
+        private void ViewMetricsFolder(object sender, RoutedEventArgs e)
+        {
+            Process.Start("explorer.exe", workspaceProvider.MetricsOutputFolder);
+        }
     }
 }

@@ -1,6 +1,5 @@
 using Metropolis.Api.Domain;
 using Metropolis.Api.Readers.CsvReaders;
-using Metropolis.Common.Models;
 using Metropolis.ViewModels;
 
 namespace Metropolis
@@ -8,6 +7,7 @@ namespace Metropolis
     public interface IWorkspaceProvider
     {
         CodeBase Workspace { get; }
+        string MetricsOutputFolder { get; }
         void Create();
         void Save();
         void Load();

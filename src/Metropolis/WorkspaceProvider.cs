@@ -20,9 +20,8 @@ namespace Metropolis
         private readonly IAnalysisService analysisService;
         private readonly ICodebaseService codebaseService;
         private readonly IProjectService projectService;
-        private readonly IFileSystem fileSystem;
 
-        private readonly string metricsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metrics");
+        public string MetricsOutputFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metrics");
 
         public WorkspaceProvider() : this(new CodebaseService(), new ProjectService(), new AnalysisServices(), new FileSystem())
         {
@@ -33,8 +32,7 @@ namespace Metropolis
             this.codebaseService = codebaseService;
             this.projectService = projectService;
             this.analysisService = analysisService;
-            this.fileSystem = fileSystem;
-            fileSystem.CreateFolder(metricsFolder);
+            fileSystem.CreateFolder(MetricsOutputFolder);
         }
 
         public CodeBase Workspace { get; private set; }
@@ -133,7 +131,7 @@ namespace Metropolis
             {
                 ProjectName = projectDetails.ProjectName,
                 RepositorySourceType = projectDetails.RepositorySourceType,
-                MetricsOutputDirectory = metricsFolder,
+                MetricsOutputDirectory = MetricsOutputFolder,
                 IgnoreFile = projectDetails.IgnoreFile,
                 SourceDirectory = projectDetails.SourceDirectory
             };

@@ -211,6 +211,7 @@
     <Resource Include="Images\SquareLayout.png" />
     <Resource Include="Images\CityLayout.png" />
     <Resource Include="Images\GoldenRatioLayout.png" />
+    <Resource Include="Images\BrowseFolder.ico" />
     <Content Include="SampleFiles\entity-framework-6.csv" />
     <None Include="SampleFiles\git-log-file-touches.csv" />
     <None Include="SampleFiles\metropolis-code-coverage-with-tests.coveragexml">
