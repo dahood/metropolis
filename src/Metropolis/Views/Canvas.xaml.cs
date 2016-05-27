@@ -384,7 +384,8 @@ namespace Metropolis.Views
             Top = (int)  (workArea.Width - Width) / 2;
             Left = (int) (workArea.Height - Height) / 2;
 
-            var versionNumber = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+            var versionNumber = $"{version.Minor}.{version.Revision}.{version.Build}";
             Title = $"Metropolis version:{versionNumber}";
         }
 
