@@ -8,7 +8,7 @@ var nunit = require('gulp-nunit-runner');
 var buildPath = '%CD%\\build';
 var maxThreads = 8;
 var msBuildConfiguration = 'Release'
-var version = '0.0.1';
+var version = '0.0.1'; //using package.json
 
 // Gulp Default
 
@@ -32,7 +32,7 @@ gulp.task('version', function(cb){
 
 gulp.task('compile', function (cb) {
   var cmd = '"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /p:OutDir=' + 
-    buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=' + version + ' /maxcpucount:' + maxThreads;
+    buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=0.' + version + ' /maxcpucount:' + maxThreads;
   childProcess(cmd, function (err, stdout, stderr) {
     	    	console.log(stdout);
                 console.log('MSBuild Release Configuration: ' + msBuildConfiguration);
