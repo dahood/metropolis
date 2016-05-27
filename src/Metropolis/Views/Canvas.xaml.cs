@@ -375,20 +375,27 @@ namespace Metropolis.Views
             toggleButons.Where(x => x != sender).ForEach(each => each.IsChecked = false);
         }
 
-        private void SetWindowSizeAndVersionTitle(object sender, RoutedEventArgs e)
+        private void LoadCanvas(object sender, RoutedEventArgs e)
+        {
+            SetWindowState();
+            SetVersion();
+        }
+
+        private void SetWindowState()
         {
             const double reductionFactor = 0.85;
             var workArea = SystemParameters.WorkArea;
-            Width = (int)workArea.Width * reductionFactor;
-            Height = (int)workArea.Height * reductionFactor;
-            Top = (int)  (workArea.Width - Width) / 2;
-            Left = (int) (workArea.Height - Height) / 2;
-
-            var version = Assembly.GetExecutingAssembly().GetName().Version;
-            var versionNumber = $"{version.Minor}.{version.Revision}.{version.Build}";
-            Title = $"Metropolis version:{versionNumber}";
+            Width = (int) workArea.Width*reductionFactor;
+            Height = (int) workArea.Height*reductionFactor;
+            Top = (int) (workArea.Width - Width)/2;
+            Left = (int) (workArea.Height - Height)/2;
         }
 
-        
+        private void SetVersion()
+        {
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+            var versionNumber = $"{version.Minor}.{version.Build}.{version.Revision}";
+            Title = $"Metropolis version:{versionNumber}";
+        }
     }
 }
