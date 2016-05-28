@@ -79,6 +79,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InstanceInformationFacade.cs" />
     <Compile Include="Camera\CameraMovement.cs" />
     <Compile Include="Camera\RotationalMovement.cs" />
