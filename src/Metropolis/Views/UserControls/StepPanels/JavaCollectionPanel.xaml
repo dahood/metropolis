@@ -15,9 +15,9 @@
         <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,0">
             <TextBlock x:Name="CSharpSourceLabel" Text="Source Directory:" Width="200" VerticalAlignment="Center"
                        Margin="5,5,10,5" />
-            <TextBox Cursor="IBeam" x:Name="CsharpDirectoryTextBox" Width="250" MaxLength="255" MaxLines="1"
+            <TextBox Cursor="IBeam" x:Name="JavaDirectoryTextBox" Width="250" MaxLength="255" MaxLines="1"
                      Text="{Binding SourceDirectory}" TextWrapping="NoWrap" Margin="10,2,2,2" />
-            <Button Content="..." Click="OnCSharpFindDirectory" Width="25" Margin="10, 2, 2, 2" />
+            <Button Content="..." Click="OnJavaFindDirectory" Width="25" Margin="10, 2, 2, 2" />
         </StackPanel>
         <StackPanel x:Name="IgnorePanel" Orientation="Horizontal" Margin="0,5,0,0" />
     </StackPanel>

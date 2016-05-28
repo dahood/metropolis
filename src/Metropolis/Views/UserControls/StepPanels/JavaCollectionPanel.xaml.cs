@@ -21,9 +21,9 @@ namespace Metropolis.Views.UserControls.StepPanels
 
         public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel) DataContext;
 
-        private void OnCSharpFindDirectory(object sender, RoutedEventArgs e)
+        private void OnJavaFindDirectory(object sender, RoutedEventArgs e)
         {
-            var sourceDirectory = GetSourceDirectory("C#", ProjectDetails.SourceDirectory);
+            var sourceDirectory = GetSourceDirectory("Java", ProjectDetails.SourceDirectory);
             if (sourceDirectory.IsNotEmpty())
                 ProjectDetails.SourceDirectory = sourceDirectory;
         }
