@@ -20,13 +20,10 @@ gulp.task('clean', function () {
   return del(['dist','build']);
 });
 
-gulp.task('version', function(){
-    var package = require('./package.json');
-    console.log(package.version);
-    version = package.version;
-});
-
 gulp.task('compile', function (cb) {
+  var package = require('./package.json');
+  version = package.version;
+
   var cmd = '"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /p:OutDir=' + 
     buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=0.' + version + ' /maxcpucount:' + maxThreads;
   childProcess(cmd, function (err, stdout, stderr) {
@@ -65,9 +62,7 @@ gulp.task('dist', ['package'],  function(cb) {
     //Last step is npm publish
 });
 
-gulp.task('dist-compile', ['compile','version']);
-
-gulp.task('package', ['package-collection-binaries', 'package-collection-settings', 'dist-compile',], function() {
+gulp.task('package', ['package-collection-binaries', 'package-collection-settings', 'compile',], function() {
 	return gulp.src(['build\\*.dll', 'build\\*.exe', 'build\\*.config',
         // exclude all these test files
         '!build\\Metropolis.Test.dll',
