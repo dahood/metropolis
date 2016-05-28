@@ -107,6 +107,11 @@
     <Compile Include="Views\UserControls\CodeMetricsSummary.xaml.cs">
       <DependentUpon>CodeMetricsSummary.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControls\DirectoryExistsRule.cs" />
+    <Compile Include="Views\UserControls\InvertSign.cs" />
+    <Compile Include="Views\UserControls\SelectFolderTextBox.xaml.cs">
+      <DependentUpon>SelectFolderTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\Spinner.xaml.cs">
       <DependentUpon>Spinner.xaml</DependentUpon>
     </Compile>
@@ -120,6 +125,10 @@
       <DependentUpon>JavaCollectionPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="WorkspaceProvider.cs" />
+    <Page Include="Resources\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Canvas.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -144,6 +153,10 @@
     <Page Include="Views\UserControls\CodeMetricsSummary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\SelectFolderTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\UserControls\Spinner.xaml">
       <SubType>Designer</SubType>

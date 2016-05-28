@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:uc="clr-namespace:Metropolis.Views.UserControls"
              mc:Ignorable="d" Width="546.112" Height="158.803" IsVisibleChanged="HideShowInfoBox">
     <StackPanel>
         <StackPanel x:Name="Info">
@@ -27,8 +28,7 @@
         <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,0">
             <TextBlock x:Name="CSharpSourceLabel" Text="Source Directory:" Width="200" VerticalAlignment="Center"
                        Margin="5,5,10,5" />
-            <TextBox Cursor="IBeam" x:Name="CsharpDirectoryTextBox" Width="250" MaxLength="255" MaxLines="1"
-                     Text="{Binding SourceDirectory}" TextWrapping="NoWrap" Margin="10,2,2,2" />
+            <uc:SelectFolderTextBox  x:Name="CSharpSourceFolderTextBox" Text="{Binding Path=SourceDirectory}"  TextWrapping="NoWrap" Margin="10,2,2,2" Width="250"/>
             <Button Content="..." Click="OnCSharpFindDirectory" Width="25" Margin="10, 2, 2, 2" />
         </StackPanel>
         <StackPanel x:Name="IgnorePalen" Orientation="Horizontal" Margin="0,5,0,0">
