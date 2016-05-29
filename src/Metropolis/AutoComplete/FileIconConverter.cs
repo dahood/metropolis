@@ -47,7 +47,6 @@ namespace Metropolis.AutoComplete
         {
             using (var i = Icon.FromHandle(icon.Handle))
             {
-
                 ImageSource img = Imaging.CreateBitmapSourceFromHIcon(
                                         i.Handle,
                                         new Int32Rect(0, 0, i.Width, i.Height),

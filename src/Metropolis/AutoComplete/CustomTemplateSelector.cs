@@ -13,7 +13,7 @@ namespace Metropolis.AutoComplete
         {
             if (item is FileInfo)
                 return FileTemplate;
-            else if (item is DirectoryInfo)
+            if (item is DirectoryInfo)
                 return DirectoryTemplate;
             return base.SelectTemplate(item, container);
         }
