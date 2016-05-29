@@ -180,6 +180,7 @@
             </Ribbon.ApplicationMenu>
             <RibbonTab Header="Home" KeyTip="H">
                 <RibbonGroup x:Name="ProjectGroup" Header="Project">
+                    <RibbonButton LargeImageSource="..\Images\Rename.png" Label="Rename" KeyTip="O" Click="RenameProject"/>
                     <RibbonButton LargeImageSource="..\Images\Project.ico" Label="Open" KeyTip="O" Click="LoadProject" />
                     <RibbonButton LargeImageSource="..\Images\SaveProject.ico" Label="Save" KeyTip="O"
                                   Click="SaveProject" />

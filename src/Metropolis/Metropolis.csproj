@@ -120,6 +120,9 @@
     <Compile Include="Views\ProgressLog.xaml.cs">
       <DependentUpon>ProgressLog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProjectProperties.xaml.cs">
+      <DependentUpon>ProjectProperties.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\CodeMetricsSummary.xaml.cs">
       <DependentUpon>CodeMetricsSummary.xaml</DependentUpon>
     </Compile>
@@ -158,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProgressLog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProjectProperties.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,6 +239,7 @@
     <Resource Include="Images\BrowseFolder.ico" />
     <Resource Include="Resources\folder-2-32.ico" />
     <Resource Include="Resources\search_icon.png" />
+    <Resource Include="Images\Rename.png" />
     <Content Include="SampleFiles\entity-framework-6.csv" />
     <None Include="SampleFiles\git-log-file-touches.csv" />
     <None Include="SampleFiles\metropolis-code-coverage-with-tests.coveragexml">

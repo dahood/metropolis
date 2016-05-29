@@ -137,6 +137,17 @@ namespace Metropolis.Views
             workspaceProvider.Save();
         }
 
+
+        private void RunCsvExport(object sender, RoutedEventArgs e)
+        {
+            workspaceProvider.RunCsvExport();
+        }
+        private void RenameProject(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Work in Progress :)");
+            //workspaceProvider.Workspace.Name = ProjectNameTextBox.Text;
+        }
+
         private void LoadToxicity(object sender, RoutedEventArgs e)
         {
             workspaceProvider.LoadToxicity();
@@ -229,12 +240,6 @@ namespace Metropolis.Views
             //App.ShowLog();
         }
 
-
-        private void RunCsvExport(object sender, RoutedEventArgs e)
-        {
-            workspaceProvider.RunCsvExport();
-        }
-
         private void StartMetroBot(object sender, RoutedEventArgs e)
         {
             var metroBot = new MetroBot();
@@ -255,7 +260,6 @@ namespace Metropolis.Views
             Spinner.Show();
             progressLog.Visibility = Visibility.Visible;
         }
-
 
         private void ProjectWiki(object sender, RoutedEventArgs e)
         {
