@@ -20,5 +20,11 @@ namespace Metropolis.Api.Utilities
             if (Directory.Exists(folder)) return;
             Directory.CreateDirectory(folder);
         }
+
+        IEnumerable<DriveInfo> IFileSystem.AllDrives => DriveInfo.GetDrives();
+        public bool FileExists(string potentialPath)
+        {
+            return File.Exists(potentialPath);
+        }
     }
 }

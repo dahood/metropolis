@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
+using Metropolis.Api.Extensions;
 using Metropolis.Common.Models;
 using Metropolis.ViewModels;
 using NUnit.Framework;
@@ -11,7 +14,7 @@ namespace Metropolis.Test.Api.Extensions
     {
         private ProjectDetailsViewModel viewModel;
         private bool propertyChanged;
-        private string propertyName;
+        private List<string> propertyNames;
 
         [SetUp]
         public void SetUp()
@@ -19,44 +22,46 @@ namespace Metropolis.Test.Api.Extensions
             viewModel = new ProjectDetailsViewModel();
 
             propertyChanged = false;
-            propertyName = string.Empty;
+            propertyNames = new List<string>();
 
             viewModel.PropertyChanged += (s, e) =>
                                         {
                                             propertyChanged = true;
-                                            propertyName = e.PropertyName;
+                                            propertyNames.Add(e.PropertyName);
                                         };
         }
 
         [Test]
         public void NotifiesOnProjectName()
         {
-            ShouldNotify("ProjectName", x => x.ProjectName = "change me");
+            ShouldNotify(x => x.ProjectName = "change me", "ProjectName", "IsFxCopInstalled");
         }
 
         [Test]
         public void NotifiesOnIgnoreFile()
         {
-            ShouldNotify("IgnoreFile", x => x.IgnoreFile = "change me");
+            ShouldNotify(x => x.IgnoreFile = "change me", "IgnoreFile");
         }
         
         [Test]
         public void NotifiesOnMetricsRepositorySourceType()
         {
-            ShouldNotify("RepositorySourceType", x => x.RepositorySourceType = RepositorySourceType.ECMA);
+            ShouldNotify(x => x.RepositorySourceType = RepositorySourceType.ECMA, "RepositorySourceType");
         }
 
         [Test]
         public void NotifiesOnMetricsSourceDirectory()
         {
-            ShouldNotify("SourceDirectory", x => x.SourceDirectory = "srcdir");
+            ShouldNotify(x => x.SourceDirectory = "srcdir", "SourceDirectory", "IsFxCopInstalled");
         }
         
-        private void ShouldNotify(string expectedPropertyName, Action<ProjectDetailsViewModel> action)
+        private void ShouldNotify(Action<ProjectDetailsViewModel> action, params string[] expectedPropertyNames)
         {
             action(viewModel);
             propertyChanged.Should().BeTrue();
-            propertyName.Should().Be(expectedPropertyName);
+
+            propertyNames.Count.Should().Be(expectedPropertyNames.Length);
+            expectedPropertyNames.ForEach(each => propertyNames.Any(x => x == each).Should().BeTrue($"Didn't find {each} in the list of notified property names"));
         }
     }
 }

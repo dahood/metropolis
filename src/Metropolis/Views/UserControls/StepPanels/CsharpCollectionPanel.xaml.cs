@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.IO;
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Forms;
@@ -57,18 +56,6 @@ namespace Metropolis.Views.UserControls.StepPanels
             var dialog = new OpenFileDialog {FileName = initialFile};
             dialog.ShowDialog();
             return dialog.FileName != string.Empty ? dialog.FileName : null;
-        }
-
-        private void HideShowInfoBox(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            //TODO: Scan all possible directories? e.g. DriveInfo.GetDrives().Where(x => x.IsReady == true)
-
-            var vsInstallDirectory = Directory.Exists(@"C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE");
-            var metricsInstallDirectory =
-                Directory.Exists(@"C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\FxCop");
-
-            if (vsInstallDirectory) InfoVisualStudio.Visibility = Visibility.Collapsed;
-            if (metricsInstallDirectory) InfoPowerTools.Visibility = Visibility.Collapsed;
-        }
+        }        
     }
 }

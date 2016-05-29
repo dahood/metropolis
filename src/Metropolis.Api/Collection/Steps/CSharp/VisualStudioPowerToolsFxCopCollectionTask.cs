@@ -9,26 +9,28 @@ namespace Metropolis.Api.Collection.Steps.CSharp
     public class FxCopCollectionTask : IFxCopCollectionTask
     {
         public const string CommandTemplate =
-            @"&'C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\FxCop\metrics.exe'/f:'{0}' /o:'{1}' ";
+            @"&'{0}'/f:'{1}' /o:'{2}' ";
 
         private readonly IFileSystem fileSystem;
+        private readonly ILocateFxCopMetricsTool locateFxCopMetricsTool;
 
         private readonly IRunPowerShell powerShell;
 
-        public FxCopCollectionTask() : this(new RunPowerShell(), new FileSystem())
+        public FxCopCollectionTask() : this(new RunPowerShell(), new FileSystem(), new LocateFxCopMetricsTool())
         {
         }
 
-        public FxCopCollectionTask(IRunPowerShell powerShell, IFileSystem fileSystem)
+        public FxCopCollectionTask(IRunPowerShell powerShell, IFileSystem fileSystem, ILocateFxCopMetricsTool locateFxCopMetricsTool)
         {
             this.powerShell = powerShell;
             this.fileSystem = fileSystem;
+            this.locateFxCopMetricsTool = locateFxCopMetricsTool;
         }
 
         public MetricsResult Run(MetricsCommandArguments args, string targetdll)
         {
             var result = new MetricsResult {ParseType = ParseType.FxCop, MetricsFile = GetMetricsOutputFileName(args, targetdll)};
-            var command = CommandTemplate.FormatWith(targetdll, result.MetricsFile);
+            var command = CommandTemplate.FormatWith(locateFxCopMetricsTool.FxCopMetricsToolPath, targetdll, result.MetricsFile);
 
             powerShell.Invoke(command);
             return result;

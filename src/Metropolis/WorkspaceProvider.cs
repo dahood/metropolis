@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Reflection.Emit;
 using CsvHelper;
 using Metropolis.Api.Analyzers.Toxicity;
 using Metropolis.Api.Domain;
@@ -8,6 +9,7 @@ using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Api.Readers.XmlReaders.CheckStyles;
 using Metropolis.Api.Services;
 using Metropolis.Camera;
+using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 using Metropolis.ViewModels;
 using Microsoft.Win32;
@@ -31,6 +33,7 @@ namespace Metropolis
 
         public CodeBase Workspace { get; private set; }
         public string MetricsOutputFolder => analysisService.MetricsOutputFolder;
+        public bool IsFxcopMetricsInstalled => analysisService.FxCopMetricsPath.IsNotEmpty();
 
         public void Create()
         {
@@ -120,7 +123,7 @@ namespace Metropolis
             Workspace = analysisService.Analyze(BuildArguments(viewModel));
         }
         
-        private MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)
+        private static MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)
         {
             return new MetricsCommandArguments
             {

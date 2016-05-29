@@ -8,6 +8,7 @@ namespace Metropolis
     {
         CodeBase Workspace { get; }
         string MetricsOutputFolder { get; }
+        bool IsFxcopMetricsInstalled { get; }
         void Create();
         void Save();
         void Load();

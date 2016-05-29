@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq.Expressions;
 using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 
@@ -12,6 +14,7 @@ namespace Metropolis.ViewModels
         private RepositorySourceType repositorySourceType = RepositorySourceType.Java; //for now
         private string sourceDirectory;
         public IEnumerable<string> SourceTypes => new[] {"ECMA", "Java", "CSharp"};
+        public bool IsFxCopInstalled { get; set; }
 
         public RepositorySourceType RepositorySourceType
         {
@@ -29,7 +32,7 @@ namespace Metropolis.ViewModels
             set
             {
                 projectName = value;
-                PropertyChanged.Notify(this, x => x.ProjectName);
+                NotifyOfChange(x => x.ProjectName);
             }
         }
 
@@ -39,7 +42,7 @@ namespace Metropolis.ViewModels
             set
             {
                 sourceDirectory = value;
-                PropertyChanged.Notify(this, x => x.SourceDirectory);
+                NotifyOfChange(x => x.SourceDirectory);
             }
         }
         
@@ -52,6 +55,15 @@ namespace Metropolis.ViewModels
                 PropertyChanged.Notify(this, x => x.IgnoreFile);
             }
         }
+
+        public void NotifyOfChange<T>(Expression<Func<ProjectDetailsViewModel, T>> expression)
+        {
+            PropertyChanged.Notify(this, expression);
+            PropertyChanged.Notify(this, x => x.IsFxCopInstalled);
+        }
+
+        public bool IsValidForCSharp => projectName.IsNotEmpty() && sourceDirectory.IsNotEmpty() && IsFxCopInstalled;
+        public bool IsValid => projectName.IsNotEmpty() && sourceDirectory.IsNotEmpty();
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

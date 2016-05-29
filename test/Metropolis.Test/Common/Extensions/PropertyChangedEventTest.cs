@@ -1,7 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using FluentAssertions;
-using Metropolis.Common.Models;
-using Metropolis.ViewModels;
+using Metropolis.Common.Extensions;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Common.Extensions
@@ -9,41 +9,29 @@ namespace Metropolis.Test.Common.Extensions
     [TestFixture]
     public class PropertyChangedEventTest
     {
-        ProjectDetailsViewModel viewModel;
+        private TestViewModel viewModel;
         private bool eventCalled;
 
         [SetUp]
         public void SetUp()
         {
-            viewModel = new ProjectDetailsViewModel();
+            viewModel = new TestViewModel();
             eventCalled = false;
         }
 
         [Test]
         public void NotifyOnName()
         {
-            RunTest("ProjectName", d => d.ProjectName = "I changed");
+            RunTest("Name", d => d.Name = "I changed");
         }
 
         [Test]
-        public void NotifyOnRepositorySourceType()
+        public void NotifyOnAge()
         {
-            RunTest("RepositorySourceType", d => d.RepositorySourceType = RepositorySourceType.Java);
-        }
-
-        [Test]
-        public void NotifyOnSourceDirectory()
-        {
-            RunTest("SourceDirectory", d => d.SourceDirectory = @"h:\hdrive");
-        }
-
-        [Test]
-        public void NotifyOnIgnoreFile()
-        {
-            RunTest("IgnoreFile", d => d.IgnoreFile = @"h:\ignore\me.ignore");
+            RunTest("Age", d => d.Age = 21);
         }
         
-        private void RunTest(string expectedPropertyName, Action<ProjectDetailsViewModel> action)
+        private void RunTest(string expectedPropertyName, Action<TestViewModel> action)
         {
             viewModel.PropertyChanged += (s, e) =>
             {
@@ -53,6 +41,33 @@ namespace Metropolis.Test.Common.Extensions
 
             action(viewModel);
             eventCalled.Should().BeTrue();
+        }        
+    }
+
+    public class TestViewModel : INotifyPropertyChanged
+    {
+        private string name;
+        private int age;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                name = value;
+                PropertyChanged.Notify(this, x => x.Name);
+            }
+        }
+        public int Age
+        {
+            get { return age; }
+            set
+            {
+                age = value;
+                PropertyChanged.Notify(this, x => x.Age);
+            }
         }
     }
 }

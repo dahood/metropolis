@@ -2,6 +2,7 @@
 using Metropolis.Api.Analyzers;
 using Metropolis.Api.Collection;
 using Metropolis.Api.Collection.Steps;
+using Metropolis.Api.Collection.Steps.CSharp;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Services;
 using Metropolis.Api.Utilities;
@@ -21,6 +22,7 @@ namespace Metropolis.Test.Api.Services
         private Mock<IAnalyzerFactory> analyzerFactory;
         private Mock<ICodebaseAnalyzer> analyzer;
         private Mock<IFileSystem> fileSystem;
+        private Mock<ILocateFxCopMetricsTool> locateFxCopMetricsTool;
 
         [SetUp]
         public void SetUp()
@@ -31,6 +33,7 @@ namespace Metropolis.Test.Api.Services
             analyzerFactory = CreateMock<IAnalyzerFactory>();
             analyzer = CreateMock<ICodebaseAnalyzer>();
             fileSystem = CreateMock<IFileSystem>();
+            locateFxCopMetricsTool = CreateMock<ILocateFxCopMetricsTool>();
 
             details = new MetricsCommandArguments
             {
@@ -42,7 +45,7 @@ namespace Metropolis.Test.Api.Services
 
             fileSystem.Setup(x => x.CreateFolder(AnalysisServices.MetricsOutputFolder));
 
-            analysisServices = new AnalysisServices(metricsTaskFactory.Object, codebaseService.Object, analyzerFactory.Object, fileSystem.Object);
+            analysisServices = new AnalysisServices(metricsTaskFactory.Object, codebaseService.Object, analyzerFactory.Object, fileSystem.Object, locateFxCopMetricsTool.Object);
         }
 
         [Test]

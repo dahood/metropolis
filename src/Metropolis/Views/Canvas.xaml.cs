@@ -244,8 +244,7 @@ namespace Metropolis.Views
             //Spinner.Hide();
             //App.ShowLog();
         }
-
-
+        
         private void RunCsvExport(object sender, RoutedEventArgs e)
         {
             workspaceProvider.RunCsvExport();
@@ -253,7 +252,7 @@ namespace Metropolis.Views
 
         private void StartMetroBot(object sender, RoutedEventArgs e)
         {
-            var metroBot = new MetroBot();
+            var metroBot = new MetroBot(workspaceProvider.IsFxcopMetricsInstalled);
             var result = metroBot.ShowDialog() ?? false;
 
             if (!result) return;

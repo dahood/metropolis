@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:autoComplete="clr-namespace:Metropolis.AutoComplete"
              xmlns:wpfControls="http://wpfcontrols.com/"
-             Width="546.112" Height="158.803" IsVisibleChanged="HideShowInfoBox">
+             xmlns:valueConverters="clr-namespace:Metropolis.ValueConverters"
+             Width="546.112" Height="158.803">
     <UserControl.Resources>
-
+        <valueConverters:FxCopVisibilityConverter x:Key="FxCopVisibilityConverter" />
         <autoComplete:FolderSuggestionProvider x:Key="foldersp" />
         <autoComplete:FileSuggestionProvider x:Key="filesp" />
         <autoComplete:FileIconConverter x:Key="FileIconConverter"/>
@@ -62,14 +63,9 @@
                 </Grid>
             </Border>
         </DataTemplate>
-        <autoComplete:CustomTemplateSelector x:Key="CustomTemplateSelector"
-                                      FileTemplate="{StaticResource fsTemplate}"
-                                      DirectoryTemplate="{StaticResource dirTemplate}"/>
-
     </UserControl.Resources>
     <StackPanel>
-        <StackPanel x:Name="Info">
-            <TextBlock FontStyle="Italic" FontWeight="DemiBold" TextWrapping="Wrap" Margin="0,0,0,5">This feature is currently under development and not functional.</TextBlock>
+        <StackPanel x:Name="Info" Visibility="{Binding Path=IsFxCopInstalled, Converter={StaticResource FxCopVisibilityConverter}}">
             <TextBlock x:Name="InfoVisualStudio" TextWrapping="Wrap">
                 <Bold>WARNING:</Bold>You need to install Visual Studio 2015 Community, Professional, or Enterprise.
                 <LineBreak />
@@ -99,11 +95,6 @@
                         </Binding.ValidationRules>
                     </Binding>
                 </wpfControls:AutoCompleteTextBox.SelectedItem>
-                <wpfControls:AutoCompleteTextBox.LoadingContent>
-                    <TextBlock Text="Loading..."
-                           Margin="5"
-                           FontSize="14" />
-                </wpfControls:AutoCompleteTextBox.LoadingContent>
                 <wpfControls:AutoCompleteTextBox.Icon>
                     <Border Width="20"
                         Height="20">

@@ -7,5 +7,6 @@ namespace Metropolis.Api.Services
     {
         CodeBase Analyze(MetricsCommandArguments metricsCommandArguments);
         string MetricsOutputFolder { get; }
+        string FxCopMetricsPath { get; }
     }
 }

@@ -13,10 +13,10 @@ namespace Metropolis.Views
     /// </summary>
     public partial class MetroBot
     {
-        public MetroBot()
+        public MetroBot(bool isFxcopMetricsInstalled = false)
         {
             InitializeComponent();
-            ProjectDetails = new ProjectDetailsViewModel();
+            ProjectDetails = new ProjectDetailsViewModel {IsFxCopInstalled = isFxcopMetricsInstalled};
             DataContext = ProjectDetails;
         }
 
@@ -40,6 +40,7 @@ namespace Metropolis.Views
             switch (selection)
             {
                 case RepositorySourceType.CSharp:
+                case RepositorySourceType.FxCop:
                     CSharpPanel.Visibility = Visibility.Visible;
                     JavaPanel.Visibility = Visibility.Collapsed;
                     EcmaScriptPanel.Visibility = Visibility.Collapsed;
