@@ -1,14 +1,13 @@
 using System.Collections.Generic;
 using System.IO;
-using WpfControls;
 
 namespace Metropolis.AutoComplete
 {
-    public class FolderSuggestionProvider : FileSystemSuggestionProvider, ISuggestionProvider
+    public class FolderSuggestionProvider : FileSystemSuggestionProvider
     {
         protected override IEnumerable<FileSystemInfo> GetSuggestions(DirectoryInfo dirInfo, string filter)
         {
-            return dirInfo.GetDirectories(filter);
+            return dirInfo.Exists ? dirInfo.GetDirectories(filter) : new FileSystemInfo[0];
         }
     }
 }
