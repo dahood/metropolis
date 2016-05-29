@@ -8,7 +8,6 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Ribbon;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
@@ -23,20 +22,18 @@ namespace Metropolis.Views
 {
     public partial class Canvas : ISceneProvider, IDisplayInstanceInformation
     {
-        private readonly CameraMovement cameraMovement;
         private readonly InstanceInformationFacade highlightedInstance;
         private readonly ProgressLog progressLog;
-        private readonly RotationalMovement rotationalMovement;
         private readonly IWorkspaceProvider workspaceProvider;
+        private readonly MouseMovement mouseMovement;
 
         public Canvas()
         {
             InitializeComponent();
-            rotationalMovement = new RotationalMovement(this);
-            cameraMovement = new CameraMovement(this);
             highlightedInstance = new InstanceInformationFacade(this);
             workspaceProvider = new WorkspaceProvider();
             progressLog = new ProgressLog();
+            mouseMovement = new MouseMovement(this);
 
             SetSliders();
 
@@ -77,7 +74,6 @@ namespace Metropolis.Views
 
         private void HookupEventHandlers()
         {
-            MouseWheel += HandleMouseWheel;
             ListenForLayoutChanges();
         }
 
@@ -88,22 +84,10 @@ namespace Metropolis.Views
             GoldenRatioLayoutToggleButton.Checked += (sender2, e2) => { ChangeLayout(new GoldenRatioLayout()); };
         }
 
-        private void HandleMouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            positionZSlider.Value = positionZSlider.Value + (e.Delta > 0 ? 1 : -1);
-            e.Handled = true;
-        }
-
-        private void ChangeCameraSettings(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            cameraMovement.Update(positionXSlider.Value, positionYSlider.Value, positionZSlider.Value,
-                fieldOfViewZSlider.Value);
-        }
 
         private void ResetCamera(object sender, RoutedEventArgs e)
         {
-            SetSliders();
-            rotationalMovement.Reset();
+            mouseMovement.Reset();
         }
 
         private void SetSliders()
