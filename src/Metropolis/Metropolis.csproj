@@ -58,6 +58,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Windows.Controls.Ribbon" />
@@ -73,12 +74,20 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfControls, Version=1.0.0.7, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WpfControls.AutoCompleteTextBox.1.0.0.7\lib\net35\WpfControls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AutoComplete\CustomTemplateSelector.cs" />
+    <Compile Include="AutoComplete\FileSuggestionProvider.cs" />
+    <Compile Include="AutoComplete\FolderSuggestionProvider.cs" />
+    <Compile Include="AutoComplete\FileSystemSuggestionProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InstanceInformationFacade.cs" />
     <Compile Include="Camera\CameraMovement.cs" />
@@ -97,6 +106,8 @@
     <Compile Include="Layout\SquaredLayout.cs" />
     <Compile Include="Models\BrushFactory.cs" />
     <Compile Include="Models\LinearScale.cs" />
+    <Compile Include="AutoComplete\RequiredValidationRule.cs" />
+    <Compile Include="AutoComplete\FileIconConverter.cs" />
     <Compile Include="ValueConverters\RepositorySourceTypeConverter.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
     <Compile Include="Views\MetroBot.xaml.cs">
@@ -107,11 +118,6 @@
     </Compile>
     <Compile Include="Views\UserControls\CodeMetricsSummary.xaml.cs">
       <DependentUpon>CodeMetricsSummary.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UserControls\DirectoryExistsRule.cs" />
-    <Compile Include="Views\UserControls\InvertSign.cs" />
-    <Compile Include="Views\UserControls\SelectFolderTextBox.xaml.cs">
-      <DependentUpon>SelectFolderTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\Spinner.xaml.cs">
       <DependentUpon>Spinner.xaml</DependentUpon>
@@ -155,10 +161,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UserControls\SelectFolderTextBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\UserControls\Spinner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -188,8 +190,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -223,6 +226,8 @@
     <Resource Include="Images\CityLayout.png" />
     <Resource Include="Images\GoldenRatioLayout.png" />
     <Resource Include="Images\BrowseFolder.ico" />
+    <Resource Include="Resources\folder-2-32.ico" />
+    <Resource Include="Resources\search_icon.png" />
     <Content Include="SampleFiles\entity-framework-6.csv" />
     <None Include="SampleFiles\git-log-file-touches.csv" />
     <None Include="SampleFiles\metropolis-code-coverage-with-tests.coveragexml">
