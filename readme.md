@@ -25,7 +25,7 @@ Hibernate is an object relational mapping tool used to speed up development of a
 
 ## Getting Started
 
-[Beginner's Guide](https://github.com/dahood/metropolis/wiki/Beginner's-Guide) is a good place to start as is the [Code Analysis Primer](https://github.com/dahood/metropolis/wiki/Code-Analysis-Primer).
+[Beginner's Guide](https://github.com/dahood/metropolis/wiki/Beginner-Guide) is a good place to start as is the [Code Analysis Primer](https://github.com/dahood/metropolis/wiki/Code-Analysis-Primer).
 
 ## License
 
