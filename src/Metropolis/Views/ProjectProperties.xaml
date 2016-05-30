@@ -11,12 +11,11 @@
         <TextBlock x:Name="ProjectNameLabel" Text="Project Name:" Width="100" HorizontalAlignment="Left"
                            VerticalAlignment="Center" Margin="5,5,10,5" />
         <TextBox Cursor="IBeam" x:Name="ProjectTextBox" Width="150" MaxLength="50" MaxLines="1"
-                         Text="{Binding Path=ProjectName}" TextWrapping="NoWrap" Margin="10,2,2,2" />
+                         Text="{Binding Path=ProjectName, Mode=TwoWay}" TextWrapping="NoWrap" Margin="10,2,2,2" />
         
     </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Cancel" Width="50" Click="Okay" Margin="5,5,5,5" />
-            <Button Content="OK" Width="50" Click="Okay" Margin="5,5,5,5" />
+            <Button Content="Close" Width="50" Click="Close" Margin="5,5,5,5" />
         </StackPanel>
     </StackPanel>
 

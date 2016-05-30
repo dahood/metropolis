@@ -13,7 +13,7 @@ namespace Metropolis.Views
             DataContext = App.ViewModel;
         }
 
-        private void Okay(object sender, RoutedEventArgs e)
+        private void Close(object sender, RoutedEventArgs e)
         {
             Close();
         }

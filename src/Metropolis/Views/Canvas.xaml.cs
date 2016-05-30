@@ -40,14 +40,12 @@ namespace Metropolis.Views
             HookupEventHandlers();
             LoadDefaultProject();
 
-            DataContext = ViewModel;
+            DataContext = App.ViewModel;
         }
 
         public AbstractLayout Layout { get; private set; } = new SquaredLayout();
 
         public RepositorySourceType SourceType => CodeBase.SourceType;
-
-        public ProjectDetailsViewModel ViewModel => App.ViewModel;
         public CodeBase CodeBase => App.CodeBase;
         private IWorkspaceProvider WorkSpaceProvider => App.WorkspaceProvider;
 
