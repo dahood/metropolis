@@ -6,7 +6,7 @@ namespace Metropolis
 {
     public interface IWorkspaceProvider
     {
-        CodeBase Workspace { get; }
+        CodeBase CodeBase { get; }
         string MetricsOutputFolder { get; }
         bool IsFxcopMetricsInstalled { get; }
         void Create();

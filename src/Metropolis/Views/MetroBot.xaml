@@ -66,7 +66,8 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,5,10,10">
             <Button Content="Cancel" x:Name="CancelButton" Click="OnCancel" Width="75" />
-            <Button Content="Run Analysis" x:Name="AnalyzeButton" Click="OnProceed" Width="75" Margin="5,0,0,0"/>
+            <Button Content="Run Analysis" x:Name="AnalyzeButton" Click="OnProceed" Width="75" Margin="5,0,0,0"
+                    IsEnabled="{Binding Path=IsValid}"/>
         </StackPanel>
     </StackPanel>
 

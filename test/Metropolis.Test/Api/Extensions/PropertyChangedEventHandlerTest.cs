@@ -34,7 +34,7 @@ namespace Metropolis.Test.Api.Extensions
         [Test]
         public void NotifiesOnProjectName()
         {
-            ShouldNotify(x => x.ProjectName = "change me", "ProjectName", "IsFxCopInstalled");
+            ShouldNotify(x => x.ProjectName = "change me", "ProjectName", "IsValid");
         }
 
         [Test]
@@ -52,7 +52,7 @@ namespace Metropolis.Test.Api.Extensions
         [Test]
         public void NotifiesOnMetricsSourceDirectory()
         {
-            ShouldNotify(x => x.SourceDirectory = "srcdir", "SourceDirectory", "IsFxCopInstalled");
+            ShouldNotify(x => x.SourceDirectory = "srcdir", "SourceDirectory", "IsValid");
         }
         
         private void ShouldNotify(Action<ProjectDetailsViewModel> action, params string[] expectedPropertyNames)

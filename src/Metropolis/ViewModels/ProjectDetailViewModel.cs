@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Linq.Expressions;
 using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
@@ -59,11 +60,14 @@ namespace Metropolis.ViewModels
         public void NotifyOfChange<T>(Expression<Func<ProjectDetailsViewModel, T>> expression)
         {
             PropertyChanged.Notify(this, expression);
-            PropertyChanged.Notify(this, x => x.IsFxCopInstalled);
+            PropertyChanged.Notify(this, x => x.IsValid);
         }
 
         public bool IsValidForCSharp => projectName.IsNotEmpty() && sourceDirectory.IsNotEmpty() && IsFxCopInstalled;
-        public bool IsValid => projectName.IsNotEmpty() && sourceDirectory.IsNotEmpty();
+        public bool IsValid => IsForCSharp? projectName.IsNotEmpty() && sourceDirectory.IsNotEmpty() && IsFxCopInstalled 
+                                          : projectName.IsNotEmpty() && sourceDirectory.IsNotEmpty();
+
+        public bool IsForCSharp => new[] {RepositorySourceType.CSharp, RepositorySourceType.FxCop}.Any(x => x == RepositorySourceType);
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

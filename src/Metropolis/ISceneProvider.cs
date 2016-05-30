@@ -12,5 +12,6 @@ namespace Metropolis
         event MouseButtonEventHandler MouseLeftButtonDown;
         event MouseButtonEventHandler MouseLeftButtonUp;
         event MouseEventHandler MouseMove;
+        event MouseWheelEventHandler MouseWheel;
     }
 }
