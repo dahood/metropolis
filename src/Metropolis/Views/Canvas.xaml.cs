@@ -332,8 +332,8 @@ namespace Metropolis.Views
             var workArea = SystemParameters.WorkArea;
             Width = workArea.Width*reductionFactor;
             Height = workArea.Height*reductionFactor;
-            Top = (workArea.Width - Width)/2;
-            Left = (workArea.Height - Height)/2;
+            Left = (workArea.Width - Width)/2;
+            Top = (workArea.Height - Height)/2;
         }
 
         private void SetVersion()
