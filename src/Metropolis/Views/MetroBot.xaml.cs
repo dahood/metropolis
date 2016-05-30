@@ -13,10 +13,10 @@ namespace Metropolis.Views
     /// </summary>
     public partial class MetroBot
     {
-        public MetroBot(bool isFxcopMetricsInstalled = false)
+        public MetroBot()
         {
             InitializeComponent();
-            ProjectDetails = new ProjectDetailsViewModel {IsFxCopInstalled = isFxcopMetricsInstalled};
+            ProjectDetails = App.ViewModel;
             DataContext = ProjectDetails;
         }
 

@@ -232,7 +232,8 @@ namespace Metropolis.Views
 
         private void StartMetroBot(object sender, RoutedEventArgs e)
         {
-            var metroBot = new MetroBot(WorkSpaceProvider.IsFxcopMetricsInstalled);
+            App.ViewModel.IsFxCopInstalled = WorkSpaceProvider.IsFxcopMetricsInstalled;
+            var metroBot = new MetroBot();
             var result = metroBot.ShowDialog() ?? false;
 
             if (!result) return;
