@@ -29,12 +29,12 @@ namespace Metropolis
             this.analysisService = analysisService;
         }
 
-        public CodeBase Workspace { get; private set; }
+        public CodeBase CodeBase { get; private set; }
         public string MetricsOutputFolder => analysisService.MetricsOutputFolder;
 
         public void Create()
         {
-            Workspace = new CodeBase(new CodeGraph(new Instance[0]));
+            CodeBase = new CodeBase(new CodeGraph(new Instance[0]));
         }
 
         public void Save()
@@ -48,7 +48,7 @@ namespace Metropolis
 
             using (new WaitCursor())
             {
-                codebaseService.Save(Workspace, dialog.FileName);
+                codebaseService.Save(CodeBase, dialog.FileName);
             }
         }
 
@@ -59,12 +59,12 @@ namespace Metropolis
 
         public void Load(string fileName)
         {
-            Workspace = codebaseService.Load(fileName);
+            CodeBase = codebaseService.Load(fileName);
         }
 
         public void LoadDefault()
         {
-            Workspace = codebaseService.LoadDefault();
+            CodeBase = codebaseService.LoadDefault();
         }
 
         public void LoadToxicity()
@@ -89,7 +89,7 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
-                Workspace.SourceType = RepositorySourceType.Java;
+                CodeBase.SourceType = RepositorySourceType.Java;
                 var parser = CheckStylesReader.PuppyCrawlReader;
                 Parse(parser, fileName);
             }, "Checkstyles |*.xml");
@@ -99,7 +99,7 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
-                Workspace.SourceType = RepositorySourceType.ECMA;
+                CodeBase.SourceType = RepositorySourceType.ECMA;
                 var parser = CheckStylesReader.EslintReader;
                 Parse(parser, fileName);
             }, "Checkstyles |*.xml");
@@ -116,8 +116,8 @@ namespace Metropolis
 
         public void Analyze(ProjectDetailsViewModel viewModel)
         {
-            Workspace.SourceType = viewModel.RepositorySourceType;
-            Workspace = analysisService.Analyze(BuildArguments(viewModel));
+            CodeBase.SourceType = viewModel.RepositorySourceType;
+            CodeBase = analysisService.Analyze(BuildArguments(viewModel));
         }
         
         private MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)
@@ -133,20 +133,20 @@ namespace Metropolis
 
         public void RunCSharpToxicity()
         {
-            Workspace.SourceType = RepositorySourceType.CSharp;
-            Workspace = new CSharpToxicityAnalyzer().Analyze(Workspace.AllInstances);
+            CodeBase.SourceType = RepositorySourceType.CSharp;
+            CodeBase = new CSharpToxicityAnalyzer().Analyze(CodeBase.AllInstances);
         }
 
         public void RunJavaToxicity()
         {
-            Workspace.SourceType = RepositorySourceType.Java;
-            Workspace = new JavaToxicityAnalyzer().Analyze(Workspace.AllInstances);
+            CodeBase.SourceType = RepositorySourceType.Java;
+            CodeBase = new JavaToxicityAnalyzer().Analyze(CodeBase.AllInstances);
         }
 
         public void RunJavascriptToxicity()
         {
-            Workspace.SourceType = RepositorySourceType.ECMA;
-            Workspace = new JavascriptToxicityAnalyzer().Analyze(Workspace.AllInstances);
+            CodeBase.SourceType = RepositorySourceType.ECMA;
+            CodeBase = new JavascriptToxicityAnalyzer().Analyze(CodeBase.AllInstances);
         }
 
         public void RunCsvExport()
@@ -164,7 +164,7 @@ namespace Metropolis
                 {
                     var writer = new CsvWriter(stream);
                     writer.WriteHeader<Instance>();
-                    Workspace.AllInstances.ForEach(x => writer.WriteRecord(x));
+                    CodeBase.AllInstances.ForEach(x => writer.WriteRecord(x));
                 }
             }
         }
@@ -177,13 +177,13 @@ namespace Metropolis
 
         private void EnrichWorkspace(CodeBase result)
         {
-            if (Workspace == null)
+            if (CodeBase == null)
             {
-                Workspace = result;
+                CodeBase = result;
             }
             else
             {
-                Workspace.Enrich(result.AllInstances);
+                CodeBase.Enrich(result.AllInstances);
             }
         }
 

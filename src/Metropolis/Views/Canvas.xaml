@@ -252,7 +252,8 @@
 
         <DockPanel LastChildFill="True" Margin="0,142,-0.444,-0.111" Grid.Row="0" Grid.RowSpan="2">
             <StackPanel DockPanel.Dock="Right" Margin="0,0,5,10.5" Width="220" VerticalAlignment="Top">
-                <GroupBox Name="LoadingBox" Visibility="Collapsed"> <!-- TODO: Currently Hiding this since it's not working -->
+                <GroupBox Name="LoadingBox" Visibility="Collapsed">
+                    <!-- TODO: Currently Hiding this since it's not working -->
                     <GroupBox.Header>
                         <Label>Loading...</Label>
                     </GroupBox.Header>
@@ -303,40 +304,45 @@
                         <Label>Codebase Metrics</Label>
                     </GroupBox.Header>
                     <Border Name="CodeMetricsGrid" CornerRadius="25" Background="White" BorderThickness="1">
-                    <Grid Margin="5,5,5,5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="85" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+                        <Grid Margin="5,5,5,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
 
-                        <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Project</Label>
-                        <TextBox Grid.Row="0" Grid.Column="1" x:Name="ProjectNameTextBox" VerticalAlignment="Center"
-                                 HorizontalAlignment="Right" Width="123"
-                                 BorderBrush="White" SelectionBrush="White" TextAlignment="Right" Cursor=""
-                                 TextChanged="Project_Info_Changed" />
-                        <Label Grid.Row="1" Grid.Column="0">LOC</Label>
-                        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="LocTextBlock" HorizontalAlignment="Right" />
-                        <Label Grid.Row="2" Grid.Column="0">Types</Label>
-                        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="TypesTextBlock" HorizontalAlignment="Right" />
-                        <Label Grid.Row="3" Grid.Column="0">Avg Toxicity</Label>
-                        <TextBlock Grid.Row="3" Grid.Column="1" x:Name="ToxicityTextBlock" HorizontalAlignment="Right" />
-                        <Label Grid.Row="4" Grid.Column="0">Coverage</Label>
-                        <TextBlock Grid.Row="4" Grid.Column="1" x:Name="CoverageTextBlock" HorizontalAlignment="Right" />
-                        <Label Grid.Row="5" Grid.Column="0">Duplicate</Label>
-                        <TextBlock Grid.Row="5" Grid.Column="1" x:Name="DuplicateTextBlock" HorizontalAlignment="Right" />
-                        <Label Grid.Row="6" Grid.Column="0">Violations</Label>
-                        <TextBlock Grid.Row="6" Grid.Column="1" x:Name="ViolationsTextBlock"
-                                   HorizontalAlignment="Right" />
-                    </Grid>
+                            <Label Grid.Row="0" Grid.Column="0">Project</Label>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  x:Name="ProjectNameTextBox" 
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                       Text="{Binding Path=ProjectName}" />
+                            <Label Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0">Lines of Code</Label>
+                            <TextBlock Grid.Row="1" Grid.Column="2" x:Name="LocTextBlock" 
+                                       HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <Label Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0">Types</Label>
+                            <TextBlock Grid.Row="2" Grid.Column="2" x:Name="TypesTextBlock" 
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <Label Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0">Average Toxicity</Label>
+                            <TextBlock Grid.Row="3" Grid.Column="2" x:Name="ToxicityTextBlock" 
+                                       HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <Label Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0">Test Coverage</Label>
+                            <TextBlock Grid.Row="4" Grid.Column="2" x:Name="CoverageTextBlock" 
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <Label Grid.ColumnSpan="3" Grid.Row="5" Grid.Column="0">Code Duplicates</Label>
+                            <TextBlock Grid.Row="5" Grid.Column="2" x:Name="DuplicateTextBlock" 
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <Label Grid.Row="6" Grid.ColumnSpan="2" Grid.Column="0">Code Violations</Label>
+                            <TextBlock Grid.Row="6" Grid.Column="2" x:Name="ViolationsTextBlock" 
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" />
+                        </Grid>
                     </Border>
                 </GroupBox>
                 <GroupBox Name="SearchBox">

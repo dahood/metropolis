@@ -10,11 +10,12 @@ namespace Metropolis.Views
         public ProjectProperties()
         {
             InitializeComponent();
+            DataContext = App.ViewModel;
         }
 
         private void Okay(object sender, RoutedEventArgs e)
         {
-            //Close(ProjectNameTextBox.Text;
+            Close();
         }
     }
 }

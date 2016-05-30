@@ -17,6 +17,7 @@ using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Camera;
 using Metropolis.Common.Models;
 using Metropolis.Layout;
+using Metropolis.ViewModels;
 
 namespace Metropolis.Views
 {
@@ -24,14 +25,12 @@ namespace Metropolis.Views
     {
         private readonly InstanceInformationFacade highlightedInstance;
         private readonly ProgressLog progressLog;
-        private readonly IWorkspaceProvider workspaceProvider;
         private readonly MouseMovement mouseMovement;
 
         public Canvas()
         {
             InitializeComponent();
             highlightedInstance = new InstanceInformationFacade(this);
-            workspaceProvider = new WorkspaceProvider();
             progressLog = new ProgressLog();
             mouseMovement = new MouseMovement(this);
 
@@ -40,11 +39,18 @@ namespace Metropolis.Views
             InitializeModel();
             HookupEventHandlers();
             LoadDefaultProject();
+
+            DataContext = ViewModel;
         }
 
         public AbstractLayout Layout { get; private set; } = new SquaredLayout();
 
-        public RepositorySourceType SourceType => workspaceProvider.Workspace.SourceType;
+        public RepositorySourceType SourceType => CodeBase.SourceType;
+
+        public ProjectDetailsViewModel ViewModel => App.ViewModel;
+        public CodeBase CodeBase => App.CodeBase;
+        private IWorkspaceProvider WorkSpaceProvider => App.WorkspaceProvider;
+
 
         public void SetClassInformation(string text)
         {
@@ -68,7 +74,7 @@ namespace Metropolis.Views
 
         private void LoadDefaultProject()
         {
-            workspaceProvider.LoadDefault();
+            WorkSpaceProvider.LoadDefault();
             DisplayWorkspaceDetails();
         }
 
@@ -102,73 +108,69 @@ namespace Metropolis.Views
         {
             highlightedInstance.ClearDisplay();
             using (new WaitCursor())
-                Layout.ModelCity(Model, workspaceProvider.Workspace);
+                Layout.ModelCity(Model, CodeBase);
         }
 
         private void NewProject(object sender, RoutedEventArgs e)
         {
-            workspaceProvider.Create();
+            WorkSpaceProvider.Create();
             Renderlayout();
             DisplayWorkspaceDetails();
         }
 
         private void LoadProject(object sender, RoutedEventArgs e)
         {
-            workspaceProvider.Load();
+            WorkSpaceProvider.Load();
             DisplayWorkspaceDetails();
         }
 
         private void DisplayWorkspaceDetails()
         {
-            ProjectNameTextBox.Text = workspaceProvider.Workspace.Name;
-            LocTextBlock.Text = workspaceProvider.Workspace.LinesOfCode.ToString("N0", CultureInfo.InvariantCulture);
-            TypesTextBlock.Text = workspaceProvider.Workspace.NumberOfTypes.ToString("N0", CultureInfo.InvariantCulture);
-            ToxicityTextBlock.Text = workspaceProvider.Workspace.AverageToxicity().ToString("N4", CultureInfo.InvariantCulture);
+            ProjectNameTextBox.Text = CodeBase.Name;
+            LocTextBlock.Text = CodeBase.LinesOfCode.ToString("N0", CultureInfo.InvariantCulture);
+            TypesTextBlock.Text = CodeBase.NumberOfTypes.ToString("N0", CultureInfo.InvariantCulture);
+            ToxicityTextBlock.Text = CodeBase.AverageToxicity().ToString("N4", CultureInfo.InvariantCulture);
             Renderlayout();
-        }
-
-        private void Project_Info_Changed(object sender, TextChangedEventArgs e)
-        {
-            workspaceProvider.Workspace.Name = ProjectNameTextBox.Text;
         }
 
         private void SaveProject(object sender, RoutedEventArgs e)
         {
-            workspaceProvider.Save();
+            WorkSpaceProvider.Save();
         }
 
 
         private void RunCsvExport(object sender, RoutedEventArgs e)
         {
-            workspaceProvider.RunCsvExport();
+            WorkSpaceProvider.RunCsvExport();
         }
         private void RenameProject(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Work in Progress :)");
+            var window = new ProjectProperties();
+            window.Show();
             //workspaceProvider.Workspace.Name = ProjectNameTextBox.Text;
         }
 
         private void LoadToxicity(object sender, RoutedEventArgs e)
         {
-            workspaceProvider.LoadToxicity();
+            WorkSpaceProvider.LoadToxicity();
             DisplayWorkspaceDetails();
         }
 
         private void LoadVisualStudioMetrics(object sender, RoutedEventArgs e)
         {
-            workspaceProvider.LoadVisualStudioMetrics();
+            WorkSpaceProvider.LoadVisualStudioMetrics();
             DisplayWorkspaceDetails();
         }
 
         private void LoadCheckStyles(object sender, RoutedEventArgs e)
         {
-            workspaceProvider.LoadCheckStyles();
+            WorkSpaceProvider.LoadCheckStyles();
             DisplayWorkspaceDetails();
         }
 
         private void LoadEsLintCheckStyles(object sender, RoutedEventArgs e)
         {
-            workspaceProvider.LoadEsLintCheckStyles();
+            WorkSpaceProvider.LoadEsLintCheckStyles();
             DisplayWorkspaceDetails();
         }
 
@@ -177,7 +179,7 @@ namespace Metropolis.Views
             var header = ((RibbonButton) e.Source).Label;
             var extension = new Regex("[()]").Split(header)[1];
 
-            workspaceProvider.LoadSourceLinesOfCode(extension.ToEnumByDescription<FileInclusion>());
+            WorkSpaceProvider.LoadSourceLinesOfCode(extension.ToEnumByDescription<FileInclusion>());
             DisplayWorkspaceDetails();
         }
 
@@ -200,7 +202,7 @@ namespace Metropolis.Views
             {
                 var searchQuery = searchText.Text;
                 SearchSuggestions.DisplayMemberPath = "Name";
-                SearchSuggestions.ItemsSource = workspaceProvider.Workspace.AllInstances.Where(
+                SearchSuggestions.ItemsSource = CodeBase.AllInstances.Where(
                     x => x.QualifiedName.IndexOf(searchQuery, StringComparison.CurrentCultureIgnoreCase) >= 0);
             }
             SearchSuggestions.Items.Refresh();
@@ -220,13 +222,13 @@ namespace Metropolis.Views
 
         private void RunCSharpAnalzer(object sender, RoutedEventArgs e)
         {
-            workspaceProvider.RunCSharpToxicity();
+            WorkSpaceProvider.RunCSharpToxicity();
             DisplayWorkspaceDetails();
         }
 
         private void RunJavaAnalzer(object sender, RoutedEventArgs e)
         {
-            workspaceProvider.RunJavaToxicity();
+            WorkSpaceProvider.RunJavaToxicity();
             DisplayWorkspaceDetails();
         }
 
@@ -234,7 +236,7 @@ namespace Metropolis.Views
         {
             //App.ShowLog();
             //Spinner.Show();
-            workspaceProvider.RunJavascriptToxicity();
+            WorkSpaceProvider.RunJavascriptToxicity();
             DisplayWorkspaceDetails();
             //Spinner.Hide();
             //App.ShowLog();
@@ -249,7 +251,7 @@ namespace Metropolis.Views
             Spinner.Show();
             using (new WaitCursor())
             {
-                workspaceProvider.Analyze(metroBot.ProjectDetails);
+                WorkSpaceProvider.Analyze(metroBot.ProjectDetails);
                 DisplayWorkspaceDetails();
             }
             Spinner.Hide();
@@ -259,6 +261,24 @@ namespace Metropolis.Views
         {
             Spinner.Show();
             progressLog.Visibility = Visibility.Visible;
+        }
+
+
+        private void ToggleLayout(object sender, RoutedEventArgs e)
+        {
+            var toggleButons = new[] { SquareLayoutToggleButton, CityLayoutToggleButton, GoldenRatioLayoutToggleButton };
+
+            var target = sender as RibbonToggleButton;
+            if (target == null) return;
+            target.IsChecked = true;
+
+            toggleButons.Where(x => x != sender).ForEach(each => each.IsChecked = false);
+        }
+
+        private void LoadCanvas(object sender, RoutedEventArgs e)
+        {
+            SetWindowState();
+            SetVersion();
         }
 
         private void ProjectWiki(object sender, RoutedEventArgs e)
@@ -338,23 +358,6 @@ namespace Metropolis.Views
             }
         }
 
-        private void ToggleLayout(object sender, RoutedEventArgs e)
-        {
-            var toggleButons = new[] {SquareLayoutToggleButton, CityLayoutToggleButton, GoldenRatioLayoutToggleButton};
-
-            var target = sender as RibbonToggleButton;
-            if (target == null) return;
-            target.IsChecked = true;
-
-            toggleButons.Where(x => x != sender).ForEach(each => each.IsChecked = false);
-        }
-
-        private void LoadCanvas(object sender, RoutedEventArgs e)
-        {
-            SetWindowState();
-            SetVersion();
-        }
-
         private void SetWindowState()
         {
             const double reductionFactor = 0.85;
@@ -373,7 +376,7 @@ namespace Metropolis.Views
 
         private void ViewMetricsFolder(object sender, RoutedEventArgs e)
         {
-            Process.Start("explorer.exe", workspaceProvider.MetricsOutputFolder);
+            Process.Start("explorer.exe", WorkSpaceProvider.MetricsOutputFolder);
         }
     }
 }

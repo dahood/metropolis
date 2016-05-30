@@ -123,9 +123,6 @@
     <Compile Include="Views\ProjectProperties.xaml.cs">
       <DependentUpon>ProjectProperties.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControls\CodeMetricsSummary.xaml.cs">
-      <DependentUpon>CodeMetricsSummary.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\UserControls\Spinner.xaml.cs">
       <DependentUpon>Spinner.xaml</DependentUpon>
     </Compile>
@@ -165,10 +162,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProjectProperties.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\UserControls\CodeMetricsSummary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
