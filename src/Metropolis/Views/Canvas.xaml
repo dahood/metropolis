@@ -279,10 +279,11 @@
                                 <RowDefinition />
                                 <RowDefinition />
                                 <RowDefinition />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50" />
-                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="55"/>
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
@@ -296,17 +297,20 @@
                             <Label Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0">Types</Label>
                             <TextBlock Grid.Row="2" Grid.Column="2" x:Name="TypesTextBlock" 
                                        HorizontalAlignment="Right" VerticalAlignment="Center" />
-                            <Label Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0">Average Toxicity</Label>
-                            <TextBlock Grid.Row="3" Grid.Column="2" x:Name="ToxicityTextBlock" 
+                            <Label Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0">Code Conciseness</Label>
+                            <TextBlock Grid.Row="3" Grid.Column="2" x:Name="CodeConcisenessTextBlock" 
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <Label Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0">Average Toxicity</Label>
+                            <TextBlock Grid.Row="4" Grid.Column="2" x:Name="ToxicityTextBlock" 
                                        HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                            <Label Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0">Test Coverage</Label>
-                            <TextBlock Grid.Row="4" Grid.Column="2" x:Name="CoverageTextBlock" 
+                            <Label Grid.Row="5" Grid.ColumnSpan="2" Grid.Column="0">Test Coverage</Label>
+                            <TextBlock Grid.Row="5" Grid.Column="2" x:Name="CoverageTextBlock" 
                                        HorizontalAlignment="Right" VerticalAlignment="Center" />
-                            <Label Grid.ColumnSpan="3" Grid.Row="5" Grid.Column="0">Code Duplicates</Label>
-                            <TextBlock Grid.Row="5" Grid.Column="2" x:Name="DuplicateTextBlock" 
+                            <Label Grid.Row="6" Grid.ColumnSpan="3" Grid.Column="0">Code Duplicates</Label>
+                            <TextBlock Grid.Row="6" Grid.Column="2" x:Name="DuplicateTextBlock" 
                                        HorizontalAlignment="Right" VerticalAlignment="Center" />
-                            <Label Grid.Row="6" Grid.ColumnSpan="2" Grid.Column="0">Code Violations</Label>
-                            <TextBlock Grid.Row="6" Grid.Column="2" x:Name="ViolationsTextBlock" 
+                            <Label Grid.Row="7" Grid.ColumnSpan="2" Grid.Column="0">Code Violations</Label>
+                            <TextBlock Grid.Row="7" Grid.Column="2" x:Name="ViolationsTextBlock" 
                                        HorizontalAlignment="Right" VerticalAlignment="Center" />
                         </Grid>
                     </Border>

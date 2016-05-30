@@ -45,6 +45,11 @@ namespace Metropolis.Api.Domain
             return sum / NumberOfTypes;
         }
 
+        public double Conciseness()
+        {
+            return (double) LinesOfCode / NumberOfTypes;
+        }
+
         public Dictionary<string, IEnumerable<Instance>> ByNamespace()
         {
             return Graph.AllNamespaces.ToDictionary(ns => ns, ns => AllInstances.Where(x => x.NameSpace == ns));
@@ -54,5 +59,6 @@ namespace Metropolis.Api.Domain
         {
             return new CodeBase(new CodeGraph(new Instance[0]));
         }
+
     }
 }
