@@ -191,6 +191,12 @@
                     <RibbonButton LargeImageSource="..\Images\metrics.png" Label="Import Data and Code Metrics"
                                   KeyTip="O" Click="StartMetroBot" />
                 </RibbonGroup>
+                <RibbonGroup x:Name="CameraGroup" Header="Camera">
+                    <RibbonButton LargeImageSource="..\Images\compass.png" Label="Reset Camera" KeyTip="0"
+                                  Click="ResetCamera" />
+                    <RibbonButton LargeImageSource="..\Images\camera-info.png" Label="Camera Help" KeyTip="0"
+                                  Click="BeginnerGuide" />
+                </RibbonGroup>
                 <RibbonGroup x:Name="ScreenShotGroup" Header="Screenshots">
                     <RibbonButton LargeImageSource="..\Images\camera_icon.png" Label="Simple Screenshot" KeyTip="0"
                                   Click="TakeScreenshot" />
@@ -258,46 +264,6 @@
                         <Label>Loading...</Label>
                     </GroupBox.Header>
                     <spinner:Spinner x:Name="Spinner" Visibility="Collapsed" />
-                </GroupBox>
-                <GroupBox Name="CameraControlsBox">
-                    <GroupBox.Header>
-                        <Label>Camera Controls</Label>
-                    </GroupBox.Header>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="35" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <Label Grid.Row="0" Grid.Column="0">X</Label>
-                        <Slider Grid.Row="0" Grid.Column="1" x:Name="positionXSlider" Minimum="-200" Maximum="200"
-                                Ticks="1" VerticalAlignment="Center"
-                                Background="#FF459E51" Margin="0,5,0,0" />
-
-                        <Label Grid.Row="1" Grid.Column="0">Y</Label>
-                        <Slider Grid.Row="1" Grid.Column="1" x:Name="positionYSlider" Minimum="-200" Maximum="200"
-                                Ticks="1" VerticalAlignment="Center"
-                               Background="#FFBF379A" Margin="0,5,0,0" />
-
-                        <Label Grid.Row="2" Grid.Column="0">Z</Label>
-                        <Slider Grid.Row="2" Grid.Column="1" x:Name="positionZSlider" Minimum="-200" Maximum="200"
-                                Ticks="1" VerticalAlignment="Center"
-                                 Background="#FF334BB4" Margin="0,5,0,0" />
-
-                        <Label Grid.Row="3" Grid.Column="0">FOV</Label>
-                        <Slider Grid.Row="3" Grid.Column="1" x:Name="fieldOfViewZSlider" Minimum="-90" Maximum="90"
-                                Ticks="1" VerticalAlignment="Center"
-                                 Background="#FFC3DE19" Margin="0,5,0,0" />
-                        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" x:Name="resetButton" Content="Reset"
-                                Click="ResetCamera" Margin="25,5,25,5" />
-                    </Grid>
                 </GroupBox>
                 <GroupBox Name="CodeMetricsBox">
                     <GroupBox.Header>

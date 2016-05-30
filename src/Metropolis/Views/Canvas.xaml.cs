@@ -17,38 +17,34 @@ using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Camera;
 using Metropolis.Common.Models;
 using Metropolis.Layout;
-using Metropolis.ViewModels;
 
 namespace Metropolis.Views
 {
     public partial class Canvas : ISceneProvider, IDisplayInstanceInformation
     {
         private readonly InstanceInformationFacade highlightedInstance;
-        private readonly ProgressLog progressLog;
         private readonly MouseMovement mouseMovement;
 
         public Canvas()
         {
             InitializeComponent();
             highlightedInstance = new InstanceInformationFacade(this);
-            progressLog = new ProgressLog();
             mouseMovement = new MouseMovement(this);
 
-            SetSliders();
-
-            InitializeModel();
+            Initialize3DModel();
             HookupEventHandlers();
-            
+
 
             DataContext = App.ViewModel;
             LoadDefaultProject();
         }
 
+        public CodeBase CodeBase => App.CodeBase;
+        private IWorkspaceProvider WorkSpaceProvider => App.WorkspaceProvider;
+
         public AbstractLayout Layout { get; private set; } = new SquaredLayout();
 
         public RepositorySourceType SourceType => CodeBase.SourceType;
-        public CodeBase CodeBase => App.CodeBase;
-        private IWorkspaceProvider WorkSpaceProvider => App.WorkspaceProvider;
 
 
         public void SetClassInformation(string text)
@@ -65,7 +61,7 @@ namespace Metropolis.Views
             return (PerspectiveCamera) viewPort.Camera;
         }
 
-        private void InitializeModel()
+        private void Initialize3DModel()
         {
             var modelVisual3D = new ModelVisual3D {Content = Model};
             viewPort.Children.Add(modelVisual3D);
@@ -93,14 +89,6 @@ namespace Metropolis.Views
         private void ResetCamera(object sender, RoutedEventArgs e)
         {
             mouseMovement.Reset();
-        }
-
-        private void SetSliders()
-        {
-            positionXSlider.Value = 0;
-            positionYSlider.Value = 0;
-            positionZSlider.Value = 0;
-            fieldOfViewZSlider.Value = 0;
         }
 
         private void Renderlayout()
@@ -143,11 +131,11 @@ namespace Metropolis.Views
         {
             WorkSpaceProvider.RunCsvExport();
         }
+
         private void RenameProject(object sender, RoutedEventArgs e)
         {
             var window = new ProjectProperties();
             window.Show();
-            //workspaceProvider.Workspace.Name = ProjectNameTextBox.Text;
         }
 
         private void LoadToxicity(object sender, RoutedEventArgs e)
@@ -260,12 +248,12 @@ namespace Metropolis.Views
         private void ViewProgressLog(object sender, RoutedEventArgs e)
         {
             Spinner.Show();
-            progressLog.Visibility = Visibility.Visible;
+            App.ShowLog();
         }
 
         private void ToggleLayout(object sender, RoutedEventArgs e)
         {
-            var toggleButtons = new[] { SquareLayoutToggleButton, CityLayoutToggleButton, GoldenRatioLayoutToggleButton };
+            var toggleButtons = new[] {SquareLayoutToggleButton, CityLayoutToggleButton, GoldenRatioLayoutToggleButton};
 
             var target = sender as RibbonToggleButton;
             if (target == null) return;
@@ -278,25 +266,6 @@ namespace Metropolis.Views
         {
             SetWindowState();
             SetVersion();
-        }
-
-        private void ProjectWiki(object sender, RoutedEventArgs e)
-        {
-            Process.Start("https://github.com/dahood/metropolis/wiki/Home");
-        }
-
-        private void NewVersion(object sender, RoutedEventArgs e)
-        {
-            //TODO: Potentially allow to check npm installed version versus what is on NPMJS.com
-            Process.Start("https://www.npmjs.com/package/metropolis");
-        }
-
-        private void AboutMetropolis(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("\u00A9 Copyright 2016 - present, \n" +
-                            "Jonathan McCracken, Richard Hurst, and Greg Cook All rights reserved.\n" +
-                            "Metropolis is licensed under BSD (see LICENSE file for details)", "About Metropolis", MessageBoxButton.OK,
-                MessageBoxImage.Information);
         }
 
         private void TakeScreenshot(object sender, RoutedEventArgs e)
@@ -376,6 +345,31 @@ namespace Metropolis.Views
         private void ViewMetricsFolder(object sender, RoutedEventArgs e)
         {
             Process.Start("explorer.exe", WorkSpaceProvider.MetricsOutputFolder);
+        }
+
+
+        private void ProjectWiki(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://github.com/dahood/metropolis/wiki/Home");
+        }
+
+        private void BeginnerGuide(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://github.com/dahood/metropolis/wiki/Beginner-Guide");
+        }
+
+        private void NewVersion(object sender, RoutedEventArgs e)
+        {
+            //TODO: Potentially allow to check npm installed version versus what is on NPMJS.com
+            Process.Start("https://www.npmjs.com/package/metropolis");
+        }
+
+        private void AboutMetropolis(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("\u00A9 Copyright 2016 - present, \n" +
+                            "Jonathan McCracken, Richard Hurst, and Greg Cook All rights reserved.\n" +
+                            "Metropolis is licensed under BSD (see LICENSE file for details)", "About Metropolis", MessageBoxButton.OK,
+                MessageBoxImage.Information);
         }
     }
 }
