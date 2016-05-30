@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace Metropolis.Views
 {
@@ -16,6 +17,11 @@ namespace Metropolis.Views
         private void Close(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void ModifyProjectProperties(object sender, TextChangedEventArgs e)
+        {
+            App.ViewModel.ProjectName = ProjectTextBox.Text;
         }
     }
 }

@@ -38,9 +38,10 @@ namespace Metropolis.Views
 
             InitializeModel();
             HookupEventHandlers();
-            LoadDefaultProject();
+            
 
             DataContext = App.ViewModel;
+            LoadDefaultProject();
         }
 
         public AbstractLayout Layout { get; private set; } = new SquaredLayout();
@@ -124,7 +125,8 @@ namespace Metropolis.Views
 
         private void DisplayWorkspaceDetails()
         {
-            ProjectNameTextBox.Text = CodeBase.Name;
+            App.ViewModel.ProjectName = CodeBase.Name;
+
             LocTextBlock.Text = CodeBase.LinesOfCode.ToString("N0", CultureInfo.InvariantCulture);
             TypesTextBlock.Text = CodeBase.NumberOfTypes.ToString("N0", CultureInfo.InvariantCulture);
             ToxicityTextBlock.Text = CodeBase.AverageToxicity().ToString("N4", CultureInfo.InvariantCulture);
