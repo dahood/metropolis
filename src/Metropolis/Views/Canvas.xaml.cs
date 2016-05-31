@@ -49,8 +49,13 @@ namespace Metropolis.Views
 
         public void SetClassInformation(string text)
         {
-            codeInspectorText.Inlines.Clear();
-            codeInspectorText.Inlines.Add(text);
+            if (text == string.Empty) CodeInspectorPanel.Visibility = Visibility.Collapsed;
+            else
+            { 
+                CodeInspectorPanel.Visibility = Visibility.Visible;
+                codeInspectorText.Inlines.Clear();
+                codeInspectorText.Inlines.Add(text);
+            }
         }
 
         public Viewport3D ViewPort => viewPort;
@@ -372,6 +377,11 @@ namespace Metropolis.Views
                             "Jonathan McCracken, Richard Hurst, and Greg Cook All rights reserved.\n" +
                             "Metropolis is licensed under BSD (see LICENSE file for details)", "About Metropolis", MessageBoxButton.OK,
                 MessageBoxImage.Information);
+        }
+
+        private void OpenCodeFileHyperLink(object sender, RoutedEventArgs e)
+        {
+            Process.Start("notepad.exe", highlightedInstance.GetPhysicalFilePath());
         }
     }
 }

@@ -52,6 +52,8 @@ namespace Metropolis.Api.Domain
         public string NameSpace { get; }
         public string Name { get; }
         public string QualifiedName { get; }
+        public string PhysicalPath { get; set; }
+
         public int NumberOfMethods { get; set; }
         public int LinesOfCode { get; set; }
         public int DepthOfInheritance { get; set; }

@@ -341,11 +341,14 @@
                     <GroupBox.Header>
                         <Label>Code Inspector</Label>
                     </GroupBox.Header>
-                    <RichTextBox x:Name="ClassNameTextBlock" VerticalAlignment="Top" Margin="5,5,5,5" IsReadOnly="True">
-                        <FlowDocument>
-                            <Paragraph Name="codeInspectorText" />
-                        </FlowDocument>
-                    </RichTextBox>
+                    <StackPanel Name="CodeInspectorPanel" Visibility="Collapsed">
+                        <RichTextBox x:Name="ClassNameTextBlock" VerticalAlignment="Top" Margin="5,5,5,5" IsReadOnly="True">
+                            <FlowDocument>
+                                <Paragraph Name="codeInspectorText" />
+                            </FlowDocument>
+                        </RichTextBox>
+                        <TextBlock><Hyperlink Click="OpenCodeFileHyperLink">Open File</Hyperlink></TextBlock>
+                    </StackPanel>
                 </GroupBox>
             </StackPanel>
 

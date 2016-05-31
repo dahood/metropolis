@@ -11,6 +11,7 @@ namespace Metropolis
     {
         private readonly IDisplayInstanceInformation provider;
         private IHighlightModel highlight = new EmptyHighlight();
+        private Instance highlightedInstance = null;
 
         public InstanceInformationFacade(IDisplayInstanceInformation provider)
         {
@@ -27,8 +28,16 @@ namespace Metropolis
         public void DisplayClass(Instance src)
         {
             ClearDisplay();
+            highlightedInstance = src;
             var model = provider.Layout.LookupModel(src);
             Display((GeometryModel3D) model);
+        }
+
+        public string GetPhysicalFilePath()
+        {
+            if (highlightedInstance != null)
+                return highlightedInstance.PhysicalPath;
+            return string.Empty;
         }
 
         private void Initialize()
