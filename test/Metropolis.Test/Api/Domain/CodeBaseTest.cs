@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using Metropolis.Api.Domain;
 using NUnit.Framework;
@@ -35,7 +36,7 @@ namespace Metropolis.Test.Api.Domain
             codeBase.AverageToxicity().Should().Be(1.5);
         }
 
-        [Test, Ignore("for now...")]
+        [Test]
         public void ByNamespace()
         {
             var cart = new Instance("cart", "Cart", 2, 2, 2, 2, 2) {Toxicity = 1};
@@ -43,12 +44,18 @@ namespace Metropolis.Test.Api.Domain
 
             var actual = codeBase.ByNamespace();
             actual.Count.Should().Be(2);
-            actual.Keys.Should().Contain(new[] {"shopping", "cart"});
-//
-//            actual["shopping"].Count().Should().Be(1);
-//            actual["shopping"].Should().Contain(storeFront);
-//            actual["cart"].Count().Should().Be(1);
-//            actual["cart"].Should().Contain(cart);
+            var shoppingBag = new CodeBag("shopping", CodeBagType.Empty, string.Empty);
+            var cartBag = new CodeBag("cart", CodeBagType.Empty, string.Empty);
+            actual.Keys.Should().Contain(new List<CodeBag>
+                {
+                    shoppingBag,
+                    cartBag
+                });
+
+            actual[shoppingBag].Count().Should().Be(1);
+            actual[shoppingBag].Should().Contain(storeFront);
+            actual[cartBag].Count().Should().Be(1);
+            actual[cartBag].Should().Contain(cart);
         }
 
         [Test]
@@ -68,7 +75,12 @@ namespace Metropolis.Test.Api.Domain
             codeBase.Enrich(newGraph);
 
             graph.AllInstances.Count.Should().Be(2);
-            graph.AllNamespaces.Should().Contain(new[] {"shopping", "cart"});
+            graph.AllNamespaces.Should()
+                .Contain(new List<CodeBag>
+                {
+                    new CodeBag("shopping", CodeBagType.Empty, string.Empty),
+                    new CodeBag("cart", CodeBagType.Empty, string.Empty)
+                });
         }
 
         [Test]
