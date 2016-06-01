@@ -63,6 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collection\Steps\CSharp\ILocateFxCopMetricsTool.cs" />
+    <Compile Include="Domain\CodeBag.cs" />
+    <Compile Include="Domain\CodeBagType.cs" />
+    <Compile Include="Domain\Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Analyzers\ICodebaseAnalyzer.cs" />
     <Compile Include="Analyzers\Toxicity\CSharpToxicityAnalyzer.cs" />
