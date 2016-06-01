@@ -41,12 +41,12 @@ namespace Metropolis.Layout
             }
         }
 
-        private static IEnumerable<Plot> GeneratePlots(Dictionary<string, IEnumerable<Instance>> namespaces)
+        private static IEnumerable<Plot> GeneratePlots(Dictionary<CodeBag, IEnumerable<Instance>> codeBags)
         {
-            var result = new List<Plot>(namespaces.Count);
+            var result = new List<Plot>(codeBags.Count);
 
             result.AddRange(
-                from pair in namespaces
+                from pair in codeBags
                 let d = Math.Ceiling(Math.Sqrt(pair.Value.Count()))
                 let c = d/2
                 select new Plot(pair.Key, pair.Value, new Rect3D(new Point3D(c, 0, c), new Size3D(d, 0, d))));
@@ -65,16 +65,16 @@ namespace Metropolis.Layout
 
     public class Plot
     {
-        public static readonly Plot Empty = new Plot(string.Empty, null, Rect3D.Empty);
+        public static readonly Plot Empty = new Plot(CodeBag.Empty, null, Rect3D.Empty);
 
-        public Plot(string name, IEnumerable<Instance> classes, Rect3D bounds)
+        public Plot(CodeBag codeBag, IEnumerable<Instance> classes, Rect3D bounds)
         {
-            Name = name;
+            CodeBag = codeBag;
             Classes = classes;
             Bounds = bounds;
         }
 
-        public string Name { get; }
+        public CodeBag CodeBag { get; }
 
         public IEnumerable<Instance> Classes { get; }
 
@@ -90,7 +90,7 @@ namespace Metropolis.Layout
 
         public override string ToString()
         {
-            return $"Namespace: {Name}: Bounds:{Bounds}";
+            return $"Namespace: {CodeBag.Name}: Bounds:{Bounds}";
         }
     }
 }

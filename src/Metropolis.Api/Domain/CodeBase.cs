@@ -50,9 +50,9 @@ namespace Metropolis.Api.Domain
             return (double) LinesOfCode / NumberOfTypes;
         }
 
-        public Dictionary<string, IEnumerable<Instance>> ByNamespace()
+        public Dictionary<CodeBag, IEnumerable<Instance>> ByNamespace()
         {
-            return Graph.AllNamespaces.ToDictionary(ns => ns, ns => AllInstances.Where(x => x.NameSpace == ns));
+            return Graph.AllNamespaces.ToDictionary(ns => ns, ns => AllInstances.Where(x => x.CodeBag.Equals(ns)));
         }
 
         public static CodeBase Empty()

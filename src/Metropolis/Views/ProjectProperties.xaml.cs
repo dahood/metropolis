@@ -4,7 +4,7 @@ using System.Windows.Controls;
 namespace Metropolis.Views
 {
     /// <summary>
-    /// Project Properties like... Name, Source Code Type, Directory of checked out code, etc...
+    /// Project Properties like... CodeBag, Source Code Type, Directory of checked out code, etc...
     /// </summary>
     public partial class ProjectProperties
     {

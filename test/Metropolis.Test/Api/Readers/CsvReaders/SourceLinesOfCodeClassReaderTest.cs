@@ -17,8 +17,7 @@ namespace Metropolis.Test.Api.Readers.CsvReaders
 
             var codeBase = ParseUsingData(new[] {Heading, line});
 
-            var expected = new Instance(@"C:\projects\shaw-commerce\j2ee-apps\shaw.ear\shaw.war\builder\src\js\shaw",
-                "0.init.js")
+            var expected = new Instance((string) "0.init.js", (string) @"C:\projects\shaw-commerce\j2ee-apps\shaw.ear\shaw.war\builder\src\js\shaw", CodeBagType.Directory, string.Empty)
             {LinesOfCode = 1102};
 
             AssertHasOneClassEqualTo(expected, codeBase);

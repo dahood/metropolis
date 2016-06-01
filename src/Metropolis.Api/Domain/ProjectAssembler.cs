@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Metropolis.Api.Extensions;
 
 namespace Metropolis.Api.Domain
 {
@@ -22,7 +23,7 @@ namespace Metropolis.Api.Domain
 
         private static Instance Disassemble(SerializableClass src)
         {
-            return new Instance(src.NameSpace, src.Name)
+            return new Instance(src.Name, src.CodeBag.Name, src.CodeBag.CodeBagType.ToEnumExact<CodeBagType>(), string.Empty)
             {
                 LinesOfCode = src.LinesOfCode,
                 NumberOfMethods = src.NumberOfMethods,
@@ -60,11 +61,16 @@ namespace Metropolis.Api.Domain
             return new SerializableClass
             {
                 Name = src.Name,
-                NameSpace = src.NameSpace,
+                CodeBag = new SerializeableCodeBag
+                {
+                    Name = src.CodeBag.Name,
+                    CodeBagType = src.CodeBag.Type.ToString(),
+                    LocationPath = src.PhysicalPath
+                },
                 NumberOfMethods = src.NumberOfMethods,
                 ClassCoupling = src.ClassCoupling,
                 CyclomaticComplexity = src.CyclomaticComplexity,
-                DepthOfInheritance =  src.DepthOfInheritance,
+                DepthOfInheritance = src.DepthOfInheritance,
                 Toxicity = src.Toxicity,
                 LinesOfCode = src.LinesOfCode,
                 Meta = src.Meta.Select(Assemble),

@@ -74,7 +74,7 @@
                        Margin="5,5,10,5" />
             <wpfControls:AutoCompleteTextBox VerticalAlignment="Top"
                                  Height="25"
-                                 DisplayMember="FullName"
+                                 DisplayMember="FullCodeBag"
                                  Watermark="Enter Source Directory here"                                             
                                  Text="{Binding Path=SourceDirectory, Mode=TwoWay}"
                                  IconPlacement="Left"
@@ -111,7 +111,7 @@
                        Margin="5,5,10,5" />
             <wpfControls:AutoCompleteTextBox VerticalAlignment="Top"
                                  Height="25"
-                                 DisplayMember="FullName"
+                                 DisplayMember="FullCodeBag"
                                  Watermark="Enter Ignore File"                                             
                                  Text="{Binding Path=IgnoreFile, Mode=TwoWay}"
                                  IconPlacement="Left"

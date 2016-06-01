@@ -6,13 +6,14 @@ namespace Metropolis.Api.Domain
     public class Project
     {
         /// <summary>
-        /// Only support one version of project file for now - we can increment this
-        /// later to warn users that the file needs to be reloaded
+        ///     Only support one version of project file for now - we can increment this
+        ///     later to warn users that the file needs to be reloaded
         /// </summary>
-        public const int SupportedVersion = 1;
+        public const int SupportedVersion = 2;
+
         public int MetropolisFileVersion => SupportedVersion;
-        public string Name { get;set; }
-        public string SourceBaseDirectory { get; set;  }
+        public string Name { get; set; }
+        public string SourceBaseDirectory { get; set; }
         public string SourceCodeLanguage { get; set; }
         public IEnumerable<SerializableClass> Classes { get; set; }
     }
@@ -20,8 +21,8 @@ namespace Metropolis.Api.Domain
     public class SerializableClass
     {
         public IEnumerable<SerializableClassVersionInfo> Meta { get; set; }
-        public IEnumerable<SerializableMember>  Members { get; set; }
-        public string NameSpace { get; set; }
+        public IEnumerable<SerializableMember> Members { get; set; }
+        public SerializeableCodeBag CodeBag { get; set; }
         public string Name { get; set; }
         public int NumberOfMethods { get; set; }
         public int LinesOfCode { get; set; }
@@ -29,6 +30,13 @@ namespace Metropolis.Api.Domain
         public int CyclomaticComplexity { get; set; }
         public int DepthOfInheritance { get; set; }
         public double Toxicity { get; set; }
+    }
+
+    public class SerializeableCodeBag
+    {
+        public string Name { get; set; }
+        public string CodeBagType { get; set; }
+        public string LocationPath { get; set; }
     }
 
     public class SerializableMember

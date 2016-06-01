@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Metropolis.Api.Extensions;
@@ -8,15 +9,15 @@ namespace Metropolis.Api.Domain
     {
         private List<InstanceVersionInfo> meta = new List<InstanceVersionInfo>();
 
-        public Instance(string nameSpace, string name)
+        public Instance(string name, string codeBagName, CodeBagType codeBagType, string codeBagPath)
         {
-            NameSpace = nameSpace;
+            CodeBag = new CodeBag(codeBagName, codeBagType, codeBagPath);
             Name = name;
-            QualifiedName = string.IsNullOrEmpty(NameSpace) ? Name : $"{NameSpace}.{Name}";
+            QualifiedName = CodeBag == null ? Name : $"{CodeBag.Name}.{Name}";
         }
 
         public Instance(string nameSpace, string name, int numberOfMethods, int linesOfCode, int toxicity)
-            : this(nameSpace, name)
+            : this(name, nameSpace, CodeBagType.Empty, String.Empty)
         {
             NumberOfMethods = numberOfMethods;
             LinesOfCode = linesOfCode;
@@ -24,7 +25,7 @@ namespace Metropolis.Api.Domain
         }
 
         public Instance(string nameSpace, string name, int numberOfMethods, int linesOfCode, int cyclomaticComplexity,
-            int depthOfInheritance, int classCoupling) : this(nameSpace, name)
+            int depthOfInheritance, int classCoupling) : this(name, nameSpace, CodeBagType.Empty, String.Empty)
         {
             NumberOfMethods = numberOfMethods;
             LinesOfCode = linesOfCode;
@@ -33,7 +34,7 @@ namespace Metropolis.Api.Domain
             ClassCoupling = classCoupling;
         }
 
-        public Instance(string nameSpace, string name, IEnumerable<Member> members) : this(nameSpace, name)
+        public Instance(string nameSpace, string name, IEnumerable<Member> members) : this(name, nameSpace, CodeBagType.Empty, String.Empty)
         {
             ApplyMembers(members);
             Members.ForEach(x =>
@@ -44,12 +45,13 @@ namespace Metropolis.Api.Domain
             NumberOfMethods = Members.Count;
         }
 
+
         private void ApplyMembers(IEnumerable<Member> toAdd)
         {
             Members = new List<Member>(toAdd);
         }
 
-        public string NameSpace { get; }
+        public CodeBag CodeBag { get; }
         public string Name { get; }
         public string QualifiedName { get; }
         public string PhysicalPath { get; set; }
@@ -75,7 +77,8 @@ namespace Metropolis.Api.Domain
 
         public int NamespaceDepth()
         {
-            return NameSpace.Split('.').Length;
+            //TODO: Move this to CodeBag
+            return CodeBag.Name.Split('.').Length;
         }
 
         public override string ToString()
@@ -85,7 +88,7 @@ namespace Metropolis.Api.Domain
 
         protected bool Equals(Instance other)
         {
-            return string.Equals(NameSpace, other.NameSpace) && string.Equals(Name, other.Name);
+            return string.Equals(CodeBag, other.CodeBag) && string.Equals(Name, other.Name);
         }
 
         public override bool Equals(object obj)
@@ -100,7 +103,7 @@ namespace Metropolis.Api.Domain
         {
             unchecked
             {
-                return ((NameSpace?.GetHashCode() ?? 0)*397) ^ (Name?.GetHashCode() ?? 0);
+                return ((CodeBag?.GetHashCode() ?? 0)*397) ^ (Name?.GetHashCode() ?? 0);
             }
         }
 

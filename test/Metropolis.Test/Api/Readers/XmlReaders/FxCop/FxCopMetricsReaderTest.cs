@@ -66,8 +66,8 @@ namespace Metropolis.Test.Api.Readers.XmlReaders.FxCop
 
             Validate.Begin()
                     .IsNotNull(actual, "Actual").Check()
-                    .IsEqual(actual.NameSpace, expected.NameSpace, "NameSpace")
-                    .IsEqual(actual.Name, expected.Name, "Name")
+                    .IsEqual(actual.CodeBag, expected.CodeBag, "CodeBag")
+                    .IsEqual(actual.Name, expected.Name, "CodeBag")
                     .IsEqual(actual.NumberOfMethods, expected.NumberOfMethods, "NumberOfMethods")
                     .IsEqual(actual.LinesOfCode, expected.LinesOfCode, "LinesOfCode")
                     .IsEqual(actual.CyclomaticComplexity, expected.CyclomaticComplexity, "CyclomaticComplexity")
@@ -88,7 +88,7 @@ namespace Metropolis.Test.Api.Readers.XmlReaders.FxCop
         {
             var actual = instance.Members.FirstOrDefault(x => x.Name == expected.Name);
             Validate.Begin().IsNotNull(actual, "Actual").Check()
-                            .IsEqual(actual.Name, expected.Name, "Name")
+                            .IsEqual(actual.Name, expected.Name, "CodeBag")
                             .IsEqual(actual.CylomaticComplexity, expected.CylomaticComplexity, "CylomaticComplexity")
                             .IsEqual(actual.ClassCoupling, expected.ClassCoupling, "ClassCoupling")
                             .IsEqual(actual.LinesOfCode, expected.LinesOfCode, "LinesOfCode")

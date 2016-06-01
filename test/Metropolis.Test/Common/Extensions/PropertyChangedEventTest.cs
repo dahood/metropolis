@@ -22,7 +22,7 @@ namespace Metropolis.Test.Common.Extensions
         [Test]
         public void NotifyOnName()
         {
-            RunTest("Name", d => d.Name = "I changed");
+            RunTest("CodeBag", d => d.Name = "I changed");
         }
 
         [Test]

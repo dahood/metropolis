@@ -141,12 +141,7 @@
     <Compile Include="Readers\XmlReaders\CheckStyles\Readers\PuppyCrawl\Member\PupyyCrawlNestedTryDepthReader.cs" />
     <Compile Include="Readers\XmlReaders\CheckStyles\Readers\PuppyCrawl\PuppyCrawlSources.cs" />
     <Compile Include="Readers\XmlReaders\CheckStyles\PuppyCrawlCheckStylesClassBuilder.cs" />
-    <Compile Include="Readers\XmlReaders\MetricHandlers\ClassAttributeReader.cs" />
-    <Compile Include="Readers\XmlReaders\MetricHandlers\CyclomaticComplexityReader.cs" />
-    <Compile Include="Readers\XmlReaders\MetricHandlers\DepthOfInheritanceReader.cs" />
     <Compile Include="Readers\XmlReaders\MetricHandlers\IJavaMetricReader.cs" />
-    <Compile Include="Readers\XmlReaders\MetricHandlers\MethodLineReader.cs" />
-    <Compile Include="Readers\XmlReaders\XmlInstanceReader.cs" />
     <Compile Include="Persistence\ProjectRepository.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />

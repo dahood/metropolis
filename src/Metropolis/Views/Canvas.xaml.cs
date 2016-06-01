@@ -195,7 +195,7 @@ namespace Metropolis.Views
             if (searchText.Text.Length > 2)
             {
                 var searchQuery = searchText.Text;
-                SearchSuggestions.DisplayMemberPath = "Name";
+                SearchSuggestions.DisplayMemberPath = "CodeBag";
                 SearchSuggestions.ItemsSource = CodeBase.AllInstances.Where(
                     x => x.QualifiedName.IndexOf(searchQuery, StringComparison.CurrentCultureIgnoreCase) >= 0);
             }

@@ -118,7 +118,7 @@ namespace Metropolis.Test.Api.Domain
                 NumberOfMethods = 1
             };
 
-            var toApply = new Instance(cls.NameSpace, cls.Name, 2, 3, 4, 5, 6);
+            var toApply = new Instance(cls.CodeBag.Name, cls.Name, 2, 3, 4, 5, 6);
 
             cls.Apply(toApply);
 
@@ -147,9 +147,9 @@ namespace Metropolis.Test.Api.Domain
         [Test]
         public void ConstructWithValues()
         {
-            var cls = new Instance("ns", "name");
+            var cls = new Instance((string) "name", (string) "ns", CodeBagType.Empty, null);
             Validate.Begin().IsNotNull(cls, "class")
-                .IsEqual(cls.NameSpace, "ns", "namespace")
+                .IsEqual(cls.CodeBag.Name, "ns", "namespace")
                 .IsEqual(cls.Name, "name", "name")
                 .IsEqual(cls.QualifiedName, "ns.name", "qualifiedname")
                 .Check();

@@ -11,14 +11,11 @@ namespace Metropolis.Api.Readers.CsvReaders
 {
     public enum FileInclusion
     {
-        [Description(".js")]
-        Js,
+        [Description(".js")] Js,
 
-        [Description(".cs")]
-        CSharp,
+        [Description(".cs")] CSharp,
 
-        [Description(".java")]
-        Java
+        [Description(".java")] Java
     }
 
     public class SourceLinesOfCodeReader : CsvInstanceReader<SourceLinesOfCodeLineItem, SourceLinesOfCodeMap>
@@ -37,11 +34,29 @@ namespace Metropolis.Api.Readers.CsvReaders
         protected override CodeBase ParseLines(IEnumerable<SourceLinesOfCodeLineItem> lines)
         {
             var inclusionExtension = Inclusion.GetDescription();
-            var classes = lines.Where(x => x.Class.EndsWith(inclusionExtension)) 
-                               .Select(each => new Instance(each.Namespace, each.Class) {LinesOfCode = each.SourceLoc})
-                               .ToList();
+            var inclusionCodeBagType = MapToCodeBag(Inclusion);
+            var classes = lines.Where(x => x.Class.EndsWith(inclusionExtension))
+                //TODO: Grab physical path!!!!
+                .Select(each => new Instance(each.Class, each.Namespace, inclusionCodeBagType, string.Empty) {LinesOfCode = each.SourceLoc})
+                .ToList();
 
             return new CodeBase(new CodeGraph(classes));
+        }
+
+        private CodeBagType MapToCodeBag(FileInclusion inclusion)
+        {
+            switch (inclusion)
+            {
+                case FileInclusion.CSharp:
+                    return CodeBagType.Namespace;
+                case FileInclusion.Java:
+                    return CodeBagType.Package;
+                case FileInclusion.Js:
+                    return CodeBagType.Directory;
+
+                default:
+                    return CodeBagType.Empty;
+            }
         }
     }
 

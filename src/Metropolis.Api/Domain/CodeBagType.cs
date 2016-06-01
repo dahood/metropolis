@@ -6,6 +6,7 @@
     /// </summary>
     public enum CodeBagType
     {
+        Empty,
         Namespace,
         Package,
         Directory

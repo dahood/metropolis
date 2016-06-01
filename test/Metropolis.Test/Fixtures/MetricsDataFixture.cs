@@ -24,87 +24,87 @@
 @"<?xml version='1.0' encoding='utf-8'?>
 <CodeMetricsReport Version='14.0'>
   <Targets>
-    <Target Name='C:\develop\metropolis\dist\Metropolis.Api.dll'>
+    <Target CodeBag='C:\develop\metropolis\dist\Metropolis.Api.dll'>
       <Modules>
-        <Module Name='Metropolis.Api.dll' AssemblyVersion='1.0.0.0' FileVersion='1.0.0.0'>
+        <Module CodeBag='Metropolis.Api.dll' AssemblyVersion='1.0.0.0' FileVersion='1.0.0.0'>
           <Metrics>
-            <Metric Name='MaintainabilityIndex' Value='83' />
-            <Metric Name='CyclomaticComplexity' Value='927' />
-            <Metric Name='ClassCoupling' Value='214' />
-            <Metric Name='DepthOfInheritance' Value='3' />
-            <Metric Name='LinesOfCode' Value='1,669' />
+            <Metric CodeBag='MaintainabilityIndex' Value='83' />
+            <Metric CodeBag='CyclomaticComplexity' Value='927' />
+            <Metric CodeBag='ClassCoupling' Value='214' />
+            <Metric CodeBag='DepthOfInheritance' Value='3' />
+            <Metric CodeBag='LinesOfCode' Value='1,669' />
           </Metrics>
           <Namespaces>
-            <Namespace Name='Metropolis.Api.Utilities'>
+            <Namespace CodeBag='Metropolis.Api.Utilities'>
               <Metrics>
-                <Metric Name='MaintainabilityIndex' Value='83' />
-                <Metric Name='CyclomaticComplexity' Value='30' />
-                <Metric Name='ClassCoupling' Value='5' />
-                <Metric Name='DepthOfInheritance' Value='1' />
-                <Metric Name='LinesOfCode' Value='50' />
+                <Metric CodeBag='MaintainabilityIndex' Value='83' />
+                <Metric CodeBag='CyclomaticComplexity' Value='30' />
+                <Metric CodeBag='ClassCoupling' Value='5' />
+                <Metric CodeBag='DepthOfInheritance' Value='1' />
+                <Metric CodeBag='LinesOfCode' Value='50' />
               </Metrics>
               <Types>
-                <Type Name='Clock'>
+                <Type CodeBag='Clock'>
                   <Metrics>
-                    <Metric Name='MaintainabilityIndex' Value='91' />
-                    <Metric Name='CyclomaticComplexity' Value='8' />
-                    <Metric Name='ClassCoupling' Value='3' />
-                    <Metric Name='DepthOfInheritance' Value='1' />
-                    <Metric Name='LinesOfCode' Value='8' />
+                    <Metric CodeBag='MaintainabilityIndex' Value='91' />
+                    <Metric CodeBag='CyclomaticComplexity' Value='8' />
+                    <Metric CodeBag='ClassCoupling' Value='3' />
+                    <Metric CodeBag='DepthOfInheritance' Value='1' />
+                    <Metric CodeBag='LinesOfCode' Value='8' />
                   </Metrics>
                   <Members>
-                    <Member Name='Freeze() : void'>
+                    <Member CodeBag='Freeze() : void'>
                       <Metrics>
-                        <Metric Name='MaintainabilityIndex' Value='92' />
-                        <Metric Name='CyclomaticComplexity' Value='1' />
-                        <Metric Name='ClassCoupling' Value='2' />
-                        <Metric Name='LinesOfCode' Value='1' />
+                        <Metric CodeBag='MaintainabilityIndex' Value='92' />
+                        <Metric CodeBag='CyclomaticComplexity' Value='1' />
+                        <Metric CodeBag='ClassCoupling' Value='2' />
+                        <Metric CodeBag='LinesOfCode' Value='1' />
                       </Metrics>
                     </Member>
-                    <Member Name='Today.get() : DateTime'>
+                    <Member CodeBag='Today.get() : DateTime'>
                       <Metrics>
-                        <Metric Name='MaintainabilityIndex' Value='92' />
-                        <Metric Name='CyclomaticComplexity' Value='1' />
-                        <Metric Name='ClassCoupling' Value='2' />
-                        <Metric Name='LinesOfCode' Value='1' />
+                        <Metric CodeBag='MaintainabilityIndex' Value='92' />
+                        <Metric CodeBag='CyclomaticComplexity' Value='1' />
+                        <Metric CodeBag='ClassCoupling' Value='2' />
+                        <Metric CodeBag='LinesOfCode' Value='1' />
                       </Metrics>
                     </Member>
                   </Members>
                 </Type>               
               </Types>
             </Namespace>
-            <Namespace Name='Metropolis.Api.Services'>
+            <Namespace CodeBag='Metropolis.Api.Services'>
               <Metrics>
-                <Metric Name='MaintainabilityIndex' Value='89' />
-                <Metric Name='CyclomaticComplexity' Value='42' />
-                <Metric Name='ClassCoupling' Value='31' />
-                <Metric Name='DepthOfInheritance' Value='1' />
-                <Metric Name='LinesOfCode' Value='63' />
+                <Metric CodeBag='MaintainabilityIndex' Value='89' />
+                <Metric CodeBag='CyclomaticComplexity' Value='42' />
+                <Metric CodeBag='ClassCoupling' Value='31' />
+                <Metric CodeBag='DepthOfInheritance' Value='1' />
+                <Metric CodeBag='LinesOfCode' Value='63' />
               </Metrics>
               <Types>
-                <Type Name='AnalysisServices'>
+                <Type CodeBag='AnalysisServices'>
                   <Metrics>
-                    <Metric Name='MaintainabilityIndex' Value='72' />
-                    <Metric Name='CyclomaticComplexity' Value='4' />
-                    <Metric Name='ClassCoupling' Value='15' />
-                    <Metric Name='DepthOfInheritance' Value='1' />
-                    <Metric Name='LinesOfCode' Value='12' />
+                    <Metric CodeBag='MaintainabilityIndex' Value='72' />
+                    <Metric CodeBag='CyclomaticComplexity' Value='4' />
+                    <Metric CodeBag='ClassCoupling' Value='15' />
+                    <Metric CodeBag='DepthOfInheritance' Value='1' />
+                    <Metric CodeBag='LinesOfCode' Value='12' />
                   </Metrics>
                   <Members>
-                    <Member Name='AnalysisServices()'>
+                    <Member CodeBag='AnalysisServices()'>
                       <Metrics>
-                        <Metric Name='MaintainabilityIndex' Value='92' />
-                        <Metric Name='CyclomaticComplexity' Value='1' />
-                        <Metric Name='ClassCoupling' Value='2' />
-                        <Metric Name='LinesOfCode' Value='1' />
+                        <Metric CodeBag='MaintainabilityIndex' Value='92' />
+                        <Metric CodeBag='CyclomaticComplexity' Value='1' />
+                        <Metric CodeBag='ClassCoupling' Value='2' />
+                        <Metric CodeBag='LinesOfCode' Value='1' />
                       </Metrics>
                     </Member>                  
-                    <Member Name='Analyze(MetricsCommandArguments) : CodeBase'>
+                    <Member CodeBag='Analyze(MetricsCommandArguments) : CodeBase'>
                       <Metrics>
-                        <Metric Name='MaintainabilityIndex' Value='62' />
-                        <Metric Name='CyclomaticComplexity' Value='2' />
-                        <Metric Name='ClassCoupling' Value='12' />
-                        <Metric Name='LinesOfCode' Value='9' />
+                        <Metric CodeBag='MaintainabilityIndex' Value='62' />
+                        <Metric CodeBag='CyclomaticComplexity' Value='2' />
+                        <Metric CodeBag='ClassCoupling' Value='12' />
+                        <Metric CodeBag='LinesOfCode' Value='9' />
                       </Metrics>
                     </Member>
                   </Members>

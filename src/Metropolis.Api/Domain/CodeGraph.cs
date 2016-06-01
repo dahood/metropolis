@@ -6,7 +6,7 @@ namespace Metropolis.Api.Domain
     public class CodeGraph
     {
         private readonly Dictionary<string, Instance> map = new Dictionary<string, Instance>();
-        private readonly HashSet<string> namespaces = new HashSet<string>();
+        private readonly HashSet<CodeBag> codebags = new HashSet<CodeBag>();
 
         public CodeGraph(IEnumerable<Instance> classes)
         {
@@ -15,7 +15,7 @@ namespace Metropolis.Api.Domain
 
         public List<Instance> AllInstances => map.Values.ToList();
 
-        public List<string> AllNamespaces => namespaces.ToList();
+        public List<CodeBag> AllNamespaces => codebags.ToList();
         public int Count => map.Count;
 
         public int MaxLinesOfCode => map.Values.Count != 0 ? map.Values.Max(c => c.LinesOfCode) : 0; 
@@ -41,7 +41,7 @@ namespace Metropolis.Api.Domain
             else
             {
                 map.Add(src.QualifiedName, src);
-                namespaces.Add(src.NameSpace);
+                codebags.Add(src.CodeBag);
             }
         }
 

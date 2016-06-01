@@ -54,7 +54,7 @@ namespace Metropolis.Test.Api.Readers.CsvReaders
 
             var actual = codeBase.AllInstances.First();
 
-            actual.NameSpace.Should().Be(expected.NameSpace);
+            actual.CodeBag.Should().Be(expected.CodeBag);
             actual.Name.Should().Be(expected.Name);
             actual.NumberOfMethods.Should().Be(expected.NumberOfMethods);
             actual.CyclomaticComplexity.Should().Be(expected.CyclomaticComplexity);

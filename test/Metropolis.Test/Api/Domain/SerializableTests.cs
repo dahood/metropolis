@@ -41,7 +41,7 @@ namespace Metropolis.Test.Api.Domain
                 NumberOfMethods = 5,
                 Toxicity = 6,
                 Name = "MyClass",
-                NameSpace = "MyNamespace",
+                CodeBag = new SerializeableCodeBag {Name= "MyNamespace"},
                 Meta = new[] {versionInfo},
                 Members = new[] {member}
             };
