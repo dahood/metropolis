@@ -36,7 +36,7 @@ namespace Metropolis.Test.Api.Utilities
             var days = DateTime.DaysInMonth(today.Year, today.Month);
             var expected = new DateTime(today.Year, today.Month, days, 23, 59, 59, 999);
 
-            tomorrow.EndOfMonth().Should().Be(expected);
+            today.EndOfMonth().Should().Be(expected);
         }
 
         [Test]
