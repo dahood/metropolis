@@ -112,7 +112,14 @@ namespace Metropolis.Views
 
         private void LoadProject(object sender, RoutedEventArgs e)
         {
-            WorkSpaceProvider.Load();
+            try
+            {
+                WorkSpaceProvider.Load();
+            }
+            catch (ApplicationException ae)
+            {
+                MessageBox.Show(ae.Message);
+            }
             DisplayWorkspaceDetails();
         }
 
