@@ -136,6 +136,8 @@ namespace Metropolis.Views
 
         private void SaveProject(object sender, RoutedEventArgs e)
         {
+            //TODO: Clean this up
+            CodeBase.Name = App.ViewModel.ProjectName;
             WorkSpaceProvider.Save();
         }
 
