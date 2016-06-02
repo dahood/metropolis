@@ -195,7 +195,7 @@
                     <RibbonButton LargeImageSource="..\Images\compass.png" Label="Reset Camera" KeyTip="0"
                                   Click="ResetCamera" />
                     <RibbonButton LargeImageSource="..\Images\camera-info.png" Label="Camera Help" KeyTip="0"
-                                  Click="BeginnerGuide" />
+                                  Click="CameraGuide" />
                 </RibbonGroup>
                 <RibbonGroup x:Name="ScreenShotGroup" Header="Screenshots">
                     <RibbonButton LargeImageSource="..\Images\camera_icon.png" Label="Simple Screenshot" KeyTip="0"

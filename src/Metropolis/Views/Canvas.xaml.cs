@@ -388,9 +388,10 @@ namespace Metropolis.Views
             Process.Start("https://github.com/dahood/metropolis/wiki/Home");
         }
 
-        private void BeginnerGuide(object sender, RoutedEventArgs e)
+        private void CameraGuide(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/dahood/metropolis/wiki/Beginner-Guide");
+            
+            Process.Start("https://github.com/dahood/metropolis/wiki/Beginner-Guide#camera-controls");
         }
 
         private void NewVersion(object sender, RoutedEventArgs e)
