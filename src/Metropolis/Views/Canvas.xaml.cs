@@ -126,12 +126,31 @@ namespace Metropolis.Views
         private void DisplayWorkspaceDetails()
         {
             App.ViewModel.ProjectName = CodeBase.Name;
-
+            SetInstanceLabel(CodeBase.SourceType);
             LocTextBlock.Text = CodeBase.LinesOfCode.ToString("N0", CultureInfo.InvariantCulture);
             TypesTextBlock.Text = CodeBase.NumberOfTypes.ToString("N0", CultureInfo.InvariantCulture);
             ToxicityTextBlock.Text = CodeBase.AverageToxicity().ToString("N4", CultureInfo.InvariantCulture);
             CodeConcisenessTextBlock.Text = CodeBase.Conciseness().ToString("N4", CultureInfo.InvariantCulture);
             Renderlayout();
+        }
+
+        private void SetInstanceLabel(RepositorySourceType repositorySourceType)
+        {
+            switch (repositorySourceType)
+            {
+                case RepositorySourceType.CSharp:
+                    InstanceLabel.Content = "Types";
+                    break;
+                case RepositorySourceType.Java:
+                    InstanceLabel.Content = "Types";
+                    break;
+                case RepositorySourceType.ECMA:
+                    InstanceLabel.Content = "Files";
+                    break;
+                default:
+                    InstanceLabel.Content = "Types";
+                    break;
+            }
         }
 
         private void SaveProject(object sender, RoutedEventArgs e)

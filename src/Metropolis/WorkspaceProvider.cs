@@ -120,6 +120,7 @@ namespace Metropolis
         public void Analyze(ProjectDetailsViewModel viewModel)
         {
             CodeBase.SourceType = viewModel.RepositorySourceType;
+            CodeBase.Name = viewModel.ProjectName;
             CodeBase = analysisService.Analyze(BuildArguments(viewModel));
         }
         

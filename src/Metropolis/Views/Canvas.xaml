@@ -294,7 +294,7 @@
                             <Label Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0">Lines of Code</Label>
                             <TextBlock Grid.Row="1" Grid.Column="2" x:Name="LocTextBlock" 
                                        HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                            <Label Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0">Types</Label>
+                            <Label Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0" Name="InstanceLabel">Types</Label>
                             <TextBlock Grid.Row="2" Grid.Column="2" x:Name="TypesTextBlock" 
                                        HorizontalAlignment="Right" VerticalAlignment="Center" />
                             <Label Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0">Code Conciseness</Label>
