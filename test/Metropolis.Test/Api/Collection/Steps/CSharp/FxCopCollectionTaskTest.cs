@@ -21,7 +21,7 @@ namespace Metropolis.Test.Api.Collection.Steps.CSharp
                                                             {
                                                                 MetricsOutputFolder = @"c:\metrics",
                                                                 ProjectName = "test",
-                                                                RepositorySourceType = RepositorySourceType.FxCop,
+                                                                RepositorySourceType = RepositorySourceType.CSharp,
                                                                 SourceDirectory = @"c:\source"
                                                             };
 

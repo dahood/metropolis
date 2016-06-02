@@ -40,7 +40,6 @@ namespace Metropolis.Views
             switch (selection)
             {
                 case RepositorySourceType.CSharp:
-                case RepositorySourceType.FxCop:
                     CSharpPanel.Visibility = Visibility.Visible;
                     JavaPanel.Visibility = Visibility.Collapsed;
                     EcmaScriptPanel.Visibility = Visibility.Collapsed;

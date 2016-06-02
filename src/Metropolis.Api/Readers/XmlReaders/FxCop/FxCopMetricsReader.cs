@@ -35,7 +35,7 @@ namespace Metropolis.Api.Readers.XmlReaders.FxCop
                              where m.Parent.Parent.AttributeValue("Name").IsNotEmpty() 
                              select fxCopInstanceBuilder.Build(m)).ToList();
 
-            return new CodeBase("FxCop", new CodeGraph(instances), RepositorySourceType.FxCop);
+            return new CodeBase("FxCop", new CodeGraph(instances), RepositorySourceType.CSharp);
         }
     }
 }

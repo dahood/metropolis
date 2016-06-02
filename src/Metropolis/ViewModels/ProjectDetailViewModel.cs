@@ -67,7 +67,7 @@ namespace Metropolis.ViewModels
         public bool IsValid => IsForCSharp? projectName.IsNotEmpty() && sourceDirectory.IsNotEmpty() && IsFxCopInstalled 
                                           : projectName.IsNotEmpty() && sourceDirectory.IsNotEmpty();
 
-        public bool IsForCSharp => new[] {RepositorySourceType.CSharp, RepositorySourceType.FxCop}.Any(x => x == RepositorySourceType);
+        public bool IsForCSharp => RepositorySourceType.CSharp == RepositorySourceType;
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
