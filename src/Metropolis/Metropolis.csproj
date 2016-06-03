@@ -124,6 +124,9 @@
     <Compile Include="Views\ProjectProperties.xaml.cs">
       <DependentUpon>ProjectProperties.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TipOfTheDay.xaml.cs">
+      <DependentUpon>TipOfTheDay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\Spinner.xaml.cs">
       <DependentUpon>Spinner.xaml</DependentUpon>
     </Compile>
@@ -163,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProjectProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TipOfTheDay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -236,6 +243,7 @@
     <Resource Include="Images\Rename.png" />
     <Resource Include="Images\compass.png" />
     <Resource Include="Images\camera-info.png" />
+    <Resource Include="Images\main-ribbon.png" />
     <Content Include="SampleFiles\entity-framework-6.csv" />
     <None Include="SampleFiles\git-log-file-touches.csv" />
     <None Include="SampleFiles\metropolis-code-coverage-with-tests.coveragexml">

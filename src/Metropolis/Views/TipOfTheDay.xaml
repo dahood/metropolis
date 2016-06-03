@@ -1,0 +1,89 @@
+﻿<Window x:Class="Metropolis.Views.TipOfTheDay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Tip Of The Day" Icon="..\Images/logo.ico" Height="450" Width="600" Loaded="LoadCanvas" WindowStartupLocation="CenterScreen">
+    <StackPanel Margin="10,10,10,10">
+        <TextBlock TextWrapping="Wrap">
+            <Span>Welcome to Metropolis. This product is currently in beta, so please give feedback to our 
+                GitHub page: <Hyperlink Click="OpenIssue">GitHub Issues</Hyperlink>. You can also read our <Hyperlink Click="OpenBeginnerGuide"> beginner's guide </Hyperlink>on how to use the tool.<LineBreak/>
+            </Span>
+        </TextBlock>
+        <TextBlock>
+            <Span FontSize="14" FontWeight="Bold">How to Use Metropolis Ribbon</Span>
+        </TextBlock>
+        <Image Source="..\Images/main-ribbon.png"/>
+        <BulletDecorator>
+            <BulletDecorator.Bullet>
+                <Rectangle Width="5" Height="5" Fill="Gray" />
+            </BulletDecorator.Bullet>
+            <TextBlock TextWrapping="Wrap" Margin="20,0,0,0">Click on the "Import Data and Code Metrics"</TextBlock>
+        </BulletDecorator>
+        <BulletDecorator>
+            <BulletDecorator.Bullet>
+                <Rectangle Width="5" Height="5" Fill="Gray" />
+            </BulletDecorator.Bullet>
+            <TextBlock TextWrapping="Wrap"  Margin="20,0,0,0">Fill out the form (including the name of the project, source code type, and source code location)</TextBlock>
+        </BulletDecorator>
+        <BulletDecorator>
+            <BulletDecorator.Bullet>
+                <Rectangle Width="5" Height="5" Fill="Gray" />
+            </BulletDecorator.Bullet>
+            <TextBlock TextWrapping="Wrap" Margin="20,0,0,0">Click "Run Analysis"</TextBlock>
+        </BulletDecorator>
+        <BulletDecorator>
+            <BulletDecorator.Bullet>
+                <Rectangle Width="5" Height="5" Fill="Gray" />
+            </BulletDecorator.Bullet>
+            <TextBlock TextWrapping="Wrap" Margin="20,0,0,0">Use camera controls to get the perfect screenshot</TextBlock>
+        </BulletDecorator>
+        <BulletDecorator>
+            <BulletDecorator.Bullet>
+                <Rectangle Width="5" Height="5" Fill="Gray" />
+            </BulletDecorator.Bullet>
+            <TextBlock TextWrapping="Wrap" Margin="20,0,0,0">Use the code inspector to view individual code files</TextBlock>
+        </BulletDecorator>
+        <TextBlock>
+            <Span FontSize="14" FontWeight="Bold">Camera Controls</Span>
+        </TextBlock>
+        <BulletDecorator>
+            <BulletDecorator.Bullet>
+                <Rectangle Width="5" Height="5" Fill="Gray" />
+            </BulletDecorator.Bullet>
+            <TextBlock TextWrapping="Wrap" Margin="20,0,0,0">To pan up and down HOLD DOWN - CTRL</TextBlock>
+        </BulletDecorator>
+        <BulletDecorator>
+            <BulletDecorator.Bullet>
+                <Rectangle Width="5" Height="5" Fill="Gray" />
+            </BulletDecorator.Bullet>
+            <TextBlock TextWrapping="Wrap"  Margin="20,0,0,0">To pan side to side HOLD DOWN - SHIFT</TextBlock>
+        </BulletDecorator>
+        <BulletDecorator>
+            <BulletDecorator.Bullet>
+                <Rectangle Width="5" Height="5" Fill="Gray" />
+            </BulletDecorator.Bullet>
+            <TextBlock TextWrapping="Wrap" Margin="20,0,0,0">To rotate the view HOLD DOWN - ALT</TextBlock>
+        </BulletDecorator>
+        <BulletDecorator>
+            <BulletDecorator.Bullet>
+                <Rectangle Width="5" Height="5" Fill="Gray" />
+            </BulletDecorator.Bullet>
+            <TextBlock TextWrapping="Wrap" Margin="20,0,0,0">To zoom use the mouse wheel or gesture on your touch screen</TextBlock>
+        </BulletDecorator>
+        <TextBlock>
+            <Span FontSize="14" FontWeight="Bold">Code Inspector</Span>
+        </TextBlock>
+        <BulletDecorator>
+            <BulletDecorator.Bullet>
+                <Rectangle Width="5" Height="5" Fill="Gray" />
+            </BulletDecorator.Bullet>
+            <TextBlock TextWrapping="Wrap" Margin="20,0,0,0">
+                Right click the building to display the details of the instance (e.g. class or file depending on the language)
+            </TextBlock>
+        </BulletDecorator>
+        <Button Margin="10,10,10,10" Content="Close Tip of Day" Click="CloseWindow"></Button>
+        
+        </StackPanel>
+</Window>
