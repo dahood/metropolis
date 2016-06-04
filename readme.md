@@ -15,8 +15,7 @@ We plan on supporting the command line interface using Mono at some point in the
 
 Metropolis maps every code unit (for C# or Java this is a class, for Javascript this is a file) into a city building. The default is to create taller building based on lines of code and the color of that building based on how healthy the code is. All the green and short buildings are good. The tall red ones need to be reviewed by the techinical team to ensure that code quality is maintained or improved.
 
-For more information on code health please read Erik Doernenburg's awesome article on [How Toxic is Your Code?](http://erik.doernenburg.com/2008/11/how-toxic-is-your-code/). It explains toxicity scales and how they are calculated for Java.
-Toxicity is essentially a [Richter Scale](https://en.wikipedia.org/wiki/Richter_magnitude_scale) of code health. If your code has an average toxicity of higher than 0.500 (e.g. C#, Java, Javascript/ECMA) then it's likely a good idea to refocus on code quality to improve the maintainability and extensibility of the code.
+Toxicity is essentially a [Richter Scale](https://en.wikipedia.org/wiki/Richter_magnitude_scale) of code health. If your code has an average toxicity of higher than 0.500 (e.g. C#, Java, Javascript/ECMA) then it's likely a good idea to refocus on code quality to improve the maintainability and extensibility of the code. For more on code health read the [Code Analysis Primer](https://github.com/dahood/metropolis/wiki/Code-Analysis-Primer).
 
 ### Example - Hibernate
 <p align="center"><img alt="Cityscape of Hibernate" src="https://raw.githubusercontent.com/dahood/metropolis/master/example-metropolis.png"/></p>
@@ -35,7 +34,6 @@ Metropolis depends on the following open source software:
 
 * CSVHelper (Dual licensing under MS-PL and Apache 2.0) - http://joshclose.github.io/CsvHelper/
 * Newtonsoft.JSON (The MIT). - https://github.com/JamesNK/Newtonsoft.Json
-* WPF Autocomplete box (MS-PL) - https://wpfautocomplete.codeplex.com
 * Galatic Powershell & Event Log (MIT) - https://raw.githubusercontent.com/GalacticAPI/Galactic/master/LICENSE
 * ESLint (JQuery Foundation) - https://github.com/eslint/eslint
 * Checkstyle (GNU LGPL 2.1) - https://github.com/checkstyle/checkstyle
