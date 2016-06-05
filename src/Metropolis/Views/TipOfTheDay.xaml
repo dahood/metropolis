@@ -18,9 +18,16 @@
                 GitHub page: <Hyperlink Click="OpenIssue">GitHub Issues</Hyperlink>. You can also read our <Hyperlink Click="OpenBeginnerGuide"> beginner's guide </Hyperlink>on how to use the tool.<LineBreak/>
             </Span>
         </TextBlock>
-        <StackPanel >
+        <StackPanel Height="300">
             <dynamicContentControl:DynamicContentControl XamlText="{Binding Path=Tip}" XamlNamespaces="{StaticResource xamlNamespaces}" Margin="5"/>
         </StackPanel>
-        <Button Margin = '10,10,10,10' Content='Close Tip of Day' Click='CloseWindow'></Button>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Margin = '10,10,10,10' Width="100"  Content='Next Tip' Click='NextTip'/>
+            <Button Grid.Row="0" Grid.Column="1" Margin = '10,10,10,10' Width="100"  Content='Close Tip of Day' Click='CloseWindow'/>
+        </Grid>
     </StackPanel>
 </Window>

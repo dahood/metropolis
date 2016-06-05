@@ -9,10 +9,15 @@ namespace Metropolis.Views
     /// </summary>
     public partial class TipOfTheDay : Window
     {
+        private readonly ITipOfTheDayFactory tipTheDayFactory;
+
         public TipOfTheDay()
         {
             InitializeComponent();
-            DataContext = new CameraControlTip();
+
+            //TODO:  change this when we plug in IOC
+            tipTheDayFactory = new TipOfTheDayFactory();
+            NextTip(this, new RoutedEventArgs());
         }
 
         private void OpenIssue(object sender, RoutedEventArgs e)
@@ -27,14 +32,19 @@ namespace Metropolis.Views
 
         private void LoadCanvas(object sender, RoutedEventArgs e)
         {
-            Canvas canvas = new Canvas();
+            var canvas = new Canvas();
             canvas.Show();
-            this.Activate();
+            Activate();
         }
 
         private void CloseWindow(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void NextTip(object sender, RoutedEventArgs e)
+        {
+            DataContext = tipTheDayFactory.Next;
         }
     }
 }

@@ -98,6 +98,7 @@
     <Compile Include="AutoComplete\FileSuggestionProvider.cs" />
     <Compile Include="AutoComplete\FolderSuggestionProvider.cs" />
     <Compile Include="AutoComplete\FileSystemSuggestionProvider.cs" />
+    <Compile Include="ITipOfTheDayFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InstanceInformationFacade.cs" />
     <Compile Include="Camera\WaitCursor.cs" />
@@ -116,9 +117,10 @@
     <Compile Include="Models\LinearScale.cs" />
     <Compile Include="AutoComplete\RequiredValidationRule.cs" />
     <Compile Include="AutoComplete\FileIconConverter.cs" />
+    <Compile Include="TipOfTheDay\TipOfTheDayFactory.cs" />
     <Compile Include="TipOfTheDay\CameraControlTip.cs" />
-    <Compile Include="TipOfTheDay\ITipOfTheDay.cs" />
-    <Compile Include="TipOfTheDay\SampleControlTip.cs" />
+    <Compile Include="ITipOfTheDay.cs" />
+    <Compile Include="TipOfTheDay\DefaultCaseControlTip.cs" />
     <Compile Include="ValueConverters\FxCopVisibilityConverter.cs" />
     <Compile Include="ValueConverters\RepositorySourceTypeConverter.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
@@ -251,6 +253,7 @@
     <Resource Include="Images\compass.png" />
     <Resource Include="Images\camera-info.png" />
     <Resource Include="Images\TipOfTheDay\main-ribbon.png" />
+    <Resource Include="Images\TipOfTheDay\MissingDefaultInSwitch.png" />
     <Content Include="SampleFiles\entity-framework-6.csv" />
     <None Include="SampleFiles\git-log-file-touches.csv" />
     <None Include="SampleFiles\metropolis-code-coverage-with-tests.coveragexml">
