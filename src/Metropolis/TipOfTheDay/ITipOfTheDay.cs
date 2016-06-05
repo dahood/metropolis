@@ -1,4 +1,4 @@
-﻿namespace Metropolis
+﻿namespace Metropolis.TipOfTheDay
 {
     public interface ITipOfTheDay
     {
