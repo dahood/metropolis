@@ -14,8 +14,17 @@ namespace Metropolis.TipOfTheDay
             () => new NestedIfThenElseCodeSmellTip(),
             () => new InversionOfControlTip()
         };
-        
+
+
         public ITipOfTheDay Next  => Tips[NextIndex]();
-        public int NextIndex => current == Tips.Count - 1 ? current = 0 : current += 1;
+
+        public int NextIndex 
+        {
+            get
+            {
+                return current = current == Tips.Count - 1 ? current = 0 : current += 1;
+            }
+        }
+        
     }
 }

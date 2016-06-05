@@ -47,9 +47,7 @@ namespace Metropolis.Views
         {
             DataContext = tipTheDayFactory.Next;
         }
-
-        //used by tips that want to include links to external webistes as shown below:
-        //   <Hyperlink NavigateUri = "http://www.google.com" RequestNavigate="Hyperlink_RequestNavigate">For more info...</Hyperlink>
+        
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));

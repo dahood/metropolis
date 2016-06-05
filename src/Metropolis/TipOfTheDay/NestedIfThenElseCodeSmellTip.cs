@@ -12,6 +12,6 @@
     </StackPanel>
 ";
 
-        public string ForMoreInfoUrl => @"http://www.drdobbs.com/architecture-and-design/refactoring-deeply-nested-code/231500074";
+        public string ForMoreInfoUrl => @"http://programmers.stackexchange.com/questions/47789/how-would-you-refactor-nested-if-statements";
     }
 }
