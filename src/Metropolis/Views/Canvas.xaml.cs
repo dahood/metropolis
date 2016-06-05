@@ -33,19 +33,17 @@ namespace Metropolis.Views
 
             Initialize3DModel();
             HookupEventHandlers();
-
-
+            
             DataContext = App.ViewModel;
             LoadDefaultProject();
         }
 
         public CodeBase CodeBase => App.CodeBase;
-        private IWorkspaceProvider WorkSpaceProvider => App.WorkspaceProvider;
+        private static IWorkspaceProvider WorkSpaceProvider => App.WorkspaceProvider;
 
         public AbstractLayout Layout { get; private set; } = new SquaredLayout();
 
         public RepositorySourceType SourceType => CodeBase.SourceType;
-
 
         public void SetClassInformation(string text)
         {
@@ -89,8 +87,7 @@ namespace Metropolis.Views
             CityLayoutToggleButton.Checked += (sender1, e1) => { ChangeLayout(new CityLayout()); };
             GoldenRatioLayoutToggleButton.Checked += (sender2, e2) => { ChangeLayout(new GoldenRatioLayout()); };
         }
-
-
+        
         private void ResetCamera(object sender, RoutedEventArgs e)
         {
             mouseMovement.Reset();
@@ -160,7 +157,6 @@ namespace Metropolis.Views
             WorkSpaceProvider.Save();
         }
 
-
         private void RunCsvExport(object sender, RoutedEventArgs e)
         {
             WorkSpaceProvider.RunCsvExport();
@@ -168,8 +164,7 @@ namespace Metropolis.Views
 
         private void RenameProject(object sender, RoutedEventArgs e)
         {
-            var window = new ProjectProperties();
-            window.Show();
+            new ProjectProperties().Show();
         }
 
         private void LoadToxicity(object sender, RoutedEventArgs e)

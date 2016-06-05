@@ -117,6 +117,7 @@
     <Compile Include="Models\LinearScale.cs" />
     <Compile Include="AutoComplete\RequiredValidationRule.cs" />
     <Compile Include="AutoComplete\FileIconConverter.cs" />
+    <Compile Include="TipOfTheDay\InversionOfControlTip.cs" />
     <Compile Include="TipOfTheDay\NestedIfThenElseCodeSmellTip.cs" />
     <Compile Include="TipOfTheDay\TipOfTheDayFactory.cs" />
     <Compile Include="TipOfTheDay\CameraControlTip.cs" />

@@ -3,5 +3,6 @@
     public interface ITipOfTheDay
     {
         string Tip { get; }
+        string ForMoreInfoUrl { get; }
     }
 }

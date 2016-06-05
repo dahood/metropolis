@@ -18,8 +18,16 @@
                 GitHub page: <Hyperlink Click="OpenIssue">GitHub Issues</Hyperlink>. You can also read our <Hyperlink Click="OpenBeginnerGuide"> beginner's guide </Hyperlink>on how to use the tool.<LineBreak/>
             </Span>
         </TextBlock>
-        <StackPanel Height="300">
+        <!-- Hide this when you want to test a new Tip -->
+        <StackPanel Height="300" Visibility="Visible">
             <dynamicContentControl:DynamicContentControl XamlText="{Binding Path=Tip}" XamlNamespaces="{StaticResource xamlNamespaces}" Margin="5"/>
+            <TextBlock>
+                <Hyperlink NavigateUri="{Binding Path=ForMoreInfoUrl}" RequestNavigate="Hyperlink_RequestNavigate">For more info...</Hyperlink>
+            </TextBlock>
+        </StackPanel>
+
+        <!-- Show this and include your custom XAML when you want to test a new Tip -->
+        <StackPanel Height="300" Visibility="Collapsed">
         </StackPanel>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>

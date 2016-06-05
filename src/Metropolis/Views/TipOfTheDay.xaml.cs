@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Windows;
+using System.Windows.Navigation;
 using Metropolis.TipOfTheDay;
 
 namespace Metropolis.Views
@@ -45,6 +46,14 @@ namespace Metropolis.Views
         private void NextTip(object sender, RoutedEventArgs e)
         {
             DataContext = tipTheDayFactory.Next;
+        }
+
+        //used by tips that want to include links to external webistes as shown below:
+        //   <Hyperlink NavigateUri = "http://www.google.com" RequestNavigate="Hyperlink_RequestNavigate">For more info...</Hyperlink>
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
         }
     }
 }

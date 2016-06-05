@@ -11,7 +11,8 @@ namespace Metropolis.TipOfTheDay
         {
             () => new CameraControlTip(),
             () => new DefaultCaseControlTip(),
-            () => new NestedIfThenElseCodeSmellTip()
+            () => new NestedIfThenElseCodeSmellTip(),
+            () => new InversionOfControlTip()
         };
         
         public ITipOfTheDay Next  => Tips[NextIndex]();

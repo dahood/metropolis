@@ -10,6 +10,8 @@
         </TextBlock>
         <Image HorizontalAlignment='left' Height='250' Width='400' Source = '..\Images\TipOfTheDay\IfThenElse_CodeSmell.png' />
     </StackPanel>
-";        
+";
+
+        public string ForMoreInfoUrl => @"http://www.drdobbs.com/architecture-and-design/refactoring-deeply-nested-code/231500074";
     }
 }
