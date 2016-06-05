@@ -56,6 +56,10 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Sturnus.Wpf.DynamicContentControl, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sturnus.Wpf.DynamicContentControl.1.0.2\lib\Sturnus.Wpf.DynamicContentControl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -112,6 +116,9 @@
     <Compile Include="Models\LinearScale.cs" />
     <Compile Include="AutoComplete\RequiredValidationRule.cs" />
     <Compile Include="AutoComplete\FileIconConverter.cs" />
+    <Compile Include="TipOfTheDay\CameraControlTip.cs" />
+    <Compile Include="TipOfTheDay\ITipOfTheDay.cs" />
+    <Compile Include="TipOfTheDay\SampleControlTip.cs" />
     <Compile Include="ValueConverters\FxCopVisibilityConverter.cs" />
     <Compile Include="ValueConverters\RepositorySourceTypeConverter.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
@@ -243,7 +250,7 @@
     <Resource Include="Images\Rename.png" />
     <Resource Include="Images\compass.png" />
     <Resource Include="Images\camera-info.png" />
-    <Resource Include="Images\main-ribbon.png" />
+    <Resource Include="Images\TipOfTheDay\main-ribbon.png" />
     <Content Include="SampleFiles\entity-framework-6.csv" />
     <None Include="SampleFiles\git-log-file-touches.csv" />
     <None Include="SampleFiles\metropolis-code-coverage-with-tests.coveragexml">
@@ -273,6 +280,7 @@
   <ItemGroup>
     <AssemblyInfoFiles Include="**\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- Targets -->
   <Target Name="BeforeBuild">
