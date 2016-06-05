@@ -10,7 +10,8 @@ namespace Metropolis.TipOfTheDay
         private static readonly List<Func<ITipOfTheDay>> Tips = new List<Func<ITipOfTheDay>>
         {
             () => new CameraControlTip(),
-            () => new DefaultCaseControlTip()
+            () => new DefaultCaseControlTip(),
+            () => new NestedIfThenElseCodeSmellTip()
         };
         
         public ITipOfTheDay Next  => Tips[NextIndex]();

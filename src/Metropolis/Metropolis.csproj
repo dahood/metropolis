@@ -254,6 +254,7 @@
     <Resource Include="Images\camera-info.png" />
     <Resource Include="Images\TipOfTheDay\main-ribbon.png" />
     <Resource Include="Images\TipOfTheDay\MissingDefaultInSwitch.png" />
+    <Resource Include="Images\TipOfTheDay\IfThenElse_CodeSmell.png" />
     <Content Include="SampleFiles\entity-framework-6.csv" />
     <None Include="SampleFiles\git-log-file-touches.csv" />
     <None Include="SampleFiles\metropolis-code-coverage-with-tests.coveragexml">
