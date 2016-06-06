@@ -17,38 +17,6 @@ namespace Metropolis.Test.Api.Readers.CsvReaders
         }
 
         private VisualStudioMetricsReaderDouble reader;
-
-        private static VisualStudioCsvLineItem MakeType(string type, string ns = "ns", int loc = 0, int cyclo = 0,
-            int dit = 0, int cc = 0)
-        {
-            return new VisualStudioCsvLineItem
-            {
-                Scope = "Type",
-                Namespace = ns,
-                Type = type,
-                LinesOfCode = loc,
-                CyclomaticComplexity = cyclo,
-                DepthOfInheritance = dit,
-                ClassCoupling = cc
-            };
-        }
-
-        private static VisualStudioCsvLineItem MakeMember(string member, string type = "Clock", string ns = "ns",
-            int loc = 0, int cyclo = 0, int dit = 0, int cc = 0)
-        {
-            return new VisualStudioCsvLineItem
-            {
-                Scope = "Member",
-                Member = member,
-                Namespace = ns,
-                Type = type,
-                LinesOfCode = loc,
-                CyclomaticComplexity = cyclo,
-                DepthOfInheritance = dit,
-                ClassCoupling = cc
-            };
-        }
-
         [Test]
         public void Parse_NoMembers()
         {
@@ -90,6 +58,37 @@ namespace Metropolis.Test.Api.Readers.CsvReaders
                     "member equals")
                 .Check();
         }
+        
+        private static VisualStudioCsvLineItem MakeType(string type, string ns = "ns", int loc = 0, int cyclo = 0, int dit = 0, int cc = 0)
+        {
+            return new VisualStudioCsvLineItem
+            {
+                Scope = "Type",
+                Namespace = ns,
+                Type = type,
+                LinesOfCode = loc,
+                CyclomaticComplexity = cyclo,
+                DepthOfInheritance = dit,
+                ClassCoupling = cc
+            };
+        }
+
+        private static VisualStudioCsvLineItem MakeMember(string member, string type = "Clock", string ns = "ns",
+            int loc = 0, int cyclo = 0, int dit = 0, int cc = 0)
+        {
+            return new VisualStudioCsvLineItem
+            {
+                Scope = "Member",
+                Member = member,
+                Namespace = ns,
+                Type = type,
+                LinesOfCode = loc,
+                CyclomaticComplexity = cyclo,
+                DepthOfInheritance = dit,
+                ClassCoupling = cc
+            };
+        }
+
     }
 
     public class VisualStudioMetricsReaderDouble : VisualStudioMetricsReader

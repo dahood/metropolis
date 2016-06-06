@@ -1,16 +1,22 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Navigation;
+using Metropolis.Common.Extensions;
 using Metropolis.TipOfTheDay;
+using Metropolis.ViewModels;
 
 namespace Metropolis.Views
 {
     /// <summary>
     /// Interaction logic for TipOfTheDay.xaml
     /// </summary>
-    public partial class TipOfTheDay : Window
+    public partial class TipOfTheDay : Window, INotifyPropertyChanged
     {
         private readonly ITipOfTheDayFactory tipTheDayFactory;
+        public event PropertyChangedEventHandler PropertyChanged;
+        public static readonly DependencyProperty showTipsProperty = DependencyProperty.Register("ShowTips", typeof(bool), typeof(TipOfTheDay), new FrameworkPropertyMetadata(true));
+        private readonly TipOfTheDayViewModel tipOfTheDayViewModel;
 
         public TipOfTheDay()
         {
@@ -18,9 +24,14 @@ namespace Metropolis.Views
 
             //TODO:  change this when we plug in IOC
             tipTheDayFactory = new TipOfTheDayFactory();
-            NextTip(this, new RoutedEventArgs());
-        }
 
+            tipOfTheDayViewModel = new TipOfTheDayViewModel();
+            DataContext= tipOfTheDayViewModel;
+            NextTip(this, new RoutedEventArgs());
+            tipOfTheDayViewModel.ShowTips = WorkSpaceProvider.ShowTips;
+        }
+        private static IWorkspaceProvider WorkSpaceProvider => App.WorkspaceProvider;
+        
         private void OpenIssue(object sender, RoutedEventArgs e)
         {
             Process.Start("https://github.com/dahood/metropolis/issues");
@@ -30,14 +41,7 @@ namespace Metropolis.Views
         {
             Process.Start("https://github.com/dahood/metropolis/wiki/Beginner-Guide");
         }
-
-        private void LoadCanvas(object sender, RoutedEventArgs e)
-        {
-            var canvas = new Canvas();
-            canvas.Show();
-            Activate();
-        }
-
+        
         private void CloseWindow(object sender, RoutedEventArgs e)
         {
             Close();
@@ -45,13 +49,23 @@ namespace Metropolis.Views
 
         private void NextTip(object sender, RoutedEventArgs e)
         {
-            DataContext = tipTheDayFactory.Next;
+            tipOfTheDayViewModel.TipOfTheDay = tipTheDayFactory.Next;
         }
         
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
+        }
+
+        private void ShowTipsUnchecked(object sender, RoutedEventArgs e)
+        {
+            WorkSpaceProvider.ShowTips = false;
+        }
+
+        private void ShowTipsChecked(object sender, RoutedEventArgs e)
+        {
+            WorkSpaceProvider.ShowTips = true;
         }
     }
 }

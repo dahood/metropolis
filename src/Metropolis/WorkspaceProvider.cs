@@ -20,15 +20,17 @@ namespace Metropolis
     {
         private readonly IAnalysisService analysisService;
         private readonly ICodebaseService codebaseService;
+        private readonly IUserPreferences userPreferences;
 
-        public WorkspaceProvider() : this(new CodebaseService(), new AnalysisServices())
+        public WorkspaceProvider() : this(new CodebaseService(), new AnalysisServices(), new UserPreferences())
         {
         }
 
-        private WorkspaceProvider(ICodebaseService codebaseService, IAnalysisService analysisService)
+        private WorkspaceProvider(ICodebaseService codebaseService, IAnalysisService analysisService, IUserPreferences userPreferences)
         {
             this.codebaseService = codebaseService;
             this.analysisService = analysisService;
+            this.userPreferences = userPreferences;
         }
 
         public CodeBase CodeBase { get; private set; }
@@ -123,7 +125,13 @@ namespace Metropolis
             CodeBase.Name = viewModel.ProjectName;
             CodeBase = analysisService.Analyze(BuildArguments(viewModel));
         }
-        
+
+        public bool ShowTips
+        {
+            get { return userPreferences.ShowTipOfTheDay; }
+            set { userPreferences.ShowTipOfTheDay = value; }
+        }
+
         private static MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)
         {
             return new MetricsCommandArguments

@@ -6,7 +6,11 @@
         xmlns:dynamicContentControl="http://www.github.com/sturnus/dynamiccontentcontrol"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Tip Of The Day" Icon="..\Images/logo.ico" Height="475" Width="600" Loaded="LoadCanvas" WindowStartupLocation="CenterScreen">
+        Title="Tip Of The Day" 
+        Icon="..\Images/logo.ico" 
+        Height="500" Width="600" 
+        WindowStartupLocation="CenterScreen"
+        x:Name="TipOfTheDayPage">
     <Control.Resources>
         <x:Array x:Key="xamlNamespaces" Type="system:String">
             <system:String>xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"</system:String>
@@ -20,7 +24,7 @@
         </TextBlock>
         <!-- Hide this when you want to test a new Tip -->
         <StackPanel Height="300" Visibility="Visible">
-            <dynamicContentControl:DynamicContentControl XamlText="{Binding Path=Tip}" XamlNamespaces="{StaticResource xamlNamespaces}" Margin="5"/>
+            <dynamicContentControl:DynamicContentControl XamlText="{Binding Path=TipOfTheDay.Tip}" XamlNamespaces="{StaticResource xamlNamespaces}" Margin="5"/>
            
         </StackPanel>
         
@@ -29,6 +33,7 @@
         </StackPanel>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Bottom" >
             <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -39,8 +44,9 @@
             <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                 <Hyperlink NavigateUri="{Binding Path=ForMoreInfoUrl}" RequestNavigate="Hyperlink_RequestNavigate">For more info...</Hyperlink>
             </TextBlock>
-            <Button Grid.Row="1" Grid.Column="0" Margin = '10,10,10,10' Width="100" HorizontalAlignment="Right"  Content='Next Tip' Click='NextTip'/>
-            <Button Grid.Row="1" Grid.Column="1" Margin = '10,10,10,10' Width="100" HorizontalAlignment="Left" Content='Close Tip of Day' Click='CloseWindow'/>
+            <CheckBox Grid.Row="1" Name="ShowTipsCheckBox" IsChecked="{Binding Path=ShowTips, Mode=TwoWay}" Unchecked="ShowTipsUnchecked" Checked="ShowTipsChecked">Show Tip Of The Day</CheckBox>
+            <Button Grid.Row="2" Grid.Column="0" Margin = '10,10,10,10' Width="100" HorizontalAlignment="Right"  Content='Next Tip' Click='NextTip'/>
+            <Button Grid.Row="2" Grid.Column="1" Margin = '10,10,10,10' Width="100" HorizontalAlignment="Left" Content='Close Tip of Day' Click='CloseWindow'/>
         </Grid>
     </StackPanel>
 </Window>

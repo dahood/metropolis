@@ -22,5 +22,17 @@ namespace Metropolis.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowTips {
+            get {
+                return ((bool)(this["ShowTips"]));
+            }
+            set {
+                this["ShowTips"] = value;
+            }
+        }
     }
 }

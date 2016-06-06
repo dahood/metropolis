@@ -296,8 +296,16 @@ namespace Metropolis.Views
         {
             SetWindowState();
             SetVersion();
+            LoadTipOfTheDay();
         }
 
+        private static void LoadTipOfTheDay()
+        {
+            if (!WorkSpaceProvider.ShowTips) return;
+
+            var tipOfTheDay = new TipOfTheDay();
+            tipOfTheDay.ShowDialog();
+        }
         private void TakeScreenshot(object sender, RoutedEventArgs e)
         {
             using (new WaitCursor())
