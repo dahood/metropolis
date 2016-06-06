@@ -299,12 +299,10 @@ namespace Metropolis.Views
             LoadTipOfTheDay();
         }
 
-        private static void LoadTipOfTheDay()
+        private void LoadTipOfTheDay()
         {
             if (!WorkSpaceProvider.ShowTips) return;
-
-            var tipOfTheDay = new TipOfTheDay();
-            tipOfTheDay.ShowDialog();
+            ShowTipOfTheDay(this, new RoutedEventArgs());
         }
         private void TakeScreenshot(object sender, RoutedEventArgs e)
         {
@@ -414,6 +412,11 @@ namespace Metropolis.Views
         private void OpenCodeFileHyperLink(object sender, RoutedEventArgs e)
         {
             Process.Start("notepad.exe", highlightedInstance.GetPhysicalFilePath());
+        }
+
+        private void ShowTipOfTheDay(object sender, RoutedEventArgs e)
+        {
+            new TipOfTheDay().ShowDialog();
         }
     }
 }

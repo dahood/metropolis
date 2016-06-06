@@ -210,6 +210,7 @@
                 </RibbonGroup>
                 <RibbonGroup x:Name="HelpGroup" Header="Help">
                     <RibbonButton Label="Project Wiki" LargeImageSource="..\Images\Wiki.ico" Click="ProjectWiki" />
+                    <RibbonButton Label="Tip Of The Day" LargeImageSource="..\Images\TipOfTheDay.png" Click="ShowTipOfTheDay" />
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Advanced" KeyTip="A">
