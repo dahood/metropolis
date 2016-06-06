@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Tip Of The Day" 
         Icon="..\Images/logo.ico" 
-        Height="500" Width="600" 
+        Height="525" Width="600" 
         WindowStartupLocation="CenterScreen"
         x:Name="TipOfTheDayPage">
     <Control.Resources>
@@ -28,7 +28,7 @@
         </StackPanel>
         
         <!-- Show this and include your custom XAML when you want to test a new Tip -->
-        <StackPanel Height="300" Visibility="Collapsed">
+        <StackPanel Height="325" Visibility="Collapsed">
 
         </StackPanel>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Bottom" >
