@@ -44,7 +44,7 @@
             <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                 <Hyperlink NavigateUri="{Binding Path=ForMoreInfoUrl}" Click="Hyperlink_OnClick" RequestNavigate="Hyperlink_RequestNavigate">For more info...</Hyperlink>
             </TextBlock>
-            <CheckBox Grid.Row="1" Name="ShowTipsCheckBox" IsChecked="{Binding Path=ShowTips, Mode=TwoWay}" Unchecked="ShowTipsUnchecked" Checked="ShowTipsChecked">Show Tip Of The Day</CheckBox>
+            <CheckBox Grid.Row="1" Name="ShowTipsCheckBox" IsChecked="{Binding Path=ShowTips, Mode=TwoWay}" Unchecked="ShowTipsUnchecked" Checked="ShowTipsChecked">Show Tip Of The Day On Startup </CheckBox>
             <Button Grid.Row="2" Grid.Column="0" Margin = '10,10,10,10' Width="100" HorizontalAlignment="Right"  Content='Next Tip' Click='NextTip'/>
             <Button Grid.Row="2" Grid.Column="1" Margin = '10,10,10,10' Width="100" HorizontalAlignment="Left" Content='Close Tip of Day' Click='CloseWindow'/>
         </Grid>
