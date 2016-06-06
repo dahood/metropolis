@@ -1,6 +1,6 @@
 {
   "name": "metropolis",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "a code visualization tool",
   "main": "gulpfile.js",
   "files": [
