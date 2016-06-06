@@ -19,17 +19,17 @@
     <StackPanel Margin="10,10,10,10">
         <TextBlock TextWrapping="Wrap">
             <Span>Welcome to Metropolis. This product is currently in beta, so please give feedback to our 
-                GitHub page: <Hyperlink Click="OpenIssue">GitHub Issues</Hyperlink>. You can also read our <Hyperlink Click="OpenBeginnerGuide"> beginner's guide </Hyperlink>on how to use the tool.<LineBreak/>
+                GitHub page: <Hyperlink Click="OpenIssue">GitHub Issues</Hyperlink>. You can also read our <Hyperlink Click="OpenBeginnerGuide"> beginner's guide </Hyperlink> on how to use the tool.<LineBreak/>
             </Span>
         </TextBlock>
         <!-- Hide this when you want to test a new Tip -->
         <StackPanel Height="300" Visibility="Visible">
             <dynamicContentControl:DynamicContentControl XamlText="{Binding Path=TipOfTheDay.Tip}" XamlNamespaces="{StaticResource xamlNamespaces}" Margin="5"/>
-           
         </StackPanel>
         
         <!-- Show this and include your custom XAML when you want to test a new Tip -->
         <StackPanel Height="300" Visibility="Collapsed">
+
         </StackPanel>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Bottom" >
             <Grid.RowDefinitions>
@@ -42,7 +42,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                <Hyperlink NavigateUri="{Binding Path=ForMoreInfoUrl}" RequestNavigate="Hyperlink_RequestNavigate">For more info...</Hyperlink>
+                <Hyperlink NavigateUri="{Binding Path=ForMoreInfoUrl}" Click="Hyperlink_OnClick" RequestNavigate="Hyperlink_RequestNavigate">For more info...</Hyperlink>
             </TextBlock>
             <CheckBox Grid.Row="1" Name="ShowTipsCheckBox" IsChecked="{Binding Path=ShowTips, Mode=TwoWay}" Unchecked="ShowTipsUnchecked" Checked="ShowTipsChecked">Show Tip Of The Day</CheckBox>
             <Button Grid.Row="2" Grid.Column="0" Margin = '10,10,10,10' Width="100" HorizontalAlignment="Right"  Content='Next Tip' Click='NextTip'/>

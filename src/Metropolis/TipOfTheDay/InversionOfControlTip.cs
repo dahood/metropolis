@@ -7,7 +7,7 @@
         public string Tip =>
 @"
            <StackPanel>
-                <TextBlock>   
+                <TextBlock TextWrapping='Wrap'>  
                     <Span FontSize='14' FontWeight='Bold'> Reducing Code Coupling with Inversion of Control</Span>
                 </TextBlock>
             <TextBlock TextWrapping='Wrap'>   

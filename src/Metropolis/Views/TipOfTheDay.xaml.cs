@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Navigation;
 using Metropolis.Common.Extensions;
@@ -11,11 +10,9 @@ namespace Metropolis.Views
     /// <summary>
     /// Interaction logic for TipOfTheDay.xaml
     /// </summary>
-    public partial class TipOfTheDay : Window, INotifyPropertyChanged
+    public partial class TipOfTheDay : Window
     {
         private readonly ITipOfTheDayFactory tipTheDayFactory;
-        public event PropertyChangedEventHandler PropertyChanged;
-        public static readonly DependencyProperty showTipsProperty = DependencyProperty.Register("ShowTips", typeof(bool), typeof(TipOfTheDay), new FrameworkPropertyMetadata(true));
         private readonly TipOfTheDayViewModel tipOfTheDayViewModel;
 
         public TipOfTheDay()
@@ -54,8 +51,7 @@ namespace Metropolis.Views
         
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
-            e.Handled = true;
+            Process.Start(e.Uri.AbsoluteUri);
         }
 
         private void ShowTipsUnchecked(object sender, RoutedEventArgs e)
@@ -66,6 +62,12 @@ namespace Metropolis.Views
         private void ShowTipsChecked(object sender, RoutedEventArgs e)
         {
             WorkSpaceProvider.ShowTips = true;
+        }
+
+        private void Hyperlink_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (tipOfTheDayViewModel.TipOfTheDay.ForMoreInfoUrl.IsEmpty()) return;
+            Process.Start(tipOfTheDayViewModel.TipOfTheDay.ForMoreInfoUrl);
         }
     }
 }

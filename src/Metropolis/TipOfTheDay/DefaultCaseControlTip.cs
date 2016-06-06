@@ -12,6 +12,6 @@
     </StackPanel>
 ";
 
-        public string ForMoreInfoUrl => @"https://msdn.microsoft.com/en-ca/library/06tc147t.aspx";
+        public string ForMoreInfoUrl => @"https://en.wikipedia.org/wiki/Switch_statement";
     }
 }
