@@ -348,8 +348,7 @@
                                 <Paragraph Name="codeInspectorText" />
                             </FlowDocument>
                         </RichTextBox>
-                        <!-- TODO:: Get Open Link working before displaying to users -->
-                        <TextBlock Visibility="Collapsed"><Hyperlink Click="OpenCodeFileHyperLink">Open File</Hyperlink></TextBlock>
+                        <TextBlock x:Name="CodeLinkTextBlock" Visibility="Collapsed"><Hyperlink Click="OpenCodeFileHyperLink">Open File</Hyperlink></TextBlock>
                     </StackPanel>
                 </GroupBox>
             </StackPanel>

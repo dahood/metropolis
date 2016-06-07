@@ -42,13 +42,17 @@ namespace Metropolis.Api.Services
             var metricsResults = command.Run(details);
 
             var codeBase = CodeBase.Empty();
-            metricsResults.ForEach(x =>
+            foreach (var x in metricsResults)
             {
                 var cb = codebaseService.Get(x.MetricsFile, x.ParseType);
                 codeBase.Enrich(new CodeGraph(cb.AllInstances));
-            });
+            }
 
-            return analyzerFactory.For(details.RepositorySourceType).Analyze(codeBase.AllInstances);
+            var codebase = analyzerFactory.For(details.RepositorySourceType).Analyze(codeBase.AllInstances);
+            codebase.SourceType = details.RepositorySourceType;
+            codebase.Name = details.ProjectName;
+
+            return codebase;
         }
     }
 }

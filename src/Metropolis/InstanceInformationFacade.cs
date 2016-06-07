@@ -28,7 +28,6 @@ namespace Metropolis
         public void DisplayClass(Instance src)
         {
             ClearDisplay();
-            highlightedInstance = src;
             var model = provider.Layout.LookupModel(src);
             Display((GeometryModel3D) model);
         }
@@ -63,6 +62,7 @@ namespace Metropolis
         {
             highlight = highlight.Swap(model);
             var type = provider.Layout.LookupClass(model);
+            highlightedInstance = type;
             var txt = DisplayTextBasedOnRepositoryType(type);
 
             provider.SetClassInformation(txt);

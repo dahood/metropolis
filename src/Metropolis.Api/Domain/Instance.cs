@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Metropolis.Api.Extensions;
+using Metropolis.Common.Extensions;
 
 namespace Metropolis.Api.Domain
 {
@@ -134,10 +135,14 @@ namespace Metropolis.Api.Domain
             if (!Matches(src)) return;
 
             LinesOfCode = LinesOfCode.Max(src.LinesOfCode);
+            PhysicalPath = src.PhysicalPath ?? PhysicalPath;
             DepthOfInheritance = DepthOfInheritance.Max(src.DepthOfInheritance);
             CyclomaticComplexity = CyclomaticComplexity.Max(src.CyclomaticComplexity);
             ClassCoupling = ClassCoupling.Max(src.ClassCoupling);
             NumberOfMethods = NumberOfMethods.Max(src.NumberOfMethods);
+            AnonymousInnerClassLength = AnonymousInnerClassLength.Max(src.AnonymousInnerClassLength);
+            ClassFanOutComplexity = ClassFanOutComplexity.Max(src.ClassFanOutComplexity);
+            ClassDataAbstractionCoupling = ClassDataAbstractionCoupling.Max(src.ClassDataAbstractionCoupling);
 
             if (src.Members.HasValues())
                 ApplyMembers(src.Members);

@@ -54,6 +54,7 @@ namespace Metropolis.Views
                 codeInspectorText.Inlines.Clear();
                 codeInspectorText.Inlines.Add(text);
             }
+            CodeLinkTextBlock.Visibility = highlightedInstance.GetPhysicalFilePath() == string.Empty ? Visibility.Collapsed : Visibility.Visible;
         }
 
         public Viewport3D ViewPort => viewPort;

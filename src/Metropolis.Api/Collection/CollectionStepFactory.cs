@@ -14,7 +14,7 @@ namespace Metropolis.Api.Collection
             new Dictionary<RepositorySourceType, Func<ICollectionStep>>
             {
                 {RepositorySourceType.CSharp, () => new VisualStudioCollectionSteps()},
-                {RepositorySourceType.Java, () => new PuppyCrawlerCheckstyleCollectionStep()},
+                {RepositorySourceType.Java, () => new JavaCollectionStep()},
                 {RepositorySourceType.ECMA, () => new EcmaCollectionStep()}
             };
 
