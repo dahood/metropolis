@@ -27,6 +27,17 @@ namespace Metropolis.Views
             NextTip(this, new RoutedEventArgs());
             tipOfTheDayViewModel.ShowTips = WorkSpaceProvider.ShowTips;
         }
+
+        public static void OpenWith<T>() where T : ITipOfTheDay, new()
+        {
+            new TipOfTheDay().Show(new T());
+        }
+
+        private void Show(ITipOfTheDay tipofTheDay)
+        {
+            DataContext = tipofTheDay;
+        }
+
         private static IWorkspaceProvider WorkSpaceProvider => App.WorkspaceProvider;
         
         private void OpenIssue(object sender, RoutedEventArgs e)
