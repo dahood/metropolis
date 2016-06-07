@@ -52,7 +52,7 @@ namespace Metropolis.Test.Api.Readers
         {
             factory.GetReader(ParseType.SlocEcma)
                    .Should().NotBeNull()
-                   .And.BeAssignableTo<SourceLinesOfCodeReader>();
+                   .And.BeAssignableTo<SlocReader>();
         }
 
         [Test]
@@ -60,7 +60,7 @@ namespace Metropolis.Test.Api.Readers
         {
             factory.GetReader(ParseType.SlocCSharp)
                 .Should().NotBeNull()
-                .And.BeAssignableTo<SourceLinesOfCodeReader>();
+                .And.BeAssignableTo<SlocReader>();
         }
 
         [Test]
@@ -68,7 +68,7 @@ namespace Metropolis.Test.Api.Readers
         {
             factory.GetReader(ParseType.SlocJava)
                 .Should().NotBeNull()
-                .And.BeAssignableTo<SourceLinesOfCodeReader>();
+                .And.BeAssignableTo<SlocReader>();
         }
 
         [Test]

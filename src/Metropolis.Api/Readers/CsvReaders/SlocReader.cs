@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using CsvHelper.Configuration;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
-using Metropolis.Api.Readers.CsvReaders.TypeConverters;
-using Metropolis.Api.Readers.CsvReaders.TypeConverters.Sloc;
 
 namespace Metropolis.Api.Readers.CsvReaders
 {
@@ -18,7 +15,7 @@ namespace Metropolis.Api.Readers.CsvReaders
         [Description(".java")] Java
     }
 
-    public class SlocReader : CsvInstanceReader<SlocLineItem, SourceLinesOfCodeMap>
+    public class SlocReader : CsvInstanceReader<SlocLineItem, SlocMap>
     {
         public SlocReader(FileInclusion inclusion = FileInclusion.Js) : base(true)
         {
@@ -36,8 +33,11 @@ namespace Metropolis.Api.Readers.CsvReaders
             var inclusionExtension = Inclusion.GetDescription();
             var inclusionCodeBagType = MapToCodeBag(Inclusion);
             var classes = lines.Where(x => x.FileName.EndsWith(inclusionExtension))
-                //TODO: Grab physical path!!!!
-                .Select(each => new Instance(each.FileName, each.Directory, inclusionCodeBagType, string.Empty) {LinesOfCode = each.SourceLoc})
+                .Select(each => new Instance(each.FileName, each.Directory, inclusionCodeBagType, string.Empty)
+                {
+                    PhysicalPath = each.PhysicalPath,
+                    LinesOfCode = each.SourceLoc
+                })
                 .ToList();
 
             return new CodeBase(new CodeGraph(classes));
@@ -57,22 +57,6 @@ namespace Metropolis.Api.Readers.CsvReaders
                 default:
                     return CodeBagType.Empty;
             }
-        }
-    }
-
-    public sealed class SourceLinesOfCodeMap : CsvClassMap<SlocLineItem>
-    {
-        public SourceLinesOfCodeMap()
-        {
-            Map(x => x.Directory).Index(0).TypeConverter<SlocDirectoryConverter>();
-            Map(x => x.FileName).Index(0).TypeConverter<SlocFileNameConverter>();
-            Map(x => x.PhysicalLoc).Index(1).TypeConverter<IntTypeConverter>();
-            Map(x => x.SourceLoc).Index(2).TypeConverter<IntTypeConverter>();
-            Map(x => x.CommentLoc).Index(3).TypeConverter<IntTypeConverter>();
-            Map(x => x.SingleLineCommentLoc).Index(4).TypeConverter<IntTypeConverter>();
-            Map(x => x.BlockCommentLoc).Index(5).TypeConverter<IntTypeConverter>();
-            Map(x => x.MixedLoc).Index(6).TypeConverter<IntTypeConverter>();
-            Map(x => x.EmptyLoc).Index(7).TypeConverter<IntTypeConverter>();
         }
     }
 }

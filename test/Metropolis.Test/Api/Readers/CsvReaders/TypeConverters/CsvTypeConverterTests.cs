@@ -13,7 +13,7 @@ namespace Metropolis.Test.Api.Readers.CsvReaders.TypeConverters
         [Test]
         public void SourceLinesOfCodeClassConverter()
         {
-            var converter = new SourceLinesOfCodeClassConverter();
+            var converter = new SlocFileNameConverter();
 
             converter.CanConvertFrom(typeof (string)).Should().BeTrue();
             converter.CanConvertFrom(typeof (int)).Should().BeFalse();
@@ -27,7 +27,7 @@ namespace Metropolis.Test.Api.Readers.CsvReaders.TypeConverters
         [Test]
         public void SourceLinesOfCodeNamespaceConverter()
         {
-            var converter = new SourceLinesOfCodeNamespaceConverter();
+            var converter = new SlocDirectoryConverter();
             
             converter.CanConvertFrom(typeof(string)).Should().BeTrue();
             converter.CanConvertFrom(typeof(int)).Should().BeFalse();

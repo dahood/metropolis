@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Metropolis.Test.Api.Readers.CsvReaders
 {
     [TestFixture]
-    public class SourceLinesOfCodeClassReaderTest : CsvParsersBaseTest<SourceLinesOfCodeReader>
+    public class SourceLinesOfCodeClassReaderTest : CsvParsersBaseTest<SlocReader>
     {
         private const string Heading = "Path,Physical,Source,Comment,Single-line comment,Block comment,Mixed,Empty";
 

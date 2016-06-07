@@ -15,9 +15,9 @@ namespace Metropolis.Api.Readers
             {ParseType.RichardToxicity, () => new ToxicityReader()},
             {ParseType.PuppyCrawler, () => CheckStylesReader.PuppyCrawlReader},
             {ParseType.EsLint, () => CheckStylesReader.EslintReader},
-            {ParseType.SlocEcma, () => new SourceLinesOfCodeReader(FileInclusion.Js)},
-            {ParseType.SlocCSharp, () => new SourceLinesOfCodeReader(FileInclusion.CSharp)},
-            {ParseType.SlocJava, () => new SourceLinesOfCodeReader(FileInclusion.Java)},
+            {ParseType.SlocEcma, () => new SlocReader(FileInclusion.Js)},
+            {ParseType.SlocCSharp, () => new SlocReader(FileInclusion.CSharp)},
+            {ParseType.SlocJava, () => new SlocReader(FileInclusion.Java)},
             {ParseType.FxCop,  () => new FxCopMetricsReader()}
         };
 

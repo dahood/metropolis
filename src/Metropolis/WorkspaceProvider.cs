@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Reflection.Emit;
 using CsvHelper;
 using Metropolis.Api.Analyzers.Toxicity;
 using Metropolis.Api.Domain;
@@ -114,7 +113,7 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
-                var parser = new SourceLinesOfCodeReader(inclusion);
+                var parser = new SlocReader(inclusion);
                 Parse(parser, fileName);
             }, "Source LOC |*.csv");
         }
