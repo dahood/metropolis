@@ -44,6 +44,5 @@ namespace Metropolis.Api.Domain
                 codebags.Add(src.CodeBag);
             }
         }
-
     }
 }

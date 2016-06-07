@@ -54,6 +54,7 @@ namespace Metropolis.Views
                 codeInspectorText.Inlines.Clear();
                 codeInspectorText.Inlines.Add(text);
             }
+            CodeLinkTextBlock.Visibility = string.IsNullOrEmpty(highlightedInstance.GetPhysicalFilePath()) ? Visibility.Collapsed : Visibility.Visible;
         }
 
         public Viewport3D ViewPort => viewPort;
@@ -411,7 +412,16 @@ namespace Metropolis.Views
 
         private void OpenCodeFileHyperLink(object sender, RoutedEventArgs e)
         {
-            Process.Start("notepad.exe", highlightedInstance.GetPhysicalFilePath());
+            var chrome = @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe";
+            if (File.Exists(chrome))
+            {
+                Process.Start(chrome, highlightedInstance.GetPhysicalFilePath());
+            }
+            else
+            {
+                MessageBox.Show("Opening with default editor...to avoid this please install Google Chrome");
+                Process.Start(highlightedInstance.GetPhysicalFilePath());
+            }
         }
 
         private void ShowTipOfTheDay(object sender, RoutedEventArgs e)

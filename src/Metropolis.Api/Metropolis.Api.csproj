@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collection\Steps\CSharp\ILocateFxCopMetricsTool.cs" />
+    <Compile Include="Collection\Steps\Java\JavaCollectionStep.cs" />
     <Compile Include="Domain\CodeBag.cs" />
     <Compile Include="Domain\CodeBagType.cs" />
     <Compile Include="Domain\Location.cs" />

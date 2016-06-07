@@ -28,7 +28,6 @@ namespace Metropolis
         public void DisplayClass(Instance src)
         {
             ClearDisplay();
-            highlightedInstance = src;
             var model = provider.Layout.LookupModel(src);
             Display((GeometryModel3D) model);
         }
@@ -63,6 +62,7 @@ namespace Metropolis
         {
             highlight = highlight.Swap(model);
             var type = provider.Layout.LookupClass(model);
+            highlightedInstance = type;
             var txt = DisplayTextBasedOnRepositoryType(type);
 
             provider.SetClassInformation(txt);
@@ -80,10 +80,10 @@ namespace Metropolis
             if (provider.SourceType == RepositorySourceType.Java)
             {
                 return string.Format(
-                    "Class: {1}{0}Lines Of Code: {2}{0}Number Of Methods: {3}{0}Cyclomatic Complexity: {4}{0}ClassFanOut: {5}{0}ClassDataAbstractionCoupling: {6}{0}Anon Inner Classes: {7}{0}Depth of Inheritance: {8}{0}Toxicity: {9}{0}Package: {10}{0}",
+                    "Class: {1}{0}Lines Of Code: {2}{0}Number Of Methods: {3}{0}Cyclomatic Complexity: {4}{0}ClassFanOut: {5}{0}ClassDataAbstractionCoupling: {6}{0}Anon Inner Classes: {7}{0}Toxicity: {8}{0}Package: {9}{0}",
                     Environment.NewLine, type.Name, type.LinesOfCode, type.NumberOfMethods, type.CyclomaticComplexity, type.ClassFanOutComplexity,
                     type.ClassDataAbstractionCoupling,
-                    type.AnonymousInnerClassLength, type.DepthOfInheritance, type.Toxicity, type.CodeBag.Name);
+                    type.AnonymousInnerClassLength, type.Toxicity, type.CodeBag.Name);
             }
             if (provider.SourceType == RepositorySourceType.ECMA)
             {
