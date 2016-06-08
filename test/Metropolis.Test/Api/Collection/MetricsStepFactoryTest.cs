@@ -33,7 +33,7 @@ namespace Metropolis.Test.Api.Collection
         {
             factory.GetStep(RepositorySourceType.Java)
                    .Should().NotBeNull()
-                   .And.BeAssignableTo<PuppyCrawlerCheckstyleCollectionStep>();
+                   .And.BeAssignableTo<JavaCollectionStep>();
         }
 
         [Test]
