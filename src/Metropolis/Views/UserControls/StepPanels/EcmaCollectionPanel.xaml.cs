@@ -18,7 +18,7 @@ namespace Metropolis.Views.UserControls.StepPanels
         public EcmaCollectionPanel()
         {
             InitializeComponent();
-            LanguageDialectComboBox.ItemsSource = Enum.GetValues(typeof(EcmaLanguageSetting)).Cast<EcmaLanguageSetting>();
+            LanguageDialectComboBox.ItemsSource = Enum.GetValues(typeof(EslintPasringOptions)).Cast<EslintPasringOptions>();
         }
 
         public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel) DataContext;

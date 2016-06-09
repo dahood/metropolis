@@ -19,18 +19,26 @@ namespace Metropolis.Api.Collection.Steps.ECMA
 
         public override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
         {
-            string fileName = "default.eslintrc.json";
-            if (args.Setting == EcmaLanguageSetting.ECMA3)
-                fileName = "ecma3.eslintrc.json";
-            if (args.Setting == EcmaLanguageSetting.ECMA5)
-                fileName = "ecma5.eslintrc.json";
+            var eslintConfigFile = GetEcmaDialect(args.Dialect);
 
-            var cmd = EsLintCommand.FormatWith(GetNodeBinPath(), LocateSettings(fileName), args.SourceDirectory, result.MetricsFile);
+            var cmd = EsLintCommand.FormatWith(GetNodeBinPath(), LocateSettings(eslintConfigFile), args.SourceDirectory, result.MetricsFile);
 
             if (args.IgnoreFile.IsNotEmpty())
                 cmd = string.Concat(cmd, IgnorePathPart.FormatWith(args.IgnoreFile));
 
             return cmd;
+        }
+
+        private static string GetEcmaDialect(EslintPasringOptions eslintPasringOptions)
+        {
+            var fileName = string.Empty;
+            if (eslintPasringOptions == EslintPasringOptions.DEFAULT)
+                fileName = "default.eslintrc.json";
+            if (eslintPasringOptions == EslintPasringOptions.MODULE)
+                fileName = "module.eslintrc.json";
+            if (eslintPasringOptions == EslintPasringOptions.ECMA6)
+                fileName = "ecma6.eslintrc.json";
+            return fileName;
         }
     }
 }

@@ -168,10 +168,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="entity-framework-6.project" />
-    <Content Include="Collection\Settings\ecma3.eslintrc.json">
+    <Content Include="Collection\Settings\ecma6.eslintrc.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Collection\Settings\ecma5.eslintrc.json">
+    <Content Include="Collection\Settings\module.eslintrc.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Collection\Settings\default.eslintrc.json">
