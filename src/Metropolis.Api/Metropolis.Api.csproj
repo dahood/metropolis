@@ -171,9 +171,6 @@
     <Content Include="Collection\Settings\ecma6.eslintrc.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Collection\Settings\module.eslintrc.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Collection\Settings\default.eslintrc.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -1,6 +1,6 @@
 {
   "parserOptions": {
-        "ecmaVersion": 6
+    "ecmaVersion": 6
   },
   "env": {
     "browser": true
@@ -22,7 +22,7 @@
       "error",
       { "max": 0 }
     ],
-    "default-case": [ "error" ],
-    "no-fallthrough": [ "error" ]
+    "default-case": ["error"],
+    "no-fallthrough": ["error"]
   }
 }

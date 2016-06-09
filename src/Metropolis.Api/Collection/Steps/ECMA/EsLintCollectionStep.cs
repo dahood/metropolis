@@ -34,8 +34,6 @@ namespace Metropolis.Api.Collection.Steps.ECMA
             var fileName = string.Empty;
             if (eslintPasringOptions == EslintPasringOptions.DEFAULT)
                 fileName = "default.eslintrc.json";
-            if (eslintPasringOptions == EslintPasringOptions.MODULE)
-                fileName = "module.eslintrc.json";
             if (eslintPasringOptions == EslintPasringOptions.ECMA6)
                 fileName = "ecma6.eslintrc.json";
             return fileName;

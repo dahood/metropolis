@@ -6,6 +6,6 @@
     /// </summary>
     public enum EslintPasringOptions
     {
-        DEFAULT, MODULE, ECMA6
+        DEFAULT, ECMA6
     }
 }
