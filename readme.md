@@ -4,12 +4,19 @@ Metropolis is a code review and analysis tool that will help you highlight areas
 
 ## How to Install
 
+### Windows Instructions
 1. Install NodeJS on [Windows](https://nodejs.org/dist/v6.1.0/node-v6.1.0-x64.msi)
 1. `npm install -g metropolis` 
 
-Currently, Metropolis only support Windows sorry no [WPF on Mono yet](http://www.mono-project.com/docs/gui/wpf/). If you do not have windows on a local machine you can spin up a VM from bitnami in the cloud (Azure, AWS, etc) with Node already installed [Windows NodeJS VM](https://bitnami.com/stack/nodejs).
+Currently, Metropolis only support Windows sorry no [WPF on Mono yet](http://www.mono-project.com/docs/gui/wpf/). 
+We also plan on supporting the command line interface using Mono at some point in the near future which will solve part of this problem.
 
-We also plan on supporting the command line interface using Mono at some point in the near future.
+### Mac Instructions
+1. Run Windows by installing Parallels (http://www.parallels.com/ca/products/desktop/buy/?pd&new) $80 USD
+1. Buy a copy an Windows (http://www.microsoftstore.com/store/msca/en_CA/pdp/productID.320386900) $150 CAD
+1. Follow Windows instructions
+
+
 
 ## How it Works
 
