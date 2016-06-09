@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Navigation;
 using Metropolis.Common.Extensions;
@@ -73,6 +74,15 @@ namespace Metropolis.Views
         private void ShowTipsChecked(object sender, RoutedEventArgs e)
         {
             WorkSpaceProvider.ShowTips = true;
+        }
+
+        internal static void Show<T>() where T : ITipOfTheDay, new()
+        {
+            var tipOfTheDay = new TipOfTheDay();
+            var tipViewModel = tipOfTheDay.DataContext as TipOfTheDayViewModel;
+            if (tipViewModel == null) return;
+            tipViewModel.TipOfTheDay = new T();
+            tipOfTheDay.ShowDialog();
         }
 
         private void Hyperlink_OnClick(object sender, RoutedEventArgs e)

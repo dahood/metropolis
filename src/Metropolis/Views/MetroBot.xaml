@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:vc="clr-namespace:Metropolis.ValueConverters"
     xmlns:stepPanels="clr-namespace:Metropolis.Views.UserControls.StepPanels"
+    xmlns:userControls="clr-namespace:Metropolis.Views.UserControls"
     x:Class="Metropolis.Views.MetroBot"
     Title="MetroBot - Import Data and Code Metrics" Height="433.926" Width="600"
     WindowStartupLocation="CenterScreen" Icon="..\Images/logo.ico">
@@ -56,6 +57,7 @@
                           SelectedValue="{Binding Path=RepositorySourceType, Converter={StaticResource SrcTypeConverter}}"
                           Width="90" Margin="10,2,2,2" SelectionChanged="SourceCodeSelected" />
             </StackPanel>
+            <userControls:Spinner x:Name="Spinner" Visibility="Collapsed" />
             <Border BorderThickness="2" BorderBrush="LightGray">
                 <StackPanel x:Name="CollectionPanel">
                     <stepPanels:EcmaCollectionPanel x:Name="EcmaScriptPanel" Visibility="Visible" />

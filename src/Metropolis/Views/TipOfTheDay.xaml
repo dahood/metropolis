@@ -29,7 +29,35 @@
         
         <!-- Show this and include your custom XAML when you want to test a new Tip -->
         <StackPanel Height="325" Visibility="Collapsed">
+            <StackPanel>
+                <StackPanel>
+                    <TextBlock TextWrapping='Wrap'> 
+                        <Span FontSize='14' FontWeight='Bold'>How Collect .Net Metrics</Span>
+                    </TextBlock>
+                    <BulletDecorator>
+                        <BulletDecorator.Bullet>
+                            <Rectangle Width='5' Height='5' Fill='Gray' />
+                        </BulletDecorator.Bullet>
+                        <TextBlock TextWrapping = 'Wrap' Margin='20,0,0,0'>Choose the folder where the binaries are compiled into</TextBlock>
+                    </BulletDecorator>
+                </StackPanel>
+                <StackPanel>
+                    <BulletDecorator>
+                        <BulletDecorator.Bullet>
+                            <Rectangle Width='5' Height='5' Fill='Gray' />
+                        </BulletDecorator.Bullet>
+                        <TextBlock TextWrapping = 'Wrap' Margin='20,0,0,0'>Create an .MetrobotIgnore file with .dlls to ignore during analysis</TextBlock>
+                    </BulletDecorator>
+                    <Image HorizontalAlignment='left' Height='225' Width='203' Margin="2,10" Source = '../Images/TipOfTheDay/CSharpIgnore.png'/>
 
+                    <BulletDecorator>
+                        <BulletDecorator.Bullet>
+                            <Rectangle Width='5' Height='5' Fill='Gray' />
+                        </BulletDecorator.Bullet>
+                        <TextBlock TextWrapping = 'Wrap' Margin='20,0,0,0'>Click the RunAnalysis Button</TextBlock>
+                    </BulletDecorator>
+                </StackPanel>
+            </StackPanel>
         </StackPanel>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Bottom" >
             <Grid.RowDefinitions>

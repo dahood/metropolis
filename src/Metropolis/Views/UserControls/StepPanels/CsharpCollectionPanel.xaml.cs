@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using Metropolis.Common.Extensions;
+using Metropolis.TipOfTheDay;
 using Metropolis.ViewModels;
 
 namespace Metropolis.Views.UserControls.StepPanels
@@ -56,6 +57,11 @@ namespace Metropolis.Views.UserControls.StepPanels
             var dialog = new OpenFileDialog {FileName = initialFile};
             dialog.ShowDialog();
             return dialog.FileName != string.Empty ? dialog.FileName : null;
-        }        
+        }
+
+        private void ShowCSharpToolTip(object sender, RoutedEventArgs e)
+        {
+            TipOfTheDay.Show<CSharpTipOfTheDay>();
+        }
     }
 }

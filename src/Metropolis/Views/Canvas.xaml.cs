@@ -264,16 +264,8 @@ namespace Metropolis.Views
         {
             App.ViewModel.IsFxCopInstalled = WorkSpaceProvider.IsFxcopMetricsInstalled;
             var metroBot = new MetroBot();
-            var result = metroBot.ShowDialog() ?? false;
-
-            if (!result) return;
-            Spinner.Show();
-            using (new WaitCursor())
-            {
-                WorkSpaceProvider.Analyze(metroBot.ProjectDetails);
-                DisplayWorkspaceDetails();
-            }
-            Spinner.Hide();
+            metroBot.DisplayWorkspaceDetails += (sndr, args) => DisplayWorkspaceDetails();
+            metroBot.Show();
         }
 
         private void ViewProgressLog(object sender, RoutedEventArgs e)

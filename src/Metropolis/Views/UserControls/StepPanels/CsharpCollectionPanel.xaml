@@ -2,9 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:autoComplete="clr-namespace:Metropolis.AutoComplete"
-             xmlns:wpfControls="http://wpfcontrols.com/"
              xmlns:valueConverters="clr-namespace:Metropolis.ValueConverters"
-             Width="546.112" Height="158.803">
+             Width="555.89" Height="157.914">
     <UserControl.Resources>
         <valueConverters:FxCopVisibilityConverter x:Key="FxCopVisibilityConverter" />
         <autoComplete:FolderSuggestionProvider x:Key="foldersp" />
@@ -78,9 +77,12 @@
             		Click="NavigateToSite"><Run Text="Download Here"/></Hyperlink></TextBlock>
         </StackPanel>
         <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,0">
-            <TextBlock x:Name="CSharpSourceLabel" Text="Source Directory:" Width="210" VerticalAlignment="Center" Margin="5,5,10,5" />
+            <TextBlock x:Name="CSharpSourceLabel" Text="Binaries Directory:" Width="210" VerticalAlignment="Center" Margin="5,5,10,5" />
             <TextBox x:Name="CSharpSourceFolderTextBox" Width="250" Text="{Binding Path=SourceDirectory, Mode=TwoWay}"/>
             <Button Content="..." Click="OnCSharpFindDirectory" Width="25" Margin="10, 2, 2, 2" />
+            <Button Click="ShowCSharpToolTip"  Margin="2, 2, 2, 2">
+                <Image Height="32" Width="32"  Source="../../../Images/TipOfTheDay.png"></Image>
+            </Button>
         </StackPanel>
         <StackPanel x:Name="IgnorePalen" Orientation="Horizontal" Margin="0,5,0,0">
             <TextBlock x:Name="IgnorePanel" Text="Ignore File:" Width="210" VerticalAlignment="Center" Margin="5,5,10,5" />

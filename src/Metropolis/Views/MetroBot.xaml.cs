@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using Metropolis.Camera;
 using Metropolis.Common.Models;
 using Metropolis.ViewModels;
 
@@ -20,17 +21,25 @@ namespace Metropolis.Views
             DataContext = ProjectDetails;
         }
 
+        public event EventHandler DisplayWorkspaceDetails;
+
         public ProjectDetailsViewModel ProjectDetails { get; }
+        private static IWorkspaceProvider WorkSpaceProvider => App.WorkspaceProvider;
 
         private void OnCancel(object sender, RoutedEventArgs e)
         {
-            DialogResult = false;
             Close();
         }
 
         private void OnProceed(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
+            Spinner.Show();
+            using (new WaitCursor())
+            {
+                WorkSpaceProvider.Analyze(ProjectDetails);
+                DisplayWorkspaceDetails?.Invoke(this, new EventArgs());
+            }
+            Spinner.Hide();
             Close();
         }
 
