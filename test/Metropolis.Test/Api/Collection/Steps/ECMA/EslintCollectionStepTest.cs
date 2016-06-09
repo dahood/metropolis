@@ -28,7 +28,7 @@ namespace Metropolis.Test.Api.Collection.Steps.ECMA
         [Test]
         public void CanParseCommand_WithIgnoreFile()
         {
-            var expected = $"{NodeModulesPath}eslint -c '{BaseCollectionStep.LocateSettings(".eslintrc.json")}' '{Args.SourceDirectory}\\**' "+
+            var expected = $"{NodeModulesPath}eslint -c '{BaseCollectionStep.LocateSettings("default.eslintrc.json")}' '{Args.SourceDirectory}\\**' "+
                            $"-o '{Result.MetricsFile}' -f checkstyle" +
                            $" --ignore-path '{Args.IgnoreFile}'";
 
@@ -42,7 +42,7 @@ namespace Metropolis.Test.Api.Collection.Steps.ECMA
         {
             Args.IgnoreFile = string.Empty; //no ignore path in this example
 
-            var expected = $"{NodeModulesPath}eslint -c '{BaseCollectionStep.LocateSettings(".eslintrc.json")}' '{Args.SourceDirectory}\\**' "+
+            var expected = $"{NodeModulesPath}eslint -c '{BaseCollectionStep.LocateSettings("default.eslintrc.json")}' '{Args.SourceDirectory}\\**' "+
                            $"-o '{Result.MetricsFile}' -f checkstyle";
 
             var command = step.PrepareCommand(Args, Result);

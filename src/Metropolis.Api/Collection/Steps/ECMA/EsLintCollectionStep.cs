@@ -19,7 +19,13 @@ namespace Metropolis.Api.Collection.Steps.ECMA
 
         public override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
         {
-            var cmd = EsLintCommand.FormatWith(GetNodeBinPath(), LocateSettings(".eslintrc.json"), args.SourceDirectory, result.MetricsFile);
+            string fileName = "default.eslintrc.json";
+            if (args.Setting == EcmaLanguageSetting.ECMA3)
+                fileName = "ecma3.eslintrc.json";
+            if (args.Setting == EcmaLanguageSetting.ECMA5)
+                fileName = "ecma5.eslintrc.json";
+
+            var cmd = EsLintCommand.FormatWith(GetNodeBinPath(), LocateSettings(fileName), args.SourceDirectory, result.MetricsFile);
 
             if (args.IgnoreFile.IsNotEmpty())
                 cmd = string.Concat(cmd, IgnorePathPart.FormatWith(args.IgnoreFile));

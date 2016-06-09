@@ -6,7 +6,7 @@
              xmlns:uc="clr-namespace:Metropolis.Views.UserControls"
              xmlns:autoComplete="clr-namespace:Metropolis.AutoComplete"
              xmlns:wpfControls="http://wpfcontrols.com/"
-             mc:Ignorable="d" Width="549.568" Height="60.323" IsVisibleChanged="HideShowInfoBox">
+             mc:Ignorable="d" Width="549.568" Height="auto" IsVisibleChanged="HideShowInfoBox">
     <UserControl.Resources>
         <autoComplete:FolderSuggestionProvider x:Key="foldersp" />
         <autoComplete:FileIconConverter x:Key="FileIconConverter"/>
@@ -82,6 +82,6 @@
             <TextBox x:Name="JavaSourceFolderTextBox" Width="250" Text="{Binding Path=SourceDirectory, Mode=TwoWay}"></TextBox>
             <Button Content="..." Click="OnJavaFindDirectory" Width="25" Margin="10, 2, 2, 2" />
         </StackPanel>
-        <StackPanel x:Name="IgnorePanel" Orientation="Horizontal" Margin="0,5,0,0" />
+        <StackPanel x:Name="IgnorePanel" Orientation="Horizontal" Margin="0,5,0,5" />
     </StackPanel>
 </UserControl>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:autoComplete="clr-namespace:Metropolis.AutoComplete"
              xmlns:valueConverters="clr-namespace:Metropolis.ValueConverters"
-             Width="555.89" Height="157.914">
+             Width="555.89" Height="auto">
     <UserControl.Resources>
         <valueConverters:FxCopVisibilityConverter x:Key="FxCopVisibilityConverter" />
         <autoComplete:FolderSuggestionProvider x:Key="foldersp" />
@@ -76,7 +76,7 @@
             <TextBlock x:Name="InfoPowerTools" TextWrapping="Wrap" Margin="0,0,-0.778,0"><Bold><Run Text="WARNING:"/></Bold><Run Text="You need to install Visual Studio Code Metrics Powertool for Visual Studio 2015."/><LineBreak /><Hyperlink NavigateUri="https://www.microsoft.com/en-us/download/details.aspx?id=48213"
             		Click="NavigateToSite"><Run Text="Download Here"/></Hyperlink></TextBlock>
         </StackPanel>
-        <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,0">
+        <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,5">
             <TextBlock x:Name="CSharpSourceLabel" Text="Binaries Directory:" Width="210" VerticalAlignment="Center" Margin="5,5,10,5" />
             <TextBox x:Name="CSharpSourceFolderTextBox" Width="250" Text="{Binding Path=SourceDirectory, Mode=TwoWay}"/>
             <Button Content="..." Click="OnCSharpFindDirectory" Width="25" Margin="10, 2, 2, 2" />
@@ -84,7 +84,7 @@
                 <Image Height="32" Width="32"  Source="../../../Images/TipOfTheDay.png"></Image>
             </Button>
         </StackPanel>
-        <StackPanel x:Name="IgnorePalen" Orientation="Horizontal" Margin="0,5,0,0">
+        <StackPanel x:Name="IgnorePalen" Orientation="Horizontal" Margin="0,5,0,5">
             <TextBlock x:Name="IgnorePanel" Text="Ignore File:" Width="210" VerticalAlignment="Center" Margin="5,5,10,5" />
             <TextBox x:Name="IgnoreSourceFolderTextBox" Width="250" Text="{Binding Path=IgnoreFile, Mode=TwoWay}"/>
             <Button Content="..." Click="OnLocateIgnoreFile" Width="25" Margin="10, 2, 2, 2" />

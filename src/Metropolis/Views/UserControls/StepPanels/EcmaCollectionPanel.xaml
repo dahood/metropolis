@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:autoComplete="clr-namespace:Metropolis.AutoComplete"
              xmlns:wpfControls="http://wpfcontrols.com/"
-             mc:Ignorable="d" d:DesignWidth="300" Width="550" Height="70.962">
+             mc:Ignorable="d" d:DesignWidth="300" Width="550" Height="auto">
     <UserControl.Resources>
         <autoComplete:FolderSuggestionProvider x:Key="foldersp" />
         <autoComplete:FileSuggestionProvider x:Key="filesp" />
@@ -66,18 +66,22 @@
         <autoComplete:CustomTemplateSelector x:Key="CustomTemplateSelector"
                                       FileTemplate="{StaticResource fsTemplate}"
                                       DirectoryTemplate="{StaticResource dirTemplate}"/>
-
     </UserControl.Resources>    
-    <StackPanel >
-        <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,0">
+    <StackPanel>
+        <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,5">
             <TextBlock x:Name="CSharpSourceLabel" Text="Source Directory:" Width="210" VerticalAlignment="Center"
                        Margin="5,5,10,5" />
             <TextBox x:Name="CSharpSourceFolderTextBox" Width="250" Text="{Binding Path=SourceDirectory, Mode=TwoWay}"></TextBox>
             <Button Content="..." Click="OnCSharpFindDirectory" Width="25" Margin="10, 2, 2, 2" />
         </StackPanel>
-        <StackPanel x:Name="IgnorePanel" Orientation="Horizontal" Margin="0,5,0,0">
+        <StackPanel x:Name="IgnorePanel" Orientation="Horizontal" Margin="0,5,0,5">
             <TextBlock x:Name="IgnoreLabel" Text="Ignore File:" Width="210" VerticalAlignment="Center" Margin="5,5,10,5" />
             <TextBox x:Name="IgnoreSourceFolderTextBox" Width="250" Text="{Binding Path=IgnoreFile, Mode=TwoWay}"></TextBox>
+            <Button Content="..." Click="OnLocateIgnoreFile" Width="25" Margin="10, 2, 2, 2" />
+        </StackPanel>
+        <StackPanel x:Name="LanguageVersionPanel" Orientation="Horizontal" Margin="0,5,0,5">
+            <TextBlock Text="Language Dialect:" Width="210" VerticalAlignment="Center" Margin="5,5,10,5" />
+            <ComboBox x:Name="LanguageDialectComboBox" Width="250" SelectedValue="{Binding Path=Version, Mode=TwoWay}"></ComboBox>
             <Button Content="..." Click="OnLocateIgnoreFile" Width="25" Margin="10, 2, 2, 2" />
         </StackPanel>
     </StackPanel>

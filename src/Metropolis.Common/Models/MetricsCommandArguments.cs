@@ -3,6 +3,7 @@
     public class MetricsCommandArguments
     {
         public RepositorySourceType RepositorySourceType { get; set; }
+        public EcmaLanguageSetting Setting { get; set; }
 
         public string ProjectName { get; set; }
 

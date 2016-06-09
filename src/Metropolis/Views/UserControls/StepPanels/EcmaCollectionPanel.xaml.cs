@@ -1,6 +1,10 @@
-﻿using System.Windows;
+﻿using System;
+using System.Linq;
+using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using Metropolis.Common.Extensions;
+using Metropolis.Common.Models;
 using Metropolis.ViewModels;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
@@ -14,6 +18,7 @@ namespace Metropolis.Views.UserControls.StepPanels
         public EcmaCollectionPanel()
         {
             InitializeComponent();
+            LanguageDialectComboBox.ItemsSource = Enum.GetValues(typeof(EcmaLanguageSetting)).Cast<EcmaLanguageSetting>();
         }
 
         public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel) DataContext;

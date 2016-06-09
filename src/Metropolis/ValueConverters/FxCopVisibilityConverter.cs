@@ -11,7 +11,7 @@ namespace Metropolis.ValueConverters
         {
             var fxCopInstalled = value as bool?;
 
-            return fxCopInstalled != null && fxCopInstalled.Value? Visibility.Hidden: Visibility.Visible;
+            return fxCopInstalled != null && fxCopInstalled.Value? Visibility.Collapsed: Visibility.Visible;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
