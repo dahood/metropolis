@@ -17,6 +17,7 @@ using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Camera;
 using Metropolis.Common.Models;
 using Metropolis.Layout;
+using Metropolis.TipOfTheDay;
 
 namespace Metropolis.Views
 {
@@ -384,8 +385,7 @@ namespace Metropolis.Views
 
         private void CameraGuide(object sender, RoutedEventArgs e)
         {
-            
-            Process.Start("https://github.com/dahood/metropolis/wiki/Beginner-Guide#camera-controls");
+            TipOfTheDay.Show<CameraControlToolTip>();
         }
 
         private void NewVersion(object sender, RoutedEventArgs e)
