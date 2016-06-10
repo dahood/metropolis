@@ -72,13 +72,13 @@ gulp.task('dist', ['package', 'version'],  function(cb) {
     }
 });
 
-gulp.task('version', function(cb) {
+gulp.task('version', function() {
     if (argv.m)
     {
         childProcess('npm version patch -m \"' + argv.m + '\"', function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
-        cb(err)});
+        });
     } 
 });
 
