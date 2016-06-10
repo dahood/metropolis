@@ -1,5 +1,6 @@
 // Gulp Modules
 var del = require('del');
+var argv = require('yargs').argv;
 var gulp = require('gulp');
 var childProcess = require('child_process').exec;
 var nunit = require('gulp-nunit-runner');
@@ -49,18 +50,41 @@ gulp.task('test', ['compile'], function () {
         }));
 });
 
-// Dist depends on both metropolis binaries, Collection Settings (e.g. checkstyle xml config), 
-// Collection Binaries (e.g. checkstyle .jar) for eslint, checkstyle, fxcop, etc that parsers 
-// use to automate the collection of metrics 
-gulp.task('dist', ['package'],  function(cb) {
+// Usage: gulp dist -m "patch notes"
+
+gulp.task('dist', ['package', 'version'],  function(cb) {
     console.log('Please wait while npm trys to install your release candidate...');
     childProcess('npm install . -g', function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
         cb(err)});
-    //Next step is npm version patch -m "patch notes" 
-    //Last step is npm publish
+    if (argv.m)
+    {
+        childProcess('git push origin master', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err)});
+
+        childProcess('npm publish', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err)});
+    }
 });
+
+gulp.task('version', function(cb) {
+    if (argv.m)
+    {
+        childProcess('npm version patch -m \"' + argv.m + '\"', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err)});
+    } 
+});
+
+// Dist depends on both metropolis binaries, Collection Settings (e.g. checkstyle xml config), 
+// Collection Binaries (e.g. checkstyle .jar) for eslint, checkstyle, fxcop, etc that parsers 
+// use to automate the collection of metrics 
 
 gulp.task('package', ['package-collection-binaries', 'package-collection-settings', 'compile',], function() {
 	return gulp.src(['build\\*.dll', 'build\\*.exe', 'build\\*.config',
