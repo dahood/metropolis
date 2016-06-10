@@ -9,6 +9,9 @@
         EsLint,
         SlocCSharp,
         SlocEcma,
-        SlocJava
+        SlocJava,
+        CpdJava,
+        CpdEcma,
+        CpdCsharp
     }
 }

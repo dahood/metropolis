@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collection\Steps\AllLanguages\CpdCollectionStep.cs" />
     <Compile Include="Collection\Steps\CSharp\ILocateFxCopMetricsTool.cs" />
     <Compile Include="Collection\Steps\Java\JavaCollectionStep.cs" />
     <Compile Include="Domain\CodeBag.cs" />
@@ -164,6 +165,12 @@
     <Content Include="Collection\Binaries\checkstyle-6.18-all.jar">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Collection\Binaries\pmd-cpp-5.4.2.jar">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Collection\Binaries\pmd-cs-5.4.2.jar" />
+    <Content Include="Collection\Binaries\pmd-java-5.4.2.jar" />
+    <Content Include="Collection\Binaries\pmd-javascript-5.4.2.jar" />
     <Content Include="Collection\Settings\metropolis_checkstyle_metrics.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
