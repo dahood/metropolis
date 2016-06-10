@@ -81,8 +81,10 @@
         </StackPanel>
         <StackPanel x:Name="LanguageVersionPanel" Orientation="Horizontal" Margin="0,5,0,5">
             <TextBlock Text="Language Dialect:" Width="210" VerticalAlignment="Center" Margin="5,5,10,5" />
-            <ComboBox x:Name="LanguageDialectComboBox" Width="250" SelectedValue="{Binding Path=Version, Mode=TwoWay}"></ComboBox>
-            <Button Content="..." Click="OnLocateIgnoreFile" Width="25" Margin="10, 2, 2, 2" />
+            <ComboBox x:Name="LanguageDialectComboBox" Width="250" SelectionChanged="SetDialect"></ComboBox>
+            <Button Click="ShowECMAHelp"  Margin="2, 2, 2, 2">
+                <Image Height="32" Width="32"  Source="../../../Images/TipOfTheDay.png"></Image>
+            </Button>
         </StackPanel>
     </StackPanel>
 </UserControl>

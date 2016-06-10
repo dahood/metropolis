@@ -138,7 +138,8 @@ namespace Metropolis
                 ProjectName = projectDetails.ProjectName,
                 RepositorySourceType = projectDetails.RepositorySourceType,
                 IgnoreFile = projectDetails.IgnoreFile,
-                SourceDirectory = projectDetails.SourceDirectory
+                SourceDirectory = projectDetails.SourceDirectory,
+                EcmaScriptDialect =  projectDetails.EcmaScriptDialect
             };
         }
 

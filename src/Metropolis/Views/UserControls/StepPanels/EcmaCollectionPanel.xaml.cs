@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
+using Metropolis.TipOfTheDay;
 using Metropolis.ViewModels;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
@@ -51,6 +53,17 @@ namespace Metropolis.Views.UserControls.StepPanels
             var dialog = new OpenFileDialog {FileName = initialFile};
             dialog.ShowDialog();
             return dialog.FileName != string.Empty ? dialog.FileName : null;
+        }
+
+        private void SetDialect(object sender, SelectionChangedEventArgs e)
+        {
+            ProjectDetails.EcmaScriptDialect =
+                (EslintPasringOptions) Enum.Parse(typeof(EslintPasringOptions), LanguageDialectComboBox.SelectedItem.ToString());
+        }
+
+        private void ShowECMAHelp(object sender, RoutedEventArgs e)
+        {
+            TipOfTheDay.Show<EcmaScriptTipOfTheDay>();
         }
     }
 }

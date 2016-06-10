@@ -19,7 +19,7 @@ namespace Metropolis.Api.Collection.Steps.ECMA
 
         public override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
         {
-            var eslintConfigFile = GetEcmaDialect(args.Dialect);
+            var eslintConfigFile = GetEcmaDialect(args.EcmaScriptDialect);
 
             var cmd = EsLintCommand.FormatWith(GetNodeBinPath(), LocateSettings(eslintConfigFile), args.SourceDirectory, result.MetricsFile);
 

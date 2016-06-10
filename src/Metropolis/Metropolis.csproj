@@ -121,6 +121,7 @@
     <Compile Include="AutoComplete\FileIconConverter.cs" />
     <Compile Include="TipOfTheDay\CameraControlToolTip.cs" />
     <Compile Include="TipOfTheDay\CSharpTipOfTheDay.cs" />
+    <Compile Include="TipOfTheDay\EcmaScriptTipOfTheDay.cs" />
     <Compile Include="TipOfTheDay\InversionOfControlTip.cs" />
     <Compile Include="TipOfTheDay\NestedIfThenElseCodeSmellTip.cs" />
     <Compile Include="TipOfTheDay\TipOfTheDayFactory.cs" />

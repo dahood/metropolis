@@ -26,7 +26,7 @@ namespace Metropolis.Camera
 
         private void HandleMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            z += e.Delta;
+            z += e.Delta/4d;
             Provider.GetCamera().Position = new Point3D(InitialPosition.X,InitialPosition.Y, z);
         }
     }

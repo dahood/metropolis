@@ -67,6 +67,7 @@ namespace Metropolis.ViewModels
                                           : projectName.IsNotEmpty() && sourceDirectory.IsNotEmpty();
 
         public bool IsForCSharp => RepositorySourceType.CSharp == RepositorySourceType;
+        public EslintPasringOptions EcmaScriptDialect { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

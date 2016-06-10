@@ -3,7 +3,7 @@
     public class MetricsCommandArguments
     {
         public RepositorySourceType RepositorySourceType { get; set; }
-        public EslintPasringOptions Dialect { get; set; }
+        public EslintPasringOptions EcmaScriptDialect { get; set; }
 
         public string ProjectName { get; set; }
 
