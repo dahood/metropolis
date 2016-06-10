@@ -2,7 +2,7 @@
 var del = require('del');
 var argv = require('yargs').argv;
 var gulp = require('gulp');
-var childProcess = require('child_process').exec;
+var childProcess = require('child_process').execSync;
 var nunit = require('gulp-nunit-runner');
 
 // Gulp Variables
@@ -81,10 +81,7 @@ gulp.task('dist', ['package', 'version'],  function() {
 gulp.task('version', function() {
     if (argv.m)
     {
-        childProcess('npm version patch', function (err, stdout, stderr) {
-        console.log(stdout);
-        console.log(stderr);
-        });
+        childProcess('npm version patch', [], { stdio: 'inherit' });
     } 
 });
 
