@@ -28,7 +28,7 @@ gulp.task('compile', function (cb) {
   console.log('Version Number: ' + version);
   var cmd = '"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /p:OutDir=' + 
     buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=0.' + version + ' /maxcpucount:' + maxThreads;
-  exec(cmd);
+  console.log(exec(cmd).stdout);
 });
 
 gulp.task('test', ['compile'], function () {
@@ -48,22 +48,19 @@ gulp.task('test', ['compile'], function () {
 
 gulp.task('dist', ['package', 'version'],  function() {
     console.log('Please wait while npm trys to install your release candidate...');
-    exec('npm install . -g');
+    console.log(exec('npm install . -g').stdout);
     if (argv.m)
     {
-        console.log('Commiting to GitHub -m ' + argv.m);
         exec('git commit -a -m \"' + argv.m + '\"');
-        console.log('Pushing to GitHub...');
-        exec('git push origin master');
-        console.log('Publishing to npm...');
-        exec('npm publish');
+        console.log(exec('git push origin master').stdout);
+        console.log(exec('npm publish').stdout);
     }
 });
 
 gulp.task('version', function() {
     if (argv.m)
     {
-        console.log(exec('npm version patch'));
+        console.log(exec('npm version patch').stdout);
     } 
 });
 
