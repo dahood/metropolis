@@ -52,23 +52,23 @@ gulp.task('test', ['compile'], function () {
 
 // Usage: gulp dist -m "patch notes"
 
-gulp.task('dist', ['package', 'version'],  function(cb) {
+gulp.task('dist', ['package', 'version'],  function() {
     console.log('Please wait while npm trys to install your release candidate...');
     childProcess('npm install . -g', function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
-        cb(err)});
+    });
     if (argv.m)
     {
         childProcess('git push origin master', function (err, stdout, stderr) {
-        console.log(stdout);
-        console.log(stderr);
-        cb(err)});
+            console.log(stdout);
+            console.log(stderr);
+        });
 
         childProcess('npm publish', function (err, stdout, stderr) {
-        console.log(stdout);
-        console.log(stderr);
-        cb(err)});
+            console.log(stdout);
+            console.log(stderr);
+        });
     }
 });
 
