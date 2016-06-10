@@ -60,11 +60,14 @@ gulp.task('dist', ['package', 'version'],  function() {
     });
     if (argv.m)
     {
+        childProcess('git commit -a -m \"' + argv.m + '\"', function (err, stdout, stderr) {
+            console.log(stdout);
+            console.log(stderr);
+        });
         childProcess('git push origin master', function (err, stdout, stderr) {
             console.log(stdout);
             console.log(stderr);
         });
-
         childProcess('npm publish', function (err, stdout, stderr) {
             console.log(stdout);
             console.log(stderr);
@@ -75,7 +78,7 @@ gulp.task('dist', ['package', 'version'],  function() {
 gulp.task('version', function() {
     if (argv.m)
     {
-        childProcess('npm version patch -m \"' + argv.m + '\"', function (err, stdout, stderr) {
+        childProcess('npm version patch', function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
         });
