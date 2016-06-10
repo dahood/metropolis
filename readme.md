@@ -12,10 +12,9 @@ Currently, Metropolis only support Windows sorry no [WPF on Mono yet](http://www
 We also plan on supporting the command line interface using Mono at some point in the near future which will solve part of this problem.
 
 ### Mac Instructions
-1. Run Windows by installing Parallels (http://www.parallels.com/ca/products/desktop/buy/?pd&new) $80 USD
-1. Buy a copy an Windows (http://www.microsoftstore.com/store/msca/en_CA/pdp/productID.320386900) $150 CAD
-1. Follow Windows instructions
-
+1. Run Windows by installing [Parallels](http://www.parallels.com/ca/products/desktop/buy/?pd&new)
+1. Get a copy an [Windows](http://www.microsoftstore.com/store/msca/en_CA/pdp/productID.320386900)
+1. Follow Windows instructions above
 
 
 ## How it Works
