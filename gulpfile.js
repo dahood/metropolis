@@ -60,14 +60,17 @@ gulp.task('dist', ['package', 'version'],  function() {
     });
     if (argv.m)
     {
+        console.log('Commiting to GitHub -m ' + argv.m);
         childProcess('git commit -a -m \"' + argv.m + '\"', function (err, stdout, stderr) {
             console.log(stdout);
             console.log(stderr);
         });
+        console.log('Pushing to GitHub...');
         childProcess('git push origin master', function (err, stdout, stderr) {
             console.log(stdout);
             console.log(stderr);
         });
+        console.log('Publishing to npm...');
         childProcess('npm publish', function (err, stdout, stderr) {
             console.log(stdout);
             console.log(stderr);
