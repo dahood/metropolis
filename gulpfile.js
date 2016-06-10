@@ -24,16 +24,12 @@ gulp.task('clean', function () {
 gulp.task('compile', function (cb) {
   var package = require('./package.json');
   version = package.version;
+  console.log('MSBuild Release Configuration: ' + msBuildConfiguration);
+  console.log('Version Number: ' + version);
 
   var cmd = '"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /p:OutDir=' + 
     buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=0.' + version + ' /maxcpucount:' + maxThreads;
-  childProcess(cmd, function (err, stdout, stderr) {
-    	    	console.log(stdout);
-                console.log('MSBuild Release Configuration: ' + msBuildConfiguration);
-                console.log('Version Number: ' + version);
-    	    	console.log(stderr);
-    	    	cb(err);
-  			});
+  childProcess(cmd, [], { stdio: 'inherit' });
   
 });
 
@@ -54,27 +50,15 @@ gulp.task('test', ['compile'], function () {
 
 gulp.task('dist', ['package', 'version'],  function() {
     console.log('Please wait while npm trys to install your release candidate...');
-    childProcess('npm install . -g', function (err, stdout, stderr) {
-        console.log(stdout);
-        console.log(stderr);
-    });
+    childProcess('npm install . -g',[], { stdio: 'inherit' });
     if (argv.m)
     {
         console.log('Commiting to GitHub -m ' + argv.m);
-        childProcess('git commit -a -m \"' + argv.m + '\"', function (err, stdout, stderr) {
-            console.log(stdout);
-            console.log(stderr);
-        });
+        childProcess('git commit -a -m \"' + argv.m + '\"',[], { stdio: 'inherit' });
         console.log('Pushing to GitHub...');
-        childProcess('git push origin master', function (err, stdout, stderr) {
-            console.log(stdout);
-            console.log(stderr);
-        });
+        childProcess('git push origin master',[], { stdio: 'inherit' });
         console.log('Publishing to npm...');
-        childProcess('npm publish', function (err, stdout, stderr) {
-            console.log(stdout);
-            console.log(stderr);
-        });
+        childProcess('npm publish',[], { stdio: 'inherit' });
     }
 });
 
