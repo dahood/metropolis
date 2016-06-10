@@ -2,7 +2,7 @@
 var del = require('del');
 var argv = require('yargs').argv;
 var gulp = require('gulp');
-var childProcess = require('child_process').execSync;
+var exec = require('sync-exec');
 var nunit = require('gulp-nunit-runner');
 
 // Gulp Variables
@@ -26,11 +26,9 @@ gulp.task('compile', function (cb) {
   version = package.version;
   console.log('MSBuild Release Configuration: ' + msBuildConfiguration);
   console.log('Version Number: ' + version);
-
   var cmd = '"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /p:OutDir=' + 
     buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=0.' + version + ' /maxcpucount:' + maxThreads;
-  childProcess(cmd, [], { stdio: 'inherit' });
-  
+  exec(cmd);
 });
 
 gulp.task('test', ['compile'], function () {
@@ -50,22 +48,22 @@ gulp.task('test', ['compile'], function () {
 
 gulp.task('dist', ['package', 'version'],  function() {
     console.log('Please wait while npm trys to install your release candidate...');
-    childProcess('npm install . -g',[], { stdio: 'inherit' });
+    exec('npm install . -g');
     if (argv.m)
     {
         console.log('Commiting to GitHub -m ' + argv.m);
-        childProcess('git commit -a -m \"' + argv.m + '\"',[], { stdio: 'inherit' });
+        exec('git commit -a -m \"' + argv.m + '\"');
         console.log('Pushing to GitHub...');
-        childProcess('git push origin master',[], { stdio: 'inherit' });
+        exec('git push origin master');
         console.log('Publishing to npm...');
-        childProcess('npm publish',[], { stdio: 'inherit' });
+        exec('npm publish');
     }
 });
 
 gulp.task('version', function() {
     if (argv.m)
     {
-        childProcess('npm version patch', [], { stdio: 'inherit' });
+        console.log(exec('npm version patch'));
     } 
 });
 
