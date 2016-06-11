@@ -13,7 +13,7 @@ var version = '0.0.1'; //using package.json
 
 // Gulp Default
 
-gulp.task('default', ['test', 'compile', 'clean']);
+gulp.task('default', ['test']);
 
 // Gulp Tasks
 
@@ -30,7 +30,7 @@ gulp.task('compile', function (cb) {
     buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=0.' 
     + version + ' /maxcpucount:' + maxThreads;
   console.log(exec(cmd).stdout);
-  return cb();
+  cb();
 });
 
 gulp.task('test', ['compile'], function () {
@@ -66,7 +66,7 @@ gulp.task('version', function(cb) {
     {
         console.log(exec('npm version patch').stdout);
     }
-    return cb();
+    cb();
 });
 
 // Dist depends on both metropolis binaries, Collection Settings (e.g. checkstyle xml config), 
