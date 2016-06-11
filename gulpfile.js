@@ -27,9 +27,10 @@ gulp.task('compile', function (cb) {
   console.log('MSBuild Release Configuration: ' + msBuildConfiguration);
   console.log('Version Number: ' + version);
   var cmd = '"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /p:OutDir=' + 
-    buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=0.' + version + ' /maxcpucount:' + maxThreads;
+    buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=0.' 
+    + version + ' /maxcpucount:' + maxThreads;
   console.log(exec(cmd).stdout);
-  cb();
+  return cb();
 });
 
 gulp.task('test', ['compile'], function () {
@@ -65,7 +66,7 @@ gulp.task('version', function(cb) {
     {
         console.log(exec('npm version patch').stdout);
     }
-    cb();
+    return cb();
 });
 
 // Dist depends on both metropolis binaries, Collection Settings (e.g. checkstyle xml config), 
