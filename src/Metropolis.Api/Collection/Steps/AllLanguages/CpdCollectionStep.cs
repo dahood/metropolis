@@ -41,7 +41,7 @@ namespace Metropolis.Api.Collection.Steps.AllLanguages
         {
             ParseType = parseType;
         }
-        public override string MetricsType => "cpd";
+        public override string MetricsType => "CPD";
         public override string Extension => ".csv";
         public override ParseType ParseType { get; }
 

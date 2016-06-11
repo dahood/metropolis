@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Collection\Steps\AllLanguages\CpdCollectionStepTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Api\Analyzers\AnalyzeFactoryTest.cs" />
     <Compile Include="Api\Analyzers\ToxicityAnalyzerTest.cs" />
