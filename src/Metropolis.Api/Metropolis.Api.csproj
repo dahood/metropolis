@@ -165,12 +165,27 @@
     <Content Include="Collection\Binaries\checkstyle-6.18-all.jar">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Collection\Binaries\pmd-cpp-5.4.2.jar">
+    <Content Include="Collection\Binaries\cpd\commons-io-2.4.jar">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Collection\Binaries\pmd-cs-5.4.2.jar" />
-    <Content Include="Collection\Binaries\pmd-java-5.4.2.jar" />
-    <Content Include="Collection\Binaries\pmd-javascript-5.4.2.jar" />
+    <Content Include="Collection\Binaries\cpd\jaxen-1.1.6.jar">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Collection\Binaries\cpd\jcommander-1.48.jar">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Collection\Binaries\cpd\pmd-core-5.4.2.jar">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Collection\Binaries\cpd\pmd-cs-5.4.2.jar">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Collection\Binaries\cpd\pmd-java-5.4.2.jar">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Collection\Binaries\cpd\pmd-javascript-5.4.2.jar">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Collection\Settings\metropolis_checkstyle_metrics.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
