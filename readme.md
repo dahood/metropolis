@@ -1,6 +1,7 @@
 ## What is Metropolis?
 
-Metropolis is a code review and analysis tool that will help you highlight areas of interest or concern. Read the **How it Works** section for more details.
+Metropolis is a code review and analysis tool that will help you highlight areas of interest or concern. Refer to our [Wiki Home](https://github.com/dahood/metropolis/wiki) for the project to learn more. 
+
 
 ## How to Install
 
