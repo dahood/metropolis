@@ -1,6 +1,6 @@
 ## What is Metropolis?
 
-Metropolis is a code review and analysis tool that will help you highlight areas of interest or concern. Read the **How it Works** section for more details.
+Metropolis is a code review and analysis tool that will help you highlight areas of interest or concern. To learn more please visit our [Wiki Home](https://github.com/dahood/metropolis/wiki). 
 
 ## How to Install
 
@@ -16,21 +16,22 @@ We also plan on supporting the command line interface using Mono at some point i
 1. Get a copy an [Windows](http://www.microsoftstore.com/store/msca/en_CA/pdp/productID.320386900)
 1. Follow Windows instructions above
 
+### Getting Started
+
+[Beginner's Guide](https://github.com/dahood/metropolis/wiki/Beginner-Guide) is a good place to start as is the [Code Analysis Primer](https://github.com/dahood/metropolis/wiki/Code-Analysis-Primer).
+
 
 ## How it Works
 
 Metropolis maps every code unit (for C# or Java this is a class, for Javascript this is a file) into a city building. The default is to create taller building based on lines of code and the color of that building based on how healthy the code is. All the green and short buildings are good. The tall red ones need to be reviewed by the techinical team to ensure that code quality is maintained or improved.
 
-Toxicity is essentially a [Richter Scale](https://en.wikipedia.org/wiki/Richter_magnitude_scale) of code health. If your code has an average toxicity of higher than 0.500 (e.g. C#, Java, Javascript/ECMA) then it's likely a good idea to refocus on code quality to improve the maintainability and extensibility of the code. For more on code health read the [Code Analysis Primer](https://github.com/dahood/metropolis/wiki/Code-Analysis-Primer).
+Toxicity is essentially a [Richter Scale](https://en.wikipedia.org/wiki/Richter_magnitude_scale) of code health. If your code has an average toxicity of higher than 0.500 for C# or Java, or higher than 0.6500 for Javascript/ECMA then it's a good idea to refocus on code quality to improve the maintainability and extensibility of the code. For more on code health read the [Code Analysis Primer](https://github.com/dahood/metropolis/wiki/Code-Analysis-Primer). The [Beginner Guide's](https://github.com/dahood/metropolis/wiki/Beginner-Guide) also has indicators for all the code measures so you know what the minimum acceptable level these numbers can be  to keep your code sustainable.
 
 ### Example - Hibernate
 <p align="center"><img alt="Cityscape of Hibernate" src="https://raw.githubusercontent.com/dahood/metropolis/master/example-metropolis.png"/></p>
 
 Hibernate is an object relational mapping tool used to speed up development of applications. Hibernate has over 338,052 lines of code and an average toxicity of 1.3681. You can see some areas are very good, but given the size and complexity of this project there are areas of concern highlighted in red. Using Metropolis's code inspector you can view these classes to review this code.
 
-## Getting Started
-
-[Beginner's Guide](https://github.com/dahood/metropolis/wiki/Beginner-Guide) is a good place to start as is the [Code Analysis Primer](https://github.com/dahood/metropolis/wiki/Code-Analysis-Primer).
 
 ## License
 
