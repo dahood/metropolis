@@ -1,7 +1,6 @@
 ## What is Metropolis?
 
-Metropolis is a code review and analysis tool that will help you highlight areas of interest or concern. Refer to our [Wiki Home](https://github.com/dahood/metropolis/wiki) for the project to learn more. 
-
+Metropolis is a code review and analysis tool that will help you highlight areas of interest or concern. To learn more please visit our [Wiki Home](https://github.com/dahood/metropolis/wiki). 
 
 ## How to Install
 
@@ -17,6 +16,10 @@ We also plan on supporting the command line interface using Mono at some point i
 1. Get a copy an [Windows](http://www.microsoftstore.com/store/msca/en_CA/pdp/productID.320386900)
 1. Follow Windows instructions above
 
+### Getting Started
+
+[Beginner's Guide](https://github.com/dahood/metropolis/wiki/Beginner-Guide) is a good place to start as is the [Code Analysis Primer](https://github.com/dahood/metropolis/wiki/Code-Analysis-Primer).
+
 
 ## How it Works
 
@@ -29,9 +32,6 @@ Toxicity is essentially a [Richter Scale](https://en.wikipedia.org/wiki/Richter_
 
 Hibernate is an object relational mapping tool used to speed up development of applications. Hibernate has over 338,052 lines of code and an average toxicity of 1.3681. You can see some areas are very good, but given the size and complexity of this project there are areas of concern highlighted in red. Using Metropolis's code inspector you can view these classes to review this code.
 
-## Getting Started
-
-[Beginner's Guide](https://github.com/dahood/metropolis/wiki/Beginner-Guide) is a good place to start as is the [Code Analysis Primer](https://github.com/dahood/metropolis/wiki/Code-Analysis-Primer).
 
 ## License
 
