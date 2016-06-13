@@ -131,6 +131,11 @@ namespace Metropolis
             set { userPreferences.ShowTipOfTheDay = value; }
         }
 
+        public void BuildSolution(ProjectBuildArguments args)
+        {
+            codebaseService.BuildSolution(args);
+        }
+
         private static MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)
         {
             return new MetricsCommandArguments

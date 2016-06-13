@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Metropolis.Api.Build;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Persistence;
 using Metropolis.Api.Readers;
@@ -16,6 +17,7 @@ namespace Metropolis.Test.Api.Services
         private Mock<IMetricsReaderFactory> parserFactory;
         private Mock<IProjectRepository> repository;
         private Mock<IInstanceReader> classParser;
+        private Mock<IProjectBuildFactory> projectBuilderFactory;
 
         private const string FileName = @"C:\\myfolder\mycodebase.project";
         private readonly CodeBase workspace = CodeBase.Empty();
@@ -26,8 +28,9 @@ namespace Metropolis.Test.Api.Services
             parserFactory = CreateMock<IMetricsReaderFactory>();
             repository = CreateMock<IProjectRepository>();
             classParser = CreateMock<IInstanceReader>();
+            projectBuilderFactory = CreateMock<IProjectBuildFactory>();
 
-            codebaseService = new CodebaseService(parserFactory.Object, repository.Object);
+            codebaseService = new CodebaseService(parserFactory.Object, repository.Object, projectBuilderFactory.Object);
         }
 
         [Test]

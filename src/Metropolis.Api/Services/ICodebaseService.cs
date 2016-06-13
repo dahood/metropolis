@@ -11,5 +11,6 @@ namespace Metropolis.Api.Services
         CodeBase Get(string filename, ParseType parseType);
         CodeBase GetToxicity(string fileName);
         CodeBase GetVisualStudioMetrics(string fileName);
+        void BuildSolution(ProjectBuildArguments buildArgs);
     }
 }

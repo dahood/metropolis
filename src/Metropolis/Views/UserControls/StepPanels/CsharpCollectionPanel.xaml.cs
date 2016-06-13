@@ -2,7 +2,9 @@
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Forms;
+using Metropolis.Camera;
 using Metropolis.Common.Extensions;
+using Metropolis.Common.Models;
 using Metropolis.TipOfTheDay;
 using Metropolis.ViewModels;
 
@@ -27,6 +29,7 @@ namespace Metropolis.Views.UserControls.StepPanels
             };
         }
 
+        private static IWorkspaceProvider WorkSpaceProvider => App.WorkspaceProvider;
         public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel) DataContext;
         
         private void NavigateToSite(object sender, RoutedEventArgs e)
@@ -58,6 +61,17 @@ namespace Metropolis.Views.UserControls.StepPanels
 
         private void BuildSolution(object sender, RoutedEventArgs e)
         {
+            using (new WaitCursor())
+            {
+                var args = new ProjectBuildArguments
+                            {
+                                ProjectName = ProjectDetails.ProjectName,
+                                ProjetFile = ProjectDetails.ProjectFile,
+                                SourceType = RepositorySourceType.CSharp
+                            };
+                WorkSpaceProvider.BuildSolution(args);
+            }
+
             IgnoreTabItem.IsEnabled = true;
             IgnoreTabItem.IsSelected = true;
         }
