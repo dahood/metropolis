@@ -20,23 +20,7 @@ namespace Metropolis.Views.UserControls.StepPanels
         }
 
         public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel) DataContext;
-
-        private void OnCSharpFindDirectory(object sender, RoutedEventArgs e)
-        {
-            var sourceDirectory = GetSourceDirectory("C#", ProjectDetails.SourceDirectory);
-            if (sourceDirectory.IsNotEmpty())
-                ProjectDetails.SourceDirectory = sourceDirectory;
-        }
         
-        private static string GetSourceDirectory(string type, string initialDirectory)
-        {
-            var dialog = new FolderBrowserDialog {Description = $"Locate {type} Source Directory", SelectedPath = initialDirectory};
-            var result = dialog.ShowDialog();
-            return result == DialogResult.OK
-                ? dialog.SelectedPath
-                : string.Empty;
-        }
-
         private void NavigateToSite(object sender, RoutedEventArgs e)
         {
             var link = sender as Hyperlink;
@@ -44,17 +28,10 @@ namespace Metropolis.Views.UserControls.StepPanels
 
             Process.Start(link.NavigateUri.ToString());
         }
-
-        private void OnLocateIgnoreFile(object sender, RoutedEventArgs e)
-        {
-            var file = GetFileName(ProjectDetails.IgnoreFile);
-            if (file == null) return;
-            ProjectDetails.IgnoreFile = file;
-        }
-
+        
         private static string GetFileName(string initialFile = null)
         {
-            var dialog = new OpenFileDialog {FileName = initialFile};
+            var dialog = new OpenFileDialog {FileName = initialFile, Filter = @"Solution Files (*.sln)|*.sln;" };
             dialog.ShowDialog();
             return dialog.FileName != string.Empty ? dialog.FileName : null;
         }
@@ -62,6 +39,20 @@ namespace Metropolis.Views.UserControls.StepPanels
         private void ShowCSharpToolTip(object sender, RoutedEventArgs e)
         {
             TipOfTheDay.Show<CSharpTipOfTheDay>();
+        }
+
+        private void FindSolutionFile(object sender, RoutedEventArgs e)
+        {
+            var solutionFile = GetFileName(ProjectDetails.ProjectFile);
+            if (solutionFile.IsEmpty()) return;
+            ProjectDetails.ProjectFile = solutionFile;
+        }
+
+        private void BuildSolution(object sender, RoutedEventArgs e)
+        {
+
+            IgnoreTabItem.IsEnabled = true;
+            IgnoreTabItem.IsSelected = true;
         }
     }
 }

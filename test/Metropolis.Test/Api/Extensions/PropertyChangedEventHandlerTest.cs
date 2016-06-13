@@ -34,7 +34,7 @@ namespace Metropolis.Test.Api.Extensions
         [Test]
         public void NotifiesOnProjectName()
         {
-            ShouldNotify(x => x.ProjectName = "change me", "ProjectName", "IsValid");
+            ShouldNotify(x => x.ProjectName = "change me", "ProjectName", "IsValid", "ProjectFileSelected");
         }
 
         [Test]
@@ -59,9 +59,10 @@ namespace Metropolis.Test.Api.Extensions
         {
             action(viewModel);
             propertyChanged.Should().BeTrue();
-
-            propertyNames.Count.Should().Be(expectedPropertyNames.Length);
-            expectedPropertyNames.ForEach(each => propertyNames.Any(x => x == each).Should().BeTrue($"Didn't find {each} in the list of notified property names"));
+            
+            expectedPropertyNames.ForEach(each => 
+                propertyNames.Any(x => x == each).Should().BeTrue($"Didn't find {each} in the list of notified property names")
+            );
         }
     }
 }

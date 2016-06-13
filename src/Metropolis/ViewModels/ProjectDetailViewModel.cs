@@ -13,6 +13,7 @@ namespace Metropolis.ViewModels
         private string projectName = "Sample Project";
         private RepositorySourceType repositorySourceType = RepositorySourceType.Java; //for now
         private string sourceDirectory;
+        private string projectFile;
         public IEnumerable<string> SourceTypes => new[] {"ECMA", "Java", "CSharp"};
         public bool IsFxCopInstalled { get; set; }
 
@@ -35,6 +36,19 @@ namespace Metropolis.ViewModels
                 NotifyOfChange(x => x.ProjectName);
             }
         }
+
+        public string ProjectFile
+        {
+            get { return projectFile; }
+            set
+            {
+                projectFile = value;
+                NotifyOfChange(x => x.ProjectFile);
+            }
+        }
+
+        public bool ProjectFileSelected => projectFile.IsNotEmpty();
+
 
         public string SourceDirectory
         {
@@ -60,9 +74,10 @@ namespace Metropolis.ViewModels
         {
             PropertyChanged.Notify(this, expression);
             PropertyChanged.Notify(this, x => x.IsValid);
+            PropertyChanged.Notify(this, x => x.ProjectFileSelected);
         }
 
-        public bool IsValidForCSharp => projectName.IsNotEmpty() && sourceDirectory.IsNotEmpty() && IsFxCopInstalled;
+        public bool IsValidForCSharp => projectName.IsNotEmpty() && ProjectFile.IsNotEmpty() && IsFxCopInstalled;
         public bool IsValid => IsForCSharp? projectName.IsNotEmpty() && sourceDirectory.IsNotEmpty() && IsFxCopInstalled 
                                           : projectName.IsNotEmpty() && sourceDirectory.IsNotEmpty();
 

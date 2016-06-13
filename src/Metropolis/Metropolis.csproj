@@ -265,6 +265,7 @@
     <Resource Include="Images\TipOfTheDay\IfThenElse_CodeSmell.png" />
     <Resource Include="Images\TipOfTheDay.png" />
     <Resource Include="Images\TipOfTheDay\CSharpIgnore.png" />
+    <Resource Include="Images\BuildSolution.png" />
     <Content Include="SampleFiles\entity-framework-6.csv" />
     <None Include="SampleFiles\git-log-file-touches.csv" />
     <None Include="SampleFiles\metropolis-code-coverage-with-tests.coveragexml">

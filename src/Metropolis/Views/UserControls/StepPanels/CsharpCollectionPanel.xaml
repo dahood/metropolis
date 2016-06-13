@@ -1,67 +1,10 @@
 ﻿<UserControl x:Class="Metropolis.Views.UserControls.StepPanels.CsharpCollectionPanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:autoComplete="clr-namespace:Metropolis.AutoComplete"
              xmlns:valueConverters="clr-namespace:Metropolis.ValueConverters"
              Width="555.89" Height="auto">
     <UserControl.Resources>
         <valueConverters:FxCopVisibilityConverter x:Key="FxCopVisibilityConverter" />
-        <autoComplete:FolderSuggestionProvider x:Key="foldersp" />
-        <autoComplete:FileSuggestionProvider x:Key="filesp" />
-        <autoComplete:FileIconConverter x:Key="FileIconConverter"/>
-        <DataTemplate x:Key="fsTemplate">
-            <Border Padding="5">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Image Grid.RowSpan="2"
-                           Width="16"
-                           Height="16"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Source="{Binding Converter={StaticResource FileIconConverter}}"/>
-                    <TextBlock Text="{Binding Path=Name}"
-                               FontWeight="Bold" 
-                               Grid.Column="1" 
-                               Grid.Row="0"
-                               FontFamily="Segoe UI"
-                               VerticalAlignment="Bottom"/>
-                    <TextBlock Text="{Binding Path=LastWriteTime, StringFormat='Last Modified: {0}'}"
-                               Grid.Column="1"
-                               Grid.Row="1"
-                               VerticalAlignment="Top"/>
-                </Grid>
-            </Border>
-        </DataTemplate>
-        <DataTemplate x:Key="dirTemplate">
-            <Border Padding="5">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Image Width="16"
-                           Height="16"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Source="{Binding Converter={StaticResource FileIconConverter}}"/>
-                    <TextBlock Text="{Binding Path=Name}"
-                               FontWeight="SemiBold" 
-                               Grid.Column="1" 
-                               Grid.Row="0"
-                               FontFamily="Segoe UI"
-                               FontSize="14"
-                               VerticalAlignment="Center"/>
-
-                </Grid>
-            </Border>
-        </DataTemplate>
     </UserControl.Resources>
     <StackPanel>
         <StackPanel x:Name="Info" Visibility="{Binding Path=IsFxCopInstalled, Converter={StaticResource FxCopVisibilityConverter}}">
@@ -76,18 +19,29 @@
             <TextBlock x:Name="InfoPowerTools" TextWrapping="Wrap" Margin="0,0,-0.778,0"><Bold><Run Text="WARNING:"/></Bold><Run Text="You need to install Visual Studio Code Metrics Powertool for Visual Studio 2015."/><LineBreak /><Hyperlink NavigateUri="https://www.microsoft.com/en-us/download/details.aspx?id=48213"
             		Click="NavigateToSite"><Run Text="Download Here"/></Hyperlink></TextBlock>
         </StackPanel>
-        <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,5">
-            <TextBlock x:Name="CSharpSourceLabel" Text="Binaries Directory:" Width="210" VerticalAlignment="Center" Margin="5,5,10,5" />
-            <TextBox x:Name="CSharpSourceFolderTextBox" Width="250" Text="{Binding Path=SourceDirectory, Mode=TwoWay}"/>
-            <Button Content="..." Click="OnCSharpFindDirectory" Width="25" Margin="10, 2, 2, 2" />
-            <Button Click="ShowCSharpToolTip"  Margin="2, 2, 2, 2">
-                <Image Height="32" Width="32"  Source="../../../Images/TipOfTheDay.png"></Image>
-            </Button>
-        </StackPanel>
-        <StackPanel x:Name="IgnorePalen" Orientation="Horizontal" Margin="0,5,0,5">
-            <TextBlock x:Name="IgnorePanel" Text="Ignore File:" Width="210" VerticalAlignment="Center" Margin="5,5,10,5" />
-            <TextBox x:Name="IgnoreSourceFolderTextBox" Width="250" Text="{Binding Path=IgnoreFile, Mode=TwoWay}"/>
-            <Button Content="..." Click="OnLocateIgnoreFile" Width="25" Margin="10, 2, 2, 2" />
-        </StackPanel>
+        <TabControl Height="200">
+            <TabItem Name="SolutionTabItem" Header="Solution File">
+                <StackPanel>
+                <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,5" Height="80">
+                    <TextBlock x:Name="SolutionFileLabel" Text="Solution File:" Width="81" Height="25"/>
+                    <TextBox x:Name="SolutionFileTextBox" Width="368" Height="25" Text="{Binding Path=ProjectFile, Mode=TwoWay}"/>
+                    <Button Content="..." Click="FindSolutionFile" Width="25" Height="25" Margin="10, 2, 2, 2" />
+                    <Button Click="ShowCSharpToolTip"  Margin="2, 2, 2, 2" Height="35">
+                        <Image Height="32" Width="32"  Source="../../../Images/TipOfTheDay.png"></Image>
+                    </Button>
+                </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Margin="10">
+                        <Button Click="BuildSolution"  Margin="2, 2, 2, 2" Height="35" Width="120" IsEnabled="{Binding Path=ProjectFileSelected}">
+                            <StackPanel  Orientation="Horizontal">
+                                <Image Height="32" Width="32"  Source="../../../Images/BuildSolution.png"/>
+                                <TextBlock x:Name="BuildSolutionLabel" VerticalAlignment="Center" Text="Build Solution" Width="81"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Name="IgnoreTabItem" Header="Ignore Assemblies" IsEnabled="False">
+            </TabItem>
+        </TabControl>
     </StackPanel>
 </UserControl>
