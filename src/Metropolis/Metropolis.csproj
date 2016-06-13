@@ -130,6 +130,7 @@
     <Compile Include="TipOfTheDay\DefaultCaseControlTip.cs" />
     <Compile Include="ValueConverters\FxCopVisibilityConverter.cs" />
     <Compile Include="ValueConverters\RepositorySourceTypeConverter.cs" />
+    <Compile Include="ViewModels\IgnoreFileViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
     <Compile Include="ViewModels\TipOfTheDayViewModel.cs" />
     <Compile Include="Views\MetroBot.xaml.cs">
@@ -266,6 +267,7 @@
     <Resource Include="Images\TipOfTheDay.png" />
     <Resource Include="Images\TipOfTheDay\CSharpIgnore.png" />
     <Resource Include="Images\BuildSolution.png" />
+    <Resource Include="Images\IgnoreFile.png" />
     <Content Include="SampleFiles\entity-framework-6.csv" />
     <None Include="SampleFiles\git-log-file-touches.csv" />
     <None Include="SampleFiles\metropolis-code-coverage-with-tests.coveragexml">

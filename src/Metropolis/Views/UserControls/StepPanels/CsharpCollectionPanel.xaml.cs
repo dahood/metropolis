@@ -17,6 +17,14 @@ namespace Metropolis.Views.UserControls.StepPanels
         public CsharpCollectionPanel()
         {
             InitializeComponent();
+
+            //for testing (for now)
+            IgnoreFileDataGrid.ItemsSource = new[]
+            {
+                new IgnoreFileViewModel {FileName = "System.Core"},
+                new IgnoreFileViewModel {FileName = "System.Data"},
+                new IgnoreFileViewModel {FileName = "CsvHelper"}
+            };
         }
 
         public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel) DataContext;
@@ -50,9 +58,13 @@ namespace Metropolis.Views.UserControls.StepPanels
 
         private void BuildSolution(object sender, RoutedEventArgs e)
         {
-
             IgnoreTabItem.IsEnabled = true;
             IgnoreTabItem.IsSelected = true;
+        }
+
+        private void CreateIgnoreFile(object sender, RoutedEventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

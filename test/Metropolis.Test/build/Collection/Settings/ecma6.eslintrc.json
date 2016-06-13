@@ -1,0 +1,30 @@
+{
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "max-statements": [
+      "error",
+      { "max": 0 }
+    ],
+    "max-params": [
+      "error",
+      { "max": 0 }
+    ],
+    "complexity": [
+      "error",
+      { "max": 0 }
+    ],
+    "max-depth": [
+      "error",
+      { "max": 0 }
+    ],
+    "default-case": ["error"],
+    "no-fallthrough": ["error"]
+  }
+}
