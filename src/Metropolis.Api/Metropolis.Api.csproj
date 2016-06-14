@@ -90,6 +90,7 @@
     <Compile Include="Collection\Steps\CSharp\ICollectAssemblies.cs" />
     <Compile Include="Collection\Steps\CSharp\IFxCopCollectionTask.cs" />
     <Compile Include="Collection\Steps\CSharp\VisualStudioPowerToolsFxCopCollectionTask.cs" />
+    <Compile Include="Readers\CsvReaders\CpdReader.cs" />
     <Compile Include="Readers\CsvReaders\SlocLineItem.cs" />
     <Compile Include="Readers\CsvReaders\SlocMap.cs" />
     <Compile Include="Readers\CsvReaders\SlocReader.cs" />
