@@ -1,24 +1,8 @@
-﻿using System.ComponentModel;
-using Metropolis.Common.Extensions;
-
-namespace Metropolis.ViewModels
+﻿namespace Metropolis.ViewModels
 {
-    public class IgnoreFileViewModel : INotifyPropertyChanged
+    public class IgnoreFileViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private bool isIgnored;
-        
-        public bool IsIgnored
-        {
-            get { return isIgnored; }
-            set
-            {
-                isIgnored = value;
-                PropertyChanged.Notify(this, x => x.IsIgnored);
-            }
-        }
-
+        public bool IsIgnored { get; set; }
         public string FileName { get; set; }
     }
 }

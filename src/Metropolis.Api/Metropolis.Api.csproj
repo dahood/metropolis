@@ -66,7 +66,8 @@
     <Compile Include="Build\IProjectBuilder.cs" />
     <Compile Include="Build\IProjectBuildFactory.cs" />
     <Compile Include="Collection\Steps\AllLanguages\CpdCollectionStep.cs" />
-    <Compile Include="Collection\Steps\CSharp\ILocateFxCopMetricsTool.cs" />
+    <Compile Include="Collection\Steps\CSharp\DotNetEnvironment.cs" />
+    <Compile Include="Collection\Steps\CSharp\IDotNetEnvironment.cs" />
     <Compile Include="Collection\Steps\Java\JavaCollectionStep.cs" />
     <Compile Include="Domain\CodeBag.cs" />
     <Compile Include="Domain\CodeBagType.cs" />

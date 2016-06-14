@@ -1,4 +1,7 @@
-﻿using Metropolis.Api.Build;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using Metropolis.Api.Build;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Persistence;
 using Metropolis.Api.Readers;
@@ -10,8 +13,8 @@ namespace Metropolis.Api.Services
     {
         private readonly IMetricsReaderFactory readerFactory;
         private readonly IProjectBuildFactory builderFactory;
-        private readonly IProjectRepository projectRepository;
-        
+        private readonly IProjectRepository projectRepository;public static string ProjectBuildFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis.Build");
+
         public CodebaseService() : this(new MetricsReaderFactory(), new ProjectRepository(), new ProjectBuildFactory())
         {
         }
@@ -22,6 +25,7 @@ namespace Metropolis.Api.Services
             projectRepository = repository;
             this.builderFactory = builderFactory;
         }
+        string ICodebaseService.ProjectBuildFolder => ProjectBuildFolder;
 
         public void Save(CodeBase workspace, string fileName)
         {
@@ -45,9 +49,10 @@ namespace Metropolis.Api.Services
             return result;
         }
         
-        public void BuildSolution(ProjectBuildArguments buildArgs)
+        public ProjectBuildResult BuildSolution(ProjectBuildArguments buildArgs)
         {
-            builderFactory.BuilderFor(buildArgs.SourceType).Build(buildArgs);
+            buildArgs.BuildOutputFolder = Path.Combine(ProjectBuildFolder, buildArgs.ProjectName);
+            return builderFactory.BuilderFor(buildArgs.SourceType).Build(buildArgs);
         }
 
         public CodeBase GetVisualStudioMetrics(string fileName)

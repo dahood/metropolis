@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using CsvHelper;
 using Metropolis.Api.Analyzers.Toxicity;
@@ -34,6 +35,7 @@ namespace Metropolis
 
         public CodeBase CodeBase { get; private set; }
         public string MetricsOutputFolder => analysisService.MetricsOutputFolder;
+        public string ProjectBuildFolder => codebaseService.ProjectBuildFolder;
         public bool IsFxcopMetricsInstalled => analysisService.FxCopMetricsPath.IsNotEmpty();
 
         public void Create()
@@ -131,9 +133,9 @@ namespace Metropolis
             set { userPreferences.ShowTipOfTheDay = value; }
         }
 
-        public void BuildSolution(ProjectBuildArguments args)
+        public ProjectBuildResult BuildSolution(ProjectBuildArguments args)
         {
-            codebaseService.BuildSolution(args);
+            return codebaseService.BuildSolution(args);
         }
 
         private static MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)

@@ -12,25 +12,25 @@ namespace Metropolis.Api.Collection.Steps.CSharp
             @"&'{0}'/f:'{1}' /o:'{2}' ";
 
         private readonly IFileSystem fileSystem;
-        private readonly ILocateFxCopMetricsTool locateFxCopMetricsTool;
+        private readonly IDotNetEnvironment dotNetEnvironment;
 
         private readonly IRunPowerShell powerShell;
 
-        public FxCopCollectionTask() : this(new RunPowerShell(), new FileSystem(), new LocateFxCopMetricsTool())
+        public FxCopCollectionTask() : this(new RunPowerShell(), new FileSystem(), new DotNetEnvironment())
         {
         }
 
-        public FxCopCollectionTask(IRunPowerShell powerShell, IFileSystem fileSystem, ILocateFxCopMetricsTool locateFxCopMetricsTool)
+        public FxCopCollectionTask(IRunPowerShell powerShell, IFileSystem fileSystem, IDotNetEnvironment dotNetEnvironment)
         {
             this.powerShell = powerShell;
             this.fileSystem = fileSystem;
-            this.locateFxCopMetricsTool = locateFxCopMetricsTool;
+            this.dotNetEnvironment = dotNetEnvironment;
         }
 
         public MetricsResult Run(MetricsCommandArguments args, string targetdll)
         {
             var result = new MetricsResult {ParseType = ParseType.FxCop, MetricsFile = GetMetricsOutputFileName(args, targetdll)};
-            var command = CommandTemplate.FormatWith(locateFxCopMetricsTool.FxCopMetricsToolPath, targetdll, result.MetricsFile);
+            var command = CommandTemplate.FormatWith(dotNetEnvironment.FxCopMetricsToolPath, targetdll, result.MetricsFile);
 
             powerShell.Invoke(command);
             return result;

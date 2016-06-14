@@ -4,7 +4,6 @@ using Metropolis.Api.Analyzers;
 using Metropolis.Api.Collection;
 using Metropolis.Api.Collection.Steps.CSharp;
 using Metropolis.Api.Domain;
-using Metropolis.Api.Extensions;
 using Metropolis.Api.Utilities;
 using Metropolis.Common.Models;
 
@@ -15,18 +14,18 @@ namespace Metropolis.Api.Services
         private readonly ICollectionStepFactory collectionStepFactory;
         private readonly IAnalyzerFactory analyzerFactory;
         private readonly ICodebaseService codebaseService;
-        private readonly ILocateFxCopMetricsTool fxCopMetricsTool;
+        private readonly IDotNetEnvironment fxCopMetricsTool;
         
         public static string MetricsOutputFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis.Metrics");
         public string FxCopMetricsPath => fxCopMetricsTool.FxCopMetricsToolPath;
 
         string IAnalysisService.MetricsOutputFolder => MetricsOutputFolder;
 
-        public AnalysisServices() : this(new CollectionStepFactory(), new CodebaseService(), new AnalyzerFactory(), new FileSystem(), new LocateFxCopMetricsTool())
+        public AnalysisServices() : this(new CollectionStepFactory(), new CodebaseService(), new AnalyzerFactory(), new FileSystem(), new DotNetEnvironment())
         {
         }
 
-        public AnalysisServices(ICollectionStepFactory collectionStepFactory, ICodebaseService codebaseService, IAnalyzerFactory analyzerFactory, IFileSystem fileSystem, ILocateFxCopMetricsTool fxCopMetricsTool)
+        public AnalysisServices(ICollectionStepFactory collectionStepFactory, ICodebaseService codebaseService, IAnalyzerFactory analyzerFactory, IFileSystem fileSystem, IDotNetEnvironment fxCopMetricsTool)
         {
             this.collectionStepFactory = collectionStepFactory;
             this.codebaseService = codebaseService;

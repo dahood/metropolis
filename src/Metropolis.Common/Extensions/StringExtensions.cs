@@ -31,7 +31,7 @@ namespace Metropolis.Common.Extensions
         }
         public static string FormatWith(this string format, params object[] args)
         {
-            return string.Format(format.Replace("\n", Environment.NewLine).Replace("{nl}", Environment.NewLine), args);
+            return string.Format(format, args);
         }
 
         public static bool IsEmpty(this string value)

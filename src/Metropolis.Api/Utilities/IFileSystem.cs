@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Utilities
 {
@@ -10,5 +11,7 @@ namespace Metropolis.Api.Utilities
         void CreateFolder(string metricsFolder);
         IEnumerable<DriveInfo> AllDrives { get; }
         bool FileExists(string potentialPath);
+        void CleanFolder(string buildOutputFolder);
+        IEnumerable<FileDto> FindAllBinaries(string buildOutputFolder);
     }
 }

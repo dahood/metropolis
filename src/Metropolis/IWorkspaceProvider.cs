@@ -26,6 +26,6 @@ namespace Metropolis
         void LoadSourceLinesOfCode(FileInclusion js);
         void Analyze(ProjectDetailsViewModel viewModel);
         bool ShowTips { get; set; }
-        void BuildSolution(ProjectBuildArguments args);
+        ProjectBuildResult BuildSolution(ProjectBuildArguments args);
     }
 }

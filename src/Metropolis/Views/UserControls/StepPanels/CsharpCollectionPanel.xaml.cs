@@ -19,14 +19,6 @@ namespace Metropolis.Views.UserControls.StepPanels
         public CsharpCollectionPanel()
         {
             InitializeComponent();
-
-            //for testing (for now)
-            IgnoreFileDataGrid.ItemsSource = new[]
-            {
-                new IgnoreFileViewModel {FileName = "System.Core"},
-                new IgnoreFileViewModel {FileName = "System.Data"},
-                new IgnoreFileViewModel {FileName = "CsvHelper"}
-            };
         }
 
         private static IWorkspaceProvider WorkSpaceProvider => App.WorkspaceProvider;
@@ -69,7 +61,9 @@ namespace Metropolis.Views.UserControls.StepPanels
                                 ProjetFile = ProjectDetails.ProjectFile,
                                 SourceType = RepositorySourceType.CSharp
                             };
-                WorkSpaceProvider.BuildSolution(args);
+
+                var result = WorkSpaceProvider.BuildSolution(args);
+                IgnoreFileDataGrid.ItemsSource = result.Artifacts;
             }
 
             IgnoreTabItem.IsEnabled = true;

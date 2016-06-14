@@ -49,10 +49,11 @@
                 <StackPanel Orientation="Vertical">
                     <DataGrid Name="IgnoreFileDataGrid" RowHeight="30" VerticalAlignment="Top" 
                               RowStyle="{StaticResource GridRowStyle}"
+                              CanUserAddRows="False" CanUserDeleteRows="False" 
                               AutoGenerateColumns="False" Height="120">
                         <DataGrid.Columns>
-                            <DataGridCheckBoxColumn Header="Ignore" Binding="{Binding IsIgnored, UpdateSourceTrigger=PropertyChanged}"></DataGridCheckBoxColumn>
-                            <DataGridTextColumn Header="File Name" Binding="{Binding Path=FileName, Mode=OneWay}"/>
+                            <DataGridCheckBoxColumn Header="Ignore" Binding="{Binding IsIgnored}"/>
+                            <DataGridTextColumn Width="*" Header="File Name" Binding="{Binding Path=FileName}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button Click="CreateIgnoreFile"  Margin="2, 5, 10, 2" Height="35" Width="100" 

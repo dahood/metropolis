@@ -22,7 +22,7 @@ namespace Metropolis.Test.Api.Services
         private Mock<IAnalyzerFactory> analyzerFactory;
         private Mock<ICodebaseAnalyzer> analyzer;
         private Mock<IFileSystem> fileSystem;
-        private Mock<ILocateFxCopMetricsTool> locateFxCopMetricsTool;
+        private Mock<IDotNetEnvironment> locateFxCopMetricsTool;
 
         [SetUp]
         public void SetUp()
@@ -33,7 +33,7 @@ namespace Metropolis.Test.Api.Services
             analyzerFactory = CreateMock<IAnalyzerFactory>();
             analyzer = CreateMock<ICodebaseAnalyzer>();
             fileSystem = CreateMock<IFileSystem>();
-            locateFxCopMetricsTool = CreateMock<ILocateFxCopMetricsTool>();
+            locateFxCopMetricsTool = CreateMock<IDotNetEnvironment>();
 
             details = new MetricsCommandArguments
             {

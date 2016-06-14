@@ -1,4 +1,6 @@
-﻿using Metropolis.Api.Domain;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Metropolis.Api.Domain;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services
@@ -11,6 +13,7 @@ namespace Metropolis.Api.Services
         CodeBase Get(string filename, ParseType parseType);
         CodeBase GetToxicity(string fileName);
         CodeBase GetVisualStudioMetrics(string fileName);
-        void BuildSolution(ProjectBuildArguments buildArgs);
+        ProjectBuildResult BuildSolution(ProjectBuildArguments buildArgs);
+        string ProjectBuildFolder { get; }
     }
 }
