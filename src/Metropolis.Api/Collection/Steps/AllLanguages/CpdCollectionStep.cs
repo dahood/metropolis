@@ -12,7 +12,7 @@ namespace Metropolis.Api.Collection.Steps.AllLanguages
     public class CpdCollectionStep : BaseCollectionStep
     {
         /// <summary>
-        ///     Thresholds set per language as below, or DEFAULT
+        ///     Thresholds set per language as below, or DefaultThreshold
         /// </summary>
         private const int CsharpThreshold = 75;
         private const int EcmaScriptThreshold = 75;
