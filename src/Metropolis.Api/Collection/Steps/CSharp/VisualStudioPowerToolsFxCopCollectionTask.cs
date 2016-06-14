@@ -12,25 +12,25 @@ namespace Metropolis.Api.Collection.Steps.CSharp
             @"&'{0}'/f:'{1}' /o:'{2}' ";
 
         private readonly IFileSystem fileSystem;
-        private readonly IDotNetEnvironment dotNetEnvironment;
+        private readonly IBuildEnvironment buildEnvironment;
 
         private readonly IRunPowerShell powerShell;
 
-        public FxCopCollectionTask() : this(new RunPowerShell(), new FileSystem(), new DotNetEnvironment())
+        public FxCopCollectionTask() : this(new RunPowerShell(), new FileSystem(), new BuildEnvironment())
         {
         }
 
-        public FxCopCollectionTask(IRunPowerShell powerShell, IFileSystem fileSystem, IDotNetEnvironment dotNetEnvironment)
+        public FxCopCollectionTask(IRunPowerShell powerShell, IFileSystem fileSystem, IBuildEnvironment buildEnvironment)
         {
             this.powerShell = powerShell;
             this.fileSystem = fileSystem;
-            this.dotNetEnvironment = dotNetEnvironment;
+            this.buildEnvironment = buildEnvironment;
         }
 
         public MetricsResult Run(MetricsCommandArguments args, string targetdll)
         {
             var result = new MetricsResult {ParseType = ParseType.FxCop, MetricsFile = GetMetricsOutputFileName(args, targetdll)};
-            var command = CommandTemplate.FormatWith(dotNetEnvironment.FxCopMetricsToolPath, targetdll, result.MetricsFile);
+            var command = CommandTemplate.FormatWith(buildEnvironment.FxCopMetricsToolPath, targetdll, result.MetricsFile);
 
             powerShell.Invoke(command);
             return result;

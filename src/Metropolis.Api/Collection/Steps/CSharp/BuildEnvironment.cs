@@ -2,18 +2,18 @@ using Metropolis.Api.Utilities;
 
 namespace Metropolis.Api.Collection.Steps.CSharp
 {
-    public class DotNetEnvironment : IDotNetEnvironment
+    public class BuildEnvironment : IBuildEnvironment
     {
         public const string ExpectedFxCopToolPath = @"\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\FxCop\metrics.exe";
         public const string ExpectedMsBuildPath = @"\Program Files (x86)\MSBuild\14.0\Bin\\MSBuild.exe";
 
         private readonly IFileSystem fileSystem;
 
-        public DotNetEnvironment() : this(new FileSystem())
+        public BuildEnvironment() : this(new FileSystem())
         {
         }
 
-        public DotNetEnvironment(IFileSystem fileSystem)
+        public BuildEnvironment(IFileSystem fileSystem)
         {
             this.fileSystem = fileSystem;
         }

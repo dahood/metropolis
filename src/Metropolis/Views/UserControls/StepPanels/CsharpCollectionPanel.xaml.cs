@@ -72,7 +72,7 @@ namespace Metropolis.Views.UserControls.StepPanels
 
         private void CreateIgnoreFile(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
     }
 }
