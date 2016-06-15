@@ -13,11 +13,14 @@ namespace Metropolis.Api.Readers.CsvReaders
         public CodeBase Parse(TextReader textReader)
         {
             var items = ReadFile(textReader);
-
+            var instances = new List<Instance>();
             //TODO: convert items into Instances
-
-            var codebase = CodeBase.Empty();
-            return codebase;
+            foreach (var cpdLineItem in items)
+            {
+                foreach(var occurance in cpdLineItem.Occurances)
+                    instances.Add(InstanceBuilder.Build(occurance.FileName));
+            }
+            return new CodeBase(new CodeGraph(instances));
         }
 
         private static IEnumerable<CpdLineItem> ReadFile(TextReader textReader)
@@ -42,11 +45,12 @@ namespace Metropolis.Api.Readers.CsvReaders
                     var lineItem = new CpdLineItem {LinesOfCode = linesOfCode};
                     for (var i = 0; i < occurances; i++)
                     {
-                        var index = 3 + i*2; 
-                        var cpdOccurance = new CpdOccurance();
-                        cpdOccurance.LineNumber = csv.GetField<int>(index); // 3, 5, 7, etc.
-                        cpdOccurance.FileName = csv.GetField<string>(index + 1); // 4, 6, 8, etc
-
+                        var index = 3 + i*2;
+                        var cpdOccurance = new CpdOccurance
+                        {
+                            LineNumber = csv.GetField<int>(index), // 3, 5, 7, etc.
+                            FileName = csv.GetField<string>(index + 1) // 4, 6, 8, etc
+                        };
                         lineItem.Occurances.Add(cpdOccurance);
                     }
                     items.Add(lineItem);

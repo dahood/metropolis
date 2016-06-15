@@ -30,7 +30,7 @@ namespace Metropolis.Test.Api.Readers.CsvReaders
             
             var codebase = parser.Parse(new StringReader(oneDuplicate));
 
-            //codebase.NumberOfTypes.Should().Be(2);
+            codebase.NumberOfTypes.Should().Be(2);
         }
     }
 }

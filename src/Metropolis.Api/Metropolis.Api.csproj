@@ -67,6 +67,7 @@
     <Compile Include="Collection\Steps\Java\JavaCollectionStep.cs" />
     <Compile Include="Domain\CodeBag.cs" />
     <Compile Include="Domain\CodeBagType.cs" />
+    <Compile Include="Domain\InstanceBuilder.cs" />
     <Compile Include="Domain\Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Analyzers\ICodebaseAnalyzer.cs" />
