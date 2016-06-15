@@ -100,6 +100,7 @@
     <Compile Include="AutoComplete\FileSystemSuggestionProvider.cs" />
     <Compile Include="ITipOfTheDayFactory.cs" />
     <Compile Include="IUserPreferences.cs" />
+    <Compile Include="Models\HeatMapBrushFactory.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InstanceInformationFacade.cs" />
@@ -115,7 +116,6 @@
     <Compile Include="Layout\GoldenRatioLayout.cs" />
     <Compile Include="Layout\MagnetoLayout.cs" />
     <Compile Include="Layout\SquaredLayout.cs" />
-    <Compile Include="Models\BrushFactory.cs" />
     <Compile Include="Models\LinearScale.cs" />
     <Compile Include="AutoComplete\RequiredValidationRule.cs" />
     <Compile Include="AutoComplete\FileIconConverter.cs" />

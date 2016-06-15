@@ -16,6 +16,7 @@
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-nunit-runner": "^0.5.2",
+    "sync-exec": "^0.6.2",
     "yargs": "^4.7.1"
   },
   "scripts": {
