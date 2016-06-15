@@ -14,6 +14,7 @@ namespace Metropolis.ViewModels
         private RepositorySourceType repositorySourceType = RepositorySourceType.Java; //for now
         private string sourceDirectory;
         private string projectFile;
+        private string projectFolder;
         public IEnumerable<string> SourceTypes => new[] {"ECMA", "Java", "CSharp"};
         public bool IsFxCopInstalled { get; set; }
 
@@ -47,8 +48,17 @@ namespace Metropolis.ViewModels
             }
         }
 
-        public bool ProjectFileSelected => projectFile.IsNotEmpty();
+        public string ProjectFolder
+        {
+            get { return projectFolder; }
+            set
+            {
+                projectFolder = value;
+                NotifyOfChange(x => x.ProjectFolder);
+            }
+        }
 
+        public bool ProjectFileSelected => projectFile.IsNotEmpty();
 
         public string SourceDirectory
         {
@@ -83,6 +93,7 @@ namespace Metropolis.ViewModels
 
         public bool IsForCSharp => RepositorySourceType.CSharp == RepositorySourceType;
         public EslintPasringOptions EcmaScriptDialect { get; set; }
+        public IEnumerable<FileDto> FilesToIgnore { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

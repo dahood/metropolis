@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using CsvHelper;
 using Metropolis.Api.Analyzers.Toxicity;
@@ -136,6 +135,21 @@ namespace Metropolis
         public ProjectBuildResult BuildSolution(ProjectBuildArguments args)
         {
             return codebaseService.BuildSolution(args);
+        }
+
+        public string DeriveProjectFolder(string text, string defaultValue=null)
+        {
+            return text.IsEmpty() ? defaultValue : Path.GetDirectoryName(text);
+        }
+
+        public string DeriveProjectName(string text, string defaultValue=null)
+        {
+            return text.IsEmpty() ? defaultValue : Path.GetFileNameWithoutExtension(text);
+        }
+
+        public void CreateIgnoreFile(ProjectDetailsViewModel projectDetails)
+        {
+            codebaseService.WriteIgnoreFile(projectDetails.ProjectName, projectDetails.ProjectFolder, projectDetails.FilesToIgnore);
         }
 
         private static MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)

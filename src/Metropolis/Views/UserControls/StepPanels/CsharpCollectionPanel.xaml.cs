@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using Metropolis.Camera;
@@ -72,7 +74,20 @@ namespace Metropolis.Views.UserControls.StepPanels
 
         private void CreateIgnoreFile(object sender, RoutedEventArgs e)
         {
-            //throw new System.NotImplementedException();
+            ProjectDetails.FilesToIgnore = IgnoreFileDataGrid.ItemsSource.OfType<FileDto>().Where(x => x.Ignore).ToList();
+            WorkSpaceProvider.CreateIgnoreFile(ProjectDetails);
+
+        }
+
+        private void FindSolutionFolder(object sender, RoutedEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void SolutionFileChanged(object sender, TextChangedEventArgs e)
+        {
+            ProjectDetails.ProjectFolder = WorkSpaceProvider.DeriveProjectFolder(SolutionFileTextBox.Text, ProjectDetails.ProjectFolder);
+            ProjectDetails.ProjectName = WorkSpaceProvider.DeriveProjectName(SolutionFileTextBox.Text, ProjectDetails.ProjectName);
         }
     }
 }

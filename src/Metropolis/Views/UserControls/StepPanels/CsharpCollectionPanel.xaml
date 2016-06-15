@@ -27,14 +27,20 @@
         <TabControl Height="200">
             <TabItem Name="SolutionTabItem" Header="Solution File">
                 <StackPanel>
-                <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,5" Height="80">
-                    <TextBlock x:Name="SolutionFileLabel" Text="Solution File:" Width="81" Height="25"/>
-                    <TextBox x:Name="SolutionFileTextBox" Width="368" Height="25" Text="{Binding Path=ProjectFile, Mode=TwoWay}"/>
-                    <Button Content="..." Click="FindSolutionFile" Width="25" Height="25" Margin="10, 2, 2, 2" />
-                    <Button Click="ShowCSharpToolTip"  Margin="2, 2, 2, 2" Height="35">
-                        <Image Height="32" Width="32"  Source="../../../Images/TipOfTheDay.png"></Image>
-                    </Button>
-                </StackPanel>
+                    <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,5" Height="40">
+                        <TextBlock x:Name="SolutionFileLabel" Text="Solution File:" Width="81" Height="25"/>
+                        <TextBox x:Name="SolutionFileTextBox" Width="368" Height="25" Text="{Binding Path=ProjectFile, Mode=TwoWay}"
+                                 TextChanged="SolutionFileChanged"/>
+                        <Button Content="..." Click="FindSolutionFile" Width="25" Height="25" Margin="10, 2, 2, 2" />
+                        <Button Click="ShowCSharpToolTip"  Margin="2, 2, 2, 2" Height="35">
+                            <Image Height="32" Width="32"  Source="../../../Images/TipOfTheDay.png"></Image>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel x:Name="SolutionFolderPanel" Orientation="Horizontal" Margin="0,5,0,5" Height="35">
+                        <TextBlock x:Name="SolutionFolderLabel" Text="Solution Folder:" Width="81" Height="25"/>
+                        <TextBox x:Name="SolutionFolderTextBox" Width="368" Height="25" Text="{Binding Path=ProjectFolder, Mode=TwoWay}"/>
+                        <Button Content="..." Click="FindSolutionFolder" Width="25" Height="25" Margin="10, 2, 2, 2" />
+                    </StackPanel>
                     <StackPanel HorizontalAlignment="Right" Margin="10">
                         <Button Click="BuildSolution"  Margin="2, 2, 2, 2" Height="35" Width="120" IsEnabled="{Binding Path=ProjectFileSelected}">
                             <StackPanel  Orientation="Horizontal">

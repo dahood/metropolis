@@ -15,5 +15,6 @@ namespace Metropolis.Api.Services
         CodeBase GetVisualStudioMetrics(string fileName);
         ProjectBuildResult BuildSolution(ProjectBuildArguments buildArgs);
         string ProjectBuildFolder { get; }
+        void WriteIgnoreFile(string projectName, string projectFolder, IEnumerable<FileDto> filesToIgnore);
     }
 }

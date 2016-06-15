@@ -66,5 +66,9 @@ namespace Metropolis.Api.Services
         {
             return readerFactory.GetReader(parseType).Parse(filename);
         }
+        public void WriteIgnoreFile(string projectName, string projectFolder, IEnumerable<FileDto> filesToIgnore)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

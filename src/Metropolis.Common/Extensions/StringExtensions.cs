@@ -15,8 +15,6 @@ namespace Metropolis.Common.Extensions
             var indexOf = str.IndexOf(c);
             return indexOf == -1 ? string.Empty : str.Substring(0, indexOf);
         }
-        
-
         public static int AsInt(this string value)
         {
             return int.Parse(value);
