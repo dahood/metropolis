@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -25,6 +26,12 @@ namespace Metropolis.Api.Utilities
         public bool FileExists(string potentialPath)
         {
             return File.Exists(potentialPath);
+        }
+
+        public TextReader OpenFileStream(string fileName)
+        {
+            if (!File.Exists(fileName)) throw new ApplicationException($"File does not exist: {fileName}");
+            return File.OpenText(fileName);
         }
     }
 }

@@ -6,6 +6,8 @@ using FluentAssertions;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
 using Metropolis.Api.Readers.XmlReaders.FxCop;
+using Metropolis.Api.Utilities;
+using Metropolis.Common.Extensions;
 using Metropolis.Test.Fixtures;
 using Metropolis.Test.TestHelpers;
 using Metropolis.Test.Utilities;
@@ -28,6 +30,7 @@ namespace Metropolis.Test.Api.Readers.XmlReaders.FxCop
         private readonly Member expectedAnalyzeMember = new Member("Analyze", 9, 2, 12);
 
         private FxCopMetricsReader reader;
+        private TextReader textReader;
 
         [SetUp]
         public void SetUp()
@@ -35,6 +38,7 @@ namespace Metropolis.Test.Api.Readers.XmlReaders.FxCop
             pathToMetricsFile = Path.Combine(Environment.CurrentDirectory, FileName);
             pathToMetricsFile.RemoveFileIfExists();
             File.WriteAllText(pathToMetricsFile, MetricsDataFixture.FxCopMetricsMetricsData);
+            textReader = new FileSystem().OpenFileStream(pathToMetricsFile);
 
             reader = new FxCopMetricsReader();
         }
@@ -42,13 +46,14 @@ namespace Metropolis.Test.Api.Readers.XmlReaders.FxCop
         [TearDown]
         public void TearDown()
         {
+            textReader.Dispose();
             pathToMetricsFile.RemoveFileIfExists();
         }
 
         [Test]
         public void Can_Read_Metropolis_Metrics_File()
         {
-            var codeBase = reader.Parse(pathToMetricsFile);
+            var codeBase = reader.Parse(textReader);
 
             codeBase.Should().NotBeNull();
             codeBase.AllInstances.Count.Should().Be(2);

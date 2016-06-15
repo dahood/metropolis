@@ -1,4 +1,5 @@
-﻿using Metropolis.Api.Domain;
+﻿using System.IO;
+using Metropolis.Api.Domain;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services
@@ -8,8 +9,8 @@ namespace Metropolis.Api.Services
         void Save(CodeBase workspace, string fileName);
         CodeBase Load(string projectFileName);
         CodeBase LoadDefault();
-        CodeBase Get(string filename, ParseType parseType);
-        CodeBase GetToxicity(string fileName);
-        CodeBase GetVisualStudioMetrics(string fileName);
+        CodeBase Get(TextReader stream, ParseType parseType);
+        CodeBase GetToxicity(TextReader openFileStream);
+        CodeBase GetVisualStudioMetrics(TextReader openFileStream);
     }
 }

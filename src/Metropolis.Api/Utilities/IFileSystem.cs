@@ -10,5 +10,6 @@ namespace Metropolis.Api.Utilities
         void CreateFolder(string metricsFolder);
         IEnumerable<DriveInfo> AllDrives { get; }
         bool FileExists(string potentialPath);
+        TextReader OpenFileStream(string fileName);
     }
 }

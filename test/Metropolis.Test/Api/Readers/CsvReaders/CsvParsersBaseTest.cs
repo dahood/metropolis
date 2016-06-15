@@ -5,6 +5,8 @@ using System.Linq;
 using FluentAssertions;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Readers;
+using Metropolis.Api.Utilities;
+using Metropolis.Common.Extensions;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Readers.CsvReaders
@@ -31,7 +33,7 @@ namespace Metropolis.Test.Api.Readers.CsvReaders
         protected CodeBase ParseUsingData(string[] data)
         {
             CreateFileFrom(FileName, data);
-            return Parser.Parse(FileName);
+            return Parser.Parse(new FileSystem().OpenFileStream(FileName));
         }
 
         protected static void CreateFileFrom(string file, IEnumerable<string> data)

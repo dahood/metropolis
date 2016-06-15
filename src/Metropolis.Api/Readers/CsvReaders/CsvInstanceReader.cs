@@ -16,11 +16,11 @@ namespace Metropolis.Api.Readers.CsvReaders
             HasHeaderRecord = hasHeaderRecord;
         }
 
-        public CodeBase Parse(string fileName)
+        public CodeBase Parse(TextReader textReader)
         {
-            using (TextReader reader = File.OpenText(fileName))
+            using (textReader)
             {
-                var csv = new CsvReader(reader);
+                var csv = new CsvReader(textReader);
                 csv.Configuration.HasHeaderRecord = HasHeaderRecord;
                 csv.Configuration.RegisterClassMap(typeof (TMapper));
 

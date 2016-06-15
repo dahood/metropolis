@@ -1,7 +1,10 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using FluentAssertions;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Readers.XmlReaders.CheckStyles;
+using Metropolis.Api.Utilities;
+using Metropolis.Common.Extensions;
 using Metropolis.Test.Fixtures;
 using Metropolis.Test.Utilities;
 using NUnit.Framework;
@@ -11,6 +14,7 @@ namespace Metropolis.Test.Api.Readers.CheckStyles
     [TestFixture]
     public class EslintCheckStylesReaderTest : BaseCheckstylesReaderTest
     {
+        private TextReader openFileStream;
         protected override string FileName => "eslint_checkstyles_fixture.xml";
         protected override string CheckStylesFixture => MetricsDataFixture.CheckStylesReactFixture;
 
@@ -19,10 +23,17 @@ namespace Metropolis.Test.Api.Readers.CheckStyles
             return CheckStylesReader.EslintReader;
         }
 
+        [TearDown]
+        public void After()
+        {
+            openFileStream.Dispose();
+        }
+
         [Test]
         public void CanParse()
         {
-            var result = Reader.Parse(FileName);
+            openFileStream = new FileSystem().OpenFileStream(FileName);
+            var result = Reader.Parse(openFileStream);
             result.Should().NotBeNull();
 
             result.AllInstances.Count.Should().Be(2);

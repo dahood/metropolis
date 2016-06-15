@@ -1,5 +1,7 @@
 ﻿using FluentAssertions.Common;
 using Metropolis.Api.Readers.CsvReaders;
+using Metropolis.Api.Utilities;
+using Metropolis.Common.Extensions;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Readers.CsvReaders
@@ -18,7 +20,7 @@ namespace Metropolis.Test.Api.Readers.CsvReaders
         [Test, Ignore("wip")]
         public void ShouldParseOneDuplicate()
         {
-            var codebase = parser.Parse(@"filename");
+            var codebase = parser.Parse(new FileSystem().OpenFileStream(@"filename"));
 
             codebase.NumberOfTypes.IsSameOrEqualTo(2);
         }

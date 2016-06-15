@@ -1,6 +1,8 @@
-﻿using Metropolis.Api.Domain;
+﻿using System.IO;
+using Metropolis.Api.Domain;
 using Metropolis.Api.Persistence;
 using Metropolis.Api.Readers;
+using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services
@@ -35,23 +37,32 @@ namespace Metropolis.Api.Services
             return projectRepository.LoadDefault();
         }
 
-        public CodeBase GetToxicity(string fileName)
+        public CodeBase GetToxicity(TextReader openFileStream)
         {
-            var result = Get(fileName, ParseType.RichardToxicity);
-            result.SourceType = RepositorySourceType.CSharp;
-            return result;
+            using (openFileStream)
+            {
+                var result = Get(openFileStream, ParseType.RichardToxicity);
+                result.SourceType = RepositorySourceType.CSharp;
+                return result;
+            }
         }
 
-        public CodeBase GetVisualStudioMetrics(string fileName)
+        public CodeBase GetVisualStudioMetrics(TextReader openFileStream)
         {
-            var result = Get(fileName, ParseType.VisualStudio);
-            result.SourceType = RepositorySourceType.CSharp;
-            return result;
+            using (openFileStream)
+            {
+                var result = Get(openFileStream, ParseType.VisualStudio);
+                result.SourceType = RepositorySourceType.CSharp;
+                return result;
+            }
         }
 
-        public CodeBase Get(string filename, ParseType parseType)
+        public CodeBase Get(TextReader stream, ParseType parseType)
         {
-            return readerFactory.GetReader(parseType).Parse(filename);
+            using (stream)
+            {
+                return readerFactory.GetReader(parseType).Parse(stream);
+            }
         }
     }
 }
