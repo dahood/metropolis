@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using Metropolis.Api.Analyzers.Toxicity;
@@ -20,9 +21,9 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
             this.classBuilder = classBuilder;
         }
 
-        public CodeBase Parse(string fileName)
+        public CodeBase Parse(TextReader textReader)
         {
-            return ParseXml(XElement.Load(fileName));
+            return ParseXml(XElement.Load(textReader));
         }
 
         private CodeBase ParseXml(XElement xml)

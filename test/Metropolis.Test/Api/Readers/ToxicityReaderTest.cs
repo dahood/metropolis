@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using Metropolis.Api.Readers.CsvReaders;
+using Metropolis.Api.Utilities;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Readers
@@ -19,7 +20,7 @@ namespace Metropolis.Test.Api.Readers
                 new Uri(Path.Combine(path, @"metropolis\src\Metropolis\SampleFiles\aspnet-toxicity-input.csv"))
                     .LocalPath;
 
-            var results = new ToxicityReader(true).Parse(fileName);
+            var results = new ToxicityReader(true).Parse(new FileSystem().OpenFileStream(fileName));
             Assert.That(results, Is.Not.Null);
             //TODO: assert something :)
         }

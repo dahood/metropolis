@@ -42,11 +42,14 @@ namespace Metropolis.Api.Services
             return projectRepository.LoadDefault();
         }
 
-        public CodeBase GetToxicity(string fileName)
+        public CodeBase GetToxicity(TextReader openFileStream)
         {
-            var result = Get(fileName, ParseType.RichardToxicity);
-            result.SourceType = RepositorySourceType.CSharp;
-            return result;
+            using (openFileStream)
+            {
+                var result = Get(openFileStream, ParseType.RichardToxicity);
+                result.SourceType = RepositorySourceType.CSharp;
+                return result;
+            }
         }
         
         public ProjectBuildResult BuildSolution(ProjectBuildArguments buildArgs)
@@ -55,16 +58,22 @@ namespace Metropolis.Api.Services
             return builderFactory.BuilderFor(buildArgs.SourceType).Build(buildArgs);
         }
 
-        public CodeBase GetVisualStudioMetrics(string fileName)
+        public CodeBase GetVisualStudioMetrics(TextReader openFileStream)
         {
-            var result = Get(fileName, ParseType.VisualStudio);
-            result.SourceType = RepositorySourceType.CSharp;
-            return result;
+            using (openFileStream)
+            {
+                var result = Get(openFileStream, ParseType.VisualStudio);
+                result.SourceType = RepositorySourceType.CSharp;
+                return result;
+            }
         }
 
-        public CodeBase Get(string filename, ParseType parseType)
+        public CodeBase Get(TextReader stream, ParseType parseType)
         {
-            return readerFactory.GetReader(parseType).Parse(filename);
+            using (stream)
+            {
+                return readerFactory.GetReader(parseType).Parse(stream);
+            }
         }
         public void WriteIgnoreFile(string projectName, string projectFolder, IEnumerable<FileDto> filesToIgnore)
         {

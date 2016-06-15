@@ -9,7 +9,7 @@ namespace Metropolis.Api.Readers.CsvReaders
     /// </summary>
     public class CpdReader : IInstanceReader
     {
-        public CodeBase Parse(string fileName)
+        public CodeBase Parse(TextReader textReader)
         {
             //lines,tokens,occurrences
             //47,196,2,106,C:\Dev\disruptor\src\perftest\java\com\lmax\disruptor\sequenced\ThreeToOneSequencedBatchThroughputTest.java,104,
@@ -19,9 +19,9 @@ namespace Metropolis.Api.Readers.CsvReaders
             //45,159,2,58,C:\Dev\disruptor\src\perftest\java\com\lmax\disruptor\workhandler\OneToThreeReleasingWorkerPoolThroughputTest.java,
             //  72,C:\Dev\disruptor\src\perftest\java\com\lmax\disruptor\workhandler\OneToThreeWorkerPoolThroughputTest.java
 
-            using (TextReader reader = File.OpenText(fileName))
+            using (textReader)
             {
-                var csv = new CsvReader(reader);
+                var csv = new CsvReader(textReader);
                 while (csv.Read())
                 {
                     var intField = csv.GetField<int>(0);

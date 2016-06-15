@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.IO;
+using FluentAssertions;
 using Metropolis.Api.Analyzers;
 using Metropolis.Api.Collection;
 using Metropolis.Api.Collection.Steps;
@@ -6,6 +7,7 @@ using Metropolis.Api.Collection.Steps.CSharp;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Services;
 using Metropolis.Api.Utilities;
+using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 using Moq;
 using NUnit.Framework;
@@ -57,7 +59,10 @@ namespace Metropolis.Test.Api.Services
             metricsTaskFactory.Setup(x => x.GetStep(RepositorySourceType.Java)).Returns(metricsCommand.Object);
             metricsCommand.Setup(x => x.Run(details)).Returns(new[] { result});
 
-            codebaseService.Setup(x => x.Get(expectedMetricsFile, ParseType.PuppyCrawler)).Returns(CodeBase.Empty);
+            var stringReader = new StringReader("foo");
+            fileSystem.Setup(x => x.OpenFileStream(expectedMetricsFile)).Returns(stringReader);
+
+            codebaseService.Setup(x => x.Get(stringReader, ParseType.PuppyCrawler)).Returns(CodeBase.Empty);
             analyzerFactory.Setup(x => x.For(RepositorySourceType.Java)).Returns(analyzer.Object);
             analyzer.Setup(x => x.Analyze(CodeBase.Empty().AllInstances)).Returns(CodeBase.Empty);
 
@@ -79,8 +84,12 @@ namespace Metropolis.Test.Api.Services
             metricsTaskFactory.Setup(x => x.GetStep(RepositorySourceType.ECMA)).Returns(metricsCommand.Object);
             metricsCommand.Setup(x => x.Run(details)).Returns(new[] { eslintResult, slocResult});
 
-            codebaseService.Setup(x => x.Get(eslintMetricsFile, ParseType.EsLint)).Returns(CodeBase.Empty);
-            codebaseService.Setup(x => x.Get(slocMetricsFile  , ParseType.SlocEcma)).Returns(CodeBase.Empty);
+            var stringReader = new StringReader("foo");
+            fileSystem.Setup(x => x.OpenFileStream(eslintMetricsFile)).Returns(stringReader);
+            fileSystem.Setup(x => x.OpenFileStream(slocMetricsFile)).Returns(stringReader);
+
+            codebaseService.Setup(x => x.Get(stringReader, ParseType.EsLint)).Returns(CodeBase.Empty);
+            codebaseService.Setup(x => x.Get(stringReader, ParseType.SlocEcma)).Returns(CodeBase.Empty);
             analyzerFactory.Setup(x => x.For(RepositorySourceType.ECMA)).Returns(analyzer.Object);
             analyzer.Setup(x => x.Analyze(CodeBase.Empty().AllInstances)).Returns(CodeBase.Empty);
 

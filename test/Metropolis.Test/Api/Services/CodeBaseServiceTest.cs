@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Metropolis.Api.Build;
+﻿using System.IO;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Persistence;
 using Metropolis.Api.Readers;
@@ -21,6 +22,7 @@ namespace Metropolis.Test.Api.Services
 
         private const string FileName = @"C:\\myfolder\mycodebase.project";
         private readonly CodeBase workspace = CodeBase.Empty();
+        private readonly StringReader stringReader = new StringReader(FileName);
 
         [SetUp]
         public void SetUp()
@@ -58,24 +60,24 @@ namespace Metropolis.Test.Api.Services
         public void GetToxicity()
         {
             parserFactory.Setup(x => x.GetReader(ParseType.RichardToxicity)).Returns(classParser.Object);
-            classParser.Setup(x => x.Parse(FileName)).Returns(workspace);
-            codebaseService.GetToxicity(FileName).Should().BeSameAs(workspace);
+            classParser.Setup(x => x.Parse(stringReader)).Returns(workspace);
+            codebaseService.GetToxicity(stringReader).Should().BeSameAs(workspace);
         }
 
         [Test]
         public void GetVisualStudioMetrics()
         {
             parserFactory.Setup(x => x.GetReader(ParseType.VisualStudio)).Returns(classParser.Object);
-            classParser.Setup(x => x.Parse(FileName)).Returns(workspace);
-            codebaseService.GetVisualStudioMetrics(FileName).Should().BeSameAs(workspace);
+            classParser.Setup(x => x.Parse(stringReader)).Returns(workspace);
+            codebaseService.GetVisualStudioMetrics(stringReader).Should().BeSameAs(workspace);
         }
 
         [Test]
         public void Get()
         {
             parserFactory.Setup(x => x.GetReader(ParseType.EsLint)).Returns(classParser.Object);
-            classParser.Setup(x => x.Parse(FileName)).Returns(workspace);
-            codebaseService.Get(FileName, ParseType.EsLint).Should().BeSameAs(workspace);
+            classParser.Setup(x => x.Parse(stringReader)).Returns(workspace);
+            codebaseService.Get(stringReader, ParseType.EsLint).Should().BeSameAs(workspace);
         }
     }
 }

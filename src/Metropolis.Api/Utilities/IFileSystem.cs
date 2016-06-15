@@ -13,5 +13,6 @@ namespace Metropolis.Api.Utilities
         bool FileExists(string potentialPath);
         void CleanFolder(string buildOutputFolder);
         IEnumerable<FileDto> FindAllBinaries(string buildOutputFolder);
+        TextReader OpenFileStream(string fileName);
     }
 }

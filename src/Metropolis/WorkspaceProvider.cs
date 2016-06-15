@@ -7,6 +7,7 @@ using Metropolis.Api.Readers;
 using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Api.Readers.XmlReaders.CheckStyles;
 using Metropolis.Api.Services;
+using Metropolis.Api.Utilities;
 using Metropolis.Camera;
 using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
@@ -20,16 +21,18 @@ namespace Metropolis
         private readonly IAnalysisService analysisService;
         private readonly ICodebaseService codebaseService;
         private readonly IUserPreferences userPreferences;
+        private readonly IFileSystem fileSystem;
 
-        public WorkspaceProvider() : this(new CodebaseService(), new AnalysisServices(), new UserPreferences())
+        public WorkspaceProvider() : this(new CodebaseService(), new AnalysisServices(), new UserPreferences(), new FileSystem())
         {
         }
 
-        private WorkspaceProvider(ICodebaseService codebaseService, IAnalysisService analysisService, IUserPreferences userPreferences)
+        private WorkspaceProvider(ICodebaseService codebaseService, IAnalysisService analysisService, IUserPreferences userPreferences, IFileSystem fileSystem)
         {
             this.codebaseService = codebaseService;
             this.analysisService = analysisService;
             this.userPreferences = userPreferences;
+            this.fileSystem = fileSystem;
         }
 
         public CodeBase CodeBase { get; private set; }
@@ -76,7 +79,7 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
-                var result = codebaseService.Get(fileName, ParseType.RichardToxicity);
+                var result = codebaseService.Get(fileSystem.OpenFileStream(fileName), ParseType.RichardToxicity);
                 EnrichWorkspace(result);
             }, "Toxicity|*.csv");
         }
@@ -85,7 +88,8 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
-                var result = codebaseService.Get(fileName, ParseType.VisualStudio);
+                
+                var result = codebaseService.Get(fileSystem.OpenFileStream(fileName), ParseType.VisualStudio);
                 EnrichWorkspace(result);
             }, "VisualStudio Metrics|*.csv");
         }
@@ -204,7 +208,7 @@ namespace Metropolis
 
         private void Parse(IInstanceReader parser, string fileName)
         {
-            var result = parser.Parse(fileName);
+            var result = parser.Parse(fileSystem.OpenFileStream(fileName));
             EnrichWorkspace(result);
         }
 

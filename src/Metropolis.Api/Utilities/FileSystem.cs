@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,7 +29,6 @@ namespace Metropolis.Api.Utilities
         {
             return File.Exists(potentialPath);
         }
-
         public void CleanFolder(string folder)
         {
             CreateFolder(folder);                                                                   //ensure it exists
@@ -43,8 +43,14 @@ namespace Metropolis.Api.Utilities
             if (!directory.Exists) return new FileDto[0];
 
             return (from f in directory.GetFiles()
-                    where f.Name.EndsWith(".dll") || f.Name.EndsWith(".exe")
-                    select new FileDto {Name = f.Name, FullPath = f.FullName}).ToList();
+                where f.Name.EndsWith(".dll") || f.Name.EndsWith(".exe")
+                select new FileDto {Name = f.Name, FullPath = f.FullName}).ToList();
+        }
+
+        public TextReader OpenFileStream(string fileName)
+        {
+            if (!File.Exists(fileName)) throw new ApplicationException($"File does not exist: {fileName}");
+            return File.OpenText(fileName);
         }
     }
 }

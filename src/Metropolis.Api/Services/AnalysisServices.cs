@@ -5,6 +5,7 @@ using Metropolis.Api.Collection;
 using Metropolis.Api.Collection.Steps.CSharp;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Utilities;
+using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services
@@ -13,6 +14,7 @@ namespace Metropolis.Api.Services
     {
         private readonly ICollectionStepFactory collectionStepFactory;
         private readonly IAnalyzerFactory analyzerFactory;
+        private readonly IFileSystem fileSystem;
         private readonly ICodebaseService codebaseService;
         private readonly IBuildEnvironment fxCopMetricsTool;
         
@@ -30,6 +32,7 @@ namespace Metropolis.Api.Services
             this.collectionStepFactory = collectionStepFactory;
             this.codebaseService = codebaseService;
             this.analyzerFactory = analyzerFactory;
+            this.fileSystem = fileSystem;
             this.fxCopMetricsTool = fxCopMetricsTool;
             fileSystem.CreateFolder(MetricsOutputFolder);
         }
@@ -43,7 +46,8 @@ namespace Metropolis.Api.Services
             var codeBase = CodeBase.Empty();
             foreach (var x in metricsResults)
             {
-                var cb = codebaseService.Get(x.MetricsFile, x.ParseType);
+                string filename = x.MetricsFile;
+                var cb = codebaseService.Get(fileSystem.OpenFileStream(filename), x.ParseType);
                 codeBase.Enrich(new CodeGraph(cb.AllInstances));
             }
 

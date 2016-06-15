@@ -5,6 +5,6 @@ namespace Metropolis.Api.Readers
 {
     public interface IInstanceReader
     {
-        CodeBase Parse(string fileName);
+        CodeBase Parse(TextReader textReader);
     }
 }
