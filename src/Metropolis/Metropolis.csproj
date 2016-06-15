@@ -115,7 +115,7 @@
     <Compile Include="Layout\GoldenRatioLayout.cs" />
     <Compile Include="Layout\MagnetoLayout.cs" />
     <Compile Include="Layout\SquaredLayout.cs" />
-    <Compile Include="Models\BrushFactory.cs" />
+    <Compile Include="Models\HeatMap.cs" />
     <Compile Include="Models\LinearScale.cs" />
     <Compile Include="AutoComplete\RequiredValidationRule.cs" />
     <Compile Include="AutoComplete\FileIconConverter.cs" />

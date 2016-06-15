@@ -101,7 +101,7 @@ namespace Metropolis.Layout
 
         private Model3D CreateCube(double x, double z, int minHeight, int maxHeight, Instance c)
         {
-            var color = BrushFactory.GetBrushForToxicity(c.Toxicity);
+            var color = HeatMap.GetBrushForToxicity(c.Toxicity);
             var scaledHeight = LinearScale.Apply(c.LinesOfCode, minHeight, maxHeight);
 
             var result = CreateCube(x, z, scaledHeight, color);
