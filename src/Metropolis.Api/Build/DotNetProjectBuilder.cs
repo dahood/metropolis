@@ -1,5 +1,4 @@
 using Metropolis.Api.Collection.PowerShell;
-using Metropolis.Api.Collection.Steps.CSharp;
 using Metropolis.Api.IO;
 using Metropolis.Api.Utilities;
 using Metropolis.Common.Extensions;
@@ -30,6 +29,11 @@ namespace Metropolis.Api.Build
             fileSystem.CleanFolder(buildArgs.BuildOutputFolder);
             var buildCommand = MsBuildCommand.FormatWith(buildEnvironment.MsBuildPath, buildArgs.ProjetFile, buildArgs.BuildOutputFolder);
             powershell.Invoke(buildCommand);
+            return CreateProjectBuildResult(buildArgs);
+        }
+
+        private ProjectBuildResult CreateProjectBuildResult(ProjectBuildArguments buildArgs)
+        {
             return new ProjectBuildResult
             {
                 BuildFolder = buildArgs.BuildOutputFolder,
