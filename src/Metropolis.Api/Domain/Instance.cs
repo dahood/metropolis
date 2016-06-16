@@ -9,8 +9,9 @@ namespace Metropolis.Api.Domain
     public class Instance
     {
         private List<InstanceVersionInfo> meta = new List<InstanceVersionInfo>();
+        public List<Duplicate> Duplicates = new List<Duplicate>();
 
-        public Instance(string name, string codeBagName, CodeBagType codeBagType, string codeBagPath)
+        public Instance(string name, string codeBagName, CodeBagType codeBagType, string codeBagPath = "") //TODO: Review if this should be empty or null
         {
             CodeBag = new CodeBag(codeBagName, codeBagType, codeBagPath);
             Name = name;
@@ -51,6 +52,10 @@ namespace Metropolis.Api.Domain
         {
             Members = new List<Member>(toAdd);
         }
+        private void ApplyDuplicates(IEnumerable<Duplicate> toAdd)
+        {
+            Duplicates = new List<Duplicate>(toAdd);
+        }
 
         public CodeBag CodeBag { get; }
         public string Name { get; }
@@ -67,6 +72,9 @@ namespace Metropolis.Api.Domain
         public int ClassDataAbstractionCoupling { get; set; }
 
         public double Toxicity { get; set; }
+
+        public int DuplicateLines => Duplicates.Sum(x => x.LinesOfCode);
+        public double DuplicatePercentage => LinesOfCode != 0 ? (double) DuplicateLines / LinesOfCode * 100 : 0;
 
         public List<Member> Members { get; set; } = new List<Member>();
 
@@ -146,11 +154,20 @@ namespace Metropolis.Api.Domain
 
             if (src.Members.HasValues())
                 ApplyMembers(src.Members);
+            if (src.Duplicates.HasValues())
+                ApplyDuplicates(src.Duplicates);
         }
 
         private bool Matches(Instance src)
         {
-            return QualifiedName == src.QualifiedName;
+            return QualifiedName == src.QualifiedName ||
+                   PhysicalPath == src.PhysicalPath;
         }
+    }
+
+    public class Duplicate
+    {
+        public int LinesOfCode { get; set; }
+        public int LineNumber { get; set; }
     }
 }

@@ -11,7 +11,9 @@ namespace Metropolis.Api.Domain
             parts.RemoveRange(parts.Count - 1, 1);
             var directory = string.Join("\\", parts);
 
-            return new Instance(filename, directory, CodeBagType.Directory, physicalPath);
+            var instance = new Instance(filename, directory, CodeBagType.Directory, physicalPath);
+
+            return instance;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Metropolis.Api.Extensions;
 
@@ -32,7 +33,8 @@ namespace Metropolis.Api.Domain
                 DepthOfInheritance = src.DepthOfInheritance,
                 Toxicity = src.Toxicity,
                 Meta = src.Meta.Select(Disassemble),
-                Members = src.Members.Select(Disassemble).ToList()
+                Members = src.Members.Select(Disassemble).ToList(),
+                Duplicates = src.Duplicates.Select(Disassemble).ToList()
             };
         }
 
@@ -44,6 +46,11 @@ namespace Metropolis.Api.Domain
                 NoFallthrough = src.NoFallthrough,
                 NumberOfParameters = src.NumberOfParameters
             };
+        }
+
+        private static Duplicate Disassemble(SerializableDuplicate src)
+        {
+            return new Duplicate {LinesOfCode = int.Parse(src.LinesOfCode), LineNumber = int.Parse(src.LineNumber)};
         }
 
         private static InstanceVersionInfo Disassemble(SerializableClassVersionInfo i)
@@ -74,7 +81,8 @@ namespace Metropolis.Api.Domain
                 Toxicity = src.Toxicity,
                 LinesOfCode = src.LinesOfCode,
                 Meta = src.Meta.Select(Assemble),
-                Members = src.Members.Select(Assemble)
+                Members = src.Members.Select(Assemble),
+                Duplicates = src.Duplicates.Select(Assemble)
             };
         }
 
@@ -99,6 +107,15 @@ namespace Metropolis.Api.Domain
                 MissingDefaultCase = src.MissingDefaultCase,
                 NoFallthrough = src.NoFallthrough,
                 NumberOfParameters = src.NumberOfParameters
+            };
+        }
+
+        private static SerializableDuplicate Assemble(Duplicate src)
+        {
+            return new SerializableDuplicate
+            {
+                LinesOfCode = src.LinesOfCode.ToString(),
+                LineNumber = src.LineNumber.ToString()
             };
         }
     }
