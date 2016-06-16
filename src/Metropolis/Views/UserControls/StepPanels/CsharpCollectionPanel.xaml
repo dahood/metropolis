@@ -21,8 +21,12 @@
                     Download Here
                 </Hyperlink>
             </TextBlock>
-            <TextBlock x:Name="InfoPowerTools" TextWrapping="Wrap" Margin="0,0,-0.778,0"><Bold><Run Text="WARNING:"/></Bold><Run Text="You need to install Visual Studio Code Metrics Powertool for Visual Studio 2015."/><LineBreak /><Hyperlink NavigateUri="https://www.microsoft.com/en-us/download/details.aspx?id=48213"
-            		Click="NavigateToSite"><Run Text="Download Here"/></Hyperlink></TextBlock>
+            <TextBlock x:Name="InfoPowerTools" TextWrapping="Wrap" Margin="0,0,-0.778,0">
+                <Bold><Run Text="WARNING:"/></Bold><Run Text="You need to install Visual Studio Code Metrics Powertool for Visual Studio 2015."/><LineBreak />
+                <Hyperlink NavigateUri="https://www.microsoft.com/en-us/download/details.aspx?id=48213" Click="NavigateToSite">
+                    <Run Text="Download Here"/>
+                </Hyperlink>
+            </TextBlock>
         </StackPanel>
         <TabControl Height="200">
             <TabItem Name="SolutionTabItem" Header="Solution File">
@@ -56,9 +60,17 @@
                     <DataGrid Name="IgnoreFileDataGrid" RowHeight="30" VerticalAlignment="Top" 
                               RowStyle="{StaticResource GridRowStyle}"
                               CanUserAddRows="False" CanUserDeleteRows="False" 
+                              HorizontalGridLinesBrush="WhiteSmoke"
+                              VerticalGridLinesBrush="WhiteSmoke"
                               AutoGenerateColumns="False" Height="120">
                         <DataGrid.Columns>
-                            <DataGridCheckBoxColumn Header="Ignore" Binding="{Binding Path=IsIgnored}"/>
+                            <DataGridTemplateColumn Header="Ignore">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding Path=Ignore, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn Width="*" Header="File Name" IsReadOnly="True" Binding="{Binding Path=Name}"/>
                         </DataGrid.Columns>
                     </DataGrid>

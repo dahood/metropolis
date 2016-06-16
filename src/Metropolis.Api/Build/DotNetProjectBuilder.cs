@@ -1,5 +1,6 @@
 using Metropolis.Api.Collection.PowerShell;
 using Metropolis.Api.Collection.Steps.CSharp;
+using Metropolis.Api.IO;
 using Metropolis.Api.Utilities;
 using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;

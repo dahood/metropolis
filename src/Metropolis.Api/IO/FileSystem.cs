@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using Metropolis.Common.Models;
 
-namespace Metropolis.Api.Utilities
+namespace Metropolis.Api.IO
 {
     public class FileSystem : IFileSystem
     {
@@ -25,6 +25,9 @@ namespace Metropolis.Api.Utilities
         }
 
         IEnumerable<DriveInfo> IFileSystem.AllDrives => DriveInfo.GetDrives();
+        public string ProjectBuildFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis","Build");
+        public string IgnoreFile => ".metropolisignore";
+
         public bool FileExists(string potentialPath)
         {
             return File.Exists(potentialPath);
@@ -51,6 +54,11 @@ namespace Metropolis.Api.Utilities
         {
             if (!File.Exists(fileName)) throw new ApplicationException($"File does not exist: {fileName}");
             return File.OpenText(fileName);
+        }
+
+        public void WriteText(string path, IEnumerable<string> data)
+        {
+            File.WriteAllLines(path, data);
         }
     }
 }

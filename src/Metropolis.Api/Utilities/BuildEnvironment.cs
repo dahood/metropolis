@@ -1,6 +1,6 @@
-using Metropolis.Api.Utilities;
+using Metropolis.Api.IO;
 
-namespace Metropolis.Api.Collection.Steps.CSharp
+namespace Metropolis.Api.Utilities
 {
     public class BuildEnvironment : IBuildEnvironment
     {

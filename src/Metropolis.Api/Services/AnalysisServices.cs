@@ -4,6 +4,7 @@ using Metropolis.Api.Analyzers;
 using Metropolis.Api.Collection;
 using Metropolis.Api.Collection.Steps.CSharp;
 using Metropolis.Api.Domain;
+using Metropolis.Api.IO;
 using Metropolis.Api.Utilities;
 using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;

@@ -1,4 +1,4 @@
-﻿namespace Metropolis.Api.Collection.Steps.CSharp
+﻿namespace Metropolis.Api.IO
 {
     public interface IBuildEnvironment
     {

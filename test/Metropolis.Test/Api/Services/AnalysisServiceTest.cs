@@ -5,6 +5,7 @@ using Metropolis.Api.Collection;
 using Metropolis.Api.Collection.Steps;
 using Metropolis.Api.Collection.Steps.CSharp;
 using Metropolis.Api.Domain;
+using Metropolis.Api.IO;
 using Metropolis.Api.Services;
 using Metropolis.Api.Utilities;
 using Metropolis.Common.Extensions;

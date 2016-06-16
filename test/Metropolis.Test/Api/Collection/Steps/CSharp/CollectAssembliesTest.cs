@@ -2,6 +2,7 @@
 using System.IO;
 using FluentAssertions;
 using Metropolis.Api.Collection.Steps.CSharp;
+using Metropolis.Api.IO;
 using Metropolis.Api.Utilities;
 using Metropolis.Common.Models;
 using Metropolis.Test.Api.Services;

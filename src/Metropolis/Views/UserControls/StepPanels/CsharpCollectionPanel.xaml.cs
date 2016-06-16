@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿
+
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -76,7 +78,6 @@ namespace Metropolis.Views.UserControls.StepPanels
         {
             ProjectDetails.FilesToIgnore = IgnoreFileDataGrid.ItemsSource.OfType<FileDto>().Where(x => x.Ignore).ToList();
             WorkSpaceProvider.CreateIgnoreFile(ProjectDetails);
-
         }
 
         private void FindSolutionFolder(object sender, RoutedEventArgs e)

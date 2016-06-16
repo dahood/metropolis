@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Metropolis.Api.Build;
 using Metropolis.Api.Domain;
+using Metropolis.Api.IO;
 using Metropolis.Api.Persistence;
 using Metropolis.Api.Readers;
+using Metropolis.Api.Utilities;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services
@@ -13,19 +16,22 @@ namespace Metropolis.Api.Services
     {
         private readonly IMetricsReaderFactory readerFactory;
         private readonly IProjectBuildFactory builderFactory;
-        private readonly IProjectRepository projectRepository;public static string ProjectBuildFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis.Build");
+        private readonly IFileSystem fileSystem;
+        private readonly IProjectRepository projectRepository;
+        
 
-        public CodebaseService() : this(new MetricsReaderFactory(), new ProjectRepository(), new ProjectBuildFactory())
+        public CodebaseService() : this(new MetricsReaderFactory(), new ProjectRepository(), new ProjectBuildFactory(), new FileSystem())
         {
         }
 
-        public CodebaseService(IMetricsReaderFactory readerFactory, IProjectRepository repository, IProjectBuildFactory builderFactory)
+        public CodebaseService(IMetricsReaderFactory readerFactory, IProjectRepository repository, IProjectBuildFactory builderFactory, IFileSystem fileSystem)
         {
             this.readerFactory = readerFactory;
             projectRepository = repository;
             this.builderFactory = builderFactory;
+            this.fileSystem = fileSystem;
         }
-        string ICodebaseService.ProjectBuildFolder => ProjectBuildFolder;
+        string ICodebaseService.ProjectBuildFolder => fileSystem.ProjectBuildFolder;
 
         public void Save(CodeBase workspace, string fileName)
         {
@@ -54,7 +60,7 @@ namespace Metropolis.Api.Services
         
         public ProjectBuildResult BuildSolution(ProjectBuildArguments buildArgs)
         {
-            buildArgs.BuildOutputFolder = Path.Combine(ProjectBuildFolder, buildArgs.ProjectName);
+            buildArgs.BuildOutputFolder = Path.Combine(fileSystem.ProjectBuildFolder, buildArgs.ProjectName);
             return builderFactory.BuilderFor(buildArgs.SourceType).Build(buildArgs);
         }
 
@@ -77,7 +83,10 @@ namespace Metropolis.Api.Services
         }
         public void WriteIgnoreFile(string projectName, string projectFolder, IEnumerable<FileDto> filesToIgnore)
         {
-            throw new NotImplementedException();
+            var ingoreData = filesToIgnore.Select(x => x.Name);
+
+            fileSystem.WriteText(Path.Combine(projectFolder, fileSystem.IgnoreFile), ingoreData);
+            fileSystem.WriteText(Path.Combine(fileSystem.ProjectBuildFolder, projectName, fileSystem.IgnoreFile), ingoreData);
         }
     }
 }

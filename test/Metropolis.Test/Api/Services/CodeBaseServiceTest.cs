@@ -2,6 +2,7 @@
 using Metropolis.Api.Build;
 ﻿using System.IO;
 using Metropolis.Api.Domain;
+using Metropolis.Api.IO;
 using Metropolis.Api.Persistence;
 using Metropolis.Api.Readers;
 using Metropolis.Api.Services;
@@ -19,6 +20,7 @@ namespace Metropolis.Test.Api.Services
         private Mock<IProjectRepository> repository;
         private Mock<IInstanceReader> classParser;
         private Mock<IProjectBuildFactory> projectBuilderFactory;
+        private Mock<IFileSystem> fileSystem;
 
         private const string FileName = @"C:\\myfolder\mycodebase.project";
         private readonly CodeBase workspace = CodeBase.Empty();
@@ -31,8 +33,9 @@ namespace Metropolis.Test.Api.Services
             repository = CreateMock<IProjectRepository>();
             classParser = CreateMock<IInstanceReader>();
             projectBuilderFactory = CreateMock<IProjectBuildFactory>();
+            fileSystem = CreateMock<IFileSystem>();
 
-            codebaseService = new CodebaseService(parserFactory.Object, repository.Object, projectBuilderFactory.Object);
+            codebaseService = new CodebaseService(parserFactory.Object, repository.Object, projectBuilderFactory.Object, fileSystem.Object);
         }
 
         [Test]

@@ -2,6 +2,7 @@
 using System.Linq;
 using FluentAssertions;
 using Metropolis.Api.Domain;
+using Metropolis.Api.IO;
 using Metropolis.Api.Readers.XmlReaders.CheckStyles;
 using Metropolis.Api.Utilities;
 using Metropolis.Common.Extensions;
