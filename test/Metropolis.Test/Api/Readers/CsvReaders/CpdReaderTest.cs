@@ -1,8 +1,11 @@
-﻿using FluentAssertions.Common;
+﻿using System;
+using FluentAssertions.Common;
 using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Api.Utilities;
 using Metropolis.Common.Extensions;
 using NUnit.Framework;
+using System.IO;
+using FluentAssertions;
 
 namespace Metropolis.Test.Api.Readers.CsvReaders
 {
@@ -16,13 +19,18 @@ namespace Metropolis.Test.Api.Readers.CsvReaders
         }
 
         private CpdReader parser;
+        private readonly string oneDuplicate = "lines,tokens,occurrences" + Environment.NewLine +
+            @"47,196,2," +
+            @"106,C:\Dev\disruptor\src\perftest\java\com\lmax\disruptor\sequenced\ThreeToOneSequencedBatchThroughputTest.java," +
+            @"104,C:\Dev\disruptor\src\perftest\java\com\lmax\disruptor\sequenced\ThreeToOneSequencedThroughputTest.java";
 
-        [Test, Ignore("wip")]
+        [Test]
         public void ShouldParseOneDuplicate()
         {
-            var codebase = parser.Parse(new FileSystem().OpenFileStream(@"filename"));
+            
+            var codebase = parser.Parse(new StringReader(oneDuplicate));
 
-            codebase.NumberOfTypes.IsSameOrEqualTo(2);
+            codebase.NumberOfTypes.Should().Be(2);
         }
     }
 }
