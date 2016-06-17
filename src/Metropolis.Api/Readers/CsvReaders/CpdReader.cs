@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using CsvHelper;
 using Metropolis.Api.Domain;
 
@@ -10,17 +11,37 @@ namespace Metropolis.Api.Readers.CsvReaders
     /// </summary>
     public class CpdReader : IInstanceReader
     {
+        private readonly List<Instance> instances = new List<Instance>();
+
+        protected Instance this[string fileName]
+        {
+            get
+            {
+                var found = instances.SingleOrDefault(x => x.PhysicalPath == fileName);
+                if (found != null) return found;
+                found = InstanceBuilder.Build(fileName);
+                instances.Add(found);
+                return found;
+            }
+        }
+
         public CodeBase Parse(TextReader textReader)
         {
             var items = ReadFile(textReader);
-            var instances = new List<Instance>();
-            //TODO: convert items into Instances
+
             foreach (var cpdLineItem in items)
             {
-                foreach(var occurance in cpdLineItem.Occurances)
-                    instances.Add(InstanceBuilder.Build(occurance.FileName));
+                foreach (var occurance in cpdLineItem.Occurances)
+                {
+                    this[occurance.FileName].Duplicates.Add(CreateDuplicate(occurance, cpdLineItem));
+                }
             }
             return new CodeBase(new CodeGraph(instances));
+        }
+
+        private static Duplicate CreateDuplicate(CpdOccurance occurance, CpdLineItem cpdLineItem)
+        {
+            return new Duplicate {LineNumber = occurance.LineNumber, LinesOfCode = cpdLineItem.LinesOfCode};
         }
 
         private static IEnumerable<CpdLineItem> ReadFile(TextReader textReader)
@@ -58,22 +79,5 @@ namespace Metropolis.Api.Readers.CsvReaders
             }
             return items;
         }
-    }
-
-    public class CpdLineItem
-    {
-        public CpdLineItem()
-        {
-            Occurances = new List<CpdOccurance>();
-        }
-
-        public int LinesOfCode { get; set; }
-        public List<CpdOccurance> Occurances { get; set; }
-    }
-
-    public class CpdOccurance
-    {
-        public string FileName { get; set; }
-        public int LineNumber { get; set; }
     }
 }
