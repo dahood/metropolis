@@ -5,14 +5,18 @@ using Metropolis.ViewModels;
 
 namespace Metropolis.Views.UserControls.StepPanels
 {
-    public interface ICSharpCollectionView
+    public interface ICSharpCollectionView : ICollectionView
     {
-        ProjectDetailsViewModel ProjectDetails { get; }
-
         event EventHandler BuildRequested;
         event EventHandler<SolutionFileArgs> SolutionFileSelected;
         event EventHandler<CreateIgnoreFileArgs> RunAnalysisRequest; 
 
         void ShowBuildArtifacts(IEnumerable<FileDto> artifacts);
+    }
+
+    public interface ICollectionView
+    {
+        ProjectDetailsViewModel ProjectDetails { get; }
+        void RunAnalysis();
     }
 }

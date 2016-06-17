@@ -19,8 +19,8 @@ namespace Metropolis.Controllers
 
         private void HookupEvents()
         {
-            view.BuildRequested += RunBuild;
             view.SolutionFileSelected += SolutionFileSelected;
+            view.BuildRequested += RunBuild;
             view.RunAnalysisRequest += RunAnalysis;
         }
         
@@ -43,6 +43,7 @@ namespace Metropolis.Controllers
         {
             workSpaceProvider.SetUpDotNetBuild(ProjectDetails, e.SolutionFile);
         }
+
         private void RunAnalysis(object sender, CreateIgnoreFileArgs e)
         {
             ProjectDetails.FilesToIgnore = e.IngoreFiles;

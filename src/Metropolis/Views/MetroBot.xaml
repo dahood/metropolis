@@ -5,7 +5,7 @@
     xmlns:stepPanels="clr-namespace:Metropolis.Views.UserControls.StepPanels"
     xmlns:userControls="clr-namespace:Metropolis.Views.UserControls"
     x:Class="Metropolis.Views.MetroBot"
-    Title="MetroBot - Import Data and Code Metrics" Height="433.926" Width="600"
+    Title="MetroBot - Import Data and Code Metrics" Height="467.203" Width="600"
     WindowStartupLocation="CenterScreen" Icon="..\Images/logo.ico">
     <Window.Resources>
         <vc:RepositorySourceTypeConverter x:Key="SrcTypeConverter" />
@@ -67,9 +67,15 @@
             </Border>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,5,10,10">
-            <Button Content="Cancel" x:Name="CancelButton" Click="OnCancel" Width="75" />
-            <Button Content="Run Analysis" x:Name="AnalyzeButton" Click="OnProceed" Width="75" Margin="5,0,0,0"
-                    IsEnabled="{Binding Path=IsValid}"/>
+            <Button Content="Cancel" x:Name="CancelButton" Click="OnCancel" Width="75"  Height="35"/>
+
+            <Button Click="OnProceed"  Margin="10, 5, 10, 2" Height="35" Width="110" 
+                            VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+                <StackPanel  Orientation="Horizontal">
+                    <Image Height="32" Width="32"  Source="../Images/RunAnalysis.png"/>
+                    <TextBlock x:Name="RunAnalysisTextBlock" VerticalAlignment="Center" Text="Run Analysis" Margin="5,2,2,2" Width="68"/>
+                </StackPanel>
+            </Button>
         </StackPanel>
     </StackPanel>
 

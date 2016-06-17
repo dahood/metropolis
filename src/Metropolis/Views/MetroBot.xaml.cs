@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using Metropolis.Camera;
 using Metropolis.Common.Models;
 using Metropolis.ViewModels;
+using Metropolis.Views.UserControls.StepPanels;
 
 namespace Metropolis.Views
 {
@@ -14,6 +15,7 @@ namespace Metropolis.Views
     /// </summary>
     public partial class MetroBot
     {
+        private ICollectionView currentView;
         public MetroBot()
         {
             InitializeComponent();
@@ -24,7 +26,6 @@ namespace Metropolis.Views
         public event EventHandler DisplayWorkspaceDetails;
 
         public ProjectDetailsViewModel ProjectDetails { get; }
-        private static IWorkspaceProvider WorkSpaceProvider => App.WorkspaceProvider;
 
         private void OnCancel(object sender, RoutedEventArgs e)
         {
@@ -36,7 +37,7 @@ namespace Metropolis.Views
             Spinner.Show();
             using (new WaitCursor())
             {
-                WorkSpaceProvider.Analyze(ProjectDetails);
+                currentView.RunAnalysis();
                 DisplayWorkspaceDetails?.Invoke(this, new EventArgs());
             }
             Spinner.Hide();
@@ -52,16 +53,19 @@ namespace Metropolis.Views
                     CSharpPanel.Visibility = Visibility.Visible;
                     JavaPanel.Visibility = Visibility.Collapsed;
                     EcmaScriptPanel.Visibility = Visibility.Collapsed;
+                    currentView = CSharpPanel;
                     break;
                 case RepositorySourceType.Java:
                     CSharpPanel.Visibility = Visibility.Collapsed;
                     JavaPanel.Visibility = Visibility.Visible;
                     EcmaScriptPanel.Visibility = Visibility.Collapsed;
+                    currentView = JavaPanel;
                     break;
                 case RepositorySourceType.ECMA:
                     CSharpPanel.Visibility = Visibility.Collapsed;
                     JavaPanel.Visibility = Visibility.Collapsed;
                     EcmaScriptPanel.Visibility = Visibility.Visible;
+                    currentView = EcmaScriptPanel;
                     break;
                 default:
                     throw new ApplicationException("Unsupported RepositorySourceType: " + sender);

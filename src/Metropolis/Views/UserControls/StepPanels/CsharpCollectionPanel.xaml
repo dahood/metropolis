@@ -28,7 +28,7 @@
                 </Hyperlink>
             </TextBlock>
         </StackPanel>
-        <TabControl Height="200">
+        <TabControl Height="256">
             <TabItem Name="SolutionTabItem" Header="Solution File">
                 <StackPanel>
                     <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,5" Height="40">
@@ -60,9 +60,10 @@
                     <DataGrid Name="IgnoreFileDataGrid" RowHeight="30" VerticalAlignment="Top" 
                               RowStyle="{StaticResource GridRowStyle}"
                               CanUserAddRows="False" CanUserDeleteRows="False" 
+                              VerticalScrollBarVisibility="Visible"
                               HorizontalGridLinesBrush="WhiteSmoke"
                               VerticalGridLinesBrush="WhiteSmoke"
-                              AutoGenerateColumns="False" Height="120">
+                              AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn Header="Ignore">
                                 <DataGridTemplateColumn.CellTemplate>
@@ -74,13 +75,6 @@
                             <DataGridTextColumn Width="*" Header="File Name" IsReadOnly="True" Binding="{Binding Path=Name}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Click="RunAnalysis"  Margin="2, 5, 10, 2" Height="35" Width="110" 
-                            VerticalAlignment="Bottom" HorizontalAlignment="Right" >
-                        <StackPanel  Orientation="Horizontal">
-                            <Image Height="32" Width="32"  Source="../../../Images/RunAnalysis.png"/>
-                            <TextBlock x:Name="RunAnalysisTextBlock" VerticalAlignment="Center" Text="Run Analysis" Margin="5,2,2,2" Width="68"/>
-                        </StackPanel>
-                    </Button>
                 </StackPanel>
             </TabItem>
         </TabControl>

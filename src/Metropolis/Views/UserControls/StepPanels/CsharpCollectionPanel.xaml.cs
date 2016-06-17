@@ -1,18 +1,15 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using Metropolis.Camera;
-using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 using Metropolis.Controllers;
 using Metropolis.TipOfTheDay;
+using Metropolis.Utilities;
 using Metropolis.ViewModels;
 
 namespace Metropolis.Views.UserControls.StepPanels
@@ -30,7 +27,7 @@ namespace Metropolis.Views.UserControls.StepPanels
         public event EventHandler<CreateIgnoreFileArgs> RunAnalysisRequest;
 
         public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel) DataContext;
-        
+
         public CsharpCollectionPanel()
         {
             InitializeComponent();
@@ -44,13 +41,6 @@ namespace Metropolis.Views.UserControls.StepPanels
             Process.Start(link.NavigateUri.ToString());
         }
         
-        private static string GetFileName(string initialFile = null)
-        {
-            var dialog = new OpenFileDialog {FileName = initialFile, Filter = @"Solution Files (*.sln)|*.sln;" };
-            dialog.ShowDialog();
-            return dialog.FileName != string.Empty ? dialog.FileName : null;
-        }
-
         private void ShowCSharpToolTip(object sender, RoutedEventArgs e)
         {
             TipOfTheDay.Show<CSharpTipOfTheDay>();
@@ -58,9 +48,7 @@ namespace Metropolis.Views.UserControls.StepPanels
 
         private void FindSolutionFile(object sender, RoutedEventArgs e)
         {
-            var solutionFile = GetFileName(ProjectDetails.ProjectFile);
-            if (solutionFile.IsEmpty()) return;
-            ProjectDetails.ProjectFile = solutionFile;
+            ProjectDetails.ProjectFile = DialogUtils.GetFileName(@"Solution Files (.sln)|*.sln;", ProjectDetails.ProjectFile);
         }
 
         private void BuildSolution(object sender, RoutedEventArgs e)
@@ -70,19 +58,10 @@ namespace Metropolis.Views.UserControls.StepPanels
                 BuildRequested?.Invoke(this, EventArgs.Empty);
             }
         }
-
-        private void RunAnalysis(object sender, RoutedEventArgs e)
-        {
-            using (new WaitCursor())
-            {
-                var ignoreFileList = IgnoreFileDataGrid.ItemsSource.OfType<FileDto>().Where(x => x.Ignore).ToList();
-                RunAnalysisRequest?.Invoke(this, new CreateIgnoreFileArgs {IngoreFiles = ignoreFileList});
-                
-            }
-        }
-
+        
         private void FindSolutionFolder(object sender, RoutedEventArgs e)
         {
+            ProjectDetails.SourceDirectory = DialogUtils.GetSourceDirectory("C#", ProjectDetails.SourceDirectory);
         }
 
         private void SolutionFileChanged(object sender, TextChangedEventArgs e)
@@ -95,6 +74,15 @@ namespace Metropolis.Views.UserControls.StepPanels
             IgnoreTabItem.IsEnabled = true;
             IgnoreTabItem.IsSelected = true;
             IgnoreFileDataGrid.ItemsSource = artifacts;
+        }
+
+        public void RunAnalysis()
+        {
+            using (new WaitCursor())
+            {
+                var ignoreFileList = IgnoreFileDataGrid.ItemsSource.OfType<FileDto>().Where(x => x.Ignore).ToList();
+                RunAnalysisRequest?.Invoke(this, new CreateIgnoreFileArgs { IngoreFiles = ignoreFileList });
+            }
         }
     }
 

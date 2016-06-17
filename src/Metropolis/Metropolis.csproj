@@ -129,6 +129,7 @@
     <Compile Include="TipOfTheDay\WelcomeTip.cs" />
     <Compile Include="TipOfTheDay\ITipOfTheDay.cs" />
     <Compile Include="TipOfTheDay\DefaultCaseControlTip.cs" />
+    <Compile Include="Utilities\DialogUtils.cs" />
     <Compile Include="ValueConverters\FxCopVisibilityConverter.cs" />
     <Compile Include="ValueConverters\RepositorySourceTypeConverter.cs" />
     <Compile Include="ViewModels\IgnoreFileViewModel.cs" />

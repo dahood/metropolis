@@ -1,8 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Documents;
-using System.Windows.Forms;
-using Metropolis.Common.Extensions;
+using Metropolis.Utilities;
 using Metropolis.ViewModels;
 using Microsoft.Win32;
 
@@ -12,7 +11,7 @@ namespace Metropolis.Views.UserControls.StepPanels
     ///     Panel just for collection of Java metrics
     ///     - Must install Java for this to work
     /// </summary>
-    public partial class JavaCollectionPanel
+    public partial class JavaCollectionPanel : ICollectionView
     {
         public JavaCollectionPanel()
         {
@@ -20,21 +19,14 @@ namespace Metropolis.Views.UserControls.StepPanels
         }
 
         public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel) DataContext;
+        public void RunAnalysis()
+        {
+            App.WorkspaceProvider.Analyze(ProjectDetails);
+        }
 
         private void OnJavaFindDirectory(object sender, RoutedEventArgs e)
         {
-            var sourceDirectory = GetSourceDirectory("Java", ProjectDetails.SourceDirectory);
-            if (sourceDirectory.IsNotEmpty())
-                ProjectDetails.SourceDirectory = sourceDirectory;
-        }
-        
-        private static string GetSourceDirectory(string type, string initialDirectory)
-        {
-            var dialog = new FolderBrowserDialog {Description = $"Locate {type} Source Directory", SelectedPath = initialDirectory};
-            var result = dialog.ShowDialog();
-            return result == DialogResult.OK
-                ? dialog.SelectedPath
-                : string.Empty;
+            ProjectDetails.SourceDirectory = DialogUtils.GetSourceDirectory("Java", ProjectDetails.SourceDirectory);
         }
 
         private void NavigateToSite(object sender, RoutedEventArgs e)
