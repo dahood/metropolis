@@ -98,6 +98,7 @@
     <Compile Include="AutoComplete\FileSuggestionProvider.cs" />
     <Compile Include="AutoComplete\FolderSuggestionProvider.cs" />
     <Compile Include="AutoComplete\FileSystemSuggestionProvider.cs" />
+    <Compile Include="Controllers\CsharpCollectionController.cs" />
     <Compile Include="ITipOfTheDayFactory.cs" />
     <Compile Include="IUserPreferences.cs" />
     <Compile Include="Models\HeatMapBrushFactory.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="Views\UserControls\StepPanels\EcmaCollectionPanel.xaml.cs">
       <DependentUpon>EcmaCollectionPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControls\StepPanels\ICSharpCollectionView.cs" />
     <Compile Include="Views\UserControls\StepPanels\JavaCollectionPanel.xaml.cs">
       <DependentUpon>JavaCollectionPanel.xaml</DependentUpon>
     </Compile>

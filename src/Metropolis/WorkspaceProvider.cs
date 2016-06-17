@@ -89,7 +89,6 @@ namespace Metropolis
         {
             OpenFile(fileName =>
             {
-                
                 var result = codebaseService.Get(fileSystem.OpenFileStream(fileName), ParseType.VisualStudio);
                 EnrichWorkspace(result);
             }, "VisualStudio Metrics|*.csv");

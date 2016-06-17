@@ -1,5 +1,7 @@
 ﻿
 
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
@@ -9,6 +11,7 @@ using System.Windows.Forms;
 using Metropolis.Camera;
 using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
+using Metropolis.Controllers;
 using Metropolis.TipOfTheDay;
 using Metropolis.ViewModels;
 
@@ -18,21 +21,26 @@ namespace Metropolis.Views.UserControls.StepPanels
     ///     Panel just for collection of CSharp metrics
     ///     - Must install Visual Studio & Metrics Powertools for VS for this to work
     /// </summary>
-    public partial class CsharpCollectionPanel
+    public partial class CsharpCollectionPanel : ICSharpCollectionView
     {
+        private CsharpCollectionController controller;
+
+        public event EventHandler BuildRequested;
+        public event EventHandler<SolutionFileArgs> SolutionFileSelected;
+        public event EventHandler<CreateIgnoreFileArgs> RunAnalysisRequest;
+
+        public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel) DataContext;
+        
         public CsharpCollectionPanel()
         {
             InitializeComponent();
+            controller = new CsharpCollectionController(this, App.WorkspaceProvider);
         }
 
-        private static IWorkspaceProvider WorkSpaceProvider => App.WorkspaceProvider;
-        public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel) DataContext;
-        
         private void NavigateToSite(object sender, RoutedEventArgs e)
         {
             var link = sender as Hyperlink;
             if (link == null) return;
-
             Process.Start(link.NavigateUri.ToString());
         }
         
@@ -59,36 +67,40 @@ namespace Metropolis.Views.UserControls.StepPanels
         {
             using (new WaitCursor())
             {
-                var args = new ProjectBuildArguments
-                            {
-                                ProjectName = ProjectDetails.ProjectName,
-                                ProjetFile = ProjectDetails.ProjectFile,
-                                SourceType = RepositorySourceType.CSharp
-                            };
-
-                var result = WorkSpaceProvider.BuildSolution(args);
-                IgnoreFileDataGrid.ItemsSource = result.Artifacts;
+                BuildRequested?.Invoke(this, EventArgs.Empty);
             }
-
-            IgnoreTabItem.IsEnabled = true;
-            IgnoreTabItem.IsSelected = true;
         }
 
-        private void CreateIgnoreFile(object sender, RoutedEventArgs e)
+        private void RunAnalysis(object sender, RoutedEventArgs e)
         {
-            ProjectDetails.FilesToIgnore = IgnoreFileDataGrid.ItemsSource.OfType<FileDto>().Where(x => x.Ignore).ToList();
-            WorkSpaceProvider.CreateIgnoreFile(ProjectDetails);
+            var ignoreFileList = IgnoreFileDataGrid.ItemsSource.OfType<FileDto>().Where(x => x.Ignore).ToList();
+            RunAnalysisRequest?.Invoke(this, new CreateIgnoreFileArgs {IngoreFiles = ignoreFileList});
         }
 
         private void FindSolutionFolder(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
         }
 
         private void SolutionFileChanged(object sender, TextChangedEventArgs e)
         {
-            ProjectDetails.ProjectFolder = WorkSpaceProvider.DeriveProjectFolder(SolutionFileTextBox.Text, ProjectDetails.ProjectFolder);
-            ProjectDetails.ProjectName = WorkSpaceProvider.DeriveProjectName(SolutionFileTextBox.Text, ProjectDetails.ProjectName);
+            SolutionFileSelected?.Invoke(this, new SolutionFileArgs {SolutionFile = SolutionFileTextBox.Text});
         }
+
+        public void ShowBuildArtifacts(IEnumerable<FileDto> artifacts)
+        {
+            IgnoreTabItem.IsEnabled = true;
+            IgnoreTabItem.IsSelected = true;
+            IgnoreFileDataGrid.ItemsSource = artifacts;
+        }
+    }
+
+    public class SolutionFileArgs : EventArgs
+    {
+        public string SolutionFile { get; set; }
+    }
+
+    public class CreateIgnoreFileArgs : EventArgs
+    {
+        public IEnumerable<FileDto> IngoreFiles { get; set; }
     }
 }

@@ -74,11 +74,11 @@
                             <DataGridTextColumn Width="*" Header="File Name" IsReadOnly="True" Binding="{Binding Path=Name}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Click="CreateIgnoreFile"  Margin="2, 5, 10, 2" Height="35" Width="100" 
+                    <Button Click="RunAnalysis"  Margin="2, 5, 10, 2" Height="35" Width="110" 
                             VerticalAlignment="Bottom" HorizontalAlignment="Right" >
                         <StackPanel  Orientation="Horizontal">
-                            <Image Height="32" Width="32"  Source="../../../Images/IgnoreFile.png"/>
-                            <TextBlock x:Name="IgnoreFiles" VerticalAlignment="Center" Text="Ignore Files" Width="81"/>
+                            <Image Height="32" Width="32"  Source="../../../Images/RunAnalysis.png"/>
+                            <TextBlock x:Name="RunAnalysisTextBlock" VerticalAlignment="Center" Text="Run Analysis" Margin="5,2,2,2" Width="68"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
