@@ -43,15 +43,7 @@ namespace Metropolis.Controllers
 
         private IEnumerable<FileDto> Consolidate(IEnumerable<FileDto> filesToIgnore, IEnumerable<FileDto> artifacts)
         {
-            return (from ignore in filesToIgnore
-                    join a in artifacts
-                      on ignore.Name equals a.Name
-                    select ignore)
-                   .Union(
-                     from a in artifacts
-                     where !filesToIgnore.Any(x => x.Name == a.Name)
-                     select a
-                   ).ToList();
+            return filesToIgnore.Intersect(artifacts).Union(artifacts.Except(filesToIgnore));
         }
 
         private void SolutionFileSelected(object sender, SolutionFileArgs e)
