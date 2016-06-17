@@ -45,7 +45,7 @@ namespace Metropolis.Api.Domain
             return sum / NumberOfTypes;
         }
 
-        public double Conciseness()
+        public double Density()
         {
             return (double) LinesOfCode / NumberOfTypes;
         }

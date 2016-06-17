@@ -298,8 +298,8 @@
                             <Label Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0" Name="InstanceLabel">Types</Label>
                             <TextBlock Grid.Row="2" Grid.Column="2" x:Name="TypesTextBlock" 
                                        HorizontalAlignment="Right" VerticalAlignment="Center" />
-                            <Label Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0">Code Conciseness</Label>
-                            <TextBlock Grid.Row="3" Grid.Column="2" x:Name="CodeConcisenessTextBlock" 
+                            <Label Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0">Code Density</Label>
+                            <TextBlock Grid.Row="3" Grid.Column="2" x:Name="CodeDensityTextBlock" 
                                        HorizontalAlignment="Right" VerticalAlignment="Center" />
                             <Label Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0">Average Toxicity</Label>
                             <TextBlock Grid.Row="4" Grid.Column="2" x:Name="ToxicityTextBlock" 
