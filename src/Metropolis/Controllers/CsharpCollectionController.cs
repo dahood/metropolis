@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Metropolis.Common.Models;
 using Metropolis.ViewModels;
 using Metropolis.Views.UserControls.StepPanels;
@@ -36,7 +38,20 @@ namespace Metropolis.Controllers
             };
 
             var buildResult = workSpaceProvider.BuildSolution(args);
-            view.ShowBuildArtifacts(buildResult.Artifacts);
+            view.ShowBuildArtifacts(Consolidate(ProjectDetails.FilesToIgnore, buildResult.Artifacts));
+        }
+
+        private IEnumerable<FileDto> Consolidate(IEnumerable<FileDto> filesToIgnore, IEnumerable<FileDto> artifacts)
+        {
+            return (from ignore in filesToIgnore
+                    join a in artifacts
+                      on ignore.Name equals a.Name
+                    select ignore)
+                   .Union(
+                     from a in artifacts
+                     where !filesToIgnore.Any(x => x.Name == a.Name)
+                     select a
+                   ).ToList();
         }
 
         private void SolutionFileSelected(object sender, SolutionFileArgs e)

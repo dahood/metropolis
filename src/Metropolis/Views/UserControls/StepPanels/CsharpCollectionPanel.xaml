@@ -63,7 +63,7 @@
                               VerticalScrollBarVisibility="Visible"
                               HorizontalGridLinesBrush="WhiteSmoke"
                               VerticalGridLinesBrush="WhiteSmoke"
-                              AutoGenerateColumns="False">
+                              AutoGenerateColumns="False" Height="227" Margin="0,0,0.222,0">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn Header="Ignore">
                                 <DataGridTemplateColumn.CellTemplate>

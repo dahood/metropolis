@@ -1,5 +1,5 @@
-using System.Collections.Generic;
-﻿using System.IO;
+﻿using System.Collections.Generic;
+ using System.IO;
 using Metropolis.Api.Domain;
 using Metropolis.Common.Models;
 
@@ -17,5 +17,6 @@ namespace Metropolis.Api.Services
         CodeBase GetToxicity(TextReader openFileStream);
         CodeBase GetVisualStudioMetrics(TextReader openFileStream);
         BuildPathsDto GetBuildPaths(string projectName);
+        IEnumerable<FileDto> GetIgnoreFilesForProject(string projectFolder);
     }
 }

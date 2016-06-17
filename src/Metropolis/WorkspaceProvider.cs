@@ -159,9 +159,12 @@ namespace Metropolis
         {
             projectDetails.ProjectName =  solutionFile.IsNotEmpty()? Path.GetFileNameWithoutExtension(solutionFile) : projectDetails.ProjectName;
             projectDetails.ProjectFolder =  solutionFile.IsNotEmpty()? Path.GetDirectoryName(solutionFile) : projectDetails.ProjectName;
+
             var buildPaths = codebaseService.GetBuildPaths(projectDetails.ProjectName);
             projectDetails.IgnoreFile = buildPaths.IgnoreFile;
             projectDetails.SourceDirectory = buildPaths.SourceDirectory;
+
+            projectDetails.FilesToIgnore = codebaseService.GetIgnoreFilesForProject(projectDetails.ProjectFolder);
         }
 
         private static MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)

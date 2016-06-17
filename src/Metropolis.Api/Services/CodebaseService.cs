@@ -80,6 +80,12 @@ namespace Metropolis.Api.Services
             };
         }
 
+        public IEnumerable<FileDto> GetIgnoreFilesForProject(string projectName)
+        {
+            return fileSystem.ReadIgnoreFile(projectName)
+                             .Select(each => new FileDto { Ignore = true, Name = each});
+        }
+
         public CodeBase Get(TextReader stream, ParseType parseType)
         {
             using (stream)
