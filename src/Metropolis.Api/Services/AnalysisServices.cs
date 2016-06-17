@@ -2,11 +2,9 @@
 using System.IO;
 using Metropolis.Api.Analyzers;
 using Metropolis.Api.Collection;
-using Metropolis.Api.Collection.Steps.CSharp;
 using Metropolis.Api.Domain;
 using Metropolis.Api.IO;
 using Metropolis.Api.Utilities;
-using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services
@@ -47,7 +45,7 @@ namespace Metropolis.Api.Services
             var codeBase = CodeBase.Empty();
             foreach (var x in metricsResults)
             {
-                string filename = x.MetricsFile;
+                var filename = x.MetricsFile;
                 var cb = codebaseService.Get(fileSystem.OpenFileStream(filename), x.ParseType);
                 codeBase.Enrich(new CodeGraph(cb.AllInstances));
             }

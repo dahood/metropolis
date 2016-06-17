@@ -73,8 +73,12 @@ namespace Metropolis.Views.UserControls.StepPanels
 
         private void RunAnalysis(object sender, RoutedEventArgs e)
         {
-            var ignoreFileList = IgnoreFileDataGrid.ItemsSource.OfType<FileDto>().Where(x => x.Ignore).ToList();
-            RunAnalysisRequest?.Invoke(this, new CreateIgnoreFileArgs {IngoreFiles = ignoreFileList});
+            using (new WaitCursor())
+            {
+                var ignoreFileList = IgnoreFileDataGrid.ItemsSource.OfType<FileDto>().Where(x => x.Ignore).ToList();
+                RunAnalysisRequest?.Invoke(this, new CreateIgnoreFileArgs {IngoreFiles = ignoreFileList});
+                
+            }
         }
 
         private void FindSolutionFolder(object sender, RoutedEventArgs e)

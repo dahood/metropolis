@@ -8,7 +8,6 @@ using Metropolis.Api.Readers;
 using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Api.Readers.XmlReaders.CheckStyles;
 using Metropolis.Api.Services;
-using Metropolis.Api.Utilities;
 using Metropolis.Camera;
 using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
@@ -154,6 +153,15 @@ namespace Metropolis
         public void CreateIgnoreFile(ProjectDetailsViewModel projectDetails)
         {
             codebaseService.WriteIgnoreFile(projectDetails.ProjectName, projectDetails.ProjectFolder, projectDetails.FilesToIgnore);
+        }
+
+        public void SetUpDotNetBuild(ProjectDetailsViewModel projectDetails, string solutionFile)
+        {
+            projectDetails.ProjectName =  solutionFile.IsNotEmpty()? Path.GetFileNameWithoutExtension(solutionFile) : projectDetails.ProjectName;
+            projectDetails.ProjectFolder =  solutionFile.IsNotEmpty()? Path.GetDirectoryName(solutionFile) : projectDetails.ProjectName;
+            var buildPaths = codebaseService.GetBuildPaths(projectDetails.ProjectName);
+            projectDetails.IgnoreFile = buildPaths.IgnoreFile;
+            projectDetails.SourceDirectory = buildPaths.SourceDirectory;
         }
 
         private static MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)

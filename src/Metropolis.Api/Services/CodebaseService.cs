@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Metropolis.Api.Build;
@@ -7,7 +6,6 @@ using Metropolis.Api.Domain;
 using Metropolis.Api.IO;
 using Metropolis.Api.Persistence;
 using Metropolis.Api.Readers;
-using Metropolis.Api.Utilities;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services
@@ -19,7 +17,6 @@ namespace Metropolis.Api.Services
         private readonly IFileSystem fileSystem;
         private readonly IProjectRepository projectRepository;
         
-
         public CodebaseService() : this(new MetricsReaderFactory(), new ProjectRepository(), new ProjectBuildFactory(), new FileSystem())
         {
         }
@@ -74,6 +71,15 @@ namespace Metropolis.Api.Services
             }
         }
 
+        public BuildPathsDto GetBuildPaths(string projectName)
+        {
+            return new BuildPathsDto
+            {
+                IgnoreFile = fileSystem.GetIgnoreFilePath(projectName),
+                SourceDirectory = fileSystem.GetProjectBuildFolder(projectName)
+            };
+        }
+
         public CodeBase Get(TextReader stream, ParseType parseType)
         {
             using (stream)
@@ -81,6 +87,7 @@ namespace Metropolis.Api.Services
                 return readerFactory.GetReader(parseType).Parse(stream);
             }
         }
+
         public void WriteIgnoreFile(string projectName, string projectFolder, IEnumerable<FileDto> filesToIgnore)
         {
             var ingoreData = filesToIgnore.Select(x => x.Name);

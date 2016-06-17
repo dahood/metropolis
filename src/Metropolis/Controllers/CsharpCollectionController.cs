@@ -41,8 +41,7 @@ namespace Metropolis.Controllers
 
         private void SolutionFileSelected(object sender, SolutionFileArgs e)
         {
-            ProjectDetails.ProjectFolder = workSpaceProvider.DeriveProjectFolder(e.SolutionFile, ProjectDetails.ProjectFolder);
-            ProjectDetails.ProjectName = workSpaceProvider.DeriveProjectName(e.SolutionFile, ProjectDetails.ProjectName);
+            workSpaceProvider.SetUpDotNetBuild(ProjectDetails, e.SolutionFile);
         }
         private void RunAnalysis(object sender, CreateIgnoreFileArgs e)
         {

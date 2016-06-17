@@ -27,6 +27,15 @@ namespace Metropolis.Api.IO
         IEnumerable<DriveInfo> IFileSystem.AllDrives => DriveInfo.GetDrives();
         public string ProjectBuildFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis","Build");
         public string IgnoreFile => ".metropolisignore";
+        public string GetIgnoreFilePath(string projectName)
+        {
+            return Path.Combine(ProjectBuildFolder, projectName, IgnoreFile);
+        }
+
+        public string GetProjectBuildFolder(string projectName)
+        {
+            return Path.Combine(ProjectBuildFolder, projectName);
+        }
 
         public bool FileExists(string potentialPath)
         {

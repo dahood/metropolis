@@ -17,5 +17,7 @@ namespace Metropolis.Api.IO
         void WriteText(string path, IEnumerable<string> data);
         string ProjectBuildFolder { get; }
         string IgnoreFile { get; }
+        string GetIgnoreFilePath(string projectName);
+        string GetProjectBuildFolder(string projectName);
     }
 }

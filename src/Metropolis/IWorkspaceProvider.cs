@@ -27,8 +27,7 @@ namespace Metropolis
         void Analyze(ProjectDetailsViewModel viewModel);
         bool ShowTips { get; set; }
         ProjectBuildResult BuildSolution(ProjectBuildArguments args);
-        string DeriveProjectFolder(string text, string defaultValue = null);
-        string DeriveProjectName(string text, string defaultValue = null);
         void CreateIgnoreFile(ProjectDetailsViewModel projectDetails);
+        void SetUpDotNetBuild(ProjectDetailsViewModel projectDetails, string solutionFile);
     }
 }
