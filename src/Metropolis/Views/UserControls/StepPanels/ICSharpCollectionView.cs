@@ -9,7 +9,7 @@ namespace Metropolis.Views.UserControls.StepPanels
     {
         event EventHandler BuildRequested;
         event EventHandler<SolutionFileArgs> SolutionFileSelected;
-        event EventHandler<CreateIgnoreFileArgs> RunAnalysisRequest; 
+        event EventHandler<IgnoreFileArgs> RunAnalysisRequest; 
 
         void ShowBuildArtifacts(IEnumerable<FileDto> artifacts);
     }

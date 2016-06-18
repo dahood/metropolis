@@ -24,7 +24,7 @@ namespace Metropolis.Views.UserControls.StepPanels
 
         public event EventHandler BuildRequested;
         public event EventHandler<SolutionFileArgs> SolutionFileSelected;
-        public event EventHandler<CreateIgnoreFileArgs> RunAnalysisRequest;
+        public event EventHandler<IgnoreFileArgs> RunAnalysisRequest;
 
         public ProjectDetailsViewModel ProjectDetails => (ProjectDetailsViewModel) DataContext;
 
@@ -81,7 +81,7 @@ namespace Metropolis.Views.UserControls.StepPanels
             using (new WaitCursor())
             {
                 var ignoreFileList = IgnoreFileDataGrid.ItemsSource.OfType<FileDto>().Where(x => x.Ignore).ToList();
-                RunAnalysisRequest?.Invoke(this, new CreateIgnoreFileArgs { IngoreFiles = ignoreFileList });
+                RunAnalysisRequest?.Invoke(this, new IgnoreFileArgs { IngoreFiles = ignoreFileList });
             }
         }
     }
@@ -91,7 +91,7 @@ namespace Metropolis.Views.UserControls.StepPanels
         public string SolutionFile { get; set; }
     }
 
-    public class CreateIgnoreFileArgs : EventArgs
+    public class IgnoreFileArgs : EventArgs
     {
         public IEnumerable<FileDto> IngoreFiles { get; set; }
     }

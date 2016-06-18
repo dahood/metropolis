@@ -40,8 +40,8 @@ namespace Metropolis.Controllers
             var buildResult = workSpaceProvider.BuildSolution(args);
             view.ShowBuildArtifacts(Consolidate(ProjectDetails.FilesToIgnore, buildResult.Artifacts));
         }
-
-        private IEnumerable<FileDto> Consolidate(IEnumerable<FileDto> filesToIgnore, IEnumerable<FileDto> artifacts)
+        
+        private static IEnumerable<FileDto> Consolidate(IEnumerable<FileDto> filesToIgnore, IEnumerable<FileDto> artifacts)
         {
             return filesToIgnore.Intersect(artifacts).Union(artifacts.Except(filesToIgnore));
         }
@@ -51,7 +51,7 @@ namespace Metropolis.Controllers
             workSpaceProvider.SetUpDotNetBuild(ProjectDetails, e.SolutionFile);
         }
 
-        private void RunAnalysis(object sender, CreateIgnoreFileArgs e)
+        private void RunAnalysis(object sender, IgnoreFileArgs e)
         {
             ProjectDetails.FilesToIgnore = e.IngoreFiles;
             workSpaceProvider.CreateIgnoreFile(ProjectDetails);
