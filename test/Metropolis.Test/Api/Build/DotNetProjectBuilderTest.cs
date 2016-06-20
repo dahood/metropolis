@@ -14,19 +14,19 @@ namespace Metropolis.Test.Api.Build
     public class DotNetProjectBuilderTest : StrictMockBaseTest
     {
         DotNetProjectBuilder builder;
-        private Mock<IBuildEnvironment> buildEnvironment;
+        private Mock<IUserPreferences> userPreferences;
         private Mock<IRunPowerShell> runPowerShell;
         private Mock<IFileSystem> fileSystem;
         private ProjectBuildArguments args;
 
         [SetUp]
         public void SetUp()
-        {buildEnvironment = CreateMock<IBuildEnvironment>();
+        {userPreferences = CreateMock<IUserPreferences>();
             runPowerShell = CreateMock<IRunPowerShell>();
             fileSystem = CreateMock<IFileSystem>();
             args = new ProjectBuildArguments { BuildOutputFolder = @"c:\buildfolder", ProjectName = @"c:\project.sln", SourceType = RepositorySourceType.CSharp };
 
-            builder = new DotNetProjectBuilder(buildEnvironment.Object, runPowerShell.Object, fileSystem.Object);
+            builder = new DotNetProjectBuilder(userPreferences.Object, runPowerShell.Object, fileSystem.Object);
         }
 
         [Test]
@@ -35,7 +35,7 @@ namespace Metropolis.Test.Api.Build
             var buildArtifacts = new[] { new FileDto { Name = "app.exe" } };
 
             fileSystem.Setup(x => x.CleanFolder(args.BuildOutputFolder));
-            buildEnvironment.Setup(x => x.MsBuildPath).Returns(@"c:\build.exe");
+            userPreferences.Setup(x => x.MsBuildPath).Returns(@"c:\build.exe");
             runPowerShell.Setup(x => x.Invoke(DotNetProjectBuilder.MsBuildCommand.FormatWith(@"c:\build.exe", args.ProjetFile, args.BuildOutputFolder)));
             fileSystem.Setup(x => x.FindAllBinaries(args.BuildOutputFolder)).Returns(buildArtifacts);
 

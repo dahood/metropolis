@@ -25,7 +25,7 @@ namespace Metropolis.Test.Api.Services
         private Mock<IAnalyzerFactory> analyzerFactory;
         private Mock<ICodebaseAnalyzer> analyzer;
         private Mock<IFileSystem> fileSystem;
-        private Mock<IBuildEnvironment> locateFxCopMetricsTool;
+        private Mock<IUserPreferences> userPreferences;
 
         [SetUp]
         public void SetUp()
@@ -36,7 +36,7 @@ namespace Metropolis.Test.Api.Services
             analyzerFactory = CreateMock<IAnalyzerFactory>();
             analyzer = CreateMock<ICodebaseAnalyzer>();
             fileSystem = CreateMock<IFileSystem>();
-            locateFxCopMetricsTool = CreateMock<IBuildEnvironment>();
+            userPreferences = CreateMock<IUserPreferences>();
 
             details = new MetricsCommandArguments
             {
@@ -48,7 +48,7 @@ namespace Metropolis.Test.Api.Services
 
             fileSystem.Setup(x => x.CreateFolder(AnalysisServices.MetricsOutputFolder));
 
-            analysisServices = new AnalysisServices(metricsTaskFactory.Object, codebaseService.Object, analyzerFactory.Object, fileSystem.Object, locateFxCopMetricsTool.Object);
+            analysisServices = new AnalysisServices(metricsTaskFactory.Object, codebaseService.Object, analyzerFactory.Object, fileSystem.Object, userPreferences.Object);
         }
 
         [Test]

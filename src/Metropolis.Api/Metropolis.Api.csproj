@@ -108,9 +108,7 @@
     <Compile Include="Readers\XmlReaders\FxCop\FxCopMetricsReader.cs" />
     <Compile Include="Readers\XmlReaders\FxCop\IFxCopInstanceBuilder.cs" />
     <Compile Include="Readers\XmlReaders\FxCop\IFxCopMemberBuilder.cs" />
-    <Compile Include="Utilities\BuildEnvironment.cs" />
     <Compile Include="IO\FileSystem.cs" />
-    <Compile Include="IO\IBuildEnvironment.cs" />
     <Compile Include="IO\IFileSystem.cs" />
     <Compile Include="Collection\Steps\ECMA\EcmaCollectionStep.cs" />
     <Compile Include="Collection\Steps\ECMA\EsLintCollectionStep.cs" />

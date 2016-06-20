@@ -4,37 +4,40 @@ using Metropolis.Api.Analyzers;
 using Metropolis.Api.Collection;
 using Metropolis.Api.Domain;
 using Metropolis.Api.IO;
-using Metropolis.Api.Utilities;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Services
 {
     public class AnalysisServices : IAnalysisService
     {
-        private readonly ICollectionStepFactory collectionStepFactory;
         private readonly IAnalyzerFactory analyzerFactory;
-        private readonly IFileSystem fileSystem;
         private readonly ICodebaseService codebaseService;
-        private readonly IBuildEnvironment fxCopMetricsTool;
-        
-        public static string MetricsOutputFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis.Metrics");
-        public string FxCopMetricsPath => fxCopMetricsTool.FxCopMetricsToolPath;
+        private readonly ICollectionStepFactory collectionStepFactory;
+        private readonly IFileSystem fileSystem;
+        private readonly IUserPreferences userPreferences;
 
-        string IAnalysisService.MetricsOutputFolder => MetricsOutputFolder;
-
-        public AnalysisServices() : this(new CollectionStepFactory(), new CodebaseService(), new AnalyzerFactory(), new FileSystem(), new BuildEnvironment())
+        public AnalysisServices()
+            : this(new CollectionStepFactory(), new CodebaseService(), new AnalyzerFactory(), new FileSystem(), new UserPreferences())
         {
         }
 
-        public AnalysisServices(ICollectionStepFactory collectionStepFactory, ICodebaseService codebaseService, IAnalyzerFactory analyzerFactory, IFileSystem fileSystem, IBuildEnvironment fxCopMetricsTool)
+        public AnalysisServices(ICollectionStepFactory collectionStepFactory, ICodebaseService codebaseService, IAnalyzerFactory analyzerFactory,
+            IFileSystem fileSystem, IUserPreferences userPreferences)
         {
             this.collectionStepFactory = collectionStepFactory;
             this.codebaseService = codebaseService;
             this.analyzerFactory = analyzerFactory;
             this.fileSystem = fileSystem;
-            this.fxCopMetricsTool = fxCopMetricsTool;
+            this.userPreferences = userPreferences;
             fileSystem.CreateFolder(MetricsOutputFolder);
         }
+
+        public static string MetricsOutputFolder
+            => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis.Metrics");
+
+        public string FxCopMetricsPath => userPreferences.FxCopPath;
+
+        string IAnalysisService.MetricsOutputFolder => MetricsOutputFolder;
 
         public CodeBase Analyze(MetricsCommandArguments details)
         {

@@ -2,8 +2,14 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Metropolis.Api.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="test" Type="System.String" Scope="User">
-      <Value Profile="(Default)">test</Value>
+    <Setting Name="ShowTips" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MSBuildPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe</Value>
+    </Setting>
+    <Setting Name="FxCopPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\FxCop\metrics.exe</Value>
     </Setting>
   </Settings>
 </SettingsFile>

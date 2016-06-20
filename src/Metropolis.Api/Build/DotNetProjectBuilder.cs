@@ -9,17 +9,17 @@ namespace Metropolis.Api.Build
     public class DotNetProjectBuilder : IProjectBuilder
     {
         public const string MsBuildCommand = @"&'{0}' '{1}' /p:OutDir='{2}'";
-        private readonly IBuildEnvironment buildEnvironment;
+        private readonly IUserPreferences userPreferences;
         private readonly IRunPowerShell powershell;
         private readonly IFileSystem fileSystem;
 
-        public DotNetProjectBuilder() : this(new BuildEnvironment(),  new RunPowerShell(), new FileSystem())
+        public DotNetProjectBuilder() : this(new UserPreferences(),  new RunPowerShell(), new FileSystem())
         {
         }
 
-        public DotNetProjectBuilder(IBuildEnvironment buildEnvironment,IRunPowerShell runPowerShell, IFileSystem fileSystem)
+        public DotNetProjectBuilder(IUserPreferences userPreferences,IRunPowerShell runPowerShell, IFileSystem fileSystem)
         {
-            this.buildEnvironment = buildEnvironment;
+            this.userPreferences = userPreferences;
             powershell = runPowerShell;
             this.fileSystem = fileSystem;
         }
@@ -33,7 +33,7 @@ namespace Metropolis.Api.Build
 
         private string GetBuildCommand(ProjectBuildArguments buildArgs)
         {
-            return MsBuildCommand.FormatWith(buildEnvironment.MsBuildPath, buildArgs.ProjetFile, buildArgs.BuildOutputFolder);
+            return MsBuildCommand.FormatWith(userPreferences.MsBuildPath, buildArgs.ProjetFile, buildArgs.BuildOutputFolder);
         }
 
         private ProjectBuildResult CreateProjectBuildResult(ProjectBuildArguments buildArgs)

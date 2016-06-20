@@ -22,19 +22,41 @@ namespace Metropolis.Api.Properties {
                 return defaultInstance;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ShowTips
-        {
-            get
-            {
+        public bool ShowTips {
+            get {
                 return ((bool)(this["ShowTips"]));
             }
-            set
-            {
+            set {
                 this["ShowTips"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe")]
+        public string MSBuildPath {
+            get {
+                return ((string)(this["MSBuildPath"]));
+            }
+            set {
+                this["MSBuildPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Team Tools\\Static Analysis To" +
+            "ols\\FxCop\\metrics.exe")]
+        public string FxCopPath {
+            get {
+                return ((string)(this["FxCopPath"]));
+            }
+            set {
+                this["FxCopPath"] = value;
             }
         }
     }

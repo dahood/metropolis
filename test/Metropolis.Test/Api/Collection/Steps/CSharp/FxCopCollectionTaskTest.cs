@@ -17,7 +17,7 @@ namespace Metropolis.Test.Api.Collection.Steps.CSharp
         private FxCopCollectionTask task;
         private Mock<IRunPowerShell> powerShell;
         private Mock<IFileSystem> fileSystem;
-        private Mock<IBuildEnvironment> locateFxCopMetricsTool;
+        private Mock<IUserPreferences> userPreferences;
         private readonly MetricsCommandArguments args = new MetricsCommandArguments
                                                             {
                                                                 MetricsOutputFolder = @"c:\metrics",
@@ -39,10 +39,10 @@ namespace Metropolis.Test.Api.Collection.Steps.CSharp
         {
             powerShell = CreateMock<IRunPowerShell>();
             fileSystem = CreateMock<IFileSystem>();
-            locateFxCopMetricsTool = CreateMock<IBuildEnvironment>();
-            locateFxCopMetricsTool.Setup(x => x.FxCopMetricsToolPath).Returns(fxCopMetricsPath);
+            userPreferences = CreateMock<IUserPreferences>();
+            userPreferences.Setup(x => x.FxCopPath).Returns(fxCopMetricsPath);
 
-            task = new FxCopCollectionTask(powerShell.Object, fileSystem.Object, locateFxCopMetricsTool.Object);
+            task = new FxCopCollectionTask(powerShell.Object, fileSystem.Object, userPreferences.Object);
         }
 
         [Test]
