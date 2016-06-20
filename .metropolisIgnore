@@ -1,0 +1,10 @@
+CsvHelper.dll
+FluentAssertions.Core.dll
+FluentAssertions.dll
+Metropolis.Test.dll
+Moq.dll
+Newtonsoft.Json.dll
+nunit.framework.dll
+Sturnus.Wpf.DynamicContentControl.dll
+System.Management.Automation.dll
+WpfControls.dll
