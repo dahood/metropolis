@@ -41,7 +41,6 @@ Metropolis depends on the following open source software:
 
 * CSVHelper (Dual licensing under MS-PL and Apache 2.0) - http://joshclose.github.io/CsvHelper/
 * Newtonsoft.JSON (The MIT). - https://github.com/JamesNK/Newtonsoft.Json
-* Galatic Powershell & Event Log (MIT) - https://raw.githubusercontent.com/GalacticAPI/Galactic/master/LICENSE
 * Dynamic Content Control (Apache 2.0) - https://github.com/Sturnus/DynamicContentControl 
 * ESLint (JQuery Foundation) - https://github.com/eslint/eslint
 * Checkstyle (GNU LGPL 2.1) - https://github.com/checkstyle/checkstyle
