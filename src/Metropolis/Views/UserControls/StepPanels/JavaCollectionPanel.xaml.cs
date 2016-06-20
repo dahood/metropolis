@@ -37,10 +37,22 @@ namespace Metropolis.Views.UserControls.StepPanels
             Process.Start(link.NavigateUri.ToString());
         }
 
-        private void HideShowInfoBox(object sender, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        private void HideShowInfoBox(object sender, RoutedEventArgs routedEventArgs)
         {
-            var key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\JavaSoft\\Java Runtime Environment");
-            Info.Visibility = key != null ? Visibility.Collapsed : Visibility.Visible;
+            var info = new ProcessStartInfo("cmd.exe", "/c \"" + "java -version " + "\"")
+            {
+                ErrorDialog = false,
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                WindowStyle = ProcessWindowStyle.Hidden,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+        };
+
+            var process = Process.Start(info);
+            if (process == null) return;
+            process.WaitForExit();
+            Info.Visibility = process.ExitCode == 0 ? Visibility.Collapsed : Visibility.Visible;
         }
     }
 }
