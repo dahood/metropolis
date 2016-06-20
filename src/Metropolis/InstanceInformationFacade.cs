@@ -11,7 +11,7 @@ namespace Metropolis
     {
         private readonly IDisplayInstanceInformation provider;
         private IHighlightModel highlight = new EmptyHighlight();
-        private Instance highlightedInstance = null;
+        private Instance highlightedInstance;
 
         public InstanceInformationFacade(IDisplayInstanceInformation provider)
         {
@@ -80,16 +80,17 @@ namespace Metropolis
             if (provider.SourceType == RepositorySourceType.Java)
             {
                 return string.Format(
-                    "Class: {1}{0}Lines Of Code: {2}{0}Number Of Methods: {3}{0}Cyclomatic Complexity: {4}{0}ClassFanOut: {5}{0}ClassDataAbstractionCoupling: {6}{0}Anon Inner Classes: {7}{0}Toxicity: {8}{0}Package: {9}{0}",
-                    Environment.NewLine, type.Name, type.LinesOfCode, type.NumberOfMethods, type.CyclomaticComplexity, type.ClassFanOutComplexity,
+                    "Class: {1}{0}Lines Of Code: {2}{0}Duplicate Percentage: {3}%{0}Number Of Methods: {4}{0}Cyclomatic Complexity: {5}{0}ClassFanOut: {6}{0}ClassDataAbstractionCoupling: {7}{0}Anon Inner Classes: {8}{0}Toxicity: {9}{0}Package: {10}{0}",
+                    Environment.NewLine, type.Name, type.LinesOfCode, type.DuplicatePercentage, type.NumberOfMethods, type.CyclomaticComplexity, type.ClassFanOutComplexity,
                     type.ClassDataAbstractionCoupling,
                     type.AnonymousInnerClassLength, type.Toxicity, type.CodeBag.Name);
             }
             if (provider.SourceType == RepositorySourceType.ECMA)
             {
                 return string.Format(
-                    "File: {1}{0}Lines Of Code: {2}{0}Number Of Methods: {3}{0}Cyclomatic Complexity: {4}{0}Toxicity: {5}{0}Directory: {6}{0}",
-                    Environment.NewLine, type.Name, type.LinesOfCode, type.NumberOfMethods, type.CyclomaticComplexity, type.Toxicity, type.CodeBag.Name);
+                    "File: {1}{0}Lines Of Code: {2}{0}Duplicate Percentage: {3}%{0}Number Of Methods: {4}{0}Cyclomatic Complexity: {5}{0}Toxicity: {6}{0}Directory: {7}{0}",
+                    Environment.NewLine, type.Name, type.LinesOfCode, type.DuplicatePercentage, type.NumberOfMethods, type.CyclomaticComplexity, type.Toxicity,
+                    type.CodeBag.Name);
             }
             return string.Empty;
         }

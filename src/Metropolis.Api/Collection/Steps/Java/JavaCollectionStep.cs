@@ -7,7 +7,11 @@ namespace Metropolis.Api.Collection.Steps.Java
     public class JavaCollectionStep : CompositeCollectionStep
     {
         public JavaCollectionStep()
-            : base(new List<ICollectionStep> {new PuppyCrawlerCheckstyleCollectionStep(), new SlocCollectionStep(ParseType.SlocJava)}, true)
+            : base(new List<ICollectionStep>
+            {
+                new PuppyCrawlerCheckstyleCollectionStep(), new SlocCollectionStep(ParseType.SlocJava),
+                new CpdCollectionStep(ParseType.CpdJava)
+            }, true)
         {
         }
     }

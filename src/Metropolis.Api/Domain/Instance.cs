@@ -75,7 +75,7 @@ namespace Metropolis.Api.Domain
         public double Toxicity { get; set; }
 
         public int DuplicateLines => Duplicates.Sum(x => x.LinesOfCode);
-        public double DuplicatePercentage => LinesOfCode != 0 ? (double) DuplicateLines / LinesOfCode * 100 : 0;
+        public double DuplicatePercentage => LinesOfCode != 0 ? Math.Round((double) DuplicateLines / LinesOfCode * 100,2) : 0;
 
         public List<Member> Members { get; set; } = new List<Member>();
 

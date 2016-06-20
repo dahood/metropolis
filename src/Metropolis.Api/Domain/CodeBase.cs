@@ -50,6 +50,11 @@ namespace Metropolis.Api.Domain
             return (double) LinesOfCode / NumberOfTypes;
         }
 
+        public double Duplicates()
+        {
+            return (double) Graph.AllInstances.Sum(x => x.DuplicateLines)/ LinesOfCode;
+        }
+
         public Dictionary<CodeBag, IEnumerable<Instance>> ByNamespace()
         {
             return Graph.AllNamespaces.ToDictionary(ns => ns, ns => AllInstances.Where(x => x.CodeBag.Equals(ns)));

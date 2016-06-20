@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Metropolis.Api.Collection.Steps.AllLanguages;
 using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Api.Readers.XmlReaders.CheckStyles;
 using Metropolis.Api.Readers.XmlReaders.FxCop;
@@ -18,7 +19,10 @@ namespace Metropolis.Api.Readers
             {ParseType.SlocEcma, () => new SlocReader(FileInclusion.Js)},
             {ParseType.SlocCSharp, () => new SlocReader(FileInclusion.CSharp)},
             {ParseType.SlocJava, () => new SlocReader(FileInclusion.Java)},
-            {ParseType.FxCop,  () => new FxCopMetricsReader()}
+            {ParseType.FxCop,  () => new FxCopMetricsReader()},
+            {ParseType.CpdJava, () => new CpdReader() },
+            {ParseType.CpdEcma, () => new CpdReader() },
+            {ParseType.CpdCsharp, () => new CpdReader() }
         };
 
         private readonly Dictionary<ParseType, Func<IInstanceReader>> readerMap;
