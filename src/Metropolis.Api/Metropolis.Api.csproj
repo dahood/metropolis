@@ -58,6 +58,7 @@
     <Compile Include="Build\IProjectBuilder.cs" />
     <Compile Include="Build\IProjectBuildFactory.cs" />
     <Compile Include="Collection\Steps\AllLanguages\CpdCollectionStep.cs" />
+    <Compile Include="Collection\Steps\CSharp\DotNetCollectionSteps.cs" />
     <Compile Include="Collection\Steps\Java\JavaCollectionStep.cs" />
     <Compile Include="Domain\CodeBag.cs" />
     <Compile Include="Domain\CodeBagType.cs" />
@@ -79,10 +80,10 @@
     <Compile Include="Collection\Steps\AllLanguages\SlocCollectionStep.cs" />
     <Compile Include="Collection\Steps\BaseCollectionStep.cs" />
     <Compile Include="Collection\Steps\CompositeCollectionStep.cs" />
-    <Compile Include="Collection\Steps\CSharp\VisualStudioPowerToolsFxCopCollectionStep.cs" />
+    <Compile Include="Collection\Steps\CSharp\VisualStudioCollectionSteps.cs" />
     <Compile Include="Collection\Steps\CSharp\ICollectAssemblies.cs" />
     <Compile Include="Collection\Steps\CSharp\IFxCopCollectionTask.cs" />
-    <Compile Include="Collection\Steps\CSharp\VisualStudioPowerToolsFxCopCollectionTask.cs" />
+    <Compile Include="Collection\Steps\CSharp\FxCopCollectionTask.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

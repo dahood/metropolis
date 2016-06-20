@@ -25,7 +25,7 @@ namespace Metropolis.Test.Api.Collection
         {
             factory.GetStep(RepositorySourceType.CSharp)
                    .Should().NotBeNull()
-                   .And.BeAssignableTo<VisualStudioCollectionSteps>();
+                   .And.BeAssignableTo<DotNetCollectionSteps>();
         }
 
         [Test]
