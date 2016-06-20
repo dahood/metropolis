@@ -71,6 +71,8 @@
     <Compile Include="Domain\CodeBagType.cs" />
     <Compile Include="Domain\InstanceBuilder.cs" />
     <Compile Include="Domain\Location.cs" />
+    <Compile Include="IO\IUserPreferences.cs" />
+    <Compile Include="IO\UserPreferences.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Analyzers\ICodebaseAnalyzer.cs" />
     <Compile Include="Analyzers\Toxicity\CSharpToxicityAnalyzer.cs" />
@@ -89,6 +91,11 @@
     <Compile Include="Collection\Steps\CSharp\ICollectAssemblies.cs" />
     <Compile Include="Collection\Steps\CSharp\IFxCopCollectionTask.cs" />
     <Compile Include="Collection\Steps\CSharp\VisualStudioPowerToolsFxCopCollectionTask.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Readers\CsvReaders\CpdLineItem.cs" />
     <Compile Include="Readers\CsvReaders\CpdOccurance.cs" />
     <Compile Include="Readers\CsvReaders\CpdReader.cs" />
@@ -204,7 +211,12 @@
     <Content Include="Collection\Settings\default.eslintrc.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Metropolis.Common\Metropolis.Common.csproj">

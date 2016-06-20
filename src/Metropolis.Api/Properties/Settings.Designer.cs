@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Metropolis.Properties {
+namespace Metropolis.Api.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -22,15 +22,18 @@ namespace Metropolis.Properties {
                 return defaultInstance;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ShowTips {
-            get {
+        public bool ShowTips
+        {
+            get
+            {
                 return ((bool)(this["ShowTips"]));
             }
-            set {
+            set
+            {
                 this["ShowTips"] = value;
             }
         }

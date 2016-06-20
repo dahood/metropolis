@@ -1,12 +1,7 @@
-﻿using Metropolis.Properties;
+using Metropolis.Api.Properties;
 
-namespace Metropolis
+namespace Metropolis.Api.IO
 {
-    public interface IUserPreferences
-    {
-        bool ShowTipOfTheDay { get; set; }
-    }
-
     public class UserPreferences : IUserPreferences
     {
         public bool ShowTipOfTheDay
