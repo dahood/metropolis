@@ -24,7 +24,7 @@ namespace Metropolis.Api.Collection.Steps.AllLanguages
         ///     like using statements in C#
         /// </summary>
         private const string CsharpToken = "cs";
-        private const string EcmaScriptToken = "javascript";
+        private const string EcmaScriptToken = "ecmascript";
         private const string JavaToken = "java";
         private const string DefaultToken = "java";
 
