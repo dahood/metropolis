@@ -5,6 +5,8 @@ TestResult.xml
 node_modules/
 /build
 test/Metropolis.Test/build
+src/Metropolis/build
+src/Metropolis.Cli.Console/build
 dist/
 test-results/
 .idea
