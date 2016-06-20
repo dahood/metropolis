@@ -162,7 +162,7 @@ namespace Metropolis
 
             var buildPaths = codebaseService.GetBuildPaths(projectDetails.ProjectName);
             projectDetails.IgnoreFile = buildPaths.IgnoreFile;
-            projectDetails.SourceDirectory = buildPaths.SourceDirectory;
+            projectDetails.SourceDirectory = projectDetails.ProjectFolder;
 
             projectDetails.FilesToIgnore = codebaseService.GetIgnoreFilesForProject(projectDetails.ProjectFolder);
         }

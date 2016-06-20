@@ -76,7 +76,7 @@ namespace Metropolis.Api.Services
             return new BuildPathsDto
             {
                 IgnoreFile = fileSystem.GetIgnoreFilePath(projectName),
-                SourceDirectory = fileSystem.GetProjectBuildFolder(projectName)
+//                SourceDirectory = fileSystem.GetProjectBuildFolder(projectName)
             };
         }
 
