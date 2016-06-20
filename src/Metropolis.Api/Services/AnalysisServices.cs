@@ -29,20 +29,17 @@ namespace Metropolis.Api.Services
             this.analyzerFactory = analyzerFactory;
             this.fileSystem = fileSystem;
             this.userPreferences = userPreferences;
-            fileSystem.CreateFolder(MetricsOutputFolder);
+            fileSystem.CreateFolder(fileSystem.MetricsOutputFolder);
         }
 
-        public static string MetricsOutputFolder
-            => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis.Metrics");
+
 
         public string FxCopMetricsPath => userPreferences.FxCopPath;
-
-        string IAnalysisService.MetricsOutputFolder => MetricsOutputFolder;
 
         public CodeBase Analyze(MetricsCommandArguments details)
         {
             var command = collectionStepFactory.GetStep(details.RepositorySourceType);
-            details.MetricsOutputFolder = MetricsOutputFolder;
+            details.MetricsOutputFolder = fileSystem.MetricsOutputFolder;
             var metricsResults = command.Run(details);
 
             var codeBase = CodeBase.Empty();

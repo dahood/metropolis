@@ -25,8 +25,13 @@ namespace Metropolis.Api.IO
         }
 
         IEnumerable<DriveInfo> IFileSystem.AllDrives => DriveInfo.GetDrives();
-        public string ProjectBuildFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis","Build");
+        public string ProjectBuildFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis", "Build");
+
+        public string MetricsOutputFolder
+            => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis", "Metrics");
+
         public string IgnoreFile => ".metropolisignore";
+
         public string GetIgnoreFilePath(string projectName)
         {
             return Path.Combine(ProjectBuildFolder, projectName, IgnoreFile);
@@ -47,12 +52,13 @@ namespace Metropolis.Api.IO
         {
             return File.Exists(potentialPath);
         }
+
         public void CleanFolder(string folder)
         {
-            CreateFolder(folder);                                                                   //ensure it exists
+            CreateFolder(folder); //ensure it exists
             var directory = new DirectoryInfo(folder);
-            foreach (var file in directory.GetFiles()) file.Delete();                               //clean all files
-            foreach (var subDirectory in directory.GetDirectories()) subDirectory.Delete(true);     //clean all subfolders
+            foreach (var file in directory.GetFiles()) file.Delete(); //clean all files
+            foreach (var subDirectory in directory.GetDirectories()) subDirectory.Delete(true); //clean all subfolders
         }
 
         public IEnumerable<FileDto> FindAllBinaries(string folder)

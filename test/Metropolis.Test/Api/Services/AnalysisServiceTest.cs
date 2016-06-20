@@ -45,8 +45,8 @@ namespace Metropolis.Test.Api.Services
                 SourceDirectory = @"c:\mySourceCode\JavaProject",
                 MetricsOutputFolder = @"c:\myMetricsOutput"
             };
-
-            fileSystem.Setup(x => x.CreateFolder(AnalysisServices.MetricsOutputFolder));
+            fileSystem.Setup(x => x.MetricsOutputFolder).Returns(@"C:\roaming\metrics");
+            fileSystem.Setup(x => x.CreateFolder(fileSystem.Object.MetricsOutputFolder));
 
             analysisServices = new AnalysisServices(metricsTaskFactory.Object, codebaseService.Object, analyzerFactory.Object, fileSystem.Object, userPreferences.Object);
         }

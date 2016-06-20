@@ -6,17 +6,18 @@ namespace Metropolis.Api.IO
 {
     public interface IFileSystem
     {
+        IEnumerable<DriveInfo> AllDrives { get; }
+        string ProjectBuildFolder { get; }
+        string IgnoreFile { get; }
+        string MetricsOutputFolder { get; }
         IEnumerable<string> GetFiles(string sourceDirectory, string filter);
         string GetFileName(string fileName);
         void CreateFolder(string targetFolder);
-        IEnumerable<DriveInfo> AllDrives { get; }
         bool FileExists(string potentialPath);
         void CleanFolder(string buildOutputFolder);
         IEnumerable<FileDto> FindAllBinaries(string buildOutputFolder);
         TextReader OpenFileStream(string fileName);
         void WriteText(string path, IEnumerable<string> data);
-        string ProjectBuildFolder { get; }
-        string IgnoreFile { get; }
         string GetIgnoreFilePath(string projectName);
         string GetProjectBuildFolder(string projectName);
         IEnumerable<string> ReadIgnoreFile(string projectName);
