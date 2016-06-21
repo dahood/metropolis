@@ -36,7 +36,7 @@ namespace Metropolis.Api.Collection.Steps.AllLanguages
         //java -cp "cpd/*" net.sourceforge.pmd.cpd.CPD --format csv --language java --minimum-tokens 50 --files C:\Dev\disruptor\src > cpd-disruptor.csv
         //java -cp "cpd/*" net.sourceforge.pmd.cpd.CPD --format csv --language javascript --minimum-tokens 50 --files C:\Dev\d3\src > cpd-d3.csv
         private const string CpdCommand =
-            @"java -cp {0} net.sourceforge.pmd.cpd.CPD --format csv --language {1} --minimum-tokens {2} --files {3} > {4}";
+            @"java -cp {0} net.sourceforge.pmd.cpd.CPD --format csv --language {1} --minimum-tokens {2} --files {3} > '{4}'";
         private const string ClassPath = @"cpd/*";
 
         public CpdCollectionStep(ParseType parseType) : base(new RunPowerShell())
