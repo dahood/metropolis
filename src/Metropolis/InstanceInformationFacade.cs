@@ -73,8 +73,8 @@ namespace Metropolis
             if (provider.SourceType == RepositorySourceType.CSharp)
             {
                 return string.Format(
-                    "Class: {1}{0}Lines Of Code: {2}{0}Number Of Methods: {3}{0}Cyclomatic Complexity: {4}{0}Class Coupling: {5}{0}Depth of Inheritance: {6}{0}Toxicity: {7}{0}Namespace: {8}{0}",
-                    Environment.NewLine, type.Name, type.LinesOfCode, type.NumberOfMethods, type.CyclomaticComplexity, type.ClassCoupling,
+                    "Class: {1}{0}Lines Of Code: {2}{0}Duplicate Percentage: {3}%Number Of Methods: {4}{0}Cyclomatic Complexity: {5}{0}Class Coupling: {6}{0}Depth of Inheritance: {7}{0}Toxicity: {8}{0}Namespace: {9}{0}",
+                    Environment.NewLine, type.Name, type.LinesOfCode, type.DuplicatePercentage, type.NumberOfMethods, type.CyclomaticComplexity, type.ClassCoupling,
                     type.DepthOfInheritance, type.Toxicity, type.CodeBag.Name);
             }
             if (provider.SourceType == RepositorySourceType.Java)
