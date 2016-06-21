@@ -26,6 +26,7 @@
                 <Hyperlink NavigateUri="https://www.microsoft.com/en-us/download/details.aspx?id=48213" Click="NavigateToSite">
                     <Run Text="Download Here"/>
                 </Hyperlink>
+                or open up User Preferences to set the path where metrics.exe is installed.
             </TextBlock>
         </StackPanel>
         <TabControl Height="256">
