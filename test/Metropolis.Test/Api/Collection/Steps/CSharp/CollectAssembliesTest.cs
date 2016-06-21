@@ -46,19 +46,19 @@ namespace Metropolis.Test.Api.Collection.Steps.CSharp
         [Test]
         public void Should_Gather_All_Assemblies_Excluding_Those_Defined_In_The_Ignore_File()
         {
-            fileSystem.Setup(x => x.ReadIgnoreFile(args.IgnoreFile))
+            fileSystem.Setup(x => x.ReadIgnoreFile(args.ProjectName))
                       .Returns(new[] {"Assembly1.dll","Assembly2.dll","Assembly4.cll"});
 
             var assemblies = collectAssemblies.GatherAssemblies(args);
 
             assemblies.Should().NotBeNullOrEmpty();
-            assemblies.Should().Contain("Assembly3.dll", "Assembly4.dll", "Assembly5.dll", "Assembly6.dll", "program.exe");
+            assemblies.Should().Contain("Assembly3.dll", "Assembly5.dll", "Assembly6.dll", "program.exe");
         }
 
         [Test]
         public void Should_Gather_All_Assemblies_Ignore_File_Missing()
         {
-            fileSystem.Setup(x => x.ReadIgnoreFile(args.IgnoreFile)).Returns(Enumerable.Empty<string>());
+            fileSystem.Setup(x => x.ReadIgnoreFile(args.ProjectName)).Returns(Enumerable.Empty<string>());
 
             var assemblies = collectAssemblies.GatherAssemblies(args);
 

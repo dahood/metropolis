@@ -37,13 +37,14 @@ namespace Metropolis.Controllers
                 SourceType = RepositorySourceType.CSharp
             };
 
-            var buildResult = workSpaceProvider.BuildSolution(args);
+             var buildResult = workSpaceProvider.BuildSolution(args);
             view.ShowBuildArtifacts(Consolidate(ProjectDetails.FilesToIgnore, buildResult.Artifacts));
         }
         
         public static IEnumerable<FileDto> Consolidate(IEnumerable<FileDto> filesToIgnore, IEnumerable<FileDto> artifacts)
         {
-            return filesToIgnore.Intersect(artifacts).Union(artifacts.Except(filesToIgnore));
+            var equalityComparer = new NameComparer();
+            return filesToIgnore.Intersect(artifacts, equalityComparer).Union(artifacts.Except(filesToIgnore, equalityComparer)).ToList();
         }
 
         private void SolutionFileSelected(object sender, SolutionFileArgs e)
@@ -56,6 +57,21 @@ namespace Metropolis.Controllers
             ProjectDetails.FilesToIgnore = e.IngoreFiles;
             workSpaceProvider.CreateIgnoreFile(ProjectDetails);
             workSpaceProvider.Analyze(view.ProjectDetails);
+        }
+    }
+
+    public class NameComparer : IEqualityComparer<FileDto>
+    {
+        public bool Equals(FileDto x, FileDto y)
+        {
+            if (ReferenceEquals(null, y)) return false;
+            if (ReferenceEquals(x, y)) return true;
+            return string.Equals(x.Name, y.Name);
+        }
+
+        public int GetHashCode(FileDto obj)
+        {
+            return obj.Name?.GetHashCode() ?? 0;
         }
     }
 }
