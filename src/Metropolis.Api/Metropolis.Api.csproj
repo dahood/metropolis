@@ -195,7 +195,7 @@
     <Content Include="Collection\Settings\metropolis_checkstyle_metrics.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="entity-framework-6.project" />
+    <EmbeddedResource Include="hibernate-core.project" />
     <Content Include="Collection\Settings\ecma6.eslintrc.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

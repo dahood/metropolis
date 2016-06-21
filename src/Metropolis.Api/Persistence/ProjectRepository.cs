@@ -33,7 +33,7 @@ namespace Metropolis.Api.Persistence
 
         public CodeBase LoadDefault()
         {
-            const string resourceName = "Metropolis.Api.entity-framework-6.project";
+            const string resourceName = "Metropolis.Api.hibernate-core.project";
             using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
             {
                 if (stream == null) throw new ApplicationException(resourceName + " not found");
