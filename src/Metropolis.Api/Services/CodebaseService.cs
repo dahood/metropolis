@@ -76,14 +76,14 @@ namespace Metropolis.Api.Services
             return new BuildPathsDto
             {
                 IgnoreFile = fileSystem.GetIgnoreFilePath(projectName),
-//                SourceDirectory = fileSystem.GetProjectBuildFolder(projectName)
+                BuildOutputDirectory = fileSystem.GetProjectBuildFolder(projectName)
             };
         }
 
         public IEnumerable<FileDto> GetIgnoreFilesForProject(string projectName)
         {
             return fileSystem.ReadIgnoreFile(projectName)
-                             .Select(each => new FileDto { Ignore = true, Name = each});
+                             .Select(each => new FileDto { Ignore = true, Name = each}).ToList();
         }
 
         public CodeBase Get(TextReader stream, ParseType parseType)

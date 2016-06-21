@@ -131,6 +131,7 @@
     <Compile Include="Api\Readers\XmlClassParserTest.cs" />
     <Compile Include="Api\Persistence\ProjectRepositoryTest.cs" />
     <Compile Include="TestHelpers\FileTestExtensions.cs" />
+    <Compile Include="Utilities\TestExtensions.cs" />
     <Compile Include="Utilities\Validate.cs" />
     <Compile Include="Utilities\Validation.cs" />
     <Compile Include="Utilities\ValidationException.cs" />

@@ -7,10 +7,7 @@ namespace Metropolis.Api.Collection.Steps.CSharp
     public class DotNetCollectionSteps : CompositeCollectionStep
     {
         public DotNetCollectionSteps() : base(new List<ICollectionStep>
-        {
-            new VisualStudioCollectionSteps(),
-            new CpdCollectionStep(ParseType.CpdCsharp)
-        }, true)
+                                    { new VisualStudioCollectionStep(), new CpdCollectionStep(ParseType.CpdCsharp) }, true)
         {
         }
     }

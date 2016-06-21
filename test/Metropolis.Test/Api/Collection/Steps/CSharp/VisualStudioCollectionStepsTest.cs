@@ -11,7 +11,7 @@ namespace Metropolis.Test.Api.Collection.Steps.CSharp
     [TestFixture]
     public class VisualStudioCollectionStepsTest : StrictMockBaseTest
     {
-        private VisualStudioCollectionSteps step;
+        private VisualStudioCollectionStep step;
         private Mock<ICollectAssemblies> assemblyCollection;
         private Mock<IFxCopCollectionTask> metricsTask;
 
@@ -20,7 +20,7 @@ namespace Metropolis.Test.Api.Collection.Steps.CSharp
         {
             assemblyCollection = CreateMock<ICollectAssemblies>();
             metricsTask = CreateMock<IFxCopCollectionTask>();
-            step = new VisualStudioCollectionSteps(assemblyCollection.Object, metricsTask.Object);
+            step = new VisualStudioCollectionStep(assemblyCollection.Object, metricsTask.Object);
         }
 
         [Test]

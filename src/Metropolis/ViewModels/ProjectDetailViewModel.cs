@@ -12,6 +12,7 @@ namespace Metropolis.ViewModels
         private string ignoreFile;
         private string projectName = "Sample Project";
         private RepositorySourceType repositorySourceType = RepositorySourceType.Java; //for now
+        private string buildOutputDirectory;
         private string sourceDirectory;
         private string projectFile;
         private string projectFolder;
@@ -55,6 +56,16 @@ namespace Metropolis.ViewModels
             {
                 projectFolder = value;
                 NotifyOfChange(x => x.ProjectFolder);
+            }
+        }
+
+        public string BuildOutputDirectory
+        {
+            get { return buildOutputDirectory; }
+            set
+            {
+                buildOutputDirectory = value;
+                NotifyOfChange(x => x.BuildOutputDirectory);
             }
         }
 

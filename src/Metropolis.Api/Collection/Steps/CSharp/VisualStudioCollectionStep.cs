@@ -4,16 +4,16 @@ using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Collection.Steps.CSharp
 {
-    public class VisualStudioCollectionSteps : ICollectionStep
+    public class VisualStudioCollectionStep : ICollectionStep
     {
         private readonly ICollectAssemblies assemblyCollection;
         private readonly IFxCopCollectionTask metricsTask;
 
-        public VisualStudioCollectionSteps() : this(new CollectAssemblies(), new FxCopCollectionTask())
+        public VisualStudioCollectionStep() : this(new CollectAssemblies(), new FxCopCollectionTask())
         {
         }
 
-        public VisualStudioCollectionSteps(ICollectAssemblies assemblyCollection, IFxCopCollectionTask metricsTask)
+        public VisualStudioCollectionStep(ICollectAssemblies assemblyCollection, IFxCopCollectionTask metricsTask)
         {
             this.assemblyCollection = assemblyCollection;
             this.metricsTask = metricsTask;

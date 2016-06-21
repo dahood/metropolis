@@ -41,7 +41,7 @@ namespace Metropolis.Controllers
             view.ShowBuildArtifacts(Consolidate(ProjectDetails.FilesToIgnore, buildResult.Artifacts));
         }
         
-        private static IEnumerable<FileDto> Consolidate(IEnumerable<FileDto> filesToIgnore, IEnumerable<FileDto> artifacts)
+        public static IEnumerable<FileDto> Consolidate(IEnumerable<FileDto> filesToIgnore, IEnumerable<FileDto> artifacts)
         {
             return filesToIgnore.Intersect(artifacts).Union(artifacts.Except(filesToIgnore));
         }

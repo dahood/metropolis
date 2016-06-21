@@ -162,6 +162,7 @@ namespace Metropolis
 
             var buildPaths = codebaseService.GetBuildPaths(projectDetails.ProjectName);
             projectDetails.IgnoreFile = buildPaths.IgnoreFile;
+            projectDetails.BuildOutputDirectory = buildPaths.BuildOutputDirectory;
             projectDetails.SourceDirectory = projectDetails.ProjectFolder;
 
             projectDetails.FilesToIgnore = codebaseService.GetIgnoreFilesForProject(projectDetails.ProjectFolder);
@@ -172,6 +173,8 @@ namespace Metropolis
             return new MetricsCommandArguments
             {
                 ProjectName = projectDetails.ProjectName,
+                ProjectFolder = projectDetails.ProjectFolder,
+                BuildOutputFolder = projectDetails.BuildOutputDirectory,
                 RepositorySourceType = projectDetails.RepositorySourceType,
                 IgnoreFile = projectDetails.IgnoreFile,
                 SourceDirectory = projectDetails.SourceDirectory,
