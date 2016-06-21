@@ -27,17 +27,11 @@ namespace Metropolis.Api.Collection.Steps.CSharp
 
         public IEnumerable<string> GatherAssemblies(MetricsCommandArguments args)
         {
-            var assembliesToIgnore = ReadIgnoreFile(args.IgnoreFile);
+            var assembliesToIgnore = filesystem.ReadIgnoreFile(args.IgnoreFile);
             var toDoList =  filesystem.GetFiles(args.BuildOutputFolder, "*.dll")
                                       .Union(filesystem.GetFiles(args.BuildOutputFolder, "*.exe"))
                                       .Where(file => !assembliesToIgnore.Any(file.EndsWith)).ToList();
             return toDoList;
         } 
-
-        private static IEnumerable<string> ReadIgnoreFile(string ignoreFile)
-        {
-            if (ignoreFile.IsEmpty() | !File.Exists(ignoreFile)) return Enumerable.Empty<string>();
-            return File.ReadAllLines(ignoreFile);
-        }
     }
 }

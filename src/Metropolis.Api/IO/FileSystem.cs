@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.IO
