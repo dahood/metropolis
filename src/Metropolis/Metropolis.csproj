@@ -159,6 +159,9 @@
     <Compile Include="Views\UserControls\StepPanels\JavaCollectionPanel.xaml.cs">
       <DependentUpon>JavaCollectionPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserPreferences.xaml.cs">
+      <DependentUpon>UserPreferences.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WorkspaceProvider.cs" />
     <Page Include="Resources\Brushes.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -206,6 +209,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\UserControls\StepPanels\JavaCollectionPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserPreferences.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
