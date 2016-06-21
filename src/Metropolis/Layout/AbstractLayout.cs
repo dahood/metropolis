@@ -17,7 +17,7 @@ namespace Metropolis.Layout
         private static readonly DirectionalLight DefaultDirectionalLight = new DirectionalLight(Colors.White, new Vector3D(1, 1, -1));
         private readonly Dictionary<Model3D, Instance> modelClassXRef = new Dictionary<Model3D, Instance>();
 
-        public abstract void ModelCity(Model3DGroup model, CodeBase workspaceCodebase);
+        public abstract void ModelCity(Model3DGroup model, CodeBase workspaceCodebase, AbstractHeatMap heatMap);
 
         protected void Reset(Model3DGroup cityScape)
         {
@@ -25,7 +25,7 @@ namespace Metropolis.Layout
             cityScape.Children.Clear();
         }
 
-        public void SetCityLights(Model3DGroup cityScape)
+        protected void SetCityLights(Model3DGroup cityScape)
         {
             cityScape.Children.Add(DefaultAmbientLight);
             cityScape.Children.Add(DefaultDirectionalLight);
@@ -46,41 +46,24 @@ namespace Metropolis.Layout
             return null;
         }
 
-        protected Rect3D RenderSquareBlock(Model3DGroup cityScape, IEnumerable<Instance> classes, Point3D center, int minHeight, int maxHeight)
+        protected Rect3D RenderSquareBlock(Model3DGroup cityScape, IEnumerable<Instance> classes, Point3D center, int minHeight, int maxHeight, AbstractHeatMap heatMap)
         {
             var list = classes.ToList();
             var blocksFromCenter = Math.Sqrt(list.Count)/2d;
-            return RenderRectangle(cityScape, list, center, minHeight, maxHeight, blocksFromCenter, blocksFromCenter);
+            return RenderRectangle(cityScape, list, center, minHeight, maxHeight, blocksFromCenter, blocksFromCenter, heatMap);
         }
 
-        protected Rect3D RenderRectangularBlock(Model3DGroup cityScape, IEnumerable<Instance> classes, Point3D center, int minHeight, int maxHeight)
+        protected Rect3D RenderRectangularBlock(Model3DGroup cityScape, IEnumerable<Instance> classes, Point3D center, int minHeight, 
+            int maxHeight, AbstractHeatMap heatMap)
         {
             var list = classes.ToList();
             var rectangleDimensions = CalculateWidthAndLength(list.Count);
-            return RenderRectangle(cityScape, list, center, minHeight, maxHeight, rectangleDimensions[0], rectangleDimensions[1]);
+            return RenderRectangle(cityScape, list, center, minHeight, maxHeight, rectangleDimensions[0], rectangleDimensions[1], heatMap);
         }
 
-        protected static double[] CalculateWidthAndLength(int numberOfElements)
-        {
-            var width = Math.Sqrt(GoldenRatio*numberOfElements);
-            var length = Math.Sqrt(1/GoldenRatio*numberOfElements);
 
-            var rects = new List<double[]>
-            {
-                new[] {width + 1, length},
-                new[] {width, length + 1},
-                new[] {width - 1, length + 1},
-                new[] {width + 1, length + 1}
-            };
-
-            return rects.Where(x => x[0]*x[1] >= numberOfElements)
-                .Where(x => x[0]/x[1] >= 1 && x[0]/x[1] < 2)
-                .OrderBy(x => x[0]*x[1])
-                .First();
-        }
-
-        protected Rect3D RenderRectangle(Model3DGroup cityScape, List<Instance> classes, Point3D center, int minHeight, int maxHeight, double width,
-            double length)
+        private Rect3D RenderRectangle(Model3DGroup cityScape, List<Instance> classes, Point3D center, int minHeight, 
+            int maxHeight, double width, double length, AbstractHeatMap heatMap)
         {
             var counter = 0;
 
@@ -93,15 +76,15 @@ namespace Metropolis.Layout
                 {
                     if (counter >= classes.Count) break;
                     var currentZ = zOffset + Spacer*row;
-                    cityScape.Children.Add(CreateCube(currentX, currentZ, minHeight, maxHeight, classes[counter++]));
+                    cityScape.Children.Add(CreateCube(currentX, currentZ, minHeight, maxHeight, classes[counter++], heatMap));
                 }
             }
             return new Rect3D(center, new Size3D(width, 0, length));
         }
 
-        private Model3D CreateCube(double x, double z, int minHeight, int maxHeight, Instance c)
+        private Model3D CreateCube(double x, double z, int minHeight, int maxHeight, Instance c, AbstractHeatMap heatMap)
         {
-            var color = HeatMapBrushFactory.Toxicity(c.Toxicity);
+            var color = heatMap.GetBrush(c);
             var scaledHeight = LinearScale.Apply(c.LinesOfCode, minHeight, maxHeight);
 
             var result = CreateCube(x, z, scaledHeight, color);
@@ -120,6 +103,25 @@ namespace Metropolis.Layout
 
             perfectCube.Transform = transformGroup;
             return perfectCube;
+        }
+
+        private static double[] CalculateWidthAndLength(int numberOfElements)
+        {
+            var width = Math.Sqrt(GoldenRatio * numberOfElements);
+            var length = Math.Sqrt(1 / GoldenRatio * numberOfElements);
+
+            var rects = new List<double[]>
+            {
+                new[] {width + 1, length},
+                new[] {width, length + 1},
+                new[] {width - 1, length + 1},
+                new[] {width + 1, length + 1}
+            };
+
+            return rects.Where(x => x[0] * x[1] >= numberOfElements)
+                .Where(x => x[0] / x[1] >= 1 && x[0] / x[1] < 2)
+                .OrderBy(x => x[0] * x[1])
+                .First();
         }
     }
 }

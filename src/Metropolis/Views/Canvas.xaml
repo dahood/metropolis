@@ -208,6 +208,10 @@
                     <RibbonToggleButton x:Name="CityLayoutToggleButton" Label="City Layout" LargeImageSource="..\Images\CityLayout.png" Click="ToggleLayout"/>
                     <RibbonToggleButton x:Name="GoldenRatioLayoutToggleButton" Label="Golden Ratio Layout" LargeImageSource="..\Images\GoldenRatioLayout.png" Click="ToggleLayout"/>
                 </RibbonGroup>
+                <RibbonGroup x:Name="HeatmapGroup" Header="Heatmap">
+                    <RibbonToggleButton x:Name="ToxicityToggleButton" Label="Toxicity Heatmap" IsChecked="True" LargeImageSource="..\Images\Toxic.png" Click="ToggleHeatmap" />
+                    <RibbonToggleButton x:Name="DuplicateToggleButton" Label="Duplicate Heatmap" LargeImageSource="..\Images\duplicate.ico" Click="ToggleHeatmap" />
+                </RibbonGroup>
                 <RibbonGroup x:Name="HelpGroup" Header="Help">
                     <RibbonButton Label="User Preferences" LargeImageSource="..\Images\UserPreferences.png" Click="UserPreferences"/>
                     <RibbonButton Label="Project Wiki" LargeImageSource="..\Images\Wiki.ico" Click="ProjectWiki" />

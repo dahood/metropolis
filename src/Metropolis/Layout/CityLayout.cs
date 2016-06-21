@@ -4,12 +4,13 @@ using System.Linq;
 using System.Windows.Media.Media3D;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
+using Metropolis.Models;
 
 namespace Metropolis.Layout
 {
     public class CityLayout : AbstractLayout
     {
-        public override void ModelCity(Model3DGroup cityScape, CodeBase codeBase)
+        public override void ModelCity(Model3DGroup cityScape, CodeBase codeBase, AbstractHeatMap heatMap)
         {
             Reset(cityScape);
             SetCityLights(cityScape);
@@ -31,7 +32,7 @@ namespace Metropolis.Layout
                 foreach (var plot in row)
                 {
                     plot.Adjust(previous, totalZ);
-                    RenderSquareBlock(cityScape, plot.Classes, plot.Bounds.Location, minHeight, maxHeight);
+                    RenderSquareBlock(cityScape, plot.Classes, plot.Bounds.Location, minHeight, maxHeight, heatMap);
                     previous = plot;
                     maxZ = Math.Max(maxZ, previous.SizeZ);
                 }

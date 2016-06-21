@@ -17,6 +17,7 @@ using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Camera;
 using Metropolis.Common.Models;
 using Metropolis.Layout;
+using Metropolis.Models;
 using Metropolis.TipOfTheDay;
 
 namespace Metropolis.Views
@@ -43,6 +44,7 @@ namespace Metropolis.Views
         private static IWorkspaceProvider WorkSpaceProvider => App.WorkspaceProvider;
 
         public AbstractLayout Layout { get; private set; } = new SquaredLayout();
+        public AbstractHeatMap HeatMap { get; private set; } = new ToxicityHeatMap();
 
         public RepositorySourceType SourceType => CodeBase.SourceType;
 
@@ -81,15 +83,22 @@ namespace Metropolis.Views
         private void HookupEventHandlers()
         {
             ListenForLayoutChanges();
+            ListenForHeatMapChanges();
         }
 
         private void ListenForLayoutChanges()
         {
-            SquareLayoutToggleButton.Checked += (sender, e) => { ChangeLayout(new SquaredLayout()); };
-            CityLayoutToggleButton.Checked += (sender1, e1) => { ChangeLayout(new CityLayout()); };
-            GoldenRatioLayoutToggleButton.Checked += (sender2, e2) => { ChangeLayout(new GoldenRatioLayout()); };
+            SquareLayoutToggleButton.Checked += (sender, e) => { ChangeLayout(new SquaredLayout(), HeatMap); };
+            CityLayoutToggleButton.Checked += (sender1, e1) => { ChangeLayout(new CityLayout(), HeatMap); };
+            GoldenRatioLayoutToggleButton.Checked += (sender2, e2) => { ChangeLayout(new GoldenRatioLayout(), HeatMap); };
         }
-        
+
+        private void ListenForHeatMapChanges()
+        {
+            ToxicityToggleButton.Checked += (sender, e) => { ChangeLayout(Layout, new ToxicityHeatMap()); };
+            DuplicateToggleButton.Checked += (sender1, e1) => { ChangeLayout(Layout, new DuplicateHeatMap()); };
+        }
+
         private void ResetCamera(object sender, RoutedEventArgs e)
         {
             mouseMovement.Reset();
@@ -99,7 +108,7 @@ namespace Metropolis.Views
         {
             highlightedInstance.ClearDisplay();
             using (new WaitCursor())
-                Layout.ModelCity(Model, CodeBase);
+                Layout.ModelCity(Model, CodeBase, HeatMap);
         }
 
         private void NewProject(object sender, RoutedEventArgs e)
@@ -208,9 +217,10 @@ namespace Metropolis.Views
             Application.Current.Shutdown();
         }
 
-        private void ChangeLayout(AbstractLayout newLayout)
+        private void ChangeLayout(AbstractLayout newLayout, AbstractHeatMap heatmap)
         {
             Layout = newLayout;
+            HeatMap = heatmap;
             Renderlayout();
             ResetCamera(null, null);
         }
@@ -279,6 +289,17 @@ namespace Metropolis.Views
         private void ToggleLayout(object sender, RoutedEventArgs e)
         {
             var toggleButtons = new[] {SquareLayoutToggleButton, CityLayoutToggleButton, GoldenRatioLayoutToggleButton};
+
+            var target = sender as RibbonToggleButton;
+            if (target == null) return;
+            target.IsChecked = true;
+
+            toggleButtons.Where(x => !ReferenceEquals(x, sender)).ForEach(each => each.IsChecked = false);
+        }
+
+        private void ToggleHeatmap(object sender, RoutedEventArgs e)
+        {
+            var toggleButtons = new[] { ToxicityToggleButton, DuplicateToggleButton };
 
             var target = sender as RibbonToggleButton;
             if (target == null) return;
