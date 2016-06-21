@@ -5,6 +5,7 @@ using FluentAssertions;
 using Metropolis.Common.Models;
 using Metropolis.Controllers;
 using Metropolis.Test.Api.Services;
+using Metropolis.Test.Utilities;
 using Metropolis.ViewModels;
 using Metropolis.Views.UserControls.StepPanels;
 using Moq;
@@ -66,6 +67,46 @@ namespace Metropolis.Test.Metropolis.Controllers
             wsProvider.Setup(x => x.Analyze(It.Is<ProjectDetailsViewModel>(a => ReferenceEquals(a, viewModel))));
 
             view.RaiseRunAnalysisRequestEvent(viewModel.FilesToIgnore);
+        }
+
+        [Test]
+        public void Consolidate_OneItemMatches()
+        {
+            var ignore = CreateFile("one.dll", true);
+            var artifact = CreateFile("one.dll", false);
+            var results = CsharpCollectionController.Consolidate(new[] {ignore}, new[] {artifact}).ToList();
+
+            results.Count.Should().Be(1);
+            results.Should().Contain(x => x.Name == ignore.Name && ignore.Ignore == true);
+        }
+
+        [Test]
+        public void Consolidate_TwoUniqueItems()
+        {
+            var one = CreateFile("one.dll", true);
+            var artifactOne = CreateFile("one.dll", false);
+            var artifactTwo = CreateFile("two.dll", true);
+            var results = CsharpCollectionController.Consolidate(new[] {one}, new[] {artifactOne, artifactTwo}).ToList();
+
+            results.Count.Should().Be(2);
+            results.ShouldContain(x => x.Name == one.Name && one.Ignore == true);
+            results.ShouldContain(x => x.Name == artifactTwo.Name && one.Ignore == true);
+        }
+
+        [Test]
+        public void Consolidate_OneArtifactOnly()
+        {
+            var one = CreateFile("one.dll", true); //should be dropped since it doesn't exist in the artifacts collection
+            var two = CreateFile("two.dll", true);
+            var results = CsharpCollectionController.Consolidate(new[] {one}, new[] {two}).ToList();
+
+            results.Count.Should().Be(1);
+            results.ShouldContain(x => x.Name == two.Name && one.Ignore == true);
+        }
+
+        private static FileDto CreateFile(string name, bool ignored = false)
+        {
+            return new FileDto {Name = name, Ignore = ignored};
         }
     }
 

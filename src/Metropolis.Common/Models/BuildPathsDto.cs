@@ -4,5 +4,6 @@ namespace Metropolis.Common.Models
     {
         public string IgnoreFile { get; set; }
         public string SourceDirectory { get; set; }
+        public string BuildOutputDirectory { get; set; }
     }
 }

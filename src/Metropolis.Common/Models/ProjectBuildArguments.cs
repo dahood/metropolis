@@ -6,15 +6,19 @@ namespace Metropolis.Common.Models
     public class ProjectBuildArguments : IEquatable<ProjectBuildArguments>
     {
         public string ProjectName { get; set; }
+        public string ProjectFolder { get; set; }
         public RepositorySourceType SourceType { get; set; }
         public string ProjetFile { get; set; }
+        
         public string BuildOutputFolder { get; set; }
 
         public bool Equals(ProjectBuildArguments other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(ProjectName, other.ProjectName) && SourceType == other.SourceType && string.Equals(ProjetFile, other.ProjetFile) && string.Equals(BuildOutputFolder, other.BuildOutputFolder);
+            return string.Equals(ProjectName, other.ProjectName) && string.Equals(ProjectFolder, other.ProjectFolder) &&
+                   SourceType == other.SourceType && string.Equals(ProjetFile, other.ProjetFile) &&
+                   string.Equals(BuildOutputFolder, other.BuildOutputFolder);
         }
 
         public override bool Equals(object obj)
@@ -30,6 +34,7 @@ namespace Metropolis.Common.Models
             unchecked
             {
                 var hashCode = (ProjectName != null ? ProjectName.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (ProjectFolder != null ? ProjectFolder.GetHashCode() : 0);
                 hashCode = (hashCode*397) ^ (int) SourceType;
                 hashCode = (hashCode*397) ^ (ProjetFile != null ? ProjetFile.GetHashCode() : 0);
                 hashCode = (hashCode*397) ^ (BuildOutputFolder != null ? BuildOutputFolder.GetHashCode() : 0);
