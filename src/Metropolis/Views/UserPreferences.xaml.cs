@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using Metropolis.Api.IO;
+using Metropolis.Utilities;
 
 namespace Metropolis.Views
 {
@@ -7,16 +9,28 @@ namespace Metropolis.Views
     /// </summary>
     public partial class UserPreferences
     {
+        private readonly IUserPreferences preferences;
         public UserPreferences()
         {
             InitializeComponent();
+            preferences = new Api.IO.UserPreferences();
+            FxCopBinaryLocationTextBox.Text = preferences.FxCopPath;
+            MsBuildLocationTextBox.Text = preferences.MsBuildPath;
         }
-
-        private static IWorkspaceProvider WorkSpaceProvider => App.WorkspaceProvider;
 
         private void SelectFxCopLocation(object sender, RoutedEventArgs e)
         {
-            //WorkSpaceProvider. = DialogUtils.GetFileName("exe", FxCopBinaryLocationTextBox.Text);
+            preferences.FxCopPath = DialogUtils.GetFileName(@"Fx Cop Executable (.exe)|*.exe;", FxCopBinaryLocationTextBox.Text);
+        }
+
+        private void SelectMsBuildLocation(object sender, RoutedEventArgs e)
+        {
+            preferences.MsBuildPath = DialogUtils.GetFileName(@"MsBuild Executable (.exe)|*.exe;", MsBuildLocationTextBox.Text);
+        }
+
+        private void ClosePreferences(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

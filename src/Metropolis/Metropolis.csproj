@@ -269,6 +269,7 @@
     <Resource Include="Images\BuildSolution.png" />
     <Resource Include="Images\IgnoreFile.png" />
     <Resource Include="Images\RunAnalysis.png" />
+    <Resource Include="Images\UserPreferences.png" />
     <Content Include="SampleFiles\entity-framework-6.csv" />
     <None Include="SampleFiles\git-log-file-touches.csv" />
     <None Include="SampleFiles\metropolis-code-coverage-with-tests.coveragexml">

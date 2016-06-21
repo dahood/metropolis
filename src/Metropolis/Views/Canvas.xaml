@@ -209,6 +209,7 @@
                     <RibbonToggleButton x:Name="GoldenRatioLayoutToggleButton" Label="Golden Ratio Layout" LargeImageSource="..\Images\GoldenRatioLayout.png" Click="ToggleLayout"/>
                 </RibbonGroup>
                 <RibbonGroup x:Name="HelpGroup" Header="Help">
+                    <RibbonButton Label="User Preferences" LargeImageSource="..\Images\UserPreferences.png" Click="UserPreferences"/>
                     <RibbonButton Label="Project Wiki" LargeImageSource="..\Images\Wiki.ico" Click="ProjectWiki" />
                     <RibbonButton Label="Tip Of The Day" LargeImageSource="..\Images\TipOfTheDay.png" Click="ShowTipOfTheDay" />
                 </RibbonGroup>

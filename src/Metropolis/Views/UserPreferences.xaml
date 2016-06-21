@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="User Preferences" Height="300" Width="500">
+        Title="User Preferences" Height="137.684" Width="743.158" Icon="..\Images/logo.ico" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
             <RowDefinition Height="25" />
             <RowDefinition Height="25" />
         </Grid.RowDefinitions>
@@ -15,9 +16,15 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="30"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Content="FxCop Binary Location:" />
-        <TextBox Grid.Row="0" Grid.Column="1" Name="FxCopBinaryLocationTextBox" Text="C:\Program Files (x86)\Microsoft Visual Studio 14.0" VerticalAlignment="Center" />
-        <Button Grid.Row="0" Grid.Column="2" Content="..." Click="SelectFxCopLocation" Width="25" Height="25" />
         
+        <Label Grid.Row="0" Grid.Column="0" Content="FxCop Binary Location:" />
+        <TextBox Grid.Row="0" Grid.Column="1" Name="FxCopBinaryLocationTextBox" Text="C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\FxCop\metrics.exe" VerticalAlignment="Center" />
+        <Button Grid.Row="0" Grid.Column="2" Content="..." Click="SelectFxCopLocation" Width="25" Height="25" />
+
+        <Label Grid.Row="1" Grid.Column="0" Content="MsBuild Binary Location:" />
+        <TextBox Grid.Row="1" Grid.Column="1" Name="MsBuildLocationTextBox" Text="C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe" VerticalAlignment="Center" />
+        <Button Grid.Row="1" Grid.Column="2" Content="..." Click="SelectMsBuildLocation" Width="25" Height="25" />
+        
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Content="Close" Margin="50,1,50,1" Click="ClosePreferences"/>
     </Grid>
 </Window>

@@ -421,5 +421,10 @@ namespace Metropolis.Views
         {
             new TipOfTheDay().ShowDialog();
         }
+
+        private void UserPreferences(object sender, RoutedEventArgs e)
+        {
+            new UserPreferences().Show();
+        }
     }
 }
