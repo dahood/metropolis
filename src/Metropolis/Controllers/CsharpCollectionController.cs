@@ -33,7 +33,7 @@ namespace Metropolis.Controllers
             var args = new ProjectBuildArguments
             {
                 ProjectName = ProjectDetails.ProjectName,
-                ProjetFile = ProjectDetails.ProjectFile,
+                ProjectFile = ProjectDetails.ProjectFile,
                 SourceType = RepositorySourceType.CSharp
             };
 

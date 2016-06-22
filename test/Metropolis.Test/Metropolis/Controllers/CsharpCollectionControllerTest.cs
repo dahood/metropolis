@@ -42,7 +42,7 @@ namespace Metropolis.Test.Metropolis.Controllers
         public void RunBuild()
         {
             var expectedArgs = new ProjectBuildArguments
-                                { SourceType = viewModel.RepositorySourceType, ProjectName = viewModel.ProjectName, ProjetFile = viewModel.ProjectFile };
+                                { SourceType = viewModel.RepositorySourceType, ProjectName = viewModel.ProjectName, ProjectFile = viewModel.ProjectFile };
             var buildResult = new ProjectBuildResult
                                 { BuildFolder = @"C:\folder", Artifacts = new[] {new FileDto {Name = "me.exe"}, new FileDto {Name = "ignore.me"}} };
 

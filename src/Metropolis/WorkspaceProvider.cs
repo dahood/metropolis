@@ -174,6 +174,7 @@ namespace Metropolis
             {
                 ProjectName = projectDetails.ProjectName,
                 ProjectFolder = projectDetails.ProjectFolder,
+                ProjectFile = projectDetails.ProjectFile,
                 BuildOutputFolder = projectDetails.BuildOutputDirectory,
                 RepositorySourceType = projectDetails.RepositorySourceType,
                 IgnoreFile = projectDetails.IgnoreFile,

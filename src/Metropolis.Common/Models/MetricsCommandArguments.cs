@@ -11,5 +11,6 @@
         public string IgnoreFile { get; set; }
         public string MetricsOutputFolder { get; set; }
         public string BuildOutputFolder { get; set; }
+        public string ProjectFile { get; set; }
     }
 }

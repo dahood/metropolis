@@ -8,7 +8,7 @@ namespace Metropolis.Common.Models
         public string ProjectName { get; set; }
         public string ProjectFolder { get; set; }
         public RepositorySourceType SourceType { get; set; }
-        public string ProjetFile { get; set; }
+        public string ProjectFile { get; set; }
         
         public string BuildOutputFolder { get; set; }
 
@@ -17,7 +17,7 @@ namespace Metropolis.Common.Models
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
             return string.Equals(ProjectName, other.ProjectName) && string.Equals(ProjectFolder, other.ProjectFolder) &&
-                   SourceType == other.SourceType && string.Equals(ProjetFile, other.ProjetFile) &&
+                   SourceType == other.SourceType && string.Equals(ProjectFile, other.ProjectFile) &&
                    string.Equals(BuildOutputFolder, other.BuildOutputFolder);
         }
 
@@ -36,7 +36,7 @@ namespace Metropolis.Common.Models
                 var hashCode = (ProjectName != null ? ProjectName.GetHashCode() : 0);
                 hashCode = (hashCode*397) ^ (ProjectFolder != null ? ProjectFolder.GetHashCode() : 0);
                 hashCode = (hashCode*397) ^ (int) SourceType;
-                hashCode = (hashCode*397) ^ (ProjetFile != null ? ProjetFile.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (ProjectFile != null ? ProjectFile.GetHashCode() : 0);
                 hashCode = (hashCode*397) ^ (BuildOutputFolder != null ? BuildOutputFolder.GetHashCode() : 0);
                 return hashCode;
             }

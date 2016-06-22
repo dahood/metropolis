@@ -36,7 +36,7 @@ namespace Metropolis.Test.Api.Build
 
             fileSystem.Setup(x => x.CleanFolder(args.BuildOutputFolder));
             userPreferences.Setup(x => x.MsBuildPath).Returns(@"c:\build.exe");
-            runPowerShell.Setup(x => x.Invoke(DotNetProjectBuilder.MsBuildCommand.FormatWith(@"c:\build.exe", args.ProjetFile, args.BuildOutputFolder)));
+            runPowerShell.Setup(x => x.Invoke(DotNetProjectBuilder.MsBuildCommand.FormatWith(@"c:\build.exe", args.ProjectFile, args.BuildOutputFolder)));
             fileSystem.Setup(x => x.FindAllBinaries(args.BuildOutputFolder)).Returns(buildArtifacts);
 
             var result = builder.Build(args);
