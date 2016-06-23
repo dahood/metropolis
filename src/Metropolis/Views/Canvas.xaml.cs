@@ -412,7 +412,6 @@ namespace Metropolis.Views
 
         private void NewVersion(object sender, RoutedEventArgs e)
         {
-            //TODO: Potentially allow to check npm installed version versus what is on NPMJS.com
             Process.Start("https://www.npmjs.com/package/metropolis");
         }
 

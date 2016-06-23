@@ -29,10 +29,7 @@ namespace Metropolis.Api.Collection.Steps.AllLanguages
         private const string DefaultToken = "java";
 
         //sample commmand  
-        //TODO: CSharp has problems with CPD because it scans the obj/Debug folder and finds tons 
-        // of duplicates!!! --exclude "obj\**"
-        
-        //java -cp "cpd/*" net.sourceforge.pmd.cpd.CPD --format csv --language cs --minimum-tokens 50 --files C:\dev\metropolis\src --exclude "obj\**" > cpd-metro.csv
+        //java -cp "cpd/*" net.sourceforge.pmd.cpd.CPD --format csv --language cs --minimum-tokens 50 --files C:\dev\metropolis\src > cpd-metro.csv
         //java -cp "cpd/*" net.sourceforge.pmd.cpd.CPD --format csv --language java --minimum-tokens 50 --files C:\Dev\disruptor\src > cpd-disruptor.csv
         //java -cp "cpd/*" net.sourceforge.pmd.cpd.CPD --format csv --language javascript --minimum-tokens 50 --files C:\Dev\d3\src > cpd-d3.csv
         private const string CpdCommand =
