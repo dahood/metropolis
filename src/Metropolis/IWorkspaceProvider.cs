@@ -29,5 +29,6 @@ namespace Metropolis
         ProjectBuildResult BuildSolution(ProjectBuildArguments args);
         void CreateIgnoreFile(ProjectDetailsViewModel projectDetails);
         void SetUpDotNetBuild(ProjectDetailsViewModel projectDetails, string solutionFile);
+        FileContentsResult GetFileContents(string getPhysicalFilePath);
     }
 }

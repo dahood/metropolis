@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Models\BuildPathsDto.cs" />
     <Compile Include="Models\EslintPasringOptions.cs" />
+    <Compile Include="Models\FileContentsResult.cs" />
     <Compile Include="Models\FileDto.cs" />
     <Compile Include="Models\ProjectBuildArguments.cs" />
     <Compile Include="Models\ProjectBuildResult.cs" />

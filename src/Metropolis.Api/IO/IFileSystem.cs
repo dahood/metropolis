@@ -21,5 +21,6 @@ namespace Metropolis.Api.IO
         string GetIgnoreFilePath(string projectName);
         string GetProjectBuildFolder(string projectName);
         IEnumerable<string> ReadIgnoreFile(string projectName);
+        string ReadFile(string physicalFilePath);
     }
 }

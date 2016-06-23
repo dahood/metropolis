@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
@@ -60,7 +61,8 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
             var parts = key.Split('\\').ToList();
             var name = parts.Last();
             parts.RemoveRange(parts.Count - 1, 1);
-            return new Instance(string.Join("\\", parts), name, members);
+            var ns = string.Join("\\", parts);
+            return new Instance(ns, name, members) {PhysicalPath = Path.Combine(ns, name) };
         }
     }
 }

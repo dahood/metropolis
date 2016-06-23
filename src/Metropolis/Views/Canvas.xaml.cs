@@ -426,16 +426,8 @@ namespace Metropolis.Views
 
         private void OpenCodeFileHyperLink(object sender, RoutedEventArgs e)
         {
-            var chrome = @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe";
-            if (File.Exists(chrome))
-            {
-                Process.Start(chrome, highlightedInstance.GetPhysicalFilePath());
-            }
-            else
-            {
-                MessageBox.Show("Opening with default editor...to avoid this please install Google Chrome");
-                Process.Start(highlightedInstance.GetPhysicalFilePath());
-            }
+            var data = WorkSpaceProvider.GetFileContents(highlightedInstance.GetPhysicalFilePath());
+            CodeInspector.ShowContent(data, CodeBase.SourceType);
         }
 
         private void ShowTipOfTheDay(object sender, RoutedEventArgs e)

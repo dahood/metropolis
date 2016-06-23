@@ -168,6 +168,11 @@ namespace Metropolis
             projectDetails.FilesToIgnore = codebaseService.GetIgnoreFilesForProject(projectDetails.ProjectFolder);
         }
 
+        public FileContentsResult GetFileContents(string physicalFilePath)
+        {
+            return codebaseService.GetFileContents(physicalFilePath);
+        }
+
         private static MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)
         {
             return new MetricsCommandArguments

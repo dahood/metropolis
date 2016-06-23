@@ -64,6 +64,5 @@ namespace Metropolis.Api.Domain
         {
             return new CodeBase(new CodeGraph(new Instance[0]));
         }
-
     }
 }

@@ -86,6 +86,11 @@ namespace Metropolis.Api.Services
                              .Select(each => new FileDto { Ignore = true, Name = each}).ToList();
         }
 
+        public FileContentsResult GetFileContents(string physicalFilePath)
+        {
+            return new FileContentsResult {Data = fileSystem.ReadFile(physicalFilePath)};
+        }
+
         public CodeBase Get(TextReader stream, ParseType parseType)
         {
             using (stream)

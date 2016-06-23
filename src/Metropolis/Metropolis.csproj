@@ -49,6 +49,10 @@
       <HintPath>..\packages\CsvHelper.2.14.2\lib\net45\CsvHelper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.3.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AvalonEdit.5.0.3\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Build.Engine" />
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.Build.Utilities.v4.0" />
@@ -136,6 +140,9 @@
     <Compile Include="ViewModels\IgnoreFileViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
     <Compile Include="ViewModels\TipOfTheDayViewModel.cs" />
+    <Compile Include="Views\CodeInspector.xaml.cs">
+      <DependentUpon>CodeInspector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MetroBot.xaml.cs">
       <DependentUpon>MetroBot.xaml</DependentUpon>
     </Compile>
@@ -182,6 +189,10 @@
       <DependentUpon>Canvas.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CodeInspector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MetroBot.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -232,6 +243,9 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <AppDesigner Include="Properties\" />
+    <EmbeddedResource Include="Resources\Highlighting\javascript.xshd" />
+    <EmbeddedResource Include="Resources\Highlighting\csharp.xshd" />
+    <EmbeddedResource Include="Resources\Highlighting\java.xshd" />
     <None Include="SampleFiles\aspnet-toxicity-input.csv" />
     <Resource Include="Images\Properties.ico" />
     <Resource Include="Images\Shutdown.ico" />

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.IO
@@ -47,6 +46,11 @@ namespace Metropolis.Api.IO
         {
             var ignoreFIle = GetIgnoreFilePath(projectName);
             return File.Exists(ignoreFIle) ? File.ReadAllLines(ignoreFIle) : Enumerable.Empty<string>();
+        }
+
+        public string ReadFile(string physicalFilePath)
+        {
+            return FileExists(physicalFilePath) ? File.ReadAllText(physicalFilePath) : string.Empty;
         }
 
         public bool FileExists(string potentialPath)
