@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using Metropolis.Api.Collection.PowerShell;
 using Metropolis.Common.Models;
+using NLog;
 
 namespace Metropolis.Api.Collection.Steps
 {
     public abstract class BaseCollectionStep : ICollectionStep
     {
         private readonly IRunPowerShell powerShell;
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         protected BaseCollectionStep(IRunPowerShell powerShell)
         {
@@ -38,7 +40,7 @@ namespace Metropolis.Api.Collection.Steps
             }
             catch (Exception e)
             {
-                //TODO: log this exception somewhere fancy 
+                Logger.Error(e, "Error occurred trying to exeucte an external process");
                 throw new ApplicationException("Error occurred trying to exeucte an external process", e);
             }
         }

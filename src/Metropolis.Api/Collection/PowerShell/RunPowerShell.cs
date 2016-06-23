@@ -4,12 +4,14 @@ using System.IO;
 using System.Management.Automation.Runspaces;
 using System.Text;
 using Metropolis.Api.IO;
+using NLog;
 
 namespace Metropolis.Api.Collection.PowerShell
 {
     public class RunPowerShell : IRunPowerShell
     {
         private readonly IFileSystem fileSystem;
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         public RunPowerShell() : this(new FileSystem()) { }
 
@@ -17,7 +19,6 @@ namespace Metropolis.Api.Collection.PowerShell
         {
             this.fileSystem = fileSystem;
         }
-
 
         public void Invoke(string command)
         {
@@ -34,16 +35,7 @@ namespace Metropolis.Api.Collection.PowerShell
                 {
                     error.AppendLine(pipeline.Error.Read().ToString());
                 }
-                try
-                {
-                    File.AppendAllText(Path.Combine(fileSystem.ProjectBuildFolder, "metropolis-error.log"), error.ToString());
-                }
-                catch (Exception e)
-                {
-                    //TODO: Deal with locked files
-                    Debug.Write(e);
-                    Debug.Write(error.ToString());
-                }
+                Logger.Error(error);
             }
         }
     }

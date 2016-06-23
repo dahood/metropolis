@@ -20,7 +20,6 @@ namespace Metropolis.Views
         {
             InitializeComponent();
 
-            //TODO:  change this when we plug in IOC
             tipTheDayFactory = new TipOfTheDayFactory();
 
             tipOfTheDayViewModel = new TipOfTheDayViewModel();

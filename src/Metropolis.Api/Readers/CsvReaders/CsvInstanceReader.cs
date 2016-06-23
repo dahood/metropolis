@@ -4,11 +4,13 @@ using System.IO;
 using System.Linq;
 using CsvHelper;
 using Metropolis.Api.Domain;
+using NLog;
 
 namespace Metropolis.Api.Readers.CsvReaders
 {
     public abstract class CsvInstanceReader<T, TMapper> : IInstanceReader
     {
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger(typeof(T));
         protected bool HasHeaderRecord { get; }
 
         protected CsvInstanceReader(bool hasHeaderRecord = false)
@@ -30,7 +32,9 @@ namespace Metropolis.Api.Readers.CsvReaders
                 }
                 catch (CsvMissingFieldException fieldMissingException)
                 {
-                    throw new ApplicationException("Incorrect File Format for " + typeof (T).Name + " Message: " + fieldMissingException.Message);
+                    var message = "Incorrect File Format for " + typeof(T).Name + " Message: " + fieldMissingException.Message;
+                    Logger.Error(fieldMissingException, message);
+                    throw new ApplicationException(message);
                 }
             }
         }
