@@ -6,14 +6,12 @@
         xmlns:local="clr-namespace:Metropolis.Views"
         xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
         mc:Ignorable="d"
-        Title="CodeInspector" Height="652" Width="1000">
+        Title="CodeInspector" Height="661" Width="1000">
     <StackPanel>
         <TabControl>
             <TabItem Header="File Contents">
-                <avalonedit:TextEditor x:Name="Editor" 
-                                IsReadOnly="True"
-                                FontFamily="Consolas" FontSize="10pt" VerticalAlignment="Stretch"
-                                ShowLineNumbers="True" Height="545"/>
+                <avalonedit:TextEditor x:Name="Editor" IsReadOnly="True" FontFamily="Consolas" FontSize="10pt" VerticalAlignment="Stretch"
+                                       WordWrap="True" ShowLineNumbers="True" Height="545"/>
             </TabItem>
         </TabControl>
         <Button Content="Close" x:Name="CancelButton" Click="OnClose" Width="75"  Height="35" Margin="10, 5, 10, 2"/>

@@ -15,5 +15,12 @@ namespace Metropolis.Api.Domain
 
             return instance;
         }
+
+        public static Instance Build(string nspace, string name, int numberOfMethods, int linesOfCode, int complexity, int depthOfInheritance, int coupling,
+            string physicalFile = null)
+        {
+            return new Instance(nspace, name, numberOfMethods, linesOfCode, complexity, depthOfInheritance, coupling)
+                        {PhysicalPath = physicalFile};
+        }
     }
 }

@@ -27,16 +27,25 @@ namespace Metropolis.Api.Readers.XmlReaders.FxCop
         {
             var members = (from m in typeElement.Descendants("Members").Descendants("Member")
                            select fxCopMemberBuilder.Build(m)).ToList();
-
             var nspace = typeElement.Parent.Parent.AttributeValue("Name");
             var metrics = typeElement.Descendants("Metrics").Descendants("Metric");
+            var physicalfile = GetPhysicaFileFrom(typeElement);
 
-            return new Instance(nspace, typeElement.AttributeValue("Name"), 0, 
-                                GetMetricValue(metrics, "LinesOfCode"),
-                                GetMetricValue(metrics, "CyclomaticComplexity"),
-                                GetMetricValue(metrics, "DepthOfInheritance"),
-                                GetMetricValue(metrics, "ClassCoupling"))
+            return  InstanceBuilder.Build(nspace, typeElement.AttributeValue("Name"), 0, 
+                                        GetMetricValue(metrics, "LinesOfCode"),
+                                        GetMetricValue(metrics, "CyclomaticComplexity"),
+                                        GetMetricValue(metrics, "DepthOfInheritance"),
+                                        GetMetricValue(metrics, "ClassCoupling"),
+                                        physicalfile)
                            .AddMembers(members);
+        }
+
+        private static string GetPhysicaFileFrom(XElement typeElement)
+        {
+            var member = (from m in typeElement.Descendants("Members").Descendants("Member")
+                          where m.HasAttribute("File")
+                          select m).FirstOrDefault();
+            return member?.AttributeValue("File");
         }
     }
 }
