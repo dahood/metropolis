@@ -88,7 +88,7 @@ namespace Metropolis.Api.Services
 
         public FileContentsResult GetFileContents(string physicalFilePath)
         {
-            return new FileContentsResult {Data = fileSystem.ReadFile(physicalFilePath)};
+            return new FileContentsResult {FileName = Path.GetFileName(physicalFilePath), Data = fileSystem.ReadFile(physicalFilePath)};
         }
 
         public CodeBase Get(TextReader stream, ParseType parseType)

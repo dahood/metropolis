@@ -9,7 +9,7 @@
         Title="CodeInspector" Height="661" Width="1000">
     <StackPanel>
         <TabControl>
-            <TabItem Header="File Contents">
+            <TabItem Header="File Contents" x:Name="EditorTab">
                 <avalonedit:TextEditor x:Name="Editor" IsReadOnly="True" FontFamily="Consolas" FontSize="10pt" VerticalAlignment="Stretch"
                                        WordWrap="True" ShowLineNumbers="True" Height="545"/>
             </TabItem>

@@ -32,6 +32,7 @@ namespace Metropolis.Views
         private void Load(FileContentsResult data)
         {
             Editor.Text = data.Data;
+            EditorTab.Header = data.FileName;
             SetHighlighting(data);
             ShowDialog();
         }
