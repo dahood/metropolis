@@ -5,6 +5,7 @@ using System.Xml;
 using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 using Metropolis.Common.Models;
+using Metropolis.ViewModels;
 
 namespace Metropolis.Views
 {
@@ -23,23 +24,22 @@ namespace Metropolis.Views
             Close();
         }
 
-        public static void ShowContent(InstanceInformationFacade highlightedInstance, FileContentsResult data, RepositorySourceType sourceType)
+        public static void ShowContent(CodeInspectorViewModel viewModel)
         {
-            data.SyntaxHighlighting = sourceType.ToString();
-            new CodeInspector { DataContext = data }.Load(data);
+            new CodeInspector().Load(viewModel);
         }
 
-        private void Load(FileContentsResult data)
+        public void Load(CodeInspectorViewModel data)
         {
-            Editor.Text = data.Data;
-            EditorTab.Header = data.FileName;
+            DataContext = data;
+            Editor.Text = data.FileContents.Data;
             SetHighlighting(data);
             ShowDialog();
         }
 
-        private void SetHighlighting(FileContentsResult data)
+        private void SetHighlighting(CodeInspectorViewModel data)
         {
-            using (var s = GetHightlightResourceStream(data.SyntaxHighlighting))
+            using (var s = GetHightlightResourceStream(data.SourceType))
             {
                 using (var reader = new XmlTextReader(s))
                 {
@@ -48,18 +48,18 @@ namespace Metropolis.Views
             }
         }
 
-        private static Stream GetHightlightResourceStream(string syntaxHighlighting)
+        private static Stream GetHightlightResourceStream(RepositorySourceType syntaxHighlighting)
         {
             return Assembly.GetExecutingAssembly().GetManifestResourceStream($"Metropolis.Resources.Highlighting.{GetHightlight(syntaxHighlighting)}");
         }
 
-        private static string GetHightlight(string syntaxHighlighting)
+        private static string GetHightlight(RepositorySourceType sourceType)
         {
-            switch (syntaxHighlighting)
+            switch (sourceType)
             {
-                case "CSharp":
+                case RepositorySourceType.CSharp:
                     return "csharp.xshd";
-                case "Java":
+                case RepositorySourceType.Java:
                     return "java.xshd";
                 default:
                     return "javascript.xshd";

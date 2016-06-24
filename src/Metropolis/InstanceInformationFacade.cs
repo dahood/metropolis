@@ -11,7 +11,7 @@ namespace Metropolis
     {
         private readonly IDisplayInstanceInformation provider;
         private IHighlightModel highlight = new EmptyHighlight();
-        private Instance highlightedInstance;
+        public Instance Instance { get; private set; }
 
         public InstanceInformationFacade(IDisplayInstanceInformation provider)
         {
@@ -34,8 +34,8 @@ namespace Metropolis
 
         public string GetPhysicalFilePath()
         {
-            if (highlightedInstance != null)
-                return highlightedInstance.PhysicalPath;
+            if (Instance != null)
+                return Instance.PhysicalPath;
             return string.Empty;
         }
 
@@ -62,7 +62,7 @@ namespace Metropolis
         {
             highlight = highlight.Swap(model);
             var type = provider.Layout.LookupClass(model);
-            highlightedInstance = type;
+            Instance = type;
             var txt = DisplayTextBasedOnRepositoryType(type);
 
             provider.SetClassInformation(txt);

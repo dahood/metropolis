@@ -11,10 +11,9 @@
     <StackPanel>
         <TabControl>
             <TabItem Header="Summary">
-                <userControls:InstanceViewPanel x:Name="InstanceViewer" VerticalAlignment="Stretch">
-                </userControls:InstanceViewPanel>
+                <userControls:InstanceViewPanel x:Name="InstanceViewer" VerticalAlignment="Stretch" DataContext="{Binding Path=Instance}"/>
             </TabItem>
-            <TabItem Header="File Contents" x:Name="EditorTab">
+            <TabItem Header="{Binding Path=FileContents.FileName, Mode=OneWay}" x:Name="EditorTab">
                 <avalonedit:TextEditor x:Name="Editor" IsReadOnly="True" FontFamily="Consolas" FontSize="10pt" VerticalAlignment="Stretch"
                                        WordWrap="True" ShowLineNumbers="True" Height="545"/>
             </TabItem>

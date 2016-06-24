@@ -19,7 +19,7 @@ namespace Metropolis.Api.Domain
         }
 
         public Instance(string nameSpace, string name, int numberOfMethods, int linesOfCode, int toxicity)
-            : this(name, nameSpace, CodeBagType.Empty, String.Empty)
+            : this(name, nameSpace, CodeBagType.Empty, string.Empty)
         {
             NumberOfMethods = numberOfMethods;
             LinesOfCode = linesOfCode;
@@ -27,7 +27,7 @@ namespace Metropolis.Api.Domain
         }
 
         public Instance(string nameSpace, string name, int numberOfMethods, int linesOfCode, int cyclomaticComplexity,
-            int depthOfInheritance, int classCoupling) : this(name, nameSpace, CodeBagType.Empty, String.Empty)
+            int depthOfInheritance, int classCoupling) : this(name, nameSpace, CodeBagType.Empty, string.Empty)
         {
             NumberOfMethods = numberOfMethods;
             LinesOfCode = linesOfCode;
@@ -36,7 +36,7 @@ namespace Metropolis.Api.Domain
             ClassCoupling = classCoupling;
         }
 
-        public Instance(string nameSpace, string name, IEnumerable<Member> members) : this(name, nameSpace, CodeBagType.Empty, String.Empty)
+        public Instance(string nameSpace, string name, IEnumerable<Member> members) : this(name, nameSpace, CodeBagType.Empty, string.Empty)
         {
             ApplyMembers(members);
             Members.ForEach(x =>
@@ -46,7 +46,6 @@ namespace Metropolis.Api.Domain
             });
             NumberOfMethods = Members.Count;
         }
-
 
         private void ApplyMembers(IEnumerable<Member> toAdd)
         {
@@ -97,7 +96,7 @@ namespace Metropolis.Api.Domain
 
         protected bool Equals(Instance other)
         {
-            return string.Equals(CodeBag, other.CodeBag) && string.Equals(Name, other.Name);
+            return Equals(CodeBag, other.CodeBag) && string.Equals(Name, other.Name);
         }
 
         public override bool Equals(object obj)

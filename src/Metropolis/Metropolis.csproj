@@ -141,6 +141,7 @@
     <Compile Include="Utilities\DialogUtils.cs" />
     <Compile Include="ValueConverters\FxCopVisibilityConverter.cs" />
     <Compile Include="ValueConverters\RepositorySourceTypeConverter.cs" />
+    <Compile Include="ViewModels\CodeInspectorViewModel.cs" />
     <Compile Include="ViewModels\IgnoreFileViewModel.cs" />
     <Compile Include="ViewModels\ProjectDetailViewModel.cs" />
     <Compile Include="ViewModels\TipOfTheDayViewModel.cs" />

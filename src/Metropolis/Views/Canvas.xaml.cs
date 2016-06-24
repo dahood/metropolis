@@ -19,6 +19,7 @@ using Metropolis.Common.Models;
 using Metropolis.Layout;
 using Metropolis.Models;
 using Metropolis.TipOfTheDay;
+using Metropolis.ViewModels;
 
 namespace Metropolis.Views
 {
@@ -425,8 +426,13 @@ namespace Metropolis.Views
 
         private void OpenCodeFileHyperLink(object sender, RoutedEventArgs e)
         {
-            var data = WorkSpaceProvider.GetFileContents(highlightedInstance.GetPhysicalFilePath());
-            CodeInspector.ShowContent(highlightedInstance, data, CodeBase.SourceType);
+            var viewModel = new CodeInspectorViewModel
+                {
+                    SourceType = CodeBase.SourceType,
+                    FileContents = WorkSpaceProvider.GetFileContents(highlightedInstance.GetPhysicalFilePath()),
+                    Instance = highlightedInstance.Instance
+            };
+            CodeInspector.ShowContent(viewModel);
         }
 
         private void ShowTipOfTheDay(object sender, RoutedEventArgs e)
