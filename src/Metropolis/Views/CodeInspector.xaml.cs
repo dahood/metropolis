@@ -23,7 +23,7 @@ namespace Metropolis.Views
             Close();
         }
 
-        public static void ShowContent(FileContentsResult data, RepositorySourceType sourceType)
+        public static void ShowContent(InstanceInformationFacade highlightedInstance, FileContentsResult data, RepositorySourceType sourceType)
         {
             data.SyntaxHighlighting = sourceType.ToString();
             new CodeInspector { DataContext = data }.Load(data);

@@ -159,6 +159,9 @@
     <Compile Include="Views\TipOfTheDay.xaml.cs">
       <DependentUpon>TipOfTheDay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControls\InstanceViewPanel.xaml.cs">
+      <DependentUpon>InstanceViewPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\Spinner.xaml.cs">
       <DependentUpon>Spinner.xaml</DependentUpon>
     </Compile>
@@ -210,6 +213,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TipOfTheDay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\InstanceViewPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

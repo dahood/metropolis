@@ -426,7 +426,7 @@ namespace Metropolis.Views
         private void OpenCodeFileHyperLink(object sender, RoutedEventArgs e)
         {
             var data = WorkSpaceProvider.GetFileContents(highlightedInstance.GetPhysicalFilePath());
-            CodeInspector.ShowContent(data, CodeBase.SourceType);
+            CodeInspector.ShowContent(highlightedInstance, data, CodeBase.SourceType);
         }
 
         private void ShowTipOfTheDay(object sender, RoutedEventArgs e)

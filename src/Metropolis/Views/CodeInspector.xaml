@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Metropolis.Views"
         xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
+        xmlns:userControls="clr-namespace:Metropolis.Views.UserControls"
         mc:Ignorable="d"
         Title="CodeInspector" Height="661" Width="1000">
     <StackPanel>
         <TabControl>
+            <TabItem Header="Summary">
+                <userControls:InstanceViewPanel x:Name="InstanceViewer" VerticalAlignment="Stretch">
+                </userControls:InstanceViewPanel>
+            </TabItem>
             <TabItem Header="File Contents" x:Name="EditorTab">
                 <avalonedit:TextEditor x:Name="Editor" IsReadOnly="True" FontFamily="Consolas" FontSize="10pt" VerticalAlignment="Stretch"
                                        WordWrap="True" ShowLineNumbers="True" Height="545"/>
