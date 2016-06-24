@@ -336,7 +336,6 @@
                             <TextBox x:Name="searchText" Grid.Row="0" Grid.Column="1"
                                      VerticalAlignment="Top" Margin="5,5,5,5"
                                      TextChanged="searchText_TextChanged" />
-
                         </Grid>
                         <ListBox x:Name="SearchSuggestions" Margin="15,5,5,5" BorderThickness="0" MaxHeight="100"
                                  ScrollViewer.VerticalScrollBarVisibility="Auto"

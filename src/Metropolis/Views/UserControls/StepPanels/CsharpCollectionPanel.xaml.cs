@@ -48,7 +48,7 @@ namespace Metropolis.Views.UserControls.StepPanels
 
         private void FindSolutionFile(object sender, RoutedEventArgs e)
         {
-            ProjectDetails.ProjectFile = DialogUtils.GetFileName(@"Solution Files (.sln)|*.sln;", ProjectDetails.ProjectFile);
+            ProjectDetails.ProjectFile = DialogUtils.GetFileName(@"Solution Files (.sln)|*.sln|Project Files (*.csproj)|*.csproj", ProjectDetails.ProjectFile);
         }
 
         private void BuildSolution(object sender, RoutedEventArgs e)

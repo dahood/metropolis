@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Metropolis.Api.Extensions;
+using Metropolis.Common.Models;
+using Metropolis.ViewModels;
 
 namespace Metropolis.Views.UserControls
 {
@@ -20,9 +11,32 @@ namespace Metropolis.Views.UserControls
     /// </summary>
     public partial class InstanceViewPanel : UserControl
     {
+        private readonly UserControl[] instanceViewers;
         public InstanceViewPanel()
         {
             InitializeComponent();
+            Loaded += ControlLoaded;
+            instanceViewers = new UserControl[] {CSharpViewer, JavaScriptViewer, JavaViewer};
+        }
+
+        private void ControlLoaded(object sender, RoutedEventArgs e)
+        {
+            var context = DataContext as CodeInspectorViewModel;
+            if (context == null) return;
+            
+            instanceViewers.ForEach(each => each.Visibility = Visibility.Collapsed);
+            switch (context.SourceType)
+            {
+                case RepositorySourceType.CSharp:
+                    CSharpViewer.Visibility = Visibility.Visible;
+                    break;
+                case RepositorySourceType.Java:
+                    JavaViewer.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    JavaScriptViewer.Visibility = Visibility.Visible;
+                    break;
+            }
         }
     }
 }

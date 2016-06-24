@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="Metropolis.Views.UserControls.InstanceViewers.CSharpInstanceViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Background="White" BorderBrush="DarkSlateGray" BorderThickness="1,1,1,1" CornerRadius="30,30,30,30" Width="500">
+        <Grid Width="450" HorizontalAlignment="Center" Margin="25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="35*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="190"/>
+                <ColumnDefinition Width="120*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold" Text="Metrics Summary"/>
+            <!-- Class -->
+            <Label Grid.Row="1" Grid.Column="0" Content="Class"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Name, Mode=OneWay}" IsEnabled="False"/>
+            <!-- LinesOfCode -->
+            <Label Grid.Row="2" Grid.Column="0" Content="Lines Of Code"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=LinesOfCode, Mode=OneWay}" IsEnabled="False"/>
+            <!-- DuplicatePercentage -->
+            <Label Grid.Row="3" Grid.Column="0" Content="Duplicate Percentage"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Path=DuplicatePercentage, Mode=OneWay}" IsEnabled="False"/>
+            <!-- DuplicatePercentage -->
+            <Label Grid.Row="4" Grid.Column="0" Content="Number Of Methods"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Path=NumberOfMethods, Mode=OneWay}" IsEnabled="False"/>
+            <!-- CyclomaticComplexity -->
+            <Label Grid.Row="5" Grid.Column="0" Content="Cyclomatic Complexity"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Path=CyclomaticComplexity, Mode=OneWay}" IsEnabled="False"/>
+            <!-- ClassFanOutComplexity -->
+            <Label Grid.Row="6" Grid.Column="0" Content="Class FanOut"/>
+            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding Path=ClassFanOutComplexity, Mode=OneWay}" IsEnabled="False"/>
+            <!-- ClassDataAbstractionCoupling -->
+            <Label Grid.Row="7" Grid.Column="0" Content="Class Data Abstraction Coupling"/>
+            <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding Path=ClassDataAbstractionCoupling, Mode=OneWay}" IsEnabled="False"/>
+            <!-- AnonymousInnerClassLength -->
+            <Label Grid.Row="8" Grid.Column="0" Content="Anonymous Inner Classes"/>
+            <TextBlock Grid.Row="8" Grid.Column="1" Text="{Binding Path=AnonymousInnerClassLength, Mode=OneWay}" IsEnabled="False"/>
+            <!-- Toxicity -->
+            <Label Grid.Row="9" Grid.Column="0" Content="Toxicity"/>
+            <TextBlock Grid.Row="9" Grid.Column="1" Text="{Binding Path=Toxicity, Mode=OneWay}" IsEnabled="False"/>
+        </Grid>
+    </Border>
+</UserControl>

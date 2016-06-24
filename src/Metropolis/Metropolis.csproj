@@ -160,8 +160,17 @@
     <Compile Include="Views\TipOfTheDay.xaml.cs">
       <DependentUpon>TipOfTheDay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControls\InstanceViewers\CSharpInstanceViewer.xaml.cs">
+      <DependentUpon>CSharpInstanceViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\InstanceViewPanel.xaml.cs">
       <DependentUpon>InstanceViewPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\InstanceViewers\JavaInstanceViewer.xaml.cs">
+      <DependentUpon>JavaInstanceViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\InstanceViewers\JavaScriptInstanceViewer.xaml.cs">
+      <DependentUpon>JavaScriptInstanceViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\Spinner.xaml.cs">
       <DependentUpon>Spinner.xaml</DependentUpon>
@@ -217,7 +226,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\UserControls\InstanceViewers\CSharpInstanceViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UserControls\InstanceViewPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\InstanceViewers\JavaInstanceViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\InstanceViewers\JavaScriptInstanceViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
