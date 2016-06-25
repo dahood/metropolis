@@ -1,8 +1,8 @@
 ﻿<UserControl x:Class="Metropolis.Views.UserControls.InstanceViewers.JavaInstanceViewer"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Border Background="White" BorderBrush="DarkSlateGray" BorderThickness="1,1,1,1" CornerRadius="30,30,30,30" Width="500">
-        <Grid Width="450" HorizontalAlignment="Center" Margin="25">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Height="304.546">
+    <Border Background="White" BorderBrush="DarkSlateGray" BorderThickness="1,1,1,1" CornerRadius="30,30,30,30" Width="323">
+        <Grid Width="300" HorizontalAlignment="Center" Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="35*"/>
                 <RowDefinition Height="35*"/>
@@ -37,7 +37,7 @@
             <Label Grid.Row="5" Grid.Column="0" Content="Cyclomatic Complexity"/>
             <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Path=CyclomaticComplexity, Mode=OneWay}" IsEnabled="False"/>
             <!-- ClassFanOutComplexity -->
-            <Label Grid.Row="6" Grid.Column="0" Content="Class FanOut"/>
+            <Label Grid.Row="6" Grid.Column="0" Content="Class Fan Out"/>
             <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding Path=ClassFanOutComplexity, Mode=OneWay}" IsEnabled="False"/>
             <!-- ClassDataAbstractionCoupling -->
             <Label Grid.Row="7" Grid.Column="0" Content="Class Data Abstraction Coupling"/>
@@ -48,6 +48,11 @@
             <!-- Toxicity -->
             <Label Grid.Row="9" Grid.Column="0" Content="Toxicity"/>
             <TextBlock Grid.Row="9" Grid.Column="1" Text="{Binding Path=Toxicity, Mode=OneWay}" IsEnabled="False"/>
+            <!-- Toxicity -->
+            <!--
+            <Label Grid.Row="10" Grid.Column="0" Content="Namespace"/>
+            <TextBlock Grid.Row="9" Text="{Binding Path=CodeBag.Name, Mode=OneWay}" TextWrapping="Wrap" IsEnabled="False" Grid.ColumnSpan="2" Margin="112,5.333,78,20.222" Grid.RowSpan="2"/>
+            -->
         </Grid>
     </Border>
 </UserControl>

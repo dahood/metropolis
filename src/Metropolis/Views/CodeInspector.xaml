@@ -6,7 +6,7 @@
         xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
         xmlns:userControls="clr-namespace:Metropolis.Views.UserControls"
         mc:Ignorable="d"
-        Title="CodeInspector" Height="661" Width="1000">
+        Title="CodeInspector" Height="661" Width="1000" WindowStartupLocation="CenterScreen">
     <StackPanel>
         <TabControl>
             <TabItem Header="Summary">

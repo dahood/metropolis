@@ -342,19 +342,6 @@
                                  SelectionChanged="searchSuggestions_SelectionChanged" />
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Name="CodeInspectorBox">
-                    <GroupBox.Header>
-                        <Label>Code Inspector</Label>
-                    </GroupBox.Header>
-                    <StackPanel Name="CodeInspectorPanel" Visibility="Collapsed">
-                        <RichTextBox x:Name="ClassNameTextBlock" VerticalAlignment="Top" Margin="5,5,5,5" IsReadOnly="True">
-                            <FlowDocument>
-                                <Paragraph Name="codeInspectorText" />
-                            </FlowDocument>
-                        </RichTextBox>
-                        <TextBlock x:Name="CodeLinkTextBlock" Visibility="Collapsed"><Hyperlink Click="OpenCodeFileHyperLink">Open File</Hyperlink></TextBlock>
-                    </StackPanel>
-                </GroupBox>
             </StackPanel>
 
             <Border Background="GhostWhite" BorderBrush="Black" BorderThickness="1" Padding="2" Margin="5,5,5,5">

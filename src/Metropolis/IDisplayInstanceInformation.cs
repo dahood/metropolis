@@ -10,7 +10,7 @@ namespace Metropolis
         Viewport3D ViewPort { get; }
         AbstractLayout Layout { get; }
         RepositorySourceType SourceType { get; }
-        void SetClassInformation(string text);
         event MouseButtonEventHandler MouseRightButtonDown;
+        void ShowCodeInspector();
     }
 }

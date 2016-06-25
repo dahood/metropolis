@@ -49,16 +49,15 @@ namespace Metropolis.Views
 
         public RepositorySourceType SourceType => CodeBase.SourceType;
 
-        public void SetClassInformation(string text)
+        public void ShowCodeInspector()
         {
-            if (text == string.Empty) CodeInspectorPanel.Visibility = Visibility.Collapsed;
-            else
-            { 
-                CodeInspectorPanel.Visibility = Visibility.Visible;
-                codeInspectorText.Inlines.Clear();
-                codeInspectorText.Inlines.Add(text);
-            }
-            CodeLinkTextBlock.Visibility = string.IsNullOrEmpty(highlightedInstance.GetPhysicalFilePath()) ? Visibility.Collapsed : Visibility.Visible;
+            var viewModel = new CodeInspectorViewModel
+            {
+                SourceType = CodeBase.SourceType,
+                FileContents = WorkSpaceProvider.GetFileContents(highlightedInstance.GetPhysicalFilePath()),
+                Instance = highlightedInstance.Instance
+            };
+            CodeInspector.ShowContent(viewModel);
         }
 
         public Viewport3D ViewPort => viewPort;
@@ -265,12 +264,8 @@ namespace Metropolis.Views
 
         private void RunJavascriptAnalzer(object sender, RoutedEventArgs e)
         {
-            //App.ShowLog();
-            //Spinner.Show();
             WorkSpaceProvider.RunJavascriptToxicity();
             DisplayWorkspaceDetails();
-            //Spinner.Hide();
-            //App.ShowLog();
         }
 
         private void StartMetroBot(object sender, RoutedEventArgs e)
@@ -422,17 +417,6 @@ namespace Metropolis.Views
                             "Jonathan McCracken, Richard Hurst, and Greg Cook All rights reserved.\n" +
                             "Metropolis is licensed under BSD (see LICENSE file for details)", "About Metropolis", MessageBoxButton.OK,
                 MessageBoxImage.Information);
-        }
-
-        private void OpenCodeFileHyperLink(object sender, RoutedEventArgs e)
-        {
-            var viewModel = new CodeInspectorViewModel
-                {
-                    SourceType = CodeBase.SourceType,
-                    FileContents = WorkSpaceProvider.GetFileContents(highlightedInstance.GetPhysicalFilePath()),
-                    Instance = highlightedInstance.Instance
-            };
-            CodeInspector.ShowContent(viewModel);
         }
 
         private void ShowTipOfTheDay(object sender, RoutedEventArgs e)
