@@ -1,20 +1,20 @@
 ﻿<Window x:Class="Metropolis.Views.CodeInspector"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
         xmlns:userControls="clr-namespace:Metropolis.Views.UserControls"
-        mc:Ignorable="d"
-        Title="CodeInspector" Height="661" Width="1000" WindowStartupLocation="CenterScreen">
+        Title="CodeInspector" Height="661" Width="1120" WindowStartupLocation="CenterScreen">
     <StackPanel>
         <TabControl>
             <TabItem Header="Summary">
-                <userControls:InstanceViewPanel x:Name="InstanceViewer" VerticalAlignment="Stretch"/>
+                <userControls:InstanceViewPanel x:Name="InstanceViewer" VerticalAlignment="Stretch" Loaded="InstanceViewer_Loaded"/>
             </TabItem>
             <TabItem Header="{Binding Path=FileContents.FileName, Mode=OneWay}" x:Name="EditorTab">
                 <avalonedit:TextEditor x:Name="Editor" IsReadOnly="True" FontFamily="Consolas" FontSize="10pt" VerticalAlignment="Stretch"
-                                       WordWrap="True" ShowLineNumbers="True" Height="545"/>
+                                       WordWrap="True" ShowLineNumbers="True" Height="550"/>
+            </TabItem>
+            <TabItem Header="Members">
+                <userControls:MembersViewer DataContext="{Binding Path=Instance}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
             </TabItem>
         </TabControl>
         <Button Content="Close" x:Name="CancelButton" Click="OnClose" Width="75"  Height="35" Margin="10, 5, 10, 2"/>

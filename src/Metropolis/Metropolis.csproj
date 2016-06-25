@@ -172,6 +172,9 @@
     <Compile Include="Views\UserControls\InstanceViewers\JavaScriptInstanceViewer.xaml.cs">
       <DependentUpon>JavaScriptInstanceViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControls\MembersViewer.xaml.cs">
+      <DependentUpon>MembersViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\Spinner.xaml.cs">
       <DependentUpon>Spinner.xaml</DependentUpon>
     </Compile>
@@ -239,6 +242,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserControls\InstanceViewers\JavaScriptInstanceViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\MembersViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,7 +1,7 @@
 ﻿<UserControl x:Class="Metropolis.Views.UserControls.InstanceViewPanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:instanceViewers="clr-namespace:Metropolis.Views.UserControls.InstanceViewers">
+             xmlns:instanceViewers="clr-namespace:Metropolis.Views.UserControls.InstanceViewers" Width="450">
     <StackPanel>
        <instanceViewers:JavaInstanceViewer x:Name="JavaViewer" Visibility="Visible" DataContext="{Binding Path=Instance}" />
         <instanceViewers:CSharpInstanceViewer x:Name="CSharpViewer" Visibility="Collapsed" DataContext="{Binding Path=Instance}"  />

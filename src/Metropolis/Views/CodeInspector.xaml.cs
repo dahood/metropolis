@@ -65,5 +65,10 @@ namespace Metropolis.Views
                     return "javascript.xshd";
             }
         }
+
+        private void InstanceViewer_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
