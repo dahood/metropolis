@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Metropolis.Views.UserControls
+namespace Metropolis.Views.UserControls.MemberViewers
 {
     /// <summary>
-    /// Interaction logic for MembersViewer.xaml
+    /// Interaction logic for JavaMembersView.xaml
     /// </summary>
-    public partial class MembersViewer : UserControl
+    public partial class JavaMembersView : UserControl
     {
-        public MembersViewer()
+        public JavaMembersView()
         {
             InitializeComponent();
         }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Metropolis.Api.Collection.Steps.AllLanguages;
 using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Api.Readers.XmlReaders.CheckStyles;
 using Metropolis.Api.Readers.XmlReaders.FxCop;
@@ -10,7 +9,7 @@ namespace Metropolis.Api.Readers
 {
     public class MetricsReaderFactory : IMetricsReaderFactory
     {
-        private static readonly Dictionary<ParseType, Func<IInstanceReader>> mapDefinitions = new Dictionary<ParseType, Func<IInstanceReader>>
+        private static readonly Dictionary<ParseType, Func<IInstanceReader>> MapDefinitions = new Dictionary<ParseType, Func<IInstanceReader>>
         {
             {ParseType.VisualStudio, () => new VisualStudioMetricsReader()},
             {ParseType.RichardToxicity, () => new ToxicityReader()},
@@ -27,7 +26,7 @@ namespace Metropolis.Api.Readers
 
         private readonly Dictionary<ParseType, Func<IInstanceReader>> readerMap;
 
-        public MetricsReaderFactory() : this(mapDefinitions)
+        public MetricsReaderFactory() : this(MapDefinitions)
         {
             
         }

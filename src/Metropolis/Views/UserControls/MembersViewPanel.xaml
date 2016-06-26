@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="Metropolis.Views.UserControls.MembersViewPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:memberViewers="clr-namespace:Metropolis.Views.UserControls.MemberViewers"
+             Height="610" Width="1100">
+    <StackPanel>
+        <memberViewers:CSharpMembersView x:Name="CSharpMembersView" Visibility="Collapsed" DataContext="{Binding Path=Instance}"/>
+        <memberViewers:JavaMembersView x:Name="JavaMembersView" Visibility="Collapsed" DataContext="{Binding Path=Instance}"/>
+        <memberViewers:ECMAMembersView x:Name="ECMAMembersView" Visibility="Collapsed" DataContext="{Binding Path=Instance}"/>
+    </StackPanel>
+</UserControl>

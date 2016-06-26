@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:instanceViewers="clr-namespace:Metropolis.Views.UserControls.InstanceViewers" Width="450">
     <StackPanel>
-       <instanceViewers:JavaInstanceViewer x:Name="JavaViewer" Visibility="Visible" DataContext="{Binding Path=Instance}" />
+        <instanceViewers:JavaInstanceViewer x:Name="JavaViewer" Visibility="Visible" DataContext="{Binding Path=Instance}" />
         <instanceViewers:CSharpInstanceViewer x:Name="CSharpViewer" Visibility="Collapsed" DataContext="{Binding Path=Instance}"  />
         <instanceViewers:JavaScriptInstanceViewer x:Name="JavaScriptViewer" Visibility="Collapsed" DataContext="{Binding Path=Instance}"  />
     </StackPanel>

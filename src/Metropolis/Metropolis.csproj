@@ -172,8 +172,17 @@
     <Compile Include="Views\UserControls\InstanceViewers\JavaScriptInstanceViewer.xaml.cs">
       <DependentUpon>JavaScriptInstanceViewer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControls\MembersViewer.xaml.cs">
-      <DependentUpon>MembersViewer.xaml</DependentUpon>
+    <Compile Include="Views\UserControls\MembersViewPanel.xaml.cs">
+      <DependentUpon>MembersViewPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\MemberViewers\CSharpMembersView.xaml.cs">
+      <DependentUpon>CSharpMembersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\MemberViewers\ECMAMembersView.xaml.cs">
+      <DependentUpon>ECMAMembersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\MemberViewers\JavaMembersView.xaml.cs">
+      <DependentUpon>JavaMembersView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\Spinner.xaml.cs">
       <DependentUpon>Spinner.xaml</DependentUpon>
@@ -245,7 +254,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UserControls\MembersViewer.xaml">
+    <Page Include="Views\UserControls\MembersViewPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\MemberViewers\CSharpMembersView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControls\MemberViewers\ECMAMembersView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControls\MemberViewers\JavaMembersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

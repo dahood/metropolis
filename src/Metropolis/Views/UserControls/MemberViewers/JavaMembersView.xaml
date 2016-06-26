@@ -1,10 +1,9 @@
-﻿<UserControl x:Class="Metropolis.Views.UserControls.MembersViewer"
+﻿<UserControl x:Class="Metropolis.Views.UserControls.MemberViewers.JavaMembersView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Width="1100" >
-    <Border Background="White" BorderBrush="DarkSlateGray" BorderThickness="1,1,1,1" CornerRadius="30,30,30,30" Margin="5">
-        <DataGrid HorizontalAlignment="Right" Margin="0,10,17,10" ItemsSource="{Binding Path=Members}"
-                  Width="1050" Height="500" AutoGenerateColumns="False" 
-                  AlternationCount="2" >
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Background="White" BorderBrush="DarkSlateGray" BorderThickness="1,1,1,1" CornerRadius="30,30,30,30" Height="500" Width="985" Margin="5">
+        <DataGrid HorizontalAlignment="Center" Margin="15" ItemsSource="{Binding Path=Members}" 
+                  AutoGenerateColumns="False" AlternationCount="2" >
             <DataGrid.RowStyle>
                 <Style TargetType="{x:Type DataGridRow}">
                     <Style.Triggers>
@@ -65,13 +64,6 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="No Fallthrough" Width="90" IsReadOnly="True">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBox Text="{Binding Path=NoFallthrough}" IsReadOnly="True" BorderThickness="0" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="Boolean Complexity" Width="120" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -97,3 +89,4 @@
         </DataGrid>
     </Border>
 </UserControl>
+

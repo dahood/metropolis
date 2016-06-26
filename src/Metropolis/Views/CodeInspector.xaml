@@ -7,14 +7,13 @@
     <StackPanel>
         <TabControl>
             <TabItem Header="Summary">
-                <userControls:InstanceViewPanel x:Name="InstanceViewer" VerticalAlignment="Stretch" Loaded="InstanceViewer_Loaded"/>
+                <userControls:InstanceViewPanel x:Name="InstanceViewer" VerticalAlignment="Stretch" Loaded="InstanceViewer_Loaded" Height="550"/>
             </TabItem>
             <TabItem Header="{Binding Path=FileContents.FileName, Mode=OneWay}" x:Name="EditorTab">
-                <avalonedit:TextEditor x:Name="Editor" IsReadOnly="True" FontFamily="Consolas" FontSize="10pt" VerticalAlignment="Stretch"
-                                       WordWrap="True" ShowLineNumbers="True" Height="550"/>
+                <avalonedit:TextEditor x:Name="Editor" IsReadOnly="True" FontFamily="Consolas" FontSize="10pt" WordWrap="True" ShowLineNumbers="True" Height="550"/>
             </TabItem>
             <TabItem Header="Members">
-                <userControls:MembersViewer DataContext="{Binding Path=Instance}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                <userControls:MembersViewPanel HorizontalAlignment="Stretch" Height="550"/>
             </TabItem>
         </TabControl>
         <Button Content="Close" x:Name="CancelButton" Click="OnClose" Width="75"  Height="35" Margin="10, 5, 10, 2"/>
