@@ -38,7 +38,7 @@ namespace Metropolis
         public CodeBase CodeBase { get; private set; }
         public string MetricsOutputFolder => fileSystem.MetricsOutputFolder;
         public string ProjectBuildFolder => codebaseService.ProjectBuildFolder;
-        public bool IsFxcopMetricsInstalled => analysisService.FxCopMetricsPath.IsNotEmpty();
+        public bool IsFxcopMetricsInstalled => File.Exists(analysisService.FxCopMetricsPath);
 
         public void Create()
         {

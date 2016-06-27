@@ -97,8 +97,6 @@ namespace Metropolis.ViewModels
             PropertyChanged.Notify(this, x => x.IsValid);
             PropertyChanged.Notify(this, x => x.ProjectFileSelected);
         }
-
-        public bool IsValidForCSharp => projectName.IsNotEmpty() && ProjectFile.IsNotEmpty() && IsFxCopInstalled;
         public bool IsValid => IsForCSharp? projectName.IsNotEmpty() && sourceDirectory.IsNotEmpty() && IsFxCopInstalled 
                                           : projectName.IsNotEmpty() && sourceDirectory.IsNotEmpty();
 
