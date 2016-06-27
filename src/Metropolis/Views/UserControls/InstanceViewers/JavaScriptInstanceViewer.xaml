@@ -4,41 +4,41 @@
     <Border Background="White" BorderBrush="DarkSlateGray" BorderThickness="1,1,1,1" CornerRadius="30,30,30,30">
         <Grid HorizontalAlignment="Center" Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="35*"/>
-                <RowDefinition Height="35*"/>
-                <RowDefinition Height="35*"/>
-                <RowDefinition Height="35*"/>
-                <RowDefinition Height="35*"/>
-                <RowDefinition Height="35*"/>
-                <RowDefinition Height="35*"/>
-                <RowDefinition Height="35*"/>
-                <RowDefinition Height="35*"/>
-                <RowDefinition Height="35*"/>
-                <RowDefinition Height="35*"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="240"/>
-                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="190"/>
+                <ColumnDefinition Width="240*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold" Text="Metrics Summary"/>
-            <!-- Class -->
-            <Label Grid.Row="1" Grid.Column="0" Content="File"/>
+            <!-- File -->
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="File"/>
             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Name, Mode=OneWay}" IsEnabled="False"/>
+            <!-- Directory -->
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Directory"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=CodeBag.Name, Mode=OneWay}" TextWrapping="Wrap" IsEnabled="False"/>
             <!-- LinesOfCode -->
-            <Label Grid.Row="2" Grid.Column="0" Content="Lines Of Code"/>
-            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=LinesOfCode, Mode=OneWay}" IsEnabled="False"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Lines Of Code"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Path=LinesOfCode, Mode=OneWay}" IsEnabled="False"/>
             <!-- DuplicatePercentage -->
-            <Label Grid.Row="3" Grid.Column="0" Content="Duplicate Percentage"/>
-            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Path=DuplicatePercentage, Mode=OneWay}" IsEnabled="False"/>
-            <!-- DuplicatePercentage -->
-            <Label Grid.Row="4" Grid.Column="0" Content="Number Of Methods"/>
-            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Path=NumberOfMethods, Mode=OneWay}" IsEnabled="False"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Duplicate Percentage"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Path=DuplicatePercentage, StringFormat=P, Mode=OneWay}" IsEnabled="False"/>
+            <!-- Number Of Methods -->
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Number Of Methods"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Path=NumberOfMethods, Mode=OneWay}" IsEnabled="False"/>
             <!-- CyclomaticComplexity -->
-            <Label Grid.Row="5" Grid.Column="0" Content="Cyclomatic Complexity"/>
-            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Path=CyclomaticComplexity, Mode=OneWay}" IsEnabled="False"/>
-            <!-- ClassFanOutComplexity -->
-            <Label Grid.Row="6" Grid.Column="0" Content="Toxicity"/>
-            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding Path=Toxicity, Mode=OneWay}" IsEnabled="False"/>
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Cyclomatic Complexity"/>
+            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding Path=CyclomaticComplexity, Mode=OneWay}" IsEnabled="False"/>
+            <!-- Toxicity -->
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="Toxicity"/>
+            <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding Path=Toxicity, StringFormat=N2, Mode=OneWay}" IsEnabled="False"/>
         </Grid>
     </Border>
 </UserControl>
