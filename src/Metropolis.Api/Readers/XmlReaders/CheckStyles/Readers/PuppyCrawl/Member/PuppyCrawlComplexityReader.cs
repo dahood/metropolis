@@ -4,7 +4,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.PuppyCrawl.Membe
 {
     public class PuppyCrawlComplexityReader : CheckStyleBaseReader, ICheckStylesMemberReader
     {
-        public override string Source => PuppyCrawlSources.FanOutComplexity;
+        public override string Source => PuppyCrawlSources.CyclomaticComplexity;
 
         public PuppyCrawlComplexityReader() : base(IntRegex)
         {
@@ -12,7 +12,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.PuppyCrawl.Membe
 
         public void Read(Domain.Member member, CheckStylesItem item)
         {
-            member.Name = $"{item.Line}-{item.Column}";
+            member.Name = $"Line: {item.Line}";
             member.CylomaticComplexity = Parser.Match(item.Message).Value.AsInt();
         }
     }

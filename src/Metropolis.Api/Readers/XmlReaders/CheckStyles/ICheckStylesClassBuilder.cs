@@ -26,11 +26,11 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
         public Instance Build(string key, List<CheckStylesItem> items)
         {
             var grouped = (from item in items
-                           group item by new {item.Line, item.Column } into grp
+                           group item by new {item.Line} into grp
                            select new { grp.Key, Metrics = grp }).ToList();
 
             var members = grouped.Select(each => {
-                var member = new Member("unknown", 0, 0, 0);
+                var member = new Member($"line: {each.Key}", 0, 0, 0);
 
                 (from p in MemberParsers
                  join item in each.Metrics

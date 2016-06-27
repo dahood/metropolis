@@ -5,10 +5,6 @@
 	<property name="severity" value="warning"/>
 	<property name="fileExtensions" value="java"/>
 	
-	<module name="FileLength">
-		<property name="max" value="0"/> <!-- Kept at 0 so parser can read all file lengths -->
-	</module>
-	
 	<module name="TreeWalker">
 		<module name="FileContentsHolder"/>
 		<module name="MissingSwitchDefault"/>

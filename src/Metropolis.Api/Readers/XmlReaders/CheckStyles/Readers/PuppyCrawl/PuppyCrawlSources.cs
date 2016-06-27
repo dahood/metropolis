@@ -2,7 +2,7 @@
 {
     public static class PuppyCrawlSources
     {
-        public static string FanOutComplexity => "com.puppycrawl.tools.checkstyle.checks.metrics.ClassFanOutComplexityCheck";
+        public static string CyclomaticComplexity => "com.puppycrawl.tools.checkstyle.checks.metrics.CyclomaticComplexityCheck";
         public static string MethodLength => "com.puppycrawl.tools.checkstyle.checks.sizes.MethodLengthCheck";
         public static string NumberOfParameters => "com.puppycrawl.tools.checkstyle.checks.sizes.ParameterNumberCheck";
         public static string MissingSwitchDefault => "com.puppycrawl.tools.checkstyle.checks.coding.MissingSwitchDefaultCheck";
