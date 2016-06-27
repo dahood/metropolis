@@ -31,19 +31,13 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
             var nameSpace = xml.GetDefaultNamespace();
             var metrics = (from m in xml.Descendants(nameSpace + "file").Descendants(nameSpace + "error")
                            where m.AttributeValue("source").IsNotEmpty()
-                           where m.HasAttribute("column")
                            select BuildItem(m)).ToList();
 
             var classes = (from m in metrics
                            group m by m.Name into cls
                            select classBuilder.Build(cls.Key, cls.ToList())).ToList();
 
-            if (classBuilder is PuppyCrawlCheckStylesClassBuilder)
-                return new JavaToxicityAnalyzer().Analyze(classes);
-            if (classBuilder is EsLintCheckStylesClassBuilder)
-                return new JavascriptToxicityAnalyzer().Analyze(classes);
-
-            throw new ApplicationException("No analyzer setup for this type of code");
+            return new CodeBase(new CodeGraph(classes));
         }
         
         private static CheckStylesItem BuildItem(XElement node)
@@ -52,20 +46,10 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
             {
                 Name = node.Parent.AttributeValue("name"),
                 Line = node.AttributeValue("line").AsInt(),
-                Column = node.AttributeValue("column").AsInt(),
                 Message = node.AttributeValue("message"),
                 Source =  node.AttributeValue("source")
             };
         }
 
-    }
-
-    public class CheckStylesItem
-    {
-        public string Name { get; set; }
-        public int Line { get; set; }
-        public int Column { get; set; }
-        public string Message { get; set; }
-        public string Source { get; set; }
     }
 }

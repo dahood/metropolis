@@ -103,6 +103,7 @@
     <Compile Include="Readers\CsvReaders\SlocReader.cs" />
     <Compile Include="Readers\CsvReaders\TypeConverters\Sloc\SlocDirectoryConverter.cs" />
     <Compile Include="Readers\CsvReaders\TypeConverters\Sloc\SlocFileNameConverter.cs" />
+    <Compile Include="Readers\XmlReaders\CheckStyles\CheckStylesItem.cs" />
     <Compile Include="Readers\XmlReaders\FxCop\BaseFxCopBuilder.cs" />
     <Compile Include="Readers\XmlReaders\FxCop\FxCopMetricsReader.cs" />
     <Compile Include="Readers\XmlReaders\FxCop\IFxCopInstanceBuilder.cs" />
@@ -156,7 +157,6 @@
     <Compile Include="Readers\XmlReaders\CheckStyles\Readers\PuppyCrawl\Member\PupyyCrawlNestedTryDepthReader.cs" />
     <Compile Include="Readers\XmlReaders\CheckStyles\Readers\PuppyCrawl\PuppyCrawlSources.cs" />
     <Compile Include="Readers\XmlReaders\CheckStyles\PuppyCrawlCheckStylesClassBuilder.cs" />
-    <Compile Include="Readers\XmlReaders\MetricHandlers\IJavaMetricReader.cs" />
     <Compile Include="Persistence\ProjectRepository.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
