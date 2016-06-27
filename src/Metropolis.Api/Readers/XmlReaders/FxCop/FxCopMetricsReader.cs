@@ -23,7 +23,7 @@ namespace Metropolis.Api.Readers.XmlReaders.FxCop
 
         public CodeBase Parse(TextReader textReader)
         {
-            return ParseXml(XElement.Load(textReader));
+             return ParseXml(XElement.Load(textReader));
         }
 
         private CodeBase ParseXml(XElement xml)
