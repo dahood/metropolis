@@ -5,5 +5,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("Metropolis")]
 [assembly: AssemblyCopyright("Copyright © Jonathan McCracken, Greg Cook, and Richard Hurst 2016")]
 [assembly: ComVisible(false)]
-[assembly: AssemblyVersion("0.0.0.43")]
-[assembly: AssemblyFileVersion("0.0.0.43")]
+[assembly: AssemblyVersion("0.0.0.44")]
+[assembly: AssemblyFileVersion("0.0.0.44")]

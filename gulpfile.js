@@ -61,19 +61,20 @@ gulp.task('dist', ['package', 'version'],  function() {
     }
 });
 
-gulp.task('version', function(cb) {
+gulp.task('version', function() {
+    console.log('in version...');
     if (argv.m)
     {
         console.log(exec('npm version patch').stdout);
     }
-    cb();
 });
 
 // Dist depends on both metropolis binaries, Collection Settings (e.g. checkstyle xml config), 
 // Collection Binaries (e.g. checkstyle .jar) for eslint, checkstyle, fxcop, etc that parsers 
 // use to automate the collection of metrics 
 
-gulp.task('package', ['package-collection-binaries', 'package-collection-settings', 'compile'], function() {
+gulp.task('package', ['package-collection-cpd', 'package-collection-checkstyle', 
+    'package-collection-settings', 'compile'], function() {
 	return gulp.src(['build\\*.dll', 'build\\*.exe', 'build\\*.config',
         // exclude all these test files
         '!build\\Metropolis.Test.dll',
@@ -85,12 +86,16 @@ gulp.task('package', ['package-collection-binaries', 'package-collection-setting
 });
 
 gulp.task('package-collection-settings', ['compile'], function() {
-    return gulp.src(['build\\Collection\\Settings\\**', 
-        'build\\Collection\\Settings\\.eslintrc.json'])
+    return gulp.src(['build\\Collection\\Settings\\**'])
         .pipe(gulp.dest('dist\\Collection\\Settings'));
 });
 
-gulp.task('package-collection-binaries', ['compile'], function() {
+gulp.task('package-collection-checkstyle', ['compile'], function() {
      return gulp.src(['build\\Collection\\Binaries\\*.jar'])
         .pipe(gulp.dest('dist\\Collection\\Binaries'));
+});
+
+gulp.task('package-collection-cpd', ['compile'], function() {
+     return gulp.src(['build\\Collection\\Binaries\\cpd\\*.jar'])
+        .pipe(gulp.dest('dist\\Collection\\Binaries\\cpd'));
 });
