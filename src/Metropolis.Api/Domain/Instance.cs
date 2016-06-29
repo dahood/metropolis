@@ -15,7 +15,7 @@ namespace Metropolis.Api.Domain
             CodeBag = new CodeBag(codeBagName, codeBagType, codeBagPath);
             Name = name;
             QualifiedName = CodeBag == null ? Name : $"{CodeBag.Name}.{Name}";
-            PhysicalPath = string.Empty;
+            PhysicalPath = codeBagPath;
         }
 
         public Instance(string nameSpace, string name, int numberOfMethods, int linesOfCode, int toxicity)
