@@ -53,7 +53,7 @@ gulp.task('dist', ['package', 'version'],  function() {
     console.log(exec('npm install . -g').stdout);
     if (argv.m)
     {
-        console.log(exec('git commit -a -m \"' + argv.m + '\"').stdout);
+        console.log(exec('git commit -a -m \'' + argv.m + '\'').stdout);
         console.log("Pushing to GitHub...");
         console.log(exec('git push origin master').stdout);
         console.log("Publishing to npm...");
