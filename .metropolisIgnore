@@ -1,0 +1,13 @@
+Castle.Core.dll
+CsvHelper.dll
+FluentAssertions.Core.dll
+FluentAssertions.dll
+ICSharpCode.AvalonEdit.dll
+Metropolis.Test.dll
+Moq.dll
+Newtonsoft.Json.dll
+NLog.dll
+nunit.framework.dll
+Sturnus.Wpf.DynamicContentControl.dll
+System.Management.Automation.dll
+WpfControls.dll

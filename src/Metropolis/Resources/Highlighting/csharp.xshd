@@ -19,7 +19,7 @@
   <Color name="JumpStatements" foreground="Navy" />
   <Color name="Modifiers" foreground="Brown" />
   <Color name="AccessModifiers" foreground="Blue" fontWeight="bold" />
-  <Color name="Package" foreground="Green" fontWeight="bold" />
+  <Color name="Namespace" foreground="Green" fontWeight="bold" />
   <Color name="Literals" foreground="Black" fontWeight="bold" />
   <Color name="CommentTags" foreground="Red" fontWeight="bold" fontStyle="italic" />
   <Color name="JavaDocTags" foreground="DarkGray" fontWeight="bold" fontStyle="italic" />
@@ -73,6 +73,7 @@
     </Keywords>
     <Keywords color="ReferenceTypes">
       <Word>class</Word>
+      <Word>dynamic</Word>
       <Word>interface</Word>
       <Word>object</Word>
     </Keywords>
@@ -83,6 +84,7 @@
       <Word>abstract</Word>
       <Word>const</Word>
       <Word>static</Word>
+      <Word>partial</Word>
       <Word>final</Word>
       <Word>native</Word>
       <Word>extends</Word>
@@ -98,8 +100,9 @@
       <Word>protected</Word>
       <Word>private</Word>
     </Keywords>
-    <Keywords color="Package">
-      <Word>package</Word>
+    <Keywords color="Namespace">
+      <Word>namespace</Word>
+      <Word>using</Word>
       <Word>import</Word>
     </Keywords>
     <Keywords color="Literals">
