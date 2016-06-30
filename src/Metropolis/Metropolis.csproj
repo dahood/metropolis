@@ -325,10 +325,8 @@
     <Resource Include="Images\Wiki.ico" />
     <Resource Include="Images\ProgressGar.png" />
     <Resource Include="Images\CheckStyles.png" />
-    <Resource Include="Images\CSharp.png" />
     <Resource Include="Images\Toxic.png" />
     <Resource Include="Images\LinesOfCode.png" />
-    <Resource Include="Images\Analyze.png" />
     <Resource Include="Images\metropolis-1141609_960_720.png" />
     <Resource Include="Images\camera_icon.png" />
     <Resource Include="Images\home.ico" />

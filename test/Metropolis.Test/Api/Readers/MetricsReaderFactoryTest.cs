@@ -16,22 +16,6 @@ namespace Metropolis.Test.Api.Readers
         readonly MetricsReaderFactory factory = new MetricsReaderFactory();
 
         [Test]
-        public void VidualStudio()
-        {
-            factory.GetReader(ParseType.VisualStudio)
-                .Should().NotBeNull()
-                .And.BeAssignableTo<VisualStudioMetricsReader>();
-        }
-
-        [Test]
-        public void Toxicity()
-        {
-            factory.GetReader(ParseType.RichardToxicity)
-                .Should().NotBeNull()
-                .And.BeAssignableTo<ToxicityReader>();
-        }
-
-        [Test]
         public void PuppCrawler()
         {
             factory.GetReader(ParseType.PuppyCrawler)

@@ -10,6 +10,10 @@ namespace Metropolis.Test.Api.Domain
     [TestFixture]
     public class ProjectAssemblerTest
     {
+        private Instance sourceInstance;
+        private Member sourceMember;
+        private InstanceVersionInfo sourceVersionInfo;
+
         [SetUp]
         public void SetUp()
         {
@@ -21,7 +25,8 @@ namespace Metropolis.Test.Api.Domain
                 NoFallthrough = 5,
                 NumberOfParameters = 6
             };
-            sourceInstance = new Instance("ns", "String", 1, 2, 3, 4, 5)
+            var codeBag = new CodeBag("ns", CodeBagType.Package, @"c:\dev\src\java");
+            sourceInstance = new Instance(codeBag, "String", new Location(@"C:\dev\src\java\something.java"))
             {
                 Toxicity = 6,
                 Meta = new[] {sourceVersionInfo},
@@ -34,10 +39,6 @@ namespace Metropolis.Test.Api.Domain
         {
             Clock.Thaw();
         }
-
-        private Instance sourceInstance;
-        private Member sourceMember;
-        private InstanceVersionInfo sourceVersionInfo;
 
         [Test]
         public void CanSerializeCodeGraph()

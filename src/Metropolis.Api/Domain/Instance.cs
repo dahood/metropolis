@@ -22,24 +22,11 @@ namespace Metropolis.Api.Domain
         {
             CodeBag = new CodeBag(codeBagName, codeBagType, codeBagPath);
             Name = name;
-            QualifiedName = CodeBag == null ? Name : $"{CodeBag.Name}.{Name}";
             PhysicalPath = new Location(codeBagPath);
-        }
-
-        [Obsolete("this constructor should be removed and InstanceBuilder used instead")]
-        public Instance(string nameSpace, string name, int numberOfMethods, int linesOfCode, int cyclomaticComplexity,
-            int depthOfInheritance, int classCoupling) : this(name, nameSpace, CodeBagType.Empty, string.Empty)
-        {
-            NumberOfMethods = numberOfMethods;
-            LinesOfCode = linesOfCode;
-            CyclomaticComplexity = cyclomaticComplexity;
-            DepthOfInheritance = depthOfInheritance;
-            ClassCoupling = classCoupling;
         }
 
         public CodeBag CodeBag { get; }
         public string Name { get; }
-        public string QualifiedName { get; }
         public Location PhysicalPath { get; set; }
 
         public int NumberOfMethods { get; set; }
@@ -72,7 +59,7 @@ namespace Metropolis.Api.Domain
 
         public override string ToString()
         {
-            return QualifiedName;
+            return PhysicalPath.Path;
         }
 
         protected bool Equals(Instance other)

@@ -14,9 +14,6 @@ namespace Metropolis
         void Save();
         void Load();
         void Load(string fileName);
-        void LoadToxicity();
-        void LoadVisualStudioMetrics();
-        void RunCSharpToxicity();
         void RunJavaToxicity();
         void RunJavascriptToxicity();
         void RunCsvExport();

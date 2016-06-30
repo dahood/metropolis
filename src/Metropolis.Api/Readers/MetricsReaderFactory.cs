@@ -11,14 +11,12 @@ namespace Metropolis.Api.Readers
     {
         private static readonly Dictionary<ParseType, Func<IInstanceReader>> MapDefinitions = new Dictionary<ParseType, Func<IInstanceReader>>
         {
-            {ParseType.VisualStudio, () => new VisualStudioMetricsReader()},
-            {ParseType.RichardToxicity, () => new ToxicityReader()},
+            {ParseType.FxCop,  () => new FxCopMetricsReader()},
             {ParseType.PuppyCrawler, () => CheckStylesReader.PuppyCrawlReader},
             {ParseType.EsLint, () => CheckStylesReader.EslintReader},
             {ParseType.SlocEcma, () => new SlocReader(FileInclusion.Js)},
             {ParseType.SlocCSharp, () => new SlocReader(FileInclusion.CSharp)},
             {ParseType.SlocJava, () => new SlocReader(FileInclusion.Java)},
-            {ParseType.FxCop,  () => new FxCopMetricsReader()},
             {ParseType.CpdJava, () => new CpdReader() },
             {ParseType.CpdEcma, () => new CpdReader() },
             {ParseType.CpdCsharp, () => new CpdReader() }

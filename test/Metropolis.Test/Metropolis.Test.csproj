@@ -82,7 +82,6 @@
     <Compile Include="Metropolis\Controllers\CsharpCollectionControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Api\Analyzers\AnalyzeFactoryTest.cs" />
-    <Compile Include="Api\Analyzers\ToxicityAnalyzerTest.cs" />
     <Compile Include="Api\Collection\Steps\CSharp\CollectAssembliesTest.cs" />
     <Compile Include="Api\Collection\Steps\CSharp\FxCopCollectionTaskTest.cs" />
     <Compile Include="Api\Collection\Steps\CSharp\VisualStudioCollectionStepsTest.cs" />
@@ -129,9 +128,7 @@
     <Compile Include="Api\Readers\CsvReaders\CsvParsersBaseTest.cs" />
     <Compile Include="Api\Readers\CsvReaders\SourceLinesOfCodeClassReaderTest.cs" />
     <Compile Include="Api\Readers\CsvReaders\TypeConverters\CsvTypeConverterTests.cs" />
-    <Compile Include="Api\Readers\CsvReaders\VisualStudioMetricsReaderTest.cs" />
     <Compile Include="Api\Readers\JavaMetricsHelper.cs" />
-    <Compile Include="Api\Readers\ToxicityReaderTest.cs" />
     <Compile Include="Api\Readers\XmlClassParserTest.cs" />
     <Compile Include="Api\Persistence\ProjectRepositoryTest.cs" />
     <Compile Include="TestHelpers\FileTestExtensions.cs" />

@@ -234,15 +234,6 @@
                     <RibbonButton Label="Calculate Toxicity" LargeImageSource="..\Images\Toxic.png"
                                   Click="RunJavaAnalzer" />
                 </RibbonGroup>
-                <RibbonGroup x:Name="DotNetGroup" Header=".Net">
-                    <RibbonButton Label="Load Visual Studio Metrics" LargeImageSource="..\Images\CSharp.png"
-                                  Click="LoadVisualStudioMetrics" />
-                    <RibbonButton Label="Load Toxicity" LargeImageSource="..\Images\Analyze.png" Click="LoadToxicity" />
-                    <RibbonButton Label="SLOC (.cs)" LargeImageSource="..\Images\LinesOfCode.png"
-                                  Click="LoadSourceLinesOfCode" />
-                    <RibbonButton Label="Calculate Toxicity" LargeImageSource="..\Images\Toxic.png"
-                                  Click="RunCSharpAnalzer" />
-                </RibbonGroup>
                 <RibbonGroup x:Name="ECMAGroup" Header="ECMA / Javascript">
                     <RibbonButton Label="Load Eslint Checkstyles" LargeImageSource="..\Images\EsLint.png"
                                   Click="LoadEsLintCheckStyles" />

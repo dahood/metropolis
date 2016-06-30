@@ -38,7 +38,7 @@ namespace Metropolis.Views
             HookupEventHandlers();
             
             DataContext = App.ViewModel;
-            LoadDefaultProject();
+            //LoadDefaultProject();
         }
 
         public CodeBase CodeBase => App.CodeBase;
@@ -179,18 +179,6 @@ namespace Metropolis.Views
             new ProjectProperties().Show();
         }
 
-        private void LoadToxicity(object sender, RoutedEventArgs e)
-        {
-            WorkSpaceProvider.LoadToxicity();
-            DisplayWorkspaceDetails();
-        }
-
-        private void LoadVisualStudioMetrics(object sender, RoutedEventArgs e)
-        {
-            WorkSpaceProvider.LoadVisualStudioMetrics();
-            DisplayWorkspaceDetails();
-        }
-
         private void LoadCheckStyles(object sender, RoutedEventArgs e)
         {
             WorkSpaceProvider.LoadCheckStyles();
@@ -233,7 +221,7 @@ namespace Metropolis.Views
                 var searchQuery = searchText.Text;
                 SearchSuggestions.DisplayMemberPath = "Name";
                 SearchSuggestions.ItemsSource = CodeBase.AllInstances.Where(
-                    x => x.QualifiedName.IndexOf(searchQuery, StringComparison.CurrentCultureIgnoreCase) >= 0);
+                    x => x.Name.IndexOf(searchQuery, StringComparison.CurrentCultureIgnoreCase) >= 0);
             }
             SearchSuggestions.Items.Refresh();
         }
@@ -248,12 +236,6 @@ namespace Metropolis.Views
         private void clearSearchButton_Click(object sender, RoutedEventArgs e)
         {
             searchText.Text = string.Empty;
-        }
-
-        private void RunCSharpAnalzer(object sender, RoutedEventArgs e)
-        {
-            WorkSpaceProvider.RunCSharpToxicity();
-            DisplayWorkspaceDetails();
         }
 
         private void RunJavaAnalzer(object sender, RoutedEventArgs e)

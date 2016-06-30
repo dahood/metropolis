@@ -76,24 +76,6 @@ namespace Metropolis
             CodeBase = codebaseService.LoadDefault();
         }
 
-        public void LoadToxicity()
-        {
-            OpenFile(fileName =>
-            {
-                var result = codebaseService.Get(fileSystem.OpenFileStream(fileName), ParseType.RichardToxicity);
-                EnrichWorkspace(result);
-            }, "Toxicity|*.csv");
-        }
-
-        public void LoadVisualStudioMetrics()
-        {
-            OpenFile(fileName =>
-            {
-                var result = codebaseService.Get(fileSystem.OpenFileStream(fileName), ParseType.VisualStudio);
-                EnrichWorkspace(result);
-            }, "VisualStudio Metrics|*.csv");
-        }
-
         public void LoadCheckStyles()
         {
             OpenFile(fileName =>
@@ -187,12 +169,6 @@ namespace Metropolis
                 SourceDirectory = projectDetails.SourceDirectory,
                 EcmaScriptDialect =  projectDetails.EcmaScriptDialect
             };
-        }
-
-        public void RunCSharpToxicity()
-        {
-            CodeBase.SourceType = RepositorySourceType.CSharp;
-            CodeBase = new CSharpToxicityAnalyzer().Analyze(CodeBase.AllInstances);
         }
 
         public void RunJavaToxicity()

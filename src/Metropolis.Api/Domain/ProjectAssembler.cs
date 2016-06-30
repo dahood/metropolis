@@ -23,8 +23,9 @@ namespace Metropolis.Api.Domain
 
         private static Instance Disassemble(SerializableClass src)
         {
-            return new Instance(src.Name, src.CodeBag.Name, src.CodeBag.CodeBagType.ToEnumExact<CodeBagType>(), src.Location)
+            return new Instance(src.Name, src.CodeBag.Name, src.CodeBag.CodeBagType.ToEnumExact<CodeBagType>(), src.CodeBag.LocationPath)
             {
+                PhysicalPath = new Location(src.Location),
                 LinesOfCode = src.LinesOfCode,
                 NumberOfMethods = src.NumberOfMethods,
                 ClassCoupling = src.ClassCoupling,
@@ -72,7 +73,7 @@ namespace Metropolis.Api.Domain
                 {
                     Name = src.CodeBag.Name,
                     CodeBagType = src.CodeBag.Type.ToString(),
-                    LocationPath = src.PhysicalPath.Path
+                    LocationPath = src.CodeBag.Path
                 },
                 NumberOfMethods = src.NumberOfMethods,
                 ClassCoupling = src.ClassCoupling,
