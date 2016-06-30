@@ -40,12 +40,12 @@ namespace Metropolis.Test.Api.Readers.CheckStyles
             result.AllInstances.Count.Should().Be(2);
 
             //ReactLink.js expectations
-            VerifyHasInstanceWithMembers(result, "ReactLink.js", 
+            VerifyHasInstanceWithMembers(result, "ReactLink", 
                                                 new Member("createLinkTypeChecker", 2, 2, 0) {NumberOfParameters = 1},
                                                 new Member("ReactLink", 2, 1, 0) {NumberOfParameters = 2});
 
             //ReactComponentWithPureRenderMixin expectations
-            VerifyHasInstanceWithMembers(result, "ReactComponentWithPureRenderMixin.js",
+            VerifyHasInstanceWithMembers(result, "ReactComponentWithPureRenderMixin",
                                                 new Member("shouldComponentUpdate", 1, 1, 0) { NumberOfParameters = 2 });
         }
 

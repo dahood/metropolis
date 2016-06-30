@@ -37,27 +37,6 @@ namespace Metropolis.Api.Domain
             ClassCoupling = classCoupling;
         }
 
-        [Obsolete("this constructor should be removed and InstanceBuilder used instead")]
-        public Instance(string nameSpace, string name, IEnumerable<Member> members) : this(name, nameSpace, CodeBagType.Empty, string.Empty)
-        {
-            ApplyMembers(members);
-            Members.ForEach(x =>
-            {
-                LinesOfCode += x.LinesOfCode;
-                CyclomaticComplexity += x.CylomaticComplexity;
-            });
-            NumberOfMethods = Members.Count;
-        }
-
-        private void ApplyMembers(IEnumerable<Member> toAdd)
-        {
-            Members = new List<Member>(toAdd);
-        }
-        private void ApplyDuplicates(IEnumerable<Duplicate> toAdd)
-        {
-            Duplicates = new List<Duplicate>(toAdd);
-        }
-
         public CodeBag CodeBag { get; }
         public string Name { get; }
         public string QualifiedName { get; }
@@ -154,9 +133,13 @@ namespace Metropolis.Api.Domain
             ClassDataAbstractionCoupling = ClassDataAbstractionCoupling.Max(src.ClassDataAbstractionCoupling);
 
             if (src.Members.HasValues())
-                ApplyMembers(src.Members);
+            {
+                Members = new List<Member>(src.Members);
+            }
             if (src.Duplicates.HasValues())
-                ApplyDuplicates(src.Duplicates);
+            {
+                Duplicates = new List<Duplicate>(src.Duplicates);
+            }
         }
 
         private bool Matches(Instance src)

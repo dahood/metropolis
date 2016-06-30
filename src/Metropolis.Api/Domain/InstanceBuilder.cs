@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,23 @@ namespace Metropolis.Api.Domain
                 NumberOfMethods = members.Count(),
                 Members = members.ToList()
             };
+        }
+
+        public static Instance Build(CodeBag codeBag, string name, Location location, IEnumerable<Member> members)
+        {
+            var type = new Instance(codeBag, name, location)
+                {
+                    NumberOfMethods = members.Count(),
+                    Members = members.ToList()
+                    };
+
+            type.Members.ForEach(x =>
+            {
+                type.LinesOfCode += x.LinesOfCode;
+                type.CyclomaticComplexity += x.CylomaticComplexity;
+            });
+
+            return type;
         }
     }
 }

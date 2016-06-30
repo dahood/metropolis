@@ -58,11 +58,18 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
 
         private static Instance ParseClass(string key, IEnumerable<Member> members)
         {
+            //TODO: Gross
             var parts = key.Split('\\').ToList();
-            var name = parts.Last();
+            var fileName = parts.Last();
+            var className = fileName.Split('.')[0];
             parts.RemoveRange(parts.Count - 1, 1);
-            var ns = string.Join("\\", parts);
-            return new Instance(ns, name, members) {PhysicalPath = new Location(Path.Combine(ns, name)) };
+            var packageLocation = string.Join("\\", parts);
+            parts.RemoveAt(0);
+            var packageName = string.Join(".", parts);
+            var codeBag = new CodeBag(packageName, CodeBagType.Package, packageLocation);
+
+            
+            return InstanceBuilder.Build(codeBag, className, new Location(Path.Combine(packageLocation, fileName)), members);
         }
     }
 }
