@@ -24,6 +24,8 @@ namespace Metropolis.Api.Domain
         public IEnumerable<SerializableMember> Members { get; set; }
         public IEnumerable<SerializableDuplicate> Duplicates { get; set; }
         public SerializeableCodeBag CodeBag { get; set; }
+
+        public string Location { get; set; }
         public string Name { get; set; }
         public int NumberOfMethods { get; set; }
         public int LinesOfCode { get; set; }
