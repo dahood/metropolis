@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Metropolis.Api.Extensions;
 
@@ -72,7 +71,7 @@ namespace Metropolis.Api.Domain
                 {
                     Name = src.CodeBag.Name,
                     CodeBagType = src.CodeBag.Type.ToString(),
-                    LocationPath = src.PhysicalPath
+                    LocationPath = src.PhysicalPath.Path
                 },
                 NumberOfMethods = src.NumberOfMethods,
                 ClassCoupling = src.ClassCoupling,

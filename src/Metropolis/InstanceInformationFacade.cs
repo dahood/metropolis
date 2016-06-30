@@ -2,8 +2,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using Metropolis.Api.Domain;
-using Metropolis.ViewModels;
-using Metropolis.Views;
 
 namespace Metropolis
 {
@@ -33,7 +31,7 @@ namespace Metropolis
 
         public string GetPhysicalFilePath()
         {
-            return Instance != null ? Instance.PhysicalPath : string.Empty;
+            return Instance != null ?  Instance.PhysicalPath.Path : string.Empty;
         }
 
         private void Initialize()

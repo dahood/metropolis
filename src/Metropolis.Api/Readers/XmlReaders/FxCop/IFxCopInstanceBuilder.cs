@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using System.Xml.Linq;
 using Metropolis.Api.Domain;
 using Metropolis.Api.Extensions;
@@ -30,14 +31,14 @@ namespace Metropolis.Api.Readers.XmlReaders.FxCop
             var nspace = typeElement.Parent.Parent.AttributeValue("Name");
             var metrics = typeElement.Descendants("Metrics").Descendants("Metric");
             var physicalfile = GetPhysicaFileFrom(typeElement);
+            var codeBag = new CodeBag(nspace, CodeBagType.Namespace, Path.GetDirectoryName(physicalfile));
 
-            return  InstanceBuilder.Build(nspace, typeElement.AttributeValue("Name"), 0, 
-                                        GetMetricValue(metrics, "LinesOfCode"),
-                                        GetMetricValue(metrics, "CyclomaticComplexity"),
-                                        GetMetricValue(metrics, "DepthOfInheritance"),
-                                        GetMetricValue(metrics, "ClassCoupling"),
-                                        physicalfile)
-                           .AddMembers(members);
+            return InstanceBuilder.Build(codeBag, typeElement.AttributeValue("Name"), physicalfile,
+                                                GetMetricValue(metrics, "LinesOfCode"),
+                                                GetMetricValue(metrics, "CyclomaticComplexity"),
+                                                GetMetricValue(metrics, "DepthOfInheritance"),
+                                                GetMetricValue(metrics, "ClassCoupling"),
+                                                members);
         }
 
         private static string GetPhysicaFileFrom(XElement typeElement)

@@ -9,15 +9,24 @@ namespace Metropolis.Api.Domain
     {
         private List<InstanceVersionInfo> meta = new List<InstanceVersionInfo>();
         public List<Duplicate> Duplicates = new List<Duplicate>();
+        
+        public Instance(CodeBag codeBag, string name, Location path)
+        {
+            CodeBag = codeBag;
+            Name = name;
+            PhysicalPath = path;
+        }
 
+        [Obsolete("this constructor should be removed and InstanceBuilder used instead")]
         public Instance(string name, string codeBagName, CodeBagType codeBagType, string codeBagPath = "") //TODO: Review if this should be empty or null
         {
             CodeBag = new CodeBag(codeBagName, codeBagType, codeBagPath);
             Name = name;
             QualifiedName = CodeBag == null ? Name : $"{CodeBag.Name}.{Name}";
-            PhysicalPath = codeBagPath;
+            PhysicalPath = new Location(codeBagPath);
         }
 
+        [Obsolete("this constructor should be removed and InstanceBuilder used instead")]
         public Instance(string nameSpace, string name, int numberOfMethods, int linesOfCode, int toxicity)
             : this(name, nameSpace, CodeBagType.Empty, string.Empty)
         {
@@ -26,6 +35,7 @@ namespace Metropolis.Api.Domain
             Toxicity = toxicity;
         }
 
+        [Obsolete("this constructor should be removed and InstanceBuilder used instead")]
         public Instance(string nameSpace, string name, int numberOfMethods, int linesOfCode, int cyclomaticComplexity,
             int depthOfInheritance, int classCoupling) : this(name, nameSpace, CodeBagType.Empty, string.Empty)
         {
@@ -36,6 +46,7 @@ namespace Metropolis.Api.Domain
             ClassCoupling = classCoupling;
         }
 
+        [Obsolete("this constructor should be removed and InstanceBuilder used instead")]
         public Instance(string nameSpace, string name, IEnumerable<Member> members) : this(name, nameSpace, CodeBagType.Empty, string.Empty)
         {
             ApplyMembers(members);
@@ -59,7 +70,7 @@ namespace Metropolis.Api.Domain
         public CodeBag CodeBag { get; }
         public string Name { get; }
         public string QualifiedName { get; }
-        public string PhysicalPath { get; set; }
+        public Location PhysicalPath { get; set; }
 
         public int NumberOfMethods { get; set; }
         public int LinesOfCode { get; set; }
@@ -159,8 +170,7 @@ namespace Metropolis.Api.Domain
 
         private bool Matches(Instance src)
         {
-            return QualifiedName == src.QualifiedName ||
-                   (PhysicalPath != string.Empty && PhysicalPath == src.PhysicalPath);
+            return PhysicalPath == src.PhysicalPath;
         }
     }
 

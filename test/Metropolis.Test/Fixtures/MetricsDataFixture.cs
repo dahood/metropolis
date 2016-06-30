@@ -53,7 +53,7 @@
                     <Metric Name='LinesOfCode' Value='8' />
                   </Metrics>
                   <Members>
-                    <Member Name='Freeze() : void'>
+                    <Member Name='Freeze() : void' File='c:\dev\clock.cs'>
                       <Metrics>
                         <Metric Name='MaintainabilityIndex' Value='92' />
                         <Metric Name='CyclomaticComplexity' Value='1' />
@@ -61,7 +61,7 @@
                         <Metric Name='LinesOfCode' Value='1' />
                       </Metrics>
                     </Member>
-                    <Member Name='Today.get() : DateTime'>
+                    <Member Name='Today.get() : DateTime' File='c:\dev\clock.cs'>
                       <Metrics>
                         <Metric Name='MaintainabilityIndex' Value='92' />
                         <Metric Name='CyclomaticComplexity' Value='1' />
@@ -91,7 +91,7 @@
                     <Metric Name='LinesOfCode' Value='12' />
                   </Metrics>
                   <Members>
-                    <Member Name='AnalysisServices()'>
+                    <Member Name='AnalysisServices()' File='c:\dev\AnalysisServices.cs'>
                       <Metrics>
                         <Metric Name='MaintainabilityIndex' Value='92' />
                         <Metric Name='CyclomaticComplexity' Value='1' />
@@ -99,7 +99,7 @@
                         <Metric Name='LinesOfCode' Value='1' />
                       </Metrics>
                     </Member>                  
-                    <Member Name='Analyze(MetricsCommandArguments) : CodeBase'>
+                    <Member Name='Analyze(MetricsCommandArguments) : CodeBase' File='c:\dev\AnalysisServices.cs'>
                       <Metrics>
                         <Metric Name='MaintainabilityIndex' Value='62' />
                         <Metric Name='CyclomaticComplexity' Value='2' />

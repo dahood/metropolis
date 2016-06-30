@@ -5,7 +5,7 @@ namespace Metropolis.Api.Domain
 {
     public class CodeGraph
     {
-        private readonly Dictionary<string, Instance> map = new Dictionary<string, Instance>();
+        private readonly Dictionary<Location, Instance> map = new Dictionary<Location, Instance>();
         private readonly HashSet<CodeBag> codebags = new HashSet<CodeBag>();
 
         public CodeGraph(IEnumerable<Instance> classes)
@@ -33,14 +33,14 @@ namespace Metropolis.Api.Domain
         public void Apply(Instance src)
         {
             Instance c;
-            if (map.TryGetValue(src.QualifiedName, out c))
+            if (map.TryGetValue(src.PhysicalPath, out c))
             {
                 c.AddMeta(src.Meta);
                 c.Apply(src);
             }
             else
             {
-                map.Add(src.QualifiedName, src);
+                map.Add(src.PhysicalPath, src);
                 codebags.Add(src.CodeBag);
             }
         }

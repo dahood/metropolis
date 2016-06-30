@@ -15,8 +15,12 @@ namespace Metropolis.Api.Readers.CsvReaders
         {
             return new CodeBase(
                 new CodeGraph(
-                lines.Select(
-                    line => new Instance(line.Namespace, line.Type, line.NumberOfMethods, line.LinesOfCode, line.Toxicity)).ToList()));
+                    lines.Select(line => new Instance(line.Type, line.Namespace, CodeBagType.Namespace)
+                                        {
+                                            NumberOfMethods = line.NumberOfMethods,
+                                            LinesOfCode = line.LinesOfCode,
+                                            Toxicity = line.Toxicity
+                                        })));
         }
     }
 }

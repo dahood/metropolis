@@ -35,7 +35,7 @@ namespace Metropolis.Api.Readers.CsvReaders
             var classes = lines.Where(x => x.FileName.EndsWith(inclusionExtension))
                 .Select(each => new Instance(each.FileName, each.Directory, inclusionCodeBagType, string.Empty)
                 {
-                    PhysicalPath = each.PhysicalPath,
+                    PhysicalPath = new Location(each.PhysicalPath),
                     LinesOfCode = each.SourceLoc
                 })
                 .ToList();

@@ -62,7 +62,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
             var name = parts.Last();
             parts.RemoveRange(parts.Count - 1, 1);
             var ns = string.Join("\\", parts);
-            return new Instance(ns, name, members) {PhysicalPath = Path.Combine(ns, name) };
+            return new Instance(ns, name, members) {PhysicalPath = new Location(Path.Combine(ns, name)) };
         }
     }
 }

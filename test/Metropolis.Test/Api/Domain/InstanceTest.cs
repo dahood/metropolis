@@ -8,150 +8,40 @@ namespace Metropolis.Test.Api.Domain
     public class InstanceTest
     {
         [Test]
-        public void Apply_MembersToApply()
+        public void ShouldApplyLargestMetricWhenPhysicalPathMatches()
         {
             var mbr = new Member("store", 1, 1, 1);
-            var cls = new Instance("ns", "name", new[] {mbr})
-            {
-                LinesOfCode = 1,
-                DepthOfInheritance = 3,
-                CyclomaticComplexity = 1,
-                ClassCoupling = 1,
-                NumberOfMethods = 2
-            };
-
-            var toApply = new Instance("ns", "name", new[] {mbr})
-            {
-                LinesOfCode = 2,
-                DepthOfInheritance = 2,
-                CyclomaticComplexity = 2,
-                ClassCoupling = 2,
-                NumberOfMethods = 2
-            };
+            var cls = InstanceBuilder.Build(new CodeBag("dev", CodeBagType.Namespace, @"C:\dev"), "name", @"C:\dev\name.cs", 1, 1, 3, 1, new[] { mbr });
+            var toApply = InstanceBuilder.Build(new CodeBag("dev", CodeBagType.Namespace, @"C:\dev"), "name", @"C:\dev\name.cs", 2, 2, 2, 2, new[] { mbr });
 
             cls.Apply(toApply);
 
             Validate.Begin().IsNotNull(cls, "class")
                 .IsEqual(cls.Members.Count, 1, "mbr count")
+                .IsEqual(cls.NumberOfMethods, 1, "# Methods")
+                .IsEqual(cls.LinesOfCode, 2, "loc")
+                .IsEqual(cls.CyclomaticComplexity, 2, "cyclo")
                 .IsEqual(cls.DepthOfInheritance, 3, "DIT")
+                .IsEqual(cls.ClassCoupling, 2, "class coupling")
                 .Check();
         }
 
         [Test]
-        public void Apply_NoMatchOnName()
+        public void ShouldNotApplyWhenPhysicalPathDiffers()
         {
             var mbr = new Member("store", 1, 1, 1);
-            var cls = new Instance("ns", "name", new[] {mbr})
-            {
-                LinesOfCode = 1,
-                DepthOfInheritance = 3,
-                CyclomaticComplexity = 1,
-                ClassCoupling = 1,
-                NumberOfMethods = 2
-            };
+            var cls = InstanceBuilder.Build(new CodeBag("dev", CodeBagType.Namespace, @"C:\dev"), "name", @"C:\dev\name.cs", 1, 1, 3, 1, new[] {mbr});
+            var toApply = InstanceBuilder.Build(new CodeBag("dev", CodeBagType.Namespace, @"C:\dev"), "namexxx", @"C:\dev\namexxx.cs", 2, 2, 2, 2, new[] { mbr });
 
-            var toApply = new Instance("ns", "namexxx", new[] {mbr})
-            {
-                LinesOfCode = 2,
-                DepthOfInheritance = 2,
-                CyclomaticComplexity = 2,
-                ClassCoupling = 2,
-                NumberOfMethods = 2
-            };
-
-            cls.Apply(toApply);
+           cls.Apply(toApply);
 
             Validate.Begin().IsNotNull(cls, "class")
                 .IsEqual(cls.Members.Count, 1, "mbr count")
-                .IsEqual(cls.NumberOfMethods, 2, "# Methods")
+                .IsEqual(cls.NumberOfMethods, 1, "# Methods")
                 .IsEqual(cls.LinesOfCode, 1, "loc")
                 .IsEqual(cls.CyclomaticComplexity, 1, "cyclo")
                 .IsEqual(cls.DepthOfInheritance, 3, "DIT")
                 .IsEqual(cls.ClassCoupling, 1, "class coupling")
-                .Check();
-        }
-
-        [Test]
-        public void Apply_NoMatchOnNamespace()
-        {
-            var mbr = new Member("store", 1, 1, 1);
-            var cls = new Instance("ns", "name", new[] {mbr})
-            {
-                LinesOfCode = 1,
-                DepthOfInheritance = 3,
-                CyclomaticComplexity = 1,
-                ClassCoupling = 1,
-                NumberOfMethods = 2
-            };
-
-            var toApply = new Instance("ns1", "name", new[] {mbr})
-            {
-                LinesOfCode = 2,
-                DepthOfInheritance = 2,
-                CyclomaticComplexity = 2,
-                ClassCoupling = 2,
-                NumberOfMethods = 2
-            };
-
-            cls.Apply(toApply);
-
-            Validate.Begin().IsNotNull(cls, "class")
-                .IsEqual(cls.Members.Count, 1, "mbr count")
-                .IsEqual(cls.NumberOfMethods, 2, "# Methods")
-                .IsEqual(cls.LinesOfCode, 1, "loc")
-                .IsEqual(cls.CyclomaticComplexity, 1, "cyclo")
-                .IsEqual(cls.DepthOfInheritance, 3, "DIT")
-                .IsEqual(cls.ClassCoupling, 1, "class coupling")
-                .Check();
-        }
-
-        [Test]
-        public void Apply_NoMembersToApply()
-        {
-            var mbr = new Member("store", 1, 1, 1);
-            var cls = new Instance("ns", "name", new[] {mbr})
-            {
-                LinesOfCode = 1,
-                DepthOfInheritance = 1,
-                CyclomaticComplexity = 1,
-                ClassCoupling = 1,
-                NumberOfMethods = 1
-            };
-
-            var toApply = new Instance(cls.CodeBag.Name, cls.Name, 2, 3, 4, 5, 6);
-
-            cls.Apply(toApply);
-
-            Validate.Begin().IsNotNull(cls, "class")
-                .IsEqual(cls.Members.Count, 1, "mbr count")
-                .IsEqual(cls.NumberOfMethods, 2, "# Methods")
-                .IsEqual(cls.LinesOfCode, 3, "loc")
-                .IsEqual(cls.CyclomaticComplexity, 4, "cyclo")
-                .IsEqual(cls.DepthOfInheritance, 5, "DIT")
-                .IsEqual(cls.ClassCoupling, 6, "class coupling")
-                .Check();
-        }
-
-        [Test]
-        public void ConstructWithMembers()
-        {
-            var mbr = new Member("store", 1, 1, 1);
-            var cls = new Instance("ns", "name", new[] {mbr});
-
-            Validate.Begin().IsNotNull(cls, "class")
-                .IsEqual(1, cls.Members.Count, "mbr count")
-                .IsEqual(cls.NamespaceDepth(), 1, "ns depth")
-                .Check();
-        }
-
-        [Test]
-        public void ConstructWithValues()
-        {
-            var cls = new Instance((string) "name", (string) "ns", CodeBagType.Empty, null);
-            Validate.Begin().IsNotNull(cls, "class")
-                .IsEqual(cls.CodeBag.Name, "ns", "namespace")
-                .IsEqual(cls.Name, "name", "name")
-                .IsEqual(cls.QualifiedName, "ns.name", "qualifiedname")
                 .Check();
         }
     }

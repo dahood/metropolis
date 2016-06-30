@@ -17,7 +17,7 @@ namespace Metropolis.Api.Readers.CsvReaders
         {
             get
             {
-                var found = instances.SingleOrDefault(x => x.PhysicalPath == fileName);
+                var found = instances.SingleOrDefault(x => x.PhysicalPath == new Location(fileName));
                 if (found != null) return found;
                 found = InstanceBuilder.Build(fileName);
                 instances.Add(found);

@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace Metropolis.Api.Domain
 {
@@ -6,21 +9,22 @@ namespace Metropolis.Api.Domain
     {
         public static Instance Build(string physicalPath)
         {
-            var filename = string.Join(".", physicalPath.Split('\\').Last().Split('.').ToList());
-            var parts = physicalPath.Split('\\').ToList();
-            parts.RemoveRange(parts.Count - 1, 1);
-            var directory = string.Join("\\", parts);
-
-            var instance = new Instance(filename, directory, CodeBagType.Directory, physicalPath);
-
-            return instance;
+            var filename = Path.GetFileName(physicalPath);
+            var directory = Path.GetDirectoryName(physicalPath);
+            return new Instance(filename, directory, CodeBagType.Directory, physicalPath);
         }
 
-        public static Instance Build(string nspace, string name, int numberOfMethods, int linesOfCode, int complexity, int depthOfInheritance, int coupling,
-            string physicalFile = null)
+        public static Instance Build(CodeBag codeBag, string name, string location, int linesOfCode, int complexity, int depthOfInheritance, int coupling, IEnumerable<Member> members)
         {
-            return new Instance(nspace, name, numberOfMethods, linesOfCode, complexity, depthOfInheritance, coupling)
-                        {PhysicalPath = physicalFile};
+            return new Instance(codeBag, name, new Location(location))
+            {
+                LinesOfCode = linesOfCode,
+                CyclomaticComplexity = complexity,
+                DepthOfInheritance = depthOfInheritance,
+                ClassCoupling = coupling,
+                NumberOfMethods = members.Count(),
+                Members = members.ToList()
+            };
         }
     }
 }
