@@ -25,6 +25,7 @@ namespace Metropolis
 
         public WorkspaceProvider() : this(new CodebaseService(), new AnalysisServices(), new UserPreferences(), new FileSystem())
         {
+            CodeBase = CodeBase.Empty();
         }
 
         private WorkspaceProvider(ICodebaseService codebaseService, IAnalysisService analysisService, IUserPreferences userPreferences, IFileSystem fileSystem)
