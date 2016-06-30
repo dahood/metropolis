@@ -103,6 +103,7 @@
     <Compile Include="Readers\CsvReaders\SlocReader.cs" />
     <Compile Include="Readers\CsvReaders\TypeConverters\Sloc\SlocDirectoryConverter.cs" />
     <Compile Include="Readers\CsvReaders\TypeConverters\Sloc\SlocFileNameConverter.cs" />
+    <Compile Include="Readers\XmlReaders\CheckStyles\BaseCheckStylesClassBuilder.cs" />
     <Compile Include="Readers\XmlReaders\CheckStyles\CheckStylesItem.cs" />
     <Compile Include="Readers\XmlReaders\FxCop\BaseFxCopBuilder.cs" />
     <Compile Include="Readers\XmlReaders\FxCop\FxCopMetricsReader.cs" />
