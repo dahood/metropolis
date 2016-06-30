@@ -5,6 +5,9 @@ namespace Metropolis.Test.Fixtures
 {
     public static class CodeGraphFixture
     {
+        public static CodeBag MetroCodeBagApi => new CodeBag("Metropolis.Api.Domain", CodeBagType.Namespace, @"C:\dev\Metropolis.Api\Domain");
+        public static CodeBag MetroCodeBag => new CodeBag("Metropolis.Views", CodeBagType.Namespace, @"C:\dev\Metropolis\Views");
+
         public static CodeGraph Metropolis
         {
             get
@@ -23,7 +26,7 @@ namespace Metropolis.Test.Fixtures
         {
             get
             {
-                var classOne = new Instance("Metropolis.Domain", "CodeBase", 5, 200, 6);
+                var classOne = InstanceBuilder.Build(MetroCodeBagApi, "CodeBase", @"CC:\dev\Metropolis.Api\Domain\CodeBase.cs", 5, 200, 6,10, new List<Member> {});
 
                 classOne.AddMeta(new InstanceVersionInfo("CodeBase.cs", "commit message 1"));
 
@@ -35,15 +38,13 @@ namespace Metropolis.Test.Fixtures
         {
             get
             {
-                var classOne = new Instance("Metropolis", "Canvas", 5, 300, 10);
+                var classOne = InstanceBuilder.Build(MetroCodeBag, "Canvas", @"CC:\dev\Metropolis\Views\Canvas.xaml.cs", 5, 200, 6, 10, new List<Member> { });
 
                 var members = new[]
                 {
                     new Member("Foo()", 31, 0, 0)
                 };
                 classOne.AddMembers(members);
-
-                classOne.AddMeta(new InstanceVersionInfo("Canvas.cs", "commit message 2"));
 
                 return classOne;
             }

@@ -27,15 +27,6 @@ namespace Metropolis.Api.Domain
         }
 
         [Obsolete("this constructor should be removed and InstanceBuilder used instead")]
-        public Instance(string nameSpace, string name, int numberOfMethods, int linesOfCode, int toxicity)
-            : this(name, nameSpace, CodeBagType.Empty, string.Empty)
-        {
-            NumberOfMethods = numberOfMethods;
-            LinesOfCode = linesOfCode;
-            Toxicity = toxicity;
-        }
-
-        [Obsolete("this constructor should be removed and InstanceBuilder used instead")]
         public Instance(string nameSpace, string name, int numberOfMethods, int linesOfCode, int cyclomaticComplexity,
             int depthOfInheritance, int classCoupling) : this(name, nameSpace, CodeBagType.Empty, string.Empty)
         {
