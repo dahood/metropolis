@@ -38,7 +38,7 @@ namespace Metropolis.Views
             HookupEventHandlers();
             
             DataContext = App.ViewModel;
-            //LoadDefaultProject();
+            LoadDefaultProject();
         }
 
         public CodeBase CodeBase => App.CodeBase;
