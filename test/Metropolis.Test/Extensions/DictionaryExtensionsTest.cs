@@ -14,7 +14,7 @@ namespace Metropolis.Test.Extensions
         [SetUp]
         public void Setup()
         {
-            classDict = new Dictionary<string, Instance> { { "Hi", new Instance((string)"hi", (string)"ns", CodeBagType.Empty, string.Empty) } };
+            classDict = new Dictionary<string, Instance> { { "Hi", new Instance(new CodeBag("blah", CodeBagType.Directory, @"C:\blah"), "hi", new Location(@"c:\add.ca") ) } };
         }
 
         [Test]
@@ -47,7 +47,7 @@ namespace Metropolis.Test.Extensions
         {
             classDict = new Dictionary<string, Instance>();
             classDict.Should().BeEmpty();
-            var found = classDict.FindOrCreate("Hi", () => new Instance((string) "hi", (string) "ns", CodeBagType.Empty, string.Empty));
+            var found = classDict.FindOrCreate("Hi", () => new Instance(new CodeBag("blah", CodeBagType.Directory, @"C:\blah"), "hi", new Location(@"c:\add.ca"))  );
 
             classDict.Count.Should().Be(1);
             found.Should().NotBeNull();

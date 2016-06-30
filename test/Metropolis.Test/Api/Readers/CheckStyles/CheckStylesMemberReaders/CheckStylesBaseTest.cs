@@ -15,7 +15,7 @@ namespace Metropolis.Test.Api.Readers.CheckStyles.CheckStylesMemberReaders
         [SetUp]
         public void SetUp()
         {
-            ParentInstance = new Instance((string) "ShoppingCart", (string) "ShoppingCart", CodeBagType.Package, String.Empty);
+            ParentInstance = new Instance(new CodeBag("Empty", CodeBagType.Package, "some/path"),  "ShoppingCart", new Location("another/path"));
             Member = new Member(string.Empty, 0, 0, 0);
         }
 

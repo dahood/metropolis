@@ -17,14 +17,6 @@ namespace Metropolis.Api.Domain
             PhysicalPath = path;
         }
 
-        [Obsolete("this constructor should be removed and InstanceBuilder used instead")]
-        public Instance(string name, string codeBagName, CodeBagType codeBagType, string codeBagPath = "") //TODO: Review if this should be empty or null
-        {
-            CodeBag = new CodeBag(codeBagName, codeBagType, codeBagPath);
-            Name = name;
-            PhysicalPath = new Location(codeBagPath);
-        }
-
         public CodeBag CodeBag { get; }
         public string Name { get; }
         public Location PhysicalPath { get; set; }

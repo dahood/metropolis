@@ -6,13 +6,22 @@ using System.Linq;
 
 namespace Metropolis.Api.Domain
 {
-    public class InstanceBuilder
+    public static class InstanceBuilder
     {
         public static Instance Build(string physicalPath)
         {
             var filename = Path.GetFileName(physicalPath);
             var directory = Path.GetDirectoryName(physicalPath);
-            return new Instance(filename, directory, CodeBagType.Directory, physicalPath);
+            return new Instance(new CodeBag(directory, CodeBagType.Directory, directory), filename, new Location(physicalPath));
+        }
+
+
+        public static Instance Build(CodeBag codeBag, string name, string location, int linesOfCode)
+        {
+            return new Instance(codeBag, name, new Location(location))
+            {
+                LinesOfCode = linesOfCode
+            };
         }
 
         public static Instance Build(CodeBag codeBag, string name, string location, int linesOfCode, int complexity, int depthOfInheritance, int coupling, IEnumerable<Member> members)
@@ -44,5 +53,6 @@ namespace Metropolis.Api.Domain
 
             return type;
         }
+
     }
 }

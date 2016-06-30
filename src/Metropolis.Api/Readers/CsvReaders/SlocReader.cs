@@ -32,12 +32,10 @@ namespace Metropolis.Api.Readers.CsvReaders
         {
             var inclusionExtension = Inclusion.GetDescription();
             var inclusionCodeBagType = MapToCodeBag(Inclusion);
+            
             var classes = lines.Where(x => x.FileName.EndsWith(inclusionExtension))
-                .Select(each => new Instance(each.FileName, each.Directory, inclusionCodeBagType, string.Empty)
-                {
-                    PhysicalPath = new Location(each.PhysicalPath),
-                    LinesOfCode = each.SourceLoc
-                })
+                .Select(each => InstanceBuilder.Build(
+                    new CodeBag(each.Directory, inclusionCodeBagType, each.Directory), each.FileName, each.PhysicalPath, each.SourceLoc))
                 .ToList();
 
             return new CodeBase(new CodeGraph(classes));
