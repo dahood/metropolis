@@ -11,7 +11,7 @@ namespace Metropolis.Api.Readers.XmlReaders.FxCop
     public class FxCopMetricsReader : IInstanceReader
     {
         private readonly IFxCopInstanceBuilder fxCopInstanceBuilder;
-
+        
         public FxCopMetricsReader() : this (new FxCopInstanceBuilder())
         {
         }

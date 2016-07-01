@@ -13,7 +13,7 @@ namespace Metropolis.Test.Api.Build
     [TestFixture]
     public class DotNetProjectBuilderTest : StrictMockBaseTest
     {
-        DotNetProjectBuilder builder;
+        private DotNetProjectBuilder builder;
         private Mock<IUserPreferences> userPreferences;
         private Mock<IRunPowerShell> runPowerShell;
         private Mock<IFileSystem> fileSystem;
@@ -43,6 +43,17 @@ namespace Metropolis.Test.Api.Build
 
             result.Should().NotBeNull();
             result.Artifacts.Should().Contain(buildArtifacts);
+        }
+
+        [Test]
+        public void CleanProject()
+        {
+            var projectFile = @"c:\metropolis\metropolis.sln";
+            userPreferences.Setup(x => x.MsBuildPath).Returns(@"c:\build.exe");
+
+            runPowerShell.Setup(x => x.Invoke(DotNetProjectBuilder.MsBuildCleanCommand.FormatWith(@"c:\build.exe", projectFile)));
+
+            builder.CleanProject(projectFile);
         }
 
     }
