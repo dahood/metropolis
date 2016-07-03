@@ -35,6 +35,7 @@ namespace Metropolis.Api.Collection.Steps
         {
             try
             {
+                Logger.Info($"Command: {command} {args}");
                 SaveMetricsCommand(args, command);
                 InvokeCommand(command);
             }
