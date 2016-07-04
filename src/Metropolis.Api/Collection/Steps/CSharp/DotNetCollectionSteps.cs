@@ -2,7 +2,7 @@
 {
     public class DotNetCollectionSteps : CompositeCollectionStep
     {
-        public DotNetCollectionSteps() : base(new ICollectionStep[] { new VisualStudioCollectionStep(), new DotNetCpdCollectionStep() }, true)
+        public DotNetCollectionSteps() : base(new ICollectionStep[] { new VisualStudioCollectionStep()}, true) //new DotNetCpdCollectionStep() }, true)
         {
         }
     }
