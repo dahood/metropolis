@@ -42,7 +42,7 @@ gulp.task('test', ['compile'], function () {
             teamcity: false,
             nologo: true,
             workers: maxThreads,
-            executable: 'packages\\NUnit.ConsoleRunner.3.2.1\\tools\\nunit3-console.exe'
+            executable: 'packages\\NUnit.ConsoleRunner.3.4.1\\tools\\nunit3-console.exe'
         }));
 });
 
