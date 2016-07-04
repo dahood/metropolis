@@ -302,12 +302,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="NLog.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Include="NLog.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
     <AppDesigner Include="Properties\" />
     <EmbeddedResource Include="Resources\Highlighting\javascript.xshd" />
@@ -377,9 +371,6 @@
       <Project>{867e868a-b77f-42dd-bd08-83bbadf9e847}</Project>
       <Name>Metropolis.Common</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AssemblyInfoFiles Include="**\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -10,6 +10,7 @@ var buildPath = '%CD%\\build';
 var maxThreads = 8;
 var msBuildConfiguration = 'Release'
 var version = '0.0.1'; //using package.json
+var nunitConsole = 'packages\\NUnit.ConsoleRunner.3.4.1\\tools\\nunit3-console.exe'
 
 // Gulp Default
 
@@ -42,7 +43,7 @@ gulp.task('test', ['compile'], function () {
             teamcity: false,
             nologo: true,
             workers: maxThreads,
-            executable: 'packages\\NUnit.ConsoleRunner.3.4.1\\tools\\nunit3-console.exe'
+            executable: nunitConsole
         }));
 });
 

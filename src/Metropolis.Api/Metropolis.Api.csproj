@@ -68,7 +68,6 @@
     <Compile Include="Domain\Location.cs" />
     <Compile Include="IO\IUserPreferences.cs" />
     <Compile Include="IO\UserPreferences.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Analyzers\ICodebaseAnalyzer.cs" />
     <Compile Include="Analyzers\Toxicity\CSharpToxicityAnalyzer.cs" />
     <Compile Include="Analyzers\Toxicity\JavascriptToxicityAnalyzer.cs" />
