@@ -64,7 +64,8 @@ gulp.task('version', function() {
     console.log('in version...');
     if (argv.m)
     {
-        console.log(exec('npm version patch').stdout);
+        //this isn't working right now...
+        //console.log(exec('npm version patch').stdout);
     }
 });
 
