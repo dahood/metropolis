@@ -34,12 +34,12 @@ namespace Metropolis.Api.IO
 
         public string GetIgnoreFilePath(string projectName)
         {
-            return Path.Combine(ProjectBuildFolder, projectName, IgnoreFile);
+            return projectName == null ? string.Empty : Path.Combine(ProjectBuildFolder, projectName, IgnoreFile);
         }
 
         public string GetProjectBuildFolder(string projectName)
         {
-            return Path.Combine(ProjectBuildFolder, projectName);
+            return projectName == null ? string.Empty : Path.Combine(ProjectBuildFolder, projectName);
         }
 
         public IEnumerable<string> ReadIgnoreFile(string projectName)

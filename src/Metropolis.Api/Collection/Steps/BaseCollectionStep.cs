@@ -9,8 +9,8 @@ namespace Metropolis.Api.Collection.Steps
 {
     public abstract class BaseCollectionStep : ICollectionStep
     {
-        private readonly IRunPowerShell powerShell;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        private readonly IRunPowerShell powerShell;
 
         protected BaseCollectionStep(IRunPowerShell powerShell)
         {
@@ -30,6 +30,25 @@ namespace Metropolis.Api.Collection.Steps
         }
 
         public abstract string PrepareCommand(MetricsCommandArguments args, MetricsResult result);
+
+        public static string LocateBinaries(string target)
+        {
+            return Locate(@"Collection\Binaries\", target);
+        }
+
+        public static string LocateSettings(string target)
+        {
+            return Locate(@"Collection\Settings\", target);
+        }
+
+        protected static string GetNodeBinPath()
+        {
+#if DEBUG
+            return @"..\..\..\..\node_modules\.bin\";
+#else
+            return @"..\node_modules\.bin\";
+#endif
+        }
 
         private void SaveAndExecuteCommand(MetricsCommandArguments args, string command)
         {
@@ -52,44 +71,26 @@ namespace Metropolis.Api.Collection.Steps
             File.WriteAllText(fileName, cmd);
         }
 
-        protected MetricsResult MetricResultFor(MetricsCommandArguments args)
+        private MetricsResult MetricResultFor(MetricsCommandArguments args)
         {
-            return new MetricsResult {ParseType = ParseType, MetricsFile = GetOutputFile(args)};
+            return new MetricsResult { ParseType = ParseType, MetricsFile = GetOutputFile(args) };
         }
 
-        protected string GetOutputFile(MetricsCommandArguments args)
+        private string GetOutputFile(MetricsCommandArguments args)
         {
             var fileName = $"{args.ProjectName}_{MetricsType}{Extension}".Replace(' ', '_');
             return Path.Combine(args.MetricsOutputFolder, fileName);
         }
 
-        protected void InvokeCommand(string command)
+
+        private void InvokeCommand(string command)
         {
             powerShell.Invoke(command);
-        }
-
-        public static string LocateBinaries(string target)
-        {
-            return Locate(@"Collection\Binaries\", target);
-        }
-
-        public static string LocateSettings(string target)
-        {
-            return Locate(@"Collection\Settings\", target);
         }
 
         private static string Locate(string collectionPath, string target)
         {
             return Path.Combine(Environment.CurrentDirectory, collectionPath, target);
-        }
-
-        public static string GetNodeBinPath()
-        {
-#if DEBUG
-            return @"..\..\..\..\node_modules\.bin\";
-#else
-            return @"..\node_modules\.bin\";
-#endif
         }
     }
 }

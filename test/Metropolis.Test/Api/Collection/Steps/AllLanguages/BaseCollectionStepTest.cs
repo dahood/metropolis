@@ -45,10 +45,12 @@ namespace Metropolis.Test.Api.Collection.Steps.AllLanguages
         {
             results = step.Run(args);
 
-            Validate.Begin().IsNotNull(results, "results are not null").Check()
-                            .IsEqual(results.Count(), 1, "Has one result").Check();
+            var metricsResults = results.ToList();
 
-            var result = results.First();
+            Validate.Begin().IsNotNull(metricsResults, "results are not null").Check()
+                            .IsEqual(metricsResults.Count(), 1, "Has one result").Check();
+
+            var result = metricsResults.First();
 
             result.MetricsFile.Should().NotBeNullOrEmpty();
             result.ParseType.Should().Be(ParseType.VisualStudio);

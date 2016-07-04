@@ -7,7 +7,6 @@ var nunit = require('gulp-nunit-runner');
 
 // Gulp Variables
 var buildPath = '%CD%\\build';
-var maxThreads = 8;
 var msBuildConfiguration = 'Release'
 var version = '0.0.1'; //using package.json
 var nunitConsole = 'packages\\NUnit.ConsoleRunner.3.4.1\\tools\\nunit3-console.exe'
@@ -29,7 +28,7 @@ gulp.task('compile', function (cb) {
   console.log('Version Number: ' + version);
   var cmd = '"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /p:OutDir=' + 
     buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=0.' 
-    + version + ' /maxcpucount:' + maxThreads;
+    + version + ' /maxcpucount';
   console.log(exec(cmd).stdout);
   cb();
 });
@@ -42,7 +41,6 @@ gulp.task('test', ['compile'], function () {
             err: 'build\\NUnitErrors.txt',
             teamcity: false,
             nologo: true,
-            workers: maxThreads,
             executable: nunitConsole
         }));
 });

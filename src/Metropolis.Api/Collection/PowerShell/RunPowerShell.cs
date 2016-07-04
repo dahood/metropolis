@@ -8,39 +8,41 @@ namespace Metropolis.Api.Collection.PowerShell
     public class RunPowerShell : IRunPowerShell
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        
-        private RunPowerShell()
-        {
-        }
+        private const int TimeOut = 60*1000; // 60,000 ms = 1 minute timeout
 
         public void Invoke(string command)
         {
-            try
+            var process = new Process
             {
-                var process = new Process { 
-                    StartInfo =  new ProcessStartInfo
-                                {
-                                    FileName = "PowerShell.exe",
-                                    Arguments = command,
-                                    CreateNoWindow = true,
-                                    ErrorDialog = false,
-                                    UseShellExecute = false,
-                                    WindowStyle = ProcessWindowStyle.Hidden,
-                                    RedirectStandardOutput = true,
-                                    RedirectStandardError = true
-                                }
-                    };
-                process.Start();
-                if (Logger.IsDebugEnabled)
-                    Logger.Debug(process.StandardOutput.ReadToEnd());
-                
-                var error = process.StandardError.ReadToEnd();
-                if (error.IsNotEmpty())
-                    Logger.Error(error);
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "PowerShell.exe",
+                    Arguments = command,
+                    CreateNoWindow = true,
+                    ErrorDialog = false,
+                    UseShellExecute = false,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true
+                }
+            };
+
+            process.Start();
+            //TODO: Used Exited event instead of blocking this thread
+            // https://msdn.microsoft.com/en-us/library/system.diagnostics.process.exited(v=vs.110).aspx
+            process.WaitForExit(TimeOut);
+
+            if (Logger.IsDebugEnabled)
+            {
+                var readToEnd = process.StandardOutput.ReadToEnd();
+                if (readToEnd.IsNotEmpty())
+                    Logger.Debug(readToEnd);
             }
-            catch (Exception e)
+
+            var error = process.StandardError.ReadToEnd();
+            if (error.IsNotEmpty())
             {
-                Logger.Error(e);
+                throw new ApplicationException($"Run Powershell failed: {error}");
             }
         }
     }
