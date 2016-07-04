@@ -5,11 +5,7 @@ namespace Metropolis.Api.Collection.Steps.ECMA
 {
     public class EcmaCollectionStep : CompositeCollectionStep
     {
-//        public EcmaCollectionStep() : base(new ICollectionStep[] {new EsLintCollectionStep(), new SlocCollectionStep(ParseType.SlocEcma),
-//                                           new CpdCollectionStep(ParseType.CpdEcma) }, true)
-
-        public EcmaCollectionStep() : base(new ICollectionStep[] {new EsLintCollectionStep(), new SlocCollectionStep(ParseType.SlocEcma)}, true)
-        {
-        }
+        public EcmaCollectionStep() : base(new ICollectionStep[] { new EsLintCollectionStep(), new SlocCollectionStep(ParseType.SlocEcma),
+                new CpdCollectionStep(ParseType.CpdEcma) }, true) {}
     }
 }
