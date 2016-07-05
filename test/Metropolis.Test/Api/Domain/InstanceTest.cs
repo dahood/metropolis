@@ -1,4 +1,5 @@
-﻿using Metropolis.Api.Domain;
+﻿using FluentAssertions;
+using Metropolis.Api.Domain;
 using Metropolis.Test.Utilities;
 using NUnit.Framework;
 
@@ -7,6 +8,38 @@ namespace Metropolis.Test.Api.Domain
     [TestFixture]
     public class InstanceTest
     {
+        public Instance canvas;
+
+        [SetUp]
+        public void Setup()
+        {
+            canvas = new Instance(CodeBag.Empty, "Canvas", new Location(@"C:\dev\canvas.cs"));
+            canvas.LinesOfCode = 100;
+        }
+
+        [Test]
+        public void Should_Report_DuplicateLines_And_Percentage_Simple_Case()
+        {
+            canvas.Duplicates.Add(new Duplicate(1,10, new Location("fileA.cs")));
+            canvas.Duplicates.Add(new Duplicate(1,10, new Location("fileB.cs")));
+            canvas.DuplicateLines.Should().Be(2);
+            canvas.DuplicatePercentage.Should().Be(0.02d);
+        }
+
+        [Test]
+        public void Should_Report_DuplicateLines_And_Percentage_Large_Duplicate_Case()
+        {
+            canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileA.cs")));
+            canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileB.cs")));
+            canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileC.cs")));
+            canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileD.cs")));
+            canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileE.cs")));
+            canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileF.cs")));
+            canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileG.cs")));
+            canvas.DuplicateLines.Should().Be(140);
+            canvas.DuplicatePercentage.Should().Be(1.40d);
+        }
+
         [Test]
         public void ShouldApplyLargestMetricWhenPhysicalPathMatches()
         {

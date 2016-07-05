@@ -64,6 +64,7 @@
     <Compile Include="Collection\Steps\Java\JavaCollectionStep.cs" />
     <Compile Include="Domain\CodeBag.cs" />
     <Compile Include="Domain\CodeBagType.cs" />
+    <Compile Include="Domain\Duplicate.cs" />
     <Compile Include="Domain\InstanceBuilder.cs" />
     <Compile Include="Domain\Location.cs" />
     <Compile Include="IO\IUserPreferences.cs" />

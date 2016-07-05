@@ -50,7 +50,7 @@ namespace Metropolis.Api.Domain
 
         private static Duplicate Disassemble(SerializableDuplicate src)
         {
-            return new Duplicate {LinesOfCode = int.Parse(src.LinesOfCode), LineNumber = int.Parse(src.LineNumber)};
+            return new Duplicate(int.Parse(src.LinesOfCode), int.Parse(src.LineNumber), new Location(src.Location));
         }
 
         private static InstanceVersionInfo Disassemble(SerializableClassVersionInfo i)
@@ -116,7 +116,8 @@ namespace Metropolis.Api.Domain
             return new SerializableDuplicate
             {
                 LinesOfCode = src.LinesOfCode.ToString(),
-                LineNumber = src.LineNumber.ToString()
+                LineNumber = src.LineNumber.ToString(),
+                Location = src.Location.ToString()
             };
         }
     }

@@ -126,10 +126,4 @@ namespace Metropolis.Api.Domain
             return PhysicalPath == src.PhysicalPath;
         }
     }
-
-    public class Duplicate
-    {
-        public int LinesOfCode { get; set; }
-        public int LineNumber { get; set; }
-    }
 }

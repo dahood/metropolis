@@ -39,6 +39,8 @@ namespace Metropolis.Api.Domain
     {
         public string LineNumber { get; set; }
         public string LinesOfCode { get; set; }
+
+        public string Location { get; set; }
     }
 
     public class SerializeableCodeBag
