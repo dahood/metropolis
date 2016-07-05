@@ -22,6 +22,7 @@ namespace Metropolis.Test.Api.Domain
         {
             canvas.Duplicates.Add(new Duplicate(1,10, new Location("fileA.cs")));
             canvas.Duplicates.Add(new Duplicate(1,10, new Location("fileB.cs")));
+            canvas.LinesOfCode.Should().Be(100);
             canvas.DuplicateLines.Should().Be(2);
             canvas.DuplicatePercentage.Should().Be(0.02d);
         }
@@ -36,6 +37,7 @@ namespace Metropolis.Test.Api.Domain
             canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileE.cs")));
             canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileF.cs")));
             canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileG.cs")));
+            canvas.LinesOfCode.Should().Be(100);
             canvas.DuplicateLines.Should().Be(140);
             canvas.DuplicatePercentage.Should().Be(1.40d);
         }
