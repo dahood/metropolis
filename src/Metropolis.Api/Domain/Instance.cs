@@ -32,7 +32,7 @@ namespace Metropolis.Api.Domain
 
         public double Toxicity { get; set; }
 
-        public int DuplicateLines => Duplicates.Sum(x => x.LinesOfCode);
+        public int DuplicateLines => Duplicates.Where(x=>x.Location == PhysicalPath).Sum(x => x.LinesOfCode);
         public double DuplicatePercentage => LinesOfCode != 0 ? (double) DuplicateLines / LinesOfCode : 0;
 
         public List<Member> Members { get; set; } = new List<Member>();
@@ -41,12 +41,6 @@ namespace Metropolis.Api.Domain
         {
             get { return meta; }
             set { meta = value.ToList(); }
-        }
-
-        public int NamespaceDepth()
-        {
-            //TODO: Move this to CodeBag
-            return CodeBag.Name.Split('.').Length;
         }
 
         public override string ToString()
@@ -102,7 +96,6 @@ namespace Metropolis.Api.Domain
             if (!Matches(src)) return;
 
             LinesOfCode = LinesOfCode.Max(src.LinesOfCode);
-            PhysicalPath = src.PhysicalPath ?? PhysicalPath;
             DepthOfInheritance = DepthOfInheritance.Max(src.DepthOfInheritance);
             CyclomaticComplexity = CyclomaticComplexity.Max(src.CyclomaticComplexity);
             ClassCoupling = ClassCoupling.Max(src.ClassCoupling);

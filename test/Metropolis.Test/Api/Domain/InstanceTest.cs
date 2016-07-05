@@ -13,7 +13,7 @@ namespace Metropolis.Test.Api.Domain
         [SetUp]
         public void Setup()
         {
-            canvas = new Instance(CodeBag.Empty, "Canvas", new Location(@"C:\dev\canvas.cs"));
+            canvas = new Instance(CodeBag.Empty, "Canvas", new Location(@"fileA.cs"));
             canvas.LinesOfCode = 100;
         }
 
@@ -23,8 +23,8 @@ namespace Metropolis.Test.Api.Domain
             canvas.Duplicates.Add(new Duplicate(1,10, new Location("fileA.cs")));
             canvas.Duplicates.Add(new Duplicate(1,10, new Location("fileB.cs")));
             canvas.LinesOfCode.Should().Be(100);
-            canvas.DuplicateLines.Should().Be(2);
-            canvas.DuplicatePercentage.Should().Be(0.02d);
+            canvas.DuplicateLines.Should().Be(1);
+            canvas.DuplicatePercentage.Should().Be(0.01d);
         }
 
         [Test]
@@ -38,8 +38,8 @@ namespace Metropolis.Test.Api.Domain
             canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileF.cs")));
             canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileG.cs")));
             canvas.LinesOfCode.Should().Be(100);
-            canvas.DuplicateLines.Should().Be(140);
-            canvas.DuplicatePercentage.Should().Be(1.40d);
+            canvas.DuplicateLines.Should().Be(20);
+            canvas.DuplicatePercentage.Should().Be(0.20d);
         }
 
         [Test]
