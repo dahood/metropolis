@@ -135,8 +135,8 @@ namespace Metropolis.Views
         {
             App.ViewModel.ProjectName = CodeBase.Name;
             SetInstanceLabel(CodeBase.SourceType);
-            LocTextBlock.Text = CodeBase.LinesOfCode.ToString("N0", CultureInfo.InvariantCulture);
-            TypesTextBlock.Text = CodeBase.NumberOfTypes.ToString("N0", CultureInfo.InvariantCulture);
+            LocTextBlock.Text = CodeBase.LinesOfCode().ToString("N0", CultureInfo.InvariantCulture);
+            TypesTextBlock.Text = CodeBase.InstanceCount().ToString("N0", CultureInfo.InvariantCulture);
             ToxicityTextBlock.Text = CodeBase.AverageToxicity().ToString("N2", CultureInfo.InvariantCulture);
             CodeDensityTextBlock.Text = CodeBase.Density().ToString("N2", CultureInfo.InvariantCulture);
             DuplicateTextBlock.Text = CodeBase.Duplicates().ToString("P", CultureInfo.InvariantCulture);

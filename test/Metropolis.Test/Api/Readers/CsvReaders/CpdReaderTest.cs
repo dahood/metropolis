@@ -28,7 +28,7 @@ namespace Metropolis.Test.Api.Readers.CsvReaders
         {
             var codebase = parser.Parse(new StringReader(oneDuplicate));
 
-            codebase.NumberOfTypes.Should().Be(2);
+            codebase.InstanceCount().Should().Be(2);
             codebase.AllInstances[0].DuplicateLines.Should().Be(47);
             codebase.AllInstances[1].DuplicateLines.Should().Be(47);
         }

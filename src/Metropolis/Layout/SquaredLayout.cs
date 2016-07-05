@@ -11,7 +11,7 @@ namespace Metropolis.Layout
             Reset(cityScape);
             SetCityLights(cityScape);
 
-            if (codeBase.NumberOfTypes == 0) return;
+            if (codeBase.InstanceCount() == 0) return;
             RenderSquareBlock(cityScape, codeBase.AllInstances, new Point3D(0, 0, 0),
                 codeBase.Graph.MinLinesOfCode, codeBase.Graph.MaxLinesOfCode, heatMap);
         }

@@ -19,7 +19,7 @@ namespace Metropolis.Test.Api.Persistence
         public void Setup()
         {
             RemoveFile(SampleProject);
-            codebase = new CodeBase(CodeGraphFixture.Metropolis);
+            codebase = new CodeBase(CodeGraphFixture.MetropolisGraph);
             projectRepository = new ProjectRepository();
         }
 

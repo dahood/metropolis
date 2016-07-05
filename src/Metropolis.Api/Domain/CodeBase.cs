@@ -36,23 +36,25 @@ namespace Metropolis.Api.Domain
             }
         }
 
-        public int NumberOfTypes => Graph.Count;
-        public int LinesOfCode => AllInstances.Sum(c => c.LinesOfCode);
+        public int InstanceCount() => Graph.Count;
+
 
         public double AverageToxicity()
         {
             var sum = AllInstances.Sum(c => c.Toxicity);
-            return sum / NumberOfTypes;
+            return sum / InstanceCount();
         }
+
+        public int LinesOfCode() => AllInstances.Sum(c => c.LinesOfCode);
 
         public double Density()
         {
-            return (double) LinesOfCode / NumberOfTypes;
+            return (double) LinesOfCode() / InstanceCount();
         }
 
         public double Duplicates()
         {
-            return (double) Graph.AllInstances.Sum(x => x.DuplicateLines)/ LinesOfCode;
+            return (double) Graph.AllInstances.Sum(x => x.DuplicateLines)/ LinesOfCode();
         }
 
         public Dictionary<CodeBag, IEnumerable<Instance>> ByNamespace()
