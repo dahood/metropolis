@@ -33,10 +33,19 @@ namespace Metropolis.Api.Readers.CsvReaders
             {
                 foreach (var occurance in cpdLineItem.Occurances)
                 {
-                    this[occurance.FileName].Duplicates.Add(new Duplicate(cpdLineItem.LinesOfCode, occurance.LineNumber, new Location(occurance.FileName)));
+                    this[occurance.FileName].Duplicates.Add(
+                        new Duplicate(
+                            cpdLineItem.LinesOfCode, occurance.LineNumber, new Location(occurance.FileName), 
+                            Convert(cpdLineItem.LinesOfCode, occurance, cpdLineItem.Occurances)));
                 }
             }
             return new CodeBase(new CodeGraph(instances));
+        }
+
+        private static Duplicate[] Convert(int linesOfCode, CpdOccurance occurance, List<CpdOccurance> copyCats )
+        {
+            return copyCats.ConvertAll(x => new Duplicate(linesOfCode, x.LineNumber, new Location(x.FileName)))
+                .Where(x => x.Location.Path != occurance.FileName).ToArray();
         }
 
         private static IEnumerable<CpdLineItem> ReadFile(TextReader textReader)

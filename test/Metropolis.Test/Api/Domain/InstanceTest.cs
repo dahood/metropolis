@@ -20,8 +20,7 @@ namespace Metropolis.Test.Api.Domain
         [Test]
         public void Should_Report_DuplicateLines_And_Percentage_Simple_Case()
         {
-            canvas.Duplicates.Add(new Duplicate(1,10, new Location("fileA.cs")));
-            canvas.Duplicates.Add(new Duplicate(1,10, new Location("fileB.cs")));
+            canvas.Duplicates.Add(new Duplicate(1,10, new Location("fileA.cs"), new Duplicate(1, 10, new Location("fileB.cs"))));
             canvas.LinesOfCode.Should().Be(100);
             canvas.DuplicateLines.Should().Be(1);
             canvas.DuplicatePercentage.Should().Be(0.01d);

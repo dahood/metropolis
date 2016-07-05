@@ -41,6 +41,8 @@ namespace Metropolis.Api.Domain
         public string LinesOfCode { get; set; }
 
         public string Location { get; set; }
+
+        public IEnumerable<SerializableDuplicate> CopyCats { get; set; }
     }
 
     public class SerializeableCodeBag
