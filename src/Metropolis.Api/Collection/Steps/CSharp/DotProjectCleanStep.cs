@@ -12,7 +12,7 @@ namespace Metropolis.Api.Collection.Steps.CSharp
         {
         }
 
-        public DotProjectCleanStep(DotNetProjectBuilder projectBuilder)
+        public DotProjectCleanStep(IProjectBuilder projectBuilder)
         {
             this.projectBuilder = projectBuilder;
         }

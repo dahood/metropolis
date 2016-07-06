@@ -8,14 +8,14 @@ namespace Metropolis.Api.Analyzers.Toxicity
     public class CSharpToxicityAnalyzer : ToxicityAnalyzer
     {
         //class level thresholds
-        private const int ThresholdLinesOfCode = 500;
-        private const int ThresholdClassCoupling = 30;
-        private const int ThresholdDepthOfInheritance = 3;
-        private const int DepthOfInheritanceFactor = 5; // Increase the effect on toxicity when this rule is violated
-        private const int ThresholdNumberOfMethods = 20;
+        public const int ThresholdLinesOfCode = 500;
+        public const int ThresholdClassCoupling = 30;
+        public const int ThresholdDepthOfInheritance = 3;
+        public const int DepthOfInheritanceFactor = 5; // Increase the effect on toxicity when this rule is violated
+        public const int ThresholdNumberOfMethods = 20;
         // method level thresholds
-        private const int ThresholdMethodLength = 30;
-        private const int ThresholdCyclomaticComplexity = 20; //higher for C# than Java due to LINQ
+        public const int ThresholdMethodLength = 30;
+        public const int ThresholdCyclomaticComplexity = 20; //higher for C# than Java due to LINQ
 
         public override ToxicityScore CalculateToxicity(Instance instanceToScore)
         {
@@ -44,7 +44,6 @@ namespace Metropolis.Api.Analyzers.Toxicity
                 MethodLength = Rationalize(methodLength),
                 CyclomaticComplexity = Rationalize(cyclomaticComplexity)
             };
-
 
             score.Toxicity = score.LinesOfCode + score.ClassCoupling + score.DepthOfInheritance + 
                              score.NumberOfMethods + score.MethodLength + score.CyclomaticComplexity;

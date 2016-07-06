@@ -58,6 +58,7 @@
     <Compile Include="Build\IProjectBuilder.cs" />
     <Compile Include="Build\IProjectBuildFactory.cs" />
     <Compile Include="Collection\Steps\AllLanguages\CpdCollectionStep.cs" />
+    <Compile Include="Collection\Steps\CSharp\CollectAssemblies.cs" />
     <Compile Include="Collection\Steps\CSharp\DotNetCollectionSteps.cs" />
     <Compile Include="Collection\Steps\CSharp\DotNetCpdCollectionStep.cs" />
     <Compile Include="Collection\Steps\CSharp\DotProjectCleanStep.cs" />

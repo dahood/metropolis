@@ -94,6 +94,7 @@
       <Word>throws</Word>
       <Word>strictfp</Word>
       <Word>synchronized</Word>
+      <Word>readonly</Word>
     </Keywords>
     <Keywords color="AccessModifiers">
       <Word>public</Word>

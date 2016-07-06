@@ -75,9 +75,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Analyzers\Toxicity\AnalyzerFixture.cs" />
+    <Compile Include="Api\Analyzers\Toxicity\CSharpToxicityAnalyzerTest.cs" />
     <Compile Include="Api\Build\DotNetProjectBuilderTest.cs" />
     <Compile Include="Api\Build\ProjectBuildFactoryTest.cs" />
     <Compile Include="Api\Collection\Steps\AllLanguages\CpdCollectionStepTest.cs" />
+    <Compile Include="Api\Collection\Steps\BaseCompositeCollectionStepTest.cs" />
+    <Compile Include="Api\Collection\Steps\CSharp\DotNetCollectionStepsTest.cs" />
+    <Compile Include="Api\Collection\Steps\CSharp\DotNetCpdCollectionStepTest.cs" />
+    <Compile Include="Api\Collection\Steps\CSharp\DotProjectCleanStepTest.cs" />
+    <Compile Include="Api\Collection\Steps\ECMA\EcmaCollectionStepTest.cs" />
+    <Compile Include="Api\Collection\Steps\Java\JavaCollectionStepTest.cs" />
     <Compile Include="Api\Readers\CsvReaders\CpdReaderTest.cs" />
     <Compile Include="Metropolis\Controllers\CsharpCollectionControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,7 +112,7 @@
     <Compile Include="Api\Collection\Steps\CompositeCollectionStepTest.cs" />
     <Compile Include="Api\Collection\Steps\ECMA\EslintCollectionStepTest.cs" />
     <Compile Include="Api\Collection\Steps\AllLanguages\SlocCollectionStepTest.cs" />
-    <Compile Include="Api\Collection\Steps\Java\JavaCollectionStepTest.cs" />
+    <Compile Include="Api\Collection\Steps\Java\PuppyCrawlerCheckstyleCollectionStepTest.cs" />
     <Compile Include="Api\Services\StrictMockBaseTest.cs" />
     <Compile Include="Api\Collection\MetricsStepFactoryTest.cs" />
     <Compile Include="Api\Utilities\ClockTest.cs" />

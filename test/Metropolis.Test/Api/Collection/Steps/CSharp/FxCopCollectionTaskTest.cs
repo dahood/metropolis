@@ -1,7 +1,6 @@
 ﻿using Metropolis.Api.Collection.PowerShell;
 using Metropolis.Api.Collection.Steps.CSharp;
 using Metropolis.Api.IO;
-using Metropolis.Api.Utilities;
 using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 using Metropolis.Test.Api.Services;
@@ -27,7 +26,7 @@ namespace Metropolis.Test.Api.Collection.Steps.CSharp
                                                             };
 
         private const string DllName = "mydll.dll";
-        private const string fxCopMetricsPath = @"C:\FxcopFolder\metrics.exe";
+        private const string FxCopMetricsPath = @"C:\FxcopFolder\metrics.exe";
         private readonly MetricsResult expectedResult = new MetricsResult {
                                                                 ParseType = ParseType.FxCop,
                                                                 MetricsFile = @"c:\metrics\test_mydll_metrics.xml"
@@ -40,7 +39,7 @@ namespace Metropolis.Test.Api.Collection.Steps.CSharp
             powerShell = CreateMock<IRunPowerShell>();
             fileSystem = CreateMock<IFileSystem>();
             userPreferences = CreateMock<IUserPreferences>();
-            userPreferences.Setup(x => x.FxCopPath).Returns(fxCopMetricsPath);
+            userPreferences.Setup(x => x.FxCopPath).Returns(FxCopMetricsPath);
 
             task = new FxCopCollectionTask(powerShell.Object, fileSystem.Object, userPreferences.Object);
         }
@@ -48,7 +47,7 @@ namespace Metropolis.Test.Api.Collection.Steps.CSharp
         [Test]
         public void CanRunCollectionTask()
         {
-            var expectedCommand = FxCopCollectionTask.CommandTemplate.FormatWith(fxCopMetricsPath, DllName, expectedResult.MetricsFile);
+            var expectedCommand = FxCopCollectionTask.CommandTemplate.FormatWith(FxCopMetricsPath, DllName, expectedResult.MetricsFile);
             fileSystem.Setup(x => x.GetFileName(DllName)).Returns("mydll");
             powerShell.Setup(x => x.Invoke(expectedCommand));
             var result = task.Run(args, DllName);
