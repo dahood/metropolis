@@ -43,5 +43,10 @@ namespace Metropolis.Api.Domain
         {
             return !Equals(left, right);
         }
+
+        public override string ToString()
+        {
+            return Path;
+        }
     }
 }

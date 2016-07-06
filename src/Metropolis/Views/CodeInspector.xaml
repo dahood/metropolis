@@ -3,17 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
         xmlns:userControls="clr-namespace:Metropolis.Views.UserControls"
-        Title="CodeInspector" Height="661" Width="1120" WindowStartupLocation="CenterScreen">
+        Title="Code Inspector" Height="661" Width="1120" WindowStartupLocation="CenterScreen" Icon="..\Images/logo.ico">
     <StackPanel>
         <TabControl>
             <TabItem Header="Summary">
-                <userControls:InstanceViewPanel x:Name="InstanceViewer" VerticalAlignment="Stretch" Loaded="InstanceViewer_Loaded" Height="550"/>
+                <userControls:InstanceViewPanel x:Name="InstanceViewer" VerticalAlignment="Stretch" Height="550"/>
             </TabItem>
             <TabItem Header="{Binding Path=FileContents.FileName, Mode=OneWay}" x:Name="EditorTab">
                 <avalonedit:TextEditor x:Name="Editor" IsReadOnly="True" FontFamily="Consolas" FontSize="10pt" WordWrap="True" ShowLineNumbers="True" Height="550"/>
             </TabItem>
             <TabItem Header="Members">
                 <userControls:MembersViewPanel HorizontalAlignment="Stretch" Height="550"/>
+            </TabItem>
+            <TabItem Header="Duplicates">
+                <userControls:DuplicateViewPanel HorizontalAlignment="Stretch" Height="550" DataContext="{Binding Path=Instance.Duplicates}" />
             </TabItem>
         </TabControl>
         <Button Content="Close" x:Name="CancelButton" Click="OnClose" Width="75"  Height="35" Margin="10, 5, 10, 2"/>

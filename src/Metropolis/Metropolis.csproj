@@ -160,6 +160,9 @@
     <Compile Include="Views\TipOfTheDay.xaml.cs">
       <DependentUpon>TipOfTheDay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControls\DuplicateViewPanel.xaml.cs">
+      <DependentUpon>DuplicateViewPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\InstanceViewers\CSharpInstanceViewer.xaml.cs">
       <DependentUpon>CSharpInstanceViewer.xaml</DependentUpon>
     </Compile>
@@ -235,6 +238,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TipOfTheDay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\DuplicateViewPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
