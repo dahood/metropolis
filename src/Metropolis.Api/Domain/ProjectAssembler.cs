@@ -18,8 +18,9 @@ namespace Metropolis.Api.Domain
 
         private static Instance Disassemble(SerializableClass src)
         {
-            return new Instance(new CodeBag(src.CodeBag.Name, src.CodeBag.CodeBagType.ToEnumExact<CodeBagType>(),
-                src.CodeBag.LocationPath), src.Name, new Location(src.Location))
+            var disassemble = new Instance(
+                new CodeBag(src.CodeBag.Name, src.CodeBag.CodeBagType.ToEnumExact<CodeBagType>(),
+                    src.CodeBag.LocationPath), src.Name, new Location(src.Location))
             {
                 LinesOfCode = src.LinesOfCode,
                 NumberOfMethods = src.NumberOfMethods,
@@ -29,8 +30,12 @@ namespace Metropolis.Api.Domain
                 Toxicity = src.Toxicity,
                 Meta = src.Meta.Select(Disassemble),
                 Members = src.Members.Select(Disassemble).ToList(),
-                Duplicates = src.Duplicates.Select(Disassemble).ToList()
             };
+
+            disassemble.Duplicates.AddRange(src.Duplicates.Select(Disassemble).ToList());
+
+            return disassemble;
+            
         }
 
         private static Member Disassemble(SerializableMember src)

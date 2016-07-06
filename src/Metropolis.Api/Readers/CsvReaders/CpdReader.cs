@@ -33,10 +33,11 @@ namespace Metropolis.Api.Readers.CsvReaders
             {
                 foreach (var occurance in cpdLineItem.Occurances)
                 {
-                    this[occurance.FileName].Duplicates.Add(
+                    this[occurance.FileName].AddDuplicate(
                         new Duplicate(
                             cpdLineItem.LinesOfCode, occurance.LineNumber, new Location(occurance.FileName), 
-                            Convert(cpdLineItem.LinesOfCode, occurance, cpdLineItem.Occurances)));
+                            Convert(cpdLineItem.LinesOfCode, occurance, cpdLineItem.Occurances))
+                         );
                 }
             }
             return new CodeBase(new CodeGraph(instances));

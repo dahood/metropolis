@@ -2,8 +2,6 @@ namespace Metropolis.Api.Domain
 {
     public class Duplicate
     {
-        private object p;
-
         public Duplicate(int linesOfCode, int lineNumber, Location location, params Duplicate[] copyCats)
         {
             CopyCats = copyCats;
