@@ -2,14 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Metropolis.Api.Extensions;
+using NLog;
 
 namespace Metropolis.Api.Domain
 {
     public class Instance
     {
+        private static readonly Logger Journal = LogManager.GetLogger("ProgressJournal");
+
         private List<InstanceVersionInfo> meta = new List<InstanceVersionInfo>();
-        public List<Duplicate> Duplicates = new List<Duplicate>();
-        
+        public List<Duplicate> Duplicates { get; private set; } = new List<Duplicate>();
+
         public Instance(CodeBag codeBag, string name, Location path)
         {
             CodeBag = codeBag;
@@ -69,16 +72,21 @@ namespace Metropolis.Api.Domain
             }
         }
 
+        public void AddDuplicate(Duplicate dup)
+        {
+            if (dup.Location == PhysicalPath)
+            {
+                Duplicates.Add(dup);
+            }
+            else
+                Journal.Info($"{dup.Location} does not match instance {Name}");
+        }
+
         public Instance AddMembers(IEnumerable<Member> toadd)
         {
             Members.AddRange(toadd);
             NumberOfMethods = toadd.Count();
             return this;
-        }
-
-        public Member GetMemberByName(string name)
-        {
-            return Members.SingleOrDefault(x => x.Name == name);
         }
 
         public void AddMeta(IEnumerable<InstanceVersionInfo> toAdd)

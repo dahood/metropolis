@@ -6,11 +6,6 @@ namespace Metropolis.Api.Domain
 {
     public class ProjectAssembler
     {
-        public static Project Assemble(CodeGraph graph)
-        {
-            return new Project {Classes = Assemble(graph.AllInstances)};
-        }
-
         public static CodeGraph Disassemble(Project project)
         {
             return new CodeGraph(Disassemble(project.Classes));
@@ -23,8 +18,9 @@ namespace Metropolis.Api.Domain
 
         private static Instance Disassemble(SerializableClass src)
         {
-            return new Instance(new CodeBag(src.CodeBag.Name, src.CodeBag.CodeBagType.ToEnumExact<CodeBagType>(), 
-                src.CodeBag.LocationPath), src.Name, new Location(src.Location))
+            var disassemble = new Instance(
+                new CodeBag(src.CodeBag.Name, src.CodeBag.CodeBagType.ToEnumExact<CodeBagType>(),
+                    src.CodeBag.LocationPath), src.Name, new Location(src.Location))
             {
                 LinesOfCode = src.LinesOfCode,
                 NumberOfMethods = src.NumberOfMethods,
@@ -34,8 +30,12 @@ namespace Metropolis.Api.Domain
                 Toxicity = src.Toxicity,
                 Meta = src.Meta.Select(Disassemble),
                 Members = src.Members.Select(Disassemble).ToList(),
-                Duplicates = src.Duplicates.Select(Disassemble).ToList()
             };
+
+            disassemble.Duplicates.AddRange(src.Duplicates.Select(Disassemble).ToList());
+
+            return disassemble;
+            
         }
 
         private static Member Disassemble(SerializableMember src)
@@ -50,12 +50,25 @@ namespace Metropolis.Api.Domain
 
         private static Duplicate Disassemble(SerializableDuplicate src)
         {
-            return new Duplicate(int.Parse(src.LinesOfCode), int.Parse(src.LineNumber), new Location(src.Location));
+            return new Duplicate(int.Parse(src.LinesOfCode), int.Parse(src.LineNumber), new Location(src.Location), Disassemble(src.CopyCats));
+        }
+
+        private static Duplicate[] Disassemble(IEnumerable<SerializableDuplicate> copyCats)
+        {
+            return
+                copyCats.ToList()
+                    .ConvertAll(x => new Duplicate(int.Parse(x.LinesOfCode), int.Parse(x.LineNumber), new Location(x.Location)))
+                    .ToArray();
         }
 
         private static InstanceVersionInfo Disassemble(SerializableClassVersionInfo i)
         {
             return new InstanceVersionInfo(i.FileName, i.CommitMessage);
+        }
+
+        public static Project Assemble(CodeGraph graph)
+        {
+            return new Project {Classes = Assemble(graph.AllInstances)};
         }
 
         private static IEnumerable<SerializableClass> Assemble(IEnumerable<Instance> classes)
@@ -117,8 +130,19 @@ namespace Metropolis.Api.Domain
             {
                 LinesOfCode = src.LinesOfCode.ToString(),
                 LineNumber = src.LineNumber.ToString(),
-                Location = src.Location.ToString()
+                Location = src.Location.ToString(),
+                CopyCats = Assemble(src.CopyCats)
             };
+        }
+
+        private static IEnumerable<SerializableDuplicate> Assemble(Duplicate[] copyCats)
+        {
+            return copyCats.ToList().ConvertAll(x => new SerializableDuplicate
+            {
+                LinesOfCode = x.LinesOfCode.ToString(),
+                LineNumber = x.LineNumber.ToString(),
+                Location = x.Location.ToString()
+            }).ToArray();
         }
     }
 }

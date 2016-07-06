@@ -8,7 +8,9 @@ namespace Metropolis.Test.Fixtures
         public static CodeBag MetroCodeBagApi => new CodeBag("Metropolis.Api.Domain", CodeBagType.Namespace, @"C:\dev\Metropolis.Api\Domain");
         public static CodeBag MetroCodeBag => new CodeBag("Metropolis.Views", CodeBagType.Namespace, @"C:\dev\Metropolis\Views");
 
-        public static CodeGraph Metropolis
+        public static CodeBase Metropolis => new CodeBase(MetropolisGraph);
+
+        public static CodeGraph MetropolisGraph
         {
             get
             {
@@ -26,9 +28,13 @@ namespace Metropolis.Test.Fixtures
         {
             get
             {
-                var classOne = InstanceBuilder.Build(MetroCodeBagApi, "CodeBase", @"CC:\dev\Metropolis.Api\Domain\CodeBase.cs", 5, 200, 6,10, new List<Member> {});
+                var path = @"C:\dev\Metropolis.Api\Domain\CodeBase.cs";
+                var classOne = InstanceBuilder.Build(MetroCodeBagApi, "CodeBase", path, 50, 200, 10,10, new List<Member> {});
 
                 classOne.AddMeta(new InstanceVersionInfo("CodeBase.cs", "commit message 1"));
+
+                classOne.Duplicates.Add(new Duplicate(1, 10, new Location(path)));
+                classOne.Duplicates.Add(new Duplicate(1, 10, new Location("fileB.cs")));
 
                 return classOne;
             }
@@ -38,13 +44,17 @@ namespace Metropolis.Test.Fixtures
         {
             get
             {
-                var classOne = InstanceBuilder.Build(MetroCodeBag, "Canvas", @"CC:\dev\Metropolis\Views\Canvas.xaml.cs", 5, 200, 6, 10, new List<Member> { });
+                var path = @"C:\dev\Metropolis\Views\Canvas.xaml.cs";
+                var classOne = InstanceBuilder.Build(MetroCodeBag, "Canvas", path, 50, 200, 6, 10, new List<Member> { });
 
                 var members = new[]
                 {
                     new Member("Foo()", 31, 0, 0)
                 };
                 classOne.AddMembers(members);
+
+                classOne.Duplicates.Add(new Duplicate(1, 10, new Location(path)));
+                classOne.Duplicates.Add(new Duplicate(1, 10, new Location("fileB.cs")));
 
                 return classOne;
             }
