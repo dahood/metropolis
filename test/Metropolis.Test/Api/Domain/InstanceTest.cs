@@ -20,26 +20,46 @@ namespace Metropolis.Test.Api.Domain
         [Test]
         public void Should_Report_DuplicateLines_And_Percentage_Simple_Case()
         {
-            canvas.Duplicates.Add(new Duplicate(1,10, new Location("fileA.cs"), new Duplicate(1, 10, new Location("fileB.cs"))));
+            canvas.AddDuplicate(new Duplicate(1,10, new Location("fileA.cs"), new Duplicate(1, 10, new Location("fileB.cs"))));
             canvas.LinesOfCode.Should().Be(100);
             canvas.DuplicateLines.Should().Be(1);
             canvas.DuplicatePercentage.Should().Be(0.01d);
         }
 
         [Test]
-        public void Should_Report_DuplicateLines_And_Percentage_Large_Duplicate_Case()
+        public void Should_Report_DuplicateLines_And_Percentage_But_Not_Add_Duplicates_Which_are_not_Mine()
         {
-            canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileA.cs")));
-            canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileB.cs")));
-            canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileC.cs")));
-            canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileD.cs")));
-            canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileE.cs")));
-            canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileF.cs")));
-            canvas.Duplicates.Add(new Duplicate(20, 10, new Location("fileG.cs")));
+            canvas.AddDuplicate(new Duplicate(20, 10, new Location("fileA.cs")));
+            canvas.AddDuplicate(new Duplicate(20, 10, new Location("fileB.cs")));
+            canvas.AddDuplicate(new Duplicate(20, 10, new Location("fileC.cs")));
+            canvas.AddDuplicate(new Duplicate(20, 10, new Location("fileD.cs")));
+            canvas.AddDuplicate(new Duplicate(20, 10, new Location("fileE.cs")));
+            canvas.AddDuplicate(new Duplicate(20, 10, new Location("fileF.cs")));
+            canvas.AddDuplicate(new Duplicate(20, 10, new Location("fileG.cs")));
             canvas.LinesOfCode.Should().Be(100);
             canvas.DuplicateLines.Should().Be(20);
             canvas.DuplicatePercentage.Should().Be(0.20d);
+            canvas.Duplicates.Count.Should().Be(1);
         }
+
+        [Test]
+        public void Should_Report_DuplicateLines_And_Percentage_If_Over_100_Percent()
+        {
+            canvas.AddDuplicate(new Duplicate(20, 0, new Location("fileA.cs")));
+            canvas.AddDuplicate(new Duplicate(20, 20, new Location("fileA.cs")));
+            canvas.AddDuplicate(new Duplicate(20, 40, new Location("fileA.cs")));
+            canvas.AddDuplicate(new Duplicate(20, 60, new Location("fileA.cs")));
+            canvas.AddDuplicate(new Duplicate(20, 70, new Location("fileA.cs")));
+            
+            canvas.AddDuplicate(new Duplicate(10, 10, new Location("fileA.cs")));//another duplicate block at the start
+
+            canvas.LinesOfCode.Should().Be(100);
+            canvas.DuplicateLines.Should().Be(110);
+            canvas.DuplicatePercentage.Should().Be(1.10d);
+            canvas.Duplicates.Count.Should().Be(6);
+        }
+
+
 
         [Test]
         public void ShouldApplyLargestMetricWhenPhysicalPathMatches()
