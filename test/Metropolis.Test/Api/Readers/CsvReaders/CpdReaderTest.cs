@@ -39,11 +39,26 @@ namespace Metropolis.Test.Api.Readers.CsvReaders
 
             codebase.InstanceCount().Should().Be(2);
             codebase.AllInstances[0].DuplicateLines.Should().Be(47);
+            codebase.AllInstances[0].PhysicalPath.Path.Should()
+                .Be(@"C:\Dev\disruptor\src\perftest\java\com\lmax\disruptor\sequenced\ThreeToOneSequencedBatchThroughputTest.java");
             codebase.AllInstances[0].Duplicates.Count.Should().Be(1);
+
+
+            codebase.AllInstances[0].Duplicates[0].LineNumber.Should().Be(106);
             codebase.AllInstances[0].Duplicates[0].CopyCats.Length.Should().Be(1);
+            codebase.AllInstances[0].Duplicates[0].CopyCats[0].LineNumber.Should().Be(104);
+            codebase.AllInstances[0].Duplicates[0].CopyCats[0].Location.Path.Should()
+                .Be(@"C:\Dev\disruptor\src\perftest\java\com\lmax\disruptor\sequenced\ThreeToOneSequencedThroughputTest.java");
+
             codebase.AllInstances[1].DuplicateLines.Should().Be(47);
+            codebase.AllInstances[1].PhysicalPath.Path.Should()
+                .Be(@"C:\Dev\disruptor\src\perftest\java\com\lmax\disruptor\sequenced\ThreeToOneSequencedThroughputTest.java");
             codebase.AllInstances[1].Duplicates.Count.Should().Be(1);
+
             codebase.AllInstances[1].Duplicates[0].CopyCats.Length.Should().Be(1);
+            codebase.AllInstances[1].Duplicates[0].CopyCats[0].LineNumber.Should().Be(106);
+            codebase.AllInstances[1].Duplicates[0].CopyCats[0].Location.Path.Should()
+    .Be(@"C:\Dev\disruptor\src\perftest\java\com\lmax\disruptor\sequenced\ThreeToOneSequencedBatchThroughputTest.java");
         }
 
         [Test]
@@ -55,6 +70,9 @@ namespace Metropolis.Test.Api.Readers.CsvReaders
             codebase.AllInstances[0].DuplicateLines.Should().Be(57);
             codebase.AllInstances[0].Duplicates.Count.Should().Be(2);
             codebase.AllInstances[0].Duplicates[0].CopyCats.Length.Should().Be(1);
+            codebase.AllInstances[0].Duplicates[0].CopyCats[0].Location.Path.Should()
+                .Be(@"C:\Dev\disruptor\src\perftest\java\com\lmax\disruptor\sequenced\ThreeToOneSequencedThroughputTest.java");
+
             codebase.AllInstances[1].DuplicateLines.Should().Be(57);
             codebase.AllInstances[1].Duplicates.Count.Should().Be(2);
             codebase.AllInstances[1].Duplicates[0].CopyCats.Length.Should().Be(1);
