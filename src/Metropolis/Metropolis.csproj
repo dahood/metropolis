@@ -102,10 +102,6 @@
     <Compile Include="Camera\RotationalOperation.cs" />
     <Compile Include="Camera\TransformOperation.cs" />
     <Compile Include="Camera\TranslateOperation.cs" />
-    <Compile Include="AutoComplete\CustomTemplateSelector.cs" />
-    <Compile Include="AutoComplete\FileSuggestionProvider.cs" />
-    <Compile Include="AutoComplete\FolderSuggestionProvider.cs" />
-    <Compile Include="AutoComplete\FileSystemSuggestionProvider.cs" />
     <Compile Include="Controllers\CsharpCollectionController.cs" />
     <Compile Include="ITipOfTheDayFactory.cs" />
     <Compile Include="Models\AbstractHeatMap.cs" />
@@ -127,8 +123,6 @@
     <Compile Include="Layout\MagnetoLayout.cs" />
     <Compile Include="Layout\SquaredLayout.cs" />
     <Compile Include="Models\LinearScale.cs" />
-    <Compile Include="AutoComplete\RequiredValidationRule.cs" />
-    <Compile Include="AutoComplete\FileIconConverter.cs" />
     <Compile Include="TipOfTheDay\CameraControlToolTip.cs" />
     <Compile Include="TipOfTheDay\CSharpTipOfTheDay.cs" />
     <Compile Include="TipOfTheDay\EcmaScriptTipOfTheDay.cs" />

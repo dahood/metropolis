@@ -3,70 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:autoComplete="clr-namespace:Metropolis.AutoComplete"
              xmlns:wpfControls="http://wpfcontrols.com/"
              mc:Ignorable="d" d:DesignWidth="300" Width="550" Height="auto">
-    <UserControl.Resources>
-        <autoComplete:FolderSuggestionProvider x:Key="foldersp" />
-        <autoComplete:FileSuggestionProvider x:Key="filesp" />
-        <autoComplete:FileIconConverter x:Key="FileIconConverter"/>
-        <DataTemplate x:Key="fsTemplate">
-            <Border Padding="5">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Image Grid.RowSpan="2"
-                           Width="16"
-                           Height="16"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Source="{Binding Converter={StaticResource FileIconConverter}}"/>
-                    <TextBlock Text="{Binding Path=Name}"
-                               FontWeight="Bold" 
-                               Grid.Column="1" 
-                               Grid.Row="0"
-                               FontFamily="Segoe UI"
-                               VerticalAlignment="Bottom"/>
-                    <TextBlock Text="{Binding Path=LastWriteTime, StringFormat='Last Modified: {0}'}"
-                               Grid.Column="1"
-                               Grid.Row="1"
-                               VerticalAlignment="Top"/>
-                </Grid>
-            </Border>
-        </DataTemplate>
-        <DataTemplate x:Key="dirTemplate">
-            <Border Padding="5">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Image Width="16"
-                           Height="16"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Source="{Binding Converter={StaticResource FileIconConverter}}"/>
-                    <TextBlock Text="{Binding Path=Name}"
-                               FontWeight="SemiBold" 
-                               Grid.Column="1" 
-                               Grid.Row="0"
-                               FontFamily="Segoe UI"
-                               FontSize="14"
-                               VerticalAlignment="Center"/>
-
-                </Grid>
-            </Border>
-        </DataTemplate>
-        <autoComplete:CustomTemplateSelector x:Key="CustomTemplateSelector"
-                                      FileTemplate="{StaticResource fsTemplate}"
-                                      DirectoryTemplate="{StaticResource dirTemplate}"/>
-    </UserControl.Resources>    
     <StackPanel>
         <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,5">
             <TextBlock x:Name="CSharpSourceLabel" Text="Source Directory:" Width="210" VerticalAlignment="Center"
