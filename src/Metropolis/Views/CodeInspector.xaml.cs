@@ -10,7 +10,7 @@ using Metropolis.ViewModels;
 namespace Metropolis.Views
 {
     /// <summary>
-    /// Interaction logic for CodeInspector.xaml
+    ///  Inspect aspects of code and view source file itself
     /// </summary>
     public partial class CodeInspector : Window
     {
@@ -64,11 +64,6 @@ namespace Metropolis.Views
                 default:
                     return "javascript.xshd";
             }
-        }
-
-        private void InstanceViewer_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

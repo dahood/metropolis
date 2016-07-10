@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="Metropolis.Views.UserControls.DuplicateViewPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             Height="610" Width="1100">
+    <StackPanel>
+        <StackPanel.Resources>
+            
+            <HierarchicalDataTemplate x:Key="CopyCatTemplate" >
+                <StackPanel>
+                    <TextBlock>Copy Cat at </TextBlock>
+                    <TextBlock FontStyle="Italic" Text="{Binding Path=Location}" />
+                    <TextBlock> on line number: </TextBlock>
+                    <TextBlock FontStyle="Italic" Text="{Binding Path=LineNumber}" />
+                </StackPanel>
+            </HierarchicalDataTemplate>
+            
+            <HierarchicalDataTemplate x:Key="DuplicateTemplate" 
+                                      ItemsSource="{Binding Path=CopyCats}" 
+                                      ItemTemplate="{StaticResource CopyCatTemplate}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Duplicate on Line Number: </TextBlock>
+                    <TextBlock Foreground='Blue' Text='{Binding LineNumber}' />
+                    <TextBlock> containing </TextBlock>
+                    <TextBlock Foreground='Red' Text='{Binding LinesOfCode}' />
+                    <TextBlock> lines of code</TextBlock>
+                    <TextBlock> and having children: </TextBlock>
+                    <TextBlock Foreground='Red' Text='{Binding CopyCats.Length}' />
+                </StackPanel>
+            </HierarchicalDataTemplate>
+
+        </StackPanel.Resources>
+
+        <TreeView ItemsSource="{Binding}" ItemTemplate="{StaticResource DuplicateTemplate}" />
+        
+    </StackPanel>
+</UserControl> 
