@@ -1,51 +1,38 @@
 ﻿using System;
 using FluentAssertions;
 using Metropolis.Api.Analyzers.Toxicity;
+using Metropolis.Api.Domain;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Analyzers.Toxicity
 {
     [TestFixture]
-    public class CSharpToxicityAnalyzerTest
-    {
-        private CSharpToxicityAnalyzer analyzer;
-        const int ThresholdExceeded = 2;
+    public class CSharpToxicityAnalyzerTest : AbstractToxicityAnalyzerTest<CSharpToxicityAnalyzer>
+    {    
+        protected override int ThresholdNumberOfMembers => CSharpToxicityAnalyzer.ThresholdNumberOfMethods;
+        protected override int ThresholdCyclomaticComplexity => CSharpToxicityAnalyzer.ThresholdCyclomaticComplexity;
+        protected override int ThresholdMethodLength => CSharpToxicityAnalyzer.ThresholdMethodLength;
 
-        [SetUp]
-        public void SetUp()
-        {
-            analyzer = new CSharpToxicityAnalyzer();
-        }
+        protected override Instance HealthyInstance => AnalyzerFixture.HealthyCSharpInstance;
 
-        [Test]
-        public void NotToxicWhenEverythingIsWithinTheThresholds_NoMembers()
+        protected override Instance CreateHealthyInstance(Action<Instance> initializer)
         {
-            var toAnalyse = AnalyzerFixture.HappyCSharpInstance;
-            var score = analyzer.CalculateToxicity(toAnalyse);
-            score.Toxicity.Should().Be(0);
-        }
-
-        [Test]
-        public void ToxicOn_LinesOfCode_NoMembers()
-        {
-            var toAnalyse = AnalyzerFixture.Create(AnalyzerFixture.HappyCSharpInstance, x => x.LinesOfCode += ThresholdExceeded);
-            var score = analyzer.CalculateToxicity(toAnalyse);
-            score.Toxicity.Should().Be(Math.Log(ThresholdExceeded));
+            return AnalyzerFixture.Initialize(AnalyzerFixture.HealthyCSharpInstance, initializer);
         }
 
         [Test]
         public void ToxicOn_ClassCoupling_NoMembers()
         {
-            var toAnalyse = AnalyzerFixture.Create(AnalyzerFixture.HappyCSharpInstance, x => x.ClassCoupling += ThresholdExceeded);
-            var score = analyzer.CalculateToxicity(toAnalyse);
+            var toAnalyse = CreateHealthyInstance(x => x.ClassCoupling += ThresholdExceeded);
+            var score = Analyzer.CalculateToxicity(toAnalyse);
             score.Toxicity.Should().Be(Math.Log(ThresholdExceeded));
         }
 
         [Test]
         public void ToxicOn_DepthOfInheritance_NoMembers()
         {
-            var toAnalyse = AnalyzerFixture.Create(AnalyzerFixture.HappyCSharpInstance, x => x.DepthOfInheritance += ThresholdExceeded);
-            var score = analyzer.CalculateToxicity(toAnalyse);
+            var toAnalyse = CreateHealthyInstance(x => x.DepthOfInheritance += ThresholdExceeded);
+            var score = Analyzer.CalculateToxicity(toAnalyse);
             score.Toxicity.Should().Be(Math.Log(ThresholdExceeded * CSharpToxicityAnalyzer.DepthOfInheritanceFactor));
         }
     }

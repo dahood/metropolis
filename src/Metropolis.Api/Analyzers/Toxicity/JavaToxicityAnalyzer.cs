@@ -9,20 +9,20 @@ namespace Metropolis.Api.Analyzers.Toxicity
     public class JavaToxicityAnalyzer : ToxicityAnalyzer
     {
         //class level thresholds
-        private const int ThresholdLinesOfCode = 500;
-        private const int ThresholdNumberOfMethods = 20;
-        private const int ThresholdAnonymousInnerClassLength = 35;
-        private const int ThresholdClassDataAbstractionCoupling = 10;
-        private const int ThresholdClassFanOutComplexity = 30;
+        public const int ThresholdLinesOfCode = 500;
+        public const int ThresholdNumberOfMethods = 20;
+        public const int ThresholdAnonymousInnerClassLength = 35;
+        public const int ThresholdClassDataAbstractionCoupling = 10;
+        public const int ThresholdClassFanOutComplexity = 30;
 
         // method level thresholds
-        private const int ThresholdMethodLength = 30;
-        private const int ThresholdCyclomaticComplexity = 15;
-        private const int ThresholdDefaultCase = 0; //not acceptable to miss a default: - could cause unexpected bug
-        private const int ThresholdBooleanComplexity = 3;
-        private const int ThresholdNestedIfDepth = 3;
-        private const int ThresholdNestedTryDepth = 2;
-        private const int ThresholdParameterNumber = 6;
+        public const int ThresholdMethodLength = 30;
+        public const int ThresholdCyclomaticComplexity = 15;
+        public const int ThresholdDefaultCase = 0; //not acceptable to miss a default: - could cause unexpected bug
+        public const int ThresholdBooleanComplexity = 3;
+        public const int ThresholdNestedIfDepth = 3;
+        public const int ThresholdNestedTryDepth = 2;
+        public const int ThresholdParameterNumber = 6;
 
 
         public override ToxicityScore CalculateToxicity(Instance instanceToScore)
