@@ -8,24 +8,22 @@ using NUnit.Framework;
 namespace Metropolis.Test.Api.Analyzers.Toxicity
 {
     [TestFixture]
-    public class JavaToxicityAnalyzerTest : AbstractToxicityAnalyzerTest<JavaToxicityAnalyzer>
+    public class EcmaToxicityAnalyzerTest : AbstractToxicityAnalyzerTest<JavascriptToxicityAnalyzer>
     {
-        protected override int ThresholdNumberOfMembers => JavaToxicityAnalyzer.ThresholdNumberOfMethods;
-        protected override int ThresholdCyclomaticComplexity => JavaToxicityAnalyzer.ThresholdCyclomaticComplexity;
-        protected override int ThresholdMethodLength => JavaToxicityAnalyzer.ThresholdMethodLength;
-
-        protected override Instance HealthyInstance => AnalyzerFixture.HealthJavaInstance;
-
+        protected override int ThresholdNumberOfMembers => JavascriptToxicityAnalyzer.ThresholdNumberOfMethods;
+        protected override int ThresholdMethodLength => JavascriptToxicityAnalyzer.ThresholdMethodLength;
+        protected override int ThresholdCyclomaticComplexity => JavascriptToxicityAnalyzer.ThresholdCyclomaticComplexity;
+        protected override Instance HealthyInstance => AnalyzerFixture.HealthEcmaInstance;
         protected override Instance CreateHealthyInstance(Action<Instance> initializer)
         {
-            return AnalyzerFixture.Initialize(AnalyzerFixture.HealthJavaInstance, initializer);
+            return AnalyzerFixture.Initialize(AnalyzerFixture.HealthEcmaInstance, initializer);
         }
 
         [Test]
         public void Healthy_NumberOfMembers()
         {
             var toAnalyse = HealthyInstance;
-            ThresholdNumberOfMembers.ForEach(x => toAnalyse.WithHealthyMember<JavaToxicityAnalyzer>($"Member{x}"));
+            ThresholdNumberOfMembers.ForEach(x => toAnalyse.WithHealthyMember<JavascriptToxicityAnalyzer>($"Member{x}"));
 
             var score = Analyzer.CalculateToxicity(toAnalyse);
             score.Toxicity.Should().Be(0);
@@ -35,7 +33,7 @@ namespace Metropolis.Test.Api.Analyzers.Toxicity
         public void ToxicOn_NumberOfMembers()
         {
             var toAnalyse = HealthyInstance;
-            (ThresholdNumberOfMembers + 1).ForEach(x => toAnalyse.WithHealthyMember<JavaToxicityAnalyzer>($"Member{x}"));
+            (ThresholdNumberOfMembers + 1).ForEach(x => toAnalyse.WithHealthyMember<JavascriptToxicityAnalyzer>($"Member{x}"));
 
             var score = Analyzer.CalculateToxicity(toAnalyse);
             score.Toxicity.Should().Be(Math.Log(1));
@@ -52,7 +50,7 @@ namespace Metropolis.Test.Api.Analyzers.Toxicity
         [Test]
         public void NotToxic_WhenEverythingIsWithinTheThresholds_OneMember()
         {
-            var toAnalyse = HealthyInstance.WithHealthyMember<JavaToxicityAnalyzer>("ToString");
+            var toAnalyse = HealthyInstance.WithHealthyMember<JavascriptToxicityAnalyzer>("ToString");
             var score = Analyzer.CalculateToxicity(toAnalyse);
             score.Toxicity.Should().Be(0);
         }
@@ -61,7 +59,7 @@ namespace Metropolis.Test.Api.Analyzers.Toxicity
         public void NotToxic_Member_MethodLengthExceeded()
         {
             var exceededMethodLength = ThresholdMethodLength + ThresholdExceeded;
-            var toAnalyse = HealthyInstance.WithHealthyMember<JavaToxicityAnalyzer>("ToString", exceededMethodLength);
+            var toAnalyse = HealthyInstance.WithHealthyMember<JavascriptToxicityAnalyzer>("ToString", exceededMethodLength);
 
             var score = Analyzer.CalculateToxicity(toAnalyse);
             score.Toxicity.Should().Be(Math.Log(ThresholdExceeded));
@@ -71,7 +69,7 @@ namespace Metropolis.Test.Api.Analyzers.Toxicity
         public void NotToxic_Member_CylcomaticComplexityExceeded()
         {
             var exceededCyclomaticComplexity = ThresholdCyclomaticComplexity + ThresholdExceeded;
-            var toAnalyse = HealthyInstance.WithHealthyMember<JavaToxicityAnalyzer>("ToString", ThresholdMethodLength, exceededCyclomaticComplexity);
+            var toAnalyse = HealthyInstance.WithHealthyMember<JavascriptToxicityAnalyzer>("ToString", ThresholdMethodLength, exceededCyclomaticComplexity);
 
             var score = Analyzer.CalculateToxicity(toAnalyse);
             score.Toxicity.Should().Be(Math.Log(ThresholdExceeded));

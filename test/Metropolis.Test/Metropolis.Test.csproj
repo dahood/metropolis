@@ -78,6 +78,7 @@
     <Compile Include="Api\Analyzers\Toxicity\AbstractToxicityAnalyzerTest.cs" />
     <Compile Include="Api\Analyzers\Toxicity\AnalyzerFixture.cs" />
     <Compile Include="Api\Analyzers\Toxicity\CSharpToxicityAnalyzerTest.cs" />
+    <Compile Include="Api\Analyzers\Toxicity\EcmaToxicityAnalyzerTest.cs" />
     <Compile Include="Api\Analyzers\Toxicity\JavaToxicityAnalyzerTest.cs" />
     <Compile Include="Api\Build\DotNetProjectBuilderTest.cs" />
     <Compile Include="Api\Build\ProjectBuildFactoryTest.cs" />

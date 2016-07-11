@@ -8,15 +8,15 @@ namespace Metropolis.Api.Analyzers.Toxicity
     public class JavascriptToxicityAnalyzer : ToxicityAnalyzer
     {
         // Ecma file level thresholds
-        private const int ThresholdLinesOfCode = 500;
-        private const int ThresholdNumberOfMethods = 20;
+        public const int ThresholdLinesOfCode = 500;
+        public const int ThresholdNumberOfMethods = 20;
         // Function level thresholds
-        private const int ThresholdMethodLength = 30;
-        private const int ThresholdCyclomaticComplexity = 10;
-        private const int ThresholdNumberOfParameters = 5;
-        private const int ThresholdNestedIfDepth = 2;
-        private const int ThresholdMissingDefaultCase = 0;
-        private const int ThresholdNoFallthrough = 0;
+        public const int ThresholdMethodLength = 30;
+        public const int ThresholdCyclomaticComplexity = 10;
+        public const int ThresholdNumberOfParameters = 5;
+        public const int ThresholdNestedIfDepth = 2;
+        public const int ThresholdMissingDefaultCase = 0;
+        public const int ThresholdNoFallthrough = 0;
 
         public override ToxicityScore CalculateToxicity(Instance instanceToScore)
         {
