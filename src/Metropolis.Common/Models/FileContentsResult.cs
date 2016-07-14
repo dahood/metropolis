@@ -4,6 +4,5 @@ namespace Metropolis.Common.Models
     {
         public string FileName { get; set; }
         public string Data { get; set; }
-        public string SyntaxHighlighting { get; set; }
     }
 }

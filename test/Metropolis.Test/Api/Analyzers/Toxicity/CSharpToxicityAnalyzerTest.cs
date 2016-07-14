@@ -2,7 +2,6 @@
 using FluentAssertions;
 using Metropolis.Api.Analyzers.Toxicity;
 using Metropolis.Api.Domain;
-using Metropolis.Api.Extensions;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Analyzers.Toxicity
@@ -20,15 +19,7 @@ namespace Metropolis.Test.Api.Analyzers.Toxicity
         {
             return AnalyzerFixture.Initialize(AnalyzerFixture.HealthyCSharpInstance, initializer);
         }
-
-        [Test]
-        public void ToxicOn_ClassCoupling_NoMembers()
-        {
-            var toAnalyse = CreateHealthyInstance(x => x.ClassCoupling += ThresholdExceeded);
-            var score = Analyzer.CalculateToxicity(toAnalyse);
-            score.Toxicity.Should().Be(Math.Log(ThresholdExceeded));
-        }
-
+        
         [Test]
         public void ToxicOn_DepthOfInheritance_NoMembers()
         {
@@ -38,59 +29,12 @@ namespace Metropolis.Test.Api.Analyzers.Toxicity
         }
 
         [Test]
-        public void Healthy_NumberOfMembers()
+        public void ToxicOn_ClassCoupling_NoMembers()
         {
-            var toAnalyse = HealthyInstance;
-            ThresholdNumberOfMembers.ForEach(x => toAnalyse.WithHealthyMember<CSharpToxicityAnalyzer>($"Member{x}"));
-
-            var score = Analyzer.CalculateToxicity(toAnalyse);
-            score.Toxicity.Should().Be(0);
-        }
-
-        [Test]
-        public void ToxicOn_NumberOfMembers()
-        {
-            var toAnalyse = HealthyInstance;
-            (ThresholdNumberOfMembers + 1).ForEach(x => toAnalyse.WithHealthyMember<CSharpToxicityAnalyzer>($"Member{x}"));
-
-            var score = Analyzer.CalculateToxicity(toAnalyse);
-            score.Toxicity.Should().Be(Math.Log(1));
-        }
-
-        [Test]
-        public void ToxicOn_LinesOfCode_NoMembers()
-        {
-            var toAnalyse = CreateHealthyInstance(x => x.LinesOfCode += ThresholdExceeded);
+            var toAnalyse = CreateHealthyInstance(x => x.ClassCoupling += ThresholdExceeded);
             var score = Analyzer.CalculateToxicity(toAnalyse);
             score.Toxicity.Should().Be(Math.Log(ThresholdExceeded));
         }
 
-        [Test]
-        public void NotToxic_WhenEverythingIsWithinTheThresholds_OneMember()
-        {
-            var toAnalyse = HealthyInstance.WithHealthyMember<CSharpToxicityAnalyzer>("ToString");
-            var score = Analyzer.CalculateToxicity(toAnalyse);
-            score.Toxicity.Should().Be(0);
-        }
-
-        [Test]
-        public void NotToxic_Member_MethodLengthExceeded()
-        {
-            var exceededMethodLength = ThresholdMethodLength + ThresholdExceeded;
-            var toAnalyse = HealthyInstance.WithHealthyMember<CSharpToxicityAnalyzer>("ToString", exceededMethodLength);
-
-            var score = Analyzer.CalculateToxicity(toAnalyse);
-            score.Toxicity.Should().Be(Math.Log(ThresholdExceeded));
-        }
-
-        [Test]
-        public void NotToxic_Member_CylcomaticComplexityExceeded()
-        {
-            var exceededCyclomaticComplexity = ThresholdCyclomaticComplexity + ThresholdExceeded;
-            var toAnalyse = HealthyInstance.WithHealthyMember<CSharpToxicityAnalyzer>("ToString", ThresholdMethodLength, exceededCyclomaticComplexity);
-
-            var score = Analyzer.CalculateToxicity(toAnalyse);
-            score.Toxicity.Should().Be(Math.Log(ThresholdExceeded));
-        }
     }
 }
