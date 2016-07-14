@@ -38,7 +38,7 @@ namespace Metropolis.Views
             HookupEventHandlers();
             
             DataContext = App.ViewModel;
-            LoadDefaultProject();
+            AutoloadLastProject();
         }
 
         public CodeBase CodeBase => App.CodeBase;
@@ -74,10 +74,10 @@ namespace Metropolis.Views
             viewPort.Children.Add(modelVisual3D);
         }
 
-        private void LoadDefaultProject()
+        private void AutoloadLastProject()
         {
-            WorkSpaceProvider.LoadDefault();
-            DisplayWorkspaceDetails();
+            if (WorkSpaceProvider.AutoloadLastProject())
+                DisplayWorkspaceDetails();
         }
 
         private void HookupEventHandlers()

@@ -30,5 +30,6 @@ namespace Metropolis
         FileContentsResult GetFileContents(string getPhysicalFilePath);
         void AutoSaveProject(ProjectDetailsViewModel projectDetails);
         void EnsureFolderExists(string screenshotFileName);
+        bool AutoloadLastProject();
     }
 }

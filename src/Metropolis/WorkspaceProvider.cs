@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using CsvHelper;
 using Metropolis.Api.Analyzers.Toxicity;
 using Metropolis.Api.Domain;
@@ -14,16 +15,19 @@ using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
 using Metropolis.ViewModels;
 using Microsoft.Win32;
+using NLog;
 
 namespace Metropolis
 {
     public class WorkspaceProvider : IWorkspaceProvider
     {
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private readonly IAnalysisService analysisService;
         private readonly ICodebaseService codebaseService;
         private readonly IUserPreferences userPreferences;
         private readonly IAutoSaveService autoSaveService;
         private readonly IFileSystem fileSystem;
+
 
         public WorkspaceProvider() : this(new CodebaseService(), new AnalysisServices(), new UserPreferences(), new FileSystem(), new AutoSaveService())
         {
@@ -172,6 +176,33 @@ namespace Metropolis
         public void EnsureFolderExists(string path)
         {
             fileSystem.EnsureDirectoriesExist(path);
+        }
+
+        public bool AutoloadLastProject()
+        {
+            foreach (var each in fileSystem.GetAutloadProjects().Take(5))
+            {
+                if (AttemptProjectLoad(each)) return true;
+            }
+            CodeBase = codebaseService.LoadDefault();
+            return true;
+        }
+
+        private bool AttemptProjectLoad(string projectFile)
+        {
+            try
+            {
+                if (Logger.IsDebugEnabled)
+                    Logger.Debug($"attempting to load autosave project {projectFile}");
+                CodeBase = codebaseService.Load(projectFile);
+                return true;
+            }
+            catch (Exception e)
+            {
+                if (Logger.IsErrorEnabled)
+                Logger.Error($"attempting to load autosave project {projectFile}");
+            }
+            return false;
         }
 
         private static void Apply(CodeBase codeBase, ProjectDetailsViewModel projectDetails)
