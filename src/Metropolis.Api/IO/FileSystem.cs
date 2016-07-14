@@ -70,9 +70,10 @@ namespace Metropolis.Api.IO
             EnsureDirectoriesExist(AutoSaveFolder, ScreenShotFolder);
         }
 
-        public IEnumerable<string> GetAutloadProjects()
+        public IEnumerable<FileInfo> GetAutloadProjects()
         {
-            return Directory.GetFiles(AutoSaveFolder, "AutoSave*.project");
+            return Directory.GetFiles(AutoSaveFolder, "AutoSave*.project")
+                .Select(x => new FileInfo(x)).OrderByDescending(fi => fi.LastWriteTime);
         }
 
         public bool FileExists(string potentialPath)

@@ -188,13 +188,13 @@ namespace Metropolis
             return true;
         }
 
-        private bool AttemptProjectLoad(string projectFile)
+        private bool AttemptProjectLoad(FileInfo projectFile)
         {
             try
             {
                 if (Logger.IsDebugEnabled)
                     Logger.Debug($"attempting to load autosave project {projectFile}");
-                CodeBase = codebaseService.Load(projectFile);
+                CodeBase = codebaseService.Load(projectFile.FullName);
                 return true;
             }
             catch (Exception e)
