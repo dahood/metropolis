@@ -16,7 +16,7 @@ namespace Metropolis.Api.Collection.Steps.AllLanguages
         /// </summary>
         private const int CsharpThreshold = 75;
         private const int EcmaScriptThreshold = 75;
-        private const int JavaThreshold = 75;
+        private const int JavaThreshold = 50;
         private const int DefaultThreshold = 75;
 
         /// <summary>

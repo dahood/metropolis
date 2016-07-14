@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using Metropolis.Api.Build;
 ﻿using System.IO;
+using System.Linq;
 using Metropolis.Api.Domain;
 using Metropolis.Api.IO;
 using Metropolis.Api.Persistence;
@@ -22,9 +23,11 @@ namespace Metropolis.Test.Api.Services
         private Mock<IProjectBuildFactory> projectBuilderFactory;
         private Mock<IFileSystem> fileSystem;
 
+        private const string ProjectName = "myProject";
         private const string FileName = @"C:\\myfolder\mycodebase.project";
         private readonly CodeBase workspace = CodeBase.Empty();
         private readonly StringReader stringReader = new StringReader(FileName);
+
 
         [SetUp]
         public void SetUp()
@@ -82,5 +85,78 @@ namespace Metropolis.Test.Api.Services
             classParser.Setup(x => x.Parse(stringReader)).Returns(workspace);
             codebaseService.Get(stringReader, ParseType.EsLint).Should().BeSameAs(workspace);
         }
+
+        [Test]
+        public void GetBuildPaths()
+        {
+            fileSystem.Setup(x => x.GetIgnoreFilePath(ProjectName)).Returns(@"C:\ignorefile.metropolisIgnore");
+            fileSystem.Setup(x => x.GetProjectBuildFolder(ProjectName)).Returns(@"C:\projectFolder\");
+
+            var paths = codebaseService.GetBuildPaths(ProjectName);
+            paths.Should().NotBeNull();
+            paths.BuildOutputDirectory.Should().Be(@"C:\projectFolder\");
+            paths.IgnoreFile.Should().Be(@"C:\ignorefile.metropolisIgnore");
+        }
+
+        [Test]
+        public void BuildSolution()
+        {
+            var buildArgs = new ProjectBuildArguments {ProjectName = ProjectName, SourceType = RepositorySourceType.CSharp};
+            var builder = CreateMock<IProjectBuilder>();
+
+            fileSystem.Setup(x => x.ProjectBuildFolder).Returns(@"C:\project\build");
+            projectBuilderFactory.Setup(x => x.BuilderFor(buildArgs.SourceType)).Returns(builder.Object);
+            builder.Setup(x => x.Build(buildArgs)).Returns(new ProjectBuildResult());
+
+            var result = codebaseService.BuildSolution(buildArgs);
+
+            result.Should().NotBeNull();
+            buildArgs.BuildOutputFolder.Should().Be(Path.Combine(@"C:\project\build", buildArgs.ProjectName));
+        }
+
+        [Test]
+        public void GetIgnoreFIlesForProject()
+        {
+            var ignoreFiles = new[] {@"c:\ignore1.dll", @"c:\ignore2.exe"};
+            fileSystem.Setup(x => x.ReadIgnoreFile(ProjectName)).Returns(ignoreFiles);
+
+            var results = codebaseService.GetIgnoreFilesForProject(ProjectName);
+            results.Should().NotBeNull();
+            results.Count().Should().Be(2);
+
+            results.First().Should().Be(new FileDto { Name = ignoreFiles.First(), Ignore = true});
+            results.Last().Should().Be(new FileDto {Name = ignoreFiles.Last(), Ignore = true});
+        }
+
+        [Test]
+        public void GetFileResults()
+        {
+            const string filePath = @"c:\theFile.cs";
+            const string fileContents = "this is the file results";
+            fileSystem.Setup(x => x.ReadFile(filePath)).Returns(fileContents);
+
+            var results = codebaseService.GetFileContents(filePath);
+
+            results.Should().NotBeNull();
+            results.FileName.Should().Be(Path.GetFileName(filePath));
+            results.Data.Should().Be(fileContents);
+        }
+
+        [Test]
+        public void WriteIgnoreFile()
+        {
+            var toIgnore = new FileDto {Name = @"c:\ignoreMe.cs"};
+            var ignoreFile = ".metropolisignore";
+            var projectFolder = @"c:\projFolder";
+            var projectBuildFolder = @"C:\project\build";
+
+            fileSystem.Setup(x => x.ProjectBuildFolder).Returns(projectBuildFolder);
+            fileSystem.Setup(x => x.IgnoreFile).Returns(ignoreFile);
+            fileSystem.Setup(x => x.WriteText(Path.Combine(projectFolder, ignoreFile), new[] { toIgnore.Name }));
+            fileSystem.Setup(x => x.WriteText(Path.Combine(projectBuildFolder, ProjectName, ignoreFile), new[] { toIgnore.Name }));
+            
+            codebaseService.WriteIgnoreFile(ProjectName, projectFolder, new [] {toIgnore});
+        }
     }
 }
+

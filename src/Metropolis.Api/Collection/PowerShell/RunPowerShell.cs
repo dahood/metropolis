@@ -17,7 +17,7 @@ namespace Metropolis.Api.Collection.PowerShell
                 StartInfo = new ProcessStartInfo
                 {
                     FileName = "PowerShell.exe",
-                    Arguments = $"-NoProfile -NonInteractive -Command \"{command}\"",
+                    Arguments = $"-NoProfile -NonInteractive -Command \"{command};exit $LastExitCode\"",
                     CreateNoWindow = true,
                     ErrorDialog = false,
                     UseShellExecute = false,

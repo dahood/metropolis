@@ -8,12 +8,12 @@
     <StackPanel>
         <StackPanel.Resources>
             
-            <HierarchicalDataTemplate x:Key="CopyCatTemplate" >
-                <StackPanel>
-                    <TextBlock>Copy Cat at </TextBlock>
-                    <TextBlock FontStyle="Italic" Text="{Binding Path=Location}" />
-                    <TextBlock> on line number: </TextBlock>
-                    <TextBlock FontStyle="Italic" Text="{Binding Path=LineNumber}" />
+            <HierarchicalDataTemplate x:Key="CopyCatTemplate">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Copy cat at&#160;</TextBlock>
+                    <TextBlock Foreground='Blue' FontStyle="Italic" Text="{Binding Path=Location}" />
+                    <TextBlock>&#160;on line number:&#160;</TextBlock>
+                    <TextBlock Foreground='Red' FontStyle="Italic" Text="{Binding Path=LineNumber}" />
                 </StackPanel>
             </HierarchicalDataTemplate>
             
@@ -21,13 +21,13 @@
                                       ItemsSource="{Binding Path=CopyCats}" 
                                       ItemTemplate="{StaticResource CopyCatTemplate}">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock>Duplicate on Line Number: </TextBlock>
-                    <TextBlock Foreground='Blue' Text='{Binding LineNumber}' />
-                    <TextBlock> containing </TextBlock>
-                    <TextBlock Foreground='Red' Text='{Binding LinesOfCode}' />
-                    <TextBlock> lines of code</TextBlock>
-                    <TextBlock> and having children: </TextBlock>
-                    <TextBlock Foreground='Red' Text='{Binding CopyCats.Length}' />
+                    <TextBlock>Duplicate on line number:&#160;</TextBlock>
+                    <TextBlock Foreground='Red' Text='{Binding LineNumber}' />
+                    <TextBlock>&#160;containing&#160;</TextBlock>
+                    <TextBlock Foreground='Blue' Text='{Binding LinesOfCode}' />
+                    <TextBlock>&#160;lines of code. This duplicate has:&#160;</TextBlock>
+                    <TextBlock Foreground='Purple' Text='{Binding CopyCats.Length}' />
+                    <TextBlock>&#160; copy cat(s)</TextBlock>
                 </StackPanel>
             </HierarchicalDataTemplate>
 
