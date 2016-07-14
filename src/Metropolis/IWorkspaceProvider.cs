@@ -23,9 +23,12 @@ namespace Metropolis
         void LoadSourceLinesOfCode(FileInclusion js);
         void Analyze(ProjectDetailsViewModel viewModel);
         bool ShowTips { get; set; }
+        string ScreenShotFolder { get; }
         ProjectBuildResult BuildSolution(ProjectBuildArguments args);
         void CreateIgnoreFile(ProjectDetailsViewModel projectDetails);
         void SetUpDotNetBuild(ProjectDetailsViewModel projectDetails, string solutionFile);
         FileContentsResult GetFileContents(string getPhysicalFilePath);
+        void AutoSaveProject(ProjectDetailsViewModel projectDetails);
+        void EnsureFolderExists(string screenshotFileName);
     }
 }

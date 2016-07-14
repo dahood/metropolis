@@ -4,6 +4,7 @@ using CsvHelper;
 using Metropolis.Api.Analyzers.Toxicity;
 using Metropolis.Api.Domain;
 using Metropolis.Api.IO;
+using Metropolis.Api.IO.AutoSave;
 using Metropolis.Api.Readers;
 using Metropolis.Api.Readers.CsvReaders;
 using Metropolis.Api.Readers.XmlReaders.CheckStyles;
@@ -21,19 +22,23 @@ namespace Metropolis
         private readonly IAnalysisService analysisService;
         private readonly ICodebaseService codebaseService;
         private readonly IUserPreferences userPreferences;
+        private readonly IAutoSaveService autoSaveService;
         private readonly IFileSystem fileSystem;
 
-        public WorkspaceProvider() : this(new CodebaseService(), new AnalysisServices(), new UserPreferences(), new FileSystem())
+        public WorkspaceProvider() : this(new CodebaseService(), new AnalysisServices(), new UserPreferences(), new FileSystem(), new AutoSaveService())
         {
             CodeBase = CodeBase.Empty();
         }
 
-        private WorkspaceProvider(ICodebaseService codebaseService, IAnalysisService analysisService, IUserPreferences userPreferences, IFileSystem fileSystem)
+        private WorkspaceProvider(ICodebaseService codebaseService, IAnalysisService analysisService, IUserPreferences userPreferences, IFileSystem fileSystem,
+            IAutoSaveService autoSaveService)
         {
             this.codebaseService = codebaseService;
             this.analysisService = analysisService;
             this.userPreferences = userPreferences;
             this.fileSystem = fileSystem;
+            this.autoSaveService = autoSaveService;
+            fileSystem.CreateMetropolisSpecialFolders();
         }
 
         public CodeBase CodeBase { get; private set; }
@@ -118,6 +123,8 @@ namespace Metropolis
             set { userPreferences.ShowTipOfTheDay = value; }
         }
 
+        public string ScreenShotFolder => fileSystem.ScreenShotFolder;
+
         public ProjectBuildResult BuildSolution(ProjectBuildArguments args)
         {
             return codebaseService.BuildSolution(args);
@@ -154,6 +161,26 @@ namespace Metropolis
         public FileContentsResult GetFileContents(string physicalFilePath)
         {
             return codebaseService.GetFileContents(physicalFilePath);
+        }
+
+        public void AutoSaveProject(ProjectDetailsViewModel projectDetails)
+        {
+            Apply(CodeBase, projectDetails);            
+            autoSaveService.Save(CodeBase);
+        }
+
+        public void EnsureFolderExists(string path)
+        {
+            fileSystem.EnsureDirectoriesExist(path);
+        }
+
+        private static void Apply(CodeBase codeBase, ProjectDetailsViewModel projectDetails)
+        {
+            codeBase.ProjectFile = projectDetails.ProjectFile;
+            codeBase.ProjectFolder = projectDetails.ProjectFolder;
+            codeBase.IgnoreFile = projectDetails.IgnoreFile;
+            codeBase.SourceBaseDirectory = projectDetails.SourceDirectory;
+            codeBase.SourceType = projectDetails.RepositorySourceType;
         }
 
         private static MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)

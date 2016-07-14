@@ -9,13 +9,16 @@ namespace Metropolis.Api.Domain
         ///     Only support one version of project file for now - we can increment this
         ///     later to warn users that the file needs to be reloaded
         /// </summary>
-        public const int SupportedVersion = 3;
+        public const int SupportedVersion = 4;
 
         public int MetropolisFileVersion => SupportedVersion;
         public string Name { get; set; }
         public string SourceBaseDirectory { get; set; }
         public string SourceCodeLanguage { get; set; }
         public IEnumerable<SerializableClass> Classes { get; set; }
+        public string ProjectFile { get; set; }
+        public string ProjectFolder { get; set; }
+        public string IgnoreFile { get; set; }
     }
 
     public class SerializableClass

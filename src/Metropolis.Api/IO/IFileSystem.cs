@@ -8,8 +8,10 @@ namespace Metropolis.Api.IO
     {
         IEnumerable<DriveInfo> AllDrives { get; }
         string ProjectBuildFolder { get; }
+        string AutoSaveFolder { get; }
         string IgnoreFile { get; }
         string MetricsOutputFolder { get; }
+        string ScreenShotFolder { get; }
         IEnumerable<string> GetFiles(string sourceDirectory, string filter);
         string GetFileName(string fileName);
         void CreateFolder(string targetFolder);
@@ -22,5 +24,7 @@ namespace Metropolis.Api.IO
         string GetProjectBuildFolder(string projectName);
         IEnumerable<string> ReadIgnoreFile(string projectName);
         string ReadFile(string physicalFilePath);
+        void EnsureDirectoriesExist(params string[] autoSaveFolder);
+        void CreateMetropolisSpecialFolders();
     }
 }

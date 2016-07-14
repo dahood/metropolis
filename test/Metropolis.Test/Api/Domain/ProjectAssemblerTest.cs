@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using FluentAssertions;
 using Metropolis.Api.Domain;
+using Metropolis.Api.Persistence;
 using Metropolis.Api.Utilities;
+using Metropolis.Common.Models;
 using Metropolis.Test.Extensions;
 using NUnit.Framework;
 
@@ -43,12 +45,21 @@ namespace Metropolis.Test.Api.Domain
         [Test]
         public void CanSerializeCodeGraph()
         {
-            var source = new CodeGraph(new[] {sourceInstance});
-            var project = ProjectAssembler.Assemble(source);
+            var source = new CodeBase(new CodeGraph(new[] {sourceInstance}))
+                                    {
+                                        ProjectFile = @"c:\proj.file",
+                                        ProjectFolder = @"c:\projFolder\",
+                                        Name = "MyProject",
+                                        IgnoreFile = @"c:\myIgnoreFile.metropolisIgnore",
+                                        SourceType = RepositorySourceType.CSharp,
+                                        SourceBaseDirectory = @"c:\sourceFolder\"
+                                    };
+                
+            var project = ProjectRepository.Get(source);
 
             project.Should().NotBeNull();
 
-            var reconstructed = ProjectAssembler.Disassemble(project);
+            var reconstructed = ProjectRepository.Get(project);
             reconstructed.ReflectionEquals(source, true).Should().BeTrue();
         }
     }

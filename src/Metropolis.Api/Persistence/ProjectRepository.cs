@@ -2,25 +2,15 @@
 using System.IO;
 using System.Reflection;
 using Metropolis.Api.Domain;
-using Metropolis.Common.Models;
 using Newtonsoft.Json;
 
 namespace Metropolis.Api.Persistence
 {
-    public interface IProjectRepository
-    {
-        void Save(CodeBase codebase, string fileName = "C:\\dev\\sample.project");
-        CodeBase Load(string fileName);
-        CodeBase LoadDefault();
-    }
-
     public class ProjectRepository : IProjectRepository
     {
-        public void Save(CodeBase codebase, string fileName = "C:\\dev\\sample.project")
+        public void Save(CodeBase codebase, string fileName)
         {
-            var project = ProjectAssembler.Assemble(codebase.Graph);
-            project.Name = codebase.Name;
-            project.SourceCodeLanguage = codebase.SourceType.ToString();
+            var project = Get(codebase);
             var json = JsonConvert.SerializeObject(project);
             File.WriteAllText(fileName, json);
         }
@@ -29,6 +19,16 @@ namespace Metropolis.Api.Persistence
         {
             VerifyVersionNumber(fileName);
             return CreateCodeBase(File.ReadAllText(fileName));
+        }
+
+        public static Project Get(CodeBase codebase)
+        {
+            return ProjectAssembler.Assemble(codebase);
+        }
+
+        public static CodeBase Get(Project project)
+        {
+            return ProjectDisassembler.Disassemble(project);
         }
 
         public CodeBase LoadDefault()
@@ -58,9 +58,7 @@ namespace Metropolis.Api.Persistence
 
         private static CodeBase CreateCodeBase(string json)
         {
-            var project = JsonConvert.DeserializeObject<Project>(json);
-            var sourceType = (RepositorySourceType) Enum.Parse(typeof(RepositorySourceType), project.SourceCodeLanguage);
-            return new CodeBase(project.Name, ProjectAssembler.Disassemble(project), sourceType);
+            return Get(JsonConvert.DeserializeObject<Project>(json));
         }
     }
 }

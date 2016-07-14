@@ -302,10 +302,7 @@ namespace Metropolis.Views
         {
             using (new WaitCursor())
             {
-                var screenshotFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                    "metro-screenshot" + DateTime.Now.Ticks + ".png");
-                ScaleScreenshot(screenshotFileName, false);
-                Process.Start(screenshotFileName);
+                ScaleScreenshot(withCaption: false);
             }
         }
 
@@ -313,18 +310,17 @@ namespace Metropolis.Views
         {
             using (new WaitCursor())
             {
-                var screenshotFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                    "metro-screenshot" + DateTime.Now.Ticks + ".png");
-                ScaleScreenshot(screenshotFileName, true);
-                Process.Start(screenshotFileName);
+                ScaleScreenshot(withCaption: true);
             }
         }
 
-        private void ScaleScreenshot(string screenshotFileName, bool withCaption)
+        private void ScaleScreenshot(bool withCaption)
         {
             const double wpfDpi = 96; // screen only image quality
             const double targetDpi = 600; // print quality images
             const double scale = targetDpi/wpfDpi;
+
+            var screenshotFileName = Path.Combine(WorkSpaceProvider.ScreenShotFolder, "metro-screenshot" + DateTime.Now.Ticks + ".png");
 
             var bitmap = new RenderTargetBitmap(
                 (int) (scale*(viewPort.ActualWidth + 1)),
@@ -336,6 +332,7 @@ namespace Metropolis.Views
             if (withCaption)
                 AddCaptionToScreenShot(bitmap);
             SaveToPng(screenshotFileName, bitmap);
+            Process.Start(screenshotFileName);
         }
 
         private void AddCaptionToScreenShot(RenderTargetBitmap bitmap)

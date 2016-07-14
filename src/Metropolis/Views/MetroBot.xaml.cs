@@ -24,6 +24,7 @@ namespace Metropolis.Views
         }
 
         public event EventHandler DisplayWorkspaceDetails;
+        public IWorkspaceProvider WorkspaceProvider => App.WorkspaceProvider;
 
         public ProjectDetailsViewModel ProjectDetails { get; }
 
@@ -39,6 +40,7 @@ namespace Metropolis.Views
             {
                 currentView.RunAnalysis();
                 DisplayWorkspaceDetails?.Invoke(this, new EventArgs());
+                WorkspaceProvider.AutoSaveProject(ProjectDetails);
             }
             Spinner.Hide();
             Close();

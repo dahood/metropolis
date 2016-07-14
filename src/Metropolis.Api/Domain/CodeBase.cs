@@ -8,6 +8,9 @@ namespace Metropolis.Api.Domain
     {
         public string Name { get; set; }
         public string SourceBaseDirectory { get; set; }
+        public string ProjectFile { get; set; }
+        public string ProjectFolder { get; set; }
+        public string IgnoreFile { get; set; }
         public RepositorySourceType SourceType { get; set; }
         public CodeGraph Graph { get; }
         public List<Instance> AllInstances => Graph.AllInstances;
@@ -37,7 +40,6 @@ namespace Metropolis.Api.Domain
         }
 
         public int InstanceCount() => Graph.Count;
-
 
         public double AverageToxicity()
         {

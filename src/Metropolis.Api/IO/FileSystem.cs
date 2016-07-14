@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Metropolis.Api.Extensions;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.IO
@@ -26,6 +27,8 @@ namespace Metropolis.Api.IO
 
         IEnumerable<DriveInfo> IFileSystem.AllDrives => DriveInfo.GetDrives();
         public string ProjectBuildFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis", "Build");
+        public string AutoSaveFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Metropolis", "Autosave");
+        public string ScreenShotFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Metropolis", "Screenshots");
 
         public string MetricsOutputFolder
             => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis", "Metrics");
@@ -51,6 +54,20 @@ namespace Metropolis.Api.IO
         public string ReadFile(string physicalFilePath)
         {
             return FileExists(physicalFilePath) ? File.ReadAllText(physicalFilePath) : string.Empty;
+        }
+
+        public void EnsureDirectoriesExist(params string[] paths)
+        {
+            paths.ForEach(target =>
+            {
+                if (Directory.Exists(target)) return;
+                Directory.CreateDirectory(target);
+            });
+        }
+
+        public void CreateMetropolisSpecialFolders()
+        {
+            EnsureDirectoriesExist(AutoSaveFolder, ScreenShotFolder);
         }
 
         public bool FileExists(string potentialPath)
