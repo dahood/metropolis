@@ -17,5 +17,7 @@ namespace Metropolis.Test.Api.Analyzers.Toxicity
         {
             return AnalyzerFixture.Initialize(AnalyzerFixture.HealthEcmaInstance, initializer);
         }
+
+
     }
 }
