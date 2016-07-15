@@ -31,9 +31,7 @@ namespace Metropolis.Api.Services
             this.userPreferences = userPreferences;
             fileSystem.CreateFolder(fileSystem.MetricsOutputFolder);
         }
-
-
-
+        
         public string FxCopMetricsPath => userPreferences.FxCopPath;
 
         public CodeBase Analyze(MetricsCommandArguments details)

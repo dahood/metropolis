@@ -19,7 +19,6 @@ namespace Metropolis
         void RunCsvExport();
         void LoadCheckStyles();
         void LoadEsLintCheckStyles();
-        void LoadDefault();
         void LoadSourceLinesOfCode(FileInclusion js);
         void Analyze(ProjectDetailsViewModel viewModel);
         bool ShowTips { get; set; }

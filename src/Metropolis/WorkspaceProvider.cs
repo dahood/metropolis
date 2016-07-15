@@ -31,11 +31,10 @@ namespace Metropolis
 
         public WorkspaceProvider() : this(new CodebaseService(), new AnalysisServices(), new UserPreferences(), new FileSystem(), new AutoSaveService())
         {
-            CodeBase = CodeBase.Empty();
         }
 
-        private WorkspaceProvider(ICodebaseService codebaseService, IAnalysisService analysisService, IUserPreferences userPreferences, IFileSystem fileSystem,
-            IAutoSaveService autoSaveService)
+        public WorkspaceProvider(ICodebaseService codebaseService, IAnalysisService analysisService, IUserPreferences userPreferences, IFileSystem fileSystem,
+                                 IAutoSaveService autoSaveService)
         {
             this.codebaseService = codebaseService;
             this.analysisService = analysisService;
@@ -43,6 +42,7 @@ namespace Metropolis
             this.fileSystem = fileSystem;
             this.autoSaveService = autoSaveService;
             fileSystem.CreateMetropolisSpecialFolders();
+            CodeBase = CodeBase.Empty();
         }
 
         public CodeBase CodeBase { get; private set; }
@@ -52,7 +52,7 @@ namespace Metropolis
 
         public void Create()
         {
-            CodeBase = new CodeBase(new CodeGraph(new Instance[0]));
+            CodeBase = CodeBase.Empty();
         }
 
         public void Save()
@@ -79,12 +79,7 @@ namespace Metropolis
         {
             CodeBase = codebaseService.Load(fileName);
         }
-
-        public void LoadDefault()
-        {
-            CodeBase = codebaseService.LoadDefault();
-        }
-
+        
         public void LoadCheckStyles()
         {
             OpenFile(fileName =>
@@ -200,7 +195,7 @@ namespace Metropolis
             catch (Exception e)
             {
                 if (Logger.IsErrorEnabled)
-                Logger.Error($"attempting to load autosave project {projectFile}");
+                Logger.Error(e, $"attempting to load autosave project {projectFile}");
             }
             return false;
         }
@@ -214,7 +209,7 @@ namespace Metropolis
             codeBase.SourceType = projectDetails.RepositorySourceType;
         }
 
-        private static MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)
+        public static MetricsCommandArguments BuildArguments(ProjectDetailsViewModel projectDetails)
         {
             return new MetricsCommandArguments
             {
