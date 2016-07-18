@@ -24,6 +24,8 @@ namespace Metropolis.Test.Metropolis
         private Mock<IAutoSaveService> autoSaveService;
         private Mock<IFileSystem> fileSystem;
 
+        private const string ProjectName = "MyProject";
+        private const string ProjectFolder = @"c:\MyProjectFolder";
         private readonly FileInfo autosaveOne = new FileInfo(@"c:\autosave1.project");
         private readonly FileInfo autosaveTwo = new FileInfo(@"c:\autosave2.project");
 
@@ -135,6 +137,66 @@ namespace Metropolis.Test.Metropolis
             codebaseService.Setup(x => x.LoadDefault()).Returns(CodeBase.Empty);
             provider.AutoloadLastProject().Should().BeTrue();
         }
-        
+
+        [Test]
+        public void BuildSolution()
+        {
+            var args = new ProjectBuildArguments();
+            var result = new ProjectBuildResult();
+            codebaseService.Setup(x => x.BuildSolution(args)).Returns(result);
+            provider.BuildSolution(args);
+        }
+
+        [Test]
+        public void DeriveProjectName()
+        {
+            const string path = @"c:\mysolution.sln";
+            provider.DeriveProjectName(path).Should().Be("mysolution");
+        }
+
+        [Test]
+        public void CreateIgnoreFile()
+        {
+            var ignoreFile = new FileDto {Name = "igmore.me"};
+            codebaseService.Setup(x => x.WriteIgnoreFile(ProjectName, ProjectFolder, new[] {ignoreFile}));
+            provider.CreateIgnoreFile(new ProjectDetailsViewModel {ProjectName = ProjectName, ProjectFolder = ProjectFolder, FilesToIgnore = new [] {ignoreFile}});
+        }
+
+        [Test]
+        public void SetUpDotNetBuild()
+        {
+            var ignoreFile = new FileDto { Name = "igmore.me" };
+            var solutionFile = @"c:\nhibernate\nhibernate.sln";
+            var details =new ProjectDetailsViewModel();
+            var buildPaths = new BuildPathsDto {BuildOutputDirectory = @"c:\output", SourceDirectory = @"c:\src", IgnoreFile = @"c:\.ignore"};
+
+            codebaseService.Setup(x => x.GetBuildPaths("nhibernate")).Returns(buildPaths);
+            codebaseService.Setup(x => x.GetIgnoreFilesForProject(@"c:\nhibernate")).Returns(new [] { ignoreFile});
+
+            provider.SetUpDotNetBuild(details, solutionFile);
+
+            details.ProjectName.Should().Be("nhibernate");
+            details.BuildOutputDirectory.Should().Be(@"c:\output");
+            details.SourceDirectory.Should().Be(@"c:\nhibernate");
+            details.IgnoreFile.Should().Be(@"c:\.ignore");
+        }
+
+        [Test]
+        public void GetFileContents()
+        {
+            var sourceFile = @"c:\nhibernate\startup.cs";
+            codebaseService.Setup(x => x.GetFileContents(sourceFile)).Returns(new FileContentsResult {Data = "hi there"});
+            var result = provider.GetFileContents(sourceFile);
+            result.Should().NotBeNull();
+            result.Data.Should().Be("hi there");
+        }
+
+        [Test]
+        public void AutoSaveProject()
+        {
+            var details = new ProjectDetailsViewModel();
+            autoSaveService.Setup(x => x.Save(It.IsNotNull<CodeBase>()));
+            provider.AutoSaveProject(details);
+        }
     }
 }

@@ -167,12 +167,7 @@ namespace Metropolis
             Apply(CodeBase, projectDetails);            
             autoSaveService.Save(CodeBase);
         }
-
-        public void EnsureFolderExists(string path)
-        {
-            fileSystem.EnsureDirectoriesExist(path);
-        }
-
+        
         public bool AutoloadLastProject()
         {
             foreach (var each in fileSystem.GetAutloadProjects().Take(5))

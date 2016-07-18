@@ -28,7 +28,6 @@ namespace Metropolis
         void SetUpDotNetBuild(ProjectDetailsViewModel projectDetails, string solutionFile);
         FileContentsResult GetFileContents(string getPhysicalFilePath);
         void AutoSaveProject(ProjectDetailsViewModel projectDetails);
-        void EnsureFolderExists(string screenshotFileName);
         bool AutoloadLastProject();
     }
 }

@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Domain
 {
-    public class CodeBase
+    public class CodeBase : IEquatable<CodeBase>
     {
         public string Name { get; set; }
         public string SourceBaseDirectory { get; set; }
@@ -67,6 +68,37 @@ namespace Metropolis.Api.Domain
         public static CodeBase Empty()
         {
             return new CodeBase(new CodeGraph(new Instance[0]));
+        }
+
+        public bool Equals(CodeBase other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return string.Equals(Name, other.Name) && string.Equals(SourceBaseDirectory, other.SourceBaseDirectory) &&
+                   string.Equals(ProjectFile, other.ProjectFile) && string.Equals(ProjectFolder, other.ProjectFolder) &&
+                   string.Equals(IgnoreFile, other.IgnoreFile) && SourceType == other.SourceType;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((CodeBase) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = (Name != null ? Name.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (SourceBaseDirectory != null ? SourceBaseDirectory.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (ProjectFile != null ? ProjectFile.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (ProjectFolder != null ? ProjectFolder.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (IgnoreFile != null ? IgnoreFile.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (int) SourceType;
+                return hashCode;
+            }
         }
     }
 }
