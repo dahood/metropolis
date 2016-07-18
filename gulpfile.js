@@ -47,7 +47,7 @@ gulp.task('test', ['compile'], function () {
 
 // Usage: gulp dist -m "patch notes"
 
-gulp.task('dist', ['package', 'version'],  function() {
+gulp.task('dist', ['package'],  function() {
     console.log('Please wait while npm trys to install your release candidate...');
     console.log(exec('npm install . -g').stdout);
     if (argv.m)
@@ -60,12 +60,18 @@ gulp.task('dist', ['package', 'version'],  function() {
     }
 });
 
+// Usage: gulp version -m "patch notes"
+
 gulp.task('version', function() {
     console.log('in version...');
     if (argv.m)
     {
         //this isn't working right now...
-        //console.log(exec('npm version patch').stdout);
+        console.log(exec('npm version patch').stdout);
+        console.log(exec('gulp compile').stdout);
+        console.log(exec('git commit -a -m \'' + argv.m + '\'').stdout);
+        console.log("Pushing to GitHub...");
+        console.log(exec('git push origin master').stdout);
     }
 });
 
