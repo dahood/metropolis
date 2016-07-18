@@ -30,14 +30,11 @@ namespace Metropolis.Api.Collection.PowerShell
             process.Start();
             //TODO: Used Exited event instead of blocking this thread
             // https://msdn.microsoft.com/en-us/library/system.diagnostics.process.exited(v=vs.110).aspx
+            var output = process.StandardOutput.ReadToEnd();
             process.WaitForExit(TimeOut);
 
             if (Logger.IsDebugEnabled)
-            {
-                var readToEnd = process.StandardOutput.ReadToEnd();
-                if (readToEnd.IsNotEmpty())
-                    Logger.Debug(readToEnd);
-            }
+                    Logger.Debug(output);
 
             var error = process.StandardError.ReadToEnd();
             if (error.IsNotEmpty())
