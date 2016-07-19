@@ -46,7 +46,7 @@ gulp.task('test', ['compile'], function () {
 
 // Usage: gulp dist -m "patch notes"
 // Usage: gulp dist (test mode)
-gulp.task('dist',['package', 'compile', 'version'], function() {
+gulp.task('dist',['version', 'compile', 'package'], function() {
 
     console.log('Please wait while npm trys to install your release candidate...');
     console.log(exec('npm install . -g').stdout);
