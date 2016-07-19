@@ -61,6 +61,8 @@ gulp.task('dist', function() {
     {
         console.log("Publishing to npm...");
         console.log(exec('npm publish').stdout);
+        console.log("Pushing to GitHub...");
+        console.log(exec('git push origin master').stdout);
     }
 });
 
