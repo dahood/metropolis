@@ -21,7 +21,7 @@ gulp.task('clean', function () {
   return del(['dist','build']);
 });
 
-gulp.task('compile', function (cb) {
+gulp.task('compile', function () {
   var package = require('./package.json');
   version = package.version;
   console.log('MSBuild Release Configuration: ' + msBuildConfiguration);
@@ -30,7 +30,6 @@ gulp.task('compile', function (cb) {
     buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=0.' 
     + version + ' /maxcpucount';
   console.log(exec(cmd).stdout);
-  cb();
 });
 
 gulp.task('test', ['compile'], function () {
