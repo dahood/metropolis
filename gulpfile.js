@@ -1,5 +1,4 @@
 // Gulp Modules
-var del = require('del');
 var argv = require('yargs').argv;
 var gulp = require('gulp');
 var exec = require('sync-exec');
@@ -17,23 +16,19 @@ gulp.task('default', ['test']);
 
 // Gulp Tasks
 
-gulp.task('clean', function () {
-  return del(['dist','build']);
-});
-
 gulp.task('compile', function () {
   var package = require('./package.json');
   version = package.version;
   console.log('MSBuild Release Configuration: ' + msBuildConfiguration);
   console.log('Version Number: ' + version);
-  var cmd = '"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /p:OutDir=' + 
+  var cmd = '"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /t:Rebuild /p:OutDir=' + 
     buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=0.' 
     + version + ' /maxcpucount';
   console.log(exec(cmd).stdout);
 });
 
 gulp.task('test', ['compile'], function () {
-    return gulp.src(['build\\*.Test.dll'], {read: false})
+    gulp.src(['build\\*.Test.dll'], {read: false})
         .pipe(nunit({
         	noresult: true, //TODO: Fix this
             result: 'build\\Foo.xml',
@@ -76,7 +71,7 @@ gulp.task('version', function() {
 
 gulp.task('package', ['package-collection-cpd', 'package-collection-checkstyle', 
     'package-collection-settings'], function() {
-	return gulp.src(['build\\*.dll', 'build\\*.exe', 'build\\*.config',
+	gulp.src(['build\\*.dll', 'build\\*.exe', 'build\\*.config',
         // exclude all these test files
         '!build\\Metropolis.Test.dll',
         '!build\\FluentAssertions.Core.dll', 
@@ -87,16 +82,16 @@ gulp.task('package', ['package-collection-cpd', 'package-collection-checkstyle',
 });
 
 gulp.task('package-collection-settings', function() {
-    return gulp.src(['build\\Collection\\Settings\\**'])
+    gulp.src(['build\\Collection\\Settings\\**'])
         .pipe(gulp.dest('dist\\Collection\\Settings'));
 });
 
 gulp.task('package-collection-checkstyle', function() {
-     return gulp.src(['build\\Collection\\Binaries\\*.jar'])
+    gulp.src(['build\\Collection\\Binaries\\*.jar'])
         .pipe(gulp.dest('dist\\Collection\\Binaries'));
 });
 
 gulp.task('package-collection-cpd', function() {
-     return gulp.src(['build\\Collection\\Binaries\\cpd\\*.jar'])
+    gulp.src(['build\\Collection\\Binaries\\cpd\\*.jar'])
         .pipe(gulp.dest('dist\\Collection\\Binaries\\cpd'));
 });
