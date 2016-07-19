@@ -60,11 +60,8 @@ gulp.task('dist', ['package', 'version'],  function() {
 gulp.task('version', function() {
     if (argv.m)
     {
-        //this isn't working right now...
         console.log(exec('npm version patch').stdout);
-        //require('child_process').execSync("sleep 2");
         console.log(exec('gulp compile').stdout);
-        //require('child_process').execSync("sleep 3");
         console.log(exec('git commit -a -m \'' + argv.m + '\'').stdout);
         console.log("Pushing to GitHub...");
         console.log(exec('git push origin master').stdout);
@@ -76,7 +73,7 @@ gulp.task('version', function() {
 // use to automate the collection of metrics 
 
 gulp.task('package', ['package-collection-cpd', 'package-collection-checkstyle', 
-    'package-collection-settings', 'compile'], function() {
+    'package-collection-settings'], function() {
 	return gulp.src(['build\\*.dll', 'build\\*.exe', 'build\\*.config',
         // exclude all these test files
         '!build\\Metropolis.Test.dll',
@@ -87,17 +84,17 @@ gulp.task('package', ['package-collection-cpd', 'package-collection-checkstyle',
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('package-collection-settings', ['compile'], function() {
+gulp.task('package-collection-settings', function() {
     return gulp.src(['build\\Collection\\Settings\\**'])
         .pipe(gulp.dest('dist\\Collection\\Settings'));
 });
 
-gulp.task('package-collection-checkstyle', ['compile'], function() {
+gulp.task('package-collection-checkstyle', function() {
      return gulp.src(['build\\Collection\\Binaries\\*.jar'])
         .pipe(gulp.dest('dist\\Collection\\Binaries'));
 });
 
-gulp.task('package-collection-cpd', ['compile'], function() {
+gulp.task('package-collection-cpd', function() {
      return gulp.src(['build\\Collection\\Binaries\\cpd\\*.jar'])
         .pipe(gulp.dest('dist\\Collection\\Binaries\\cpd'));
 });
