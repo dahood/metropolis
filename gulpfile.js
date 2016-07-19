@@ -48,7 +48,7 @@ gulp.task('test', ['compile'], function () {
 // Usage: gulp dist (test mode)
 gulp.task('dist', function() {
     if (argv.m)
-      console.log(exec('gulp version -m \'' + argv.m + '\'').stdout);
+      console.log(exec('gulp version -m \"' + argv.m + '\"').stdout);
     else
       console.log(exec('gulp version').stdout);
 
@@ -73,7 +73,7 @@ gulp.task('version', function() {
         require('child_process').syncExec('sleep 1');
         console.log(exec('gulp compile').stdout);
         require('child_process').syncExec('sleep 2');
-        console.log(exec('git commit -a -m \'' + argv.m + '\'').stdout);
+        console.log(exec('git commit -a -m \"' + argv.m + '\"').stdout);
         console.log("Pushing to GitHub...");
         console.log(exec('git push origin master').stdout);
     }
