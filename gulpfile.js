@@ -47,10 +47,10 @@ gulp.task('test', ['compile'], function () {
 // Usage: gulp dist -m "patch notes"
 // Usage: gulp dist (test mode)
 gulp.task('dist', function() {
-    if (argsv.m)
-      console.log(exec('gulp version').stdout);
+    if (argv.m)
+      console.log(exec('gulp version -m \'' + argv.m + '\'').stdout);
     else
-      console.log(exec('gulp version "' + argv.m + '"').stdout);
+      console.log(exec('gulp version').stdout);
 
     console.log(exec('gulp package').stdout);
 
