@@ -60,10 +60,10 @@ gulp.task('dist', function() {
 
 // Usage: gulp version -m "patch notes"
 gulp.task('version', function() {
-    console.log('Versioning...')
+    console.log('Versioning...');
     if (argv.m)
     {
-        console.log('Versioning...')
+        console.log('Versioning...');
         console.log(exec('npm version patch').stdout);
         console.log(exec('gulp compile').stdout);
         console.log(exec('git commit -a -m \'' + argv.m + '\'').stdout);
@@ -72,7 +72,7 @@ gulp.task('version', function() {
     }
     else
     {
-        console.log('Compiling...')
+        console.log('Compiling...');
         console.log(exec('gulp compile').stdout);
     }
 });
