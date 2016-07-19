@@ -101,10 +101,9 @@ namespace Metropolis.Test.Api.Services
         [Test]
         public void BuildSolution()
         {
-            var buildArgs = new ProjectBuildArguments {ProjectName = ProjectName, SourceType = RepositorySourceType.CSharp};
+            var buildArgs = new ProjectBuildArguments(ProjectName, "blah.sln", RepositorySourceType.CSharp, @"C:\project\build\myProject");
             var builder = CreateMock<IProjectBuilder>();
 
-            fileSystem.Setup(x => x.ProjectBuildFolder).Returns(@"C:\project\build");
             projectBuilderFactory.Setup(x => x.BuilderFor(buildArgs.SourceType)).Returns(builder.Object);
             builder.Setup(x => x.Build(buildArgs)).Returns(new ProjectBuildResult());
 

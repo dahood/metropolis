@@ -1,22 +1,29 @@
 ﻿using System;
-using System.Collections.Specialized;
 
 namespace Metropolis.Common.Models
 {
     public class ProjectBuildArguments : IEquatable<ProjectBuildArguments>
     {
-        public string ProjectName { get; set; }
-        public string ProjectFolder { get; set; }
-        public RepositorySourceType SourceType { get; set; }
-        public string ProjectFile { get; set; }
-        
-        public string BuildOutputFolder { get; set; }
+        public ProjectBuildArguments(string projectName, string projectFile, RepositorySourceType sourceType, string buildFolder)
+        {
+            ProjectName = projectName;
+            ProjectFile = projectFile;
+            SourceType = sourceType;
+            BuildOutputFolder = buildFolder;
+        }
+
+        public string ProjectName { get; }
+
+        public RepositorySourceType SourceType { get; }
+        public string ProjectFile { get; }
+
+        public string BuildOutputFolder { get; }
 
         public bool Equals(ProjectBuildArguments other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(ProjectName, other.ProjectName) && string.Equals(ProjectFolder, other.ProjectFolder) &&
+            return string.Equals(ProjectName, other.ProjectName) &&
                    SourceType == other.SourceType && string.Equals(ProjectFile, other.ProjectFile) &&
                    string.Equals(BuildOutputFolder, other.BuildOutputFolder);
         }
@@ -25,7 +32,7 @@ namespace Metropolis.Common.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((ProjectBuildArguments) obj);
         }
 
@@ -33,11 +40,10 @@ namespace Metropolis.Common.Models
         {
             unchecked
             {
-                var hashCode = (ProjectName != null ? ProjectName.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (ProjectFolder != null ? ProjectFolder.GetHashCode() : 0);
+                var hashCode = ProjectName != null ? ProjectName.GetHashCode() : 0;
                 hashCode = (hashCode*397) ^ (int) SourceType;
-                hashCode = (hashCode*397) ^ (ProjectFile != null ? ProjectFile.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (BuildOutputFolder != null ? BuildOutputFolder.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (ProjectFile?.GetHashCode() ?? 0);
+                hashCode = (hashCode*397) ^ (BuildOutputFolder?.GetHashCode() ?? 0);
                 return hashCode;
             }
         }

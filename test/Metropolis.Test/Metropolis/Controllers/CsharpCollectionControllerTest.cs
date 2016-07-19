@@ -41,11 +41,12 @@ namespace Metropolis.Test.Metropolis.Controllers
         [Test]
         public void RunBuild()
         {
-            var expectedArgs = new ProjectBuildArguments
-                                { SourceType = viewModel.RepositorySourceType, ProjectName = viewModel.ProjectName, ProjectFile = viewModel.ProjectFile };
+            var expectedArgs = new ProjectBuildArguments(viewModel.ProjectName, 
+                viewModel.ProjectFile, viewModel.RepositorySourceType, @"c:\buildfolder");
             var buildResult = new ProjectBuildResult
                                 { BuildFolder = @"C:\folder", Artifacts = new[] {new FileDto {Name = "me.exe"}, new FileDto {Name = "ignore.me"}} };
 
+            wsProvider.Setup(x => x.GetProjectBuildFolder(expectedArgs.ProjectName)).Returns(@"c:\buildfolder");
             wsProvider.Setup(x => x.BuildSolution(expectedArgs)).Returns(buildResult);
 
             view.RaiseBuildRequestEvent();

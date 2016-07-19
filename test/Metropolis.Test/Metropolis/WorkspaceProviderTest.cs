@@ -141,7 +141,7 @@ namespace Metropolis.Test.Metropolis
         [Test]
         public void BuildSolution()
         {
-            var args = new ProjectBuildArguments();
+            var args = new ProjectBuildArguments("d","d",RepositorySourceType.CSharp, "cd");
             var result = new ProjectBuildResult();
             codebaseService.Setup(x => x.BuildSolution(args)).Returns(result);
             provider.BuildSolution(args);

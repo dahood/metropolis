@@ -9,8 +9,7 @@ namespace Metropolis.Api.Build
 {
     public class DotNetProjectBuilder : IProjectBuilder
     {
-        public const string MsBuildCommand = @"&'{0}' '{1}' /p:OutDir='{2}' /maxcpucount";
-        public const string MsBuildCleanCommand = @"&'{0}' '{1}' /t:clean /maxcpucount";
+        public const string MsBuildCommand = @"&'{0}' '{1}' /t:Rebuild /p:OutDir='{2}' /maxcpucount";
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private readonly IFileSystem fileSystem;
         private readonly IRunPowerShell powershell;
@@ -43,16 +42,6 @@ namespace Metropolis.Api.Build
                 Logger.Error(e, "Error occurred trying to exeucte an external process");
                 throw new ApplicationException("Error occurred trying to exeucte an external process", e);
             }
-        }
-
-        public void CleanProject(string projectFile)
-        {
-            powershell.Invoke(GetBuildCleanCommand(projectFile));
-        }
-
-        private string GetBuildCleanCommand(string projectFile)
-        {
-            return MsBuildCleanCommand.FormatWith(userPreferences.MsBuildPath, projectFile);
         }
 
         private string GetBuildCommand(ProjectBuildArguments buildArgs)

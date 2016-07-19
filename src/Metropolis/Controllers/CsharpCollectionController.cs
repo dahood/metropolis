@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Metropolis.Common.Models;
 using Metropolis.ViewModels;
@@ -30,12 +31,8 @@ namespace Metropolis.Controllers
 
         private void RunBuild(object sender, EventArgs e)
         {
-            var args = new ProjectBuildArguments
-            {
-                ProjectName = ProjectDetails.ProjectName,
-                ProjectFile = ProjectDetails.ProjectFile,
-                SourceType = RepositorySourceType.CSharp
-            };
+            var args = new ProjectBuildArguments(ProjectDetails.ProjectName, ProjectDetails.ProjectFile,
+                RepositorySourceType.CSharp, workSpaceProvider.GetProjectBuildFolder(ProjectDetails.ProjectName));
 
              var buildResult = workSpaceProvider.BuildSolution(args);
             view.ShowBuildArtifacts(Consolidate(ProjectDetails.FilesToIgnore, buildResult.Artifacts));

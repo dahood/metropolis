@@ -9,6 +9,7 @@ namespace Metropolis
     {
         CodeBase CodeBase { get; }
         string MetricsOutputFolder { get; }
+        string GetProjectBuildFolder(string projectName);
         bool IsFxcopMetricsInstalled { get; }
         void Create();
         void Save();
@@ -29,5 +30,6 @@ namespace Metropolis
         FileContentsResult GetFileContents(string getPhysicalFilePath);
         void AutoSaveProject(ProjectDetailsViewModel projectDetails);
         bool AutoloadLastProject();
+
     }
 }

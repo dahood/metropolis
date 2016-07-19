@@ -86,7 +86,6 @@
     <Compile Include="Api\Collection\Steps\BaseCompositeCollectionStepTest.cs" />
     <Compile Include="Api\Collection\Steps\CSharp\DotNetCollectionStepsTest.cs" />
     <Compile Include="Api\Collection\Steps\CSharp\DotNetCpdCollectionStepTest.cs" />
-    <Compile Include="Api\Collection\Steps\CSharp\DotProjectCleanStepTest.cs" />
     <Compile Include="Api\Collection\Steps\ECMA\EcmaCollectionStepTest.cs" />
     <Compile Include="Api\Collection\Steps\Java\JavaCollectionStepTest.cs" />
     <Compile Include="Api\Readers\CsvReaders\CpdReaderTest.cs" />

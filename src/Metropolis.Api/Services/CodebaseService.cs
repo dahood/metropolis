@@ -57,7 +57,6 @@ namespace Metropolis.Api.Services
         
         public ProjectBuildResult BuildSolution(ProjectBuildArguments buildArgs)
         {
-            buildArgs.BuildOutputFolder = Path.Combine(fileSystem.ProjectBuildFolder, buildArgs.ProjectName);
             return builderFactory.BuilderFor(buildArgs.SourceType).Build(buildArgs);
         }
 
@@ -101,10 +100,12 @@ namespace Metropolis.Api.Services
 
         public void WriteIgnoreFile(string projectName, string projectFolder, IEnumerable<FileDto> filesToIgnore)
         {
-            var ingoreData = filesToIgnore.Select(x => x.Name);
+            var ignoreData = filesToIgnore.Select(x => x.Name).ToList();
+            var sandboxBuildDirectory = Path.Combine(fileSystem.ProjectBuildFolder, projectName);
+            Directory.CreateDirectory(sandboxBuildDirectory);
 
-            fileSystem.WriteText(Path.Combine(projectFolder, fileSystem.IgnoreFile), ingoreData);
-            fileSystem.WriteText(Path.Combine(fileSystem.ProjectBuildFolder, projectName, fileSystem.IgnoreFile), ingoreData);
+            fileSystem.WriteText(Path.Combine(projectFolder, fileSystem.IgnoreFile), ignoreData);
+            fileSystem.WriteText(Path.Combine(sandboxBuildDirectory, fileSystem.IgnoreFile), ignoreData);
         }
     }
 }

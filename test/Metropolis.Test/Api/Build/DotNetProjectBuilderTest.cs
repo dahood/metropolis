@@ -24,7 +24,7 @@ namespace Metropolis.Test.Api.Build
         {userPreferences = CreateMock<IUserPreferences>();
             runPowerShell = CreateMock<IRunPowerShell>();
             fileSystem = CreateMock<IFileSystem>();
-            args = new ProjectBuildArguments { BuildOutputFolder = @"c:\buildfolder", ProjectName = @"c:\project.sln", SourceType = RepositorySourceType.CSharp };
+            args = new ProjectBuildArguments("foo", @"c:\project.sln", RepositorySourceType.CSharp, @"c:\buildfolder");
 
             builder = new DotNetProjectBuilder(userPreferences.Object, runPowerShell.Object, fileSystem.Object);
         }
@@ -44,17 +44,5 @@ namespace Metropolis.Test.Api.Build
             result.Should().NotBeNull();
             result.Artifacts.Should().Contain(buildArtifacts);
         }
-
-        [Test]
-        public void CleanProject()
-        {
-            var projectFile = @"c:\metropolis\metropolis.sln";
-            userPreferences.Setup(x => x.MsBuildPath).Returns(@"c:\build.exe");
-
-            runPowerShell.Setup(x => x.Invoke(DotNetProjectBuilder.MsBuildCleanCommand.FormatWith(@"c:\build.exe", projectFile)));
-
-            builder.CleanProject(projectFile);
-        }
-
     }
 }

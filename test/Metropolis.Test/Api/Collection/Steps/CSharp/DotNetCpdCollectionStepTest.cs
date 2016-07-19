@@ -11,6 +11,6 @@ namespace Metropolis.Test.Api.Collection.Steps.CSharp
     public class DotNetCpdCollectionStepTest : BaseCompositeCollectionStepTest<DotNetCpdCollectionStep>
     {
         protected override IEnumerable<ICollectionStep> ExpectedSteps =>
-            new ICollectionStep[] {new DotProjectCleanStep(), new CpdCollectionStep(ParseType.CpdCsharp)};
+            new ICollectionStep[] {new DotNetRebuildStep(), new CpdCollectionStep(ParseType.CpdCsharp)};
     }
 }

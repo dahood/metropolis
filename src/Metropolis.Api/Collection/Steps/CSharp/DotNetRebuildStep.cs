@@ -4,22 +4,23 @@ using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Collection.Steps.CSharp
 {
-    public class DotProjectCleanStep : ICollectionStep
+    public class DotNetRebuildStep : ICollectionStep
     {
         private readonly IProjectBuilder projectBuilder;
 
-        public DotProjectCleanStep() : this(new DotNetProjectBuilder())
+        public DotNetRebuildStep() : this(new DotNetProjectBuilder())
         {
         }
 
-        public DotProjectCleanStep(IProjectBuilder projectBuilder)
+        public DotNetRebuildStep(IProjectBuilder projectBuilder)
         {
             this.projectBuilder = projectBuilder;
         }
 
         public IEnumerable<MetricsResult> Run(MetricsCommandArguments args)
         {
-            projectBuilder.CleanProject(args.ProjectFile);
+            var buildArgs = new ProjectBuildArguments(args.ProjectName, args.ProjectFile, args.RepositorySourceType, args.BuildOutputFolder);
+            projectBuilder.Build(buildArgs);
             return MetricsResult.Empty();
         }
     }
