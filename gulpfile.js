@@ -21,7 +21,7 @@ gulp.task('clean', function () {
   return del(['dist','build']);
 });
 
-gulp.task('compile', function (cb) {
+gulp.task('compile', function () {
   var package = require('./package.json');
   version = package.version;
   console.log('MSBuild Release Configuration: ' + msBuildConfiguration);
@@ -30,7 +30,6 @@ gulp.task('compile', function (cb) {
     buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=0.' 
     + version + ' /maxcpucount';
   console.log(exec(cmd).stdout);
-  cb();
 });
 
 gulp.task('test', ['compile'], function () {
@@ -68,7 +67,9 @@ gulp.task('version', function() {
     {
         //this isn't working right now...
         console.log(exec('npm version patch').stdout);
+        require('child_process').execSync("sleep 2");
         console.log(exec('gulp compile').stdout);
+        require('child_process').execSync("sleep 3");
         console.log(exec('git commit -a -m \'' + argv.m + '\'').stdout);
         console.log("Pushing to GitHub...");
         console.log(exec('git push origin master').stdout);
