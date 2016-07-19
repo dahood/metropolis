@@ -57,6 +57,7 @@ gulp.task('dist',['package', 'compile', 'version'], function() {
         console.log("Publishing to npm...");
         console.log(exec('npm publish').stdout);
         console.log("Pushing to GitHub...");
+        console.log(exec('git commit -a -m \"' + argv.m + '\"').stdout);
         console.log(exec('git push origin master').stdout);
     }
 });
@@ -67,7 +68,6 @@ gulp.task('version', function() {
     {
         console.log('Versioning...');
         console.log(exec('npm version patch').stdout);
-        console.log(exec('git commit -a -m \"' + argv.m + '\"').stdout);
     }
 });
 
