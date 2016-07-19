@@ -65,7 +65,9 @@ gulp.task('version', function() {
     {
         console.log('Versioning...');
         console.log(exec('npm version patch').stdout);
+        require('child_process').syncExec('sleep 1');
         console.log(exec('gulp compile').stdout);
+        require('child_process').syncExec('sleep 2');
         console.log(exec('git commit -a -m \'' + argv.m + '\'').stdout);
         console.log("Pushing to GitHub...");
         console.log(exec('git push origin master').stdout);
