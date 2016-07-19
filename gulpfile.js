@@ -66,7 +66,6 @@ gulp.task('dist', function() {
 
 // Usage: gulp version -m "patch notes"
 gulp.task('version', function() {
-    console.log('Versioning...');
     if (argv.m)
     {
         console.log('Versioning...');
