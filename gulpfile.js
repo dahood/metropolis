@@ -1,4 +1,5 @@
 // Gulp Modules
+var del = require('del');
 var argv = require('yargs').argv;
 var gulp = require('gulp');
 var exec = require('sync-exec');
@@ -69,8 +70,8 @@ gulp.task('version', function() {
 // Collection Binaries (e.g. checkstyle .jar) for eslint, checkstyle, fxcop, etc that parsers 
 // use to automate the collection of metrics 
 
-gulp.task('package', ['package-collection-cpd', 'package-collection-checkstyle', 
-    'package-collection-settings'], function() {
+gulp.task('package', ['package-clean', 'package-collection-cpd', 'package-collection-checkstyle', 
+    'package-collection-settings'], function() {   
 	gulp.src(['build\\*.dll', 'build\\*.exe', 'build\\*.config',
         // exclude all these test files
         '!build\\Metropolis.Test.dll',
@@ -80,6 +81,10 @@ gulp.task('package', ['package-collection-cpd', 'package-collection-checkstyle',
         '!build\\Moq.dll'])
         .pipe(gulp.dest('dist'));
 });
+
+gulp.task('package-clean'), function(){
+  del(['dist']);
+}
 
 gulp.task('package-collection-settings', function() {
     gulp.src(['build\\Collection\\Settings\\**'])

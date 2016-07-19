@@ -8,7 +8,7 @@ namespace Metropolis.Api.Collection.Steps.CSharp
 {
     public class FxCopCollectionTask : IFxCopCollectionTask
     {
-        public const string CommandTemplate = @"&'{0}'/f:'{1}' /o:'{2}' ";
+        public const string CommandTemplate = @"&'{0}' /f:'{1}' /o:'{2}' ";
 
         private readonly IFileSystem fileSystem;
         private readonly IUserPreferences userPreferences;
