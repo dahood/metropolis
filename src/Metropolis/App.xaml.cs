@@ -1,6 +1,8 @@
-﻿using Metropolis.Api.Domain;
+﻿using System;
+using Metropolis.Api.Domain;
 using Metropolis.ViewModels;
 using Metropolis.Views;
+using NLog;
 
 namespace Metropolis
 {
@@ -9,6 +11,7 @@ namespace Metropolis
     /// </summary>
     public partial class App
     {
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private static ProgressLog _progressLog;
 
         private App()
@@ -19,6 +22,8 @@ namespace Metropolis
                 WorkspaceProvider = new WorkspaceProvider();
             if (ViewModel == null)
                 ViewModel = new ProjectDetailsViewModel();
+
+            AppDomain.CurrentDomain.UnhandledException += UniversalErrorHandle;
         }
 
         public static CodeBase CodeBase => WorkspaceProvider.CodeBase;
@@ -34,6 +39,12 @@ namespace Metropolis
         public static void HideLog()
         {
             _progressLog.Hide();
+        }
+        static void UniversalErrorHandle(object sender, UnhandledExceptionEventArgs args)
+        {
+            var e = (Exception) args.ExceptionObject;
+            Logger.Fatal(e);
+            Logger.Fatal($"Runtime terminating: {args.IsTerminating}");
         }
     }
 }
