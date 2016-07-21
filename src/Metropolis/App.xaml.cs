@@ -1,4 +1,8 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
+using System.Windows;
+using System.Windows.Threading;
 using Metropolis.Api.Domain;
 using Metropolis.ViewModels;
 using Metropolis.Views;
@@ -23,8 +27,10 @@ namespace Metropolis
             if (ViewModel == null)
                 ViewModel = new ProjectDetailsViewModel();
 
-            AppDomain.CurrentDomain.UnhandledException += UniversalErrorHandle;
+            Dispatcher.UnhandledException += OnDispatcherUnhandledException;
         }
+
+
 
         public static CodeBase CodeBase => WorkspaceProvider.CodeBase;
         public static IWorkspaceProvider WorkspaceProvider { get; private set; }
@@ -40,11 +46,13 @@ namespace Metropolis
         {
             _progressLog.Hide();
         }
-        static void UniversalErrorHandle(object sender, UnhandledExceptionEventArgs args)
+
+        private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            var e = (Exception) args.ExceptionObject;
-            Logger.Fatal(e);
-            Logger.Fatal($"Runtime terminating: {args.IsTerminating}");
+            Logger.Fatal(e.Exception);
+            MessageBox.Show(e.Exception.Message + "Please check logfile in " + Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), 
+                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            e.Handled = true;
         }
     }
 }
