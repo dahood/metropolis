@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -27,7 +28,7 @@ namespace Metropolis
             if (ViewModel == null)
                 ViewModel = new ProjectDetailsViewModel();
 
-            Dispatcher.UnhandledException += OnDispatcherUnhandledException;
+            Dispatcher.UnhandledException += GlobalErrorHandle;
         }
 
 
@@ -47,11 +48,17 @@ namespace Metropolis
             _progressLog.Hide();
         }
 
-        private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        private static void GlobalErrorHandle(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             Logger.Fatal(e.Exception);
-            MessageBox.Show(e.Exception.Message + "Please check logfile in " + Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), 
-                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            var directoryName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            MessageBox.Show(e.Exception.Message + Environment.NewLine + 
+                "After you select okay we will open the folder with log files using path: " + Environment.NewLine +
+                directoryName, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            if (directoryName != null)
+                Process.Start("explorer.exe", Path.Combine(directoryName, "logs"));
+
             e.Handled = true;
         }
     }
