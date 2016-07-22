@@ -24,5 +24,9 @@ namespace Metropolis.Test.Api.Collection.Steps.AllLanguages
         {
             runBadCommand = true;
         }
+        public override string ValidateMetricResults(string fileNametoValidate)
+        {
+            return string.Empty;
+        }
     }
 }

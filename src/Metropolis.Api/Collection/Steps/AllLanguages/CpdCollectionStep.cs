@@ -42,6 +42,12 @@ namespace Metropolis.Api.Collection.Steps.AllLanguages
         public override string Extension => ".csv";
         public override ParseType ParseType { get; }
 
+        public override string ValidateMetricResults(string fileNametoValidate)
+        {
+            //TODO: validate cpd output somehow...this usually works
+            return string.Empty;
+        }
+
         public override string PrepareCommand(MetricsCommandArguments args, MetricsResult result)
         {
             var tokenThreshold = GetThreshold();

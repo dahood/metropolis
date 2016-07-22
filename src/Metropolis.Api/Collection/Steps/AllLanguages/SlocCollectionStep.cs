@@ -24,5 +24,11 @@ namespace Metropolis.Api.Collection.Steps.AllLanguages
         {
             return SlocCommand.FormatWith(GetNodeBinPath(), args.SourceDirectory, result.MetricsFile);
         }
+
+        public override string ValidateMetricResults(string fileNametoValidate)
+        {
+            //TODO: validate sloc output somehow...this usually works
+            return string.Empty;
+        }
     }
 }

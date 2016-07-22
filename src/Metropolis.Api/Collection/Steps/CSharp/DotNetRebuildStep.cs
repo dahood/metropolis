@@ -23,5 +23,11 @@ namespace Metropolis.Api.Collection.Steps.CSharp
             projectBuilder.Build(buildArgs);
             return MetricsResult.Empty();
         }
+
+        public string ValidateMetricResults(string fileNametoValidate)
+        {
+            //TODO: validate msbuild output - but there is no file here so does this make sense???
+            return string.Empty;
+        }
     }
 }

@@ -25,5 +25,10 @@ namespace Metropolis.Api.Collection.Steps.CSharp
             assemblyCollection.GatherAssemblies(args).AsParallel().ForAll(x => results.Add(metricsTask.Run(args, x)));
             return results;
         }
+        public string ValidateMetricResults(string fileNametoValidate)
+        {
+            //TODO: validate fxcop output - but there is no file here so does this make sense???
+            return string.Empty;
+        }
     }
 }

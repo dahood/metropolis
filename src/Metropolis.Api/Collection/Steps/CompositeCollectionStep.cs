@@ -26,5 +26,9 @@ namespace Metropolis.Api.Collection.Steps
             Commands.AsParallel().ForAll(x => results.AddRange(x.Run(args)));
             return results;
         }
+        public string ValidateMetricResults(string fileNametoValidate)
+        {
+            return string.Empty;
+        }
     }
 }

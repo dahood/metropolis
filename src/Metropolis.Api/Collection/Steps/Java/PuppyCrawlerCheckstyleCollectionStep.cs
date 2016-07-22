@@ -36,5 +36,11 @@ namespace Metropolis.Api.Collection.Steps.Java
 
             return cmd;
         }
+
+        public override string ValidateMetricResults(string fileNametoValidate)
+        {
+            //TODO: validate checkstyle output somehow...this usually works
+            return string.Empty;
+        }
     }
 }

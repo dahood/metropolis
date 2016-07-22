@@ -26,8 +26,16 @@ namespace Metropolis.Api.Collection.Steps
             var result = MetricResultFor(args);
             var command = PrepareCommand(args, result);
             SaveAndExecuteCommand(args, command);
+            var validationResult = ValidateMetricResults(GetOutputFile(args));
+            if (validationResult != string.Empty)
+            {
+                Logger.Error("Step Validation Error for " + validationResult);
+                throw new ApplicationException("Step Validation Error for " + validationResult);
+            }
             return new[] {result};
         }
+
+        public abstract string ValidateMetricResults(string fileNametoValidate);
 
         public abstract string PrepareCommand(MetricsCommandArguments args, MetricsResult result);
 
