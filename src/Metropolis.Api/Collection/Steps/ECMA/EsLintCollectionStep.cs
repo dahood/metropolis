@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
 using Metropolis.Api.Collection.PowerShell;
 using Metropolis.Common.Models;
@@ -10,9 +12,10 @@ namespace Metropolis.Api.Collection.Steps.ECMA
         private const string EsLintCommand = @"{0}eslint -c '{1}' '{2}\**' -o '{3}' -f checkstyle";
         private const string IgnorePathPart = " --ignore-path '{0}'";
 
-        
-        private const string ParsingErrorKeyword = "Parsing error: The keyword";
-        private const string ParsingErrorCharacter = "Parsing error: Unexpected character";
+        private static readonly Tuple<string,string> ParsingErrorKeyword =  new Tuple<string, string>("Parsing error: The keyword",
+            "Eslint: Keyword Missing like 'module' for ECMA6.");
+        private static readonly Tuple<string, string> ParsingErrorCharacter = new Tuple<string, string>("Parsing error: Unexpected character", 
+            "Eslint: unexpected chracter like 'apos' for ECMA6."); 
 
         public override string MetricsType => "Eslint";
         public override string Extension => ".xml";
@@ -24,16 +27,25 @@ namespace Metropolis.Api.Collection.Steps.ECMA
 
         public override string ValidateMetricResults(string fileNametoValidate)
         {
+            string validateMetricResults = string.Empty;
             using (var filestream = File.Open(fileNametoValidate, FileMode.Open, FileAccess.Read))
             {
                 using (var reader = new StreamReader(filestream))
                 {
                     var contents = reader.ReadToEnd();
-                    if (contents.Contains(ParsingErrorKeyword))
-                        return "Parsing Error with eslint. Probably the wrong dialect. Check Logs for more details.";
-                    if (contents.Contains(ParsingErrorCharacter))
-                        return "Parsing Error with eslint. Probably something to do with character errors. Check Logs for more details.";
+                    validateMetricResults += Validate(contents, ParsingErrorKeyword);
+                    validateMetricResults += Validate(contents, ParsingErrorCharacter);
                 }
+            }
+            
+            return validateMetricResults;
+        }
+
+        private static string Validate(string contents, Tuple<string, string> parsingErrorKeyword)
+        {
+            if (contents.Contains(parsingErrorKeyword.Item1))
+            {
+                return parsingErrorKeyword.Item2 + Environment.NewLine;
             }
             return string.Empty;
         }
