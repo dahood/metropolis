@@ -2,6 +2,11 @@
 
 Metropolis is a code review and analysis tool that will help you highlight areas of interest or concern. To learn more please visit our [Wiki Home](https://github.com/dahood/metropolis/wiki). 
 
+<a href="https://scan.coverity.com/projects/dahood-metropolis">
+  <img alt="Coverity Scan Build Status"
+       src="https://scan.coverity.com/projects/9653/badge.svg"/>
+</a>
+
 ## How to Install
 
 ### Windows Instructions
