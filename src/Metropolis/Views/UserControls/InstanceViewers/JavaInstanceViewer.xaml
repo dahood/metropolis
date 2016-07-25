@@ -46,7 +46,7 @@
             <TextBlock Grid.Row="8" Grid.Column="0" Text="Class Data Abstraction Coupling"/>
             <TextBlock Grid.Row="8" Grid.Column="1" Text="{Binding Path=ClassDataAbstractionCoupling, Mode=OneWay}" IsEnabled="False"/>
             <!-- AnonymousInnerClassLength -->
-            <TextBlock Grid.Row="9" Grid.Column="0" Text="Anonymous Inner Classes"/>
+            <TextBlock Grid.Row="9" Grid.Column="0" Text="Anonymous Inner Classes (LOC)"/>
             <TextBlock Grid.Row="9" Grid.Column="1" Text="{Binding Path=AnonymousInnerClassLength, Mode=OneWay}" IsEnabled="False"/>
             <!-- Toxicity -->
             <TextBlock Grid.Row="10" Grid.Column="0" Text="Toxicity"/>

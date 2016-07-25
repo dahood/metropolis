@@ -8,7 +8,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.PuppyCrawl.Class
         
         public void Read(Domain.Instance type, CheckStylesItem item)
         {
-            type.AnonymousInnerClassLength = IntParser.Match(item.Message).Value.AsInt();
+            type.AnonymousInnerClassLength += IntParser.Match(item.Message).Value.AsInt();
         }
     }
 }
