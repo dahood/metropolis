@@ -8,7 +8,9 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.PuppyCrawl.Membe
         
         public void Read(Domain.Member member, CheckStylesItem item)
         {
-            member.LinesOfCode = IntParser.Match(item.Message).Value.AsInt();
+            var linesOfCode = IntParser.Match(item.Message).Value.AsInt();
+            member.EndLine = member.StartLine + linesOfCode;
+            member.LinesOfCode = linesOfCode;
         }
     }
 }

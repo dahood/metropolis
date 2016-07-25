@@ -13,6 +13,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.PuppyCrawl.Membe
         public void Read(Domain.Member member, CheckStylesItem item)
         {
             member.Name = $"Line: {item.Line}";
+            member.StartLine = item.Line;
             member.CylomaticComplexity = Parser.Match(item.Message).Value.AsInt();
         }
     }

@@ -11,6 +11,8 @@
         }
 
         public string Name { get; set; }
+        public int StartLine { get; set; }
+        public int EndLine { get; set; }
         public int LinesOfCode { get; set; }
         public int CylomaticComplexity { get; set; }
         public int ClassCoupling { get; set; }
@@ -20,6 +22,7 @@
         public int BooleanExpressionComplexity { get; set; }
         public int NestedTryDepth { get; set; }
         public int NestedIfDepth { get; set; }
+
 
         public override string ToString()
         {
