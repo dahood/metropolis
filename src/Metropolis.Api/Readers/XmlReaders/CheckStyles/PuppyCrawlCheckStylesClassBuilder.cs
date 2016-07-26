@@ -15,11 +15,13 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
 
         private static readonly ICheckStylesMemberReader[] PuppyCrawlMemberReaders =
         {
-            new PuppyCrawlComplexityReader(), new PuppyCrawlMethodLengthReader(), new PuppyCrawlNumberOfParametersReader(),
+            new PuppyCrawlComplexityReader(), new PuppyCrawlNumberOfParametersReader(),
             new PuppyCrawlDefaultCaseReader(), new PuppyCrawlBooleanExpressionComplexityReader(), new PupyyCrawlNestedTryDepthReader(),
             new PupyyCrawlNestedIfDepthReader(), 
         };
 
         public PuppyCrawlCheckStylesClassBuilder() : base(PuppyCrawlClassReaders, PuppyCrawlMemberReaders) {}
+
+        protected override ICheckStylesMemberReader MethodLengthSourceType => new PuppyCrawlMethodLengthReader();
     }
 }

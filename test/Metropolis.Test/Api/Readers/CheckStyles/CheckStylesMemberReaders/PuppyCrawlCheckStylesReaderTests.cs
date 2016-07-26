@@ -50,11 +50,10 @@ namespace Metropolis.Test.Api.Readers.CheckStyles.CheckStylesMemberReaders
         }
 
         [Test]
-        public void ShouldParseFunctionNameAndComplexity()
+        public void ShouldParseComplexity()
         {
             RunMemberTest<PuppyCrawlComplexityReader>(ComplexityMessage, PuppyCrawlSources.CyclomaticComplexity, m =>
             {
-                m.Name.Should().Be("Line: 1");
                 m.CylomaticComplexity.Should().Be(13);
             },
                 new CheckStylesItem {Message = ComplexityMessage, Line = 1});
