@@ -20,6 +20,12 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
 
         public Instance Build(string key, List<CheckStylesItem> items)
         {
+            //this is wrong
+
+            // group for members should be cyclomatic complexity to establish all members
+            // modify that group with all methodlength types to enable LOC & Method length range
+            // group for all the member properties we need to collect
+
             var grouped = (from item in items
                 group item by new {item.Line} into grp
                 select new { grp.Key, Metrics = grp }).ToList();

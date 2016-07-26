@@ -34,7 +34,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
                            select BuildItem(m)).ToList();
 
             var classes = (from m in metrics
-                           group m by m.Name into cls
+                           group m by m.FileFullName into cls
                            select classBuilder.Build(cls.Key, cls.ToList())).ToList();
 
             return new CodeBase(new CodeGraph(classes));
@@ -44,7 +44,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
         {
             return new CheckStylesItem
             {
-                Name = node.Parent.AttributeValue("name"),
+                FileFullName = node.Parent.AttributeValue("name"),
                 Line = node.AttributeValue("line").AsInt(),
                 Message = node.AttributeValue("message"),
                 Source =  node.AttributeValue("source")
