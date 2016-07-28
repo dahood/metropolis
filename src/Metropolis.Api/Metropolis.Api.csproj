@@ -60,8 +60,7 @@
     <Compile Include="Collection\Steps\AllLanguages\CpdCollectionStep.cs" />
     <Compile Include="Collection\Steps\CSharp\CollectAssemblies.cs" />
     <Compile Include="Collection\Steps\CSharp\DotNetCollectionSteps.cs" />
-    <Compile Include="Collection\Steps\CSharp\DotNetCpdCollectionStep.cs" />
-    <Compile Include="Collection\Steps\CSharp\DotNetRebuildStep.cs" />
+    <Compile Include="Collection\Steps\CSharp\VisualStudioRebuildStep.cs" />
     <Compile Include="Collection\Steps\Java\JavaCollectionStep.cs" />
     <Compile Include="Domain\CodeBag.cs" />
     <Compile Include="Domain\CodeBagType.cs" />

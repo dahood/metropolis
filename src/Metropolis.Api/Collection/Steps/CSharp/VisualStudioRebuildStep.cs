@@ -4,15 +4,15 @@ using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Collection.Steps.CSharp
 {
-    public class DotNetRebuildStep : ICollectionStep
+    public class VisualStudioRebuildStep : ICollectionStep
     {
         private readonly IProjectBuilder projectBuilder;
 
-        public DotNetRebuildStep() : this(new DotNetProjectBuilder())
+        public VisualStudioRebuildStep() : this(new DotNetProjectBuilder())
         {
         }
 
-        public DotNetRebuildStep(IProjectBuilder projectBuilder)
+        public VisualStudioRebuildStep(IProjectBuilder projectBuilder)
         {
             this.projectBuilder = projectBuilder;
         }
