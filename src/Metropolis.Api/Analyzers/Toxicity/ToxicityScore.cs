@@ -15,10 +15,10 @@
         public double ParameterNumber { get; set; } // C# doesn't use this
         public double NestedIfDepth { get; set; } // Java & ECMA only
         public double MissingDefaultCase { get; set; } // Java & ECMA only
-        public double ClassCoupling { get; set; } //ClassFanOutComplexity by Java, VS metrics for C#, Not used by ECMA
 
         //C#
         public double DepthOfInheritance { get; set; }
+        public double ClassCoupling { get; set; } //ClassFanOutComplexity by Java, VS metrics for C#, Not used by ECMA
 
         //Java
         public double BooleanExpressionComplexity { get; set; }
