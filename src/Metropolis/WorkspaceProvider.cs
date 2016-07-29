@@ -52,7 +52,7 @@ namespace Metropolis
             return Path.Combine(fileSystem.ProjectBuildFolder, projectName);
         }
 
-        public bool IsFxcopMetricsInstalled => File.Exists(analysisService.FxCopMetricsPath);
+        public bool IsFxcopMetricsInstalled => File.Exists(userPreferences.FxCopPath);
 
         public void Create()
         {

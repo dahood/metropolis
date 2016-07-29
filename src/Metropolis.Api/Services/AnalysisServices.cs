@@ -14,25 +14,21 @@ namespace Metropolis.Api.Services
         private readonly ICodebaseService codebaseService;
         private readonly ICollectionStepFactory collectionStepFactory;
         private readonly IFileSystem fileSystem;
-        private readonly IUserPreferences userPreferences;
 
         public AnalysisServices()
-            : this(new CollectionStepFactory(), new CodebaseService(), new AnalyzerFactory(), new FileSystem(), new UserPreferences())
+            : this(new CollectionStepFactory(), new CodebaseService(), new AnalyzerFactory(), new FileSystem())
         {
         }
 
         public AnalysisServices(ICollectionStepFactory collectionStepFactory, ICodebaseService codebaseService, IAnalyzerFactory analyzerFactory,
-            IFileSystem fileSystem, IUserPreferences userPreferences)
+            IFileSystem fileSystem)
         {
             this.collectionStepFactory = collectionStepFactory;
             this.codebaseService = codebaseService;
             this.analyzerFactory = analyzerFactory;
             this.fileSystem = fileSystem;
-            this.userPreferences = userPreferences;
             fileSystem.CreateFolder(fileSystem.MetricsOutputFolder);
         }
-        
-        public string FxCopMetricsPath => userPreferences.FxCopPath;
 
         public CodeBase Analyze(MetricsCommandArguments details)
         {
