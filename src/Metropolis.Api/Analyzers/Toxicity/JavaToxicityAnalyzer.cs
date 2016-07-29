@@ -71,14 +71,14 @@ namespace Metropolis.Api.Analyzers.Toxicity
                 BooleanExpressionComplexity = Rationalize(booleanComplexity),
                 NestedIfDepth = Rationalize(nestedIfDepth),
                 NestedTryDepth = Rationalize(nestedTryDepth),
-                ParameterNumber = Rationalize(parameterNumber)
+                NumberOfParameters = Rationalize(parameterNumber)
             };
 
             score.Toxicity = score.LinesOfCode + score.NumberOfMethods + 
                 score.ClassFanOutComplexity + score.ClassDataAbstractionCoupling +
                 score.AnonInnerLength + score.MethodLength + score.CyclomaticComplexity +
                 score.MissingDefaultCase + score.BooleanExpressionComplexity +
-                score.NestedIfDepth + score.NestedTryDepth + score.ParameterNumber;
+                score.NestedIfDepth + score.NestedTryDepth + score.NumberOfParameters;
 
             return score;
         }

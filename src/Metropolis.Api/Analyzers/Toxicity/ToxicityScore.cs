@@ -12,7 +12,7 @@
 
         // Mostly Common (2 or more)
 
-        public double ParameterNumber { get; set; } // C# doesn't use this
+        public double NumberOfParameters { get; set; } // Java & ECMA Only
         public double NestedIfDepth { get; set; } // Java & ECMA only
         public double MissingDefaultCase { get; set; } // Java & ECMA only
 
@@ -29,6 +29,5 @@
         
         // ECMA / Javascript
         public double SwitchNoFallThrough { get; set; }
-        public double NumberOfParameters { get; set; }
     }
 }
