@@ -25,6 +25,8 @@ namespace Metropolis
         public void DisplayClass(Instance src)
         {
             ClearDisplay();
+            if (provider.Layout == null) return;
+
             var model = provider.Layout.LookupModel(src);
             Display((GeometryModel3D) model);
         }

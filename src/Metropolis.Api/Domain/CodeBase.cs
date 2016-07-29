@@ -57,6 +57,7 @@ namespace Metropolis.Api.Domain
 
         public double Duplicates()
         {
+            if (LinesOfCode() == 0) return 0;
             return (double) Graph.AllInstances.Sum(x => x.DuplicateLines)/ LinesOfCode();
         }
 
