@@ -40,7 +40,26 @@ namespace Metropolis.Views.UserControls.StepPanels
             if (link == null) return;
             Process.Start(link.NavigateUri.ToString());
         }
-        
+
+        private void HideShowInfoBox(object sender, RoutedEventArgs routedEventArgs)
+        {
+            var info = new ProcessStartInfo("cmd.exe", "/c \"" + "java -version " + "\"")
+            {
+                ErrorDialog = false,
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                WindowStyle = ProcessWindowStyle.Hidden,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+
+            var process = Process.Start(info);
+            if (process == null) return;
+            process.WaitForExit();
+
+            Info.Visibility = process.ExitCode == 0 ? Visibility.Collapsed : Visibility.Visible;
+        }
+
         private void ShowCSharpToolTip(object sender, RoutedEventArgs e)
         {
             TipOfTheDay.Show<CSharpTipOfTheDay>();

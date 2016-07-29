@@ -47,11 +47,12 @@ namespace Metropolis.Views.UserControls.StepPanels
                 WindowStyle = ProcessWindowStyle.Hidden,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true
-        };
+            };
 
             var process = Process.Start(info);
             if (process == null) return;
             process.WaitForExit();
+
             Info.Visibility = process.ExitCode == 0 ? Visibility.Collapsed : Visibility.Visible;
         }
     }

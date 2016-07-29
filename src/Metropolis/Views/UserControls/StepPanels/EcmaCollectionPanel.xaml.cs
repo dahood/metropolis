@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using Metropolis.Api.Extensions;
 using Metropolis.Common.Models;
 using Metropolis.TipOfTheDay;
@@ -46,6 +48,34 @@ namespace Metropolis.Views.UserControls.StepPanels
         private void ShowECMAHelp(object sender, RoutedEventArgs e)
         {
             TipOfTheDay.Show<EcmaScriptTipOfTheDay>();
+        }
+
+
+        private void HideShowInfoBox(object sender, RoutedEventArgs routedEventArgs)
+        {
+            var info = new ProcessStartInfo("cmd.exe", "/c \"" + "java -version " + "\"")
+            {
+                ErrorDialog = false,
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                WindowStyle = ProcessWindowStyle.Hidden,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+
+            var process = Process.Start(info);
+            if (process == null) return;
+            process.WaitForExit();
+
+            Info.Visibility = process.ExitCode == 0 ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        private void NavigateToSite(object sender, RoutedEventArgs e)
+        {
+            var link = sender as Hyperlink;
+            if (link == null) return;
+
+            Process.Start(link.NavigateUri.ToString());
         }
     }
 }

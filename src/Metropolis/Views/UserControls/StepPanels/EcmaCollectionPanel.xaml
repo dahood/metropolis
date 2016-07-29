@@ -4,8 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:wpfControls="http://wpfcontrols.com/"
-             mc:Ignorable="d" d:DesignWidth="300" Width="550" Height="auto">
+             mc:Ignorable="d" d:DesignWidth="300" Width="550" Height="auto" Loaded="HideShowInfoBox">
     <StackPanel>
+        <StackPanel x:Name="Info">
+            <TextBlock>
+                <Bold>WARNING:</Bold>You need to download and install Java in order for Copy Paste Detector to work.
+                <Hyperlink NavigateUri="https://java.com/en/download/manual.jsp" Click="NavigateToSite"> Download Here</Hyperlink>
+            </TextBlock>
+
+        </StackPanel>
         <StackPanel x:Name="CSharpPanel" Orientation="Horizontal" Margin="0,5,0,5">
             <TextBlock x:Name="CSharpSourceLabel" Text="Source Directory:" Width="210" VerticalAlignment="Center"
                        Margin="5,5,10,5" />
