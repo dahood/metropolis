@@ -85,7 +85,6 @@ namespace Metropolis.Views
             ListenForLayoutChanges();
             ListenForHeatMapChanges();
         }
-
         private void ListenForLayoutChanges()
         {
             SquareLayoutToggleButton.Checked += (sender, e) => { ChangeLayout(new SquaredLayout(), HeatMap); };
@@ -164,7 +163,6 @@ namespace Metropolis.Views
 
         private void SaveProject(object sender, RoutedEventArgs e)
         {
-            //TODO: Clean this up
             CodeBase.Name = App.ViewModel.ProjectName;
             WorkSpaceProvider.Save();
         }
@@ -253,9 +251,21 @@ namespace Metropolis.Views
         private void StartMetroBot(object sender, RoutedEventArgs e)
         {
             App.ViewModel.IsFxCopInstalled = WorkSpaceProvider.IsFxcopMetricsInstalled;
+            UpdateProjectDetailsViewModel(CodeBase);
             var metroBot = new MetroBot();
             metroBot.DisplayWorkspaceDetails += (sndr, args) => DisplayWorkspaceDetails();
             metroBot.Show();
+        }
+
+        private static void UpdateProjectDetailsViewModel(CodeBase codeBase)
+        {
+            var viewModel = App.ViewModel;
+            viewModel.ProjectName = codeBase.Name;
+            viewModel.RepositorySourceType = codeBase.SourceType;
+            viewModel.SourceDirectory = codeBase.SourceBaseDirectory;
+            viewModel.ProjectFile = codeBase.ProjectFile;
+            viewModel.ProjectFolder = codeBase.ProjectFolder;
+            viewModel.IgnoreFile = codeBase.IgnoreFile;
         }
 
         private void ViewProgressLog(object sender, RoutedEventArgs e)

@@ -22,7 +22,7 @@ namespace Metropolis.Views
             ProjectDetails = App.ViewModel;
             DataContext = ProjectDetails;
         }
-
+        
         public event EventHandler DisplayWorkspaceDetails;
         public IWorkspaceProvider WorkspaceProvider => App.WorkspaceProvider;
 
