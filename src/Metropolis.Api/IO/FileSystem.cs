@@ -76,6 +76,11 @@ namespace Metropolis.Api.IO
                 .Select(x => new FileInfo(x)).OrderByDescending(fi => fi.LastWriteTime);
         }
 
+        public void Copy(string sourceFile, string targetFile)
+        {
+            File.Copy(sourceFile, targetFile);
+        }
+
         public bool FileExists(string potentialPath)
         {
             return File.Exists(potentialPath);
