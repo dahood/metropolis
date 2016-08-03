@@ -27,6 +27,6 @@ namespace Metropolis.Api.IO
         void EnsureDirectoriesExist(params string[] autoSaveFolder);
         void CreateMetropolisSpecialFolders();
         IEnumerable<FileInfo> GetAutloadProjects();
-        void Copy(string sourceFile, string targetfile);
+        string GetProjectIgnoreFile(string projectFolder);
     }
 }

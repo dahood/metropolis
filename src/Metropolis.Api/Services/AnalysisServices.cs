@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using Metropolis.Api.Analyzers;
+﻿using Metropolis.Api.Analyzers;
 using Metropolis.Api.Collection;
 using Metropolis.Api.Domain;
 using Metropolis.Api.IO;

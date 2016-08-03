@@ -45,10 +45,9 @@ namespace Metropolis.Api.IO
             return projectName == null ? string.Empty : Path.Combine(ProjectBuildFolder, projectName);
         }
 
-        public IEnumerable<string> ReadIgnoreFile(string projectName)
+        public IEnumerable<string> ReadIgnoreFile(string ignoreFile)
         {
-            var ignoreFIle = GetIgnoreFilePath(projectName);
-            return File.Exists(ignoreFIle) ? File.ReadAllLines(ignoreFIle) : Enumerable.Empty<string>();
+            return File.Exists(ignoreFile) ? File.ReadAllLines(ignoreFile) : Enumerable.Empty<string>();
         }
 
         public string ReadFile(string physicalFilePath)
@@ -75,10 +74,10 @@ namespace Metropolis.Api.IO
             return Directory.GetFiles(AutoSaveFolder, "AutoSave*.project")
                 .Select(x => new FileInfo(x)).OrderByDescending(fi => fi.LastWriteTime);
         }
-
-        public void Copy(string sourceFile, string targetFile)
+        
+        public string GetProjectIgnoreFile(string projectFolder)
         {
-            File.Copy(sourceFile, targetFile);
+            return Path.Combine(projectFolder, IgnoreFile);
         }
 
         public bool FileExists(string potentialPath)

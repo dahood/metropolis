@@ -85,19 +85,7 @@ namespace Metropolis.Test.Api.Services
             classParser.Setup(x => x.Parse(stringReader)).Returns(workspace);
             codebaseService.Get(stringReader, ParseType.EsLint).Should().BeSameAs(workspace);
         }
-
-        [Test]
-        public void GetBuildPaths()
-        {
-            fileSystem.Setup(x => x.GetIgnoreFilePath(ProjectName)).Returns(@"C:\ignorefile.metropolisIgnore");
-            fileSystem.Setup(x => x.GetProjectBuildFolder(ProjectName)).Returns(@"C:\projectFolder\");
-
-            var paths = codebaseService.GetBuildPaths(ProjectName);
-            paths.Should().NotBeNull();
-            paths.BuildOutputDirectory.Should().Be(@"C:\projectFolder\");
-            paths.IgnoreFile.Should().Be(@"C:\ignorefile.metropolisIgnore");
-        }
-
+        
         [Test]
         public void BuildSolution()
         {
@@ -152,7 +140,6 @@ namespace Metropolis.Test.Api.Services
             fileSystem.Setup(x => x.ProjectBuildFolder).Returns(projectBuildFolder);
             fileSystem.Setup(x => x.IgnoreFile).Returns(ignoreFile);
             fileSystem.Setup(x => x.WriteText(Path.Combine(projectFolder, ignoreFile), new[] { toIgnore.Name }));
-            fileSystem.Setup(x => x.WriteText(Path.Combine(projectBuildFolder, ProjectName, ignoreFile), new[] { toIgnore.Name }));
             
             codebaseService.WriteIgnoreFile(ProjectName, projectFolder, new [] {toIgnore});
         }

@@ -69,16 +69,7 @@ namespace Metropolis.Api.Services
                 return result;
             }
         }
-
-        public BuildPathsDto GetBuildPaths(string projectName)
-        {
-            return new BuildPathsDto
-            {
-                IgnoreFile = fileSystem.GetIgnoreFilePath(projectName),
-                BuildOutputDirectory = fileSystem.GetProjectBuildFolder(projectName)
-            };
-        }
-
+        
         public IEnumerable<FileDto> GetIgnoreFilesForProject(string projectName)
         {
             return fileSystem.ReadIgnoreFile(projectName)
@@ -105,7 +96,6 @@ namespace Metropolis.Api.Services
             Directory.CreateDirectory(sandboxBuildDirectory);
 
             fileSystem.WriteText(Path.Combine(projectFolder, fileSystem.IgnoreFile), ignoreData);
-            fileSystem.WriteText(Path.Combine(sandboxBuildDirectory, fileSystem.IgnoreFile), ignoreData);
         }
     }
 }

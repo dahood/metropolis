@@ -28,7 +28,6 @@ namespace Metropolis
         private readonly IAutoSaveService autoSaveService;
         private readonly IFileSystem fileSystem;
 
-
         public WorkspaceProvider() : this(new CodebaseService(), new AnalysisServices(), new UserPreferences(), new FileSystem(), new AutoSaveService())
         {
         }
@@ -152,12 +151,9 @@ namespace Metropolis
         {
             projectDetails.ProjectName =  solutionFile.IsNotEmpty()? Path.GetFileNameWithoutExtension(solutionFile) : projectDetails.ProjectName;
             projectDetails.ProjectFolder =  solutionFile.IsNotEmpty()? Path.GetDirectoryName(solutionFile) : projectDetails.ProjectName;
-
-            var buildPaths = codebaseService.GetBuildPaths(projectDetails.ProjectName);
-            projectDetails.IgnoreFile = buildPaths.IgnoreFile;
-            projectDetails.BuildOutputDirectory = buildPaths.BuildOutputDirectory;
+            projectDetails.BuildOutputDirectory = fileSystem.GetProjectBuildFolder(projectDetails.ProjectName);
+            projectDetails.IgnoreFile = fileSystem.GetProjectIgnoreFile(projectDetails.ProjectFolder);
             projectDetails.SourceDirectory = projectDetails.ProjectFolder;
-
             projectDetails.FilesToIgnore = codebaseService.GetIgnoreFilesForProject(projectDetails.ProjectFolder);
         }
 

@@ -25,14 +25,7 @@ namespace Metropolis.Api.Collection.Steps.CSharp
         {
             var buildArgs = new ProjectBuildArguments(args.ProjectName, args.ProjectFile, args.RepositorySourceType, args.BuildOutputFolder);
             projectBuilder.Build(buildArgs);
-            CopyIgnoreFileToSandboxFolder(args);
             return MetricsResult.Empty();
-        }
-
-        private void CopyIgnoreFileToSandboxFolder(MetricsCommandArguments args)
-        {
-            var source = Path.Combine(args.ProjectFolder, Path.GetFileName(args.IgnoreFile));
-            fileSystem.Copy(source, args.IgnoreFile);
         }
 
         public string ValidateMetricResults(string fileNametoValidate)

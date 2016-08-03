@@ -16,7 +16,6 @@ namespace Metropolis.Api.Services
         CodeBase Get(TextReader stream, ParseType parseType);
         CodeBase GetToxicity(TextReader openFileStream);
         CodeBase GetVisualStudioMetrics(TextReader openFileStream);
-        BuildPathsDto GetBuildPaths(string projectName);
         IEnumerable<FileDto> GetIgnoreFilesForProject(string projectFolder);
         FileContentsResult GetFileContents(string physicalFilePath);
     }

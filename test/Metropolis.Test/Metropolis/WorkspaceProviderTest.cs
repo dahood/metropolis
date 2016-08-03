@@ -24,8 +24,8 @@ namespace Metropolis.Test.Metropolis
         private Mock<IAutoSaveService> autoSaveService;
         private Mock<IFileSystem> fileSystem;
 
-        private const string ProjectName = "MyProject";
-        private const string ProjectFolder = @"c:\MyProjectFolder";
+        private const string ProjectName = "NHibernate";
+        private const string ProjectFolder = @"c:\NHibernate";
         private readonly FileInfo autosaveOne = new FileInfo(@"c:\autosave1.project");
         private readonly FileInfo autosaveTwo = new FileInfo(@"c:\autosave2.project");
 
@@ -166,19 +166,21 @@ namespace Metropolis.Test.Metropolis
         public void SetUpDotNetBuild()
         {
             var ignoreFile = new FileDto { Name = "igmore.me" };
-            var solutionFile = @"c:\nhibernate\nhibernate.sln";
-            var details =new ProjectDetailsViewModel();
-            var buildPaths = new BuildPathsDto {BuildOutputDirectory = @"c:\output", SourceDirectory = @"c:\src", IgnoreFile = @"c:\.ignore"};
+            var solutionFile = $"{ProjectFolder}\\{ProjectName}.sln";
+            var projectDetails = new ProjectDetailsViewModel {ProjectFolder = ProjectFolder, ProjectName = ProjectName};
+            var buildPath = @"c:\ProjectBuildPath\build";
+            var ignorePath = $"{ProjectFolder}\\.metroignore";
+           
+            fileSystem.Setup(x => x.GetProjectBuildFolder(projectDetails.ProjectName)).Returns(buildPath);
+            fileSystem.Setup(x => x.GetProjectIgnoreFile(projectDetails.ProjectFolder)).Returns(ignorePath);
+            codebaseService.Setup(x => x.GetIgnoreFilesForProject(projectDetails.ProjectFolder)).Returns(new [] { ignoreFile});
 
-            codebaseService.Setup(x => x.GetBuildPaths("nhibernate")).Returns(buildPaths);
-            codebaseService.Setup(x => x.GetIgnoreFilesForProject(@"c:\nhibernate")).Returns(new [] { ignoreFile});
+            provider.SetUpDotNetBuild(projectDetails, solutionFile);
 
-            provider.SetUpDotNetBuild(details, solutionFile);
-
-            details.ProjectName.Should().Be("nhibernate");
-            details.BuildOutputDirectory.Should().Be(@"c:\output");
-            details.SourceDirectory.Should().Be(@"c:\nhibernate");
-            details.IgnoreFile.Should().Be(@"c:\.ignore");
+            projectDetails.ProjectName.Should().Be(ProjectName);
+            projectDetails.BuildOutputDirectory.Should().Be(buildPath);
+            projectDetails.SourceDirectory.Should().Be(ProjectFolder);
+            projectDetails.IgnoreFile.Should().Be(ignorePath);
         }
 
         [Test]
