@@ -158,7 +158,7 @@ namespace Metropolis.Test.Metropolis
         public void CreateIgnoreFile()
         {
             var ignoreFile = new FileDto {Name = "igmore.me"};
-            codebaseService.Setup(x => x.WriteIgnoreFile(ProjectName, ProjectFolder, new[] {ignoreFile}));
+            codebaseService.Setup(x => x.WriteIgnoreFile(ProjectFolder, new[] {ignoreFile}));
             provider.CreateIgnoreFile(new ProjectDetailsViewModel {ProjectName = ProjectName, ProjectFolder = ProjectFolder, FilesToIgnore = new [] {ignoreFile}});
         }
 
@@ -167,13 +167,14 @@ namespace Metropolis.Test.Metropolis
         {
             var ignoreFile = new FileDto { Name = "igmore.me" };
             var solutionFile = $"{ProjectFolder}\\{ProjectName}.sln";
-            var projectDetails = new ProjectDetailsViewModel {ProjectFolder = ProjectFolder, ProjectName = ProjectName};
             var buildPath = @"c:\ProjectBuildPath\build";
             var ignorePath = $"{ProjectFolder}\\.metroignore";
+            var projectDetails = new ProjectDetailsViewModel {ProjectFolder = ProjectFolder, ProjectName = ProjectName, IgnoreFile = ignorePath};
+
            
             fileSystem.Setup(x => x.GetProjectBuildFolder(projectDetails.ProjectName)).Returns(buildPath);
             fileSystem.Setup(x => x.GetProjectIgnoreFile(projectDetails.ProjectFolder)).Returns(ignorePath);
-            codebaseService.Setup(x => x.GetIgnoreFilesForProject(projectDetails.ProjectFolder)).Returns(new [] { ignoreFile});
+            codebaseService.Setup(x => x.GetIgnoreFilesForProject(projectDetails.IgnoreFile)).Returns(new [] { ignoreFile});
 
             provider.SetUpDotNetBuild(projectDetails, solutionFile);
 

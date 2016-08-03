@@ -33,7 +33,7 @@ namespace Metropolis.Controllers
             var args = new ProjectBuildArguments(ProjectDetails.ProjectName, ProjectDetails.ProjectFile,
                 RepositorySourceType.CSharp, workSpaceProvider.GetProjectBuildFolder(ProjectDetails.ProjectName));
 
-             var buildResult = workSpaceProvider.BuildSolution(args);
+            var buildResult = workSpaceProvider.BuildSolution(args);
             view.ShowBuildArtifacts(Consolidate(ProjectDetails.FilesToIgnore, buildResult.Artifacts));
         }
         

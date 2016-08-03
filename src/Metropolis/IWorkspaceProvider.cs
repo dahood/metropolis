@@ -31,5 +31,6 @@ namespace Metropolis
         void AutoSaveProject(ProjectDetailsViewModel projectDetails);
         bool AutoloadLastProject();
 
+        void RerunProjectMetrics(ProjectDetailsViewModel viewModel);
     }
 }

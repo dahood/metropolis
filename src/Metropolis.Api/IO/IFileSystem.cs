@@ -22,7 +22,7 @@ namespace Metropolis.Api.IO
         void WriteText(string path, IEnumerable<string> data);
         string GetIgnoreFilePath(string projectName);
         string GetProjectBuildFolder(string projectName);
-        IEnumerable<string> ReadIgnoreFile(string projectName);
+        IEnumerable<string> ReadIgnoreFile(string ignoreFilePath);
         string ReadFile(string physicalFilePath);
         void EnsureDirectoriesExist(params string[] autoSaveFolder);
         void CreateMetropolisSpecialFolders();

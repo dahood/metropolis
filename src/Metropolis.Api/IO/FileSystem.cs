@@ -45,9 +45,9 @@ namespace Metropolis.Api.IO
             return projectName == null ? string.Empty : Path.Combine(ProjectBuildFolder, projectName);
         }
 
-        public IEnumerable<string> ReadIgnoreFile(string ignoreFile)
+        public IEnumerable<string> ReadIgnoreFile(string ignoreFilePath)
         {
-            return File.Exists(ignoreFile) ? File.ReadAllLines(ignoreFile) : Enumerable.Empty<string>();
+            return File.Exists(ignoreFilePath) ? File.ReadAllLines(ignoreFilePath) : Enumerable.Empty<string>();
         }
 
         public string ReadFile(string physicalFilePath)

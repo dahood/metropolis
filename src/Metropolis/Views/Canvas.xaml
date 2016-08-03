@@ -186,6 +186,8 @@
                                   Click="SaveProject" />
                     <RibbonButton LargeImageSource="..\Images\csv-icon.jpg" Label="Export" KeyTip="O"
                                   Click="RunCsvExport" />
+                    <RibbonButton LargeImageSource="..\Images\Rerun.png" Label="Rerun Project Metrics"
+                                  KeyTip="O" Click="RerunProjectMetrics" />
                 </RibbonGroup>
                 <RibbonGroup x:Name="CollectionGroup" Header="Collection">
                     <RibbonButton LargeImageSource="..\Images\metrics.png" Label="Import Data and Code Metrics"
@@ -243,7 +245,7 @@
                                   Click="RunJavascriptAnalzer" />
                 </RibbonGroup>
             </RibbonTab>
-            <RibbonTab Header="About" KeyTip="Z">
+            <RibbonTab Header="Collection" KeyTip="Z">
                 <RibbonGroup x:Name="AboutGroup" Header="About">
                     <RibbonButton Label="Check Latest Version" LargeImageSource="..\Images\NewVersion.png"
                                   Click="NewVersion" />

@@ -89,12 +89,9 @@ namespace Metropolis.Api.Services
             }
         }
 
-        public void WriteIgnoreFile(string projectName, string projectFolder, IEnumerable<FileDto> filesToIgnore)
+        public void WriteIgnoreFile(string projectFolder, IEnumerable<FileDto> filesToIgnore)
         {
             var ignoreData = filesToIgnore.Select(x => x.Name).ToList();
-            var sandboxBuildDirectory = Path.Combine(fileSystem.ProjectBuildFolder, projectName);
-            Directory.CreateDirectory(sandboxBuildDirectory);
-
             fileSystem.WriteText(Path.Combine(projectFolder, fileSystem.IgnoreFile), ignoreData);
         }
     }

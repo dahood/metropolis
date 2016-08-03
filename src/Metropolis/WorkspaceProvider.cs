@@ -144,7 +144,7 @@ namespace Metropolis
 
         public void CreateIgnoreFile(ProjectDetailsViewModel projectDetails)
         {
-            codebaseService.WriteIgnoreFile(projectDetails.ProjectName, projectDetails.ProjectFolder, projectDetails.FilesToIgnore);
+            codebaseService.WriteIgnoreFile(projectDetails.ProjectFolder, projectDetails.FilesToIgnore);
         }
 
         public void SetUpDotNetBuild(ProjectDetailsViewModel projectDetails, string solutionFile)
@@ -154,7 +154,7 @@ namespace Metropolis
             projectDetails.BuildOutputDirectory = fileSystem.GetProjectBuildFolder(projectDetails.ProjectName);
             projectDetails.IgnoreFile = fileSystem.GetProjectIgnoreFile(projectDetails.ProjectFolder);
             projectDetails.SourceDirectory = projectDetails.ProjectFolder;
-            projectDetails.FilesToIgnore = codebaseService.GetIgnoreFilesForProject(projectDetails.ProjectFolder);
+            projectDetails.FilesToIgnore = codebaseService.GetIgnoreFilesForProject(projectDetails.IgnoreFile);
         }
 
         public FileContentsResult GetFileContents(string physicalFilePath)
@@ -176,6 +176,11 @@ namespace Metropolis
             }
             CodeBase = codebaseService.LoadDefault();
             return true;
+        }
+
+        public void RerunProjectMetrics(ProjectDetailsViewModel viewModel)
+        {
+            Analyze(viewModel);
         }
 
         private bool AttemptProjectLoad(FileInfo projectFile)

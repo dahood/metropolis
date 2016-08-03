@@ -12,7 +12,7 @@ namespace Metropolis.Api.Services
         CodeBase LoadDefault();
         ProjectBuildResult BuildSolution(ProjectBuildArguments buildArgs);
         string ProjectBuildFolder { get; }
-        void WriteIgnoreFile(string projectName, string projectFolder, IEnumerable<FileDto> filesToIgnore);
+        void WriteIgnoreFile(string projectFolder, IEnumerable<FileDto> filesToIgnore);
         CodeBase Get(TextReader stream, ParseType parseType);
         CodeBase GetToxicity(TextReader openFileStream);
         CodeBase GetVisualStudioMetrics(TextReader openFileStream);

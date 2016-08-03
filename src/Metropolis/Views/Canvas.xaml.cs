@@ -417,5 +417,14 @@ namespace Metropolis.Views
         {
             new UserPreferences().Show();
         }
+
+        private void RerunProjectMetrics(object sender, RoutedEventArgs e)
+        {
+            using (new WaitCursor())
+            {
+                WorkSpaceProvider.RerunProjectMetrics(App.ViewModel);
+                DisplayWorkspaceDetails();
+            }
+        }
     }
 }

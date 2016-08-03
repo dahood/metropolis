@@ -136,12 +136,11 @@ namespace Metropolis.Test.Api.Services
             var ignoreFile = ".metropolisignore";
             var projectFolder = @"c:\projFolder";
             var projectBuildFolder = @"C:\project\build";
-
-            fileSystem.Setup(x => x.ProjectBuildFolder).Returns(projectBuildFolder);
+            
             fileSystem.Setup(x => x.IgnoreFile).Returns(ignoreFile);
             fileSystem.Setup(x => x.WriteText(Path.Combine(projectFolder, ignoreFile), new[] { toIgnore.Name }));
             
-            codebaseService.WriteIgnoreFile(ProjectName, projectFolder, new [] {toIgnore});
+            codebaseService.WriteIgnoreFile(projectFolder, new [] {toIgnore});
         }
     }
 }
