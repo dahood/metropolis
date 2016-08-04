@@ -186,12 +186,12 @@
                                   Click="SaveProject" />
                     <RibbonButton LargeImageSource="..\Images\csv-icon.jpg" Label="Export" KeyTip="O"
                                   Click="RunCsvExport" />
-                    <RibbonButton LargeImageSource="..\Images\Rerun.png" Label="Rerun Project Metrics"
-                                  KeyTip="O" Click="RerunProjectMetrics" />
                 </RibbonGroup>
                 <RibbonGroup x:Name="CollectionGroup" Header="Collection">
                     <RibbonButton LargeImageSource="..\Images\metrics.png" Label="Import Data and Code Metrics"
                                   KeyTip="O" Click="StartMetroBot" />
+                    <RibbonButton LargeImageSource="..\Images\Rerun.png" Label="Rerun Project Metrics"
+                                  KeyTip="O" Click="RerunProjectMetrics" />
                 </RibbonGroup>
                 <RibbonGroup x:Name="CameraGroup" Header="Camera">
                     <RibbonButton LargeImageSource="..\Images\compass.png" Label="Reset Camera" KeyTip="0"
