@@ -245,7 +245,7 @@
                                   Click="RunJavascriptAnalzer" />
                 </RibbonGroup>
             </RibbonTab>
-            <RibbonTab Header="Collection" KeyTip="Z">
+            <RibbonTab Header="Help" KeyTip="Z">
                 <RibbonGroup x:Name="AboutGroup" Header="About">
                     <RibbonButton Label="Check Latest Version" LargeImageSource="..\Images\NewVersion.png"
                                   Click="NewVersion" />
