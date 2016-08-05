@@ -44,8 +44,11 @@ namespace Metropolis.Api.Domain
 
         public double AverageToxicity()
         {
-            var sum = AllInstances.Sum(c => c.Toxicity);
-            return sum / InstanceCount();
+            return AbsoluteToxicity() / InstanceCount();
+        }
+        public double AbsoluteToxicity()
+        {
+            return AllInstances.Sum(c => c.Toxicity);
         }
 
         public int LinesOfCode() => AllInstances.Sum(c => c.LinesOfCode);

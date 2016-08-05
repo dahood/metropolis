@@ -137,6 +137,7 @@ namespace Metropolis.Views
             LocTextBlock.Text = CodeBase.LinesOfCode().ToString("N0", CultureInfo.InvariantCulture);
             TypesTextBlock.Text = CodeBase.InstanceCount().ToString("N0", CultureInfo.InvariantCulture);
             ToxicityTextBlock.Text = CodeBase.AverageToxicity().ToString("N2", CultureInfo.InvariantCulture);
+            AbsoluteToxicityTextBlock.Text = CodeBase.AbsoluteToxicity().ToString("N0", CultureInfo.InvariantCulture);
             CodeDensityTextBlock.Text = CodeBase.Density().ToString("N2", CultureInfo.InvariantCulture);
             DuplicateTextBlock.Text = CodeBase.Duplicates().ToString("P", CultureInfo.InvariantCulture);
             Renderlayout();
