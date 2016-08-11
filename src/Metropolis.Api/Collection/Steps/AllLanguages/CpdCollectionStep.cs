@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Metropolis.Api.Collection.PowerShell;
 using Metropolis.Common.Extensions;
 using Metropolis.Common.Models;
@@ -14,25 +15,37 @@ namespace Metropolis.Api.Collection.Steps.AllLanguages
         /// <summary>
         ///     Thresholds set per language as below, or DefaultThreshold
         /// </summary>
-        private const int CsharpThreshold = 75;
-        private const int EcmaScriptThreshold = 75;
-        private const int JavaThreshold = 50;
-        private const int DefaultThreshold = 75;
+        public const int CsharpThreshold = 75;
+        public const int EcmaScriptThreshold = 75;
+        public const int JavaThreshold = 50;
 
         /// <summary>
         ///     CPD has a token for each language it supports, along with an associated .jar file to cover specifics
         ///     like using statements in C#
         /// </summary>
-        private const string CsharpToken = "cs";
-        private const string EcmaScriptToken = "ecmascript";
-        private const string JavaToken = "java";
-        private const string DefaultToken = "java";
+        public const string CsharpToken = "cs";
+        public const string EcmaScriptToken = "ecmascript";
+        public const string JavaToken = "java";
 
         //sample commmand  
         //java -Xmx512m -cp "cpd/*" net.sourceforge.pmd.cpd.CPD --format csv --language cs --minimum-tokens 50 --files C:\dev\metropolis\src > cpd-metro.csv
         private const string CpdCommand =
             @"java -Xmx512m -cp '{0}' net.sourceforge.pmd.cpd.CPD --format csv --language {1} --minimum-tokens {2} --files '{3}' > '{4}'";
         private const string ClassPath = @"cpd/*";
+
+        private readonly Dictionary<ParseType, string> languageTokenMap = new Dictionary<ParseType, string>
+        {
+            {ParseType.CpdCsharp, CsharpToken},
+            {ParseType.CpdEcma, EcmaScriptToken},
+            {ParseType.CpdJava, JavaToken}
+        };
+
+        private readonly Dictionary<ParseType, int> languageThresholdMap = new Dictionary<ParseType, int>
+        {
+            {ParseType.CpdCsharp, CsharpThreshold},
+            {ParseType.CpdEcma, EcmaScriptThreshold},
+            {ParseType.CpdJava, JavaThreshold}
+        };
 
         public CpdCollectionStep(ParseType parseType) : base(new RunPowerShell())
         {
@@ -57,34 +70,12 @@ namespace Metropolis.Api.Collection.Steps.AllLanguages
 
         private string GetLanguageToken()
         {
-            //TODO this would be better as a Dictionary<ParseType, string>
-            switch (ParseType)
-            {
-                case ParseType.CpdCsharp:
-                    return CsharpToken;
-                case ParseType.CpdEcma:
-                    return EcmaScriptToken;
-                case ParseType.CpdJava:
-                    return JavaToken;
-                default:
-                    return DefaultToken;
-            }
+            return languageTokenMap[ParseType];
         }
 
         private int GetThreshold()
         {
-            //TODO this would be better as a Dictionary<ParseType, int>
-            switch (ParseType)
-            {
-                case ParseType.CpdCsharp:
-                    return CsharpThreshold;
-                case ParseType.CpdEcma:
-                    return EcmaScriptThreshold;
-                case ParseType.CpdJava:
-                    return JavaThreshold;
-                default:
-                    return DefaultThreshold;
-            }
+            return languageThresholdMap[ParseType];
         }
     }
 }

@@ -12,5 +12,13 @@ namespace Metropolis.Test.Utilities
             var found = items.FirstOrDefault(criteria);
             found.Should().NotBeNull(message);
         }
+
+        public static string ShouldContainText(this string content, string target)
+        {
+            content.Should().NotBeNullOrEmpty();
+            target.Should().NotBeNullOrEmpty();
+            content.Contains(target).Should().BeTrue($"{content} should contain {target}");
+            return content;
+        }
     }
 }

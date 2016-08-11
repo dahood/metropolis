@@ -28,5 +28,6 @@ namespace Metropolis.Api.IO
         void CreateMetropolisSpecialFolders();
         IEnumerable<FileInfo> GetAutloadProjects();
         string GetProjectIgnoreFile(string projectFolder);
+        FileStream OpenFileStreamReader(string fileNametoValidate);
     }
 }

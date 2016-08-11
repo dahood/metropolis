@@ -190,6 +190,7 @@ namespace Metropolis
                 if (Logger.IsDebugEnabled)
                     Logger.Debug($"attempting to load autosave project {projectFile}");
                 CodeBase = codebaseService.Load(projectFile.FullName);
+                Apply(App.ViewModel, CodeBase);
                 return true;
             }
             catch (Exception e)
@@ -198,6 +199,16 @@ namespace Metropolis
                 Logger.Error(e, $"attempting to load autosave project {projectFile}");
             }
             return false;
+        }
+
+        private static void Apply(ProjectDetailsViewModel viewModel, CodeBase codeBase)
+        {
+            viewModel.ProjectName = codeBase.Name;
+            viewModel.ProjectFile = codeBase.ProjectFile;
+            viewModel.ProjectFolder = codeBase.ProjectFolder;
+            viewModel.IgnoreFile = codeBase.IgnoreFile;
+            viewModel.SourceDirectory = codeBase.SourceBaseDirectory;
+            viewModel.RepositorySourceType = codeBase.SourceType;
         }
 
         private static void Apply(CodeBase codeBase, ProjectDetailsViewModel projectDetails)

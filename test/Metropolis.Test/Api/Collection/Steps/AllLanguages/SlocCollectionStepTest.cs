@@ -31,6 +31,7 @@ namespace Metropolis.Test.Api.Collection.Steps.AllLanguages
             var command = step.PrepareCommand(Args, Result);
 
             command.Should().Be(expected);
+            step.ValidateMetricResults("afile").Should().BeEmpty();
         }
     }
 }

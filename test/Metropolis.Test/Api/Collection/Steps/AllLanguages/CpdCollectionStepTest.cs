@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using Metropolis.Api.Collection.Steps.AllLanguages;
 using Metropolis.Common.Models;
+using Metropolis.Test.Utilities;
 using NUnit.Framework;
 
 namespace Metropolis.Test.Api.Collection.Steps.AllLanguages
@@ -8,31 +9,50 @@ namespace Metropolis.Test.Api.Collection.Steps.AllLanguages
     [TestFixture]
     public class CpdCollectionStepTest : CollectionBaseTest
     {
-        private CpdCollectionStep step;      
-
-        [SetUp]
-        public void BeforeEachTest()
-        {
-            step = new CpdCollectionStep(ParseType.CpdJava);
-        }
 
         [Test]
         public void HasCorrectSettings()
         {
+            var step = new CpdCollectionStep(ParseType.CpdJava);
             step.Extension.Should().Be(".csv");
             step.MetricsType.Should().Be("CPD");
             step.ParseType.Should().Be(ParseType.CpdJava);
         }
 
-//        [Test]
-//        public void CanParseCommand()
-//        {
-//            //java -cp {0} net.sourceforge.pmd.cpd.CPD --format csv --language {1} --minimum-tokens {2} --files {3} > {4}
-//            //-minimum-tokens 100 --language cs --format csv --files c:\dev\metropolis > results.csv
-//            string expected = $@"{NodeModulesPath}sloc '{Args.SourceDirectory}' -d --format csv -> '{Result.MetricsFile}'";
-//            var command = step.PrepareCommand(Args, Result);
-//
-//            command.Should().Be(expected);
-//        }
+        [Test]
+        public void PrepareCommand_CSharp()
+        {
+            RunTestFor(ParseType.CpdCsharp, RepositorySourceType.CSharp, CpdCollectionStep.CsharpToken, CpdCollectionStep.CsharpThreshold);
+        }
+
+        [Test]
+        public void PrepareCommand_Java()
+        {
+            RunTestFor(ParseType.CpdJava, RepositorySourceType.Java, CpdCollectionStep.JavaToken, CpdCollectionStep.JavaThreshold);
+        }
+
+        [Test]
+        public void PrepareCommand_EMCA()
+        {
+            RunTestFor(ParseType.CpdEcma,RepositorySourceType.ECMA, CpdCollectionStep.EcmaScriptToken, CpdCollectionStep.EcmaScriptThreshold);
+        }
+
+        private void RunTestFor(ParseType parseType, RepositorySourceType srcType, string languageToken, int languageThreshold)
+        {
+            var step = new CpdCollectionStep(parseType);
+
+            Args.RepositorySourceType = srcType;
+            var command = step.PrepareCommand(Args, Result);
+
+            command.Should().NotBeEmpty();
+            command.ShouldContainText("net.sourceforge.pmd.cpd.CPD")
+                   .ShouldContainText("--format csv")
+                   .ShouldContainText($"--language {languageToken}")
+                   .ShouldContainText($"--minimum-tokens {languageThreshold}")
+                   .ShouldContainText($"--files '{Args.SourceDirectory}'")
+                   .ShouldContainText($"> '{Result.MetricsFile}'");
+
+            step.ValidateMetricResults("afile").Should().BeEmpty();
+        }
     }
 }

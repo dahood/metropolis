@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using Metropolis.Api.Collection.PowerShell;
+using Metropolis.Api.IO;
 using Metropolis.Common.Models;
 using Metropolis.Common.Extensions;
 
@@ -9,6 +9,7 @@ namespace Metropolis.Api.Collection.Steps.ECMA
 {
     public class EsLintCollectionStep : BaseCollectionStep
     {
+        private readonly IFileSystem fileSystem;
         private const string EsLintCommand = @"{0}eslint -c '{1}' '{2}\**' -o '{3}' -f checkstyle";
         private const string IgnorePathPart = " --ignore-path '{0}'";
 
@@ -21,14 +22,19 @@ namespace Metropolis.Api.Collection.Steps.ECMA
         public override string Extension => ".xml";
         public override ParseType ParseType => ParseType.EsLint;
 
-        public EsLintCollectionStep() : base(new RunPowerShell())
+        public EsLintCollectionStep() : this(new RunPowerShell(), new FileSystem())
         {
+        }
+
+        private EsLintCollectionStep(IRunPowerShell runPowerShell, IFileSystem fileSystem) : base(runPowerShell)
+        {
+            this.fileSystem = fileSystem;
         }
 
         public override string ValidateMetricResults(string fileNametoValidate)
         {
             string validateMetricResults = string.Empty;
-            using (var filestream = File.Open(fileNametoValidate, FileMode.Open, FileAccess.Read))
+            using (var filestream = fileSystem.OpenFileStreamReader(fileNametoValidate))
             {
                 using (var reader = new StreamReader(filestream))
                 {

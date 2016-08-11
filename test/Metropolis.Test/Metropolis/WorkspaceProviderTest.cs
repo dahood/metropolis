@@ -28,10 +28,12 @@ namespace Metropolis.Test.Metropolis
         private const string ProjectFolder = @"c:\NHibernate";
         private readonly FileInfo autosaveOne = new FileInfo(@"c:\autosave1.project");
         private readonly FileInfo autosaveTwo = new FileInfo(@"c:\autosave2.project");
+        App app;
 
         [SetUp]
         public void SetUp()
         {
+            App.ViewModel = new ProjectDetailsViewModel();
             codebaseService = CreateMock<ICodebaseService>();
             analysisService = CreateMock<IAnalysisService>();
             userPreferences = CreateMock<IUserPreferences>();

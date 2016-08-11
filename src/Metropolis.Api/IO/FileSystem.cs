@@ -80,6 +80,11 @@ namespace Metropolis.Api.IO
             return Path.Combine(projectFolder, IgnoreFile);
         }
 
+        public FileStream OpenFileStreamReader(string fileNametoValidate)
+        {
+            return File.Open(fileNametoValidate, FileMode.Open, FileAccess.Read);
+        }
+
         public bool FileExists(string potentialPath)
         {
             return File.Exists(potentialPath);

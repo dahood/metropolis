@@ -90,7 +90,6 @@ namespace Metropolis.Api.Collection.Steps
             return Path.Combine(args.MetricsOutputFolder, fileName);
         }
 
-
         private void InvokeCommand(string command)
         {
             powerShell.Invoke(command);

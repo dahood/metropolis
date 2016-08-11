@@ -23,7 +23,6 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
         public Instance Build(string filename, List<CheckStylesItem> allCheckstyleItems)
         {
             var allMethods = new List<Member>();
-
             var allMethodLengths = allCheckstyleItems.Where(x => x.Source == MethodLengthSourceType.Source).ToList();
 
             foreach (var methodItem in allMethodLengths)
@@ -42,9 +41,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
                 allMethods.Add(member);
             }
 
-
             var type = ParseClass(filename, allMethods);
-
             var grouped = (from item in allCheckstyleItems
                 group item by new {item.Line}
                 into grp
@@ -74,7 +71,6 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles
             parts.RemoveAt(0);
             var packageName = string.Join(".", parts);
             var codeBag = new CodeBag(packageName, CodeBagType.Package, packageLocation);
-
 
             return InstanceBuilder.Build(codeBag, className, new Location(Path.Combine(packageLocation, fileName)), members);
         }

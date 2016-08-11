@@ -34,9 +34,9 @@ namespace Metropolis
 
 
         public static CodeBase CodeBase => WorkspaceProvider.CodeBase;
-        public static IWorkspaceProvider WorkspaceProvider { get; private set; }
+        public static IWorkspaceProvider WorkspaceProvider { get; set; }
 
-        public static ProjectDetailsViewModel ViewModel { get; private set; }
+        public static ProjectDetailsViewModel ViewModel { get; set; }
 
         public static void ShowLog()
         {
