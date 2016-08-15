@@ -134,6 +134,7 @@ namespace Metropolis.Views
         {
             App.ViewModel.ProjectName = CodeBase.Name;
             SetInstanceLabel(CodeBase.SourceType);
+            RunDateTextBox.Text = CodeBase.RunDate.ToString("yyyy-MM-dd HH:mm");
             LocTextBlock.Text = CodeBase.LinesOfCode().ToString("N0", CultureInfo.InvariantCulture);
             TypesTextBlock.Text = CodeBase.InstanceCount().ToString("N0", CultureInfo.InvariantCulture);
             ToxicityTextBlock.Text = CodeBase.AverageToxicity().ToString("N2", CultureInfo.InvariantCulture);

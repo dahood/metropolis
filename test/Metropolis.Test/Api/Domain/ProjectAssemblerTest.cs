@@ -47,6 +47,7 @@ namespace Metropolis.Test.Api.Domain
         {
             var source = new CodeBase(new CodeGraph(new[] {sourceInstance}))
                                     {
+                                        RunDate = Clock.Today,
                                         ProjectFile = @"c:\proj.file",
                                         ProjectFolder = @"c:\projFolder\",
                                         Name = "MyProject",

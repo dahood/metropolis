@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Metropolis.Api.Extensions;
 using Metropolis.Common.Models;
@@ -11,6 +13,7 @@ namespace Metropolis.Api.Domain
         {
             return new CodeBase(new CodeGraph(Disassemble(project.Classes)))
             {
+                RunDate = DateTime.ParseExact(project.RunDate, ProjectAssembler.DateTimeFormat, CultureInfo.InvariantCulture),
                 Name = project.Name,
                 SourceBaseDirectory = project.SourceBaseDirectory,
                 SourceType = project.SourceCodeLanguage.ToEnumExact<RepositorySourceType>(),

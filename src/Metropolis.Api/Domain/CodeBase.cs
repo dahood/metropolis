@@ -7,6 +7,7 @@ namespace Metropolis.Api.Domain
 {
     public class CodeBase : IEquatable<CodeBase>
     {
+        public DateTime RunDate { get; set; }
         public string Name { get; set; }
         public string SourceBaseDirectory { get; set; }
         public string ProjectFile { get; set; }

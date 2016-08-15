@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Metropolis.Api.Domain;
+using Metropolis.Api.Utilities;
 
 namespace Metropolis.Api.Analyzers.Toxicity
 {
@@ -9,7 +10,10 @@ namespace Metropolis.Api.Analyzers.Toxicity
         public CodeBase Analyze(List<Instance> toAnalyze)
         {
             toAnalyze.ForEach(c => c.Toxicity = CalculateToxicity(c).Toxicity);
-            return new CodeBase(new CodeGraph(toAnalyze));
+            return new CodeBase(new CodeGraph(toAnalyze))
+            {
+                RunDate = Clock.Now
+            };
         }
 
         public abstract ToxicityScore CalculateToxicity(Instance instanceToScore);

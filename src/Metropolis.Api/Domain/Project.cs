@@ -9,7 +9,7 @@ namespace Metropolis.Api.Domain
         ///     Only support one version of project file for now - we can increment this
         ///     later to warn users that the file needs to be reloaded
         /// </summary>
-        public const int SupportedVersion = 4;
+        public const int SupportedVersion = 5;
 
         public int MetropolisFileVersion => SupportedVersion;
         public string Name { get; set; }
@@ -19,6 +19,7 @@ namespace Metropolis.Api.Domain
         public string ProjectFile { get; set; }
         public string ProjectFolder { get; set; }
         public string IgnoreFile { get; set; }
+        public string RunDate { get; set; }
     }
 
     public class SerializableClass
@@ -36,6 +37,7 @@ namespace Metropolis.Api.Domain
         public int CyclomaticComplexity { get; set; }
         public int DepthOfInheritance { get; set; }
         public double Toxicity { get; set; }
+        public string RunDate { get; set; }
     }
 
     public class SerializableDuplicate

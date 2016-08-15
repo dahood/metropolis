@@ -5,10 +5,12 @@ namespace Metropolis.Api.Domain
 {
     public class ProjectAssembler
     {
+        public const string DateTimeFormat = "yyyy-M-dd-HH-mm-ss-ff";
         public static Project Assemble(CodeBase codeBase)
         {
             return new Project
             {
+                RunDate = codeBase.RunDate.ToString(DateTimeFormat),
                 Name = codeBase.Name,
                 SourceBaseDirectory = codeBase.SourceBaseDirectory,
                 SourceCodeLanguage = codeBase.SourceType.ToString(),
@@ -35,7 +37,7 @@ namespace Metropolis.Api.Domain
                 Name = src.Name,
                 Location = src.PhysicalPath.Path,
                 CodeBag = new SerializeableCodeBag
-                {
+                { 
                     Name = src.CodeBag.Name,
                     CodeBagType = src.CodeBag.Type.ToString(),
                     LocationPath = src.CodeBag.Path
