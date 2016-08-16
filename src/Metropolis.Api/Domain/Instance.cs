@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Metropolis.Api.Extensions;
@@ -6,7 +5,7 @@ using NLog;
 
 namespace Metropolis.Api.Domain
 {
-    public class Instance
+    public class Instance : IInstance
     {
         private static readonly Logger Journal = LogManager.GetLogger("ProgressJournal");
 
@@ -23,7 +22,6 @@ namespace Metropolis.Api.Domain
         public CodeBag CodeBag { get; }
         public string Name { get; }
         public Location PhysicalPath { get; set; }
-
         public int NumberOfMethods { get; set; }
         public int LinesOfCode { get; set; }
         public int DepthOfInheritance { get; set; }
@@ -32,7 +30,6 @@ namespace Metropolis.Api.Domain
         public int AnonymousInnerClassLength { get; set; }
         public int ClassFanOutComplexity { get; set; }
         public int ClassDataAbstractionCoupling { get; set; }
-
         public double Toxicity { get; set; }
 
         public int DuplicateLines => Duplicates.Where(x=>x.Location == PhysicalPath).Sum(x => x.LinesOfCode);
@@ -125,6 +122,11 @@ namespace Metropolis.Api.Domain
         private bool Matches(Instance src)
         {
             return PhysicalPath == src.PhysicalPath;
+        }
+
+        public static IInstance CreateEmpty(IInstance original)
+        {
+            return new Instance(CodeBag.Empty, original.Name, original.PhysicalPath);
         }
     }
 }

@@ -64,7 +64,9 @@
     <Compile Include="Collection\Steps\Java\JavaCollectionStep.cs" />
     <Compile Include="Domain\CodeBag.cs" />
     <Compile Include="Domain\CodeBagType.cs" />
+    <Compile Include="Domain\Delta\InstanceDelta.cs" />
     <Compile Include="Domain\Duplicate.cs" />
+    <Compile Include="Domain\IInstance.cs" />
     <Compile Include="Domain\InstanceBuilder.cs" />
     <Compile Include="Domain\Location.cs" />
     <Compile Include="Domain\ProjectAssembler.cs" />
@@ -170,6 +172,7 @@
     <Compile Include="Services\CodebaseService.cs" />
     <Compile Include="Utilities\Clock.cs" />
     <Compile Include="Utilities\DateTimeUtilities.cs" />
+    <Compile Include="Utilities\PropertyExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Collection\Binaries\checkstyle-6.18-all.jar">

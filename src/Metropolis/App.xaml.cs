@@ -30,9 +30,7 @@ namespace Metropolis
 
             Dispatcher.UnhandledException += GlobalErrorHandle;
         }
-
-
-
+        
         public static CodeBase CodeBase => WorkspaceProvider.CodeBase;
         public static IWorkspaceProvider WorkspaceProvider { get; set; }
 

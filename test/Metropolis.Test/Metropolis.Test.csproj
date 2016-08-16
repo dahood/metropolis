@@ -88,6 +88,7 @@
     <Compile Include="Api\Collection\Steps\CSharp\DotNetCollectionStepsTest.cs" />
     <Compile Include="Api\Collection\Steps\ECMA\EcmaCollectionStepTest.cs" />
     <Compile Include="Api\Collection\Steps\Java\JavaCollectionStepTest.cs" />
+    <Compile Include="Api\Domain\Delta\InstanceDeltaTest.cs" />
     <Compile Include="Api\Readers\CsvReaders\CpdReaderTest.cs" />
     <Compile Include="Metropolis\Controllers\CsharpCollectionControllerTest.cs" />
     <Compile Include="Metropolis\WorkspaceProviderTest.cs" />
