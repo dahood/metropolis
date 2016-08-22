@@ -201,7 +201,7 @@ namespace Metropolis
             return false;
         }
 
-        private static void Apply(ProjectDetailsViewModel viewModel, CodeBase codeBase)
+        private void Apply(ProjectDetailsViewModel viewModel, CodeBase codeBase)
         {
             viewModel.ProjectName = codeBase.Name;
             viewModel.ProjectFile = codeBase.ProjectFile;
@@ -209,6 +209,7 @@ namespace Metropolis
             viewModel.IgnoreFile = codeBase.IgnoreFile;
             viewModel.SourceDirectory = codeBase.SourceBaseDirectory;
             viewModel.RepositorySourceType = codeBase.SourceType;
+            viewModel.BuildOutputDirectory = fileSystem.GetProjectBuildFolder(viewModel.ProjectName);
         }
 
         private static void Apply(CodeBase codeBase, ProjectDetailsViewModel projectDetails)

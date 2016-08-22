@@ -66,14 +66,6 @@ namespace Metropolis.Test.Metropolis
         }
 
         [Test]
-        public void AutoloadLastProject_LoadedFirstFile()
-        {
-            ExpectAutoLoad();
-            codebaseService.Setup(x => x.Load(autosaveOne.FullName)).Returns(CodeBase.Empty);
-            provider.AutoloadLastProject().Should().BeTrue();
-        }
-
-        [Test]
         public void Analyze()
         {
             var viewModel = new ProjectDetailsViewModel {RepositorySourceType = RepositorySourceType.ECMA, ProjectName = "React"};
@@ -122,12 +114,31 @@ namespace Metropolis.Test.Metropolis
         }
 
         [Test]
-        public void AutoloadLastProject_LoadNextFileWhenFirstFailsa()
+        public void AutoloadLastProject_LoadedFirstFile()
         {
+            var codeBase = GetCodeBase("MyProject");
+            ExpectAutoLoad();
+            codebaseService.Setup(x => x.Load(autosaveOne.FullName)).Returns(codeBase);
+            fileSystem.Setup(x => x.GetProjectBuildFolder(codeBase.Name)).Returns($"c:\\MetropolisSandbox\\build\\{codeBase.Name}");
+            provider.AutoloadLastProject().Should().BeTrue();
+        }
+
+        [Test]
+        public void AutoloadLastProject_LoadNextFileWhenFirstFails()
+        {
+            var codeBase = GetCodeBase("MyProject");
             ExpectAutoLoad();
             codebaseService.Setup(x => x.Load(autosaveOne.FullName)).Throws<IOException>();
-            codebaseService.Setup(x => x.Load(autosaveTwo.FullName)).Returns(CodeBase.Empty);
+            codebaseService.Setup(x => x.Load(autosaveTwo.FullName)).Returns(codeBase);
+            fileSystem.Setup(x => x.GetProjectBuildFolder(codeBase.Name)).Returns($"c:\\MetropolisSandbox\\build\\{codeBase.Name}");
             provider.AutoloadLastProject().Should().BeTrue();
+        }
+
+        private CodeBase GetCodeBase(string projectName)
+        {
+            var codeBase = CodeBase.Empty();
+            codeBase.Name = "MyProject";
+            return codeBase;
         }
 
         [Test]
