@@ -4,6 +4,7 @@ var argv = require('yargs').argv;
 var gulp = require('gulp');
 var exec = require('sync-exec');
 var nunit = require('gulp-nunit-runner');
+var assemblyInfo = require('gulp-dotnet-assembly-info');
 
 // Gulp Variables
 var buildPath = '%CD%\\build';
@@ -17,14 +18,31 @@ gulp.task('default', ['test']);
 
 // Gulp Tasks
 
-gulp.task('compile', function () {
-  var package = require('./package.json');
-  version = package.version;
+gulp.task('assemblyInfo', function() {
+    var package = require('./package.json');
+    version = package.version;
+    console.log('Version Number: ' + version);
+    gulp.src('**/AssemblyInfo.cs')
+        .pipe(assemblyInfo({
+            title: 'Metropolis',
+            description: 'A code reivew and visualization tool', 
+            configuration: 'Release', 
+            company: 'Dahood.io', 
+            product: 'Planet Express Website', 
+            copyright: 'Copyright © Jonathan McCracken, Greg Cook, and Richard Hurst 2016', 
+            trademark: 'Dahood.io', 
+            culture: 'en-US',
+            version: '0.' + version,
+            fileVersion: '0.' + version}))
+        .pipe(gulp.dest('.'));
+});
+
+
+gulp.task('compile', ['assemblyInfo'], function () {
+
   console.log('MSBuild Release Configuration: ' + msBuildConfiguration);
-  console.log('Version Number: ' + version);
-  var cmd = '"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /t:Rebuild /p:OutDir=' + 
-    buildPath + ';Configuration=' + msBuildConfiguration + ';VersionNumber=0.' 
-    + version + ' /maxcpucount';
+  var cmd = '"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /t:Rebuild ' +
+    '/p:OutDir=' + buildPath + ';Configuration=' + msBuildConfiguration + ' /maxcpucount';
   console.log(exec(cmd).stdout);
 });
 

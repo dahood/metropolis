@@ -244,7 +244,7 @@
     <!-- Pass in AssembyInfo to MSBuild via /p:VersionNumber=<value> -->
     <Message Text="Updating AssemblyInfo to Version $(VersionNumber)">
     </Message>
-    <Message Text="Writing to AssemblyInfo files in $(SolutionRoot)">
+    <Message Text="Writing to AssemblyInfo files in @(AssemblyInfoFiles)">
     </Message>
     <AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)" AssemblyCopyright="$(AssemblyCopyright)" AssemblyVersion="$(VersionNumber)" AssemblyFileVersion="$(VersionNumber)">
     </AssemblyInfo>

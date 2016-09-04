@@ -10,6 +10,7 @@
   ],
   "dependencies": {
     "eslint": "~2.9.0",
+    "gulp-dotnet-assembly-info": "^0.1.11",
     "sloc": "~0.1.10"
   },
   "devDependencies": {
