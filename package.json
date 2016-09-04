@@ -10,13 +10,13 @@
   ],
   "dependencies": {
     "eslint": "~2.9.0",
-    "gulp-dotnet-assembly-info": "^0.1.11",
     "sloc": "~0.1.10"
   },
   "devDependencies": {
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-nunit-runner": "^0.5.2",
+    "gulp-dotnet-assembly-info": "^0.1.11",
     "sync-exec": "^0.6.2",
     "yargs": "^4.7.1"
   },

@@ -18,17 +18,20 @@ gulp.task('default', ['test']);
 
 // Gulp Tasks
 
+gulp.task('compile', ['assemblyInfo', 'msbuild']);
+
 gulp.task('assemblyInfo', function() {
     var package = require('./package.json');
     version = package.version;
     console.log('Version Number: ' + version);
+
     gulp.src('**/AssemblyInfo.cs')
         .pipe(assemblyInfo({
             title: 'Metropolis',
             description: 'A code reivew and visualization tool', 
             configuration: 'Release', 
             company: 'Dahood.io', 
-            product: 'Planet Express Website', 
+            product: 'Metropolis', 
             copyright: 'Copyright © Jonathan McCracken, Greg Cook, and Richard Hurst 2016', 
             trademark: 'Dahood.io', 
             culture: 'en-US',
@@ -38,8 +41,7 @@ gulp.task('assemblyInfo', function() {
 });
 
 
-gulp.task('compile', ['assemblyInfo'], function () {
-
+gulp.task('msbuild', function () {
   console.log('MSBuild Release Configuration: ' + msBuildConfiguration);
   var cmd = '"C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe\" Metropolis.sln /t:Rebuild ' +
     '/p:OutDir=' + buildPath + ';Configuration=' + msBuildConfiguration + ' /maxcpucount';

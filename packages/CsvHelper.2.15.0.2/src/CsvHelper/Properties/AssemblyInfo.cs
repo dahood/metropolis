@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription( "A code reivew and visualization tool" )]
 [assembly: AssemblyConfiguration( "Release" )]
 [assembly: AssemblyCompany( "Dahood.io" )]
-[assembly: AssemblyProduct( "Planet Express Website" )]
+[assembly: AssemblyProduct( "Metropolis" )]
 [assembly: AssemblyCopyright( "Copyright © Jonathan McCracken, Greg Cook, and Richard Hurst 2016" )]
 [assembly: AssemblyTrademark( "Dahood.io" )]
 [assembly: AssemblyCulture( "en-US" )]
