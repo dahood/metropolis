@@ -389,7 +389,7 @@ namespace Metropolis.Views
 
         private void ProjectWiki(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/dahood/metropolis/wiki/Home");
+            Process.Start("https://dahood.io/metropolis/");
         }
 
         private void CameraGuide(object sender, RoutedEventArgs e)

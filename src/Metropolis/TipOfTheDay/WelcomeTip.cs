@@ -81,6 +81,6 @@
             </StackPanel>
 ";
 
-        public string ForMoreInfoUrl => @"https://github.com/dahood/metropolis/wiki/Beginner-Guide";
+        public string ForMoreInfoUrl => @"https://dahood.io/metropolis-user-guide/";
     }
 }
