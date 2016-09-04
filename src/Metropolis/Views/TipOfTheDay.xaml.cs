@@ -47,7 +47,7 @@ namespace Metropolis.Views
 
         private void OpenBeginnerGuide(object sender, RoutedEventArgs routedEventArgs)
         {
-            Process.Start("https://github.com/dahood/metropolis/wiki/Beginner-Guide");
+            Process.Start("https://dahood.io/metropolis-user-guide/");
         }
         
         private void CloseWindow(object sender, RoutedEventArgs e)
