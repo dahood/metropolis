@@ -8,9 +8,9 @@ var assemblyInfo = require('gulp-dotnet-assembly-info');
 
 // Gulp Variables
 var buildPath = '%CD%\\build';
-var msBuildConfiguration = 'Release'
+var msBuildConfiguration = 'Release';
 var version = '0.0.1'; //using package.json
-var nunitConsole = 'packages\\NUnit.ConsoleRunner.3.4.1\\tools\\nunit3-console.exe'
+var nunitConsole = 'packages\\NUnit.ConsoleRunner.3.4.1\\tools\\nunit3-console.exe';
 
 // Gulp Default
 
@@ -34,7 +34,6 @@ gulp.task('assemblyInfo', function() {
             product: 'Metropolis', 
             copyright: 'Copyright © Jonathan McCracken, Greg Cook, and Richard Hurst 2016', 
             trademark: 'Dahood.io', 
-            culture: 'en-US',
             version: '0.' + version,
             fileVersion: '0.' + version}))
         .pipe(gulp.dest('.'));

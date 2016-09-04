@@ -135,7 +135,6 @@ namespace Metropolis.Test.Api.Services
             var toIgnore = new FileDto {Name = @"c:\ignoreMe.cs"};
             var ignoreFile = ".metropolisignore";
             var projectFolder = @"c:\projFolder";
-            var projectBuildFolder = @"C:\project\build";
             
             fileSystem.Setup(x => x.IgnoreFile).Returns(ignoreFile);
             fileSystem.Setup(x => x.WriteText(Path.Combine(projectFolder, ignoreFile), new[] { toIgnore.Name }));
