@@ -109,7 +109,6 @@
     <Compile Include="Readers\XmlReaders\CheckStyles\CheckStylesItem.cs" />
     <Compile Include="Readers\XmlReaders\FxCop\BaseFxCopBuilder.cs" />
     <Compile Include="Readers\XmlReaders\FxCop\FxCopInstanceBuilder.cs" />
-    <Compile Include="Readers\XmlReaders\FxCop\FxCopInstanceRBuilder.cs" />
     <Compile Include="Readers\XmlReaders\FxCop\FxCopMetricsReader.cs" />
     <Compile Include="Readers\XmlReaders\FxCop\IFxCopInstanceBuilder.cs" />
     <Compile Include="Readers\XmlReaders\FxCop\IFxCopMemberBuilder.cs" />
