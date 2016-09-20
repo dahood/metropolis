@@ -10,6 +10,7 @@ Metropolis is a code review and analysis tool that will help you highlight areas
 ## How to Install
 
 ### Windows Instructions
+1. Install [Java](https://java.com/en/download/)
 1. Install NodeJS on [Windows](https://nodejs.org/dist/v6.1.0/node-v6.1.0-x64.msi)
 1. `npm install -g metropolis` 
 

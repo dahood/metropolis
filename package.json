@@ -9,16 +9,16 @@
     "dist"
   ],
   "dependencies": {
-    "eslint": "~2.9.0",
-    "sloc": "~0.1.10"
+    "eslint": "~3.5.0",
+    "sloc": "~0.1.11"
   },
   "devDependencies": {
-    "del": "^2.2.0",
+    "del": "^2.2.2",
     "gulp": "^3.9.1",
-    "gulp-nunit-runner": "^0.5.2",
-    "gulp-dotnet-assembly-info": "^0.1.11",
+    "gulp-nunit-runner": "^1.1.0",
+    "gulp-dotnet-assembly-info": "^0.1.12",
     "sync-exec": "^0.6.2",
-    "yargs": "^4.7.1"
+    "yargs": "^5.0.0"
   },
   "scripts": {
     "postinstall": "TYPE metro-install.ps1 | PowerShell.exe -noprofile -",
