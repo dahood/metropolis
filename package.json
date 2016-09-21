@@ -10,6 +10,7 @@
   ],
   "dependencies": {
     "eslint": "~3.5.0",
+    "eslint-plugin-react": "~6.3.0",
     "sloc": "~0.1.11"
   },
   "devDependencies": {
