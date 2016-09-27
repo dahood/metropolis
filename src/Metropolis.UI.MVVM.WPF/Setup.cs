@@ -6,8 +6,7 @@ using MvvmCross.Wpf.Views;
 
 namespace Metropolis.UI.MVVM.WPF
 {
-    public class Setup
-        : MvxWpfSetup
+    public class Setup : MvxWpfSetup
     {
         public Setup(Dispatcher dispatcher, IMvxWpfViewPresenter presenter)
             : base(dispatcher, presenter)
