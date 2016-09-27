@@ -22,11 +22,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.Console", "src\M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.Common", "src\Metropolis.Common\Metropolis.Common.csproj", "{867E868A-B77F-42DD-BD08-83BBADF9E847}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.UI.MVVM.Core", "Metropolis.UI.MVVM\Metropolis.UI.MVVM.Core\Metropolis.UI.MVVM.Core.csproj", "{31D7792C-8339-4C32-8C91-123C9B248B83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.UI.MVVM.Core", "src\Metropolis.UI.MVVM\Metropolis.UI.MVVM.Core\Metropolis.UI.MVVM.Core.csproj", "{31D7792C-8339-4C32-8C91-123C9B248B83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.UI.MVVM.UWP", "Metropolis.UI.MVVM\Metropolis.UI.MVVM.UWP\Metropolis.UI.MVVM.UWP.csproj", "{A8353786-6AC8-4E69-AEC1-DB451D983AD2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.UI.MVVM.UWP", "src\Metropolis.UI.MVVM\Metropolis.UI.MVVM.UWP\Metropolis.UI.MVVM.UWP.csproj", "{A8353786-6AC8-4E69-AEC1-DB451D983AD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.UI.MVVM.WPF", "Metropolis.UI.MVVM\Metropolis.UI.MVVM.WPF\Metropolis.UI.MVVM.WPF.csproj", "{9DA7FA80-ECE5-4345-AB02-C92E9DD4A184}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.UI.MVVM.WPF", "src\Metropolis.UI.MVVM\Metropolis.UI.MVVM.WPF\Metropolis.UI.MVVM.WPF.csproj", "{9DA7FA80-ECE5-4345-AB02-C92E9DD4A184}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
