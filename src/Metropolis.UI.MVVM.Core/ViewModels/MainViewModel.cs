@@ -1,3 +1,4 @@
+using Metropolis.UI.MVVM.Core.ViewModels.Menu;
 using MvvmCross.Core.ViewModels;
 
 namespace Metropolis.UI.MVVM.Core.ViewModels
@@ -6,7 +7,7 @@ namespace Metropolis.UI.MVVM.Core.ViewModels
     {
         private ViewPort3DViewModel ViewPort;
         private CodeSummaryViewModel codeSummary;
-        private MenuViewModel menu;
+        private ProjectMenuViewModel projectMenu;
 
     }
 }
