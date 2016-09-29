@@ -11,7 +11,7 @@ namespace Metropolis.UI.MVVM.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            RegisterAppStart<ViewModels.FirstViewModel>();
+            RegisterAppStart<ViewModels.MainViewModel>();
         }
     }
 }

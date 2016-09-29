@@ -314,7 +314,6 @@
     <EmbeddedResource Include="Resources\Highlighting\javascript.xshd" />
     <EmbeddedResource Include="Resources\Highlighting\csharp.xshd" />
     <EmbeddedResource Include="Resources\Highlighting\java.xshd" />
-    <None Include="SampleFiles\aspnet-toxicity-input.csv" />
     <Resource Include="Images\Properties.ico" />
     <Resource Include="Images\Shutdown.ico" />
     <Resource Include="Images\Project.ico" />
@@ -354,12 +353,6 @@
     <Resource Include="Images\UserPreferences.png" />
     <Resource Include="Images\duplicate.ico" />
     <Resource Include="Images\Rerun.png" />
-    <Content Include="SampleFiles\entity-framework-6.csv" />
-    <None Include="SampleFiles\git-log-file-touches.csv" />
-    <None Include="SampleFiles\metropolis-code-coverage-with-tests.coveragexml">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SampleFiles\metropolis-vs-input.csv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
