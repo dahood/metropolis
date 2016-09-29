@@ -1,6 +1,6 @@
 ﻿namespace Metropolis.UI.MVVM.Core.Models
 {
-    public class MemberDetail
+    public class MemberModel
     {
         public string Name { get; set; }
         public int LinesOfCode { get; set; }

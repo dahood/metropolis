@@ -1,6 +1,6 @@
 ﻿namespace Metropolis.UI.MVVM.Core.Models
 {
-    public enum SourceTypeDetail
+    public enum SourceTypeModel
     {
         CSharp,
         Java,

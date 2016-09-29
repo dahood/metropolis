@@ -35,15 +35,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="Models\DuplicateDetail.cs" />
-    <Compile Include="Models\MemberDetail.cs" />
-    <Compile Include="Models\SourceTypeDetail.cs" />
+    <Compile Include="Models\DuplicateModel.cs" />
+    <Compile Include="Models\MemberModel.cs" />
+    <Compile Include="Models\SourceTypeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\CodeInspector\CodeInspectorDuplicateViewModel.cs" />
-    <Compile Include="ViewModels\CodeInspector\CodeInspectorMembersViewModel.cs" />
-    <Compile Include="ViewModels\CodeInspector\CodeInspectorSourceCodeViewModel.cs" />
-    <Compile Include="ViewModels\CodeInspector\CodeInspectorSummaryViewModel.cs" />
-    <Compile Include="ViewModels\CodeInspector\CodeInspectorTabViewModel.cs" />
+    <Compile Include="ViewModels\CodeInspector\DuplicateViewModel.cs" />
+    <Compile Include="ViewModels\CodeInspector\MembersViewModel.cs" />
+    <Compile Include="ViewModels\CodeInspector\SourceCodeViewModel.cs" />
+    <Compile Include="ViewModels\CodeInspector\SummaryViewModel.cs" />
+    <Compile Include="ViewModels\CodeInspector\TabViewModel.cs" />
     <Compile Include="ViewModels\FirstViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

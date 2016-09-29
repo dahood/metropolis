@@ -4,11 +4,11 @@ using MvvmCross.Core.ViewModels;
 
 namespace Metropolis.UI.MVVM.Core.ViewModels.CodeInspector
 {
-    public class CodeInspectorDuplicateViewModel : MvxViewModel
+    public class DuplicateViewModel : MvxViewModel
     {
-        private List<DuplicateDetail> members = new List<DuplicateDetail>();
+        private List<DuplicateModel> members = new List<DuplicateModel>();
 
-        public List<DuplicateDetail> Members
+        public List<DuplicateModel> Members
         {
             get { return members; }
             set { SetProperty(ref members, value); }

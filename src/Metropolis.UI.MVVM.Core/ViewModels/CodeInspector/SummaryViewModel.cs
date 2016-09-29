@@ -2,7 +2,7 @@ using MvvmCross.Core.ViewModels;
 
 namespace Metropolis.UI.MVVM.Core.ViewModels.CodeInspector
 {
-    public class CodeInspectorSummaryViewModel : MvxViewModel
+    public class SummaryViewModel : MvxViewModel
     {
         private string name;
         private string codeBag;
