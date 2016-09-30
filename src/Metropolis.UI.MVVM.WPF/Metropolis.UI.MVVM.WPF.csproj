@@ -98,6 +98,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resources\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -127,6 +131,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <EmbeddedResource Include="Resources\Highlighting\csharp.xshd" />
+    <EmbeddedResource Include="Resources\Highlighting\java.xshd" />
+    <EmbeddedResource Include="Resources\Highlighting\javascript.xshd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -136,6 +143,81 @@
       <Project>{31d7792c-8339-4c32-8c91-123c9b248b83}</Project>
       <Name>Metropolis.UI.MVVM.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\folder-2-32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\search_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Wiki.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BuildSolution.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\camera_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\camera_icon_with_stuff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CityLayout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\compass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\csv-icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\duplicate.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\GoldenRatioLayout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\IgnoreFile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\infoabout.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\metrics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\metropolis-1141609_960_720.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Project.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Rename.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Rerun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\RunAnalysis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SaveProject.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SquareLayout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Toxic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\UserPreferences.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

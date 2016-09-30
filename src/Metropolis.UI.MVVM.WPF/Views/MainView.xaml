@@ -17,6 +17,7 @@
         <Ribbon x:Name="RibbonWin" SelectedIndex="0" Grid.Row="0" VerticalAlignment="Stretch" Margin="0,0,-0.444,1">
             <RibbonTab Header="Home" KeyTip="H">
                 <RibbonGroup x:Name="ProjectGroup" Header="Project">
+                    <RibbonButton LargeImageSource="..\Images\Project.ico" Label="Load" KeyTip="O" />
                     <RibbonButton LargeImageSource="..\Images\Rename.png" Label="Rename" KeyTip="O" />
                     <RibbonButton LargeImageSource="..\Images\csv-icon.jpg" Label="Export" KeyTip="O" />
                 </RibbonGroup>
@@ -40,6 +41,7 @@
                 <RibbonGroup x:Name="HelpGroup" Header="Help">
                     <RibbonButton Label="User Preferences" LargeImageSource="..\Images\UserPreferences.png"/>
                     <RibbonButton Label="Online Documentation" LargeImageSource="..\Images\Wiki.ico" />
+                    <RibbonButton Label="Online Documentation" LargeImageSource="..\Images\infoabout.ico" />
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>

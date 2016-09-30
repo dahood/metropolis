@@ -40,7 +40,6 @@
     <Compile Include="Models\SourceTypeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CodeSummaryViewModel.cs" />
-    <Compile Include="ViewModels\Help\TipViewModel.cs" />
     <Compile Include="ViewModels\Menu\HeatmapSelectorViewModel.cs" />
     <Compile Include="ViewModels\Menu\HelpMenuViewModel.cs" />
     <Compile Include="ViewModels\Menu\LayoutSelectorViewModel.cs" />
