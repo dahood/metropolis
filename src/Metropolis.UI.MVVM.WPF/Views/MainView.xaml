@@ -1,0 +1,133 @@
+<views:MvxWpfView
+             x:Class="Metropolis.UI.MVVM.WPF.Views.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:views="clr-namespace:MvvmCross.Wpf.Views;assembly=MvvmCross.Wpf"
+             mc:Ignorable="d" 
+              Height="800" 
+              Width="1200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Ribbon x:Name="RibbonWin" SelectedIndex="0" Grid.Row="0" VerticalAlignment="Stretch" Margin="0,0,-0.444,1">
+            <RibbonTab Header="Home" KeyTip="H">
+                <RibbonGroup x:Name="ProjectGroup" Header="Project">
+                    <RibbonButton LargeImageSource="..\Images\Rename.png" Label="Rename" KeyTip="O" />
+                    <RibbonButton LargeImageSource="..\Images\csv-icon.jpg" Label="Export" KeyTip="O" />
+                </RibbonGroup>
+                <RibbonGroup x:Name="CollectionGroup" Header="Collection">
+                    <RibbonButton LargeImageSource="..\Images\metrics.png" Label="Import Data and Code Metrics" KeyTip="O" />
+                    <RibbonButton LargeImageSource="..\Images\Rerun.png" Label="Rerun Project Metrics" KeyTip="O" />
+                </RibbonGroup>
+                <RibbonGroup x:Name="ScreenShotGroup" Header="Screenshots">
+                    <RibbonButton LargeImageSource="..\Images\camera_icon.png" Label="Simple Screenshot" KeyTip="0" />
+                    <RibbonButton LargeImageSource="..\Images\camera_icon_with_stuff.png" Label="Screenshot with Metrics" KeyTip="0" />
+                </RibbonGroup>
+                <RibbonGroup x:Name="LayoutGroup" Header="Layout">
+                    <RibbonToggleButton x:Name="SquareLayoutToggleButton" Label="Square Layout" IsChecked="True" LargeImageSource="..\Images\SquareLayout.png" />
+                    <RibbonToggleButton x:Name="CityLayoutToggleButton" Label="City Layout" LargeImageSource="..\Images\CityLayout.png" />
+                    <RibbonToggleButton x:Name="GoldenRatioLayoutToggleButton" Label="Golden Ratio Layout" LargeImageSource="..\Images\GoldenRatioLayout.png" />
+                </RibbonGroup>
+                <RibbonGroup x:Name="HeatmapGroup" Header="Heatmap">
+                    <RibbonToggleButton x:Name="ToxicityToggleButton" Label="Toxicity Heatmap" IsChecked="True" LargeImageSource="..\Images\Toxic.png" />
+                    <RibbonToggleButton x:Name="DuplicateToggleButton" Label="Duplicate Heatmap" LargeImageSource="..\Images\duplicate.ico" />
+                </RibbonGroup>
+                <RibbonGroup x:Name="HelpGroup" Header="Help">
+                    <RibbonButton Label="User Preferences" LargeImageSource="..\Images\UserPreferences.png"/>
+                    <RibbonButton Label="Online Documentation" LargeImageSource="..\Images\Wiki.ico" />
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+
+        <DockPanel LastChildFill="True" Margin="0,142,-0.444,-0.111" Grid.Row="0" Grid.RowSpan="2">
+            <StackPanel DockPanel.Dock="Right" Margin="0,0,5,10.5" Width="220" VerticalAlignment="Top">
+                <GroupBox Name="CodeMetricsBox">
+                    <GroupBox.Header>
+                        <Label>Codebase Metrics</Label>
+                    </GroupBox.Header>
+                    <Border Name="CodeMetricsGrid" CornerRadius="25" Background="White" BorderThickness="1">
+                        <Grid Margin="5,5,5,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0">Project</Label>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  x:Name="ProjectNameTextBox" 
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                       Text="{Binding Path=ProjectName}" />
+                            <Label Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0">Run Date</Label>
+                            <TextBlock Grid.Row="1" Grid.Column="2" x:Name="RunDateTextBox" 
+                                       Text="{Binding Path=RunDate}"
+                                       HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <Label Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0">Lines of Code</Label>
+                            <TextBlock Grid.Row="2" Grid.Column="2" x:Name="LocTextBlock" 
+                                       HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <Label Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0" Name="InstanceLabel">Types</Label>
+                            <TextBlock Grid.Row="3" Grid.Column="2" x:Name="TypesTextBlock" 
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <Label Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0">Code Density</Label>
+                            <TextBlock Grid.Row="4" Grid.Column="2" x:Name="CodeDensityTextBlock" 
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <Label Grid.Row="5" Grid.ColumnSpan="2" Grid.Column="0">Average Toxicity</Label>
+                            <TextBlock Grid.Row="5" Grid.Column="2" x:Name="ToxicityTextBlock" 
+                                       HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <Label Grid.Row="6" Grid.ColumnSpan="3" Grid.Column="0">Absolute Toxicity</Label>
+                            <TextBlock Grid.Row="6" Grid.Column="2" x:Name="AbsoluteToxicityTextBlock" 
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <Label Grid.Row="7" Grid.ColumnSpan="3" Grid.Column="0">Code Duplicates</Label>
+                            <TextBlock Grid.Row="7" Grid.Column="2" x:Name="DuplicateTextBlock" 
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <Label Grid.Row="8" Grid.ColumnSpan="2" Grid.Column="0">Test Coverage</Label>
+                            <TextBlock Grid.Row="8" Grid.Column="2" x:Name="CoverageTextBlock" 
+                                       HorizontalAlignment="Right" VerticalAlignment="Center" />
+                        </Grid>
+                    </Border>
+                </GroupBox>
+                <GroupBox Name="SearchBox">
+                    <GroupBox.Header>
+                        <Label>Search</Label>
+                    </GroupBox.Header>
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="15" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Row="0" Grid.Column="0" Content="X" Background="WhiteSmoke" BorderThickness="0"  />
+                            <TextBox x:Name="searchText" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="5,5,5,5" />
+                        </Grid>
+                        <ListBox x:Name="SearchSuggestions" Margin="15,5,5,5" BorderThickness="0" MaxHeight="100" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                        <TextBox Text="{Binding Hello, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+
+            <Border Background="GhostWhite" BorderBrush="Black" BorderThickness="1" Padding="2" Margin="5,5,5,5">
+                <Viewport3D Name="viewPort" Margin="0,0,0,0">
+                    <Viewport3D.Camera>
+                        <PerspectiveCamera UpDirection="0,1,0" Position="0,20,-150" LookDirection="0,0,1" FieldOfView="90" />
+                    </Viewport3D.Camera>
+                </Viewport3D>
+            </Border>
+        </DockPanel>
+    </Grid>
+</views:MvxWpfView>
+
