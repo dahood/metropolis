@@ -3,9 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Metropolis.UI.MVVM.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Metropolis v0.0.1"
+              Height="800" 
+              Width="1200"
+              WindowStartupLocation="CenterScreen">
+    <Window.Icon>..\Images\logo.ico</Window.Icon>
     <Grid>
         
     </Grid>
