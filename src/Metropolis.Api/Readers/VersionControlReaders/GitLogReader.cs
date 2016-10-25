@@ -33,12 +33,18 @@ namespace Metropolis.Api.Readers.VersionControlReaders
         {
             throw new NotImplementedException();
 
-            //parse once for instances
-            // instances have Touches or commit history - see InsanceVersionInfo
-            //var oneCheckin = new CommitEntry("foo", "bar is so bar");
+            // step 1 - parse into CommitEntries
+            // add these to CodeGraph.Commits.Add(range from gitlog.log)
 
-            //parse twice for artifacts
-            //var anotherCheckin = new CommitEntry("foo", "bar is so bar");
+
+            // step 2 - from the list of all instances & files in git history
+            // make a list of instances
+            // make a list of artifacts
+
+
+            // step 3 - associate a reference for each occurance in CodeGraph.Commits to CodeGraph.Instances & CodeGraph.Artifacts
+            // add for Instances
+            // add for Artifacts
 
 
             // don't return an empty codebase
