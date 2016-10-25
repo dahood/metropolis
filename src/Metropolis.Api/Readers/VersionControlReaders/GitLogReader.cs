@@ -33,12 +33,16 @@ namespace Metropolis.Api.Readers.VersionControlReaders
         {
             throw new NotImplementedException();
 
-            // step 1 - parse into CommitEntries
+            //NOTE: may need a different interface other than InstanceReader.... 
+            // possibly ISourceControlReader because I need to do this step last of the whole thing 
+            // because I want to pass in a CodeBase here since it simplified step 2 & 3 since at this point in time
+            // I only care about what exists in ref HEAD...the code you own today, not the history
+
+            // step 1 - parse into CommitEntries (despite this I still want all the history for visualization data
             // add these to CodeGraph.Commits.Add(range from gitlog.log)
 
             // step 2 - foreach CommitEntry apply the resulting Instance & Artifacts
             // TODO: THIS CAN BE COMBINED WITH STEP 3...so we don't need to iterate as many times
-
             // create either an instance or an artifact based on file type - TODO: Where will this come from...all I have is a Reader...
             // apply an instance with FileHeadRevisionStatus.Unsure
             // apply an artifact with FileHeadRevisionStatus.Unsure
