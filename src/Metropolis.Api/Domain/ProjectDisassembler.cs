@@ -72,11 +72,11 @@ namespace Metropolis.Api.Domain
                     .ToArray();
         }
 
-        private static VersionHistory Disassemble(SerializableVersionHistory src)
+        private static CommitEntry Disassemble(SerializableVersionHistory src)
         {
             //TODO: fix this also
             //use the src luke!
-            return new VersionHistory();
+            return new CommitEntry();
         }
     }
 }

@@ -12,7 +12,6 @@ namespace Metropolis.Api.Domain
     {
         private static readonly Logger Journal = LogManager.GetLogger("ProgressJournal");
 
-        private List<VersionHistory> meta = new List<VersionHistory>();
         public List<Duplicate> Duplicates { get; private set; } = new List<Duplicate>();
 
         public Instance(CodeBag codeBag, string name, Location path)
@@ -39,7 +38,7 @@ namespace Metropolis.Api.Domain
 
         public List<Member> Members { get; set; } = new List<Member>();
 
-        public VersionHistory History { get; set; }
+        public CommitEntry History { get; set; }
 
         public override string ToString()
         {

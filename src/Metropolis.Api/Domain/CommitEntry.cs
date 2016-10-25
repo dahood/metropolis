@@ -6,7 +6,7 @@ namespace Metropolis.Api.Domain
     /// <summary>
     ///     A model from git on commit history
     /// </summary>
-    public class VersionHistory
+    public class CommitEntry
     {
         public string CommitHash { get; set; }
         public string AuthorName { get; set; }

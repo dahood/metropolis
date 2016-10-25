@@ -122,7 +122,7 @@
     <Compile Include="Collection\Steps\ICollectionStep.cs" />
     <Compile Include="Collection\Steps\Java\PuppyCrawlerCheckstyleCollectionStep.cs" />
     <Compile Include="Domain\Instance.cs" />
-    <Compile Include="Domain\VersionHistory.cs" />
+    <Compile Include="Domain\CommitEntry.cs" />
     <Compile Include="Domain\CodeBase.cs" />
     <Compile Include="Domain\CodeGraph.cs" />
     <Compile Include="Domain\Member.cs" />

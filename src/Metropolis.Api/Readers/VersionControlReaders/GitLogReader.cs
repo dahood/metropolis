@@ -35,10 +35,10 @@ namespace Metropolis.Api.Readers.VersionControlReaders
 
             //parse once for instances
             // instances have Touches or commit history - see InsanceVersionInfo
-            //var oneCheckin = new VersionHistory("foo", "bar is so bar");
+            //var oneCheckin = new CommitEntry("foo", "bar is so bar");
 
             //parse twice for artifacts
-            //var anotherCheckin = new VersionHistory("foo", "bar is so bar");
+            //var anotherCheckin = new CommitEntry("foo", "bar is so bar");
 
 
             // don't return an empty codebase

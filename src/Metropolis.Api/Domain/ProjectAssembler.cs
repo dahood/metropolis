@@ -56,7 +56,7 @@ namespace Metropolis.Api.Domain
             };
         }
 
-        private static SerializableVersionHistory Assemble(VersionHistory src)
+        private static SerializableVersionHistory Assemble(CommitEntry src)
         {
             //TODO: fix this!!!
             return new SerializableVersionHistory();

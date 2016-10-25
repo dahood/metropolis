@@ -8,7 +8,7 @@
     {
         public ArtifactFileType Type { get; set; }
 
-        public VersionHistory VersionHistory { get; set; }
+        public CommitEntry CommitEntry { get; set; }
 
         // and ConfigutationFiles like web.config or web.xml or docker container files
         // but BuildFiles like .xml for ANT or package.json for npm packages
