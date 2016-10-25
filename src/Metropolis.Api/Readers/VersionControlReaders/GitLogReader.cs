@@ -43,8 +43,9 @@ namespace Metropolis.Api.Readers.VersionControlReaders
 
 
             // step 3 - associate a reference for each occurance in CodeGraph.Commits to CodeGraph.Instances & CodeGraph.Artifacts
-            // add for Instances
-            // add for Artifacts
+            // becareful not to serialize this out twice since this could get huge
+            // add for Instances.VersionHistory.Add()
+            // add for Artifacts.VersionHistory.Add()
 
 
             // don't return an empty codebase
