@@ -40,14 +40,13 @@ namespace Metropolis.Api.Domain
                 CyclomaticComplexity = src.CyclomaticComplexity,
                 DepthOfInheritance = src.DepthOfInheritance,
                 Toxicity = src.Toxicity,
-                Meta = src.Meta.Select(Disassemble),
-                Members = src.Members.Select(Disassemble).ToList(),
+                History = Disassemble(src.History),
+                Members = src.Members.Select(Disassemble).ToList()
             };
 
             disassemble.Duplicates.AddRange(src.Duplicates.Select(Disassemble).ToList());
 
             return disassemble;
-
         }
 
         private static Member Disassemble(SerializableMember src)
@@ -73,9 +72,11 @@ namespace Metropolis.Api.Domain
                     .ToArray();
         }
 
-        private static InstanceVersionInfo Disassemble(SerializableClassVersionInfo i)
+        private static VersionHistory Disassemble(SerializableVersionHistory src)
         {
-            return new InstanceVersionInfo(i.FileName, i.CommitMessage);
+            //TODO: fix this also
+            //use the src luke!
+            return new VersionHistory();
         }
     }
 }

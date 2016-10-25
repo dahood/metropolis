@@ -24,7 +24,7 @@ namespace Metropolis.Api.Domain
 
     public class SerializableClass
     {
-        public IEnumerable<SerializableClassVersionInfo> Meta { get; set; }
+        public SerializableVersionHistory History { get; set; }
         public IEnumerable<SerializableMember> Members { get; set; }
         public IEnumerable<SerializableDuplicate> Duplicates { get; set; }
         public SerializeableCodeBag CodeBag { get; set; }
@@ -68,8 +68,9 @@ namespace Metropolis.Api.Domain
         public int NoFallthrough { get; set; }
     }
 
-    public class SerializableClassVersionInfo
+    public class SerializableVersionHistory
     {
+        //TODO: fix this
         public string FileName { get; set; }
         public string CommitMessage { get; set; }
         public DateTime TimeStamp { get; set; }

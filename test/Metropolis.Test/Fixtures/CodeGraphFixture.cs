@@ -31,8 +31,7 @@ namespace Metropolis.Test.Fixtures
                 var path = @"C:\dev\Metropolis.Api\Domain\CodeBase.cs";
                 var classOne = InstanceBuilder.Build(MetroCodeBagApi, "CodeBase", path, 50, 200, 10,10, new List<Member> {});
 
-                classOne.AddMeta(new InstanceVersionInfo("CodeBase.cs", "commit message 1"));
-
+               
                 classOne.Duplicates.Add(new Duplicate(1, 10, new Location(path)));
                 classOne.Duplicates.Add(new Duplicate(1, 10, new Location("fileB.cs")));
 

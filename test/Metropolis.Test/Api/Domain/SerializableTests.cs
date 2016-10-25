@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using FluentAssertions;
 using Metropolis.Api.Domain;
 using Metropolis.Test.Extensions;
@@ -14,13 +13,6 @@ namespace Metropolis.Test.Api.Domain
         [SetUp]
         public void SetUp()
         {
-            versionInfo = new SerializableClassVersionInfo
-            {
-                CommitMessage = "msg",
-                FileName = "filename",
-                TimeStamp = DateTime.Now
-            };
-
             member = new SerializableMember
             {
                 ClassCoupling = 1,
@@ -41,14 +33,13 @@ namespace Metropolis.Test.Api.Domain
                 NumberOfMethods = 5,
                 Toxicity = 6,
                 Name = "MyClass",
-                CodeBag = new SerializeableCodeBag {Name= "MyNamespace"},
-                Meta = new[] {versionInfo},
+                CodeBag = new SerializeableCodeBag {Name = "MyNamespace"},
                 Members = new[] {member}
             };
         }
 
         private SerializableClass toSerialize;
-        private SerializableClassVersionInfo versionInfo;
+        private SerializableVersionHistory versionHistory;
         private SerializableMember member;
 
 

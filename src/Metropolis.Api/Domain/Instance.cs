@@ -5,11 +5,14 @@ using NLog;
 
 namespace Metropolis.Api.Domain
 {
-    public class Instance : IInstance
+    /// <summary>
+    /// Any executable code module. Think a java class file or a javascript module, etc.
+    /// </summary>
+    public class Instance : AbstractFile, IInstance
     {
         private static readonly Logger Journal = LogManager.GetLogger("ProgressJournal");
 
-        private List<InstanceVersionInfo> meta = new List<InstanceVersionInfo>();
+        private List<VersionHistory> meta = new List<VersionHistory>();
         public List<Duplicate> Duplicates { get; private set; } = new List<Duplicate>();
 
         public Instance(CodeBag codeBag, string name, Location path)
@@ -21,7 +24,6 @@ namespace Metropolis.Api.Domain
 
         public CodeBag CodeBag { get; }
         public string Name { get; }
-        public Location PhysicalPath { get; set; }
         public int NumberOfMethods { get; set; }
         public int LinesOfCode { get; set; }
         public int DepthOfInheritance { get; set; }
@@ -37,18 +39,14 @@ namespace Metropolis.Api.Domain
 
         public List<Member> Members { get; set; } = new List<Member>();
 
-        public IEnumerable<InstanceVersionInfo> Meta
-        {
-            get { return meta; }
-            set { meta = value.ToList(); }
-        }
+        public VersionHistory History { get; set; }
 
         public override string ToString()
         {
             return PhysicalPath.Path;
         }
 
-        protected bool Equals(Instance other)
+        private bool Equals(Instance other)
         {
             return Equals(CodeBag, other.CodeBag) && string.Equals(Name, other.Name);
         }
@@ -79,21 +77,10 @@ namespace Metropolis.Api.Domain
                 Journal.Info($"{dup.Location} does not match instance {Name}");
         }
 
-        public Instance AddMembers(IEnumerable<Member> toadd)
+        public void AddMembers(IEnumerable<Member> toadd)
         {
             Members.AddRange(toadd);
             NumberOfMethods = toadd.Count();
-            return this;
-        }
-
-        public void AddMeta(IEnumerable<InstanceVersionInfo> toAdd)
-        {
-            meta.AddRange(toAdd);
-        }
-
-        public void AddMeta(params InstanceVersionInfo[] toAdd)
-        {
-            AddMeta(toAdd.ToList());
         }
 
         public void Apply(Instance src)

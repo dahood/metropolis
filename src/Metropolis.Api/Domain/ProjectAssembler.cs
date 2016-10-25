@@ -36,32 +36,31 @@ namespace Metropolis.Api.Domain
             {
                 Name = src.Name,
                 Location = src.PhysicalPath.Path,
+                History = Assemble(src.History),
                 CodeBag = new SerializeableCodeBag
                 { 
                     Name = src.CodeBag.Name,
                     CodeBagType = src.CodeBag.Type.ToString(),
                     LocationPath = src.CodeBag.Path
                 },
+                //metrics
                 NumberOfMethods = src.NumberOfMethods,
                 ClassCoupling = src.ClassCoupling,
                 CyclomaticComplexity = src.CyclomaticComplexity,
                 DepthOfInheritance = src.DepthOfInheritance,
                 Toxicity = src.Toxicity,
                 LinesOfCode = src.LinesOfCode,
-                Meta = src.Meta.Select(Assemble),
+                //attributes
                 Members = src.Members.Select(Assemble),
                 Duplicates = src.Duplicates.Select(Assemble)
             };
         }
 
-        private static SerializableClassVersionInfo Assemble(InstanceVersionInfo src)
+        private static SerializableVersionHistory Assemble(VersionHistory src)
         {
-            return new SerializableClassVersionInfo
-            {
-                FileName = src.FileName,
-                CommitMessage = src.CommitMessage,
-                TimeStamp = src.TimeStamp
-            };
+            //TODO: fix this!!!
+            return new SerializableVersionHistory();
+               
         }
 
         private static SerializableMember Assemble(Member src)

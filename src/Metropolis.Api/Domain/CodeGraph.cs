@@ -3,9 +3,18 @@ using System.Linq;
 
 namespace Metropolis.Api.Domain
 {
+    /// <summary>
+    /// A graph to represent a version controlled source code system
+    /// Instances make up all the executable code units
+    /// Artifacts make up all the other configuration, deployment, build system, and binary assets
+    /// CodeBags are furthur containers provided like file directories or package/namespace classification for OO languages
+    /// </summary>
     public class CodeGraph
     {
-        private readonly Dictionary<Location, Instance> map = new Dictionary<Location, Instance>();
+        private readonly Dictionary<Location, Instance> instanceMap = new Dictionary<Location, Instance>();
+        //TODO: make this work... not sure how this merges with the CodeGraph
+        //private readonly Dictionary<Location, ArtifactFile> artifactMap = new Dictionary<Location, ArtifactFile>();
+
         private readonly HashSet<CodeBag> codebags = new HashSet<CodeBag>();
 
         public CodeGraph(IEnumerable<Instance> classes)
@@ -13,14 +22,14 @@ namespace Metropolis.Api.Domain
             Initialize(classes);
         }
 
-        public List<Instance> AllInstances => map.Values.ToList();
+        public List<Instance> AllInstances => instanceMap.Values.ToList();
 
         public List<CodeBag> AllNamespaces => codebags.ToList();
-        public int Count => map.Count;
+        public int Count => instanceMap.Count;
 
-        public int MaxLinesOfCode => map.Values.Count != 0 ? map.Values.Max(c => c.LinesOfCode) : 0; 
+        public int MaxLinesOfCode => instanceMap.Values.Count != 0 ? instanceMap.Values.Max(c => c.LinesOfCode) : 0; 
 
-        public int MinLinesOfCode => map.Values.Count != 0 ? map.Values.Min(c => c.LinesOfCode) : 0;
+        public int MinLinesOfCode => instanceMap.Values.Count != 0 ? instanceMap.Values.Min(c => c.LinesOfCode) : 0;
 
         private void Initialize(IEnumerable<Instance> list)
         {
@@ -33,14 +42,13 @@ namespace Metropolis.Api.Domain
         public void Apply(Instance src)
         {
             Instance c;
-            if (map.TryGetValue(src.PhysicalPath, out c))
+            if (instanceMap.TryGetValue(src.PhysicalPath, out c))
             {
-                c.AddMeta(src.Meta);
                 c.Apply(src);
             }
             else
             {
-                map.Add(src.PhysicalPath, src);
+                instanceMap.Add(src.PhysicalPath, src);
                 codebags.Add(src.CodeBag);
             }
         }
