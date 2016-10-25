@@ -8,9 +8,9 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Metropolis.UI.MVVM.Mac</RootNamespace>
     <AssemblyName>Metropolis.UI.MVVM.Mac</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
-    <TargetFrameworkIdentifier>Xamarin.Mac</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
+    <UseXamMacFullFramework>true</UseXamMacFullFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,7 +46,7 @@
     <IncludeMonoRuntime>true</IncludeMonoRuntime>
     <UseSGen>true</UseSGen>
     <UseRefCounting>true</UseRefCounting>
-    <LinkMode>SdkOnly</LinkMode>
+    <LinkMode>None</LinkMode>
     <HttpClientHandler></HttpClientHandler>
     <TlsProvider></TlsProvider>
     <XamMacArch></XamMacArch>
@@ -87,6 +87,12 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Metropolis.Api\Metropolis.Api.csproj">
+      <Project>{D6EDB7C6-34CD-4EB9-9579-8BB68514BEC6}</Project>
+      <Name>Metropolis.Api</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>
