@@ -6,6 +6,10 @@
     /// </summary>
     public class ArtifactFile : AbstractFile
     {
+        public ArtifactFile(Location path) : base(path)
+        {
+        }
+        
         public ArtifactFileType Type { get; set; }
 
         public CommitEntry CommitEntry { get; set; }
@@ -14,6 +18,7 @@
         // but BuildFiles like .xml for ANT or package.json for npm packages
         // and BinaryAssets  like assets like png, 3dmodels, and videos
         // and OtherCodeFiles random non-binary text files (e.g documentation, or anything else that doesn't fit in the above catagories
+
     }
 
     public enum ArtifactFileType

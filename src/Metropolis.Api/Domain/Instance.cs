@@ -14,11 +14,11 @@ namespace Metropolis.Api.Domain
 
         public List<Duplicate> Duplicates { get; private set; } = new List<Duplicate>();
 
-        public Instance(CodeBag codeBag, string name, Location path)
+        public Instance(CodeBag codeBag, string name, Location path) : base(path)
         {
             CodeBag = codeBag;
             Name = name;
-            PhysicalPath = path;
+            IsInHeadRevision = FileHeadRevisionStatus.Exists;
         }
 
         public CodeBag CodeBag { get; }

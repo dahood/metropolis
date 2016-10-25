@@ -13,7 +13,7 @@ namespace Metropolis.Api.Readers.VersionControlReaders
         /*
          *  --commitHash--date--author
          *  each change in an automic commit
-         *  additions     deleitions       filePath
+         *  additions     deletions        filePath
          *  2             1                src/Metropolis.UI.MVVM.Core/App.cs
          *  8	          0	               src/Metropolis.UI.MVVM.Core/ViewModels/MainViewModel.cs
          *  
@@ -36,20 +36,24 @@ namespace Metropolis.Api.Readers.VersionControlReaders
             // step 1 - parse into CommitEntries
             // add these to CodeGraph.Commits.Add(range from gitlog.log)
 
+            // step 2 - foreach CommitEntry apply the resulting Instance & Artifacts
+            // TODO: THIS CAN BE COMBINED WITH STEP 3...so we don't need to iterate as many times
 
-            // step 2 - from the list of all instances & files in git history
-            // make a list of instances
-            // make a list of artifacts
-
+            // create either an instance or an artifact based on file type - TODO: Where will this come from...all I have is a Reader...
+            // apply an instance with FileHeadRevisionStatus.Unsure
+            // apply an artifact with FileHeadRevisionStatus.Unsure
 
             // step 3 - associate a reference for each occurance in CodeGraph.Commits to CodeGraph.Instances & CodeGraph.Artifacts
             // becareful not to serialize this out twice since this could get huge
             // add for Instances.VersionHistory.Add()
             // add for Artifacts.VersionHistory.Add()
 
+            // step 4 - this goes inside AbstractFile.Apply? but writting it here anyway...
+            // NEED TO COMPARE/APPLY based on what Exists and what has been deleted...
+            // if Foo.cs existed from a prior parser then we merge the history into the existing AbtractFile
+            // if Bar.cs doesn't show up then we...a) toss it for now....or b) ... do something smart ...
 
-            // don't return an empty codebase
-            return CodeBase.Empty();
+            // return new CodeGraph/CodeBase();
         }
     }
 }
