@@ -51,7 +51,7 @@ namespace Metropolis.Test.Api.Readers.VersionControlReaders
 
             result.Commits[0].AdditionsAndDeletions[2].AddedLines.Should().Be(0);
             result.Commits[0].AdditionsAndDeletions[2].DeletedLines.Should().Be(0);
-            result.Commits[0].AdditionsAndDeletions[2].IsBinary.Should().Be(false);
+            result.Commits[0].AdditionsAndDeletions[2].IsBinary.Should().Be(true);
             result.Commits[0].AdditionsAndDeletions[2].Path.Path.Should().Be("Metropolis/logo.png");
         }
 
