@@ -4,23 +4,21 @@
     ///     Anything that isn't an executable unit of code. Build files, docker files, configuration and binary files are
     ///     examples
     /// </summary>
-    public class ArtifactFile : AbstractFile
+    public abstract class ArtifactFile : AbstractFile
     {
-        public ArtifactFile(Location path) : base(path)
+        protected ArtifactFile(Location path) : base(path)
         {
         }
-        
+
         public ArtifactFileType Type { get; set; }
-
-        public CommitEntry CommitEntry { get; set; }
-
-        // and ConfigutationFiles like web.config or web.xml or docker container files
-        // but BuildFiles like .xml for ANT or package.json for npm packages
-        // and BinaryAssets  like assets like png, 3dmodels, and videos
-        // and OtherCodeFiles random non-binary text files (e.g documentation, or anything else that doesn't fit in the above catagories
-
     }
 
+    /// <summary>
+    ///     ConfigutationFiles like web.config or web.xml or docker container files
+    ///     BuildFiles like .xml for ANT or package.json for npm packages
+    ///     BinaryAssets like assets like png, 3dmodels, and videos
+    ///     Miscellaneous are random non-binary text files (e.g documentation, or anything else) 
+    /// </summary>
     public enum ArtifactFileType
     {
         BuildFile,

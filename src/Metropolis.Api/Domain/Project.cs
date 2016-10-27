@@ -24,7 +24,7 @@ namespace Metropolis.Api.Domain
 
     public class SerializableClass
     {
-        public SerializableVersionHistory History { get; set; }
+        public SerializableVersionHistory VersionHistory { get; set; }
         public IEnumerable<SerializableMember> Members { get; set; }
         public IEnumerable<SerializableDuplicate> Duplicates { get; set; }
         public SerializeableCodeBag CodeBag { get; set; }

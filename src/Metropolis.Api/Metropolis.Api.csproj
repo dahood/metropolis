@@ -66,6 +66,7 @@
     <Compile Include="Domain\ArtifactFile.cs" />
     <Compile Include="Domain\CodeBag.cs" />
     <Compile Include="Domain\CodeBagType.cs" />
+    <Compile Include="Domain\CommitDetail.cs" />
     <Compile Include="Domain\Delta\InstanceDelta.cs" />
     <Compile Include="Domain\Duplicate.cs" />
     <Compile Include="Domain\IInstance.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Readers\CsvReaders\TypeConverters\Sloc\SlocDirectoryConverter.cs" />
     <Compile Include="Readers\CsvReaders\TypeConverters\Sloc\SlocFileNameConverter.cs" />
     <Compile Include="Readers\VersionControlReaders\GitLogReader.cs" />
+    <Compile Include="Readers\VersionControlReaders\ISourceControlReader.cs" />
     <Compile Include="Readers\XmlReaders\CheckStyles\BaseCheckStylesClassBuilder.cs" />
     <Compile Include="Readers\XmlReaders\CheckStyles\CheckStylesItem.cs" />
     <Compile Include="Readers\XmlReaders\FxCop\BaseFxCopBuilder.cs" />

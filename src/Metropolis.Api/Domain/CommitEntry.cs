@@ -8,10 +8,10 @@ namespace Metropolis.Api.Domain
     /// </summary>
     public class CommitEntry
     {
-        public string CommitHash { get; set; }
+        public string CommitHash { get; set; } // 12ad430
         public string AuthorName { get; set; }
         public string CommitMessage { get; set; }
         public DateTime CommitTime { get; set; }
-        public IEnumerable<Location> AdditionsAndDeletions { get; set; }
+        public List<CommitDetail> AdditionsAndDeletions { get; set; } = new List<CommitDetail>();
     }
 }

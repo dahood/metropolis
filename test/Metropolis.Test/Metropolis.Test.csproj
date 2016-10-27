@@ -91,6 +91,7 @@
     <Compile Include="Api\Collection\Steps\Java\JavaCollectionStepTest.cs" />
     <Compile Include="Api\Domain\Delta\InstanceDeltaTest.cs" />
     <Compile Include="Api\Readers\CsvReaders\CpdReaderTest.cs" />
+    <Compile Include="Api\Readers\VersionControlReaders\GitLogReaderTest.cs" />
     <Compile Include="Metropolis\Controllers\CsharpCollectionControllerTest.cs" />
     <Compile Include="Metropolis\WorkspaceProviderTest.cs" />
     <Compile Include="Api\Analyzers\AnalyzeFactoryTest.cs" />

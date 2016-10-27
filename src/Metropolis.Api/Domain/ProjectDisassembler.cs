@@ -40,7 +40,7 @@ namespace Metropolis.Api.Domain
                 CyclomaticComplexity = src.CyclomaticComplexity,
                 DepthOfInheritance = src.DepthOfInheritance,
                 Toxicity = src.Toxicity,
-                History = Disassemble(src.History),
+                VersionHistory = Disassemble(src.VersionHistory),
                 Members = src.Members.Select(Disassemble).ToList()
             };
 
@@ -72,11 +72,11 @@ namespace Metropolis.Api.Domain
                     .ToArray();
         }
 
-        private static CommitEntry Disassemble(SerializableVersionHistory src)
+        private static HashSet<string> Disassemble(SerializableVersionHistory src)
         {
             //TODO: fix this also
             //use the src luke!
-            return new CommitEntry();
+            return new HashSet<string>();
         }
     }
 }

@@ -5,16 +5,13 @@ namespace Metropolis.Api.Domain
 {
     /// <summary>
     /// A graph to represent a version controlled source code system
-    /// Commits are a list of Commit Entries (e.g. git commits)
     /// Instances make up all the executable code units (e.g. java class)
     /// Artifacts make up all the other configuration, deployment, build system, and binary assets
     /// CodeBags are furthur containers provided like file directories or package/namespace classification for OO languages
     /// </summary>
     public class CodeGraph
     {
-        private readonly HashSet<CommitEntry> commits = new HashSet<CommitEntry>();
-
-        private readonly Dictionary<Location, Instance> instanceMap = new Dictionary<Location, Instance>();
+         private readonly Dictionary<Location, Instance> instanceMap = new Dictionary<Location, Instance>();
         //TODO: make this work... not sure how this merges with the CodeGraph
         //private readonly Dictionary<Location, ArtifactFile> artifactMap = new Dictionary<Location, ArtifactFile>();
 

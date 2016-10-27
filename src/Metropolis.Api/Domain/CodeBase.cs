@@ -17,6 +17,8 @@ namespace Metropolis.Api.Domain
         public CodeGraph Graph { get; }
         public List<Instance> AllInstances => Graph.AllInstances;
 
+        public List<CommitEntry> Commits { get; set; }
+
         public CodeBase(CodeGraph graph) : this(string.Empty, graph)
         {
         }

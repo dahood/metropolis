@@ -11,11 +11,8 @@ namespace Metropolis.Api.Domain
         {
             PhysicalPath = path;
         }
-        public Location PhysicalPath { get; protected set; }
+        public Location PhysicalPath { get; private set; }
 
-        public FileHeadRevisionStatus IsInHeadRevision { get; set; }
-        public HashSet<CommitEntry> VersionHistory { get; set; }
+        public HashSet<string> VersionHistory { get; set; } // 12ad430
     }
-
-    public enum FileHeadRevisionStatus { Unsure, Exists, DeletedFromHead}
 }

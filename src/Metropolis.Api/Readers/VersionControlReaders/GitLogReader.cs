@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Runtime.CompilerServices;
 using Metropolis.Api.Domain;
+using Metropolis.Common.Extensions;
 
 namespace Metropolis.Api.Readers.VersionControlReaders
 {
@@ -8,7 +11,7 @@ namespace Metropolis.Api.Readers.VersionControlReaders
     ///     Uses output from:
     ///       git log --all --numstat --date=short --pretty=format:'--%h--%ad--%aN' --no-renames > gitlog.log
     /// </summary>
-    public class GitLogReader : IInstanceReader
+    public class GitLogReader : ISourceControlReader
     {
         /*
          *  --commitHash--date--author
@@ -29,35 +32,62 @@ namespace Metropolis.Api.Readers.VersionControlReaders
             12	0	src/Metropolis.UI.MVVM.WPF/Views/MainView.xaml.cs 
         */
 
-        public CodeBase Parse(TextReader textReader)
+        public CodeBase Parse(TextReader textReader, CodeBase codeBase)
         {
-            throw new NotImplementedException();
+            codeBase.Commits = ParseCommits(textReader);
 
-            //NOTE: may need a different interface other than InstanceReader.... 
-            // possibly ISourceControlReader because I need to do this step last of the whole thing 
-            // because I want to pass in a CodeBase here since it simplified step 2 & 3 since at this point in time
-            // I only care about what exists in ref HEAD...the code you own today, not the history
-
-            // step 1 - parse into CommitEntries (despite this I still want all the history for visualization data
             // add these to CodeGraph.Commits.Add(range from gitlog.log)
 
-            // step 2 - foreach CommitEntry apply the resulting Instance & Artifacts
-            // TODO: THIS CAN BE COMBINED WITH STEP 3...so we don't need to iterate as many times
-            // create either an instance or an artifact based on file type - TODO: Where will this come from...all I have is a Reader...
-            // apply an instance with FileHeadRevisionStatus.Unsure
-            // apply an artifact with FileHeadRevisionStatus.Unsure
-
-            // step 3 - associate a reference for each occurance in CodeGraph.Commits to CodeGraph.Instances & CodeGraph.Artifacts
-            // becareful not to serialize this out twice since this could get huge
+            // step 2 - foreach CommitEntry apply the resulting Instance & Artifacts associate hash reference
             // add for Instances.VersionHistory.Add()
             // add for Artifacts.VersionHistory.Add()
 
-            // step 4 - this goes inside AbstractFile.Apply? but writting it here anyway...
-            // NEED TO COMPARE/APPLY based on what Exists and what has been deleted...
-            // if Foo.cs existed from a prior parser then we merge the history into the existing AbtractFile
-            // if Bar.cs doesn't show up then we...a) toss it for now....or b) ... do something smart ...
+            return codeBase;
+        }
 
-            // return new CodeGraph/CodeBase();
+        private static List<CommitEntry> ParseCommits(TextReader textReader)
+        {
+            List<CommitEntry> entries = new List<CommitEntry>();
+            string line;
+
+            while ((line = textReader.ReadLine()) != null)
+            {
+                if (!line.StartsWith("--")) continue;
+
+                var entry = new CommitEntry();
+                entry.CommitHash = line.Substring(2, 7);
+                entry.CommitTime = new DateTime(
+                    int.Parse(line.Substring(11, 4)), // year
+                    int.Parse(line.Substring(16, 2)), // month
+                    int.Parse(line.Substring(19, 2))); // day
+                entry.AuthorName = line.Substring(23);
+
+                ParseCommitDetails(textReader, entry);
+
+                entries.Add(entry);
+            }
+            return entries;
+        }
+
+        private static void ParseCommitDetails(TextReader textReader, CommitEntry entry)
+        {
+            string line;
+            while ((line = textReader.ReadLine()) != null)
+            {
+                if (line == string.Empty) break;
+                var commitDetail = new CommitDetail();
+                var split = line.Split(Convert.ToChar(9));
+                if (line.StartsWith("-"))
+                    commitDetail.IsBinary = true;
+                else
+                {
+                    commitDetail.AddedLines = int.Parse(split[0]);
+                    commitDetail.DeletedLines = int.Parse(split[1]);
+                }
+                commitDetail.Path = new Location(split[2]);
+
+                entry.AdditionsAndDeletions.Add(commitDetail);
+            }
         }
     }
 }

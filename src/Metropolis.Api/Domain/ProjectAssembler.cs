@@ -36,7 +36,7 @@ namespace Metropolis.Api.Domain
             {
                 Name = src.Name,
                 Location = src.PhysicalPath.Path,
-                History = Assemble(src.History),
+                VersionHistory = Assemble(src.VersionHistory),
                 CodeBag = new SerializeableCodeBag
                 { 
                     Name = src.CodeBag.Name,
@@ -56,7 +56,7 @@ namespace Metropolis.Api.Domain
             };
         }
 
-        private static SerializableVersionHistory Assemble(CommitEntry src)
+        private static SerializableVersionHistory Assemble(HashSet<string> src)
         {
             //TODO: fix this!!!
             return new SerializableVersionHistory();

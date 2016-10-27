@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Metropolis.Api.Extensions;
 using NLog;
@@ -18,7 +19,6 @@ namespace Metropolis.Api.Domain
         {
             CodeBag = codeBag;
             Name = name;
-            IsInHeadRevision = FileHeadRevisionStatus.Exists;
         }
 
         public CodeBag CodeBag { get; }
@@ -38,7 +38,15 @@ namespace Metropolis.Api.Domain
 
         public List<Member> Members { get; set; } = new List<Member>();
 
-        public CommitEntry History { get; set; }
+        /// <summary>
+        /// Number of revisions to this file (without renames)
+        /// </summary>
+        public int RevisionCount => VersionHistory.Count();
+        /// <summary>
+        /// Absolute number of added lines & deleted lines from this file
+        /// Example: 2 additions and 4 deletions = RevisionMagnitude of 6
+        /// </summary>
+        public int RevisionMagnitude { get; set; }
 
         public override string ToString()
         {
