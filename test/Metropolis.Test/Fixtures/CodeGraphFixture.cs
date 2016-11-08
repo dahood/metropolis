@@ -28,7 +28,7 @@ namespace Metropolis.Test.Fixtures
         {
             get
             {
-                var path = @"C:\dev\Metropolis.Api\Domain\CodeBase.cs";
+                var path = @"C:\dev\Metropolis\Metropolis.Api\Domain\CodeBase.cs";
                 var classOne = InstanceBuilder.Build(MetroCodeBagApi, "CodeBase", path, 50, 200, 10,10, new List<Member> {});
 
                

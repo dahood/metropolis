@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Metropolis.Api.Domain;
 using Metropolis.Common.Extensions;
@@ -35,13 +36,17 @@ namespace Metropolis.Api.Readers.VersionControlReaders
         public CodeBase Parse(TextReader textReader, CodeBase codeBase)
         {
             codeBase.Commits = ParseCommits(textReader);
+            foreach (var commit in codeBase.Commits)
+            {
+                foreach (var commitAdditionsAndDeletion in commit.AdditionsAndDeletions)
+                {
+                    var useWindowsDirectory = true; //TODO: somehow figure out if our codebase is using unix directory or windows...
 
-            // add these to CodeGraph.Commits.Add(range from gitlog.log)
-
-            // step 2 - foreach CommitEntry apply the resulting Instance & Artifacts associate hash reference
-            // add for Instances.VersionHistory.Add()
-            // add for Artifacts.VersionHistory.Add()
-
+                    var file = codeBase.Graph.FindInstanceWithRelativePath(commitAdditionsAndDeletion.Path, useWindowsDirectory);
+                    file?.VersionHistory.Add(commit.CommitHash);
+                    //TODO: add for Artifacts.VersionHistory.Add()
+                }
+            }
             return codeBase;
         }
 

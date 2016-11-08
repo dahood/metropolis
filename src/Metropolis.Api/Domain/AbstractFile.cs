@@ -13,6 +13,6 @@ namespace Metropolis.Api.Domain
         }
         public Location PhysicalPath { get; private set; }
 
-        public HashSet<string> VersionHistory { get; set; } // 12ad430
+        public HashSet<string> VersionHistory { get; set; } = new HashSet<string>(); // 12ad430 
     }
 }

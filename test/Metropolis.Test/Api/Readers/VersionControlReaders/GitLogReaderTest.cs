@@ -58,7 +58,7 @@ namespace Metropolis.Test.Api.Readers.VersionControlReaders
         [Test]
         public void Should_Apply_Commit_Against_Instances_In_CodeBase()
         {
-            //TODO: now need to merge version history into Codebase (if instance exists)
+            result.AllInstances[0].VersionHistory.Count.Should().Be(1);
         }
     }
 }
