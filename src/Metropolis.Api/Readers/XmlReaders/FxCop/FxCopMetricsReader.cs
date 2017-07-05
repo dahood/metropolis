@@ -33,8 +33,9 @@ namespace Metropolis.Api.Readers.XmlReaders.FxCop
                                         .Descendants(nameSpace + "Modules").Descendants(nameSpace + "Module")
                                         .Descendants(nameSpace + "Namespaces").Descendants(nameSpace + "Namespace")
                                         .Descendants(nameSpace + "Types").Descendants(nameSpace + "Type")
-                             where m.Parent.Parent.AttributeValue("Name").IsNotEmpty() 
-                             select fxCopInstanceBuilder.Build(m)).ToList();
+                             where m.Parent.Parent.AttributeValue("Name").IsNotEmpty()
+                             select fxCopInstanceBuilder.Build(m))
+                                    .Where(x => x.PhysicalPath.Path != null).ToList();
 
             return new CodeBase("FxCop", new CodeGraph(instances), RepositorySourceType.CSharp);
         }
