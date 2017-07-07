@@ -1,0 +1,9 @@
+
+### Config file for running command line
+
+repositorySourceType: ECMA
+ecmaScriptDialect: DEFAULT
+projectName: 'Knockout'
+sourceDirectory: 'C:\Projects\OpenSource\knockout\src'
+ignoreFile: 'C:\Projects\metropolis\test\Metropolis.Test\Console\SampleFiles\metropolis.ECMA.eslintignore'
+

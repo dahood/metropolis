@@ -1,0 +1,4 @@
+!binding/*.js
+!components/*.js
+!subscribables/*.js
+!templating/*.js

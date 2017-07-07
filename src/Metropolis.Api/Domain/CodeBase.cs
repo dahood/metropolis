@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Text;
 using Metropolis.Common.Models;
 
 namespace Metropolis.Api.Domain
@@ -58,13 +60,13 @@ namespace Metropolis.Api.Domain
 
         public double Density()
         {
-            return (double) LinesOfCode() / InstanceCount();
+            return (double)LinesOfCode() / InstanceCount();
         }
 
         public double Duplicates()
         {
             if (LinesOfCode() == 0) return 0;
-            return (double) Graph.AllInstances.Sum(x => x.DuplicateLines)/ LinesOfCode();
+            return (double)Graph.AllInstances.Sum(x => x.DuplicateLines) / LinesOfCode();
         }
 
         public Dictionary<CodeBag, IEnumerable<Instance>> ByNamespace()
@@ -75,6 +77,21 @@ namespace Metropolis.Api.Domain
         public static CodeBase Empty()
         {
             return new CodeBase(new CodeGraph(new Instance[0]));
+        }
+
+        public override string ToString()
+        {
+            var stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine($"Project Name: {Name}");
+            stringBuilder.AppendLine($"Source Type: {SourceType}");
+            stringBuilder.AppendLine($"Run Date: {RunDate}");
+            stringBuilder.AppendLine($"Lines of code: {LinesOfCode().ToString("N0", CultureInfo.InvariantCulture)}");
+            stringBuilder.AppendLine($"Instance count: {InstanceCount().ToString("N2", CultureInfo.InvariantCulture)}");
+            stringBuilder.AppendLine($"Average toxicity: {AverageToxicity().ToString("N2", CultureInfo.InvariantCulture)}");
+            stringBuilder.AppendLine($"Absolute toxicity: {AbsoluteToxicity().ToString("N0", CultureInfo.InvariantCulture)}");
+            stringBuilder.AppendLine($"Code density: {Density().ToString("N2", CultureInfo.InvariantCulture)}");
+            stringBuilder.AppendLine($"Duplicates: {Duplicates().ToString("P", CultureInfo.InvariantCulture)}");
+            return stringBuilder.ToString();
         }
 
         public bool Equals(CodeBase other)
@@ -91,7 +108,7 @@ namespace Metropolis.Api.Domain
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((CodeBase) obj);
+            return Equals((CodeBase)obj);
         }
 
         public override int GetHashCode()
@@ -99,11 +116,11 @@ namespace Metropolis.Api.Domain
             unchecked
             {
                 var hashCode = (Name != null ? Name.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (SourceBaseDirectory != null ? SourceBaseDirectory.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (ProjectFile != null ? ProjectFile.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (ProjectFolder != null ? ProjectFolder.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (IgnoreFile != null ? IgnoreFile.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (int) SourceType;
+                hashCode = (hashCode * 397) ^ (SourceBaseDirectory != null ? SourceBaseDirectory.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (ProjectFile != null ? ProjectFile.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (ProjectFolder != null ? ProjectFolder.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (IgnoreFile != null ? IgnoreFile.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (int)SourceType;
                 return hashCode;
             }
         }

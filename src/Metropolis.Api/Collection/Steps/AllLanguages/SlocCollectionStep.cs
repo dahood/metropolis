@@ -9,7 +9,7 @@ namespace Metropolis.Api.Collection.Steps.AllLanguages
     /// </summary>
     public class SlocCollectionStep : BaseCollectionStep
     {
-        private const string SlocCommand = @"{0}sloc '{1}' -d --format csv -> '{2}'";
+        private const string SlocCommand = @"{0}sloc ""{1}"" -d --format csv > ""{2}""";
 
         public SlocCollectionStep(ParseType parseType) : base(new RunPowerShell())
         {

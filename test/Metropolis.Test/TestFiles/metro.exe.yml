@@ -1,0 +1,13 @@
+
+### Config file for running command line
+
+repositorySourceType: CSharp
+ecmaScriptDialect: DEFAULT
+projectName: 'Test'
+projectFolder: 'I\am\the\project\folder\location'
+sourceDirectory: 'I\am\the\source\directory'
+ignoreFile: 'I\am\the\file.metropolisignore'
+metricsOutputFolder: 'I\am\the\metrics\output\folder'
+buildOutputFolder: 'I\am\the\build\output\folder'
+projectFile: 'I\am\the\file.sln'
+

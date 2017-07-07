@@ -30,8 +30,7 @@ namespace Metropolis.Api.IO
         public string AutoSaveFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Metropolis", "Autosave");
         public string ScreenShotFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Metropolis", "Screenshots");
 
-        public string MetricsOutputFolder
-            => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis", "Metrics");
+        public string MetricsOutputFolder => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metropolis", "Metrics");
 
         public string IgnoreFile => ".metropolisignore";
 
@@ -74,7 +73,7 @@ namespace Metropolis.Api.IO
             return Directory.GetFiles(AutoSaveFolder, "AutoSave*.project")
                 .Select(x => new FileInfo(x)).OrderByDescending(fi => fi.LastWriteTime);
         }
-        
+
         public string GetProjectIgnoreFile(string projectFolder)
         {
             return Path.Combine(projectFolder, IgnoreFile);
@@ -104,8 +103,8 @@ namespace Metropolis.Api.IO
             if (!directory.Exists) return new FileDto[0];
 
             return (from f in directory.GetFiles()
-                where f.Name.EndsWith(".dll") || f.Name.EndsWith(".exe")
-                select new FileDto {Name = f.Name, FullPath = f.FullName}).ToList();
+                    where f.Name.EndsWith(".dll") || f.Name.EndsWith(".exe")
+                    select new FileDto { Name = f.Name, FullPath = f.FullName }).ToList();
         }
 
         public TextReader OpenFileStream(string fileName)
