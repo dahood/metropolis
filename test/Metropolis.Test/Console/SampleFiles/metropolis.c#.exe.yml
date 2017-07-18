@@ -1,0 +1,10 @@
+
+### Config file for running command line
+
+repositorySourceType: CSharp
+projectName: 'Test'
+projectFolder: 'C:\Projects\Simple\Test'
+sourceDirectory: 'C:\Projects\Simple\Test'
+ignoreFile: 'C:\Projects\Simple\Test\.metropolisignore'
+projectFile: 'C:\Projects\Simple\Test\Test.sln'
+

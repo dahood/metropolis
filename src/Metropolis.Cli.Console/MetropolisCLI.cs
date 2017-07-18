@@ -1,34 +1,40 @@
 ﻿using System;
+using Metropolis.Api.Services;
 
 namespace Metropolis.Console
 {
     /// <summary>
-    /// metro.exe
-    /// 
-    /// The metro command line interface to Metropolis analysis for easy hook up to build agents like Teamcity
-    /// 
-    /// Export can be transformed by reporting by taking an output of JSON and a few prepared reports (html, with d3 perhaps?)
+    ///     metro.exe
+    ///     The metro command line interface to Metropolis analysis for easy hook up to build agents like Teamcity
+    ///     Export can be transformed by reporting by taking an output of JSON and a few prepared reports (html, with d3
+    ///     perhaps?)
     /// </summary>
-    class MetropolisCLI
+    internal class MetropolisCLI
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            // metro usage: metro.exe csharp c:\dev\metropolis
             try
             {
-                if (args.Length == 0)
+                if (args.Length == 2)
                 {
                     System.Console.WriteLine("hi there I'm Metropolis, i'm here to help you analyze code today...");
-                    System.Console.WriteLine("Enter Directory:");
-                    var directory = System.Console.ReadLine();
-                    System.Console.Write("Enter Source Type (java,javascript,csharp, default:csharp):");
-                    var sourceType = System.Console.ReadLine();
 
-                    //TODO: hook into Metropolis.API
+                    var configFile = args[0];
+                    var projectFileLocation = args[1];
+
+                    System.Console.WriteLine($"YAML Config File: {configFile} ");
+                    System.Console.WriteLine($"Result Project File Folder: {projectFileLocation}");
+                    var codeBase = new AnalysisServices().Analyze(configFile, projectFileLocation);
+                    System.Console.Write(codeBase.ToString());
                 }
-                System.Console.Write(@"Metropolis v0.0.1 - Command Usage: metro.exe csharp c:\dev\metropolis");
-                //TODO: hook this into Metropolis.API
+                else
+                {
+                    System.Console.WriteLine("Metropolis expects you to have the following parameters: pathOfYamlConfigFile pathToProjectResultFile");
+                    System.Console.WriteLine(@"eg: metropolis.exe c:\ProjectFolder\project.yml c:\ProjectFolder\Results");
+                    Environment.Exit(1);
+                }
 
+                System.Console.Write(@"Metropolis v0.0.1 - Command Usage: metropolis.exe csharp");
                 Environment.Exit(0);
             }
             catch (Exception e)
@@ -39,3 +45,4 @@ namespace Metropolis.Console
         }
     }
 }
+

@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Metropolis.Console</RootNamespace>
-    <AssemblyName>metropolis</AssemblyName>
+    <AssemblyName>metro</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -53,12 +53,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="metropolis.exe.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Metropolis.Api\Metropolis.Api.csproj">
       <Project>{d6edb7c6-34cd-4eb9-9579-8bb68514bec6}</Project>
       <Name>Metropolis.Api</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Metropolis.Common\Metropolis.Common.csproj">
+      <Project>{867e868a-b77f-42dd-bd08-83bbadf9e847}</Project>
+      <Name>Metropolis.Common</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

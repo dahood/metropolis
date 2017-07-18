@@ -92,6 +92,7 @@
     <Compile Include="Api\Domain\Delta\InstanceDeltaTest.cs" />
     <Compile Include="Api\Readers\CsvReaders\CpdReaderTest.cs" />
     <Compile Include="Api\Readers\VersionControlReaders\GitLogReaderTest.cs" />
+    <Compile Include="Common\Utilities\YamlFileDeserializerTest.cs" />
     <Compile Include="Metropolis\Controllers\CsharpCollectionControllerTest.cs" />
     <Compile Include="Metropolis\WorkspaceProviderTest.cs" />
     <Compile Include="Api\Analyzers\AnalyzeFactoryTest.cs" />
@@ -152,6 +153,13 @@
     <Compile Include="Utilities\ValidationExtension.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Console\SampleFiles\metropolis.c#.exe.yml" />
+    <None Include="Console\SampleFiles\metropolis.ECMA.eslintignore" />
+    <None Include="Console\SampleFiles\metropolis.ECMA.exe.yml" />
+    <None Include="Console\SampleFiles\metropolis.java.exe.yml" />
+    <None Include="TestFiles\metro.exe.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
