@@ -36,7 +36,7 @@ namespace Metropolis.Api.IO
                 if (_msBuildPath == null)
                     InitMsBuildPath();
 
-                return _msBuildPath ?? Settings.Default.MSBuildPath;
+                return _msBuildPath ?? Settings.Default.MSBuildPathFallback;
             }
 
             set { _msBuildPath = value; }

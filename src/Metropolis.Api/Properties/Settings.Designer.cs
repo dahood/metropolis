@@ -38,7 +38,7 @@ namespace Metropolis.Api.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\MSBuild.exe")]
-        public string MSBuildPath {
+        public string MSBuildPathFallback {
             get {
                 return ((string)(this["MSBuildPath"]));
             }
