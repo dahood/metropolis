@@ -30,11 +30,10 @@ namespace Metropolis.Console
                 else
                 {
                     System.Console.WriteLine("Metropolis expects you to have the following parameters: pathOfYamlConfigFile pathToProjectResultFile");
-                    System.Console.WriteLine(@"eg: metropolis.exe c:\ProjectFolder\project.yml c:\ProjectFolder\Results");
+                    System.Console.WriteLine(@"eg: metro.exe c:\ProjectFolder\project.yml c:\ProjectFolder\Results");
                     Environment.Exit(1);
                 }
 
-                System.Console.Write(@"Metropolis v0.0.1 - Command Usage: metropolis.exe csharp");
                 Environment.Exit(0);
             }
             catch (Exception e)
