@@ -36,5 +36,3 @@ Metropolis depends on the following open source software:
 * ESLint (JQuery Foundation) - https://github.com/eslint/eslint
 * Checkstyle (GNU LGPL 2.1) - https://github.com/checkstyle/checkstyle
 * PMP's CPD aka copy paste detector (PMP Style BSD) - https://github.com/pmd/pmd 
-* D3 (BSD) - https://github.com/mbostock/d3
-* radar-chart-d3 (Apache 2.0) - https://github.com/alangrafu/radar-chart-d3
