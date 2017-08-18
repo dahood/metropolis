@@ -6,6 +6,6 @@
     /// </summary>
     public enum EslintPasringOptions
     {
-        DEFAULT, ECMA6
+        DEFAULT, ECMA6, REACT, BABEL_REACT, NODE
     }
 }

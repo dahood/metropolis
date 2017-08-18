@@ -1,0 +1,19 @@
+﻿{
+  "parserOptions": {
+    "sourceType": "module"
+    //"ecmaFeatures": {
+    //  "experimentalObjectRestSpread": true
+    //}
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "rules": {
+    "max-statements": "error",
+    "max-params": "error",
+    "complexity": "error",
+    "max-depth": "error",
+    "default-case": "error"
+  }
+}
