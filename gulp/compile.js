@@ -6,7 +6,7 @@ function compile () {
     return gulp.src('./Metropolis.sln')
         .pipe(msbuild({
             toolsVersion : 'auto',
-            //stdout : true,
+            configuration: 'Debug',
             stderr : true,
             nologo : true,
             errorOnFail: true
