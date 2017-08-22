@@ -16,9 +16,12 @@
   },
   "devDependencies": {
     "del": "^2.2.2",
-    "gulp": "^3.9.1",
-    "gulp-nunit-runner": "^1.1.0",
+    "gulp": "gulpjs/gulp#4.0",
+    "gulp-debug": "^3.1.0",
     "gulp-dotnet-assembly-info": "^0.1.12",
+    "gulp-msbuild": "^0.5.2",
+    "gulp-nuget-restore": "^0.6.0",
+    "gulp-nunit-runner": "^1.2.1",
     "sync-exec": "^0.6.2",
     "yargs": "^5.0.0"
   },

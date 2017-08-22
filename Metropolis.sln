@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis", "src\Metropolis\Metropolis.csproj", "{B90DA606-DD50-4859-ADF0-EABBA51A57B1}"
 EndProject
@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.Test", "test\Met
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{94A29043-E93C-4445-9FC3-832DE772A29D}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		gulpfile.js = gulpfile.js
 		LICENSE = LICENSE
 		metro-install.ps1 = metro-install.ps1
@@ -212,5 +213,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4FDD7FE1-37A5-4EAD-866C-4E9269A405D4}
 	EndGlobalSection
 EndGlobal
