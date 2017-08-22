@@ -15,3 +15,4 @@ gulp.task('compile', gulp.series(assemblyInfo, compile));
 gulp.task('default', gulp.series(clean, assemblyInfo, compile, copyToBuild, unitTest));
 gulp.task('publish', gulp.series(version, compile, packageClean, copyPackageCollectionBinaries, package, dist));
 
+//gulp.task('test', gulp.series(dist));
