@@ -17,8 +17,9 @@
   "devDependencies": {
     "del": "^2.2.2",
     "gulp": "gulpjs/gulp#4.0",
-    "gulp-nunit-runner": "^1.1.0",
     "gulp-dotnet-assembly-info": "^0.1.12",
+    "gulp-msbuild": "^0.5.2",
+    "gulp-nunit-runner": "^1.1.0",
     "sync-exec": "^0.6.2",
     "yargs": "^5.0.0"
   },
