@@ -4,9 +4,14 @@ const assemblyInfo = require('./assemblyInfo');
 const unitTest = require('./unitTest');
 const clean = require('./clean');
 const copyToBuild = require('./copyToBuild');
+const packageClean = require('./packageClean');
+const copyPackageCollectionBinaries = require('./copyPackageCollectionBinaries');
+const package = require('./package');
+const dist = require('./dist');
 
 //gulp.task('clean', clean);
 
 gulp.task('compile', gulp.series(assemblyInfo, compile));
-gulp.task('test', gulp.series(unitTest));
-gulp.task('default', gulp.series(clean, assemblyInfo, compile, copyToBuild));
+gulp.task('default', gulp.series(clean, assemblyInfo, compile, copyToBuild, unitTest));
+gulp.task('test', gulp.series(copyPackageCollectionBinaries, package));
+gulp.task('dist', gulp.series(dist));
