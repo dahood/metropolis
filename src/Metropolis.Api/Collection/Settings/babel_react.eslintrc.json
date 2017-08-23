@@ -19,10 +19,22 @@
     "react"
   ],
   "rules": {
-    "complexity": "error",
-    "max-depth": "error",
-    "max-params": "error",
-    "max-statements": "error",
+    "complexity": [
+      "error",
+      { "max": 0 }
+    ],
+    "max-depth": [
+      "error",
+      { "max": 0 }
+    ],
+    "max-params": [
+      "error",
+      { "max": 0 }
+    ],
+    "max-statements": [
+      "error",
+      { "max": 0 }
+    ],
     "default-case": "error"
   }
 }

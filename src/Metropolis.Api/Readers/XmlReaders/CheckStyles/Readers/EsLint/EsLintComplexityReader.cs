@@ -16,7 +16,7 @@ namespace Metropolis.Api.Readers.XmlReaders.CheckStyles.Readers.EsLint
 
         public void Read(Member member, CheckStylesItem item)
         {
-            member.Name = nameRegex.Split(item.Message)[1];
+            member.Name = nameRegex.IsMatch(item.Message) ? nameRegex.Split(item.Message)[1] : string.Format("Method on line: {0}", item.Line);
             member.CylomaticComplexity = Parser.Match(item.Message).Value.AsInt();
         }
     }

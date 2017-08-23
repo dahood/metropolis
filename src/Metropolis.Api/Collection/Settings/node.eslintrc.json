@@ -10,10 +10,22 @@
     "node": true
   },
   "rules": {
-    "max-statements": "error",
-    "max-params": "error",
-    "complexity": "error",
-    "max-depth": "error",
+    "max-statements": [
+      "error",
+      { "max": 0 }
+    ],
+    "max-params": [
+      "error",
+      { "max": 0 }
+    ],
+    "complexity": [
+      "error",
+      { "max": 0 }
+    ],
+    "max-depth": [
+      "error",
+      { "max": 0 }
+    ],
     "default-case": "error"
   }
 }
