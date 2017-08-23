@@ -14,6 +14,6 @@ const nuget = require('./nuget');
 
 gulp.task('compile', gulp.series(nuget, assemblyInfo, compile));
 gulp.task('default', gulp.series(clean, nuget, assemblyInfo, compile, copyToBuild, unitTest));
-gulp.task('publish', gulp.series(version, compile, packageClean, copyPackageCollectionBinaries, package, dist));
+gulp.task('dist', gulp.series(version, assemblyInfo, compile, packageClean, copyPackageCollectionBinaries, package, dist));
 
 gulp.task('test', gulp.series(nuget));

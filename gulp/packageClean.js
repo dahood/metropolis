@@ -2,7 +2,7 @@ let gulp = require('gulp');
 const del = require('del');
 
 
-const distDir = __dirname + '/../dist/';
+const distDir = 'dist/';
 
 function packageClean(done) {
       del([distDir], {force: true}).then(() => {

@@ -7,8 +7,8 @@ function version(done) {
     if (argv.m) {
         console.log('Versioning...');
         console.log(exec('npm version patch').stdout);
-        done();
     }
+    done();
 };
 
 
