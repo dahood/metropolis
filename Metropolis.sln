@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.8
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis", "src\Metropolis\Metropolis.csproj", "{B90DA606-DD50-4859-ADF0-EABBA51A57B1}"
 EndProject
@@ -31,8 +31,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.UI.MVVM.WPF", "src\Metropolis.UI.MVVM.WPF\Metropolis.UI.MVVM.WPF.csproj", "{9DA7FA80-ECE5-4345-AB02-C92E9DD4A184}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.UI.3D", "src\Metropolis.UI.3D\Metropolis.UI.3D.csproj", "{28D53277-BF39-4211-9120-DFE1639FE439}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.Dto", "src\Metropolis.Dto\Metropolis.Dto.csproj", "{246B5808-49F9-4D33-9E6D-F05ECC9C5643}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -194,22 +192,6 @@ Global
 		{28D53277-BF39-4211-9120-DFE1639FE439}.Release|x64.Build.0 = Release|Any CPU
 		{28D53277-BF39-4211-9120-DFE1639FE439}.Release|x86.ActiveCfg = Release|Any CPU
 		{28D53277-BF39-4211-9120-DFE1639FE439}.Release|x86.Build.0 = Release|Any CPU
-		{246B5808-49F9-4D33-9E6D-F05ECC9C5643}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{246B5808-49F9-4D33-9E6D-F05ECC9C5643}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{246B5808-49F9-4D33-9E6D-F05ECC9C5643}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{246B5808-49F9-4D33-9E6D-F05ECC9C5643}.Debug|ARM.Build.0 = Debug|Any CPU
-		{246B5808-49F9-4D33-9E6D-F05ECC9C5643}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{246B5808-49F9-4D33-9E6D-F05ECC9C5643}.Debug|x64.Build.0 = Debug|Any CPU
-		{246B5808-49F9-4D33-9E6D-F05ECC9C5643}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{246B5808-49F9-4D33-9E6D-F05ECC9C5643}.Debug|x86.Build.0 = Debug|Any CPU
-		{246B5808-49F9-4D33-9E6D-F05ECC9C5643}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{246B5808-49F9-4D33-9E6D-F05ECC9C5643}.Release|Any CPU.Build.0 = Release|Any CPU
-		{246B5808-49F9-4D33-9E6D-F05ECC9C5643}.Release|ARM.ActiveCfg = Release|Any CPU
-		{246B5808-49F9-4D33-9E6D-F05ECC9C5643}.Release|ARM.Build.0 = Release|Any CPU
-		{246B5808-49F9-4D33-9E6D-F05ECC9C5643}.Release|x64.ActiveCfg = Release|Any CPU
-		{246B5808-49F9-4D33-9E6D-F05ECC9C5643}.Release|x64.Build.0 = Release|Any CPU
-		{246B5808-49F9-4D33-9E6D-F05ECC9C5643}.Release|x86.ActiveCfg = Release|Any CPU
-		{246B5808-49F9-4D33-9E6D-F05ECC9C5643}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
