@@ -22464,20 +22464,20 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\code\\shaw\\metro_master\\src\\Metropolis.UI.MVVM.UWP\\Metropolis.UI.MVVM.UWP.csproj",
+      "projectUniqueName": "C:\\code\\dotnet\\metro_master\\src\\Metropolis.UI.MVVM.UWP\\Metropolis.UI.MVVM.UWP.csproj",
       "projectName": "Metropolis.UI.MVVM.UWP",
-      "projectPath": "C:\\code\\shaw\\metro_master\\src\\Metropolis.UI.MVVM.UWP\\Metropolis.UI.MVVM.UWP.csproj",
-      "projectJsonPath": "C:\\code\\shaw\\metro_master\\src\\Metropolis.UI.MVVM.UWP\\project.json",
+      "projectPath": "C:\\code\\dotnet\\metro_master\\src\\Metropolis.UI.MVVM.UWP\\Metropolis.UI.MVVM.UWP.csproj",
+      "projectJsonPath": "C:\\code\\dotnet\\metro_master\\src\\Metropolis.UI.MVVM.UWP\\project.json",
       "projectStyle": "ProjectJson",
       "validateRuntimeAssets": true,
       "files": {
-        "lib/uap10.0/Metropolis.UI.MVVM.UWP.dll": "C:\\code\\shaw\\metro_master\\src\\Metropolis.UI.MVVM.UWP\\bin\\placeholder\\uap10.0\\Metropolis.UI.MVVM.UWP.dll"
+        "lib/uap10.0/Metropolis.UI.MVVM.UWP.dll": "C:\\code\\dotnet\\metro_master\\src\\Metropolis.UI.MVVM.UWP\\bin\\placeholder\\uap10.0\\Metropolis.UI.MVVM.UWP.dll"
       },
       "frameworks": {
         "uap10.0": {
           "projectReferences": {
-            "C:\\code\\shaw\\metro_master\\src\\Metropolis.UI.MVVM.Core\\Metropolis.UI.MVVM.Core.csproj": {
-              "projectPath": "C:\\code\\shaw\\metro_master\\src\\Metropolis.UI.MVVM.Core\\Metropolis.UI.MVVM.Core.csproj"
+            "C:\\code\\dotnet\\metro_master\\src\\Metropolis.UI.MVVM.Core\\Metropolis.UI.MVVM.Core.csproj": {
+              "projectPath": "C:\\code\\dotnet\\metro_master\\src\\Metropolis.UI.MVVM.Core\\Metropolis.UI.MVVM.Core.csproj"
             }
           }
         }
