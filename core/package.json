@@ -1,0 +1,40 @@
+{
+  "name": "metropolis-core",
+  "version": "1.0.0",
+  "description": "a command line tool that generate project consumed by Metroplis",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "gulp test",
+    "gulp": "gulp"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-eslint": "^8.0.0",
+    "eslint": "^4.7.1",
+    "eslint-plugin-react": "^7.3.0",
+    "sloc": "^0.2.0"
+  },
+  "devDependencies": {
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-dotnet-cli": "^0.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dahood/metropolis.git"
+  },
+  "keywords": [
+    "codebase",
+    "visualization",
+    "static",
+    "code",
+    "analysis"
+  ],
+  "author": "Jonathan McCracken, Richard Hurst, Greg Cook",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/dahood/metropolis/issues"
+  },
+  "homepage": "https://github.com/dahood/metropolis#readme"
+}

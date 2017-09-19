@@ -1,0 +1,7 @@
+
+### Config file for running command line
+
+repositorySourceType: ECMA
+ecmaScriptDialect: BABEL_REACT
+projectName: 'electrode'
+sourceDirectory: '/home/shawdev/code/shaw/shaw.digital.experience.myshaw/src'

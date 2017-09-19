@@ -1,0 +1,5 @@
+### Config file for running command line
+
+repositorySourceType: Java
+projectName: 'hibernate'
+sourceDirectory: '/home/shawdev/code/mytut/hibernate-orm/hibernate-core/src/main/java/org/hibernate/loader'
