@@ -10,7 +10,7 @@ namespace Metropolis.Test.Api.Collection.Steps
         protected MetricsResult Result;
 
 #if DEBUG
-        public const string NodeModulesPath =  @"../../node_modules/.bin/";
+        public const string NodeModulesPath =  @"../node_modules/.bin/";
 #else
         public const string NodeModulesPath =  @"../node_modules/.bin/";
 #endif
