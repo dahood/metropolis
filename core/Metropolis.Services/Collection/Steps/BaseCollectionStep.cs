@@ -56,7 +56,7 @@ namespace Metropolis.Api.Collection.Steps
         {
             string nodePath;
 #if DEBUG
-            nodePath = @"../../node_modules/.bin/";
+            nodePath = @"../node_modules/.bin/";
 #else
             nodePath = @"../node_modules/.bin/";
 #endif
