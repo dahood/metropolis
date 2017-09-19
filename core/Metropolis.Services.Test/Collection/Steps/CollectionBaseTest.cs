@@ -1,6 +1,7 @@
 using System;
 using Metropolis.Common.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
 
 namespace Metropolis.Test.Api.Collection.Steps
 {
@@ -9,15 +10,13 @@ namespace Metropolis.Test.Api.Collection.Steps
         protected MetricsCommandArguments Args;
         protected MetricsResult Result;
 
-#if DEBUG
-        public const string NodeModulesPath =  @"../node_modules/.bin/";
-#else
-        public const string NodeModulesPath =  @"../node_modules/.bin/";
-#endif
+        public string NodeModulesPath {get; private set;} 
 
         [TestInitialize]
         public void SetUp()
         {
+            NodeModulesPath =  "../node_modules/.bin/".Replace('/', Path.DirectorySeparatorChar);
+
             Args = new MetricsCommandArguments
             {
                 IgnoreFile = @"C:\ignore",
