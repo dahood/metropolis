@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Metropolis.Common.Models;
 using Metropolis.Test.Api.Collection.Steps;
 using Metropolis.Api.Collection.Steps;
+using NLog.Extensions.Logging;
 
 namespace Metropolis.Test.Api.Collection.Steps.ECMA
 {
@@ -19,7 +20,10 @@ namespace Metropolis.Test.Api.Collection.Steps.ECMA
         [TestInitialize]
         public void Setup()
         {
-            
+            var loggerFactory = new LoggerFactory();
+                loggerFactory.ConfigureNLog("nlog.config");
+                loggerFactory.AddNLog();
+                LogManager.LoggerFactory = loggerFactory;
             step = new EsLintCollectionStep();
         }
         

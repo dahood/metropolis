@@ -3,7 +3,7 @@ const {test} = require('gulp-dotnet-cli');
 
 
 function coretest () {
-    return gulp.src('./core/**/*Test*.csproj', {read: false})
+    return gulp.src('./**/*Test*.csproj', {read: false})
     .pipe(test());
 };
 

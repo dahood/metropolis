@@ -9,12 +9,16 @@
     <PackageReference Include="moq" Version="4.7.99" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.1.18" />
     <PackageReference Include="MSTest.TestFramework" Version="1.1.18" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="1.0.0-rtm-beta5" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Metropolis.Services\Metropolis.Services.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="TestFiles\metro.yml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="nlog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
