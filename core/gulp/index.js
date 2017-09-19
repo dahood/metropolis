@@ -5,5 +5,5 @@ const corePublish = require('./corePublish');
 
 
 gulp.task('corebuild', gulp.series(corebuild));
-gulp.task('coretest', gulp.series(corebuild, coretest));
+gulp.task('coretest', gulp.series(coretest));
 gulp.task('core', gulp.series(corebuild, corePublish));
