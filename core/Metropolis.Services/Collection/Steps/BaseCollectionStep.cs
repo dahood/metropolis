@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using Metropolis.Api.Collection.PowerShell;
 using Metropolis.Common.Models;
 using Microsoft.Extensions.Logging;
-
+using Metropolis.Common.Extensions;
 
 namespace Metropolis.Api.Collection.Steps
 {
@@ -44,23 +44,23 @@ namespace Metropolis.Api.Collection.Steps
 
         public static string LocateBinaries(string target)
         {
-            return Locate(@"Collection/Binaries/".Replace('/', Path.DirectorySeparatorChar), target);
+            return Locate("Collection/Binaries/".ReplacePathSeperator(), target);
         }
 
         public static string LocateSettings(string target)
         {
-            return Locate(@"Collection/Settings/".Replace('/', Path.DirectorySeparatorChar), target);
+            return Locate("Collection/Settings/".ReplacePathSeperator(), target);
         }
 
         protected static string GetNodeBinPath()
         {
             string nodePath;
 #if DEBUG
-            nodePath = @"../node_modules/.bin/";
+            nodePath = "../node_modules/.bin/";
 #else
-            nodePath = @"../node_modules/.bin/";
+            nodePath = "../node_modules/.bin/";
 #endif
-            return nodePath.Replace('/', Path.DirectorySeparatorChar);
+            return nodePath.ReplacePathSeperator();
         }
 
         private void SaveAndExecuteCommand(MetricsCommandArguments args, string command)
@@ -102,12 +102,13 @@ namespace Metropolis.Api.Collection.Steps
 
         private static string Locate(string collectionPath, string target)
         {
-            
             #if DEBUG
-                return Path.Combine("bin/Debug/netcoreapp2.0".Replace('/', Path.DirectorySeparatorChar), collectionPath, target);
+                return Path.Combine(Environment.CurrentDirectory,
+                "bin/Debug/netcoreapp2.0".ReplacePathSeperator(),
+                 collectionPath, target);
             #else
-                return Path.Combine(collectionPath, target);
-            #endif
+                return Path.Combine(Environment.CurrentDirectory, collectionPath, target);
+            #endif    
         }
     }
 }

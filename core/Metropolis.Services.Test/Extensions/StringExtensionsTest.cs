@@ -2,6 +2,7 @@
 using Metropolis.Common.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FluentAssertions;
+using System.IO;
 
 namespace Metropolis.Test.Common.Extensions
 {
@@ -70,6 +71,15 @@ namespace Metropolis.Test.Common.Extensions
             "a".IsNotEmpty().Should().BeTrue();
             " a ".IsNotEmpty().Should().BeTrue();
             " abcdefg ".IsNotEmpty().Should().BeTrue();
+        }
+
+        [TestMethod]
+        public void ReplacePathSeperator_will_handle_windows()
+        {
+            var pathValue = "/usr/bin/anyvalue".ReplacePathSeperator();
+            var containsOSPathSeperator = pathValue.Contains(Path.DirectorySeparatorChar.ToString());
+            containsOSPathSeperator.Should().BeTrue();
+                
         }
     }
 }

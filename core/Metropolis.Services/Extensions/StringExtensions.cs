@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text.RegularExpressions;
 
 namespace Metropolis.Common.Extensions
@@ -45,6 +46,11 @@ namespace Metropolis.Common.Extensions
         public static string RemoveWhitespace(this string value)
         {
             return Regex.Replace(value, @"\s+", "");
+        }
+
+        public static string ReplacePathSeperator(this string value)
+        {
+            return value.Replace('/', Path.DirectorySeparatorChar);
         }
     }
 }
