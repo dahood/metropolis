@@ -31,7 +31,7 @@ namespace Metropolis.Api.Collection.Steps.AllLanguages
         //sample commmand  
         //java -Xmx512m -cp "cpd/*" net.sourceforge.pmd.cpd.CPD --format csv --language cs --minimum-tokens 50 --files C:\dev\metropolis\src > cpd-metro.csv
         private const string CpdCommand =
-            @"java -Xmx512m -cp '{0}' net.sourceforge.pmd.cpd.CPD --format csv --language {1} --minimum-tokens {2} --files '{3}' > '{4}'";
+             @"java -Xmx512m -cp '{0}' net.sourceforge.pmd.cpd.CPD --format csv --language {1} --minimum-tokens {2} --files '{3}' > '{4}'";
         private const string ClassPath = @"cpd/*";
 
         private readonly Dictionary<ParseType, string> languageTokenMap = new Dictionary<ParseType, string>

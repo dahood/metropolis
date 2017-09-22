@@ -103,8 +103,7 @@ namespace Metropolis.Api.Collection.Steps
         private static string Locate(string collectionPath, string target)
         {
             #if DEBUG
-                return Path.Combine(Environment.CurrentDirectory,
-                "bin/Debug/netcoreapp2.0".ReplacePathSeperator(),
+                return Path.Combine("bin/Debug/netcoreapp2.0".ReplacePathSeperator(),
                  collectionPath, target);
             #else
                 return Path.Combine(Environment.CurrentDirectory, collectionPath, target);

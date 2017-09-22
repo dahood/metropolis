@@ -69,6 +69,7 @@ namespace Metropolis.Api.Services
             var codebase = analyzerFactory.For(details.RepositorySourceType).Analyze(codeBase.AllInstances);
             codebase.SourceType = details.RepositorySourceType;
             codebase.Name = details.ProjectName;
+
             return codeBase;
         }
 
