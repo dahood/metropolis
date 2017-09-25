@@ -2,15 +2,18 @@ using System;
 using System.Diagnostics;
 using Metropolis.Common.Extensions;
 using Microsoft.Extensions.Logging;
+using System.Runtime.InteropServices;
 
 namespace Metropolis.Api.Collection.PowerShell
 {
     public class RunPowerShell : IRunPowerShell
     {
         private ILogger _logger;
+        private Boolean _isWindows;
         public RunPowerShell()
         {
             this._logger = LogManager.GetCurrentClassLogger("RunPowerShell");
+            this._isWindows =  RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         }
         private const int TimeOut = 60*1000; // 60,000 ms = 1 minute timeout
 
@@ -21,8 +24,8 @@ namespace Metropolis.Api.Collection.PowerShell
             {
                 StartInfo = new ProcessStartInfo
                 {
-                    FileName = "sh",
-                    Arguments = $"-c \"{command}\"",
+                    FileName = _isWindows ? "PowerShell.exe" : "sh",
+                    Arguments = _isWindows ? $"-NoProfile -NonInteractive -Command \"{command};exit $LastExitCode\"" : $"-c \"{command}\"",
                     CreateNoWindow = true,
                     ErrorDialog = false,
                     UseShellExecute = false,
