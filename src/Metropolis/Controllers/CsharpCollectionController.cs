@@ -51,7 +51,7 @@ namespace Metropolis.Controllers
         private void RunAnalysis(object sender, IgnoreFileArgs e)
         {
             ProjectDetails.FilesToIgnore = e.IngoreFiles;
-            workSpaceProvider.CreateIgnoreFile(ProjectDetails);
+//            workSpaceProvider.CreateIgnoreFile(ProjectDetails);
             workSpaceProvider.Analyze(view.ProjectDetails);
         }
     }

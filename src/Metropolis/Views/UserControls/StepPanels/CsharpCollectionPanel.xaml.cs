@@ -99,8 +99,7 @@ namespace Metropolis.Views.UserControls.StepPanels
         {
             using (new WaitCursor())
             {
-                var ignoreFileList = IgnoreFileDataGrid.ItemsSource?.OfType<FileDto>().Where(x => x.Ignore).ToList() ?? new List<FileDto>();
-                RunAnalysisRequest?.Invoke(this, new IgnoreFileArgs { IngoreFiles = ignoreFileList });
+                RunAnalysisRequest?.Invoke(this, new IgnoreFileArgs { IngoreFiles = new FileDto[0] });
             }
         }
     }

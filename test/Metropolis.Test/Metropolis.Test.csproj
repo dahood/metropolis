@@ -153,6 +153,7 @@
     <Compile Include="Utilities\ValidationExtension.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Console\SampleFiles\metropolis.c#.exe.yml" />
     <None Include="Console\SampleFiles\metropolis.ECMA.eslintignore" />
     <None Include="Console\SampleFiles\metropolis.ECMA.exe.yml" />
